@@ -1,0 +1,99 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ScriptHelp.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="App_Author" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Anthony Duguid</Value>
+    </Setting>
+    <Setting Name="Sheet_Column_Cleaned_Colour" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">SkyBlue</Value>
+    </Setting>
+    <Setting Name="App_HelpEmail" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">anthonyduguid@gmail.com</Value>
+    </Setting>
+    <Setting Name="Sheet_Column_Table_Alias" Type="System.String" Scope="User">
+      <Value Profile="(Default)">tbl</Value>
+    </Setting>
+    <Setting Name="Script_Type_Date" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">2</Value>
+    </Setting>
+    <Setting Name="Sheet_Column_Date_Format_Replace" Type="System.String" Scope="User">
+      <Value Profile="(Default)">dd-mmm-yyyy</Value>
+    </Setting>
+    <Setting Name="Sheet_Column_Date_Format_Find" Type="System.String" Scope="User">
+      <Value Profile="(Default)">mm:ss.0</Value>
+    </Setting>
+    <Setting Name="Sheet_Column_Script_Null" Type="System.String" Scope="User">
+      <Value Profile="(Default)">NULL</Value>
+    </Setting>
+    <Setting Name="Script_Type_Numeric" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="Sheet_Column_Script_Quote" Type="System.String" Scope="User">
+      <Value Profile="(Default)">'</Value>
+    </Setting>
+    <Setting Name="Script_Type_Text" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="Visible_ComAddInsDialog" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Visible_Options" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Visible_FormatAsTableGallery" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Visible_RemoveDuplicates" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Visible_ViewFreezePanesGallery" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Visible_btnCopyVisibleCells" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Visible_btnClearInteriorColor" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Visible_btnZeroToNull" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="App_PathFileListing" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Temp</Value>
+    </Setting>
+    <Setting Name="Visible_btnFileList" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Option_FileListingPathSelect" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Visible_mnuScriptType" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Sheet_Column_Name" Type="System.String" Scope="User">
+      <Value Profile="(Default)">QUERY</Value>
+    </Setting>
+    <Setting Name="Visible_btnSeparateValues" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Sheet_Column_Separate_Values_Delimiter" Type="System.Char" Scope="User">
+      <Value Profile="(Default)">,</Value>
+    </Setting>
+    <Setting Name="App_PathDeploy" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Temp\ScriptHelp</Value>
+    </Setting>
+    <Setting Name="App_PathUserData" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Visible_mnuScriptType_DQL" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Visible_mnuScriptType_TSQL" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Visible_mnuScriptType_PLSQL" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
