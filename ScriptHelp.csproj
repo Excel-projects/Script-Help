@@ -245,6 +245,7 @@
     <None Include="Resources\QueryTypeTSql.png" />
     <None Include="Resources\QueryTypePlSql.png" />
     <None Include="Resources\Copy16.png" />
+    <Content Include="App_Data\Test.txt" />
     <Content Include="sqlceca35.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
