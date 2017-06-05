@@ -332,14 +332,6 @@
 						size="normal"
 						screentip="View API documentation for this product"
 					/>
-					<button
-						id="btnHelpEmail"
-						label="Help...   "
-						onAction="CreateEmailMessage"
-						imageMso="NewMailMessage"
-						size="normal"
-						screentip="Create an email to the help desk for this product"
-					/>
 					<separator
 						id="separator4"
 					/>

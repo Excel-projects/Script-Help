@@ -244,7 +244,6 @@
     <None Include="packages.config" />
     <None Include="Resources\QueryTypeTSql.png" />
     <None Include="Resources\QueryTypePlSql.png" />
-    <None Include="Resources\Copy16.png" />
     <Content Include="sqlceca35.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -266,10 +265,6 @@
     <Content Include="sqlcese35.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="Resources\List.png" />
-    <None Include="Resources\Logo.png" />
-    <None Include="Resources\ScriptType.png" />
-    <None Include="Resources\Script.png" />
     <None Include="Resources\Save.png" />
     <None Include="Resources\QueryTypeDql.png" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -332,35 +327,13 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Clean.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\FormatDate.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Settings.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Copy.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Ribbon.xml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Clear.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ToNull.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Batch.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Resources\ExcelAddin.ico" />
-    <None Include="Resources\HelpEmail.png" />
-    <None Include="Resources\HelpAsBuilt.png" />
-    <None Include="Resources\HelpApi.png" />
-    <None Include="Resources\GroupInfo.png" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>
