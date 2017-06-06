@@ -920,6 +920,7 @@ namespace ScriptHelp.Scripts
             }
 
         }
+
         /// <summary> 
         /// Opens the settings form
         /// </summary>

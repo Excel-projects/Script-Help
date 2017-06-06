@@ -35,9 +35,11 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnStart = new System.Windows.Forms.ToolStripButton();
             this.Rpie = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.dgvGraphDataResults = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGraphData)).BeginInit();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Rpie)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvGraphDataResults)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvGraphData
@@ -48,7 +50,7 @@
             this.dgvGraphData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvGraphData.Location = new System.Drawing.Point(0, 327);
             this.dgvGraphData.Name = "dgvGraphData";
-            this.dgvGraphData.Size = new System.Drawing.Size(300, 423);
+            this.dgvGraphData.Size = new System.Drawing.Size(100, 400);
             this.dgvGraphData.TabIndex = 1;
             this.dgvGraphData.Visible = false;
             // 
@@ -95,14 +97,34 @@
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.Rpie.Series.Add(series1);
-            this.Rpie.Size = new System.Drawing.Size(300, 293);
+            this.Rpie.Size = new System.Drawing.Size(280, 281);
             this.Rpie.TabIndex = 3;
             this.Rpie.Text = "chart1";
+            // 
+            // dgvGraphDataResults
+            // 
+            this.dgvGraphDataResults.AllowUserToAddRows = false;
+            this.dgvGraphDataResults.AllowUserToDeleteRows = false;
+            this.dgvGraphDataResults.AllowUserToResizeColumns = false;
+            this.dgvGraphDataResults.AllowUserToResizeRows = false;
+            this.dgvGraphDataResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvGraphDataResults.ColumnHeadersVisible = false;
+            this.dgvGraphDataResults.Enabled = false;
+            this.dgvGraphDataResults.Location = new System.Drawing.Point(180, 327);
+            this.dgvGraphDataResults.Name = "dgvGraphDataResults";
+            this.dgvGraphDataResults.RowHeadersVisible = false;
+            this.dgvGraphDataResults.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.dgvGraphDataResults.Size = new System.Drawing.Size(100, 400);
+            this.dgvGraphDataResults.TabIndex = 4;
+            this.dgvGraphDataResults.TabStop = false;
+            this.dgvGraphDataResults.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvGraphDataResults_CellEndEdit);
+            this.dgvGraphDataResults.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvGraphDataResults_CellFormatting);
             // 
             // GraphData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.dgvGraphDataResults);
             this.Controls.Add(this.Rpie);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.dgvGraphData);
@@ -112,6 +134,7 @@
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Rpie)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvGraphDataResults)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -123,5 +146,6 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton btnStart;
         private System.Windows.Forms.DataVisualization.Charting.Chart Rpie;
+        private System.Windows.Forms.DataGridView dgvGraphDataResults;
     }
 }
