@@ -360,10 +360,10 @@
 						getLabel="GetLabelText"
 						getEnabled="False"
 					/>
-					<labelControl
+					<button
 						id="txtCopyright"
 						getLabel="GetLabelText"
-						getEnabled="False"
+						onAction="OpenGraphData"
 					/>
 				</group>
 			</tab>

@@ -39,6 +39,11 @@ namespace ScriptHelp.Scripts
         /// TableData TaskPane
         /// </summary>
         public TaskPane.TableData myTableData;
+        
+        /// <summary>
+        /// TableData TaskPane
+        /// </summary>
+        public TaskPane.GraphData myGraphData;
 
         /// <summary>
         /// Settings Custom Task Pane
@@ -54,6 +59,11 @@ namespace ScriptHelp.Scripts
         /// TableData Custom Task Pane
         /// </summary>
         public Microsoft.Office.Tools.CustomTaskPane myTaskPaneTableData;
+
+        /// <summary>
+        /// TableData Custom Task Pane
+        /// </summary>
+        public Microsoft.Office.Tools.CustomTaskPane myTaskPaneGraphData;
 
         /// <summary>
         /// Used for values across different classes
@@ -147,6 +157,7 @@ namespace ScriptHelp.Scripts
                 AssemblyInfo.SetAddRemoveProgramsIcon("ExcelAddin.ico");
                 Data.CreateTableAliasTable();
                 Data.CreateDateFormatTable();
+                Data.CreateGraphDataTable();
 
             }
             catch (Exception ex)
@@ -872,6 +883,43 @@ namespace ScriptHelp.Scripts
             }
         }
 
+        /// <summary> 
+        /// Opens the graph data pane
+        /// </summary>
+        /// <param name="control">Represents the object passed into the callback procedure of a control in a ribbon or another user interface that can be customized by using Office Fluent ribbon extensibility. </param>
+        /// <remarks></remarks>
+        public void OpenGraphData(Office.IRibbonControl control)
+        {
+            try
+            {
+                if (myTaskPaneGraphData != null)
+                {
+                    if (myTaskPaneGraphData.Visible == true)
+                    {
+                        myTaskPaneGraphData.Visible = false;
+                    }
+                    else
+                    {
+                        myTaskPaneGraphData.Visible = true;
+                    }
+                }
+                else
+                {
+                    myGraphData = new TaskPane.GraphData();
+                    myTaskPaneGraphData = Globals.ThisAddIn.CustomTaskPanes.Add(myGraphData, "Graph Data for " + Scripts.AssemblyInfo.Title);
+                    myTaskPaneGraphData.DockPosition = Office.MsoCTPDockPosition.msoCTPDockPositionRight;
+                    myTaskPaneGraphData.DockPositionRestrict = Office.MsoCTPDockPositionRestrict.msoCTPDockPositionRestrictNoChange;
+                    myTaskPaneGraphData.Width = 300;
+                    myTaskPaneGraphData.Visible = true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.DisplayMessage(ex);
+            }
+
+        }
         /// <summary> 
         /// Opens the settings form
         /// </summary>

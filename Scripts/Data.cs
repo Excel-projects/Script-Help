@@ -53,6 +53,11 @@ namespace ScriptHelp.Scripts
         public static DataTable DateFormatTable = new DataTable();
 
         /// <summary>
+        /// List of graph data
+        /// </summary>
+        public static DataTable GraphDataTable = new DataTable();
+
+        /// <summary>
         /// Creates the datatable for the list of common table alias
         /// </summary>
         public static void CreateTableAliasTable()
@@ -110,6 +115,40 @@ namespace ScriptHelp.Scripts
                     da.Fill(DateFormatTable);
                 }
                 DateFormatTable.DefaultView.Sort = columnName + " asc";
+
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.DisplayMessage(ex);
+
+            }
+
+        }
+
+        /// <summary>
+        /// Creates the datatable for the graph data
+        /// </summary>
+        public static void CreateGraphDataTable()
+        {
+            try
+            {
+                string columnName = "ORDR_NBR";
+                dynamic dcFormatString = new DataColumn(columnName, typeof(string));
+                GraphDataTable.Rows.Clear();
+                DataColumnCollection columns = GraphDataTable.Columns;
+                if (columns.Contains(columnName) == false)
+                {
+                    GraphDataTable.Columns.Add(dcFormatString);
+                }
+
+                string tableName = "GraphData";
+                string sql = "SELECT * FROM " + tableName + " ORDER BY " + columnName;
+
+                using (var da = new SqlCeDataAdapter(sql, Connection()))
+                {
+                    da.Fill(GraphDataTable);
+                }
+                GraphDataTable.DefaultView.Sort = columnName + " asc";
 
             }
             catch (Exception ex)
