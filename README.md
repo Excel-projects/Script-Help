@@ -147,3 +147,10 @@ User
 
 #### Copyright (Label)
 * The author’s name
+
+## Configuration
+###	Dependencies
+* Microsoft Visual Studio 2013 
+* Microsoft SQL Server CE 3.5
+* Microsoft Sandcastle (API documentation)
+* Microsoft Word (As Built documentation)
