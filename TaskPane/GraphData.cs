@@ -58,37 +58,18 @@ namespace ScriptHelp.TaskPane
         {
             try
             {
+                System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
                 this.btnStart.Enabled = false;
                 this.Rpie.Series[0].Points[MyRandomNumber]["Exploded"] = "False";
-                for (int i = 0; i < 360; i++)
+                Random random = new Random();
+                int totalNbr = Data.GraphDataTable.Rows.Count;
+                MyRandomNumber = random.Next(1, totalNbr);
+                for (int i = 0; i < MyRandomNumber + 100; i++)
                 {
                     this.Rpie.Series[0]["PieStartAngle"] = i.ToString();
                     Application.DoEvents();
-                    System.Threading.Thread.Sleep(10);
                 }
-                Random random = new Random();
-                int randomNumber = random.Next(1, 38);
-                this.Rpie.Series[0].Points[randomNumber]["Exploded"] = "True";
-                MyRandomNumber = randomNumber;
-
-                string yourNumber = this.Rpie.Series[0].Points[randomNumber].AxisLabel.ToString();
-                string yourColor = System.Drawing.ColorTranslator.ToHtml(this.Rpie.Series[0].Points[randomNumber].Color);
-                //MessageBox.Show(yourNumber, "Your number", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
-                string connection = Scripts.Data.Connection();
-                string query = ("INSERT INTO GraphDataResults (NBR_VALUE, COLOR_ID) Values(@yourNumber, @yourColor)");
-                using (SqlCeConnection cn = new SqlCeConnection(connection))
-                {
-                    using (SqlCeCommand cmd = new SqlCeCommand(query, cn))
-                    {
-                        cmd.CommandType = CommandType.Text;
-                        cmd.Parameters.AddWithValue("@yourNumber", yourNumber);
-                        cmd.Parameters.AddWithValue("@yourColor", yourColor);
-                        cn.Open();
-                        cmd.ExecuteNonQuery();
-                        cn.Close();
-                    }
-                }
+                InsertResultsToDataTable();
                 RefreshResultsToGrid();
 
             }
@@ -99,51 +80,9 @@ namespace ScriptHelp.TaskPane
             finally
             {
                 this.btnStart.Enabled = true;
-            }
+                System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default;
+                this.Rpie.Series[0].Points[MyRandomNumber]["Exploded"] = "True";
 
-        }
-
-        /// <summary>
-        /// Refresh the results to the grid
-        /// </summary>
-        private void RefreshResultsToGrid()
-        {
-            try
-            {
-                string sql = "SELECT NBR_VALUE, COLOR_ID, RESULT_ID FROM GraphDataResults";
-                System.Data.DataTable dt = new System.Data.DataTable();
-                using (var da = new SqlCeDataAdapter(sql, Scripts.Data.Connection()))
-                {
-                    da.Fill(dt);
-                }
-                dt.DefaultView.Sort = "[RESULT_ID] DESC";
-                dgvGraphDataResults.DataSource = dt.DefaultView;
-                dgvGraphDataResults.AutoGenerateColumns = false;
-                dgvGraphDataResults.Columns.Clear();
-                dgvGraphDataResults.AllowUserToAddRows = false;
-
-                DataGridViewTextBoxColumn txtResultColor = new DataGridViewTextBoxColumn();
-                txtResultColor.Width = 0;
-                txtResultColor.DataPropertyName = "COLOR_ID";
-                txtResultColor.Name = "COLOR_ID";
-                txtResultColor.Visible = false;
-                dgvGraphDataResults.Columns.Add(txtResultColor);
-                DataGridViewTextBoxColumn txtResultNumber = new DataGridViewTextBoxColumn();
-                txtResultNumber.Width = 100;
-                txtResultNumber.DataPropertyName = "NBR_VALUE";
-                txtResultNumber.Name = "NBR_VALUE";
-                txtResultNumber.HeaderText = "Results";
-                txtResultNumber.Visible = true;
-                txtResultNumber.ReadOnly = true;
-                dgvGraphDataResults.Columns.Add(txtResultNumber);
-                dgvGraphDataResults.Columns[1].DefaultCellStyle.ForeColor = System.Drawing.Color.White;
-                dgvGraphDataResults.CellFormatting += dgvGraphDataResults_CellFormatting;
-                dgvGraphDataResults.CellEndEdit += dgvGraphDataResults_CellEndEdit;
-
-            }
-            catch (Exception ex)
-            {
-                ErrorHandler.DisplayMessage(ex);
             }
 
         }
@@ -171,9 +110,93 @@ namespace ScriptHelp.TaskPane
             }
         }
 
+        /// <summary>
+        /// Invalidate the grid formatting
+        /// </summary>
+        /// <param name="sender">contains the sender of the event, so if you had one method bound to multiple controls, you can distinguish them.</param>
+        /// <param name="e">refers to the event arguments for the used event, they usually come in the form of properties/functions/methods that get to be available on it.</param>
         private void dgvGraphDataResults_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             dgvGraphDataResults.Invalidate();
+        }
+
+        /// <summary>
+        /// Insert the results to the data table
+        /// </summary>
+        private void InsertResultsToDataTable()
+        {
+            try
+            {
+                //TODO: should be querying from the GraphData table instead of from the control
+                string number = this.Rpie.Series[0].Points[MyRandomNumber].AxisLabel.ToString();
+                string color = System.Drawing.ColorTranslator.ToHtml(this.Rpie.Series[0].Points[MyRandomNumber].Color);
+                //MessageBox.Show(number, "Your number", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                string connection = Scripts.Data.Connection();
+                string query = ("INSERT INTO GraphDataResults (NBR_VALUE, COLOR_ID) Values(@yourNumber, @yourColor)");
+                using (SqlCeConnection cn = new SqlCeConnection(connection))
+                {
+                    using (SqlCeCommand cmd = new SqlCeCommand(query, cn))
+                    {
+                        cmd.CommandType = CommandType.Text;
+                        cmd.Parameters.AddWithValue("@yourNumber", number);
+                        cmd.Parameters.AddWithValue("@yourColor", color);
+                        cn.Open();
+                        cmd.ExecuteNonQuery();
+                        cn.Close();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.DisplayMessage(ex);
+            }
+        }
+
+        /// <summary>
+        /// Refresh the results to the grid
+        /// </summary>
+        private void RefreshResultsToGrid()
+        {
+            try
+            {
+                string sql = "SELECT NBR_VALUE, COLOR_ID, RESULT_ID FROM GraphDataResults";
+                System.Data.DataTable dt = new System.Data.DataTable();
+                using (var da = new SqlCeDataAdapter(sql, Scripts.Data.Connection()))
+                {
+                    da.Fill(dt);
+                }
+                dt.DefaultView.Sort = "[RESULT_ID] DESC";
+                dgvGraphDataResults.DataSource = dt.DefaultView;
+                dgvGraphDataResults.AutoGenerateColumns = false;
+                dgvGraphDataResults.Columns.Clear();
+                dgvGraphDataResults.AllowUserToAddRows = false;
+
+                DataGridViewTextBoxColumn txtResultColor = new DataGridViewTextBoxColumn();
+                txtResultColor.Width = 0;
+                txtResultColor.DataPropertyName = "COLOR_ID";
+                txtResultColor.Name = "COLOR_ID";
+                txtResultColor.Visible = false;
+                dgvGraphDataResults.Columns.Add(txtResultColor);
+
+                DataGridViewTextBoxColumn txtResultNumber = new DataGridViewTextBoxColumn();
+                txtResultNumber.Width = 100;
+                txtResultNumber.DataPropertyName = "NBR_VALUE";
+                txtResultNumber.Name = "NBR_VALUE";
+                txtResultNumber.HeaderText = "Results";
+                txtResultNumber.Visible = true;
+                txtResultNumber.ReadOnly = true;
+                dgvGraphDataResults.Columns.Add(txtResultNumber);
+
+                dgvGraphDataResults.Columns[1].DefaultCellStyle.ForeColor = System.Drawing.Color.White;
+                dgvGraphDataResults.CellFormatting += dgvGraphDataResults_CellFormatting;
+                dgvGraphDataResults.CellEndEdit += dgvGraphDataResults_CellEndEdit;
+
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.DisplayMessage(ex);
+            }
+
         }
 
     }
