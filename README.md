@@ -117,11 +117,11 @@ These buttons have the following constraints:
 #### Settings (Button)
 
 ##### Types of Settings
-Application
+###### Application
 * These settings can only be changed in the project and need to be redeployed
 * They will appear disabled in the form
 
-User
+###### User
 * These settings can be changed by the end-user
 * They will appear enabled in the form
 
