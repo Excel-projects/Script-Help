@@ -151,6 +151,7 @@ User
 ## Configuration
 ###	Dependencies
 * Microsoft Visual Studio 2013 
+* Microsoft Office 2010
 * Microsoft SQL Server CE 3.5
 * Microsoft Sandcastle (API documentation)
 * Microsoft Word (As Built documentation)
