@@ -1,9 +1,12 @@
 
 # ScriptHelp
+
+This is an Excel 2010 VSTO Addin written in Visual Studio 2013 C#. It allows the user to use an Excel table to create different SQL scripts.
+
 <h1 align="center">
   <img src="Images/toolbar.png" alt="MyToolbar" />
 </h1>
-This is an Excel 2010 VSTO Addin written in Visual Studio 2013 C#. It allows the user to use an Excel table to create different SQL scripts.
+
 
 ## Overview
 This is used for bulk data loads into SQL Server, Oracle and Documentum.  The functionality within the ribbon allows a quick way of preparing a bulk data load.  Otherwise the requests can be both time-consuming and error prone. 
