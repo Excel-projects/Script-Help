@@ -25,6 +25,6 @@ This is an Excel 2010 VSTO Addin written in Visual Studio 2013 C#. It allows the
 *	DQL Truncate/Append – This menu item will format the script column to be used in an truncate and then append statement for Documentum (this is used for repeating values)
 *	DQL Update – This menu item will format the script column to be used in an update statement for Documentum
 *	DQL Update/Locked – This menu item will format the script column to be used in an update statement for Documentum and unlocks and then locks the record
-  *	Add “WHERE” before the column name in the header you want to use as criteria.
-  *	The “Table Alias” is used as the update table name
+  * Add “WHERE” before the column name in the header you want to use as criteria.
+  * The “Table Alias” is used as the update table name
 This window will pop-up on “Add Script Column” click. “Save to File” from the toolbar will save the text to a .dql file.
