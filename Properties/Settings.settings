@@ -95,5 +95,8 @@
     <Setting Name="Visible_mnuScriptType_PLSQL" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="Visible_mnuScriptType_Github" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

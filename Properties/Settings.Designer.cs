@@ -388,5 +388,17 @@ namespace ScriptHelp.Properties {
                 this["Visible_mnuScriptType_PLSQL"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool Visible_mnuScriptType_Github {
+            get {
+                return ((bool)(this["Visible_mnuScriptType_Github"]));
+            }
+            set {
+                this["Visible_mnuScriptType_Github"] = value;
+            }
+        }
     }
 }

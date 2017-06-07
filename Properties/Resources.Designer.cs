@@ -103,6 +103,16 @@ namespace ScriptHelp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap QueryTypeGitHub {
+            get {
+                object obj = ResourceManager.GetObject("QueryTypeGitHub", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap QueryTypePlSql {
             get {
                 object obj = ResourceManager.GetObject("QueryTypePlSql", resourceCulture);

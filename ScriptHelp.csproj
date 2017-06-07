@@ -249,6 +249,7 @@
     <None Include="Resources\QueryTypeTSql.png" />
     <None Include="Resources\QueryTypePlSql.png" />
     <None Include="Resources\control_play_blue.png" />
+    <None Include="Resources\QueryTypeGitHub.png" />
     <Content Include="sqlceca35.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

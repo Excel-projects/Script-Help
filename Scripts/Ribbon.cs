@@ -39,7 +39,7 @@ namespace ScriptHelp.Scripts
         /// TableData TaskPane
         /// </summary>
         public TaskPane.TableData myTableData;
-        
+
         /// <summary>
         /// TableData TaskPane
         /// </summary>
@@ -194,6 +194,8 @@ namespace ScriptHelp.Scripts
                     case "btnQueryTypePlSqlInsertValues":
                     case "btnQueryTypePlSqlUpdateValues":
                         return Properties.Resources.QueryTypePlSql;
+                    case "btnQueryTypeGithubTable":
+                        return Properties.Resources.QueryTypeGitHub;
                     default:
                         return null;
                 }
@@ -406,6 +408,8 @@ namespace ScriptHelp.Scripts
                     case "btnQueryTypeDqlTruncateAppend":
                     case "btnQueryTypeDqlAppendLocked":
                         return Properties.Settings.Default.Visible_mnuScriptType_DQL;
+                    case "btnQueryTypeGithubTable":
+                        return Properties.Settings.Default.Visible_mnuScriptType_Github;
                     default:
                         return false;
                 }
@@ -442,6 +446,7 @@ namespace ScriptHelp.Scripts
                     case "btnQueryTypeTSqlUpdateValues":
                     case "btnQueryTypePlSqlUpdateValues":
                     case "btnQueryTypeTSqlMergeValues":
+                    case "btnQueryTypeGithubTable":
                         AddScriptColumn(control);
                         break;
                     case "btnDateFormat":
@@ -869,6 +874,9 @@ namespace ScriptHelp.Scripts
                         break;
                     case "btnQueryTypeTSqlMergeValues":
                         AddFormulaTSqlMergeValues();
+                        break;
+                    case "btnQueryTypeGithubTable":
+                        AddFormulaGithubTable();
                         break;
                 }
             }
@@ -1785,7 +1793,7 @@ namespace ScriptHelp.Scripts
                     Marshal.ReleaseComObject(sqlCol);
             }
         }
-                
+
         /// <summary> 
         /// Add a formula at the end of the table to use as a script
         /// </summary>
@@ -1947,7 +1955,101 @@ namespace ScriptHelp.Scripts
                     Marshal.ReleaseComObject(sqlCol);
             }
         }
-        
+
+        /// <summary> 
+        /// Add a formula at the end of the table to use as a script
+        /// </summary>
+        /// <remarks></remarks>
+        public void AddFormulaGithubTable()
+        {
+            Excel.ListObject tbl = null;
+            Excel.ListColumn sqlCol = null;
+            try
+            {
+                ErrorHandler.CreateLogRecord();
+                Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
+                string lastColumnName = Properties.Settings.Default.Sheet_Column_Table_Alias;
+                string tableAlias = Properties.Settings.Default.Sheet_Column_Table_Alias;
+  
+                tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject;
+                int lastColumnIndex = tbl.Range.Columns.Count;
+                sqlCol = tbl.ListColumns[lastColumnIndex];
+                string sqlColName = ConcatenateColumnNames(tbl.Range, string.Empty, "|") + "| ";
+                
+                if (sqlCol.Name == sqlColName)
+                {
+                    lastColumnName = sqlCol.Name;
+                }
+                else
+                {
+                    sqlCol = tbl.ListColumns.Add();
+                    sqlCol.Name = lastColumnName;
+                    lastColumnIndex = tbl.Range.Columns.Count;
+                }
+
+                sqlCol.DataBodyRange.NumberFormat = "General";
+                string formula = string.Empty;
+
+                foreach (Excel.ListColumn col in tbl.ListColumns)
+                {
+                    if (col.Name.IndexOfAny(new char[] { '[', ']', '"' }) != -1)
+                    {
+                        MessageBox.Show("Please remove one of these incorrect characters in a column header" + Environment.NewLine + " [ " + Environment.NewLine + " ] " + Environment.NewLine + "\" " + Environment.NewLine + "Column Name: " + col.Name, "No action taken.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                    if (col.Name == lastColumnName | col.Range.EntireColumn.Hidden)
+                    {
+                        //DO NOTHING - because the column is hidden or the last column with the sql script
+                    }
+                    else
+                    {
+                        if (!string.IsNullOrEmpty(formula))
+                        {
+                            formula = formula + " & \"|\" & ";
+                        }
+                        formula += GetColumnFormat(col).ToString();
+                    }
+                }
+                formula = "=\"" + "|" + "\" & " + formula + " & \"|\"";
+                lastColumnName = sqlColName;  // maximum header characters are 255
+                tbl.HeaderRowRange[lastColumnIndex].Value2 = lastColumnName;
+                try
+                {
+                    sqlCol.DataBodyRange.SpecialCells(Excel.XlCellType.xlCellTypeVisible).Rows.Formula = formula;
+                    sqlCol.Range.Columns.AutoFit();
+                    sqlCol.Range.HorizontalAlignment = Excel.Constants.xlLeft;
+                    sqlCol.Range.Copy();
+                    AppVariables.FileType = "SQL";
+                    AppVariables.ScriptRange = (string)Clipboard.GetData(DataFormats.Text);
+                    AppVariables.ScriptRange = AppVariables.ScriptRange.Replace(@"""", String.Empty);
+                }
+                catch (System.Runtime.InteropServices.COMException)
+                {
+                    AppVariables.ScriptRange = "There was an issue creating the Excel formula." + Environment.NewLine + Environment.NewLine + "Formula: " + Environment.NewLine + formula;
+                }
+                finally
+                {
+                    OpenScriptPane();
+                }
+            }
+            catch (System.OutOfMemoryException)
+            {
+                MessageBox.Show("The amount of records is too big", "No action taken.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.DisplayMessage(ex);
+            }
+            finally
+            {
+                Cursor.Current = System.Windows.Forms.Cursors.Arrow;
+                if (tbl != null)
+                    Marshal.ReleaseComObject(tbl);
+                if (sqlCol != null)
+                    Marshal.ReleaseComObject(sqlCol);
+            }
+        }
+
         /// <summary> 
         /// Add a formula at the end of the table to use as a script
         /// </summary>
@@ -2009,7 +2111,7 @@ namespace ScriptHelp.Scripts
                 string nullValue = Properties.Settings.Default.Sheet_Column_Script_Null;
                 formula = "SUBSTITUTE(" + formula + ", \"'" + nullValue + "'\", \"" + nullValue + "\")";
                 string tableAlias = Properties.Settings.Default.Sheet_Column_Table_Alias;
-                string insertPrefix = "INSERT INTO " + tableAlias + " (" + ConcatenateColumnNames(tbl.Range, false) + ") VALUES(";
+                string insertPrefix = "INSERT INTO " + tableAlias + " (" + ConcatenateColumnNames(tbl.Range) + ") VALUES(";
                 formula = "=\"" + insertPrefix + "\" & " + formula + " & \");\"";
                 tbl.ShowTotals = false;
                 lastColumnName = sqlColName;  // maximum header characters are 255
@@ -2156,7 +2258,7 @@ namespace ScriptHelp.Scripts
                     Marshal.ReleaseComObject(sqlCol);
             }
         }
-        
+
         /// <summary> 
         /// Add a formula at the end of the table to use as a script
         /// </summary>
@@ -2370,7 +2472,7 @@ namespace ScriptHelp.Scripts
                 string nullValue = Properties.Settings.Default.Sheet_Column_Script_Null;
                 formula = "SUBSTITUTE(" + formula + ", \"'" + nullValue + "'\", \"" + nullValue + "\")";
                 string tableAlias = Properties.Settings.Default.Sheet_Column_Table_Alias;
-                string insertPrefix = "INSERT INTO " + tableAlias + " (" + ConcatenateColumnNames(tbl.Range, false) + ") VALUES(";
+                string insertPrefix = "INSERT INTO " + tableAlias + " (" + ConcatenateColumnNames(tbl.Range) + ") VALUES(";
                 formula = "=\"" + insertPrefix + "\" & " + formula + " & \");\"";
                 tbl.ShowTotals = false;
                 lastColumnName = sqlColName;  // maximum header characters are 255
@@ -2485,7 +2587,7 @@ namespace ScriptHelp.Scripts
                 lastColumnName = sqlColName;  // maximum header characters are 255
                 tbl.HeaderRowRange[lastColumnIndex].Value2 = lastColumnName;
                 tbl.ShowTotals = true;
-                string totalsColumnValue = ") " + tableAliasTemp + " (" + ConcatenateColumnNames(tbl.Range, true) + ") ";
+                string totalsColumnValue = ") " + tableAliasTemp + " (" + ConcatenateColumnNames(tbl.Range, "[", "]") + ") ";
                 tbl.TotalsRowRange[lastColumnIndex].Value2 = totalsColumnValue; // totals row has a maximum limit of 32,767 characters
                 try
                 {
@@ -2496,7 +2598,7 @@ namespace ScriptHelp.Scripts
                     AppVariables.FileType = "SQL";
                     AppVariables.ScriptRange = (string)Clipboard.GetData(DataFormats.Text);
                     AppVariables.ScriptRange = AppVariables.ScriptRange.Replace(@"""", String.Empty);
-                    AppVariables.ScriptRange = "SET XACT_ABORT ON" + Environment.NewLine + "BEGIN TRANSACTION;" + Environment.NewLine + Environment.NewLine + ";WITH " + Environment.NewLine + tableAliasTemp + Environment.NewLine + "AS " + Environment.NewLine + "(" + Environment.NewLine + AppVariables.ScriptRange + ") " + Environment.NewLine + "MERGE " + tableAlias + " AS T" + Environment.NewLine + "USING " + tableAliasTemp + " AS S" + Environment.NewLine + "ON " + ConcatenateColumnNamesJoin(tbl.Range, true, "T", "S") + "WHEN NOT MATCHED BY TARGET" + Environment.NewLine + "THEN INSERT" + Environment.NewLine + "(" + Environment.NewLine + ConcatenateColumnNames(tbl.Range, true) + Environment.NewLine + ")" + Environment.NewLine + "VALUES" + Environment.NewLine + "(" + Environment.NewLine + ConcatenateColumnNames(tbl.Range, true, "S") + Environment.NewLine + ")" + Environment.NewLine + "WHEN MATCHED" + Environment.NewLine + "THEN UPDATE SET" + Environment.NewLine + ConcatenateColumnNamesJoin(tbl.Range, true, "T", "S") + "--WHEN NOT MATCHED BY SOURCE AND 'ADD WHERE CLAUSE HERE'" + Environment.NewLine + "--THEN DELETE" + Environment.NewLine + "OUTPUT $action, inserted.*, deleted.*;" + Environment.NewLine + Environment.NewLine + "ROLLBACK TRANSACTION;" + Environment.NewLine + "--COMMIT TRANSACTION;" + Environment.NewLine + "GO";
+                    AppVariables.ScriptRange = "SET XACT_ABORT ON" + Environment.NewLine + "BEGIN TRANSACTION;" + Environment.NewLine + Environment.NewLine + ";WITH " + Environment.NewLine + tableAliasTemp + Environment.NewLine + "AS " + Environment.NewLine + "(" + Environment.NewLine + AppVariables.ScriptRange + ") " + Environment.NewLine + "MERGE " + tableAlias + " AS T" + Environment.NewLine + "USING " + tableAliasTemp + " AS S" + Environment.NewLine + "ON " + ConcatenateColumnNamesJoin(tbl.Range, "T", "S") + "WHEN NOT MATCHED BY TARGET" + Environment.NewLine + "THEN INSERT" + Environment.NewLine + "(" + Environment.NewLine + ConcatenateColumnNames(tbl.Range, "[", "]") + Environment.NewLine + ")" + Environment.NewLine + "VALUES" + Environment.NewLine + "(" + Environment.NewLine + ConcatenateColumnNames(tbl.Range, "S", "[", "]") + Environment.NewLine + ")" + Environment.NewLine + "WHEN MATCHED" + Environment.NewLine + "THEN UPDATE SET" + Environment.NewLine + ConcatenateColumnNamesJoin(tbl.Range, "T", "S") + "--WHEN NOT MATCHED BY SOURCE AND 'ADD WHERE CLAUSE HERE'" + Environment.NewLine + "--THEN DELETE" + Environment.NewLine + "OUTPUT $action, inserted.*, deleted.*;" + Environment.NewLine + Environment.NewLine + "ROLLBACK TRANSACTION;" + Environment.NewLine + "--COMMIT TRANSACTION;" + Environment.NewLine + "GO";
                 }
                 catch (System.Runtime.InteropServices.COMException)
                 {
@@ -2701,7 +2803,7 @@ namespace ScriptHelp.Scripts
                 lastColumnName = sqlColName;  // maximum header characters are 255
                 tbl.HeaderRowRange[lastColumnIndex].Value2 = lastColumnName;
                 tbl.ShowTotals = true;
-                string totalsColumnValue = ") " + tableAlias + " (" + ConcatenateColumnNames(tbl.Range, true) + ") ";
+                string totalsColumnValue = ") " + tableAlias + " (" + ConcatenateColumnNames(tbl.Range, "[", "]") + ") ";
                 tbl.TotalsRowRange[lastColumnIndex].Value2 = totalsColumnValue; // totals row has a maximum limit of 32,767 characters
                 try
                 {
@@ -2922,14 +3024,20 @@ namespace ScriptHelp.Scripts
         /// Return the list of column names in formatted string for SQL
         /// </summary>
         /// <param name="rng">Represents the Excel Range value</param>
-        /// <param name="useBrackets">Whether to use bracketing around the column names</param>
         /// <param name="tableAliasName">Table alias used to prefix column names</param>
+        /// <param name="prefixChar">The prefix character for the column name e.g. "["</param>
+        /// <param name="suffixChar">The suffix character for the column name e.g. "]"</param>
         /// <returns>A method that returns a string of the column names</returns>
-        public string ConcatenateColumnNames(Excel.Range rng, Boolean useBrackets, string tableAliasName = "")
+        public string ConcatenateColumnNames(Excel.Range rng, string tableAliasName = "", string prefixChar = "", string suffixChar = "")
         {
             try
             {
                 string columnNames = string.Empty;
+                string selectionChar = "  ";
+                if (prefixChar != "|")
+                {
+                    selectionChar = ", ";
+                }
                 if (tableAliasName != string.Empty)
                 {
                     tableAliasName = tableAliasName + ".";
@@ -2938,14 +3046,7 @@ namespace ScriptHelp.Scripts
                 {
                     if (rng.Columns.EntireColumn[i].Hidden == false)
                     {
-                        if (useBrackets == true)
-                        {
-                            columnNames = columnNames + ", " + tableAliasName + "[" + ((Excel.Range)rng.Cells[1, i]).Value2 + "]";
-                        }
-                        else
-                        {
-                            columnNames = columnNames + ", " + ((Excel.Range)rng.Cells[1, i]).Value2;
-                        }
+                        columnNames = columnNames + selectionChar + tableAliasName + prefixChar + ((Excel.Range)rng.Cells[1, i]).Value2 + suffixChar;
                     }
                 }
                 columnNames = columnNames.Substring(2, columnNames.Length - 2);
@@ -2961,11 +3062,10 @@ namespace ScriptHelp.Scripts
         /// Return the list of column names in formatted string for SQL
         /// </summary>
         /// <param name="rng">Represents the Excel Range value</param>
-        /// <param name="useBrackets">Whether to use bracketing around the column names</param>
         /// <param name="tableAliasNameTarget">Table alias used to prefix column names</param>
         /// <param name="tableAliasNameSource">Table alias used to prefix column names</param>
         /// <returns>A method that returns a string of the column names</returns>
-        public string ConcatenateColumnNamesJoin(Excel.Range rng, Boolean useBrackets, string tableAliasNameTarget, string tableAliasNameSource)
+        public string ConcatenateColumnNamesJoin(Excel.Range rng, string tableAliasNameTarget, string tableAliasNameSource)
         {
             try
             {
@@ -2974,14 +3074,7 @@ namespace ScriptHelp.Scripts
                 {
                     if (rng.Columns.EntireColumn[i].Hidden == false)
                     {
-                        if (useBrackets == true)
-                        {
-                            columnNames = columnNames + ", " + tableAliasNameTarget + ".[" + ((Excel.Range)rng.Cells[1, i]).Value2 + "] = " + tableAliasNameSource + ".[" + ((Excel.Range)rng.Cells[1, i]).Value2 + "]" + Environment.NewLine;
-                        }
-                        else
-                        {
-                            columnNames = columnNames + ", " + ((Excel.Range)rng.Cells[1, i]).Value2;
-                        }
+                        columnNames = columnNames + ", " + tableAliasNameTarget + ".[" + ((Excel.Range)rng.Cells[1, i]).Value2 + "] = " + tableAliasNameSource + ".[" + ((Excel.Range)rng.Cells[1, i]).Value2 + "]" + Environment.NewLine;
                     }
                 }
                 columnNames = columnNames.Substring(2, columnNames.Length - 2);
