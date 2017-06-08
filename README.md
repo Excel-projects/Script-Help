@@ -19,7 +19,7 @@ It is in our interests to minimize both of these problems especially until need 
 |Software                        |Dependency                 |
 |:-------------------------------|:--------------------------|
 |[Microsoft Visual Studio 2013](https://www.visualstudio.com/en-us/news/releasenotes/vs2013-update4-rtm-vs)|Solution|
-|[Microsoft Office 2010](https://www.microsoft.com/en-au/software-download/office)|Project|
+|[Microsoft Excel 2010](https://www.microsoft.com/en-au/software-download/office)|Project|
 |[Microsoft SQL Server CE 3.5](https://www.microsoft.com/en-au/download/details.aspx?id=5783)|Database|
 |[Sandcastle](https://github.com/EWSoftware/SHFB)|API documentation|
 |[Word Processor](https://www.libreoffice.org/)|As Built documentation|
