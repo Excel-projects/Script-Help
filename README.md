@@ -23,6 +23,7 @@ It is in our interests to minimize both of these problems especially until need 
 |[Microsoft SQL Server CE 3.5](https://www.microsoft.com/en-au/download/details.aspx?id=5783)|Database|
 |[Sandcastle](https://github.com/EWSoftware/SHFB)|API documentation|
 |[Word Processor](https://www.libreoffice.org/)|As Built documentation|
+|Log4Net |Error Logging |
 
 ## Glossary of Terms
 
