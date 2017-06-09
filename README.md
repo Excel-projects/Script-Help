@@ -15,6 +15,16 @@ It is in our interests to minimize both of these problems especially until need 
 * Standard format for loader scripts 
 * Excel addin to clean and format data to be suitable for data loader script 
 
+## Dependencies
+|Software                        |Dependency                 |
+|:-------------------------------|:--------------------------|
+|[Microsoft Visual Studio 2013](https://www.visualstudio.com/en-us/news/releasenotes/vs2013-update4-rtm-vs)|Solution|
+|[Microsoft Excel 2010](https://www.microsoft.com/en-au/software-download/office)|Project|
+|[Microsoft SQL Server CE 3.5](https://www.microsoft.com/en-au/download/details.aspx?id=5783)|Database|
+|[Sandcastle](https://github.com/EWSoftware/SHFB)|API documentation|
+|[Word Processor](https://www.libreoffice.org/)|As Built documentation|
+|Log4Net |Error Logging |
+
 ## Glossary of Terms
 
 | Term                      | Meaning                                                                                  |
@@ -145,11 +155,3 @@ These buttons have the following constraints:
 
 #### Copyright (Label)
 * The author’s name
-
-## Configuration
-###	Dependencies
-* Microsoft Visual Studio 2013 
-* Microsoft Office 2010
-* Microsoft SQL Server CE 3.5
-* Microsoft Sandcastle (API documentation)
-* Microsoft Word (As Built documentation)
