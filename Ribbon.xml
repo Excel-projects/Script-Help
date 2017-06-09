@@ -178,7 +178,7 @@
 							getImage="GetButtonImage"
 							label="GitHub Table"
 							onAction="OnAction"
-							getVisible="GetVisible"
+							visible ="false"
 							screentip="This changes the query string to a GitHub table (This is used for READ ME files)."
 						/>
 						<menuSeparator

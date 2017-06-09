@@ -24,6 +24,8 @@ namespace ScriptHelp.Scripts
         /// Used to reference the ribbon object
         /// </summary>
         public static Ribbon ribbonref;
+        
+        #region | Task Panes |
 
         /// <summary>
         /// Settings TaskPane
@@ -64,6 +66,8 @@ namespace ScriptHelp.Scripts
         /// TableData Custom Task Pane
         /// </summary>
         public Microsoft.Office.Tools.CustomTaskPane myTaskPaneGraphData;
+        
+        #endregion
 
         /// <summary>
         /// Used for values across different classes
@@ -1037,29 +1041,6 @@ namespace ScriptHelp.Scripts
             AssemblyInfo.OpenFile(Path.Combine(clickOnceLocation, @"Documentation\\Api Help.chm"));
         }
 
-        /// <summary> 
-        /// Creates an email to the help desk
-        /// </summary>
-        /// <param name="control">Represents the object passed into the callback procedure of a control in a ribbon or another user interface that can be customized by using Office Fluent ribbon extensibility. </param>
-        /// <remarks></remarks>
-        public void CreateEmailMessage(Office.IRibbonControl control)
-        {
-            try
-            {
-                ErrorHandler.CreateLogRecord();
-                string msg = "mailto:" + Properties.Settings.Default.App_HelpEmail;
-                string product = AssemblyInfo.Title.Replace("&", "&&");
-                msg += "?subject=" + product + " " + AssemblyInfo.AssemblyVersion;
-                msg += "&body=Please create a ticket for user " + Environment.UserName + " ";
-                msg += "on machine " + Environment.MachineName + " ";
-                System.Diagnostics.Process.Start(msg);
-            }
-            catch (Exception ex)
-            {
-                ErrorHandler.DisplayMessage(ex);
-            }
-        }
-
         #endregion
 
         #region | Subroutines |
@@ -1970,12 +1951,12 @@ namespace ScriptHelp.Scripts
                 Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
                 string lastColumnName = Properties.Settings.Default.Sheet_Column_Table_Alias;
                 string tableAlias = Properties.Settings.Default.Sheet_Column_Table_Alias;
-  
+
                 tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject;
                 int lastColumnIndex = tbl.Range.Columns.Count;
                 sqlCol = tbl.ListColumns[lastColumnIndex];
                 string sqlColName = ConcatenateColumnNames(tbl.Range, string.Empty, "|") + "| ";
-                
+
                 if (sqlCol.Name == sqlColName)
                 {
                     lastColumnName = sqlCol.Name;

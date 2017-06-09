@@ -8,9 +8,6 @@
     <Setting Name="Sheet_Column_Cleaned_Colour" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">SkyBlue</Value>
     </Setting>
-    <Setting Name="App_HelpEmail" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">anthonyduguid@gmail.com</Value>
-    </Setting>
     <Setting Name="Sheet_Column_Table_Alias" Type="System.String" Scope="User">
       <Value Profile="(Default)">tbl</Value>
     </Setting>
