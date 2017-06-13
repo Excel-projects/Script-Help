@@ -84,7 +84,7 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="Visible_mnuScriptType_DQL" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="Visible_mnuScriptType_TSQL" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
@@ -93,6 +93,9 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="Visible_mnuScriptType_Github" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Visible_mnuScriptType_XML" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>

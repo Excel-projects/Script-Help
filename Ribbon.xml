@@ -174,17 +174,6 @@
 						id="separator11"
 						/>
 						<button
-							id="btnQueryTypeGithubTable"
-							getImage="GetButtonImage"
-							label="GitHub Table"
-							onAction="OnAction"
-							visible ="false"
-							screentip="This changes the query string to a GitHub table (This is used for READ ME files)."
-						/>
-						<menuSeparator
-						id="separator12"
-						/>
-						<button
 							id="btnQueryTypeDqlAppend"
 							getImage="GetButtonImage"
 							label="DQL Append"
@@ -231,6 +220,28 @@
 							onAction="OnAction"
 							getVisible="GetVisible"
 							screentip="This changes the query string to a DQL UPDATE query and also unlocks and locks the metadata."
+						/>
+						<menuSeparator
+							id="separator12"
+						/>
+						<button
+							id="btnQueryTypeGithubTable"
+							getImage="GetButtonImage"
+							label="GitHub Table"
+							onAction="OnAction"
+							getVisible="GetVisible"
+							screentip="This changes the query string to a GitHub table (This is used for READ ME files)."
+						/>
+						<menuSeparator
+							id="separator13"
+						/>
+						<button
+							id="btnQueryTypeXmlValues"
+							getImage="GetButtonImage"
+							label="XML Values"
+							onAction="OnAction"
+							getVisible="GetVisible"
+							screentip="This changes the query string to a XML query."
 						/>
 					</menu>
 

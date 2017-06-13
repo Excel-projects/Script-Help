@@ -346,7 +346,7 @@ namespace ScriptHelp.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool Visible_mnuScriptType_DQL {
             get {
                 return ((bool)(this["Visible_mnuScriptType_DQL"]));
@@ -389,6 +389,18 @@ namespace ScriptHelp.Properties {
             }
             set {
                 this["Visible_mnuScriptType_Github"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool Visible_mnuScriptType_XML {
+            get {
+                return ((bool)(this["Visible_mnuScriptType_XML"]));
+            }
+            set {
+                this["Visible_mnuScriptType_XML"] = value;
             }
         }
     }
