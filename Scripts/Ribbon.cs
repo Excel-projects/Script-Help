@@ -95,9 +95,11 @@ namespace ScriptHelp.Scripts
 			public static string FirstColumnName { get; set; }
 
 		}
+		
+		#region | Helpers |
 
 		/// <summary> 
-		/// The Sql Helpl ribbon
+		/// The Sql Help ribbon
 		/// </summary>
 		public Ribbon()
 		{
@@ -117,8 +119,6 @@ namespace ScriptHelp.Scripts
 		}
 
 		#endregion
-
-		#region | Helpers |
 
 		private static string GetResourceText(string resourceName)
 		{
@@ -2942,7 +2942,7 @@ namespace ScriptHelp.Scripts
 					sqlCol.Range.Columns.AutoFit();
 					sqlCol.Range.HorizontalAlignment = Excel.Constants.xlLeft;
 					sqlCol.Range.Copy();
-					AppVariables.FileType = "SQL";
+					AppVariables.FileType = "TXT";
 					AppVariables.ScriptRange = (string)Clipboard.GetData(DataFormats.Text);
 					AppVariables.ScriptRange = AppVariables.ScriptRange.Replace(@"""", String.Empty);
 				}
@@ -3061,7 +3061,7 @@ namespace ScriptHelp.Scripts
 					sqlCol.Range.HorizontalAlignment = Excel.Constants.xlLeft;
 					sqlCol.Range.WrapText = true;
 					sqlCol.DataBodyRange.Copy();
-					AppVariables.FileType = "SQL";
+					AppVariables.FileType = "XML";
 					AppVariables.ScriptRange = (string)Clipboard.GetData(DataFormats.Text);
 					AppVariables.ScriptRange = AppVariables.ScriptRange.Replace(@"""", String.Empty);
 				}

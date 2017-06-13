@@ -100,7 +100,13 @@ namespace ScriptHelp.TaskPane
                     case "DQL":
                         UpdateDqlSyntax();
                         break;
-                }
+					case "TXT":
+						UpdateSqlSyntax();
+						break;
+					case "XML":
+						UpdateSqlSyntax();
+						break;
+				}
                 txtScript.Text = Ribbon.AppVariables.ScriptRange;
 
             }
@@ -150,7 +156,15 @@ namespace ScriptHelp.TaskPane
                         s.FileName = "Update_" + Ribbon.AppVariables.FirstColumnName + ".dql";
                         s.Filter = "Documentum Query Language | *.dql";
                         break;
-                }
+					case "TXT":
+						s.FileName = Properties.Settings.Default.Sheet_Column_Table_Alias + ".txt";
+						s.Filter = "Text File | *.txt";
+						break;
+					case "XML":
+						s.FileName = Properties.Settings.Default.Sheet_Column_Table_Alias + ".xml";
+						s.Filter = "Extensible Markup Language | *.xml";
+						break;
+				}
                 if (s.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     using (System.IO.StreamWriter sw = new System.IO.StreamWriter(s.FileName))
