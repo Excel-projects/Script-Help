@@ -1,7 +1,7 @@
 
 # ScriptHelp
 
-This is an Excel 2010 VSTO Addin written in Visual Studio 2013 C#. It allows the user to use an Excel table to create different SQL scripts.
+This is an Excel 2010 VSTO Addin written in Visual Studio Community 2017 C#. It allows the user to use an Excel table to create different SQL scripts.
 
 <h1 align="center">
   <img src="Images/ribbon.png" alt="MyRibbon" />
@@ -16,9 +16,9 @@ It is in our interests to minimize both of these problems especially until need 
 * Excel addin to clean and format data to be suitable for data loader script 
 
 ## Dependencies
-|Software                        |Dependency                 |
-|:-------------------------------|:--------------------------|
-|[Microsoft Visual Studio 2013](https://www.visualstudio.com/en-us/news/releasenotes/vs2013-update4-rtm-vs)|Solution|
+|Software                                   |Dependency                 |
+|:------------------------------------------|:--------------------------|
+|[Microsoft Visual Studio Community 2017](https://www.visualstudio.com/vs/whatsnew/)|Solution|
 |[Microsoft Excel 2010](https://www.microsoft.com/en-au/software-download/office)|Project|
 |[Microsoft SQL Server CE 3.5](https://www.microsoft.com/en-au/download/details.aspx?id=5783)|Database|
 |[Sandcastle](https://github.com/EWSoftware/SHFB)|API documentation|
@@ -35,6 +35,7 @@ It is in our interests to minimize both of these problems especially until need 
 |T-SQL |Transact-SQL (T-SQL) is Microsoft's and Sybase's proprietary extension to SQL. SQL, the acronym for Structured Query Language | 
 |UNION |The SQL UNION operator combines the result of two or more SELECT statements.|
 |VSTO |Visual Studio Tools for Office (VSTO) is a set of development tools available in the form of a Visual Studio add-in (project templates) and a runtime that allows Microsoft Office 2003 and later versions of Office applications to host the .NET Framework Common Language Runtime (CLR) to expose their functionality via .NET.|
+|XML|Extensible Markup Language (XML) is a markup language that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable.The design goals of XML emphasize simplicity, generality, and usability across the Internet.[5] It is a textual data format with strong support via Unicode for different human languages. Although the design of XML focuses on documents, the language is widely used for the representation of arbitrary data structures[6] such as those used in web services.|
 
 ## Functionality
 This Excel ribbon named “Script Help” is inserted after the “Home” tab when Excel opens.  Listed below is the detailed functionality of this application and its components.  
@@ -103,6 +104,8 @@ These buttons have the following constraints:
 * DQL Update – This menu item will format the script column to be used in an update statement for Documentum
 * DQL Update/Locked – This menu item will format the script column to be used in an update statement for Documentum and unlocks and then locks the record
   * Add “WHERE” before the column name in the header you want to use as criteria.
+* GitHub table - creates a table format for GitHub Read Me documentation
+* XML Values - creates XML structure
 
 ###	Format Script Options (Group)
 
