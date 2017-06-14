@@ -155,12 +155,36 @@
 						id="separator10"
 						/>
 						<button
+							id="btnQueryTypePlSqlCreateTable"
+							getImage="GetButtonImage"
+							label="PL/SQL Create Table"
+							onAction="OnAction"
+							getVisible="GetVisible"
+							screentip="This changes the query string to a PL/SQL CREATE TABLE script."
+						/>
+						<button
 							id="btnQueryTypePlSqlInsertValues"
 							getImage="GetButtonImage"
 							label="PL/SQL Insert Values"
 							onAction="OnAction"
 							getVisible="GetVisible"
 							screentip="This changes the query string to a PL/SQL INSERT VALUES script."
+						/>
+						<button
+							id="btnQueryTypePlSqlMergeValues"
+							getImage="GetButtonImage"
+							label="PL/SQL Merge Values"
+							onAction="OnAction"
+							getVisible="GetVisible"
+							screentip="This changes the query string to a PL/SQL MERGE VALUES script."
+						/>
+						<button
+							id="btnQueryTypePlSqlSelectValues"
+							getImage="GetButtonImage"
+							label="PL/SQL Select Values"
+							onAction="OnAction"
+							getVisible="GetVisible"
+							screentip="This changes the query string to a PL/SQL SELECT VALUES script."
 						/>
 						<button
 							id="btnQueryTypePlSqlSelectUnion"
