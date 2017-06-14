@@ -95,7 +95,7 @@ namespace ScriptHelp.Scripts
 			public static string FirstColumnName { get; set; }
 
 		}
-		
+
 		#region | Helpers |
 
 		/// <summary> 
@@ -182,17 +182,18 @@ namespace ScriptHelp.Scripts
 				switch (control.Id)
 				{
 					case "btnQueryTypeDqlAppend":
+					case "btnQueryTypeDqlAppendLocked":
 					case "btnQueryTypeDqlCreate":
 					case "btnQueryTypeDqlTruncateAppend":
 					case "btnQueryTypeDqlUpdate":
 					case "btnQueryTypeDqlUpdateLocked":
-					case "btnQueryTypeDqlAppendLocked":
 						return Properties.Resources.QueryTypeDql;
+					case "btnQueryTypeTSqlCreateTable":
+					case "btnQueryTypeTSqlInsertValues":
+					case "btnQueryTypeTSqlMergeValues":
 					case "btnQueryTypeTSqlSelectValues":
 					case "btnQueryTypeTSqlSelectUnion":
-					case "btnQueryTypeTSqlInsertValues":
 					case "btnQueryTypeTSqlUpdateValues":
-					case "btnQueryTypeTSqlMergeValues":
 						return Properties.Resources.QueryTypeTSql;
 					case "btnQueryTypePlSqlSelectUnion":
 					case "btnQueryTypePlSqlInsertValues":
@@ -397,22 +398,23 @@ namespace ScriptHelp.Scripts
 					case "mnuScriptType":
 					case "separator1":
 						return Properties.Settings.Default.Visible_mnuScriptType;
-					case "btnQueryTypeTSqlSelectValues":
+					case "btnQueryTypeTSqlCreateTable":
 					case "btnQueryTypeTSqlInsertValues":
-					case "btnQueryTypeTSqlUpdateValues":
-					case "btnQueryTypeTSqlSelectUnion":
 					case "btnQueryTypeTSqlMergeValues":
+					case "btnQueryTypeTSqlSelectValues":
+					case "btnQueryTypeTSqlSelectUnion":
+					case "btnQueryTypeTSqlUpdateValues":
 						return Properties.Settings.Default.Visible_mnuScriptType_TSQL;
 					case "btnQueryTypePlSqlSelectUnion":
 					case "btnQueryTypePlSqlInsertValues":
 					case "btnQueryTypePlSqlUpdateValues":
 						return Properties.Settings.Default.Visible_mnuScriptType_PLSQL;
-					case "btnQueryTypeDqlUpdate":
-					case "btnQueryTypeDqlCreate":
 					case "btnQueryTypeDqlAppend":
-					case "btnQueryTypeDqlUpdateLocked":
-					case "btnQueryTypeDqlTruncateAppend":
 					case "btnQueryTypeDqlAppendLocked":
+					case "btnQueryTypeDqlCreate":
+					case "btnQueryTypeDqlTruncateAppend":
+					case "btnQueryTypeDqlUpdate":
+					case "btnQueryTypeDqlUpdateLocked":
 						return Properties.Settings.Default.Visible_mnuScriptType_DQL;
 					case "btnQueryTypeGithubTable":
 						return Properties.Settings.Default.Visible_mnuScriptType_Github;
@@ -440,6 +442,7 @@ namespace ScriptHelp.Scripts
 			{
 				switch (control.Id)
 				{
+					case "btnQueryTypeTSqlCreateTable":
 					case "btnQueryTypeTSqlSelectValues":
 					case "btnQueryTypeTSqlSelectUnion":
 					case "btnQueryTypePlSqlSelectUnion":
@@ -842,11 +845,23 @@ namespace ScriptHelp.Scripts
 				Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
 				switch (control.Id)
 				{
+					case "btnQueryTypeTSqlCreateTable":
+						AddFormulaTSqlCreateTable();
+						break;
+					case "btnQueryTypeTSqlInsertValues":
+						AddFormulaTSqlInsertValues();
+						break;
+					case "btnQueryTypeTSqlMergeValues":
+						AddFormulaTSqlMergeValues();
+						break;
 					case "btnQueryTypeTSqlSelectValues":
 						AddFormulaTSqlSelectValues();
 						break;
 					case "btnQueryTypeTSqlSelectUnion":
 						AddFormulaTSqlSelectUnion();
+						break;
+					case "btnQueryTypeTSqlUpdateValues":
+						AddFormulaTSqlUpdateValues();
 						break;
 					case "btnQueryTypePlSqlInsertValues":
 						AddFormulaPlSqlInsertValues();
@@ -854,35 +869,26 @@ namespace ScriptHelp.Scripts
 					case "btnQueryTypePlSqlSelectUnion":
 						AddFormulaPlSqlSelectUnion();
 						break;
-					case "btnQueryTypeDqlUpdate":
-						AddFormulaDqlUpdate();
-						break;
-					case "btnQueryTypeDqlCreate":
-						AddFormulaDqlCreate();
+					case "btnQueryTypePlSqlUpdateValues":
+						AddFormulaPlSqlUpdateValues();
 						break;
 					case "btnQueryTypeDqlAppend":
 						AddFormulaDqlAppend();
 						break;
-					case "btnQueryTypeDqlTruncateAppend":
-						AddFormulaDqlTruncateAppend();
-						break;
-					case "btnQueryTypeDqlUpdateLocked":
-						AddFormulaDqlUpdateLocked();
-						break;
 					case "btnQueryTypeDqlAppendLocked":
 						AddFormulaDqlAppendLocked();
 						break;
-					case "btnQueryTypeTSqlInsertValues":
-						AddFormulaTSqlInsertValues();
+					case "btnQueryTypeDqlCreate":
+						AddFormulaDqlCreate();
 						break;
-					case "btnQueryTypeTSqlUpdateValues":
-						AddFormulaTSqlUpdateValues();
+					case "btnQueryTypeDqlTruncateAppend":
+						AddFormulaDqlTruncateAppend();
 						break;
-					case "btnQueryTypePlSqlUpdateValues":
-						AddFormulaPlSqlUpdateValues();
+					case "btnQueryTypeDqlUpdate":
+						AddFormulaDqlUpdate();
 						break;
-					case "btnQueryTypeTSqlMergeValues":
-						AddFormulaTSqlMergeValues();
+					case "btnQueryTypeDqlUpdateLocked":
+						AddFormulaDqlUpdateLocked();
 						break;
 					case "btnQueryTypeGithubTable":
 						AddFormulaGithubTable();
@@ -1944,7 +1950,7 @@ namespace ScriptHelp.Scripts
 					Marshal.ReleaseComObject(sqlCol);
 			}
 		}
-
+		
 		/// <summary> 
 		/// Add a formula at the end of the table to use as a script
 		/// </summary>
@@ -2276,6 +2282,111 @@ namespace ScriptHelp.Scripts
 					sqlCol.DataBodyRange.Copy();
 					AppVariables.FileType = "SQL";
 					AppVariables.ScriptRange = (string)Clipboard.GetData(DataFormats.Text);
+					AppVariables.ScriptRange = AppVariables.ScriptRange.Replace(@"""", String.Empty);
+				}
+				catch (System.Runtime.InteropServices.COMException)
+				{
+					AppVariables.ScriptRange = "There was an issue creating the Excel formula." + Environment.NewLine + Environment.NewLine + "Formula: " + Environment.NewLine + formula;
+				}
+				finally
+				{
+					OpenScriptPane();
+				}
+
+			}
+			catch (System.OutOfMemoryException)
+			{
+				MessageBox.Show("The amount of records is too big", "No action taken.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			}
+			catch (Exception ex)
+			{
+				ErrorHandler.DisplayMessage(ex);
+			}
+			finally
+			{
+				Cursor.Current = System.Windows.Forms.Cursors.Arrow;
+				if (tbl != null)
+					Marshal.ReleaseComObject(tbl);
+				if (sqlCol != null)
+					Marshal.ReleaseComObject(sqlCol);
+			}
+		}
+
+		/// <summary> 
+		/// Add a formula at the end of the table to use as a script
+		/// </summary>
+		/// <remarks></remarks>
+		public void AddFormulaTSqlCreateTable()
+		{
+			Excel.ListObject tbl = null;
+			Excel.ListColumn sqlCol = null;
+			try
+			{
+				ErrorHandler.CreateLogRecord();
+				string lastColumnName = Properties.Settings.Default.Sheet_Column_Table_Alias;
+				string sqlColName = string.Empty;
+
+				sqlColName = Properties.Settings.Default.Sheet_Column_Name;
+				tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject;
+				int lastColumnIndex = tbl.Range.Columns.Count;
+				sqlCol = tbl.ListColumns[lastColumnIndex];
+				if (sqlCol.Name == sqlColName)
+				{
+					lastColumnName = sqlCol.Name;
+				}
+				else
+				{
+					sqlCol = tbl.ListColumns.Add();
+					sqlCol.Name = lastColumnName;
+					lastColumnIndex = tbl.Range.Columns.Count;
+				}
+
+				sqlCol.DataBodyRange.NumberFormat = "General";
+				string formula = string.Empty;
+				string qt = string.Empty;
+
+				foreach (Excel.ListColumn col in tbl.ListColumns)
+				{
+					if (col.Name.IndexOfAny(new char[] { '[', ']', '"' }) != -1)
+					{
+						MessageBox.Show("Please remove one of these incorrect characters in a column header" + Environment.NewLine + " [ " + Environment.NewLine + " ] " + Environment.NewLine + "\" " + Environment.NewLine + "Column Name: " + col.Name, "No action taken.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+						return;
+					}
+					if (col.Name == lastColumnName | col.Range.EntireColumn.Hidden)
+					{
+						//DO NOTHING - because the column is hidden or the last column with the sql script
+					}
+					else
+					{
+						if (!string.IsNullOrEmpty(formula))
+						{
+							formula = formula + " & \", \" & ";
+						}
+						qt = ApplyTextQuotes(col);
+						string colRef = GetColumnFormat(col).ToString();
+						colRef = colRef.Replace("'", "''");
+						colRef = colRef.Replace("#", "'#");
+						colRef = "SUBSTITUTE(" + colRef + ", " + "\"" + qt + "\", \"" + qt + qt + "\")";
+						formula += "\"" + qt + "\" & " + colRef + " & \"" + qt + "\"";
+					}
+				}
+				string nullValue = Properties.Settings.Default.Sheet_Column_Script_Null;
+				formula = "SUBSTITUTE(" + formula + ", \"'" + nullValue + "'\", \"" + nullValue + "\")";
+				string tableAlias = Properties.Settings.Default.Sheet_Column_Table_Alias;
+				string insertPrefix = "INSERT INTO " + tableAlias + " (" + ConcatenateColumnNames(tbl.Range) + ") VALUES(";
+				formula = "=\"" + insertPrefix + "\" & " + formula + " & \");\"";
+				tbl.ShowTotals = false;
+				lastColumnName = sqlColName;  // maximum header characters are 255
+				tbl.HeaderRowRange[lastColumnIndex].Value2 = lastColumnName;
+				string createTable = "IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'" + tableAlias + "') AND type in (N'U'))" + Environment.NewLine + "DROP TABLE " + tableAlias + Environment.NewLine + "; " + Environment.NewLine + "CREATE TABLE " + tableAlias + " (" + tableAlias + "_ID [int] PRIMARY KEY IDENTITY(1,1) NOT NULL, " + ConcatenateColumnNames(tbl.Range, "", Environment.NewLine + "[", "] [varchar](max) NULL") + Environment.NewLine + ");" + Environment.NewLine;
+				try
+				{
+					sqlCol.DataBodyRange.SpecialCells(Excel.XlCellType.xlCellTypeVisible).Rows.Formula = formula;
+					sqlCol.Range.Columns.AutoFit();
+					sqlCol.Range.HorizontalAlignment = Excel.Constants.xlLeft;
+					sqlCol.DataBodyRange.Copy();
+					AppVariables.FileType = "SQL";
+					AppVariables.ScriptRange = createTable + (string)Clipboard.GetData(DataFormats.Text);
 					AppVariables.ScriptRange = AppVariables.ScriptRange.Replace(@"""", String.Empty);
 				}
 				catch (System.Runtime.InteropServices.COMException)

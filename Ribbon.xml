@@ -104,12 +104,20 @@
 						screentip="The selected button will change the script string format."
 						>
 						<button
+							id="btnQueryTypeTSqlCreateTable"
+							getImage="GetButtonImage"
+							label="T-SQL Create Table"
+							onAction="OnAction"
+							getVisible="GetVisible"
+							screentip="This changes the query string to a T-SQL CREATE TABLE script."
+						/>
+						<button
 							id="btnQueryTypeTSqlInsertValues"
 							getImage="GetButtonImage"
 							label="T-SQL Insert Values"
 							onAction="OnAction"
 							getVisible="GetVisible"
-							screentip="This changes the query string to a T-SQL INSERT VALUES query."
+							screentip="This changes the query string to a T-SQL INSERT VALUES script."
 						/>
 						<button
 							id="btnQueryTypeTSqlMergeValues"
@@ -117,7 +125,7 @@
 							label="T-SQL Merge Values"
 							onAction="OnAction"
 							getVisible="GetVisible"
-							screentip="This changes the query string to a T-SQL MERGE VALUES query."
+							screentip="This changes the query string to a T-SQL MERGE VALUES script."
 						/>
 						<button
 							id="btnQueryTypeTSqlSelectValues"
@@ -125,7 +133,7 @@
 							label="T-SQL Select Values"
 							onAction="OnAction"
 							getVisible="GetVisible"
-							screentip="This changes the query string to a T-SQL SELECT VALUES query."
+							screentip="This changes the query string to a T-SQL SELECT VALUES script."
 						/>
 						<button
 							id="btnQueryTypeTSqlSelectUnion"
@@ -133,7 +141,7 @@
 							label="T-SQL Select Union"
 							onAction="OnAction"
 							getVisible="GetVisible"
-							screentip="This changes the query string to a T-SQL SELECT UNION query."
+							screentip="This changes the query string to a T-SQL SELECT UNION script."
 						/>
 						<button
 							id="btnQueryTypeTSqlUpdateValues"
@@ -141,7 +149,7 @@
 							label="T-SQL Update Values"
 							onAction="OnAction"
 							getVisible="GetVisible"
-							screentip="This changes the query string to a T-SQL UPDATE VALUES query."
+							screentip="This changes the query string to a T-SQL UPDATE VALUES script."
 						/>
 						<menuSeparator
 						id="separator10"
@@ -152,7 +160,7 @@
 							label="PL/SQL Insert Values"
 							onAction="OnAction"
 							getVisible="GetVisible"
-							screentip="This changes the query string to a PL/SQL INSERT VALUES query."
+							screentip="This changes the query string to a PL/SQL INSERT VALUES script."
 						/>
 						<button
 							id="btnQueryTypePlSqlSelectUnion"
@@ -160,7 +168,7 @@
 							label="PL/SQL Select Union"
 							onAction="OnAction"
 							getVisible="GetVisible"
-							screentip="This changes the query string to a PL/SQL SELECT UNION query."
+							screentip="This changes the query string to a PL/SQL SELECT UNION script."
 						/>
 						<button
 							id="btnQueryTypePlSqlUpdateValues"
@@ -168,7 +176,7 @@
 							label="PL/SQL Update Values"
 							onAction="OnAction"
 							getVisible="GetVisible"
-							screentip="This changes the query string to a PL/SQL UPDATE VALUES query."
+							screentip="This changes the query string to a PL/SQL UPDATE VALUES script."
 						/>
 						<menuSeparator
 						id="separator11"
@@ -179,7 +187,7 @@
 							label="DQL Append"
 							onAction="OnAction"
 							getVisible="GetVisible"
-							screentip="This changes the query string to a DQL APPEND query (This is used for repeating values)."
+							screentip="This changes the query string to a DQL APPEND script (This is used for repeating values)."
 						/>
 						<button
 							id="btnQueryTypeDqlAppendLocked"
@@ -187,7 +195,7 @@
 							label="DQL Append/Locked"
 							onAction="OnAction"
 							getVisible="GetVisible"
-							screentip="This changes the query string to a DQL APPEND query (This is used for repeating values) and also unlocks and locks the metadata."
+							screentip="This changes the query string to a DQL APPEND script (This is used for repeating values) and also unlocks and locks the metadata."
 						/>
 						<button
 							id="btnQueryTypeDqlCreate"
@@ -195,7 +203,7 @@
 							label="DQL Create"
 							onAction="OnAction"
 							getVisible="GetVisible"
-							screentip="This changes the query string to a DQL CREATE query."
+							screentip="This changes the query string to a DQL CREATE script."
 						/>
 						<button
 							id="btnQueryTypeDqlTruncateAppend"
@@ -203,7 +211,7 @@
 							label="DQL Truncate/Append"
 							onAction="OnAction"
 							getVisible="GetVisible"
-							screentip="This changes the query string to a DQL TRUNCATE/APPEND query (This is used for removing all repeating values and then updating to one value)."
+							screentip="This changes the query string to a DQL TRUNCATE/APPEND script (This is used for removing all repeating values and then updating to one value)."
 						/>
 						<button
 							id="btnQueryTypeDqlUpdate"
@@ -211,7 +219,7 @@
 							label="DQL Update"
 							onAction="OnAction"
 							getVisible="GetVisible"
-							screentip="This changes the query string to a DQL UPDATE query."
+							screentip="This changes the query string to a DQL UPDATE script."
 						/>
 						<button
 							id="btnQueryTypeDqlUpdateLocked"
@@ -219,7 +227,7 @@
 							label="DQL Update/Locked"
 							onAction="OnAction"
 							getVisible="GetVisible"
-							screentip="This changes the query string to a DQL UPDATE query and also unlocks and locks the metadata."
+							screentip="This changes the query string to a DQL UPDATE script and also unlocks and locks the metadata."
 						/>
 						<menuSeparator
 							id="separator12"
@@ -230,7 +238,7 @@
 							label="GitHub Table"
 							onAction="OnAction"
 							getVisible="GetVisible"
-							screentip="This changes the query string to a GitHub table (This is used for READ ME files)."
+							screentip="This changes the query string to a GitHub table script (This is used for READ ME files)."
 						/>
 						<menuSeparator
 							id="separator13"
@@ -241,7 +249,7 @@
 							label="XML Values"
 							onAction="OnAction"
 							getVisible="GetVisible"
-							screentip="This changes the query string to a XML query."
+							screentip="This changes the query string to a XML script."
 						/>
 					</menu>
 

@@ -36,14 +36,14 @@ namespace ScriptHelp.TaskPane
                 syntaxHighlighter.AddPattern(new PatternDefinition("''"), new SyntaxStyle(Color.Red));
                 // single quote strings
                 syntaxHighlighter.AddPattern(new PatternDefinition(@"\'([^']|\'\')+\'"), new SyntaxStyle(Color.Red));
-                // in brackets
-                syntaxHighlighter.AddPattern(new PatternDefinition(@"\[([^']|\'\')+\]"), new SyntaxStyle(Color.Black));
-                // keywords1
-                syntaxHighlighter.AddPattern(new PatternDefinition("XACT_ABORT", "BEGIN", "DELETE", "ROLLBACK", "COMMIT", "TRAN", "TRANSACTION", "OUTPUT", "USING", "BY", "TARGET", "WITH", "AS", "VALUES", "MERGE", "ON", "WHEN", "THEN", "UNION", "UPDATE", "SET", "WHERE", "GO", "APPEND", "INSERT", "INTO", "TRUNCATE", "REMOVE", "SELECT", "FROM", "TYPE", "FOLDER", "CABINET", "ORDER BY", "DESC", "ASC", "GROUP BY", "ALTER", "ADD", "DROP", "GROUP"), new SyntaxStyle(Color.Blue));
+				// in brackets
+				//syntaxHighlighter.AddPattern(new PatternDefinition(@"\[([^']|\'\')+\]"), new SyntaxStyle(Color.Black));  //was messing up the color for CREATE table statement, not sure if I need this
+				// keywords1
+				syntaxHighlighter.AddPattern(new PatternDefinition("XACT_ABORT", "BEGIN", "DELETE", "ROLLBACK", "COMMIT", "CREATE", "TABLE", "TRAN", "TRANSACTION", "OUTPUT", "USING", "BY", "TARGET", "WITH", "AS", "VALUES", "MERGE", "ON", "WHEN", "THEN", "UNION", "UPDATE", "SET", "WHERE", "GO", "APPEND", "INSERT", "INTO", "TRUNCATE", "REMOVE", "SELECT", "FROM", "TYPE", "FOLDER", "CABINET", "ORDER BY", "DESC", "ASC", "GROUP BY", "ALTER", "ADD", "DROP", "GROUP", "PRIMARY", "KEY", "IDENTITY", "IF"), new SyntaxStyle(Color.Blue));
                 // keywords2
-                syntaxHighlighter.AddPattern(new PatternDefinition("OBJECTS", "objects"), new SyntaxStyle(Color.Green));
+                syntaxHighlighter.AddPattern(new PatternDefinition("OBJECTS", "objects", "SYS", "sys"), new SyntaxStyle(Color.Green));
                 // functions
-                syntaxHighlighter.AddPattern(new PatternDefinition("$action", "UPPER", "LOWER", "SUBSTR", "COUNT", "MIN", "MAX", "AVG", "SUM", "DATEDIFF", "DATEADD", "DATEFLOOR", "DATETOSTRING", "ID", "MFILE_URL"), new SyntaxStyle(Color.Fuchsia));
+                syntaxHighlighter.AddPattern(new PatternDefinition("$action", "object_id", "OBJECT_ID", "UPPER", "LOWER", "SUBSTR", "COUNT", "MIN", "MAX", "AVG", "SUM", "DATEDIFF", "DATEADD", "DATEFLOOR", "DATETOSTRING", "ID", "max", "MFILE_URL"), new SyntaxStyle(Color.Fuchsia));
                 // operators
                 syntaxHighlighter.AddPattern(new PatternDefinition("SOURCE", "MATCHED", "+", "-", ">", "<", "&", "|", "*", "**", "!", "=", "AND", "OR", "SOME", "ALL", "ANY", "LIKE", "NOT", "NULL", "NULLDATE", "NULLSTRING", "NULLINT", "IN", "EXISTS"), new SyntaxStyle(Color.Gray));
             }
