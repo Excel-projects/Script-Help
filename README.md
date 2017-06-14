@@ -89,6 +89,7 @@ These buttons have the following constraints:
 * Separate values into new rows from the selected column by a delimited string value setting
 
 #### Add Script Column (Menu Buttons)
+* T-SQL Create Table - This menu item will format the script column to drop/create the table then insert the values
 * T-SQL Insert Values – This menu item will format the script column to use individual insert statements
 * T-SQL Merge Values – This menu item will format the script column to use a merge statement with a select values
 * T-SQL Select Values – This menu item will format the script column to be used in insert statements 
