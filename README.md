@@ -99,13 +99,16 @@ These buttons have the following constraints:
 * PL/SQL Select Union – This menu item will format the script column to be used in an update statement 
 * PL/SQL Update Values – This menu item will format the script column to use individual update statements
 * DQL Append – This menu item will format the script column to be used in an append statement for Documentum (this is used for repeating values)
-* DQL Append/Locked – This menu item will format the script column to be used in an append statement for Documentum (this is used for repeating values) and unlocks and then locks the record. The table must contain a column header with 'WHERE'.
+* DQL Append/Locked – This menu item will format the script column to be used in an append statement for Documentum (this is used for repeating values) and unlocks and then locks the record.
+  * The table must contain a column header with 'WHERE'. 
   * Add “WHERE” before the column name in the header you want to use as criteria.
 * DQL Create – This menu item will format the script column to be used in an create statement for Documentum
-* DQL Truncate/Append – This menu item will format the script column to be used in an truncate and then append statement for Documentum (this is used for repeating values). The table must contain a column header with 'WHERE'.
+* DQL Truncate/Append – This menu item will format the script column to be used in an truncate and then append statement for Documentum (this is used for repeating values).
+  * The table must contain a column header with 'WHERE'. 
   * Add “WHERE” before the column name in the header you want to use as criteria.
 * DQL Update – This menu item will format the script column to be used in an update statement for Documentum
-* DQL Update/Locked – This menu item will format the script column to be used in an update statement for Documentum and unlocks and then locks the record. The table must contain a column header with 'WHERE'.
+* DQL Update/Locked – This menu item will format the script column to be used in an update statement for Documentum and unlocks and then locks the record.
+  * The table must contain a column header with 'WHERE'. 
   * Add “WHERE” before the column name in the header you want to use as criteria.
 * GitHub table - creates a table format for GitHub Read Me documentation
 * XML Values - creates XML structure
