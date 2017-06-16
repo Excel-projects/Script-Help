@@ -41,7 +41,7 @@ It is in our interests to minimize both of these problems especially until need 
 This Excel ribbon named “Script Help” is inserted after the “Home” tab when Excel opens.  Listed below is the detailed functionality of this application and its components.  
 
 <h1 align="center">
-  <img src="Images/example.png" alt="MyExample" />
+  <img src="Images/excel_example.png" alt="MyExample" />
 </h1>
 
 ###	Clipboard (Group)
