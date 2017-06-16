@@ -41,7 +41,7 @@ It is in our interests to minimize both of these problems especially until need 
 This Excel ribbon named “Script Help” is inserted after the “Home” tab when Excel opens.  Listed below is the detailed functionality of this application and its components.  
 
 <h1 align="center">
-  <img src="Images/example.png" alt="MyExample" />
+  <img src="Images/excel_example.png" alt="MyExample" />
 </h1>
 
 ###	Clipboard (Group)
@@ -95,7 +95,10 @@ These buttons have the following constraints:
 * T-SQL Select Values – This menu item will format the script column to be used in insert statements 
 * T-SQL Select Union – This menu item will format the script column to be used in an update statement 
 * T-SQL Update Values – This menu item will format the script column to use individual update statements
+* PL/SQL Create Table - ```TODO: update the syntax from Microsoft to Oracle```
 * PL/SQL Insert Values – This menu item will format the script column to use individual insert statements
+* PL/SQL Merge Values - ```TODO: create a CTE with SELECT from DUAL for values in a MERGE statement```
+* PL/SQL Select Values - ```TODO: create a CTE with SELECT from DUAL for values```
 * PL/SQL Select Union – This menu item will format the script column to be used in an update statement 
 * PL/SQL Update Values – This menu item will format the script column to use individual update statements
 * DQL Append – This menu item will format the script column to be used in an append statement for Documentum (this is used for repeating values)
