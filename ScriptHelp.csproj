@@ -251,6 +251,7 @@
     <None Include="Resources\control_play_blue.png" />
     <None Include="Resources\QueryTypeGitHub.png" />
     <None Include="Resources\QueryTypeXML.png" />
+    <None Include="Resources\table.png" />
     <Content Include="sqlceca35.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
