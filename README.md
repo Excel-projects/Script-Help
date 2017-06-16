@@ -95,10 +95,10 @@ These buttons have the following constraints:
 * T-SQL Select Values – This menu item will format the script column to be used in insert statements 
 * T-SQL Select Union – This menu item will format the script column to be used in an update statement 
 * T-SQL Update Values – This menu item will format the script column to use individual update statements
-* PL/SQL Create Table - TODO: update the syntax from Microsoft to Oracle
+* PL/SQL Create Table - ```TODO: update the syntax from Microsoft to Oracle```
 * PL/SQL Insert Values – This menu item will format the script column to use individual insert statements
-* PL/SQL Merge Values - TODO: create a CTE with SELECT from DUAL for values in a MERGE statement
-* PL/SQL Select Values - TODO: create a CTE with SELECT from DUAL for values
+* PL/SQL Merge Values - ```TODO: create a CTE with SELECT from DUAL for values in a MERGE statement```
+* PL/SQL Select Values - ```TODO: create a CTE with SELECT from DUAL for values```
 * PL/SQL Select Union – This menu item will format the script column to be used in an update statement 
 * PL/SQL Update Values – This menu item will format the script column to use individual update statements
 * DQL Append – This menu item will format the script column to be used in an append statement for Documentum (this is used for repeating values)
