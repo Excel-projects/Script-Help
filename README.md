@@ -64,11 +64,11 @@ These buttons have the following constraints:
 
 ####	Freeze Panes (Button)
 * Keep a portion of the sheet visible while the rest of the sheet scrolls
-* Defaults to invisible from the install
+
 
 #### Remove Duplicates (Button)
 * Delete duplicate rows from a sheet
-* Defaults to invisible from the install
+
 
 #### Clean Data (Button)
 * This feature runs through all the data in the table and removes unprintable characters and trims leading and trailing spaces. 
@@ -149,7 +149,7 @@ These buttons have the following constraints:
 
 #### COM Addins (Button)
 * Manage the available COM Add-ins
-* Defaults to invisible from the install
+
 
 ###	About (Group)
 
