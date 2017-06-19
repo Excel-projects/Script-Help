@@ -10,7 +10,7 @@ This is an Excel 2010 VSTO Addin written in Visual Studio Community 2017 C#. It 
 
 ## Overview
 This is used for bulk data loads into SQL Server, Oracle and Documentum.  The functionality within the ribbon allows a quick way of preparing a bulk data load.  Otherwise the requests can be both time-consuming and error prone. 
-It is in our interests to minimize both of these problems especially until need for this is addressed it is in our interests 
+
 * Standard format (Excel spreadsheets) for data 
 * Standard format for loader scripts 
 * Excel addin to clean and format data to be suitable for data loader script 
@@ -64,11 +64,11 @@ These buttons have the following constraints:
 
 ####	Freeze Panes (Button)
 * Keep a portion of the sheet visible while the rest of the sheet scrolls
-* Defaults to invisible from the install
+
 
 #### Remove Duplicates (Button)
 * Delete duplicate rows from a sheet
-* Defaults to invisible from the install
+
 
 #### Clean Data (Button)
 * This feature runs through all the data in the table and removes unprintable characters and trims leading and trailing spaces. 
@@ -149,7 +149,7 @@ These buttons have the following constraints:
 
 #### COM Addins (Button)
 * Manage the available COM Add-ins
-* Defaults to invisible from the install
+
 
 ###	About (Group)
 
