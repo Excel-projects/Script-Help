@@ -3,7 +3,6 @@ using System.IO;
 using System.Windows.Forms;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using Microsoft.Office.Tools;
 using Office = Microsoft.Office.Core;
 using Excel = Microsoft.Office.Interop.Excel;
 
@@ -24,6 +23,33 @@ namespace ScriptHelp.Scripts
 		/// Used to reference the ribbon object
 		/// </summary>
 		public static Ribbon ribbonref;
+
+		/// <summary>
+		/// Used for values across different classes
+		/// </summary>
+		public static class AppVariables
+		{
+			/// <summary>
+			/// variable used for sending the copied range to the form for export
+			/// </summary>
+			public static string ScriptRange { get; set; }
+
+			/// <summary>
+			/// variable used for saving the script file
+			/// </summary>
+			public static string FileType { get; set; }
+
+			/// <summary>
+			/// variable used for the table name used to populate a datagrid
+			/// </summary>
+			public static string TableName { get; set; }
+
+			/// <summary>
+			/// The first visible column name in the table
+			/// </summary>
+			public static string FirstColumnName { get; set; }
+
+		}
 
 		#region | Task Panes |
 
@@ -69,43 +95,14 @@ namespace ScriptHelp.Scripts
 
 		#endregion
 
-		/// <summary>
-		/// Used for values across different classes
-		/// </summary>
-		public static class AppVariables
-		{
-			/// <summary>
-			/// variable used for sending the copied range to the form for export
-			/// </summary>
-			public static string ScriptRange { get; set; }
-
-			/// <summary>
-			/// variable used for saving the script file
-			/// </summary>
-			public static string FileType { get; set; }
-
-			/// <summary>
-			/// variable used for the table name used to populate a datagrid
-			/// </summary>
-			public static string TableName { get; set; }
-
-			/// <summary>
-			/// The first visible column name in the table
-			/// </summary>
-			public static string FirstColumnName { get; set; }
-
-		}
-
-		#region | Helpers |
+		#region | Ribbon Events |
 
 		/// <summary> 
-		/// The Sql Help ribbon
+		/// The ribbon
 		/// </summary>
 		public Ribbon()
 		{
 		}
-
-		#region | IRibbonExtensibility Members |
 
 		/// <summary> 
 		/// Loads the XML markup, either from an XML customization file or from XML markup embedded in the procedure, that customizes the Ribbon user interface.
@@ -118,8 +115,11 @@ namespace ScriptHelp.Scripts
 			return GetResourceText("ScriptHelp.Ribbon.xml");
 		}
 
-		#endregion
-
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="resourceName"></param>
+		/// <returns></returns>
 		private static string GetResourceText(string resourceName)
 		{
 			Assembly asm = Assembly.GetExecutingAssembly();
@@ -139,10 +139,6 @@ namespace ScriptHelp.Scripts
 			}
 			return null;
 		}
-
-		#endregion
-
-		#region | Ribbon Events |
 
 		/// <summary> 
 		/// loads the ribbon UI and creates a log record
@@ -622,6 +618,61 @@ namespace ScriptHelp.Scripts
 		}
 
 		/// <summary> 
+		/// Change zero string cell values to string "NULL"
+		/// </summary>
+		/// <param name="control">Represents the object passed into the callback procedure of a control in a ribbon or another user interface that can be customized by using Office Fluent ribbon extensibility. </param>
+		/// <remarks></remarks>
+		public void ZeroStringToNull(Office.IRibbonControl control)
+		{
+			Excel.ListObject tbl = null;
+			Excel.Range cell = null;
+			Excel.Range usedRange = null;
+			try
+			{
+				if (ErrorHandler.IsAvailable(true) == false)
+				{
+					return;
+				}
+				ErrorHandler.CreateLogRecord();
+				tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject;
+				cell = default(Excel.Range);
+				int cnt = 0;
+				Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
+				usedRange = tbl.Range;
+				int n = tbl.ListColumns.Count;
+				int m = tbl.ListRows.Count;
+				for (int i = 0; i <= m; i++) // by row
+				{
+					for (int j = 1; j <= n; j++) // by column
+					{
+						if (usedRange[i + 1, j].Value2 == null)
+						{
+							cell = tbl.Range.Cells[i + 1, j];
+							cell.Value = Properties.Settings.Default.Sheet_Column_Script_Null;
+							cell.Interior.Color = Properties.Settings.Default.Sheet_Column_Cleaned_Colour;
+							cnt = cnt + 1;
+						}
+					}
+				}
+				MessageBox.Show("The number of cells converted to " + Properties.Settings.Default.Sheet_Column_Script_Null + ": " + cnt.ToString(), "Converting has finished", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			}
+			catch (Exception ex)
+			{
+				ErrorHandler.DisplayMessage(ex);
+			}
+			finally
+			{
+				Cursor.Current = System.Windows.Forms.Cursors.Arrow;
+				if (tbl != null)
+					Marshal.ReleaseComObject(tbl);
+				if (cell != null)
+					Marshal.ReleaseComObject(cell);
+				if (usedRange != null)
+					Marshal.ReleaseComObject(usedRange);
+			}
+		}
+
+		/// <summary> 
 		/// Finds dates columns with SSMS crap format and alters to use standard SQL date format
 		/// </summary>
 		/// <param name="control">Represents the object passed into the callback procedure of a control in a ribbon or another user interface that can be customized by using Office Fluent ribbon extensibility. </param>
@@ -720,61 +771,6 @@ namespace ScriptHelp.Scripts
 			}
 		}
 
-		/// <summary> 
-		/// Change zero string cell values to string "NULL"
-		/// </summary>
-		/// <param name="control">Represents the object passed into the callback procedure of a control in a ribbon or another user interface that can be customized by using Office Fluent ribbon extensibility. </param>
-		/// <remarks></remarks>
-		public void ZeroStringToNull(Office.IRibbonControl control)
-		{
-			Excel.ListObject tbl = null;
-			Excel.Range cell = null;
-			Excel.Range usedRange = null;
-			try
-			{
-				if (ErrorHandler.IsAvailable(true) == false)
-				{
-					return;
-				}
-				ErrorHandler.CreateLogRecord();
-				tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject;
-				cell = default(Excel.Range);
-				int cnt = 0;
-				Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
-				usedRange = tbl.Range;
-				int n = tbl.ListColumns.Count;
-				int m = tbl.ListRows.Count;
-				for (int i = 0; i <= m; i++) // by row
-				{
-					for (int j = 1; j <= n; j++) // by column
-					{
-						if (usedRange[i + 1, j].Value2 == null)
-						{
-							cell = tbl.Range.Cells[i + 1, j];
-							cell.Value = Properties.Settings.Default.Sheet_Column_Script_Null;
-							cell.Interior.Color = Properties.Settings.Default.Sheet_Column_Cleaned_Colour;
-							cnt = cnt + 1;
-						}
-					}
-				}
-				MessageBox.Show("The number of cells converted to " + Properties.Settings.Default.Sheet_Column_Script_Null + ": " + cnt.ToString(), "Converting has finished", MessageBoxButtons.OK, MessageBoxIcon.Information);
-			}
-			catch (Exception ex)
-			{
-				ErrorHandler.DisplayMessage(ex);
-			}
-			finally
-			{
-				Cursor.Current = System.Windows.Forms.Cursors.Arrow;
-				if (tbl != null)
-					Marshal.ReleaseComObject(tbl);
-				if (cell != null)
-					Marshal.ReleaseComObject(cell);
-				if (usedRange != null)
-					Marshal.ReleaseComObject(usedRange);
-			}
-		}
-
 		/// <summary>
 		/// Add a row per delimited string value from a column
 		/// </summary>
@@ -855,64 +851,64 @@ namespace ScriptHelp.Scripts
 				switch (control.Id)
 				{
 					case "btnQueryTypeDqlAppend":
-						AddFormulaDqlAppend();
+						Formula.DqlAppend();
 						break;
 					case "btnQueryTypeDqlAppendLocked":
-						AddFormulaDqlAppendLocked();
+						Formula.DqlAppendLocked();
 						break;
 					case "btnQueryTypeDqlCreate":
-						AddFormulaDqlCreate();
+						Formula.DqlCreate();
 						break;
 					case "btnQueryTypeDqlTruncateAppend":
-						AddFormulaDqlTruncateAppend();
+						Formula.DqlTruncateAppend();
 						break;
 					case "btnQueryTypeDqlUpdate":
-						AddFormulaDqlUpdate();
+						Formula.DqlUpdate();
 						break;
 					case "btnQueryTypeDqlUpdateLocked":
-						AddFormulaDqlUpdateLocked();
+						Formula.DqlUpdateLocked();
 						break;
 					case "btnQueryTypeGithubTable":
-						AddFormulaGithubTable();
+						Formula.GithubTable();
 						break;
 					case "btnQueryTypePlSqlCreateTable":
-						AddFormulaPlSqlCreateTable();
+						Formula.PlSqlCreateTable();
 						break;
 					case "btnQueryTypePlSqlInsertValues":
-						AddFormulaPlSqlInsertValues();
+						Formula.PlSqlInsertValues();
 						break;
 					case "btnQueryTypePlSqlMergeValues":
-						AddFormulaPlSqlMergeValues();
+						Formula.PlSqlMergeValues();
 						break;
 					case "btnQueryTypePlSqlSelectValues":
-						AddFormulaPlSqlSelectValues();
+						Formula.PlSqlSelectValues();
 						break;
 					case "btnQueryTypePlSqlSelectUnion":
-						AddFormulaPlSqlSelectUnion();
+						Formula.PlSqlSelectUnion();
 						break;
 					case "btnQueryTypePlSqlUpdateValues":
-						AddFormulaPlSqlUpdateValues();
+						Formula.PlSqlUpdateValues();
 						break;
 					case "btnQueryTypeTSqlCreateTable":
-						AddFormulaTSqlCreateTable();
+						Formula.TSqlCreateTable();
 						break;
 					case "btnQueryTypeTSqlInsertValues":
-						AddFormulaTSqlInsertValues();
+						Formula.TSqlInsertValues();
 						break;
 					case "btnQueryTypeTSqlMergeValues":
-						AddFormulaTSqlMergeValues();
+						Formula.TSqlMergeValues();
 						break;
 					case "btnQueryTypeTSqlSelectValues":
-						AddFormulaTSqlSelectValues();
+						Formula.TSqlSelectValues();
 						break;
 					case "btnQueryTypeTSqlSelectUnion":
-						AddFormulaTSqlSelectUnion();
+						Formula.TSqlSelectUnion();
 						break;
 					case "btnQueryTypeTSqlUpdateValues":
-						AddFormulaTSqlUpdateValues();
+						Formula.TSqlUpdateValues();
 						break;
 					case "btnQueryTypeXmlValues":
-						AddFormulaXmlValues();
+						Formula.XmlValues();
 						break;
 				}
 			}
@@ -923,82 +919,8 @@ namespace ScriptHelp.Scripts
 			}
 			finally
 			{
+				OpenScriptPane();
 				Cursor.Current = System.Windows.Forms.Cursors.Arrow;
-			}
-		}
-
-		/// <summary> 
-		/// Opens the graph data pane
-		/// </summary>
-		/// <param name="control">Represents the object passed into the callback procedure of a control in a ribbon or another user interface that can be customized by using Office Fluent ribbon extensibility. </param>
-		/// <remarks></remarks>
-		public void OpenGraphData(Office.IRibbonControl control)
-		{
-			try
-			{
-				if (myTaskPaneGraphData != null)
-				{
-					if (myTaskPaneGraphData.Visible == true)
-					{
-						myTaskPaneGraphData.Visible = false;
-					}
-					else
-					{
-						myTaskPaneGraphData.Visible = true;
-					}
-				}
-				else
-				{
-					myGraphData = new TaskPane.GraphData();
-					myTaskPaneGraphData = Globals.ThisAddIn.CustomTaskPanes.Add(myGraphData, "Graph Data for " + Scripts.AssemblyInfo.Title);
-					myTaskPaneGraphData.DockPosition = Office.MsoCTPDockPosition.msoCTPDockPositionRight;
-					myTaskPaneGraphData.DockPositionRestrict = Office.MsoCTPDockPositionRestrict.msoCTPDockPositionRestrictNoChange;
-					myTaskPaneGraphData.Width = 300;
-					myTaskPaneGraphData.Visible = true;
-				}
-
-			}
-			catch (Exception ex)
-			{
-				ErrorHandler.DisplayMessage(ex);
-			}
-
-		}
-
-		/// <summary> 
-		/// Opens the settings form
-		/// </summary>
-		/// <param name="control">Represents the object passed into the callback procedure of a control in a ribbon or another user interface that can be customized by using Office Fluent ribbon extensibility. </param>
-		/// <remarks></remarks>
-		public void OpenSettingsForm(Office.IRibbonControl control)
-		{
-			try
-			{
-				if (myTaskPaneSettings != null)
-				{
-					if (myTaskPaneSettings.Visible == true)
-					{
-						myTaskPaneSettings.Visible = false;
-					}
-					else
-					{
-						myTaskPaneSettings.Visible = true;
-					}
-				}
-				else
-				{
-					mySettings = new TaskPane.Settings();
-					myTaskPaneSettings = Globals.ThisAddIn.CustomTaskPanes.Add(mySettings, "Settings for " + Scripts.AssemblyInfo.Title);
-					myTaskPaneSettings.DockPosition = Office.MsoCTPDockPosition.msoCTPDockPositionRight;
-					myTaskPaneSettings.DockPositionRestrict = Office.MsoCTPDockPositionRestrict.msoCTPDockPositionRestrictNoChange;
-					myTaskPaneSettings.Width = 675;
-					myTaskPaneSettings.Visible = true;
-				}
-
-			}
-			catch (Exception ex)
-			{
-				ErrorHandler.DisplayMessage(ex);
 			}
 		}
 
@@ -1049,6 +971,43 @@ namespace ScriptHelp.Scripts
 		}
 
 		/// <summary> 
+		/// Opens the settings form
+		/// </summary>
+		/// <param name="control">Represents the object passed into the callback procedure of a control in a ribbon or another user interface that can be customized by using Office Fluent ribbon extensibility. </param>
+		/// <remarks></remarks>
+		public void OpenSettingsForm(Office.IRibbonControl control)
+		{
+			try
+			{
+				if (myTaskPaneSettings != null)
+				{
+					if (myTaskPaneSettings.Visible == true)
+					{
+						myTaskPaneSettings.Visible = false;
+					}
+					else
+					{
+						myTaskPaneSettings.Visible = true;
+					}
+				}
+				else
+				{
+					mySettings = new TaskPane.Settings();
+					myTaskPaneSettings = Globals.ThisAddIn.CustomTaskPanes.Add(mySettings, "Settings for " + Scripts.AssemblyInfo.Title);
+					myTaskPaneSettings.DockPosition = Office.MsoCTPDockPosition.msoCTPDockPositionRight;
+					myTaskPaneSettings.DockPositionRestrict = Office.MsoCTPDockPositionRestrict.msoCTPDockPositionRestrictNoChange;
+					myTaskPaneSettings.Width = 675;
+					myTaskPaneSettings.Visible = true;
+				}
+
+			}
+			catch (Exception ex)
+			{
+				ErrorHandler.DisplayMessage(ex);
+			}
+		}
+
+		/// <summary> 
 		/// Opens an as built help file
 		/// </summary>
 		/// <param name="control">Represents the object passed into the callback procedure of a control in a ribbon or another user interface that can be customized by using Office Fluent ribbon extensibility. </param>
@@ -1073,2481 +1032,47 @@ namespace ScriptHelp.Scripts
 			AssemblyInfo.OpenFile(Path.Combine(clickOnceLocation, @"Documentation\\Api Help.chm"));
 		}
 
+		/// <summary> 
+		/// Opens the graph data pane
+		/// </summary>
+		/// <param name="control">Represents the object passed into the callback procedure of a control in a ribbon or another user interface that can be customized by using Office Fluent ribbon extensibility. </param>
+		/// <remarks></remarks>
+		public void OpenGraphData(Office.IRibbonControl control)
+		{
+			try
+			{
+				if (myTaskPaneGraphData != null)
+				{
+					if (myTaskPaneGraphData.Visible == true)
+					{
+						myTaskPaneGraphData.Visible = false;
+					}
+					else
+					{
+						myTaskPaneGraphData.Visible = true;
+					}
+				}
+				else
+				{
+					myGraphData = new TaskPane.GraphData();
+					myTaskPaneGraphData = Globals.ThisAddIn.CustomTaskPanes.Add(myGraphData, "Graph Data for " + Scripts.AssemblyInfo.Title);
+					myTaskPaneGraphData.DockPosition = Office.MsoCTPDockPosition.msoCTPDockPositionRight;
+					myTaskPaneGraphData.DockPositionRestrict = Office.MsoCTPDockPositionRestrict.msoCTPDockPositionRestrictNoChange;
+					myTaskPaneGraphData.Width = 300;
+					myTaskPaneGraphData.Visible = true;
+				}
+
+			}
+			catch (Exception ex)
+			{
+				ErrorHandler.DisplayMessage(ex);
+			}
+
+		}
+
 		#endregion
 
 		#region | Subroutines |
-
-		/// <summary> 
-		/// Add a formula at the end of the table to use as a script
-		/// </summary>
-		/// <remarks></remarks>
-		public void AddFormulaDqlAppend()
-		{
-			Excel.ListObject tbl = null;
-			Excel.ListColumn sqlCol = null;
-			try
-			{
-				ErrorHandler.CreateLogRecord();
-				string lastColumnName = Properties.Settings.Default.Sheet_Column_Table_Alias;
-				string tableAlias = Properties.Settings.Default.Sheet_Column_Table_Alias;
-				string sqlColName = string.Empty;
-				int columnCount = 0;
-
-				sqlColName = Properties.Settings.Default.Sheet_Column_Name;
-				tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject;
-				int lastColumnIndex = tbl.Range.Columns.Count;
-				sqlCol = tbl.ListColumns[lastColumnIndex];
-
-				if (sqlCol.Name == sqlColName)
-				{
-					lastColumnName = sqlCol.Name;
-				}
-				else
-				{
-					sqlCol = tbl.ListColumns.Add();
-					sqlCol.Name = lastColumnName;
-					lastColumnIndex = tbl.Range.Columns.Count;
-				}
-
-				sqlCol.DataBodyRange.NumberFormat = "General";
-				string formula = string.Empty;
-				string qt = string.Empty;
-				bool afterWhere = false;
-
-				foreach (Excel.ListColumn col in tbl.ListColumns)
-				{
-					switch (col.Name.IndexOfAny(new char[] { '[', ']', '"' }))
-					{
-						case -1:
-							break;
-						default:
-							MessageBox.Show("Please remove one of these incorrect characters in a column header" + Environment.NewLine + " [ " + Environment.NewLine + " ] " + Environment.NewLine + "\" " + Environment.NewLine + "Column Name: " + col.Name, "No action taken.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-							return;
-					}
-					if (col.Name == lastColumnName | col.Range.EntireColumn.Hidden)
-					{
-						//DO NOTHING - because the column is hidden or the last column with the sql script
-					}
-					else
-					{
-						if (!string.IsNullOrEmpty(formula))
-						{
-							formula = formula + " & \" \" & ";
-						}
-						if (columnCount == 0)
-						{
-							AppVariables.FirstColumnName = col.Name;
-						}
-						columnCount += 1;
-						qt = ApplyTextQuotes(col);
-						string colRef = GetColumnFormat(col).ToString();
-						colRef = colRef.Replace("'", "''");
-						colRef = colRef.Replace("#", "'#");
-						colRef = "SUBSTITUTE(" + colRef + ", " + "\"" + qt + "\", \"" + qt + qt + "\")";
-
-						string valuePrefix = string.Empty;
-						string columnName = col.Name;
-						string firstPart = columnName.Substring(0, columnName.LastIndexOf(" ") + 1);
-						if (String.Compare(firstPart.Trim(), "WHERE", true) == 0)
-						{
-							valuePrefix = "\"" + col.Name + " = \" & ";
-							afterWhere = true;
-						}
-						else
-						{
-							if (afterWhere == true)
-							{
-								valuePrefix = "\"AND " + col.Name + " = \" & ";
-							}
-							else
-							{
-								valuePrefix = "\"APPEND " + col.Name + " = \" & ";
-							}
-						}
-						if (GetSqlDataType(col) == Properties.Settings.Default.Script_Type_Date)
-						{
-							formula += valuePrefix + "\"DATE(" + qt + "\" & " + colRef + " & \"" + qt + ", " + qt + Properties.Settings.Default.Sheet_Column_Date_Format_Replace + qt + ")\"";
-						}
-						else
-						{
-							formula += valuePrefix + "\"" + qt + "\" & " + colRef + " & \"" + qt + "\"";
-						}
-					}
-				}
-				//replace NULL values with DQL format
-				formula = "SUBSTITUTE(" + formula + ", \"'" + Properties.Settings.Default.Sheet_Column_Script_Null + "', '" + Properties.Settings.Default.Sheet_Column_Date_Format_Replace + "'\", \"'nulldate'\")";
-				formula = "SUBSTITUTE(" + formula + ", \"'" + Properties.Settings.Default.Sheet_Column_Script_Null + "'\", \"nullstring\")";
-				formula = "SUBSTITUTE(" + formula + ", \"" + Properties.Settings.Default.Sheet_Column_Script_Null + "\", \"nullint\")";
-
-				string whereCheck = string.Empty;
-				if (afterWhere == false)
-				{
-					whereCheck = " & \" WHERE \" ";
-				}
-				formula = "=\"UPDATE " + tableAlias + " objects \" & " + formula + whereCheck + " & CHAR(10) & \"GO \"";
-				tbl.ShowTotals = false;
-				lastColumnName = sqlColName;  // maximum header characters are 255
-				tbl.HeaderRowRange[lastColumnIndex].Value2 = lastColumnName;
-				try
-				{
-					sqlCol.DataBodyRange.SpecialCells(Excel.XlCellType.xlCellTypeVisible).Rows.Formula = formula;
-					sqlCol.Range.Columns.AutoFit();
-					sqlCol.Range.HorizontalAlignment = Excel.Constants.xlLeft;
-					sqlCol.Range.WrapText = true;
-					sqlCol.DataBodyRange.Copy();
-					AppVariables.FileType = "DQL";
-					AppVariables.ScriptRange = (string)Clipboard.GetData(DataFormats.Text);
-					AppVariables.ScriptRange = AppVariables.ScriptRange.Replace(@"""", String.Empty);
-				}
-				catch (System.Runtime.InteropServices.COMException)
-				{
-					AppVariables.ScriptRange = "There was an issue creating the Excel formula." + Environment.NewLine + Environment.NewLine + "Formula: " + Environment.NewLine + formula;
-				}
-				finally
-				{
-					OpenScriptPane();
-				}
-
-			}
-			catch (System.OutOfMemoryException)
-			{
-				MessageBox.Show("The amount of records is too big", "No action taken.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-			}
-			catch (Exception ex)
-			{
-				ErrorHandler.DisplayMessage(ex);
-			}
-			finally
-			{
-				Cursor.Current = System.Windows.Forms.Cursors.Arrow;
-				if (tbl != null)
-					Marshal.ReleaseComObject(tbl);
-				if (sqlCol != null)
-					Marshal.ReleaseComObject(sqlCol);
-			}
-		}
-
-		/// <summary> 
-		/// Add a formula at the end of the table to use as a script
-		/// </summary>
-		/// <remarks></remarks>
-		public void AddFormulaDqlAppendLocked()
-		{
-			Excel.ListObject tbl = null;
-			Excel.ListColumn sqlCol = null;
-			try
-			{
-				ErrorHandler.CreateLogRecord();
-				string lastColumnName = Properties.Settings.Default.Sheet_Column_Table_Alias;
-				string tableAlias = Properties.Settings.Default.Sheet_Column_Table_Alias;
-				string sqlColName = string.Empty;
-				int columnCount = 0;
-
-				sqlColName = Properties.Settings.Default.Sheet_Column_Name;
-				tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject;
-				int lastColumnIndex = tbl.Range.Columns.Count;
-				sqlCol = tbl.ListColumns[lastColumnIndex];
-
-				if (sqlCol.Name == sqlColName)
-				{
-					lastColumnName = sqlCol.Name;
-				}
-				else
-				{
-					sqlCol = tbl.ListColumns.Add();
-					sqlCol.Name = lastColumnName;
-					lastColumnIndex = tbl.Range.Columns.Count;
-				}
-
-				sqlCol.DataBodyRange.NumberFormat = "General";
-				string formula = string.Empty;
-				string qt = string.Empty;
-				bool afterWhere = false;
-				string whereClause = string.Empty;
-
-				foreach (Excel.ListColumn col in tbl.ListColumns)
-				{
-					switch (col.Name.IndexOfAny(new char[] { '[', ']', '"' }))
-					{
-						case -1:
-							break;
-						default:
-							MessageBox.Show("Please remove one of these incorrect characters in a column header" + Environment.NewLine + " [ " + Environment.NewLine + " ] " + Environment.NewLine + "\" " + Environment.NewLine + "Column Name: " + col.Name, "No action taken.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-							return;
-					}
-					if (col.Name == lastColumnName | col.Range.EntireColumn.Hidden)
-					{
-						//DO NOTHING - because the column is hidden or the last column with the sql script
-					}
-					else
-					{
-						if (!string.IsNullOrEmpty(formula))
-						{
-							formula = formula + " & \" \" & ";
-						}
-						if (columnCount == 0)
-						{
-							AppVariables.FirstColumnName = col.Name;
-						}
-						columnCount += 1;
-						qt = ApplyTextQuotes(col);
-						string colRef = GetColumnFormat(col).ToString();
-						colRef = colRef.Replace("'", "''");
-						colRef = colRef.Replace("#", "'#");
-						colRef = "SUBSTITUTE(" + colRef + ", " + "\"" + qt + "\", \"" + qt + qt + "\")";
-
-						string valuePrefix = string.Empty;
-						string columnName = col.Name;
-						string firstPart = columnName.Substring(0, columnName.LastIndexOf(" ") + 1);
-						if (String.Compare(firstPart.Trim(), "WHERE", true) == 0)
-						{
-							valuePrefix = "\"" + col.Name + " = \" & ";
-							afterWhere = true;
-						}
-						else
-						{
-							if (afterWhere == true)
-							{
-								valuePrefix = "\"AND " + col.Name + " = \" & ";
-							}
-							else
-							{
-								valuePrefix = "\"APPEND " + col.Name + " = \" & ";
-							}
-						}
-						if (GetSqlDataType(col) == Properties.Settings.Default.Script_Type_Date)
-						{
-							if (afterWhere == true)
-							{
-								whereClause += valuePrefix + "\"DATE(" + qt + "\" & " + colRef + " & \"" + qt + ", " + qt + Properties.Settings.Default.Sheet_Column_Date_Format_Replace + qt + ")\"";
-
-							}
-							formula += valuePrefix + "\"DATE(" + qt + "\" & " + colRef + " & \"" + qt + ", " + qt + Properties.Settings.Default.Sheet_Column_Date_Format_Replace + qt + ")\"";
-						}
-						else
-						{
-							if (afterWhere == true)
-							{
-								whereClause += valuePrefix + "\"" + qt + "\" & " + colRef + " & \"" + qt + "\"";
-							}
-							formula += valuePrefix + "\"" + qt + "\" & " + colRef + " & \"" + qt + "\"";
-						}
-					}
-				}
-				//replace NULL values with DQL format
-				formula = "SUBSTITUTE(" + formula + ", \"'" + Properties.Settings.Default.Sheet_Column_Script_Null + "', '" + Properties.Settings.Default.Sheet_Column_Date_Format_Replace + "'\", \"'nulldate'\")";
-				formula = "SUBSTITUTE(" + formula + ", \"'" + Properties.Settings.Default.Sheet_Column_Script_Null + "'\", \"nullstring\")";
-				formula = "SUBSTITUTE(" + formula + ", \"" + Properties.Settings.Default.Sheet_Column_Script_Null + "\", \"nullint\")";
-
-				string whereCheck = string.Empty;
-				if (afterWhere == false)
-				{
-					whereCheck = " & \" WHERE \" ";
-				}
-				string formulaUnlock = "\"UPDATE " + tableAlias + "(all) objects SET r_immutable_flag = 0 \" & " + whereClause + " & CHAR(10) & \"GO \"  & CHAR(10) & ";
-				string formulaLock = "\"UPDATE " + tableAlias + "(all) objects SET r_immutable_flag = 1 \" & " + whereClause + " & CHAR(10) & \"GO \"";
-				formula = "=" + formulaUnlock + "\"UPDATE " + tableAlias + "(all) objects \" & " + formula + whereCheck + " & CHAR(10) & \"GO \" & CHAR(10) & " + formulaLock;
-				tbl.ShowTotals = false;
-				lastColumnName = sqlColName;  // maximum header characters are 255
-				tbl.HeaderRowRange[lastColumnIndex].Value2 = lastColumnName;
-				try
-				{
-					sqlCol.DataBodyRange.SpecialCells(Excel.XlCellType.xlCellTypeVisible).Rows.Formula = formula;
-					sqlCol.Range.Columns.AutoFit();
-					sqlCol.Range.HorizontalAlignment = Excel.Constants.xlLeft;
-					sqlCol.Range.WrapText = true;
-					sqlCol.DataBodyRange.Copy();
-					AppVariables.FileType = "DQL";
-					AppVariables.ScriptRange = (string)Clipboard.GetData(DataFormats.Text);
-					AppVariables.ScriptRange = AppVariables.ScriptRange.Replace(@"""", String.Empty);
-				}
-				catch (System.Runtime.InteropServices.COMException)
-				{
-					AppVariables.ScriptRange = "There was an issue creating the Excel formula." + Environment.NewLine + Environment.NewLine + "Formula: " + Environment.NewLine + formula;
-				}
-				finally
-				{
-					OpenScriptPane();
-				}
-
-			}
-			catch (System.OutOfMemoryException)
-			{
-				MessageBox.Show("The amount of records is too big", "No action taken.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-			}
-			catch (Exception ex)
-			{
-				ErrorHandler.DisplayMessage(ex);
-			}
-			finally
-			{
-				Cursor.Current = System.Windows.Forms.Cursors.Arrow;
-				if (tbl != null)
-					Marshal.ReleaseComObject(tbl);
-				if (sqlCol != null)
-					Marshal.ReleaseComObject(sqlCol);
-			}
-		}
-
-		/// <summary> 
-		/// Add a formula at the end of the table to use as a script
-		/// </summary>
-		/// <remarks></remarks>
-		public void AddFormulaDqlCreate()
-		{
-			Excel.ListObject tbl = null;
-			Excel.ListColumn sqlCol = null;
-			try
-			{
-				ErrorHandler.CreateLogRecord();
-				string lastColumnName = Properties.Settings.Default.Sheet_Column_Table_Alias;
-				string tableAlias = Properties.Settings.Default.Sheet_Column_Table_Alias;
-				string sqlColName = string.Empty;
-				int columnCount = 0;
-
-				sqlColName = Properties.Settings.Default.Sheet_Column_Name;
-				tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject;
-				int lastColumnIndex = tbl.Range.Columns.Count;
-				sqlCol = tbl.ListColumns[lastColumnIndex];
-				if (sqlCol.Name == sqlColName)
-				{
-					lastColumnName = sqlCol.Name;
-				}
-				else
-				{
-					sqlCol = tbl.ListColumns.Add();
-					sqlCol.Name = lastColumnName;
-					lastColumnIndex = tbl.Range.Columns.Count;
-				}
-
-				sqlCol.DataBodyRange.NumberFormat = "General";
-				string formula = string.Empty;
-				string qt = string.Empty;
-
-				foreach (Excel.ListColumn col in tbl.ListColumns)
-				{
-					if (col.Name.IndexOfAny(new char[] { '[', ']', '"' }) != -1)
-					{
-						MessageBox.Show("Please remove one of these incorrect characters in a column header" + Environment.NewLine + " [ " + Environment.NewLine + " ] " + Environment.NewLine + "\" " + Environment.NewLine + "Column Name: " + col.Name, "No action taken.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-						return;
-					}
-					if (col.Name == lastColumnName | col.Range.EntireColumn.Hidden)
-					{
-						//DO NOTHING - because the column is hidden or the last column with the sql script
-					}
-					else
-					{
-						if (!string.IsNullOrEmpty(formula))
-						{
-							formula = formula + " & CHAR(10) & \",\" & ";
-						}
-						if (columnCount == 0)
-						{
-							AppVariables.FirstColumnName = col.Name;
-						}
-						columnCount += 1;
-						qt = ApplyTextQuotes(col);
-						string colRef = GetColumnFormat(col).ToString();
-						colRef = colRef.Replace("'", "''");
-						colRef = colRef.Replace("#", "'#");
-						colRef = "SUBSTITUTE(" + colRef + ", " + "\"" + qt + "\", \"" + qt + qt + "\")";
-						string valuePrefix = string.Empty;
-						valuePrefix = "\" SET " + col.Name + " = \" & ";
-						if (GetSqlDataType(col) == Properties.Settings.Default.Script_Type_Date)
-						{
-							formula += valuePrefix + "\"DATE(" + qt + "\" & " + colRef + " & \"" + qt + ", " + qt + Properties.Settings.Default.Sheet_Column_Date_Format_Replace + qt + ")\"";
-						}
-						else
-						{
-							formula += valuePrefix + "\"" + qt + "\" & " + colRef + " & \"" + qt + "\"";
-						}
-					}
-				}
-				//replace NULL values with DQL format
-				formula = "SUBSTITUTE(" + formula + ", \"'" + Properties.Settings.Default.Sheet_Column_Script_Null + "', '" + Properties.Settings.Default.Sheet_Column_Date_Format_Replace + "'\", \"'nulldate'\")";
-				formula = "SUBSTITUTE(" + formula + ", \"'" + Properties.Settings.Default.Sheet_Column_Script_Null + "'\", \"nullstring\")";
-				formula = "SUBSTITUTE(" + formula + ", \"" + Properties.Settings.Default.Sheet_Column_Script_Null + "\", \"nullint\")";
-
-				formula = "=\"CREATE " + tableAlias + " objects \" & CHAR(10) & " + formula + " & \"; \" & CHAR(10) & \"GO \"";
-				tbl.ShowTotals = false;
-				lastColumnName = sqlColName;  // maximum header characters are 255
-				tbl.HeaderRowRange[lastColumnIndex].Value2 = lastColumnName;
-				try
-				{
-					sqlCol.DataBodyRange.SpecialCells(Excel.XlCellType.xlCellTypeVisible).Rows.Formula = formula;
-					sqlCol.Range.Columns.AutoFit();
-					sqlCol.Range.HorizontalAlignment = Excel.Constants.xlLeft;
-					sqlCol.Range.WrapText = true;
-					sqlCol.DataBodyRange.Copy();
-					AppVariables.FileType = "DQL";
-					AppVariables.ScriptRange = (string)Clipboard.GetData(DataFormats.Text);
-					AppVariables.ScriptRange = AppVariables.ScriptRange.Replace(@"""", String.Empty);
-				}
-				catch (System.Runtime.InteropServices.COMException)
-				{
-					AppVariables.ScriptRange = "There was an issue creating the Excel formula." + Environment.NewLine + Environment.NewLine + "Formula: " + Environment.NewLine + formula;
-				}
-				finally
-				{
-					OpenScriptPane();
-				}
-
-			}
-			catch (System.OutOfMemoryException)
-			{
-				MessageBox.Show("The amount of records is too big", "No action taken.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-			}
-			catch (Exception ex)
-			{
-				ErrorHandler.DisplayMessage(ex);
-			}
-			finally
-			{
-				Cursor.Current = System.Windows.Forms.Cursors.Arrow;
-				if (tbl != null)
-					Marshal.ReleaseComObject(tbl);
-				if (sqlCol != null)
-					Marshal.ReleaseComObject(sqlCol);
-			}
-		}
-
-		/// <summary> 
-		/// Add a formula at the end of the table to use as a script
-		/// </summary>
-		/// <remarks></remarks>
-		public void AddFormulaDqlTruncateAppend()
-		{
-			Excel.ListObject tbl = null;
-			Excel.ListColumn sqlCol = null;
-			try
-			{
-				ErrorHandler.CreateLogRecord();
-				string lastColumnName = Properties.Settings.Default.Sheet_Column_Table_Alias;
-				string tableAlias = Properties.Settings.Default.Sheet_Column_Table_Alias;
-				string sqlColName = string.Empty;
-				int columnCount = 0;
-
-				sqlColName = Properties.Settings.Default.Sheet_Column_Name;
-				tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject;
-				int lastColumnIndex = tbl.Range.Columns.Count;
-				sqlCol = tbl.ListColumns[lastColumnIndex];
-
-				if (sqlCol.Name == sqlColName)
-				{
-					lastColumnName = sqlCol.Name;
-				}
-				else
-				{
-					sqlCol = tbl.ListColumns.Add();
-					sqlCol.Name = lastColumnName;
-					lastColumnIndex = tbl.Range.Columns.Count;
-				}
-
-				sqlCol.DataBodyRange.NumberFormat = "General";
-				string formula = string.Empty;
-				string qt = string.Empty;
-				bool afterWhere = false;
-
-				foreach (Excel.ListColumn col in tbl.ListColumns)
-				{
-					switch (col.Name.IndexOfAny(new char[] { '[', ']', '"' }))
-					{
-						case -1:
-							break;
-						default:
-							MessageBox.Show("Please remove one of these incorrect characters in a column header" + Environment.NewLine + " [ " + Environment.NewLine + " ] " + Environment.NewLine + "\" " + Environment.NewLine + "Column Name: " + col.Name, "No action taken.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-							return;
-					}
-					if (col.Name == lastColumnName | col.Range.EntireColumn.Hidden)
-					{
-						//DO NOTHING - because the column is hidden or the last column with the sql script
-					}
-					else
-					{
-						if (!string.IsNullOrEmpty(formula))
-						{
-							formula = formula + " & \" \" & ";
-						}
-						if (columnCount == 0)
-						{
-							AppVariables.FirstColumnName = col.Name;
-						}
-						columnCount += 1;
-						qt = ApplyTextQuotes(col);
-						string colRef = GetColumnFormat(col).ToString();
-						colRef = colRef.Replace("'", "''");
-						colRef = colRef.Replace("#", "'#");
-						colRef = "SUBSTITUTE(" + colRef + ", " + "\"" + qt + "\", \"" + qt + qt + "\")";
-
-						string valuePrefix = string.Empty;
-						string columnName = col.Name;
-						string firstPart = columnName.Substring(0, columnName.LastIndexOf(" ") + 1);
-						if (String.Compare(firstPart.Trim(), "WHERE", true) == 0)
-						{
-							valuePrefix = "\"" + col.Name + " = \" & ";
-							afterWhere = true;
-						}
-						else
-						{
-							if (afterWhere == true)
-							{
-								valuePrefix = "\"AND " + col.Name + " = \" & ";
-							}
-							else
-							{
-								valuePrefix = "\"TRUNCATE " + col.Name + ", APPEND " + col.Name + " = \" & ";
-							}
-						}
-						if (GetSqlDataType(col) == Properties.Settings.Default.Script_Type_Date)
-						{
-							formula += valuePrefix + "\"DATE(" + qt + "\" & " + colRef + " & \"" + qt + ", " + qt + Properties.Settings.Default.Sheet_Column_Date_Format_Replace + qt + ")\"";
-						}
-						else
-						{
-							formula += valuePrefix + "\"" + qt + "\" & " + colRef + " & \"" + qt + "\"";
-						}
-					}
-				}
-				//replace NULL values with DQL format
-				formula = "SUBSTITUTE(" + formula + ", \"'" + Properties.Settings.Default.Sheet_Column_Script_Null + "', '" + Properties.Settings.Default.Sheet_Column_Date_Format_Replace + "'\", \"'nulldate'\")";
-				formula = "SUBSTITUTE(" + formula + ", \"'" + Properties.Settings.Default.Sheet_Column_Script_Null + "'\", \"nullstring\")";
-				formula = "SUBSTITUTE(" + formula + ", \"" + Properties.Settings.Default.Sheet_Column_Script_Null + "\", \"nullint\")";
-
-				string whereCheck = string.Empty;
-				if (afterWhere == false)
-				{
-					whereCheck = " & \" WHERE \" ";
-				}
-				formula = "=\"UPDATE " + tableAlias + " objects \" & " + formula + whereCheck + " & CHAR(10) & \"GO \"";
-				tbl.ShowTotals = false;
-				lastColumnName = sqlColName;  // maximum header characters are 255
-				tbl.HeaderRowRange[lastColumnIndex].Value2 = lastColumnName;
-				try
-				{
-					sqlCol.DataBodyRange.SpecialCells(Excel.XlCellType.xlCellTypeVisible).Rows.Formula = formula;
-					sqlCol.Range.Columns.AutoFit();
-					sqlCol.Range.HorizontalAlignment = Excel.Constants.xlLeft;
-					sqlCol.Range.WrapText = true;
-					sqlCol.DataBodyRange.Copy();
-					AppVariables.FileType = "DQL";
-					AppVariables.ScriptRange = (string)Clipboard.GetData(DataFormats.Text);
-					AppVariables.ScriptRange = AppVariables.ScriptRange.Replace(@"""", String.Empty);
-				}
-				catch (System.Runtime.InteropServices.COMException)
-				{
-					AppVariables.ScriptRange = "There was an issue creating the Excel formula." + Environment.NewLine + Environment.NewLine + "Formula: " + Environment.NewLine + formula;
-				}
-				finally
-				{
-					OpenScriptPane();
-				}
-
-			}
-			catch (System.OutOfMemoryException)
-			{
-				MessageBox.Show("The amount of records is too big", "No action taken.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-			}
-			catch (Exception ex)
-			{
-				ErrorHandler.DisplayMessage(ex);
-			}
-			finally
-			{
-				Cursor.Current = System.Windows.Forms.Cursors.Arrow;
-				if (tbl != null)
-					Marshal.ReleaseComObject(tbl);
-				if (sqlCol != null)
-					Marshal.ReleaseComObject(sqlCol);
-			}
-		}
-
-		/// <summary> 
-		/// Add a formula at the end of the table to use as a script
-		/// </summary>
-		/// <remarks></remarks>
-		public void AddFormulaDqlUpdate()
-		{
-			Excel.ListObject tbl = null;
-			Excel.ListColumn sqlCol = null;
-			try
-			{
-				ErrorHandler.CreateLogRecord();
-				string lastColumnName = Properties.Settings.Default.Sheet_Column_Table_Alias;
-				string tableAlias = Properties.Settings.Default.Sheet_Column_Table_Alias;
-				string sqlColName = string.Empty;
-				int columnCount = 0;
-
-				sqlColName = Properties.Settings.Default.Sheet_Column_Name;
-				tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject;
-				int lastColumnIndex = tbl.Range.Columns.Count;
-				sqlCol = tbl.ListColumns[lastColumnIndex];
-				if (sqlCol.Name == sqlColName)
-				{
-					lastColumnName = sqlCol.Name;
-				}
-				else
-				{
-					sqlCol = tbl.ListColumns.Add();
-					sqlCol.Name = lastColumnName;
-					lastColumnIndex = tbl.Range.Columns.Count;
-				}
-
-				sqlCol.DataBodyRange.NumberFormat = "General";
-				string formula = string.Empty;
-				string qt = string.Empty;
-				bool afterWhere = false;
-
-				foreach (Excel.ListColumn col in tbl.ListColumns)
-				{
-					if (col.Name.IndexOfAny(new char[] { '[', ']', '"' }) != -1)
-					{
-						MessageBox.Show("Please remove one of these incorrect characters in a column header" + Environment.NewLine + " [ " + Environment.NewLine + " ] " + Environment.NewLine + "\" " + Environment.NewLine + "Column Name: " + col.Name, "No action taken.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-						return;
-					}
-					if (col.Name == lastColumnName | col.Range.EntireColumn.Hidden)
-					{
-						//DO NOTHING - because the column is hidden or the last column with the sql script
-					}
-					else
-					{
-						if (!string.IsNullOrEmpty(formula))
-						{
-							formula = formula + " & \" \" & ";
-						}
-						if (columnCount == 0)
-						{
-							AppVariables.FirstColumnName = col.Name;
-						}
-						columnCount += 1;
-						qt = ApplyTextQuotes(col);
-						string colRef = GetColumnFormat(col).ToString();
-						colRef = colRef.Replace("'", "''");
-						colRef = colRef.Replace("#", "'#");
-						colRef = "SUBSTITUTE(" + colRef + ", " + "\"" + qt + "\", \"" + qt + qt + "\")";
-
-						string valuePrefix = string.Empty;
-						string columnName = col.Name;
-						string firstPart = columnName.Substring(0, columnName.LastIndexOf(" ") + 1);
-						if (String.Compare(firstPart.Trim(), "WHERE", true) == 0)
-						{
-							valuePrefix = "\"" + col.Name + " = \" & ";
-							afterWhere = true;
-						}
-						else
-						{
-							if (afterWhere == true)
-							{
-								valuePrefix = "\"AND " + col.Name + " = \" & ";
-							}
-							else
-							{
-								valuePrefix = "\"SET " + col.Name + " = \" & ";
-							}
-						}
-						if (GetSqlDataType(col) == Properties.Settings.Default.Script_Type_Date)
-						{
-							formula += valuePrefix + "\"DATE(" + qt + "\" & " + colRef + " & \"" + qt + ", " + qt + Properties.Settings.Default.Sheet_Column_Date_Format_Replace + qt + ")\"";
-						}
-						else
-						{
-							formula += valuePrefix + "\"" + qt + "\" & " + colRef + " & \"" + qt + "\"";
-						}
-					}
-				}
-				//replace NULL values with DQL format
-				formula = "SUBSTITUTE(" + formula + ", \"'" + Properties.Settings.Default.Sheet_Column_Script_Null + "', '" + Properties.Settings.Default.Sheet_Column_Date_Format_Replace + "'\", \"'nulldate'\")";
-				formula = "SUBSTITUTE(" + formula + ", \"'" + Properties.Settings.Default.Sheet_Column_Script_Null + "'\", \"nullstring\")";
-				formula = "SUBSTITUTE(" + formula + ", \"" + Properties.Settings.Default.Sheet_Column_Script_Null + "\", \"nullint\")";
-
-				string whereCheck = string.Empty;
-				if (afterWhere == false)
-				{
-					whereCheck = " & \" WHERE \" ";
-				}
-				formula = "=\"UPDATE " + tableAlias + " objects \" & " + formula + whereCheck + " & CHAR(10) & \"GO \"";
-				tbl.ShowTotals = false;
-				lastColumnName = sqlColName;  // maximum header characters are 255
-				tbl.HeaderRowRange[lastColumnIndex].Value2 = lastColumnName;
-				try
-				{
-					sqlCol.DataBodyRange.SpecialCells(Excel.XlCellType.xlCellTypeVisible).Rows.Formula = formula;
-					sqlCol.Range.Columns.AutoFit();
-					sqlCol.Range.HorizontalAlignment = Excel.Constants.xlLeft;
-					sqlCol.Range.WrapText = true;
-					sqlCol.DataBodyRange.Copy();
-					AppVariables.FileType = "DQL";
-					AppVariables.ScriptRange = (string)Clipboard.GetData(DataFormats.Text);
-					AppVariables.ScriptRange = AppVariables.ScriptRange.Replace(@"""", String.Empty);
-				}
-				catch (System.Runtime.InteropServices.COMException)
-				{
-					AppVariables.ScriptRange = "There was an issue creating the Excel formula." + Environment.NewLine + Environment.NewLine + "Formula: " + Environment.NewLine + formula;
-				}
-				finally
-				{
-					OpenScriptPane();
-				}
-
-			}
-			catch (System.OutOfMemoryException)
-			{
-				MessageBox.Show("The amount of records is too big", "No action taken.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-			}
-			catch (Exception ex)
-			{
-				ErrorHandler.DisplayMessage(ex);
-			}
-			finally
-			{
-				Cursor.Current = System.Windows.Forms.Cursors.Arrow;
-				if (tbl != null)
-					Marshal.ReleaseComObject(tbl);
-				if (sqlCol != null)
-					Marshal.ReleaseComObject(sqlCol);
-			}
-		}
-
-		/// <summary> 
-		/// Add a formula at the end of the table to use as a script
-		/// </summary>
-		/// <remarks></remarks>
-		public void AddFormulaDqlUpdateLocked()
-		{
-			Excel.ListObject tbl = null;
-			Excel.ListColumn sqlCol = null;
-			try
-			{
-				ErrorHandler.CreateLogRecord();
-				string lastColumnName = Properties.Settings.Default.Sheet_Column_Table_Alias;
-				string tableAlias = Properties.Settings.Default.Sheet_Column_Table_Alias;
-				string sqlColName = string.Empty;
-				int columnCount = 0;
-
-				sqlColName = Properties.Settings.Default.Sheet_Column_Name;
-				tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject;
-				int lastColumnIndex = tbl.Range.Columns.Count;
-				sqlCol = tbl.ListColumns[lastColumnIndex];
-
-				if (sqlCol.Name == sqlColName)
-				{
-					lastColumnName = sqlCol.Name;
-				}
-				else
-				{
-					sqlCol = tbl.ListColumns.Add();
-					sqlCol.Name = lastColumnName;
-					lastColumnIndex = tbl.Range.Columns.Count;
-				}
-
-				sqlCol.DataBodyRange.NumberFormat = "General";
-				string formula = string.Empty;
-				string qt = string.Empty;
-				bool afterWhere = false;
-				string whereClause = string.Empty;
-
-				foreach (Excel.ListColumn col in tbl.ListColumns)
-				{
-					switch (col.Name.IndexOfAny(new char[] { '[', ']', '"' }))
-					{
-						case -1:
-							break;
-						default:
-							MessageBox.Show("Please remove one of these incorrect characters in a column header" + Environment.NewLine + " [ " + Environment.NewLine + " ] " + Environment.NewLine + "\" " + Environment.NewLine + "Column Name: " + col.Name, "No action taken.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-							return;
-					}
-					if (col.Name == lastColumnName | col.Range.EntireColumn.Hidden)
-					{
-						//DO NOTHING - because the column is hidden or the last column with the sql script
-					}
-					else
-					{
-						if (!string.IsNullOrEmpty(formula))
-						{
-							formula = formula + " & \" \" & ";
-						}
-						if (columnCount == 0)
-						{
-							AppVariables.FirstColumnName = col.Name;
-						}
-						columnCount += 1;
-						qt = ApplyTextQuotes(col);
-						string colRef = GetColumnFormat(col).ToString();
-						colRef = colRef.Replace("'", "''");
-						colRef = colRef.Replace("#", "'#");
-						colRef = "SUBSTITUTE(" + colRef + ", " + "\"" + qt + "\", \"" + qt + qt + "\")";
-
-						string valuePrefix = string.Empty;
-						string columnName = col.Name;
-						string firstPart = columnName.Substring(0, columnName.LastIndexOf(" ") + 1);
-						if (String.Compare(firstPart.Trim(), "WHERE", true) == 0)
-						{
-							valuePrefix = "\"" + col.Name + " = \" & ";
-							afterWhere = true;
-						}
-						else
-						{
-							if (afterWhere == true)
-							{
-								valuePrefix = "\"AND " + col.Name + " = \" & ";
-							}
-							else
-							{
-								valuePrefix = "\"SET " + col.Name + " = \" & ";
-							}
-						}
-						if (GetSqlDataType(col) == Properties.Settings.Default.Script_Type_Date)
-						{
-							if (afterWhere == true)
-							{
-								whereClause += valuePrefix + "\"DATE(" + qt + "\" & " + colRef + " & \"" + qt + ", " + qt + Properties.Settings.Default.Sheet_Column_Date_Format_Replace + qt + ")\"";
-
-							}
-							formula += valuePrefix + "\"DATE(" + qt + "\" & " + colRef + " & \"" + qt + ", " + qt + Properties.Settings.Default.Sheet_Column_Date_Format_Replace + qt + ")\"";
-						}
-						else
-						{
-							if (afterWhere == true)
-							{
-								whereClause += valuePrefix + "\"" + qt + "\" & " + colRef + " & \"" + qt + "\"";
-							}
-							formula += valuePrefix + "\"" + qt + "\" & " + colRef + " & \"" + qt + "\"";
-						}
-					}
-				}
-				//replace NULL values with DQL format
-				formula = "SUBSTITUTE(" + formula + ", \"'" + Properties.Settings.Default.Sheet_Column_Script_Null + "', '" + Properties.Settings.Default.Sheet_Column_Date_Format_Replace + "'\", \"'nulldate'\")";
-				formula = "SUBSTITUTE(" + formula + ", \"'" + Properties.Settings.Default.Sheet_Column_Script_Null + "'\", \"nullstring\")";
-				formula = "SUBSTITUTE(" + formula + ", \"" + Properties.Settings.Default.Sheet_Column_Script_Null + "\", \"nullint\")";
-
-				string whereCheck = string.Empty;
-				if (afterWhere == false)
-				{
-					whereCheck = " & \" WHERE \" ";
-				}
-				string formulaUnlock = "\"UPDATE " + tableAlias + "(all) objects SET r_immutable_flag = 0 \" & " + whereClause + " & CHAR(10) & \"GO \"  & CHAR(10) & ";
-				string formulaLock = "\"UPDATE " + tableAlias + "(all) objects SET r_immutable_flag = 1 \" & " + whereClause + " & CHAR(10) & \"GO \"";
-				formula = "=" + formulaUnlock + "\"UPDATE " + tableAlias + "(all) objects \" & " + formula + whereCheck + " & CHAR(10) & \"GO \" & CHAR(10) & " + formulaLock;
-				tbl.ShowTotals = false;
-				lastColumnName = sqlColName;  // maximum header characters are 255
-				tbl.HeaderRowRange[lastColumnIndex].Value2 = lastColumnName;
-				try
-				{
-					sqlCol.DataBodyRange.SpecialCells(Excel.XlCellType.xlCellTypeVisible).Rows.Formula = formula;
-					sqlCol.Range.Columns.AutoFit();
-					sqlCol.Range.HorizontalAlignment = Excel.Constants.xlLeft;
-					sqlCol.Range.WrapText = true;
-					sqlCol.DataBodyRange.Copy();
-					AppVariables.FileType = "DQL";
-					AppVariables.ScriptRange = (string)Clipboard.GetData(DataFormats.Text);
-					AppVariables.ScriptRange = AppVariables.ScriptRange.Replace(@"""", String.Empty);
-				}
-				catch (System.Runtime.InteropServices.COMException)
-				{
-					AppVariables.ScriptRange = "There was an issue creating the Excel formula." + Environment.NewLine + Environment.NewLine + "Formula: " + Environment.NewLine + formula;
-				}
-				finally
-				{
-					OpenScriptPane();
-				}
-
-			}
-			catch (System.OutOfMemoryException)
-			{
-				MessageBox.Show("The amount of records is too big", "No action taken.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-			}
-			catch (Exception ex)
-			{
-				ErrorHandler.DisplayMessage(ex);
-			}
-			finally
-			{
-				Cursor.Current = System.Windows.Forms.Cursors.Arrow;
-				if (tbl != null)
-					Marshal.ReleaseComObject(tbl);
-				if (sqlCol != null)
-					Marshal.ReleaseComObject(sqlCol);
-			}
-		}
-
-		/// <summary> 
-		/// Add a formula at the end of the table to use as a script
-		/// </summary>
-		/// <remarks></remarks>
-		public void AddFormulaGithubTable()
-		{
-			Excel.ListObject tbl = null;
-			Excel.ListColumn sqlCol = null;
-			try
-			{
-				ErrorHandler.CreateLogRecord();
-				Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
-				string lastColumnName = Properties.Settings.Default.Sheet_Column_Table_Alias;
-				string tableAlias = Properties.Settings.Default.Sheet_Column_Table_Alias;
-
-				tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject;
-				sqlCol = tbl.ListColumns.Add();
-				sqlCol.Name = lastColumnName;
-				int lastColumnIndex = tbl.Range.Columns.Count;
-
-				sqlCol.DataBodyRange.NumberFormat = "General";
-				string formula = string.Empty;
-
-				foreach (Excel.ListColumn col in tbl.ListColumns)
-				{
-					if (col.Name.IndexOfAny(new char[] { '[', ']', '"' }) != -1)
-					{
-						MessageBox.Show("Please remove one of these incorrect characters in a column header" + Environment.NewLine + " [ " + Environment.NewLine + " ] " + Environment.NewLine + "\" " + Environment.NewLine + "Column Name: " + col.Name, "No action taken.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-						return;
-					}
-					if (col.Name == lastColumnName | col.Range.EntireColumn.Hidden)
-					{
-						//DO NOTHING - because the column is hidden or the last column with the sql script
-					}
-					else
-					{
-						if (!string.IsNullOrEmpty(formula))
-						{
-							formula = formula + " & \"|\" & ";
-						}
-						formula += GetColumnFormat(col).ToString();
-					}
-				}
-				formula = "=\"" + "|" + "\" & " + formula + " & \"|\"";
-				string sqlColName = ConcatenateColumnNames(tbl.Range, string.Empty, "|") + "|";
-				lastColumnName = sqlColName;  // maximum header characters are 255
-				tbl.HeaderRowRange[lastColumnIndex].Value2 = lastColumnName;
-				try
-				{
-					sqlCol.DataBodyRange.SpecialCells(Excel.XlCellType.xlCellTypeVisible).Rows.Formula = formula;
-					sqlCol.Range.Columns.AutoFit();
-					sqlCol.Range.HorizontalAlignment = Excel.Constants.xlLeft;
-					sqlCol.Range.Copy();
-					AppVariables.FileType = "TXT";
-					AppVariables.ScriptRange = (string)Clipboard.GetData(DataFormats.Text);
-					AppVariables.ScriptRange = AppVariables.ScriptRange.Replace(@"""", String.Empty);
-				}
-				catch (System.Runtime.InteropServices.COMException)
-				{
-					AppVariables.ScriptRange = "There was an issue creating the Excel formula." + Environment.NewLine + Environment.NewLine + "Formula: " + Environment.NewLine + formula;
-				}
-				finally
-				{
-					OpenScriptPane();
-				}
-			}
-			catch (System.OutOfMemoryException)
-			{
-				MessageBox.Show("The amount of records is too big", "No action taken.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-			}
-			catch (Exception ex)
-			{
-				ErrorHandler.DisplayMessage(ex);
-			}
-			finally
-			{
-				Cursor.Current = System.Windows.Forms.Cursors.Arrow;
-				if (tbl != null)
-					Marshal.ReleaseComObject(tbl);
-				if (sqlCol != null)
-					Marshal.ReleaseComObject(sqlCol);
-			}
-
-		}
-
-		/// <summary> 
-		/// Add a formula at the end of the table to use as a script
-		/// </summary>
-		/// <remarks></remarks>
-		public void AddFormulaPlSqlCreateTable()
-		{
-			Excel.ListObject tbl = null;
-			Excel.ListColumn sqlCol = null;
-			try
-			{
-				ErrorHandler.CreateLogRecord();
-				string lastColumnName = Properties.Settings.Default.Sheet_Column_Table_Alias;
-				string sqlColName = string.Empty;
-
-				sqlColName = Properties.Settings.Default.Sheet_Column_Name;
-				tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject;
-				int lastColumnIndex = tbl.Range.Columns.Count;
-				sqlCol = tbl.ListColumns[lastColumnIndex];
-				if (sqlCol.Name == sqlColName)
-				{
-					lastColumnName = sqlCol.Name;
-				}
-				else
-				{
-					sqlCol = tbl.ListColumns.Add();
-					sqlCol.Name = lastColumnName;
-					lastColumnIndex = tbl.Range.Columns.Count;
-				}
-
-				sqlCol.DataBodyRange.NumberFormat = "General";
-				string formula = string.Empty;
-				string qt = string.Empty;
-
-				foreach (Excel.ListColumn col in tbl.ListColumns)
-				{
-					if (col.Name.IndexOfAny(new char[] { '[', ']', '"' }) != -1)
-					{
-						MessageBox.Show("Please remove one of these incorrect characters in a column header" + Environment.NewLine + " [ " + Environment.NewLine + " ] " + Environment.NewLine + "\" " + Environment.NewLine + "Column Name: " + col.Name, "No action taken.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-						return;
-					}
-					if (col.Name == lastColumnName | col.Range.EntireColumn.Hidden)
-					{
-						//DO NOTHING - because the column is hidden or the last column with the sql script
-					}
-					else
-					{
-						if (!string.IsNullOrEmpty(formula))
-						{
-							formula = formula + " & \", \" & ";
-						}
-						qt = ApplyTextQuotes(col);
-						string colRef = GetColumnFormat(col).ToString();
-						colRef = colRef.Replace("'", "''");
-						colRef = colRef.Replace("#", "'#");
-						colRef = "SUBSTITUTE(" + colRef + ", " + "\"" + qt + "\", \"" + qt + qt + "\")";
-						formula += "\"" + qt + "\" & " + colRef + " & \"" + qt + "\"";
-					}
-				}
-				string nullValue = Properties.Settings.Default.Sheet_Column_Script_Null;
-				formula = "SUBSTITUTE(" + formula + ", \"'" + nullValue + "'\", \"" + nullValue + "\")";
-				string tableAlias = Properties.Settings.Default.Sheet_Column_Table_Alias;
-				string insertPrefix = "INSERT INTO " + tableAlias + " (" + ConcatenateColumnNames(tbl.Range) + ") VALUES(";
-				formula = "=\"" + insertPrefix + "\" & " + formula + " & \");\"";
-				tbl.ShowTotals = false;
-				lastColumnName = sqlColName;  // maximum header characters are 255
-				tbl.HeaderRowRange[lastColumnIndex].Value2 = lastColumnName;
-				string createTable = "IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'" + tableAlias + "') AND type in (N'U'))" + Environment.NewLine + "DROP TABLE " + tableAlias + Environment.NewLine + "; " + Environment.NewLine + "CREATE TABLE " + tableAlias + " (" + tableAlias + "_ID [int] PRIMARY KEY IDENTITY(1,1) NOT NULL, " + ConcatenateColumnNames(tbl.Range, "", Environment.NewLine + "[", "] [varchar](max) NULL") + Environment.NewLine + ");" + Environment.NewLine;
-				try
-				{
-					sqlCol.DataBodyRange.SpecialCells(Excel.XlCellType.xlCellTypeVisible).Rows.Formula = formula;
-					sqlCol.Range.Columns.AutoFit();
-					sqlCol.Range.HorizontalAlignment = Excel.Constants.xlLeft;
-					sqlCol.DataBodyRange.Copy();
-					AppVariables.FileType = "SQL";
-					AppVariables.ScriptRange = createTable + (string)Clipboard.GetData(DataFormats.Text);
-					AppVariables.ScriptRange = AppVariables.ScriptRange.Replace(@"""", String.Empty);
-				}
-				catch (System.Runtime.InteropServices.COMException)
-				{
-					AppVariables.ScriptRange = "There was an issue creating the Excel formula." + Environment.NewLine + Environment.NewLine + "Formula: " + Environment.NewLine + formula;
-				}
-				finally
-				{
-					OpenScriptPane();
-				}
-
-			}
-			catch (System.OutOfMemoryException)
-			{
-				MessageBox.Show("The amount of records is too big", "No action taken.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-			}
-			catch (Exception ex)
-			{
-				ErrorHandler.DisplayMessage(ex);
-			}
-			finally
-			{
-				Cursor.Current = System.Windows.Forms.Cursors.Arrow;
-				if (tbl != null)
-					Marshal.ReleaseComObject(tbl);
-				if (sqlCol != null)
-					Marshal.ReleaseComObject(sqlCol);
-			}
-		}
-
-		/// <summary> 
-		/// Add a formula at the end of the table to use as a script
-		/// </summary>
-		/// <remarks></remarks>
-		public void AddFormulaPlSqlInsertValues()
-		{
-			Excel.ListObject tbl = null;
-			Excel.ListColumn sqlCol = null;
-			try
-			{
-				ErrorHandler.CreateLogRecord();
-				string lastColumnName = Properties.Settings.Default.Sheet_Column_Table_Alias;
-				string sqlColName = string.Empty;
-
-				sqlColName = Properties.Settings.Default.Sheet_Column_Name;
-				tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject;
-				int lastColumnIndex = tbl.Range.Columns.Count;
-				sqlCol = tbl.ListColumns[lastColumnIndex];
-				if (sqlCol.Name == sqlColName)
-				{
-					lastColumnName = sqlCol.Name;
-				}
-				else
-				{
-					sqlCol = tbl.ListColumns.Add();
-					sqlCol.Name = lastColumnName;
-					lastColumnIndex = tbl.Range.Columns.Count;
-				}
-
-				sqlCol.DataBodyRange.NumberFormat = "General";
-				string formula = string.Empty;
-				string qt = string.Empty;
-
-				foreach (Excel.ListColumn col in tbl.ListColumns)
-				{
-					if (col.Name.IndexOfAny(new char[] { '[', ']', '"' }) != -1)
-					{
-						MessageBox.Show("Please remove one of these incorrect characters in a column header" + Environment.NewLine + " [ " + Environment.NewLine + " ] " + Environment.NewLine + "\" " + Environment.NewLine + "Column Name: " + col.Name, "No action taken.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-						return;
-					}
-					if (col.Name == lastColumnName | col.Range.EntireColumn.Hidden)
-					{
-						//DO NOTHING - because the column is hidden or the last column with the sql script
-					}
-					else
-					{
-						if (!string.IsNullOrEmpty(formula))
-						{
-							formula = formula + " & \", \" & ";
-						}
-						qt = ApplyTextQuotes(col);
-						string colRef = GetColumnFormat(col).ToString();
-						colRef = colRef.Replace("'", "''");
-						colRef = colRef.Replace("#", "'#");
-						colRef = "SUBSTITUTE(" + colRef + ", " + "\"" + qt + "\", \"" + qt + qt + "\")";
-						formula += "\"" + qt + "\" & " + colRef + " & \"" + qt + "\"";
-					}
-				}
-				string nullValue = Properties.Settings.Default.Sheet_Column_Script_Null;
-				formula = "SUBSTITUTE(" + formula + ", \"'" + nullValue + "'\", \"" + nullValue + "\")";
-				string tableAlias = Properties.Settings.Default.Sheet_Column_Table_Alias;
-				string insertPrefix = "INSERT INTO " + tableAlias + " (" + ConcatenateColumnNames(tbl.Range) + ") VALUES(";
-				formula = "=\"" + insertPrefix + "\" & " + formula + " & \");\"";
-				tbl.ShowTotals = false;
-				lastColumnName = sqlColName;  // maximum header characters are 255
-				tbl.HeaderRowRange[lastColumnIndex].Value2 = lastColumnName;
-				try
-				{
-					sqlCol.DataBodyRange.SpecialCells(Excel.XlCellType.xlCellTypeVisible).Rows.Formula = formula;
-					sqlCol.Range.Columns.AutoFit();
-					sqlCol.Range.HorizontalAlignment = Excel.Constants.xlLeft;
-					sqlCol.DataBodyRange.Copy();
-					AppVariables.FileType = "SQL";
-					AppVariables.ScriptRange = (string)Clipboard.GetData(DataFormats.Text);
-					AppVariables.ScriptRange = AppVariables.ScriptRange.Replace(@"""", String.Empty);
-				}
-				catch (System.Runtime.InteropServices.COMException)
-				{
-					AppVariables.ScriptRange = "There was an issue creating the Excel formula." + Environment.NewLine + Environment.NewLine + "Formula: " + Environment.NewLine + formula;
-				}
-				finally
-				{
-					OpenScriptPane();
-				}
-
-			}
-			catch (System.OutOfMemoryException)
-			{
-				MessageBox.Show("The amount of records is too big", "No action taken.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-			}
-			catch (Exception ex)
-			{
-				ErrorHandler.DisplayMessage(ex);
-			}
-			finally
-			{
-				Cursor.Current = System.Windows.Forms.Cursors.Arrow;
-				if (tbl != null)
-					Marshal.ReleaseComObject(tbl);
-				if (sqlCol != null)
-					Marshal.ReleaseComObject(sqlCol);
-			}
-		}
-
-		/// <summary> 
-		/// Add a formula at the end of the table to use as a script
-		/// </summary>
-		/// <remarks></remarks>
-		public void AddFormulaPlSqlMergeValues()
-		{
-			Excel.ListObject tbl = null;
-			Excel.ListColumn sqlCol = null;
-			try
-			{
-				ErrorHandler.CreateLogRecord();
-				Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
-				string lastColumnName = Properties.Settings.Default.Sheet_Column_Table_Alias;
-				string tableAlias = Properties.Settings.Default.Sheet_Column_Table_Alias;
-				string tableAliasTemp = tableAlias + "_temp";
-				string sqlColName = string.Empty;
-
-				sqlColName = "SELECT " + tableAliasTemp + ".*" + " FROM (VALUES";
-
-				tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject;
-				int lastColumnIndex = tbl.Range.Columns.Count;
-				sqlCol = tbl.ListColumns[lastColumnIndex];
-
-				if (sqlCol.Name == sqlColName)
-				{
-					lastColumnName = sqlCol.Name;
-				}
-				else
-				{
-					sqlCol = tbl.ListColumns.Add();
-					sqlCol.Name = lastColumnName;
-					lastColumnIndex = tbl.Range.Columns.Count;
-				}
-
-				// Columns formatted as text will not work as formulas and the added column will copy the formatting from the previous column so ensure that the added column never has Text format...
-				sqlCol.DataBodyRange.NumberFormat = "General";
-				string formula = string.Empty;
-				string qt = string.Empty;
-
-				foreach (Excel.ListColumn col in tbl.ListColumns)
-				{
-					if (col.Name.IndexOfAny(new char[] { '[', ']', '"' }) != -1)
-					{
-						MessageBox.Show("Please remove one of these incorrect characters in a column header" + Environment.NewLine + " [ " + Environment.NewLine + " ] " + Environment.NewLine + "\" " + Environment.NewLine + "Column Name: " + col.Name, "No action taken.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-						return;
-					}
-					if (col.Name == lastColumnName | col.Range.EntireColumn.Hidden)
-					//if (col.Name != lastColumnName | col.Range.EntireColumn.Hidden == false)
-					{
-						//DO NOTHING - because the column is hidden or the last column with the sql script
-					}
-					else
-					{
-						if (!string.IsNullOrEmpty(formula))
-						{
-							formula = formula + " & \", \" & ";
-						}
-						qt = ApplyTextQuotes(col);
-						string colRef = GetColumnFormat(col).ToString();
-						colRef = colRef.Replace("'", "''");
-						colRef = colRef.Replace("#", "'#");
-						colRef = "SUBSTITUTE(" + colRef + ", " + "\"" + qt + "\", \"" + qt + qt + "\")";
-						formula += "\"" + qt + "\" & " + colRef + " & \"" + qt + "\"";
-					}
-				}
-				string nullValue = Properties.Settings.Default.Sheet_Column_Script_Null;
-				formula = "SUBSTITUTE(" + formula + ", \"'" + nullValue + "'\", \"" + nullValue + "\")";
-				int firstRowNbr = tbl.Range[1, 1].Row + 1; // must use the offset for the first row number
-				formula = "=IF(" + (firstRowNbr).ToString() + "-ROW() = 0, \" \", \",\") & " + "\" ( \" & " + formula + " & \")\"";
-				lastColumnName = sqlColName;  // maximum header characters are 255
-				tbl.HeaderRowRange[lastColumnIndex].Value2 = lastColumnName;
-				tbl.ShowTotals = true;
-				string totalsColumnValue = ") " + tableAliasTemp + " (" + ConcatenateColumnNames(tbl.Range, "", "[", "]") + ") ";
-				tbl.TotalsRowRange[lastColumnIndex].Value2 = totalsColumnValue; // totals row has a maximum limit of 32,767 characters
-				try
-				{
-					sqlCol.DataBodyRange.SpecialCells(Excel.XlCellType.xlCellTypeVisible).Rows.Formula = formula;
-					sqlCol.Range.Columns.AutoFit();
-					sqlCol.Range.HorizontalAlignment = Excel.Constants.xlLeft;
-					sqlCol.Range.Copy();
-					AppVariables.FileType = "SQL";
-					AppVariables.ScriptRange = (string)Clipboard.GetData(DataFormats.Text);
-					AppVariables.ScriptRange = AppVariables.ScriptRange.Replace(@"""", String.Empty);
-					AppVariables.ScriptRange = "SET XACT_ABORT ON" + Environment.NewLine + "BEGIN TRANSACTION;" + Environment.NewLine + Environment.NewLine + ";WITH " + Environment.NewLine + tableAliasTemp + Environment.NewLine + "AS " + Environment.NewLine + "(" + Environment.NewLine + AppVariables.ScriptRange + ") " + Environment.NewLine + "MERGE " + tableAlias + " AS T" + Environment.NewLine + "USING " + tableAliasTemp + " AS S" + Environment.NewLine + "ON " + ConcatenateColumnNamesJoin(tbl.Range, "T", "S") + "WHEN NOT MATCHED BY TARGET" + Environment.NewLine + "THEN INSERT" + Environment.NewLine + "(" + Environment.NewLine + ConcatenateColumnNames(tbl.Range, "", "[", "]") + Environment.NewLine + ")" + Environment.NewLine + "VALUES" + Environment.NewLine + "(" + Environment.NewLine + ConcatenateColumnNames(tbl.Range, "S", "[", "]") + Environment.NewLine + ")" + Environment.NewLine + "WHEN MATCHED" + Environment.NewLine + "THEN UPDATE SET" + Environment.NewLine + ConcatenateColumnNamesJoin(tbl.Range, "T", "S") + "--WHEN NOT MATCHED BY SOURCE AND 'ADD WHERE CLAUSE HERE'" + Environment.NewLine + "--THEN DELETE" + Environment.NewLine + "OUTPUT $action, inserted.*, deleted.*;" + Environment.NewLine + Environment.NewLine + "ROLLBACK TRANSACTION;" + Environment.NewLine + "--COMMIT TRANSACTION;" + Environment.NewLine + "GO";
-				}
-				catch (System.Runtime.InteropServices.COMException)
-				{
-					AppVariables.ScriptRange = "There was an issue creating the Excel formula." + Environment.NewLine + Environment.NewLine + "Formula: " + Environment.NewLine + formula;
-				}
-				finally
-				{
-					OpenScriptPane();
-				}
-			}
-			catch (System.OutOfMemoryException)
-			{
-				MessageBox.Show("The amount of records is too big", "No action taken.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-			}
-			catch (Exception ex)
-			{
-				ErrorHandler.DisplayMessage(ex);
-			}
-			finally
-			{
-				Cursor.Current = System.Windows.Forms.Cursors.Arrow;
-				if (tbl != null)
-					Marshal.ReleaseComObject(tbl);
-				if (sqlCol != null)
-					Marshal.ReleaseComObject(sqlCol);
-			}
-		}
-
-		/// <summary> 
-		/// Add a formula at the end of the table to use as a script
-		/// </summary>
-		/// <remarks></remarks>
-		public void AddFormulaPlSqlSelectValues()
-		{
-			Excel.ListObject tbl = null;
-			Excel.ListColumn sqlCol = null;
-			try
-			{
-				ErrorHandler.CreateLogRecord();
-				Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
-				string lastColumnName = Properties.Settings.Default.Sheet_Column_Table_Alias;
-				string tableAlias = Properties.Settings.Default.Sheet_Column_Table_Alias;
-				string sqlColName = string.Empty;
-
-				sqlColName = "SELECT " + tableAlias + ".*" + " FROM (VALUES";
-
-				tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject;
-				int lastColumnIndex = tbl.Range.Columns.Count;
-				sqlCol = tbl.ListColumns[lastColumnIndex];
-
-				if (sqlCol.Name == sqlColName)
-				{
-					lastColumnName = sqlCol.Name;
-				}
-				else
-				{
-					sqlCol = tbl.ListColumns.Add();
-					sqlCol.Name = lastColumnName;
-					lastColumnIndex = tbl.Range.Columns.Count;
-				}
-
-				// Columns formatted as text will not work as formulas and the added column will copy the formatting from the previous column so ensure that the added column never has Text format...
-				sqlCol.DataBodyRange.NumberFormat = "General";
-				string formula = string.Empty;
-				string qt = string.Empty;
-
-				foreach (Excel.ListColumn col in tbl.ListColumns)
-				{
-					if (col.Name.IndexOfAny(new char[] { '[', ']', '"' }) != -1)
-					{
-						MessageBox.Show("Please remove one of these incorrect characters in a column header" + Environment.NewLine + " [ " + Environment.NewLine + " ] " + Environment.NewLine + "\" " + Environment.NewLine + "Column Name: " + col.Name, "No action taken.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-						return;
-					}
-					if (col.Name == lastColumnName | col.Range.EntireColumn.Hidden)
-					//if (col.Name != lastColumnName | col.Range.EntireColumn.Hidden == false)
-					{
-						//DO NOTHING - because the column is hidden or the last column with the sql script
-					}
-					else
-					{
-						if (!string.IsNullOrEmpty(formula))
-						{
-							formula = formula + " & \", \" & ";
-						}
-						qt = ApplyTextQuotes(col);
-						string colRef = GetColumnFormat(col).ToString();
-						colRef = colRef.Replace("'", "''");
-						colRef = colRef.Replace("#", "'#");
-						colRef = "SUBSTITUTE(" + colRef + ", " + "\"" + qt + "\", \"" + qt + qt + "\")";
-						formula += "\"" + qt + "\" & " + colRef + " & \"" + qt + "\"";
-					}
-				}
-				string nullValue = Properties.Settings.Default.Sheet_Column_Script_Null;
-				formula = "SUBSTITUTE(" + formula + ", \"'" + nullValue + "'\", \"" + nullValue + "\")";
-				int firstRowNbr = tbl.Range[1, 1].Row + 1; // must use the offset for the first row number
-				formula = "=IF(" + (firstRowNbr).ToString() + "-ROW() = 0, \" \", \",\") & " + "\" ( \" & " + formula + " & \")\"";
-				lastColumnName = sqlColName;  // maximum header characters are 255
-				tbl.HeaderRowRange[lastColumnIndex].Value2 = lastColumnName;
-				tbl.ShowTotals = true;
-				string totalsColumnValue = ") " + tableAlias + " (" + ConcatenateColumnNames(tbl.Range, "", "[", "]") + ") ";
-				tbl.TotalsRowRange[lastColumnIndex].Value2 = totalsColumnValue; // totals row has a maximum limit of 32,767 characters
-				try
-				{
-					sqlCol.DataBodyRange.SpecialCells(Excel.XlCellType.xlCellTypeVisible).Rows.Formula = formula;
-					sqlCol.Range.Columns.AutoFit();
-					sqlCol.Range.HorizontalAlignment = Excel.Constants.xlLeft;
-					sqlCol.Range.Copy();
-					AppVariables.FileType = "SQL";
-					AppVariables.ScriptRange = (string)Clipboard.GetData(DataFormats.Text);
-					AppVariables.ScriptRange = AppVariables.ScriptRange.Replace(@"""", String.Empty);
-				}
-				catch (System.Runtime.InteropServices.COMException)
-				{
-					AppVariables.ScriptRange = "There was an issue creating the Excel formula." + Environment.NewLine + Environment.NewLine + "Formula: " + Environment.NewLine + formula;
-				}
-				finally
-				{
-					OpenScriptPane();
-				}
-			}
-			catch (System.OutOfMemoryException)
-			{
-				MessageBox.Show("The amount of records is too big", "No action taken.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-			}
-			catch (Exception ex)
-			{
-				ErrorHandler.DisplayMessage(ex);
-			}
-			finally
-			{
-				Cursor.Current = System.Windows.Forms.Cursors.Arrow;
-				if (tbl != null)
-					Marshal.ReleaseComObject(tbl);
-				if (sqlCol != null)
-					Marshal.ReleaseComObject(sqlCol);
-			}
-		}
-
-		/// <summary> 
-		/// Add a formula at the end of the table to use as a script
-		/// </summary>
-		/// <remarks></remarks>
-		public void AddFormulaPlSqlSelectUnion()
-		{
-			Excel.ListObject tbl = null;
-			Excel.ListColumn sqlCol = null;
-			try
-			{
-				ErrorHandler.CreateLogRecord();
-				string lastColumnName = Properties.Settings.Default.Sheet_Column_Table_Alias;
-				string sqlColName = string.Empty;
-
-				sqlColName = Properties.Settings.Default.Sheet_Column_Name;
-				tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject;
-				int lastColumnIndex = tbl.Range.Columns.Count;
-				sqlCol = tbl.ListColumns[lastColumnIndex];
-				if (sqlCol.Name == sqlColName)
-				{
-					lastColumnName = sqlCol.Name;
-				}
-				else
-				{
-					sqlCol = tbl.ListColumns.Add();
-					sqlCol.Name = lastColumnName;
-					lastColumnIndex = tbl.Range.Columns.Count;
-				}
-
-				sqlCol.DataBodyRange.NumberFormat = "General";
-				string formula = string.Empty;
-				string qt = string.Empty;
-
-				foreach (Excel.ListColumn col in tbl.ListColumns)
-				{
-					if (col.Name.IndexOfAny(new char[] { '[', ']', '"' }) != -1)
-					{
-						MessageBox.Show("Please remove one of these incorrect characters in a column header" + Environment.NewLine + " [ " + Environment.NewLine + " ] " + Environment.NewLine + "\" " + Environment.NewLine + "Column Name: " + col.Name, "No action taken.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-						return;
-					}
-					if (col.Name == lastColumnName | col.Range.EntireColumn.Hidden)
-					{
-						//DO NOTHING - because the column is hidden or the last column with the sql script
-					}
-					else
-					{
-						if (!string.IsNullOrEmpty(formula))
-						{
-							formula = formula + " & \", \" & ";
-						}
-						qt = ApplyTextQuotes(col);
-						string colRef = GetColumnFormat(col).ToString();
-						colRef = colRef.Replace("'", "''");
-						colRef = colRef.Replace("#", "'#");
-						colRef = "SUBSTITUTE(" + colRef + ", " + "\"" + qt + "\", \"" + qt + qt + "\")";
-						string dqt = "\"\"";
-						string valuePlSuffix = "& \" AS " + dqt + col.Name + dqt + " \"";
-						formula += "\"" + qt + "\" & " + colRef + " & \"" + qt + "\"" + valuePlSuffix;
-					}
-				}
-				string nullValue = Properties.Settings.Default.Sheet_Column_Script_Null;
-				formula = "SUBSTITUTE(" + formula + ", \"'" + nullValue + "'\", \"" + nullValue + "\")";
-				int firstRowNbr = tbl.Range[1, 1].Row + 1; // must use the offset for the first row number
-				formula = "=IF(" + (firstRowNbr).ToString() + "-ROW() = 0, \"\", \"UNION \") & " + "\"SELECT \" & " + formula + " & \" FROM DUAL\"";
-				tbl.ShowTotals = false;
-				lastColumnName = sqlColName;  // maximum header characters are 255
-				tbl.HeaderRowRange[lastColumnIndex].Value2 = lastColumnName;
-				try
-				{
-					sqlCol.DataBodyRange.SpecialCells(Excel.XlCellType.xlCellTypeVisible).Rows.Formula = formula;
-					sqlCol.Range.Columns.AutoFit();
-					sqlCol.Range.HorizontalAlignment = Excel.Constants.xlLeft;
-					sqlCol.DataBodyRange.Copy();
-					AppVariables.FileType = "SQL";
-					AppVariables.ScriptRange = (string)Clipboard.GetData(DataFormats.Text);
-					AppVariables.ScriptRange = AppVariables.ScriptRange.Replace(@"""", String.Empty);
-				}
-				catch (System.Runtime.InteropServices.COMException)
-				{
-					AppVariables.ScriptRange = "There was an issue creating the Excel formula." + Environment.NewLine + Environment.NewLine + "Formula: " + Environment.NewLine + formula;
-				}
-				finally
-				{
-					OpenScriptPane();
-				}
-
-			}
-			catch (System.OutOfMemoryException)
-			{
-				MessageBox.Show("The amount of records is too big", "No action taken.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-			}
-			catch (Exception ex)
-			{
-				ErrorHandler.DisplayMessage(ex);
-			}
-			finally
-			{
-				Cursor.Current = System.Windows.Forms.Cursors.Arrow;
-				if (tbl != null)
-					Marshal.ReleaseComObject(tbl);
-				if (sqlCol != null)
-					Marshal.ReleaseComObject(sqlCol);
-			}
-		}
-
-		/// <summary> 
-		/// Add a formula at the end of the table to use as a script
-		/// </summary>
-		/// <remarks></remarks>
-		public void AddFormulaPlSqlUpdateValues()
-		{
-			Excel.ListObject tbl = null;
-			Excel.ListColumn sqlCol = null;
-			try
-			{
-				ErrorHandler.CreateLogRecord();
-				string lastColumnName = Properties.Settings.Default.Sheet_Column_Table_Alias;
-				string tableAlias = Properties.Settings.Default.Sheet_Column_Table_Alias;
-				string sqlColName = string.Empty;
-				int columnCount = 0;
-
-				sqlColName = Properties.Settings.Default.Sheet_Column_Name;
-				tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject;
-				int lastColumnIndex = tbl.Range.Columns.Count;
-				sqlCol = tbl.ListColumns[lastColumnIndex];
-				if (sqlCol.Name == sqlColName)
-				{
-					lastColumnName = sqlCol.Name;
-				}
-				else
-				{
-					sqlCol = tbl.ListColumns.Add();
-					sqlCol.Name = lastColumnName;
-					lastColumnIndex = tbl.Range.Columns.Count;
-				}
-
-				sqlCol.DataBodyRange.NumberFormat = "General";
-				string formula = string.Empty;
-				string qt = string.Empty;
-				bool afterWhere = false;
-
-				foreach (Excel.ListColumn col in tbl.ListColumns)
-				{
-					if (col.Name.IndexOfAny(new char[] { '[', ']', '"' }) != -1)
-					{
-						MessageBox.Show("Please remove one of these incorrect characters in a column header" + Environment.NewLine + " [ " + Environment.NewLine + " ] " + Environment.NewLine + "\" " + Environment.NewLine + "Column Name: " + col.Name, "No action taken.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-						return;
-					}
-					if (col.Name == lastColumnName | col.Range.EntireColumn.Hidden)
-					{
-						//DO NOTHING - because the column is hidden or the last column with the sql script
-					}
-					else
-					{
-						if (!string.IsNullOrEmpty(formula))
-						{
-							formula = formula + " & \" \" & ";
-						}
-						if (columnCount == 0)
-						{
-							AppVariables.FirstColumnName = col.Name;
-						}
-						columnCount += 1;
-						qt = ApplyTextQuotes(col);
-						string colRef = GetColumnFormat(col).ToString();
-						colRef = colRef.Replace("'", "''");
-						colRef = colRef.Replace("#", "'#");
-						colRef = "SUBSTITUTE(" + colRef + ", " + "\"" + qt + "\", \"" + qt + qt + "\")";
-
-						string valuePrefix = string.Empty;
-						string columnName = col.Name;
-						string firstPart = columnName.Substring(0, columnName.LastIndexOf(" ") + 1);
-						if (String.Compare(firstPart.Trim(), "WHERE", true) == 0)
-						{
-							string firstWhereColumn = col.Name;
-							firstWhereColumn = System.Text.RegularExpressions.Regex.Replace(firstWhereColumn, "where ", "", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
-							firstWhereColumn = firstWhereColumn.Trim();
-							valuePrefix = "\"WHERE " + firstWhereColumn + " = \" & ";
-							afterWhere = true;
-						}
-						else
-						{
-							if (afterWhere == true)
-							{
-								valuePrefix = "\"AND " + col.Name + " = \" & ";
-							}
-							else
-							{
-								string useComma = string.Empty;
-								if (columnCount != 1)
-								{
-									useComma = ",";
-								}
-								valuePrefix = "\"" + useComma + " " + col.Name + " = \" & ";
-							}
-						}
-						if (GetSqlDataType(col) == Properties.Settings.Default.Script_Type_Date)
-						{
-							formula += valuePrefix + "\"DATE(" + qt + "\" & " + colRef + " & \"" + qt + ", " + qt + Properties.Settings.Default.Sheet_Column_Date_Format_Replace + qt + ")\"";
-						}
-						else
-						{
-							formula += valuePrefix + "\"" + qt + "\" & " + colRef + " & \"" + qt + "\"";
-						}
-					}
-				}
-
-				string whereCheck = string.Empty;
-				if (afterWhere == false)
-				{
-					whereCheck = " & \" WHERE \" ";
-				}
-				string nullValue = Properties.Settings.Default.Sheet_Column_Script_Null;
-				formula = "SUBSTITUTE(" + formula + ", \"'" + nullValue + "'\", \"" + nullValue + "\")";
-				formula = "=\"UPDATE " + tableAlias + " SET \" & " + formula + whereCheck + " & CHAR(10) & \"GO \"";
-				tbl.ShowTotals = false;
-				lastColumnName = sqlColName;  // maximum header characters are 255
-				tbl.HeaderRowRange[lastColumnIndex].Value2 = lastColumnName;
-				try
-				{
-					sqlCol.DataBodyRange.SpecialCells(Excel.XlCellType.xlCellTypeVisible).Rows.Formula = formula;
-					sqlCol.Range.Columns.AutoFit();
-					sqlCol.Range.HorizontalAlignment = Excel.Constants.xlLeft;
-					sqlCol.Range.WrapText = true;
-					sqlCol.DataBodyRange.Copy();
-					AppVariables.FileType = "SQL";
-					AppVariables.ScriptRange = (string)Clipboard.GetData(DataFormats.Text);
-					AppVariables.ScriptRange = AppVariables.ScriptRange.Replace(@"""", String.Empty);
-				}
-				catch (System.Runtime.InteropServices.COMException)
-				{
-					AppVariables.ScriptRange = "There was an issue creating the Excel formula." + Environment.NewLine + Environment.NewLine + "Formula: " + Environment.NewLine + formula;
-				}
-				finally
-				{
-					OpenScriptPane();
-				}
-
-			}
-			catch (System.OutOfMemoryException)
-			{
-				MessageBox.Show("The amount of records is too big", "No action taken.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-			}
-			catch (Exception ex)
-			{
-				ErrorHandler.DisplayMessage(ex);
-			}
-			finally
-			{
-				Cursor.Current = System.Windows.Forms.Cursors.Arrow;
-				if (tbl != null)
-					Marshal.ReleaseComObject(tbl);
-				if (sqlCol != null)
-					Marshal.ReleaseComObject(sqlCol);
-			}
-		}
-		
-		/// <summary> 
-		/// Add a formula at the end of the table to use as a script
-		/// </summary>
-		/// <remarks></remarks>
-		public void AddFormulaTSqlCreateTable()
-		{
-			Excel.ListObject tbl = null;
-			Excel.ListColumn sqlCol = null;
-			try
-			{
-				ErrorHandler.CreateLogRecord();
-				string lastColumnName = Properties.Settings.Default.Sheet_Column_Table_Alias;
-				string sqlColName = string.Empty;
-
-				sqlColName = Properties.Settings.Default.Sheet_Column_Name;
-				tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject;
-				int lastColumnIndex = tbl.Range.Columns.Count;
-				sqlCol = tbl.ListColumns[lastColumnIndex];
-				if (sqlCol.Name == sqlColName)
-				{
-					lastColumnName = sqlCol.Name;
-				}
-				else
-				{
-					sqlCol = tbl.ListColumns.Add();
-					sqlCol.Name = lastColumnName;
-					lastColumnIndex = tbl.Range.Columns.Count;
-				}
-
-				sqlCol.DataBodyRange.NumberFormat = "General";
-				string formula = string.Empty;
-				string qt = string.Empty;
-
-				foreach (Excel.ListColumn col in tbl.ListColumns)
-				{
-					if (col.Name.IndexOfAny(new char[] { '[', ']', '"' }) != -1)
-					{
-						MessageBox.Show("Please remove one of these incorrect characters in a column header" + Environment.NewLine + " [ " + Environment.NewLine + " ] " + Environment.NewLine + "\" " + Environment.NewLine + "Column Name: " + col.Name, "No action taken.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-						return;
-					}
-					if (col.Name == lastColumnName | col.Range.EntireColumn.Hidden)
-					{
-						//DO NOTHING - because the column is hidden or the last column with the sql script
-					}
-					else
-					{
-						if (!string.IsNullOrEmpty(formula))
-						{
-							formula = formula + " & \", \" & ";
-						}
-						qt = ApplyTextQuotes(col);
-						string colRef = GetColumnFormat(col).ToString();
-						colRef = colRef.Replace("'", "''");
-						colRef = colRef.Replace("#", "'#");
-						colRef = "SUBSTITUTE(" + colRef + ", " + "\"" + qt + "\", \"" + qt + qt + "\")";
-						formula += "\"" + qt + "\" & " + colRef + " & \"" + qt + "\"";
-					}
-				}
-				string nullValue = Properties.Settings.Default.Sheet_Column_Script_Null;
-				formula = "SUBSTITUTE(" + formula + ", \"'" + nullValue + "'\", \"" + nullValue + "\")";
-				string tableAlias = Properties.Settings.Default.Sheet_Column_Table_Alias;
-				string insertPrefix = "INSERT INTO " + tableAlias + " (" + ConcatenateColumnNames(tbl.Range) + ") VALUES(";
-				formula = "=\"" + insertPrefix + "\" & " + formula + " & \");\"";
-				tbl.ShowTotals = false;
-				lastColumnName = sqlColName;  // maximum header characters are 255
-				tbl.HeaderRowRange[lastColumnIndex].Value2 = lastColumnName;
-				string createTable = "IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'" + tableAlias + "') AND type in (N'U'))" + Environment.NewLine + "DROP TABLE " + tableAlias + Environment.NewLine + "; " + Environment.NewLine + "CREATE TABLE " + tableAlias + " (" + tableAlias + "_ID [int] PRIMARY KEY IDENTITY(1,1) NOT NULL, " + ConcatenateColumnNames(tbl.Range, "", Environment.NewLine + "[", "] [varchar](max) NULL") + Environment.NewLine + ");" + Environment.NewLine;
-				try
-				{
-					sqlCol.DataBodyRange.SpecialCells(Excel.XlCellType.xlCellTypeVisible).Rows.Formula = formula;
-					sqlCol.Range.Columns.AutoFit();
-					sqlCol.Range.HorizontalAlignment = Excel.Constants.xlLeft;
-					sqlCol.DataBodyRange.Copy();
-					AppVariables.FileType = "SQL";
-					AppVariables.ScriptRange = createTable + (string)Clipboard.GetData(DataFormats.Text);
-					AppVariables.ScriptRange = AppVariables.ScriptRange.Replace(@"""", String.Empty);
-				}
-				catch (System.Runtime.InteropServices.COMException)
-				{
-					AppVariables.ScriptRange = "There was an issue creating the Excel formula." + Environment.NewLine + Environment.NewLine + "Formula: " + Environment.NewLine + formula;
-				}
-				finally
-				{
-					OpenScriptPane();
-				}
-
-			}
-			catch (System.OutOfMemoryException)
-			{
-				MessageBox.Show("The amount of records is too big", "No action taken.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-			}
-			catch (Exception ex)
-			{
-				ErrorHandler.DisplayMessage(ex);
-			}
-			finally
-			{
-				Cursor.Current = System.Windows.Forms.Cursors.Arrow;
-				if (tbl != null)
-					Marshal.ReleaseComObject(tbl);
-				if (sqlCol != null)
-					Marshal.ReleaseComObject(sqlCol);
-			}
-		}
-
-		/// <summary> 
-		/// Add a formula at the end of the table to use as a script
-		/// </summary>
-		/// <remarks></remarks>
-		public void AddFormulaTSqlInsertValues()
-		{
-			Excel.ListObject tbl = null;
-			Excel.ListColumn sqlCol = null;
-			try
-			{
-				ErrorHandler.CreateLogRecord();
-				string lastColumnName = Properties.Settings.Default.Sheet_Column_Table_Alias;
-				string sqlColName = string.Empty;
-
-				sqlColName = Properties.Settings.Default.Sheet_Column_Name;
-				tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject;
-				int lastColumnIndex = tbl.Range.Columns.Count;
-				sqlCol = tbl.ListColumns[lastColumnIndex];
-				if (sqlCol.Name == sqlColName)
-				{
-					lastColumnName = sqlCol.Name;
-				}
-				else
-				{
-					sqlCol = tbl.ListColumns.Add();
-					sqlCol.Name = lastColumnName;
-					lastColumnIndex = tbl.Range.Columns.Count;
-				}
-
-				sqlCol.DataBodyRange.NumberFormat = "General";
-				string formula = string.Empty;
-				string qt = string.Empty;
-
-				foreach (Excel.ListColumn col in tbl.ListColumns)
-				{
-					if (col.Name.IndexOfAny(new char[] { '[', ']', '"' }) != -1)
-					{
-						MessageBox.Show("Please remove one of these incorrect characters in a column header" + Environment.NewLine + " [ " + Environment.NewLine + " ] " + Environment.NewLine + "\" " + Environment.NewLine + "Column Name: " + col.Name, "No action taken.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-						return;
-					}
-					if (col.Name == lastColumnName | col.Range.EntireColumn.Hidden)
-					{
-						//DO NOTHING - because the column is hidden or the last column with the sql script
-					}
-					else
-					{
-						if (!string.IsNullOrEmpty(formula))
-						{
-							formula = formula + " & \", \" & ";
-						}
-						qt = ApplyTextQuotes(col);
-						string colRef = GetColumnFormat(col).ToString();
-						colRef = colRef.Replace("'", "''");
-						colRef = colRef.Replace("#", "'#");
-						colRef = "SUBSTITUTE(" + colRef + ", " + "\"" + qt + "\", \"" + qt + qt + "\")";
-						formula += "\"" + qt + "\" & " + colRef + " & \"" + qt + "\"";
-					}
-				}
-				string nullValue = Properties.Settings.Default.Sheet_Column_Script_Null;
-				formula = "SUBSTITUTE(" + formula + ", \"'" + nullValue + "'\", \"" + nullValue + "\")";
-				string tableAlias = Properties.Settings.Default.Sheet_Column_Table_Alias;
-				string insertPrefix = "INSERT INTO " + tableAlias + " (" + ConcatenateColumnNames(tbl.Range) + ") VALUES(";
-				formula = "=\"" + insertPrefix + "\" & " + formula + " & \");\"";
-				tbl.ShowTotals = false;
-				lastColumnName = sqlColName;  // maximum header characters are 255
-				tbl.HeaderRowRange[lastColumnIndex].Value2 = lastColumnName;
-				try
-				{
-					sqlCol.DataBodyRange.SpecialCells(Excel.XlCellType.xlCellTypeVisible).Rows.Formula = formula;
-					sqlCol.Range.Columns.AutoFit();
-					sqlCol.Range.HorizontalAlignment = Excel.Constants.xlLeft;
-					sqlCol.DataBodyRange.Copy();
-					AppVariables.FileType = "SQL";
-					AppVariables.ScriptRange = (string)Clipboard.GetData(DataFormats.Text);
-					AppVariables.ScriptRange = AppVariables.ScriptRange.Replace(@"""", String.Empty);
-				}
-				catch (System.Runtime.InteropServices.COMException)
-				{
-					AppVariables.ScriptRange = "There was an issue creating the Excel formula." + Environment.NewLine + Environment.NewLine + "Formula: " + Environment.NewLine + formula;
-				}
-				finally
-				{
-					OpenScriptPane();
-				}
-
-			}
-			catch (System.OutOfMemoryException)
-			{
-				MessageBox.Show("The amount of records is too big", "No action taken.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-			}
-			catch (Exception ex)
-			{
-				ErrorHandler.DisplayMessage(ex);
-			}
-			finally
-			{
-				Cursor.Current = System.Windows.Forms.Cursors.Arrow;
-				if (tbl != null)
-					Marshal.ReleaseComObject(tbl);
-				if (sqlCol != null)
-					Marshal.ReleaseComObject(sqlCol);
-			}
-		}
-
-		/// <summary> 
-		/// Add a formula at the end of the table to use as a script
-		/// </summary>
-		/// <remarks></remarks>
-		public void AddFormulaTSqlMergeValues()
-		{
-			Excel.ListObject tbl = null;
-			Excel.ListColumn sqlCol = null;
-			try
-			{
-				ErrorHandler.CreateLogRecord();
-				Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
-				string lastColumnName = Properties.Settings.Default.Sheet_Column_Table_Alias;
-				string tableAlias = Properties.Settings.Default.Sheet_Column_Table_Alias;
-				string tableAliasTemp = tableAlias + "_temp";
-				string sqlColName = string.Empty;
-
-				sqlColName = "SELECT " + tableAliasTemp + ".*" + " FROM (VALUES";
-
-				tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject;
-				int lastColumnIndex = tbl.Range.Columns.Count;
-				sqlCol = tbl.ListColumns[lastColumnIndex];
-
-				if (sqlCol.Name == sqlColName)
-				{
-					lastColumnName = sqlCol.Name;
-				}
-				else
-				{
-					sqlCol = tbl.ListColumns.Add();
-					sqlCol.Name = lastColumnName;
-					lastColumnIndex = tbl.Range.Columns.Count;
-				}
-
-				// Columns formatted as text will not work as formulas and the added column will copy the formatting from the previous column so ensure that the added column never has Text format...
-				sqlCol.DataBodyRange.NumberFormat = "General";
-				string formula = string.Empty;
-				string qt = string.Empty;
-
-				foreach (Excel.ListColumn col in tbl.ListColumns)
-				{
-					if (col.Name.IndexOfAny(new char[] { '[', ']', '"' }) != -1)
-					{
-						MessageBox.Show("Please remove one of these incorrect characters in a column header" + Environment.NewLine + " [ " + Environment.NewLine + " ] " + Environment.NewLine + "\" " + Environment.NewLine + "Column Name: " + col.Name, "No action taken.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-						return;
-					}
-					if (col.Name == lastColumnName | col.Range.EntireColumn.Hidden)
-					//if (col.Name != lastColumnName | col.Range.EntireColumn.Hidden == false)
-					{
-						//DO NOTHING - because the column is hidden or the last column with the sql script
-					}
-					else
-					{
-						if (!string.IsNullOrEmpty(formula))
-						{
-							formula = formula + " & \", \" & ";
-						}
-						qt = ApplyTextQuotes(col);
-						string colRef = GetColumnFormat(col).ToString();
-						colRef = colRef.Replace("'", "''");
-						colRef = colRef.Replace("#", "'#");
-						colRef = "SUBSTITUTE(" + colRef + ", " + "\"" + qt + "\", \"" + qt + qt + "\")";
-						formula += "\"" + qt + "\" & " + colRef + " & \"" + qt + "\"";
-					}
-				}
-				string nullValue = Properties.Settings.Default.Sheet_Column_Script_Null;
-				formula = "SUBSTITUTE(" + formula + ", \"'" + nullValue + "'\", \"" + nullValue + "\")";
-				int firstRowNbr = tbl.Range[1, 1].Row + 1; // must use the offset for the first row number
-				formula = "=IF(" + (firstRowNbr).ToString() + "-ROW() = 0, \" \", \",\") & " + "\" ( \" & " + formula + " & \")\"";
-				lastColumnName = sqlColName;  // maximum header characters are 255
-				tbl.HeaderRowRange[lastColumnIndex].Value2 = lastColumnName;
-				tbl.ShowTotals = true;
-				string totalsColumnValue = ") " + tableAliasTemp + " (" + ConcatenateColumnNames(tbl.Range, "", "[", "]") + ") ";
-				tbl.TotalsRowRange[lastColumnIndex].Value2 = totalsColumnValue; // totals row has a maximum limit of 32,767 characters
-				try
-				{
-					sqlCol.DataBodyRange.SpecialCells(Excel.XlCellType.xlCellTypeVisible).Rows.Formula = formula;
-					sqlCol.Range.Columns.AutoFit();
-					sqlCol.Range.HorizontalAlignment = Excel.Constants.xlLeft;
-					sqlCol.Range.Copy();
-					AppVariables.FileType = "SQL";
-					AppVariables.ScriptRange = (string)Clipboard.GetData(DataFormats.Text);
-					AppVariables.ScriptRange = AppVariables.ScriptRange.Replace(@"""", String.Empty);
-					AppVariables.ScriptRange = "SET XACT_ABORT ON" + Environment.NewLine + "BEGIN TRANSACTION;" + Environment.NewLine + Environment.NewLine + ";WITH " + Environment.NewLine + tableAliasTemp + Environment.NewLine + "AS " + Environment.NewLine + "(" + Environment.NewLine + AppVariables.ScriptRange + ") " + Environment.NewLine + "MERGE " + tableAlias + " AS T" + Environment.NewLine + "USING " + tableAliasTemp + " AS S" + Environment.NewLine + "ON " + ConcatenateColumnNamesJoin(tbl.Range, "T", "S") + "WHEN NOT MATCHED BY TARGET" + Environment.NewLine + "THEN INSERT" + Environment.NewLine + "(" + Environment.NewLine + ConcatenateColumnNames(tbl.Range, "", "[", "]") + Environment.NewLine + ")" + Environment.NewLine + "VALUES" + Environment.NewLine + "(" + Environment.NewLine + ConcatenateColumnNames(tbl.Range, "S", "[", "]") + Environment.NewLine + ")" + Environment.NewLine + "WHEN MATCHED" + Environment.NewLine + "THEN UPDATE SET" + Environment.NewLine + ConcatenateColumnNamesJoin(tbl.Range, "T", "S") + "--WHEN NOT MATCHED BY SOURCE AND 'ADD WHERE CLAUSE HERE'" + Environment.NewLine + "--THEN DELETE" + Environment.NewLine + "OUTPUT $action, inserted.*, deleted.*;" + Environment.NewLine + Environment.NewLine + "ROLLBACK TRANSACTION;" + Environment.NewLine + "--COMMIT TRANSACTION;" + Environment.NewLine + "GO";
-				}
-				catch (System.Runtime.InteropServices.COMException)
-				{
-					AppVariables.ScriptRange = "There was an issue creating the Excel formula." + Environment.NewLine + Environment.NewLine + "Formula: " + Environment.NewLine + formula;
-				}
-				finally
-				{
-					OpenScriptPane();
-				}
-			}
-			catch (System.OutOfMemoryException)
-			{
-				MessageBox.Show("The amount of records is too big", "No action taken.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-			}
-			catch (Exception ex)
-			{
-				ErrorHandler.DisplayMessage(ex);
-			}
-			finally
-			{
-				Cursor.Current = System.Windows.Forms.Cursors.Arrow;
-				if (tbl != null)
-					Marshal.ReleaseComObject(tbl);
-				if (sqlCol != null)
-					Marshal.ReleaseComObject(sqlCol);
-			}
-		}
-
-		/// <summary> 
-		/// Add a formula at the end of the table to use as a script
-		/// </summary>
-		/// <remarks></remarks>
-		public void AddFormulaTSqlSelectUnion()
-		{
-			Excel.ListObject tbl = null;
-			Excel.ListColumn sqlCol = null;
-			try
-			{
-				ErrorHandler.CreateLogRecord();
-				string lastColumnName = Properties.Settings.Default.Sheet_Column_Table_Alias;
-				string sqlColName = string.Empty;
-				sqlColName = Properties.Settings.Default.Sheet_Column_Name;
-
-				tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject;
-				int lastColumnIndex = tbl.Range.Columns.Count;
-				sqlCol = tbl.ListColumns[lastColumnIndex];
-				if (sqlCol.Name == sqlColName)
-				{
-					lastColumnName = sqlCol.Name;
-				}
-				else
-				{
-					sqlCol = tbl.ListColumns.Add();
-					sqlCol.Name = lastColumnName;
-					lastColumnIndex = tbl.Range.Columns.Count;
-				}
-
-				// Columns formatted as text will not work as formulas and the added column will copy the formatting from the previous column so ensure that the added column never has Text format...
-				sqlCol.DataBodyRange.NumberFormat = "General";
-				string formula = string.Empty;
-				string qt = string.Empty;
-
-				foreach (Excel.ListColumn col in tbl.ListColumns)
-				{
-					if (col.Name.IndexOfAny(new char[] { '[', ']', '"' }) != -1)
-					{
-						MessageBox.Show("Please remove one of these incorrect characters in a column header" + Environment.NewLine + " [ " + Environment.NewLine + " ] " + Environment.NewLine + "\" " + Environment.NewLine + "Column Name: " + col.Name, "No action taken.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-						return;
-					}
-					if (col.Name == lastColumnName | col.Range.EntireColumn.Hidden)
-					//if (col.Name != lastColumnName | col.Range.EntireColumn.Hidden == false)
-					{
-						//DO NOTHING - because the column is hidden or the last column with the sql script
-					}
-					else
-					{
-						if (!string.IsNullOrEmpty(formula))
-						{
-							formula = formula + " & \", \" & ";
-						}
-						qt = ApplyTextQuotes(col);
-						string colRef = GetColumnFormat(col).ToString();
-						colRef = colRef.Replace("'", "''");
-						colRef = colRef.Replace("#", "'#");
-						colRef = "SUBSTITUTE(" + colRef + ", " + "\"" + qt + "\", \"" + qt + qt + "\")";
-						string valueTsuffix = "& \" AS [" + col.Name + "] \"";
-						formula += "\"" + qt + "\" & " + colRef + " & \"" + qt + "\"" + valueTsuffix;
-					}
-				}
-				string nullValue = Properties.Settings.Default.Sheet_Column_Script_Null;
-				formula = "SUBSTITUTE(" + formula + ", \"'" + nullValue + "'\", \"" + nullValue + "\")";
-				int firstRowNbr = tbl.Range[1, 1].Row + 1; // must use the offset for the first row number
-				formula = "=IF(" + (firstRowNbr).ToString() + "-ROW() = 0, \"\", \"UNION \") & " + "\"SELECT \" & " + formula + " & \" \"";
-				tbl.ShowTotals = false;
-				lastColumnName = sqlColName;  // maximum header characters are 255
-				tbl.HeaderRowRange[lastColumnIndex].Value2 = lastColumnName;
-				try
-				{
-					sqlCol.DataBodyRange.SpecialCells(Excel.XlCellType.xlCellTypeVisible).Rows.Formula = formula;
-					sqlCol.Range.Columns.AutoFit();
-					sqlCol.Range.HorizontalAlignment = Excel.Constants.xlLeft;
-					sqlCol.DataBodyRange.Copy();
-					AppVariables.FileType = "SQL";
-					AppVariables.ScriptRange = (string)Clipboard.GetData(DataFormats.Text);
-					AppVariables.ScriptRange = AppVariables.ScriptRange.Replace(@"""", String.Empty);
-				}
-				catch (System.Runtime.InteropServices.COMException)
-				{
-					AppVariables.ScriptRange = "There was an issue creating the Excel formula." + Environment.NewLine + Environment.NewLine + "Formula: " + Environment.NewLine + formula;
-				}
-				finally
-				{
-					OpenScriptPane();
-				}
-			}
-			catch (System.OutOfMemoryException)
-			{
-				MessageBox.Show("The amount of records is too big", "No action taken.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-			}
-			catch (Exception ex)
-			{
-				ErrorHandler.DisplayMessage(ex);
-			}
-			finally
-			{
-				Cursor.Current = System.Windows.Forms.Cursors.Arrow;
-				if (tbl != null)
-					Marshal.ReleaseComObject(tbl);
-				if (sqlCol != null)
-					Marshal.ReleaseComObject(sqlCol);
-			}
-		}
-
-		/// <summary> 
-		/// Add a formula at the end of the table to use as a script
-		/// </summary>
-		/// <remarks></remarks>
-		public void AddFormulaTSqlSelectValues()
-		{
-			Excel.ListObject tbl = null;
-			Excel.ListColumn sqlCol = null;
-			try
-			{
-				ErrorHandler.CreateLogRecord();
-				Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
-				string lastColumnName = Properties.Settings.Default.Sheet_Column_Table_Alias;
-				string tableAlias = Properties.Settings.Default.Sheet_Column_Table_Alias;
-				string sqlColName = string.Empty;
-
-				sqlColName = "SELECT " + tableAlias + ".*" + " FROM (VALUES";
-
-				tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject;
-				int lastColumnIndex = tbl.Range.Columns.Count;
-				sqlCol = tbl.ListColumns[lastColumnIndex];
-
-				if (sqlCol.Name == sqlColName)
-				{
-					lastColumnName = sqlCol.Name;
-				}
-				else
-				{
-					sqlCol = tbl.ListColumns.Add();
-					sqlCol.Name = lastColumnName;
-					lastColumnIndex = tbl.Range.Columns.Count;
-				}
-
-				// Columns formatted as text will not work as formulas and the added column will copy the formatting from the previous column so ensure that the added column never has Text format...
-				sqlCol.DataBodyRange.NumberFormat = "General";
-				string formula = string.Empty;
-				string qt = string.Empty;
-
-				foreach (Excel.ListColumn col in tbl.ListColumns)
-				{
-					if (col.Name.IndexOfAny(new char[] { '[', ']', '"' }) != -1)
-					{
-						MessageBox.Show("Please remove one of these incorrect characters in a column header" + Environment.NewLine + " [ " + Environment.NewLine + " ] " + Environment.NewLine + "\" " + Environment.NewLine + "Column Name: " + col.Name, "No action taken.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-						return;
-					}
-					if (col.Name == lastColumnName | col.Range.EntireColumn.Hidden)
-					//if (col.Name != lastColumnName | col.Range.EntireColumn.Hidden == false)
-					{
-						//DO NOTHING - because the column is hidden or the last column with the sql script
-					}
-					else
-					{
-						if (!string.IsNullOrEmpty(formula))
-						{
-							formula = formula + " & \", \" & ";
-						}
-						qt = ApplyTextQuotes(col);
-						string colRef = GetColumnFormat(col).ToString();
-						colRef = colRef.Replace("'", "''");
-						colRef = colRef.Replace("#", "'#");
-						colRef = "SUBSTITUTE(" + colRef + ", " + "\"" + qt + "\", \"" + qt + qt + "\")";
-						formula += "\"" + qt + "\" & " + colRef + " & \"" + qt + "\"";
-					}
-				}
-				string nullValue = Properties.Settings.Default.Sheet_Column_Script_Null;
-				formula = "SUBSTITUTE(" + formula + ", \"'" + nullValue + "'\", \"" + nullValue + "\")";
-				int firstRowNbr = tbl.Range[1, 1].Row + 1; // must use the offset for the first row number
-				formula = "=IF(" + (firstRowNbr).ToString() + "-ROW() = 0, \" \", \",\") & " + "\" ( \" & " + formula + " & \")\"";
-				lastColumnName = sqlColName;  // maximum header characters are 255
-				tbl.HeaderRowRange[lastColumnIndex].Value2 = lastColumnName;
-				tbl.ShowTotals = true;
-				string totalsColumnValue = ") " + tableAlias + " (" + ConcatenateColumnNames(tbl.Range, "", "[", "]") + ") ";
-				tbl.TotalsRowRange[lastColumnIndex].Value2 = totalsColumnValue; // totals row has a maximum limit of 32,767 characters
-				try
-				{
-					sqlCol.DataBodyRange.SpecialCells(Excel.XlCellType.xlCellTypeVisible).Rows.Formula = formula;
-					sqlCol.Range.Columns.AutoFit();
-					sqlCol.Range.HorizontalAlignment = Excel.Constants.xlLeft;
-					sqlCol.Range.Copy();
-					AppVariables.FileType = "SQL";
-					AppVariables.ScriptRange = (string)Clipboard.GetData(DataFormats.Text);
-					AppVariables.ScriptRange = AppVariables.ScriptRange.Replace(@"""", String.Empty);
-				}
-				catch (System.Runtime.InteropServices.COMException)
-				{
-					AppVariables.ScriptRange = "There was an issue creating the Excel formula." + Environment.NewLine + Environment.NewLine + "Formula: " + Environment.NewLine + formula;
-				}
-				finally
-				{
-					OpenScriptPane();
-				}
-			}
-			catch (System.OutOfMemoryException)
-			{
-				MessageBox.Show("The amount of records is too big", "No action taken.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-			}
-			catch (Exception ex)
-			{
-				ErrorHandler.DisplayMessage(ex);
-			}
-			finally
-			{
-				Cursor.Current = System.Windows.Forms.Cursors.Arrow;
-				if (tbl != null)
-					Marshal.ReleaseComObject(tbl);
-				if (sqlCol != null)
-					Marshal.ReleaseComObject(sqlCol);
-			}
-		}
-
-		/// <summary> 
-		/// Add a formula at the end of the table to use as a script
-		/// </summary>
-		/// <remarks></remarks>
-		public void AddFormulaTSqlUpdateValues()
-		{
-			Excel.ListObject tbl = null;
-			Excel.ListColumn sqlCol = null;
-			try
-			{
-				ErrorHandler.CreateLogRecord();
-				string lastColumnName = Properties.Settings.Default.Sheet_Column_Table_Alias;
-				string tableAlias = Properties.Settings.Default.Sheet_Column_Table_Alias;
-				string sqlColName = string.Empty;
-				int columnCount = 0;
-
-				sqlColName = Properties.Settings.Default.Sheet_Column_Name;
-				tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject;
-				int lastColumnIndex = tbl.Range.Columns.Count;
-				sqlCol = tbl.ListColumns[lastColumnIndex];
-				if (sqlCol.Name == sqlColName)
-				{
-					lastColumnName = sqlCol.Name;
-				}
-				else
-				{
-					sqlCol = tbl.ListColumns.Add();
-					sqlCol.Name = lastColumnName;
-					lastColumnIndex = tbl.Range.Columns.Count;
-				}
-
-				sqlCol.DataBodyRange.NumberFormat = "General";
-				string formula = string.Empty;
-				string qt = string.Empty;
-				bool afterWhere = false;
-
-				foreach (Excel.ListColumn col in tbl.ListColumns)
-				{
-					if (col.Name.IndexOfAny(new char[] { '[', ']', '"' }) != -1)
-					{
-						MessageBox.Show("Please remove one of these incorrect characters in a column header" + Environment.NewLine + " [ " + Environment.NewLine + " ] " + Environment.NewLine + "\" " + Environment.NewLine + "Column Name: " + col.Name, "No action taken.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-						return;
-					}
-					if (col.Name == lastColumnName | col.Range.EntireColumn.Hidden)
-					{
-						//DO NOTHING - because the column is hidden or the last column with the sql script
-					}
-					else
-					{
-						if (!string.IsNullOrEmpty(formula))
-						{
-							formula = formula + " & \" \" & ";
-						}
-						if (columnCount == 0)
-						{
-							AppVariables.FirstColumnName = col.Name;
-						}
-						columnCount += 1;
-						qt = ApplyTextQuotes(col);
-						string colRef = GetColumnFormat(col).ToString();
-						colRef = colRef.Replace("'", "''");
-						colRef = colRef.Replace("#", "'#");
-						colRef = "SUBSTITUTE(" + colRef + ", " + "\"" + qt + "\", \"" + qt + qt + "\")";
-
-						string valuePrefix = string.Empty;
-						string columnName = col.Name;
-						string firstPart = columnName.Substring(0, columnName.LastIndexOf(" ") + 1);
-						if (String.Compare(firstPart.Trim(), "WHERE", true) == 0)
-						{
-							string firstWhereColumn = col.Name;
-							firstWhereColumn = System.Text.RegularExpressions.Regex.Replace(firstWhereColumn, "where ", "", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
-							firstWhereColumn = firstWhereColumn.Trim();
-							valuePrefix = "\"WHERE [" + firstWhereColumn + "] = \" & ";
-							afterWhere = true;
-						}
-						else
-						{
-							if (afterWhere == true)
-							{
-								valuePrefix = "\"AND [" + col.Name + "] = \" & ";
-							}
-							else
-							{
-								string useComma = string.Empty;
-								if (columnCount != 1)
-								{
-									useComma = ",";
-								}
-								valuePrefix = "\"" + useComma + " [" + col.Name + "] = \" & ";
-							}
-						}
-						if (GetSqlDataType(col) == Properties.Settings.Default.Script_Type_Date)
-						{
-							formula += valuePrefix + "\"DATE(" + qt + "\" & " + colRef + " & \"" + qt + ", " + qt + Properties.Settings.Default.Sheet_Column_Date_Format_Replace + qt + ")\"";
-						}
-						else
-						{
-							formula += valuePrefix + "\"" + qt + "\" & " + colRef + " & \"" + qt + "\"";
-						}
-					}
-				}
-
-				string whereCheck = string.Empty;
-				if (afterWhere == false)
-				{
-					whereCheck = " & \" WHERE \" ";
-				}
-				string nullValue = Properties.Settings.Default.Sheet_Column_Script_Null;
-				formula = "SUBSTITUTE(" + formula + ", \"'" + nullValue + "'\", \"" + nullValue + "\")";
-				formula = "=\"UPDATE " + tableAlias + " SET\" & " + formula + whereCheck + " & CHAR(10) & \"GO \"";
-				tbl.ShowTotals = false;
-				lastColumnName = sqlColName;  // maximum header characters are 255
-				tbl.HeaderRowRange[lastColumnIndex].Value2 = lastColumnName;
-				try
-				{
-					sqlCol.DataBodyRange.SpecialCells(Excel.XlCellType.xlCellTypeVisible).Rows.Formula = formula;
-					sqlCol.Range.Columns.AutoFit();
-					sqlCol.Range.HorizontalAlignment = Excel.Constants.xlLeft;
-					sqlCol.Range.WrapText = true;
-					sqlCol.DataBodyRange.Copy();
-					AppVariables.FileType = "SQL";
-					AppVariables.ScriptRange = (string)Clipboard.GetData(DataFormats.Text);
-					AppVariables.ScriptRange = AppVariables.ScriptRange.Replace(@"""", String.Empty);
-				}
-				catch (System.Runtime.InteropServices.COMException)
-				{
-					AppVariables.ScriptRange = "There was an issue creating the Excel formula." + Environment.NewLine + Environment.NewLine + "Formula: " + Environment.NewLine + formula;
-				}
-				finally
-				{
-					OpenScriptPane();
-				}
-
-			}
-			catch (System.OutOfMemoryException)
-			{
-				MessageBox.Show("The amount of records is too big", "No action taken.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-			}
-			catch (Exception ex)
-			{
-				ErrorHandler.DisplayMessage(ex);
-			}
-			finally
-			{
-				Cursor.Current = System.Windows.Forms.Cursors.Arrow;
-				if (tbl != null)
-					Marshal.ReleaseComObject(tbl);
-				if (sqlCol != null)
-					Marshal.ReleaseComObject(sqlCol);
-			}
-		}
-
-		/// <summary> 
-		/// Add a formula at the end of the table to use as a script
-		/// </summary>
-		/// <remarks></remarks>
-		public void AddFormulaXmlValues()
-		{
-			Excel.ListObject tbl = null;
-			Excel.ListColumn sqlCol = null;
-			try
-			{
-				ErrorHandler.CreateLogRecord();
-				string lastColumnName = Properties.Settings.Default.Sheet_Column_Table_Alias;
-				string tableAlias = Properties.Settings.Default.Sheet_Column_Table_Alias;
-				string sqlColName = string.Empty;
-				int columnCount = 0;
-
-				sqlColName = Properties.Settings.Default.Sheet_Column_Name;
-				tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject;
-				int lastColumnIndex = tbl.Range.Columns.Count;
-				sqlCol = tbl.ListColumns[lastColumnIndex];
-				if (sqlCol.Name == sqlColName)
-				{
-					lastColumnName = sqlCol.Name;
-				}
-				else
-				{
-					sqlCol = tbl.ListColumns.Add();
-					sqlCol.Name = lastColumnName;
-					lastColumnIndex = tbl.Range.Columns.Count;
-				}
-
-				sqlCol.DataBodyRange.NumberFormat = "General";
-				string formula = string.Empty;
-				string qt = string.Empty;
-
-				foreach (Excel.ListColumn col in tbl.ListColumns)
-				{
-					if (col.Name.IndexOfAny(new char[] { '[', ']', '"' }) != -1)
-					{
-						MessageBox.Show("Please remove one of these incorrect characters in a column header" + Environment.NewLine + " [ " + Environment.NewLine + " ] " + Environment.NewLine + "\" " + Environment.NewLine + "Column Name: " + col.Name, "No action taken.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-						return;
-					}
-					if (col.Name == lastColumnName | col.Range.EntireColumn.Hidden)
-					{
-						//DO NOTHING - because the column is hidden or the last column with the sql script
-					}
-					else
-					{
-						if (!string.IsNullOrEmpty(formula))
-						{
-							formula = formula + " & \" \" & ";
-						}
-						if (columnCount == 0)
-						{
-							AppVariables.FirstColumnName = col.Name;
-						}
-						columnCount += 1;
-						qt = ApplyTextQuotes(col);
-						string colRef = GetColumnFormat(col).ToString();
-						colRef = colRef.Replace("'", "''");
-						colRef = colRef.Replace("#", "'#");
-						colRef = "SUBSTITUTE(" + colRef + ", " + "\"" + qt + "\", \"" + qt + qt + "\")";
-
-						string valuePrefix = string.Empty;
-						string valueSuffix = string.Empty;
-						string columnName = col.Name.ToLower();
-						string firstPart = columnName.Substring(0, columnName.LastIndexOf(" ") + 1);
-
-						valuePrefix = " CHAR(10) & \"<" + columnName + ">\" & ";
-						valueSuffix = " & \"</" + columnName + ">\" ";
-						formula += valuePrefix + "\"" + qt + "\" & " + colRef + " & \"" + qt + "\"" + valueSuffix;
-					}
-				}
-
-				string nullValue = Properties.Settings.Default.Sheet_Column_Script_Null;
-				formula = "SUBSTITUTE(" + formula + ", \"'" + nullValue + "'\", \"" + nullValue + "\")";
-				formula = "=\"<row> \" & " + formula + " & CHAR(10) & \"</row> \"";
-				tbl.ShowTotals = false;
-				lastColumnName = sqlColName;  // maximum header characters are 255
-				tbl.HeaderRowRange[lastColumnIndex].Value2 = lastColumnName;
-				try
-				{
-					sqlCol.DataBodyRange.SpecialCells(Excel.XlCellType.xlCellTypeVisible).Rows.Formula = formula;
-					sqlCol.Range.Columns.AutoFit();
-					sqlCol.Range.HorizontalAlignment = Excel.Constants.xlLeft;
-					sqlCol.Range.WrapText = true;
-					sqlCol.DataBodyRange.Copy();
-					AppVariables.FileType = "XML";
-					AppVariables.ScriptRange = (string)Clipboard.GetData(DataFormats.Text);
-					AppVariables.ScriptRange = AppVariables.ScriptRange.Replace(@"""", String.Empty);
-				}
-				catch (System.Runtime.InteropServices.COMException)
-				{
-					AppVariables.ScriptRange = "There was an issue creating the Excel formula." + Environment.NewLine + Environment.NewLine + "Formula: " + Environment.NewLine + formula;
-				}
-				finally
-				{
-					OpenScriptPane();
-				}
-
-			}
-			catch (System.OutOfMemoryException)
-			{
-				MessageBox.Show("The amount of records is too big", "No action taken.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-			}
-			catch (Exception ex)
-			{
-				ErrorHandler.DisplayMessage(ex);
-			}
-			finally
-			{
-				Cursor.Current = System.Windows.Forms.Cursors.Arrow;
-				if (tbl != null)
-					Marshal.ReleaseComObject(tbl);
-				if (sqlCol != null)
-					Marshal.ReleaseComObject(sqlCol);
-			}
-		}
 
 		/// <summary> 
 		/// Some columns in SQL will need quoting and others will not
@@ -3555,7 +1080,7 @@ namespace ScriptHelp.Scripts
 		/// <param name="col">Represents the list column </param>
 		/// <returns>A method that returns a string of a quote based on application settings for this value. </returns> 
 		/// <remarks></remarks>
-		private string ApplyTextQuotes(Excel.ListColumn col)
+		public static string ApplyTextQuotes(Excel.ListColumn col)
 		{
 			try
 			{
@@ -3583,7 +1108,7 @@ namespace ScriptHelp.Scripts
 		/// <param name="prefixChar">The prefix character for the column name e.g. "["</param>
 		/// <param name="suffixChar">The suffix character for the column name e.g. "]"</param>
 		/// <returns>A method that returns a string of the column names</returns>
-		public string ConcatenateColumnNames(Excel.Range rng, string tableAliasName = "", string prefixChar = "", string suffixChar = "")
+		public static string ConcatenateColumnNames(Excel.Range rng, string tableAliasName = "", string prefixChar = "", string suffixChar = "")
 		{
 			try
 			{
@@ -3623,7 +1148,7 @@ namespace ScriptHelp.Scripts
 		/// <param name="tableAliasNameTarget">Table alias used to prefix column names</param>
 		/// <param name="tableAliasNameSource">Table alias used to prefix column names</param>
 		/// <returns>A method that returns a string of the column names</returns>
-		public string ConcatenateColumnNamesJoin(Excel.Range rng, string tableAliasNameTarget, string tableAliasNameSource)
+		public static string ConcatenateColumnNamesJoin(Excel.Range rng, string tableAliasNameTarget, string tableAliasNameSource)
 		{
 			try
 			{
@@ -3653,7 +1178,7 @@ namespace ScriptHelp.Scripts
 		/// TODO: find a way to do this without looping.
 		/// NOTE: SpecialCells is unreliable when called from VBA UDFs (Odd ??!)               
 		///</remarks> 
-		private Excel.Range FirstNotNullCellInColumn(Excel.Range rng)
+		public static Excel.Range FirstNotNullCellInColumn(Excel.Range rng)
 		{
 			try
 			{
@@ -3690,7 +1215,7 @@ namespace ScriptHelp.Scripts
 		/// <param name="fmt">Represents the formatting string </param>
 		/// <returns>A method that returns a string of a formula </returns> 
 		/// <remarks></remarks>
-		private string FormatCellText(Excel.ListColumn col, string fmt)
+		public static string FormatCellText(Excel.ListColumn col, string fmt)
 		{
 			string functionReturnValue = null;
 			try
@@ -3715,7 +1240,7 @@ namespace ScriptHelp.Scripts
 		/// <param name="col">Represents the list column </param>
 		/// <returns>A method that returns a string </returns> 
 		/// <remarks></remarks>
-		private string GetColumnFormat(Excel.ListColumn col)
+		public static string GetColumnFormat(Excel.ListColumn col)
 		{
 			try
 			{
@@ -3754,7 +1279,7 @@ namespace ScriptHelp.Scripts
 		/// <param name="col">Represents the list column </param>
 		/// <returns>A method that returns an integer of the column data type </returns> 
 		/// <remarks></remarks>
-		private int GetSqlDataType(Excel.ListColumn col)
+		public static int GetSqlDataType(Excel.ListColumn col)
 		{
 			try
 			{
@@ -3800,7 +1325,7 @@ namespace ScriptHelp.Scripts
 				return Properties.Settings.Default.Script_Type_Text;
 			}
 		}
-
+		
 		/// <summary> 
 		/// Return the count of items in a delimited list
 		/// </summary>
@@ -3820,43 +1345,6 @@ namespace ScriptHelp.Scripts
 				ErrorHandler.DisplayMessage(ex);
 				return 0;
 			}
-		}
-
-		/// <summary> 
-		/// Update the source of the combobox to a delimited string
-		/// </summary>
-		/// <param name="itemIndex">Represents the index of the list value </param>
-		/// <returns>the label value for the combobox index</returns>
-		public string UpdateDateFormatComboBoxSource(int itemIndex)
-		{
-			try
-			{
-				return Data.DateFormatTable.Rows[itemIndex]["FormatString"].ToString();
-			}
-			catch (Exception ex)
-			{
-				ErrorHandler.DisplayMessage(ex);
-				return string.Empty;
-			}
-		}
-
-		/// <summary> 
-		/// Update the source of the combobox to a delimited string
-		/// </summary>
-		/// <param name="itemIndex">Represents the index of the list value </param>
-		/// <returns>the label value for the combobox index</returns>
-		public string UpdateTableAliasComboBoxSource(int itemIndex)
-		{
-			try
-			{
-				return Data.TableAliasTable.Rows[itemIndex]["TableName"].ToString();
-			}
-			catch (Exception ex)
-			{
-				ErrorHandler.DisplayMessage(ex);
-				return string.Empty;
-			}
-
 		}
 
 		/// <summary>
@@ -3917,6 +1405,43 @@ namespace ScriptHelp.Scripts
 			{
 				ErrorHandler.DisplayMessage(ex);
 			}
+		}
+
+		/// <summary> 
+		/// Update the source of the combobox to a delimited string
+		/// </summary>
+		/// <param name="itemIndex">Represents the index of the list value </param>
+		/// <returns>the label value for the combobox index</returns>
+		public string UpdateDateFormatComboBoxSource(int itemIndex)
+		{
+			try
+			{
+				return Data.DateFormatTable.Rows[itemIndex]["FormatString"].ToString();
+			}
+			catch (Exception ex)
+			{
+				ErrorHandler.DisplayMessage(ex);
+				return string.Empty;
+			}
+		}
+
+		/// <summary> 
+		/// Update the source of the combobox to a delimited string
+		/// </summary>
+		/// <param name="itemIndex">Represents the index of the list value </param>
+		/// <returns>the label value for the combobox index</returns>
+		public string UpdateTableAliasComboBoxSource(int itemIndex)
+		{
+			try
+			{
+				return Data.TableAliasTable.Rows[itemIndex]["TableName"].ToString();
+			}
+			catch (Exception ex)
+			{
+				ErrorHandler.DisplayMessage(ex);
+				return string.Empty;
+			}
+
 		}
 
 		#endregion
