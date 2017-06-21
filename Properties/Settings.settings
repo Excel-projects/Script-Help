@@ -69,7 +69,7 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="Sheet_Column_Name" Type="System.String" Scope="User">
-      <Value Profile="(Default)">QUERY</Value>
+      <Value Profile="(Default)">SCRIPT</Value>
     </Setting>
     <Setting Name="Visible_btnSeparateValues" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>

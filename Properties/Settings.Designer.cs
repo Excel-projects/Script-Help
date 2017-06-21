@@ -286,7 +286,7 @@ namespace ScriptHelp.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("QUERY")]
+        [global::System.Configuration.DefaultSettingValueAttribute("SCRIPT")]
         public string Sheet_Column_Name {
             get {
                 return ((string)(this["Sheet_Column_Name"]));

@@ -268,6 +268,7 @@ namespace ScriptHelp.Scripts
 				string whereCheck = string.Empty;
 				if (afterWhere == false)
 				{
+					MessageBox.Show("This update statement must have a WHERE clause.", "No action taken.", MessageBoxButtons.OK, MessageBoxIcon.Information);
 					whereCheck = " & \" WHERE \" ";
 				}
 				string formulaUnlock = "\"UPDATE " + tableAlias + "(all) objects SET r_immutable_flag = 0 \" & " + whereClause + " & CHAR(10) & \"GO \"  & CHAR(10) & ";
@@ -534,6 +535,7 @@ namespace ScriptHelp.Scripts
 				string whereCheck = string.Empty;
 				if (afterWhere == false)
 				{
+					MessageBox.Show("This update statement must have a WHERE clause.", "No action taken.", MessageBoxButtons.OK, MessageBoxIcon.Information);
 					whereCheck = " & \" WHERE \" ";
 				}
 				formula = "=\"UPDATE " + tableAlias + " objects \" & " + formula + whereCheck + " & CHAR(10) & \"GO \"";
@@ -832,6 +834,7 @@ namespace ScriptHelp.Scripts
 				string whereCheck = string.Empty;
 				if (afterWhere == false)
 				{
+					MessageBox.Show("This update statement must have a WHERE clause.", "No action taken.", MessageBoxButtons.OK, MessageBoxIcon.Information);
 					whereCheck = " & \" WHERE \" ";
 				}
 				string formulaUnlock = "\"UPDATE " + tableAlias + "(all) objects SET r_immutable_flag = 0 \" & " + whereClause + " & CHAR(10) & \"GO \"  & CHAR(10) & ";
@@ -890,6 +893,7 @@ namespace ScriptHelp.Scripts
 				string lastColumnName = Properties.Settings.Default.Sheet_Column_Table_Alias;
 				string tableAlias = Properties.Settings.Default.Sheet_Column_Table_Alias;
 
+				string sqlColName = Properties.Settings.Default.Sheet_Column_Name;
 				tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject;
 				sqlCol = tbl.ListColumns.Add();
 				sqlCol.Name = lastColumnName;
@@ -919,7 +923,6 @@ namespace ScriptHelp.Scripts
 					}
 				}
 				formula = "=\"" + "|" + "\" & " + formula + " & \"|\"";
-				string sqlColName = Ribbon.ConcatenateColumnNames(tbl.Range, string.Empty, "|") + "|";
 				lastColumnName = sqlColName;  // maximum header characters are 255
 				tbl.HeaderRowRange[lastColumnIndex].Value2 = lastColumnName;
 				try
@@ -927,9 +930,12 @@ namespace ScriptHelp.Scripts
 					sqlCol.DataBodyRange.SpecialCells(Excel.XlCellType.xlCellTypeVisible).Rows.Formula = formula;
 					sqlCol.Range.Columns.AutoFit();
 					sqlCol.Range.HorizontalAlignment = Excel.Constants.xlLeft;
-					sqlCol.Range.Copy();
+					sqlCol.DataBodyRange.Copy();
 					Ribbon.AppVariables.FileType = "TXT";
-					Ribbon.AppVariables.ScriptRange = (string)Clipboard.GetData(DataFormats.Text);
+					string headerColumn = Ribbon.ConcatenateColumnNames(tbl.Range, string.Empty, "|") + "|" + Environment.NewLine;
+					string headerSeparator = "|:" + new String('-', 10);
+					string headerLine = new System.Text.StringBuilder(headerSeparator.Length * lastColumnIndex).Insert(0, headerSeparator, lastColumnIndex).ToString().Substring(0, ((headerSeparator.Length * lastColumnIndex) - (headerSeparator.Length - 1))) + Environment.NewLine;
+					Ribbon.AppVariables.ScriptRange = headerColumn + headerLine + (string)Clipboard.GetData(DataFormats.Text);
 					Ribbon.AppVariables.ScriptRange = Ribbon.AppVariables.ScriptRange.Replace(@"""", String.Empty);
 				}
 				catch (System.Runtime.InteropServices.COMException)
