@@ -57,7 +57,6 @@ These buttons have the following constraints:
 * Only runs on visible columns. Column hiding can be used to control which columns are included in the script formula. 
 * Attempt to automatically determine data type of column (text, numeric, date) in order to apply correct quoting and formatting. 
 * For numeric columns if a specific number format has been applied to the entire column then this will be used when formatting the data. This can be used to control the specific data load format of a numeric column if needed. 
-* Deliberately creates a formula for the VALUES clause rather than just creating VALUES directly as the cell value. This is so any mistakes made in determining quoting or data format can be corrected by manually editing the topmost formula and this will then be automatically applied to all (visible) rows in the table.
 
 ####	Format as Table (Button)
 * Quickly format a range of cells and convert it to a Table by choosing a pre-defined Table Style. 
@@ -65,10 +64,8 @@ These buttons have the following constraints:
 ####	Freeze Panes (Button)
 * Keep a portion of the sheet visible while the rest of the sheet scrolls
 
-
 #### Remove Duplicates (Button)
 * Delete duplicate rows from a sheet
-
 
 #### Clean Data (Button)
 * This feature runs through all the data in the table and removes unprintable characters and trims leading and trailing spaces. 
@@ -149,7 +146,6 @@ These buttons have the following constraints:
 
 #### COM Addins (Button)
 * Manage the available COM Add-ins
-
 
 ###	About (Group)
 
