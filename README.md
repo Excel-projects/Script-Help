@@ -25,6 +25,7 @@ This is an Excel 2010 VSTO Addin written in Visual Studio Community 2017 C#. It 
         - <a href="#format-date-columns">Format Date Columns</a>        
         - <a href="#clear-interior-color">Clear Interior Color</a>
         - <a href="#separate-values">Separate Values</a>
+        - <a href="#add-script-column">Separate Values</a>
 
 <a id="user-content-overview" class="anchor" href="#overview" aria-hidden="true"> </a>
 ## Overview
@@ -65,18 +66,22 @@ This Excel ribbon named “Script Help” is inserted after the “Home” tab w
 <a id="user-content-clipboard" class="anchor" href="#clipboard" aria-hidden="true"> </a>
 ###	Clipboard (Group)
 
+<a id="user-content-paste" class="anchor" href="#paste" aria-hidden="true"> </a>
 ####	Paste (Button)
 * Paste the contents of the clipboard
 
+<a id="user-content-copy-visible-cells" class="anchor" href="#copy-visible-cells" aria-hidden="true"> </a>
 ####	Copy Visible Cells (Button)
 * Copies only the visible cells from a selection
 
+<a id="user-content-format-data-table" class="anchor" href="#format-data-table" aria-hidden="true"> </a>
 ### Format Data Table (Group)
 These buttons have the following constraints: 
 * Only runs on visible columns. Column hiding can be used to control which columns are included in the script formula. 
 * Attempt to automatically determine data type of column (text, numeric, date) in order to apply correct quoting and formatting. 
 * For numeric columns if a specific number format has been applied to the entire column then this will be used when formatting the data. This can be used to control the specific data load format of a numeric column if needed. 
 
+<a id="user-content-format-as-table" class="anchor" href="#format-as-table" aria-hidden="true"> </a>
 ####	Format as Table (Button)
 * Quickly format a range of cells and convert it to a Table by choosing a pre-defined Table Style. 
 
@@ -84,12 +89,15 @@ These buttons have the following constraints:
   <img src="Images/ReadMe/RibbonFormatAsTableMenu.png" />
 </h1>
 
+<a id="user-content-freeze-panes" class="anchor" href="#freeze-panes" aria-hidden="true"> </a>
 ####	Freeze Panes (Button)
 * Keep a portion of the sheet visible while the rest of the sheet scrolls
 
+<a id="user-content-remove-duplicates" class="anchor" href="#remove-duplicates" aria-hidden="true"> </a>
 #### Remove Duplicates (Button)
 * Delete duplicate rows from a sheet
 
+<a id="user-content-clean-data" class="anchor" href="#clean-data" aria-hidden="true"> </a>
 #### Clean Data (Button)
 * This feature runs through all the data in the table and removes unprintable characters and trims leading and trailing spaces. 
 * The number of cells cleaned is shown in a message box and cleaned cells are highlighted. 
@@ -99,9 +107,11 @@ These buttons have the following constraints:
   <img src="Images/ReadMe/RibbonCleanDataButton.png" />
 </h1>
 
+<a id="user-content-convert-to-null" class="anchor" href="#convert-to-null" aria-hidden="true"> </a>
 ####	Convert to Null (Button)
 * Replaces the zero string values in a named range with “NULL” text value.
 
+<a id="user-content-format-date-columns" class="anchor" href="#format-date-columns" aria-hidden="true"> </a>
 #### Format Date Columns (Button)
 * When data is cut and pasted from SSMS into Excel, for whatever reason, Excel chooses to format the dates with the (useless) format "mm:ss.0". This seems to be impossible to configure. 
 * This feature applies the format "dd-mmm-yyyy" to all date columns it detects in the active table.  If there are zero strings in the column instead of “NULL”s, then the column is treated as a string.
@@ -110,9 +120,11 @@ These buttons have the following constraints:
   <img src="Images/ReadMe/RibbonFormatDateColumnsButton.png" />
 </h1>
 
+<a id="user-content-clear-interior-color" class="anchor" href="#clear-interior-color" aria-hidden="true"> </a>
 #### Clear Interior Color (Button)
 * Clears the interior color of cells in a named range or data table.
 
+<a id="user-content-separate-values" class="anchor" href="#separate-values" aria-hidden="true"> </a>
 #### Separate Values (Button)
 * Separate values into new rows from the selected column by a delimited string value setting
 
@@ -125,6 +137,8 @@ These buttons have the following constraints:
   <img src="Images/ReadMe/RibbonSeparateValuesButtonAfter.png" />
 </h1>
 
+
+<a id="user-content-add-script-column" class="anchor" href="#add-script-column" aria-hidden="true"> </a>
 #### Add Script Column (Menu Buttons)
 
 <h1 align="center">
