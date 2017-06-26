@@ -4,7 +4,7 @@
 This is an Excel 2010 VSTO Addin written in Visual Studio Community 2017 C#. It allows the user to use an Excel table to create different SQL scripts.
 
 <h1 align="center">
-  <img src="Images/ribbon.png" alt="MyRibbon" />
+  <img src="Images/ReadMe/ribbon.png" alt="MyRibbon" />
 </h1>
 
 
@@ -41,7 +41,7 @@ This is used for bulk data loads into SQL Server, Oracle and Documentum.  The fu
 This Excel ribbon named “Script Help” is inserted after the “Home” tab when Excel opens.  Listed below is the detailed functionality of this application and its components.  
 
 <h1 align="center">
-  <img src="Images/excel_example.png" alt="MyExample" />
+  <img src="Images/ReadMe/excel_example.png" alt="MyExample" />
 </h1>
 
 ###	Clipboard (Group)
