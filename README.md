@@ -26,7 +26,20 @@ This is an Excel 2010 VSTO Addin written in Visual Studio Community 2017 C#. It 
         - <a href="#clear-interior-color">Clear Interior Color</a>
         - <a href="#separate-values">Separate Values</a>
         - <a href="#add-script-column">Add Script Column</a>
-
+    - <a href="#format-script-options">Format Script Options</a>
+        - <a href="#table-alias">Table Alias</a>  
+        - <a href="#date-format">Date Format</a>  
+        - <a href="#paste-format">Paste Format</a>  
+        - <a href="#create-file-list">Create File List</a>  
+        - <a href="#settings">Settings</a>  
+        - <a href="#com-addins">COM Addins</a>  
+    - <a href="#about">About</a>
+        - <a href="#how-to">How To...</a>  
+        - <a href="#api-doc">API Doc...</a>  
+        - <a href="#description">Description</a>
+        - <a href="#install-date">Install Date</a>  
+        - <a href="#copyright">Copyright</a>  
+        
 <a id="user-content-overview" class="anchor" href="#overview" aria-hidden="true"> </a>
 ## Overview
 This is used for bulk data loads into SQL Server, Oracle and Documentum.  The functionality within the ribbon allows a quick way of preparing a bulk data load.  Otherwise the requests can be both time-consuming and error prone. 
