@@ -193,20 +193,24 @@ These buttons have the following constraints:
 * Changes the prefix to the header and footer line script column
 * These values can be updated using the build button “…” to the right of the dropdown
 
+<a id="user-content-date-format" class="anchor" href="#date-format" aria-hidden="true"> </a>
 #### Date Format (Dropdown)
 * This is the date format the script uses to replace the formatting for date columns. 
 * It defaults to ‘dd-mmm-yyyy’, and can be changed by the dropdown value or free text
 * These values can be updated using the build button “…” to the right of the dropdown
 
+<a id="user-content-paste-format" class="anchor" href="#paste-format" aria-hidden="true"> </a>
 #### Paste Format (Dropdown)
 * This is the format the script looks for to finds dates
 * It defaults to ‘mm:ss.0’, and can be changed by the dropdown value or free text
 * These values can be updated using the build button “…” to the right of the “Date Format” dropdown
 
+<a id="user-content-create-file-list" class="anchor" href="#create-file-list" aria-hidden="true"> </a>
 #### Create File List (Button)
 * This will create a file listing recursively from a user selected directory
 * It will save the .csv and .bat file in the root folder selected.
 
+<a id="user-content-settings" class="anchor" href="#settings" aria-hidden="true"> </a>
 #### Settings (Button)
 
 ##### Types of Settings
@@ -221,19 +225,25 @@ These buttons have the following constraints:
 #### COM Addins (Button)
 * Manage the available COM Add-ins
 
+<a id="user-content-about" class="anchor" href="#about" aria-hidden="true"> </a>
 ###	About (Group)
 
+<a id="user-content-how-to" class="anchor" href="#how-to" aria-hidden="true"> </a>
 #### How To… (Button)
 * How to use this Excel Addin
 
+<a id="user-content-api-doc" class="anchor" href="#api-doc" aria-hidden="true"> </a>
 #### API Doc.. (Button)
 * View API documentation for this product
 
+<a id="user-content-description" class="anchor" href="#description" aria-hidden="true"> </a>
 #### Description (Label)
 * The application name with the version
 
+<a id="user-content-install-date" class="anchor" href="#install-date" aria-hidden="true"> </a>
 #### Install Date (Label)
 * The install date of the application
 
+<a id="user-content-copyright" class="anchor" href="#copyright" aria-hidden="true"> </a>
 #### Copyright (Label)
 * The author’s name
