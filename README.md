@@ -10,7 +10,21 @@ This is an Excel 2010 VSTO Addin written in Visual Studio Community 2017 C#. It 
 
 ## Table of Contents
 * <a href="#overview">Overview</a>
-
+* <a href="#dependencies">Dependencies</a>
+* <a href="#glossary-of-terms">Glossary of Terms</a>
+* <a href="#functionality">Functionality</a>
+ * <a href="#clipboard">Clipboard</a>
+  * <a href="#paste">Paste</a>
+  * <a href="#copy-visible-cells">Copy Visible Cells</a>
+ * <a href="#format-data-table">Format Data Table</a>
+  * <a href="#format-as-table">Format as Table</a>  
+  * <a href="#freeze-panes">Freeze Panes</a>
+  * <a href="#remove-duplicates">Remove Duplicates</a>
+  * <a href="#clean-data">Clean Data</a>
+  * <a href="#convert-to-null">Convert to Null</a>
+  * <a href="#format-date-columns">Format Date Columns</a>        
+  * <a href="#clear-interior-color">Clear Interior Color</a>
+  * <a href="#separate-values">Separate Values</a>
 
 <a id="user-content-overview" class="anchor" href="#overview" aria-hidden="true"> </a>
 ## Overview
@@ -20,6 +34,7 @@ This is used for bulk data loads into SQL Server, Oracle and Documentum.  The fu
 * Standard format for loader scripts 
 * Excel addin to clean and format data to be suitable for data loader script 
 
+<a id="user-content-overview" class="anchor" href="#dependencies" aria-hidden="true"> </a>
 ## Dependencies
 |Software                                   |Dependency                 |
 |:------------------------------------------|:--------------------------|
