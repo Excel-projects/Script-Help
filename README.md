@@ -4,7 +4,7 @@
 This is an Excel 2010 VSTO Addin written in Visual Studio Community 2017 C#. It allows the user to use an Excel table to create different SQL scripts.
 
 <h1 align="center">
-  <img src="Images/ReadMe/ribbon.png" />
+  <img src="Images/ReadMe/Ribbon.png" />
 </h1>
 
 
