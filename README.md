@@ -34,7 +34,7 @@ This is used for bulk data loads into SQL Server, Oracle and Documentum.  The fu
 * Standard format for loader scripts 
 * Excel addin to clean and format data to be suitable for data loader script 
 
-<a id="user-content-overview" class="anchor" href="#dependencies" aria-hidden="true"> </a>
+<a id="user-content-dependencies" class="anchor" href="#dependencies" aria-hidden="true"> </a>
 ## Dependencies
 |Software                                   |Dependency                 |
 |:------------------------------------------|:--------------------------|
@@ -45,6 +45,7 @@ This is used for bulk data loads into SQL Server, Oracle and Documentum.  The fu
 |[Word Processor](https://www.libreoffice.org/)|As Built documentation|
 |Log4Net |Error Logging |
 
+<a id="user-content-glossary-of-terms" class="anchor" href="#glossary-of-terms" aria-hidden="true"> </a>
 ## Glossary of Terms
 
 | Term                      | Meaning                                                                                  |
