@@ -25,7 +25,7 @@ This is an Excel 2010 VSTO Addin written in Visual Studio Community 2017 C#. It 
         - <a href="#format-date-columns">Format Date Columns</a>        
         - <a href="#clear-interior-color">Clear Interior Color</a>
         - <a href="#separate-values">Separate Values</a>
-        - <a href="#add-script-column">Separate Values</a>
+        - <a href="#add-script-column">Add Script Column</a>
 
 <a id="user-content-overview" class="anchor" href="#overview" aria-hidden="true"> </a>
 ## Overview
