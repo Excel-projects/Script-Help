@@ -4,7 +4,7 @@
 This is an Excel 2010 VSTO Addin written in Visual Studio Community 2017 C#. It allows the user to use an Excel table to create different SQL scripts.
 
 <h1 align="center">
-  <img src="Images/ReadMe/ribbon.png" alt="MyRibbon" />
+  <img src="Images/ReadMe/ribbon.png" />
 </h1>
 
 
@@ -40,10 +40,6 @@ This is used for bulk data loads into SQL Server, Oracle and Documentum.  The fu
 ## Functionality
 This Excel ribbon named “Script Help” is inserted after the “Home” tab when Excel opens.  Listed below is the detailed functionality of this application and its components.  
 
-<h1 align="center">
-  <img src="Images/ReadMe/excel_example.png" alt="MyExample" />
-</h1>
-
 ###	Clipboard (Group)
 
 ####	Paste (Button)
@@ -61,6 +57,10 @@ These buttons have the following constraints:
 ####	Format as Table (Button)
 * Quickly format a range of cells and convert it to a Table by choosing a pre-defined Table Style. 
 
+<h1 align="center">
+  <img src="Images/ReadMe/RibbonFormatAsTableMenu.png" />
+</h1>
+
 ####	Freeze Panes (Button)
 * Keep a portion of the sheet visible while the rest of the sheet scrolls
 
@@ -72,6 +72,10 @@ These buttons have the following constraints:
 * The number of cells cleaned is shown in a message box and cleaned cells are highlighted. 
 * Currently, there must be at least 2 rows in the table
 
+<h1 align="center">
+  <img src="Images/ReadMe/RibbonCleanDataButton.png" />
+</h1>
+
 ####	Convert to Null (Button)
 * Replaces the zero string values in a named range with “NULL” text value.
 
@@ -79,13 +83,31 @@ These buttons have the following constraints:
 * When data is cut and pasted from SSMS into Excel, for whatever reason, Excel chooses to format the dates with the (useless) format "mm:ss.0". This seems to be impossible to configure. 
 * This feature applies the format "dd-mmm-yyyy" to all date columns it detects in the active table.  If there are zero strings in the column instead of “NULL”s, then the column is treated as a string.
 
+<h1 align="center">
+  <img src="Images/ReadMe/RibbonFormatDateColumnsButton.png" />
+</h1>
+
 #### Clear Interior Color (Button)
 * Clears the interior color of cells in a named range or data table.
 
 #### Separate Values (Button)
 * Separate values into new rows from the selected column by a delimited string value setting
 
+<h1 align="center">
+  <img src="Images/ReadMe/RibbonSeparateValuesButtonBefore.png" />
+</h1>
+
+
+<h1 align="center">
+  <img src="Images/ReadMe/RibbonSeparateValuesButtonAfter.png" />
+</h1>
+
 #### Add Script Column (Menu Buttons)
+
+<h1 align="center">
+  <img src="Images/ReadMe/RibbonAddScriptColumnMenu.png" />
+</h1>
+
 * T-SQL Create Table - This menu item will format the script column to drop/create the table then insert the values
 * T-SQL Insert Values – This menu item will format the script column to use individual insert statements
 * T-SQL Merge Values – This menu item will format the script column to use a merge statement with a select values
