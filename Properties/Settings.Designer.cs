@@ -403,5 +403,17 @@ namespace ScriptHelp.Properties {
                 this["Visible_mnuScriptType_XML"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://github.com/aduguid/ScriptHelp/blob/master/README.md")]
+        public string App_PathHelp {
+            get {
+                return ((string)(this["App_PathHelp"]));
+            }
+            set {
+                this["App_PathHelp"] = value;
+            }
+        }
     }
 }

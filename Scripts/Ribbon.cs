@@ -1015,8 +1015,9 @@ namespace ScriptHelp.Scripts
 		public void OpenHelpAsBuiltFile(Office.IRibbonControl control)
 		{
 			ErrorHandler.CreateLogRecord();
-			string clickOnceLocation = AssemblyInfo.GetClickOnceLocation();
-			AssemblyInfo.OpenFile(Path.Combine(clickOnceLocation, @"Documentation\\As Built.docx"));
+			//string clickOnceLocation = AssemblyInfo.GetClickOnceLocation();
+			//AssemblyInfo.OpenFile(Path.Combine(clickOnceLocation, @"Documentation\\As Built.docx"));
+			System.Diagnostics.Process.Start(Properties.Settings.Default.App_PathHelp);
 
 		}
 
@@ -1325,7 +1326,7 @@ namespace ScriptHelp.Scripts
 				return Properties.Settings.Default.Script_Type_Text;
 			}
 		}
-		
+
 		/// <summary> 
 		/// Return the count of items in a delimited list
 		/// </summary>

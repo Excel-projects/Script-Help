@@ -98,5 +98,8 @@
     <Setting Name="Visible_mnuScriptType_XML" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="App_PathHelp" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://github.com/aduguid/ScriptHelp/blob/master/README.md</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
