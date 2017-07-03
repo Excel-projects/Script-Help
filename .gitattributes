@@ -2,9 +2,11 @@
 ###############################################################################
 # Adjust your .gitattributes file to treat ClickOnce files as non-text
 ###############################################################################
+*.vsto binary
 *.manifest binary
 *.application binary
 *.deploy binary
+*.shfbproj binary
 
 ###############################################################################
 # Set default behavior to automatically normalize line endings.
