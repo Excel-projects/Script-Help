@@ -6,7 +6,6 @@
 *.manifest binary
 *.application binary
 *.deploy binary
-*.config binary
 
 ###############################################################################
 # Set default behavior to automatically normalize line endings.
