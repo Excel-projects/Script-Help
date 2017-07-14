@@ -29,7 +29,7 @@
 				<group
 					id="grpFormatDataTable"
 					label="Format Data Table"
-					getImage="GetButtonImage">
+					imageMso="FormatAsTableGallery">
 					<gallery
 						idMso="FormatAsTableGallery"
 						getVisible="GetVisible"
@@ -281,7 +281,7 @@
 				<group
 					id="grpOptions"
 					label="Format Script Options"
-					getImage="GetButtonImage">
+					imageMso="PropertySheet">
 					<comboBox
 						id="cboTableAlias"
 						label="Table Alias: "
@@ -369,7 +369,7 @@
 				<group
 					id="grpAbout"
 					label="About"
-					getImage="GetButtonImage">
+					imageMso="Help">
 					<button
 						id="btnHelpAsBuilt"
 						label="How To...   "
