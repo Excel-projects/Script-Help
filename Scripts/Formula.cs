@@ -932,7 +932,7 @@ namespace ScriptHelp.Scripts
 					sqlCol.Range.HorizontalAlignment = Excel.Constants.xlLeft;
 					sqlCol.DataBodyRange.Copy();
 					Ribbon.AppVariables.FileType = "TXT";
-					string headerColumn = Ribbon.ConcatenateColumnNames(tbl.Range, string.Empty, "|") + "|" + Environment.NewLine;
+					string headerColumn = Ribbon.ConcatenateColumnNames(tbl.Range, string.Empty, "|", "") + "|" + Environment.NewLine;
 					string headerSeparator = "|:" + new String('-', 10);
 					string headerLine = new System.Text.StringBuilder(headerSeparator.Length * lastColumnIndex).Insert(0, headerSeparator, lastColumnIndex).ToString().Substring(0, ((headerSeparator.Length * lastColumnIndex) - (headerSeparator.Length - 1))) + Environment.NewLine;
 					Ribbon.AppVariables.ScriptRange = headerColumn + headerLine + (string)Clipboard.GetData(DataFormats.Text);
@@ -961,6 +961,122 @@ namespace ScriptHelp.Scripts
 					Marshal.ReleaseComObject(sqlCol);
 			}
 
+		}
+		
+		/// <summary> 
+		/// Add a formula at the end of the table to use as a script
+		/// </summary>
+		/// <remarks></remarks>
+		public static void HtmlTable()
+		{
+			Excel.ListObject tbl = null;
+			Excel.ListColumn sqlCol = null;
+			try
+			{
+				ErrorHandler.CreateLogRecord();
+				string lastColumnName = Properties.Settings.Default.Sheet_Column_Table_Alias;
+				string tableAlias = Properties.Settings.Default.Sheet_Column_Table_Alias;
+				string sqlColName = string.Empty;
+				int columnCount = 0;
+
+				sqlColName = Properties.Settings.Default.Sheet_Column_Name;
+				tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject;
+				int lastColumnIndex = tbl.Range.Columns.Count;
+				sqlCol = tbl.ListColumns[lastColumnIndex];
+				if (sqlCol.Name == sqlColName)
+				{
+					lastColumnName = sqlCol.Name;
+				}
+				else
+				{
+					sqlCol = tbl.ListColumns.Add();
+					sqlCol.Name = lastColumnName;
+					lastColumnIndex = tbl.Range.Columns.Count;
+				}
+
+				sqlCol.DataBodyRange.NumberFormat = "General";
+				string formula = string.Empty;
+				string qt = string.Empty;
+
+				foreach (Excel.ListColumn col in tbl.ListColumns)
+				{
+					if (col.Name.IndexOfAny(new char[] { '[', ']', '"' }) != -1)
+					{
+						MessageBox.Show("Please remove one of these incorrect characters in a column header" + Environment.NewLine + " [ " + Environment.NewLine + " ] " + Environment.NewLine + "\" " + Environment.NewLine + "Column Name: " + col.Name, "No action taken.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+						return;
+					}
+					if (col.Name == lastColumnName | col.Range.EntireColumn.Hidden)
+					{
+						//DO NOTHING - because the column is hidden or the last column with the sql script
+					}
+					else
+					{
+						if (!string.IsNullOrEmpty(formula))
+						{
+							formula = formula + " & \" \" & ";
+						}
+						if (columnCount == 0)
+						{
+							Ribbon.AppVariables.FirstColumnName = col.Name;
+						}
+						columnCount += 1;
+						qt = string.Empty; // Ribbon.ApplyTextQuotes(col);
+						string colRef = Ribbon.GetColumnFormat(col).ToString();
+						colRef = colRef.Replace("'", "''");
+						colRef = colRef.Replace("#", "'#");
+						colRef = "SUBSTITUTE(" + colRef + ", " + "\"" + qt + "\", \"" + qt + qt + "\")";
+
+						string valuePrefix = string.Empty;
+						string valueSuffix = string.Empty;
+						string columnName = col.Name.ToLower();
+						string firstPart = columnName.Substring(0, columnName.LastIndexOf(" ") + 1);
+
+						valuePrefix = " CHAR(10) & \"<td>\" & ";
+						valueSuffix = " & \"</td>\" ";
+						formula += valuePrefix + "\"" + qt + "\" & " + colRef + " & \"" + qt + "\"" + valueSuffix;
+					}
+				}
+
+				string nullValue = Properties.Settings.Default.Sheet_Column_Script_Null;
+				formula = "SUBSTITUTE(" + formula + ", \"'" + nullValue + "'\", \"" + nullValue + "\")";
+				formula = "=\"<tr> \" & " + formula + " & CHAR(10) & \"</tr> \"";
+				tbl.ShowTotals = false;
+				lastColumnName = sqlColName;  // maximum header characters are 255
+				tbl.HeaderRowRange[lastColumnIndex].Value2 = lastColumnName;
+				try
+				{
+					sqlCol.DataBodyRange.SpecialCells(Excel.XlCellType.xlCellTypeVisible).Rows.Formula = formula;
+					sqlCol.Range.Columns.AutoFit();
+					sqlCol.Range.HorizontalAlignment = Excel.Constants.xlLeft;
+					sqlCol.Range.WrapText = true;
+					sqlCol.DataBodyRange.Copy();
+					Ribbon.AppVariables.FileType = "XML";
+					Ribbon.AppVariables.ScriptRange = (string)Clipboard.GetData(DataFormats.Text);
+					Ribbon.AppVariables.ScriptRange = Ribbon.AppVariables.ScriptRange.Replace(@"""", String.Empty);
+					Ribbon.AppVariables.ScriptRange = "<table>" + Environment.NewLine + "<tr>" + Environment.NewLine + Ribbon.ConcatenateColumnNames(tbl.Range, "", "<th>", "</th>", Environment.NewLine) + Environment.NewLine + "</tr>" + Environment.NewLine + Ribbon.AppVariables.ScriptRange + "</table>";
+				}
+				catch (System.Runtime.InteropServices.COMException)
+				{
+					Ribbon.AppVariables.ScriptRange = "There was an issue creating the Excel formula." + Environment.NewLine + Environment.NewLine + "Formula: " + Environment.NewLine + formula;
+				}
+
+			}
+			catch (System.OutOfMemoryException)
+			{
+				MessageBox.Show("The amount of records is too big", "No action taken.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			}
+			catch (Exception ex)
+			{
+				ErrorHandler.DisplayMessage(ex);
+			}
+			finally
+			{
+				Cursor.Current = System.Windows.Forms.Cursors.Arrow;
+				if (tbl != null)
+					Marshal.ReleaseComObject(tbl);
+				if (sqlCol != null)
+					Marshal.ReleaseComObject(sqlCol);
+			}
 		}
 
 		/// <summary> 

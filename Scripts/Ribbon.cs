@@ -200,6 +200,7 @@ namespace ScriptHelp.Scripts
 						return Properties.Resources.QueryTypePlSql;
 					case "btnQueryTypeGithubTable":
 						return Properties.Resources.QueryTypeGitHub;
+					case "btnQueryTypeHtmlTable":
 					case "btnQueryTypeXmlValues":
 						return Properties.Resources.QueryTypeXML;
 					default:
@@ -420,6 +421,7 @@ namespace ScriptHelp.Scripts
 						return Properties.Settings.Default.Visible_mnuScriptType_DQL;
 					case "btnQueryTypeGithubTable":
 						return Properties.Settings.Default.Visible_mnuScriptType_Github;
+					case "btnQueryTypeHtmlTable":
 					case "btnQueryTypeXmlValues":
 						return Properties.Settings.Default.Visible_mnuScriptType_XML;
 					default:
@@ -451,6 +453,7 @@ namespace ScriptHelp.Scripts
 					case "btnQueryTypeDqlUpdate":
 					case "btnQueryTypeDqlUpdateLocked":
 					case "btnQueryTypeGithubTable":
+					case "btnQueryTypeHtmlTable":
 					case "btnQueryTypePlSqlCreateTable":
 					case "btnQueryTypePlSqlInsertValues":
 					case "btnQueryTypePlSqlMergeValues":
@@ -871,6 +874,9 @@ namespace ScriptHelp.Scripts
 					case "btnQueryTypeGithubTable":
 						Formula.GithubTable();
 						break;
+					case "btnQueryTypeHtmlTable":
+						Formula.HtmlTable();
+						break;
 					case "btnQueryTypePlSqlCreateTable":
 						Formula.PlSqlCreateTable();
 						break;
@@ -1108,17 +1114,13 @@ namespace ScriptHelp.Scripts
 		/// <param name="tableAliasName">Table alias used to prefix column names</param>
 		/// <param name="prefixChar">The prefix character for the column name e.g. "["</param>
 		/// <param name="suffixChar">The suffix character for the column name e.g. "]"</param>
+		/// <param name="selectionChar">The selection character for the column name e.g. ", "</param>
 		/// <returns>A method that returns a string of the column names</returns>
-		public static string ConcatenateColumnNames(Excel.Range rng, string tableAliasName = "", string prefixChar = "", string suffixChar = "")
+		public static string ConcatenateColumnNames(Excel.Range rng, string tableAliasName = "", string prefixChar = "", string suffixChar = "", string selectionChar = ", ")
 		{
 			try
 			{
 				string columnNames = string.Empty;
-				string selectionChar = string.Empty;
-				if (prefixChar != "|")
-				{
-					selectionChar = ", ";
-				}
 				if (tableAliasName != string.Empty)
 				{
 					tableAliasName = tableAliasName + ".";

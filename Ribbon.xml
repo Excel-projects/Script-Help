@@ -1,21 +1,21 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui" onLoad="Ribbon_Load">
-	<ribbon>
-		<tabs>
-			<tab
+  <ribbon>
+    <tabs>
+      <tab
 				id="tabScriptHelp"
 				getLabel="GetLabelText"
 				insertAfterMso="TabHome"
 				>
-				<group
+        <group
 					id="grpClipboard"
 					label="Clipboard"
 					imageMso="Copy">
-					<control
+          <control
 						idMso="PasteMenu"
 						size="large"
 					/>
-					<button
+          <button
 						id="btnCopyVisibleCells"
 						label="Copy Visible Cells"
 						onAction="CopyVisibleCells"
@@ -25,30 +25,30 @@
 						size="large"
 						screentip="Copies only visible cells from a selection"
 					/>
-				</group>
-				<group
+        </group>
+        <group
 					id="grpFormatDataTable"
 					label="Format Data Table"
 					imageMso="FormatAsTableGallery">
-					<gallery
+          <gallery
 						idMso="FormatAsTableGallery"
 						getVisible="GetVisible"
 						size="large"
 					/>
-					<gallery
+          <gallery
 						idMso="ViewFreezePanesGallery"
 						getVisible="GetVisible"
 						size="large"
 					/>
-					<button
+          <button
 						idMso="RemoveDuplicates"
 						getVisible="GetVisible"
 						size="large"
 					/>
-					<separator
+          <separator
 						id="separator0"
 					/>
-					<button
+          <button
 						id="btnCleanData"
 						label="Clean Data"
 						onAction="CleanData"
@@ -57,7 +57,7 @@
 						size="large"
 						screentip="Removes all nonprintable characters from text"
 					/>
-					<button
+          <button
 						id="btnZeroToNull"
 						label="Convert to NULL"
 						onAction="ZeroStringToNull"
@@ -67,7 +67,7 @@
 						size="large"
 						screentip="Replaces the zero string values with 'NULL'"
 					/>
-					<button
+          <button
 						id="btnFormatSqlDateColumns"
 						label="Format Date Columns"
 						onAction="FormatSqlDateColumns"
@@ -76,7 +76,7 @@
 						size="large"
 						screentip="Update the default date format of the cell"
 					/>
-					<button
+          <button
 						id="btnClearInteriorColor"
 						label="Clear Interior Color"
 						onAction="ClearInteriorColor"
@@ -86,7 +86,7 @@
 						size="large"
 						screentip="Clear the interior color of cells"
 					/>
-					<button
+          <button
 						id="btnSeparateValues"
 						label="Separate Values"
 						onAction="SeparateValues"
@@ -95,7 +95,7 @@
 						size="large"
 						screentip="Separate values into new rows from the selected column by a delimited string value setting"
 					/>
-					<menu
+          <menu
 						id="mnuScriptType"
 						getVisible="GetVisible"
 						imageMso="EquationInsertGallery"
@@ -103,7 +103,7 @@
 						size="large"
 						screentip="The selected button will change the script string format."
 						>
-						<button
+            <button
 							id="btnQueryTypeTSqlCreateTable"
 							getImage="GetButtonImage"
 							label="T-SQL Create Table"
@@ -111,7 +111,7 @@
 							getVisible="GetVisible"
 							screentip="This changes the query string to a T-SQL CREATE TABLE script."
 						/>
-						<button
+            <button
 							id="btnQueryTypeTSqlInsertValues"
 							getImage="GetButtonImage"
 							label="T-SQL Insert Values"
@@ -119,7 +119,7 @@
 							getVisible="GetVisible"
 							screentip="This changes the query string to a T-SQL INSERT VALUES script."
 						/>
-						<button
+            <button
 							id="btnQueryTypeTSqlMergeValues"
 							getImage="GetButtonImage"
 							label="T-SQL Merge Values"
@@ -127,7 +127,7 @@
 							getVisible="GetVisible"
 							screentip="This changes the query string to a T-SQL MERGE VALUES script."
 						/>
-						<button
+            <button
 							id="btnQueryTypeTSqlSelectValues"
 							getImage="GetButtonImage"
 							label="T-SQL Select Values"
@@ -135,7 +135,7 @@
 							getVisible="GetVisible"
 							screentip="This changes the query string to a T-SQL SELECT VALUES script."
 						/>
-						<button
+            <button
 							id="btnQueryTypeTSqlSelectUnion"
 							getImage="GetButtonImage"
 							label="T-SQL Select Union"
@@ -143,7 +143,7 @@
 							getVisible="GetVisible"
 							screentip="This changes the query string to a T-SQL SELECT UNION script."
 						/>
-						<button
+            <button
 							id="btnQueryTypeTSqlUpdateValues"
 							getImage="GetButtonImage"
 							label="T-SQL Update Values"
@@ -151,18 +151,19 @@
 							getVisible="GetVisible"
 							screentip="This changes the query string to a T-SQL UPDATE VALUES script."
 						/>
-						<menuSeparator
+            <menuSeparator
 						id="separator10"
 						/>
-						<button
+            <button
 							id="btnQueryTypePlSqlCreateTable"
 							getImage="GetButtonImage"
 							label="PL/SQL Create Table"
 							onAction="OnAction"
 							getVisible="GetVisible"
+              enabled ="false"
 							screentip="This changes the query string to a PL/SQL CREATE TABLE script."
 						/>
-						<button
+            <button
 							id="btnQueryTypePlSqlInsertValues"
 							getImage="GetButtonImage"
 							label="PL/SQL Insert Values"
@@ -170,23 +171,25 @@
 							getVisible="GetVisible"
 							screentip="This changes the query string to a PL/SQL INSERT VALUES script."
 						/>
-						<button
+            <button
 							id="btnQueryTypePlSqlMergeValues"
 							getImage="GetButtonImage"
 							label="PL/SQL Merge Values"
 							onAction="OnAction"
 							getVisible="GetVisible"
+              enabled ="false"
 							screentip="This changes the query string to a PL/SQL MERGE VALUES script."
 						/>
-						<button
+            <button
 							id="btnQueryTypePlSqlSelectValues"
 							getImage="GetButtonImage"
 							label="PL/SQL Select Values"
 							onAction="OnAction"
 							getVisible="GetVisible"
+              enabled ="false"
 							screentip="This changes the query string to a PL/SQL SELECT VALUES script."
 						/>
-						<button
+            <button
 							id="btnQueryTypePlSqlSelectUnion"
 							getImage="GetButtonImage"
 							label="PL/SQL Select Union"
@@ -194,7 +197,7 @@
 							getVisible="GetVisible"
 							screentip="This changes the query string to a PL/SQL SELECT UNION script."
 						/>
-						<button
+            <button
 							id="btnQueryTypePlSqlUpdateValues"
 							getImage="GetButtonImage"
 							label="PL/SQL Update Values"
@@ -202,10 +205,10 @@
 							getVisible="GetVisible"
 							screentip="This changes the query string to a PL/SQL UPDATE VALUES script."
 						/>
-						<menuSeparator
+            <menuSeparator
 						id="separator11"
 						/>
-						<button
+            <button
 							id="btnQueryTypeDqlAppend"
 							getImage="GetButtonImage"
 							label="DQL Append"
@@ -213,7 +216,7 @@
 							getVisible="GetVisible"
 							screentip="This changes the query string to a DQL APPEND script (This is used for repeating values)."
 						/>
-						<button
+            <button
 							id="btnQueryTypeDqlAppendLocked"
 							getImage="GetButtonImage"
 							label="DQL Append/Locked"
@@ -221,7 +224,7 @@
 							getVisible="GetVisible"
 							screentip="This changes the query string to a DQL APPEND script (This is used for repeating values) and also unlocks and locks the metadata."
 						/>
-						<button
+            <button
 							id="btnQueryTypeDqlCreate"
 							getImage="GetButtonImage"
 							label="DQL Create"
@@ -229,7 +232,7 @@
 							getVisible="GetVisible"
 							screentip="This changes the query string to a DQL CREATE script."
 						/>
-						<button
+            <button
 							id="btnQueryTypeDqlTruncateAppend"
 							getImage="GetButtonImage"
 							label="DQL Truncate/Append"
@@ -237,7 +240,7 @@
 							getVisible="GetVisible"
 							screentip="This changes the query string to a DQL TRUNCATE/APPEND script (This is used for removing all repeating values and then updating to one value)."
 						/>
-						<button
+            <button
 							id="btnQueryTypeDqlUpdate"
 							getImage="GetButtonImage"
 							label="DQL Update"
@@ -245,7 +248,7 @@
 							getVisible="GetVisible"
 							screentip="This changes the query string to a DQL UPDATE script."
 						/>
-						<button
+            <button
 							id="btnQueryTypeDqlUpdateLocked"
 							getImage="GetButtonImage"
 							label="DQL Update/Locked"
@@ -253,10 +256,10 @@
 							getVisible="GetVisible"
 							screentip="This changes the query string to a DQL UPDATE script and also unlocks and locks the metadata."
 						/>
-						<menuSeparator
+            <menuSeparator
 							id="separator12"
 						/>
-						<button
+            <button
 							id="btnQueryTypeGithubTable"
 							getImage="GetButtonImage"
 							label="GitHub Table"
@@ -264,10 +267,18 @@
 							getVisible="GetVisible"
 							screentip="This changes the query string to a GitHub table script (This is used for READ ME files)."
 						/>
-						<menuSeparator
+            <menuSeparator
 							id="separator13"
 						/>
-						<button
+            <button
+              id="btnQueryTypeHtmlTable"
+              getImage="GetButtonImage"
+              label="HTML Table"
+              onAction="OnAction"
+              getVisible="GetVisible"
+              screentip="This changes the query string to a HMTL Table script."
+						/>
+            <button
 							id="btnQueryTypeXmlValues"
 							getImage="GetButtonImage"
 							label="XML Values"
@@ -275,14 +286,14 @@
 							getVisible="GetVisible"
 							screentip="This changes the query string to a XML script."
 						/>
-					</menu>
+          </menu>
 
-				</group>
-				<group
+        </group>
+        <group
 					id="grpOptions"
 					label="Format Script Options"
 					imageMso="PropertySheet">
-					<comboBox
+          <comboBox
 						id="cboTableAlias"
 						label="Table Alias: "
 						onChange="OnChange"
@@ -293,7 +304,7 @@
 						sizeString= "XXXXXXXXXXXXXXXXXXXX"
 						screentip="This is the table alias used in the query string."
 					/>
-					<comboBox
+          <comboBox
 						id="cboDateFormat"
 						label="Date Format: "
 						onChange="OnChange"
@@ -304,7 +315,7 @@
 						sizeString= "XXXXXXXXXXXXXXXXXXXX"
 						screentip="This is the format used for updating the date columns."
 					/>
-					<comboBox
+          <comboBox
 						id="cboDatePasteFormat"
 						label="Paste Format: "
 						onChange="OnChange"
@@ -315,7 +326,7 @@
 						sizeString= "XXXXXXXXXXXXXXXXXXXX"
 						screentip="This is the paste format from SQL Server Management Studio."
 					/>
-					<button
+          <button
 						id="btnTableAlias"
 						label="..."
 						onAction="OnAction"
@@ -323,7 +334,7 @@
 						getVisible="GetVisible"
 						tag="TableAlias"
 						/>
-					<button
+          <button
 						id="btnDateFormat"
 						label="..."
 						onAction="OnAction"
@@ -331,7 +342,7 @@
 						getVisible="GetVisible"
 						tag="DateFormat"
 						/>
-					<button
+          <button
 						id="btnPasteFormat"
 						label="..."
 						onAction="OnAction"
@@ -339,11 +350,11 @@
 						getVisible="GetVisible"
 						tag="DateFormat"
 						/>
-					<separator
+          <separator
 						id="separator2"
 						getVisible="GetVisible"
 					/>
-					<button
+          <button
 						id="btnFileList"
 						label="Create File List"
 						onAction="CreateBatchFileList"
@@ -352,7 +363,7 @@
 						size="large"
 						screentip="Create a file listing"
 					/>
-					<button
+          <button
 						id="btnSettings"
 						label="Settings"
 						onAction="OpenSettingsForm"
@@ -360,17 +371,17 @@
 						size="large"
 						screentip="The settings for this Add-In"
 					/>
-					<button
+          <button
 						idMso="ComAddInsDialog"
 						getVisible="GetVisible"
 						size="large"
 					/>
-				</group>
-				<group
+        </group>
+        <group
 					id="grpAbout"
 					label="About"
 					imageMso="Help">
-					<button
+          <button
 						id="btnHelpAsBuilt"
 						label="How To...   "
 						onAction="OpenHelpAsBuiltFile"
@@ -378,7 +389,7 @@
 						size="normal"
 						screentip="How to use this Excel Add-In"
 					/>
-					<button
+          <button
 						id="btnHelpApi"
 						label="API Doc...   "
 						onAction="OpenHelpApiFile"
@@ -386,45 +397,45 @@
 						size="normal"
 						screentip="View API documentation for this product"
 					/>
-					<separator
+          <separator
 						id="separator4"
 					/>
-					<labelControl
+          <labelControl
 						id="lblDescription"
 						label="Add-In Name: "
 						getEnabled="False"
 					/>
-					<labelControl
+          <labelControl
 						id="lblInstallDate"
 						label="Install Date: "
 						getEnabled="False"
 					/>
-					<labelControl
+          <labelControl
 						id="lblCopyright"
 						label="Copyright: "
 						getEnabled="False"
 					/>
-					<labelControl
+          <labelControl
 						id="txtDescription"
 						getLabel="GetLabelText"
 						getEnabled="False"
 					/>
-					<labelControl
+          <labelControl
 						id="txtInstallDate"
 						getLabel="GetLabelText"
 						getEnabled="False"
 					/>
-					<labelControl
+          <labelControl
 						id="txtCopyright"
 						getLabel="GetLabelText"
 						getEnabled="False"
 					/>
-					<button
+          <button
 						id="btnStart"
 						onAction="OpenGraphData"
 					/>
-				</group>
-			</tab>
-		</tabs>
-	</ribbon>
+        </group>
+      </tab>
+    </tabs>
+  </ribbon>
 </customUI>
