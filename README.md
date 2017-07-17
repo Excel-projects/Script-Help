@@ -97,7 +97,7 @@ These buttons have the following constraints:
 ####	Format as Table (Button)
 * Quickly format a range of cells and convert it to a Table by choosing a pre-defined Table Style. 
 
-<h1 align="center">
+<h1 align="left">
   <img src="Images/ReadMe/RibbonFormatAsTableMenu.png" />
 </h1>
 
@@ -115,7 +115,7 @@ These buttons have the following constraints:
 * The number of cells cleaned is shown in a message box and cleaned cells are highlighted. 
 * Currently, there must be at least 2 rows in the table
 
-<h1 align="center">
+<h1 align="left">
   <img src="Images/ReadMe/RibbonCleanDataButton.png" />
 </h1>
 
@@ -128,7 +128,7 @@ These buttons have the following constraints:
 * When data is cut and pasted from SSMS into Excel, for whatever reason, Excel chooses to format the dates with the (useless) format "mm:ss.0". This seems to be impossible to configure. 
 * This feature applies the format "dd-mmm-yyyy" to all date columns it detects in the active table.  If there are zero strings in the column instead of “NULL”s, then the column is treated as a string.
 
-<h1 align="center">
+<h1 align="left">
   <img src="Images/ReadMe/RibbonFormatDateColumnsButton.png" />
 </h1>
 
@@ -140,12 +140,12 @@ These buttons have the following constraints:
 #### Separate Values (Button)
 * Separate values into new rows from the selected column by a delimited string value setting
 
-<h1 align="center">
+<h1 align="left">
   <img src="Images/ReadMe/RibbonSeparateValuesButtonBefore.png" />
 </h1>
 
 
-<h1 align="center">
+<h1 align="left">
   <img src="Images/ReadMe/RibbonSeparateValuesButtonAfter.png" />
 </h1>
 
@@ -153,7 +153,7 @@ These buttons have the following constraints:
 <a id="user-content-add-script-column" class="anchor" href="#add-script-column" aria-hidden="true"> </a>
 #### Add Script Column (Menu Buttons)
 
-<h1 align="center">
+<h1 align="left">
   <img src="Images/ReadMe/RibbonAddScriptColumnMenu.png" />
 </h1>
 
@@ -212,7 +212,7 @@ These buttons have the following constraints:
 <a id="user-content-settings" class="anchor" href="#settings" aria-hidden="true"> </a>
 #### Settings (Button)
 
-<h1 align="center">
+<h1 align="left">
   <img src="Images/ReadMe/RibbonSettingsButton.png" />
 </h1>
 
