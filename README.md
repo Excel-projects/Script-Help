@@ -91,6 +91,11 @@ This Excel ribbon named “Script Help” is inserted after the “Home” tab w
 
 <a id="user-content-format-data-table" class="anchor" href="#format-data-table" aria-hidden="true"> </a>
 ### Format Data Table (Group)
+
+<h1 align="left">
+  <img src="Images/ReadMe/RibbonFormatDataTableGroup.png" />
+</h1>
+
 These buttons have the following constraints: 
 * Only runs on visible columns. Column hiding can be used to control which columns are included in the script formula. 
 * Attempt to automatically determine data type of column (text, numeric, date) in order to apply correct quoting and formatting. 
