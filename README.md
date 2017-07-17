@@ -231,7 +231,7 @@ These buttons have the following constraints:
 <a id="user-content-about" class="anchor" href="#about" aria-hidden="true"> </a>
 ###	About (Group)
 
-<h1 align="center">
+<h1 align="left">
   <img src="Images/ReadMe/RibbonAboutGroup.png" />
 </h1>
 
