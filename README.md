@@ -212,6 +212,10 @@ These buttons have the following constraints:
 <a id="user-content-settings" class="anchor" href="#settings" aria-hidden="true"> </a>
 #### Settings (Button)
 
+<h1 align="center">
+  <img src="Images/ReadMe/RibbonSettingsButton.png" />
+</h1>
+
 ##### Types of Settings
 ###### Application
 * These settings can only be changed in the project and need to be redeployed
