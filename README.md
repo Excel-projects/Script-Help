@@ -7,7 +7,6 @@ This is an Excel 2010 VSTO Addin written in Visual Studio Community 2017 C#. It 
   <img src="Images/ReadMe/Ribbon.png" />
 </h1>
 
-
 ## Table of Contents
 - <a href="#overview">Overview</a>
 - <a href="#dependencies">Dependencies</a>
@@ -78,6 +77,10 @@ This Excel ribbon named “Script Help” is inserted after the “Home” tab w
 <a id="user-content-clipboard" class="anchor" href="#clipboard" aria-hidden="true"> </a>
 ###	Clipboard (Group)
 
+<h1 align="left">
+  <img src="Images/ReadMe/RibbonClipboardGroup.png" />
+</h1>
+
 <a id="user-content-paste" class="anchor" href="#paste" aria-hidden="true"> </a>
 ####	Paste (Button)
 * Paste the contents of the clipboard
@@ -88,6 +91,11 @@ This Excel ribbon named “Script Help” is inserted after the “Home” tab w
 
 <a id="user-content-format-data-table" class="anchor" href="#format-data-table" aria-hidden="true"> </a>
 ### Format Data Table (Group)
+
+<h1 align="left">
+  <img src="Images/ReadMe/RibbonFormatDataTableGroup.png" />
+</h1>
+
 These buttons have the following constraints: 
 * Only runs on visible columns. Column hiding can be used to control which columns are included in the script formula. 
 * Attempt to automatically determine data type of column (text, numeric, date) in order to apply correct quoting and formatting. 
@@ -97,7 +105,7 @@ These buttons have the following constraints:
 ####	Format as Table (Button)
 * Quickly format a range of cells and convert it to a Table by choosing a pre-defined Table Style. 
 
-<h1 align="center">
+<h1 align="left">
   <img src="Images/ReadMe/RibbonFormatAsTableMenu.png" />
 </h1>
 
@@ -115,7 +123,7 @@ These buttons have the following constraints:
 * The number of cells cleaned is shown in a message box and cleaned cells are highlighted. 
 * Currently, there must be at least 2 rows in the table
 
-<h1 align="center">
+<h1 align="left">
   <img src="Images/ReadMe/RibbonCleanDataButton.png" />
 </h1>
 
@@ -128,7 +136,7 @@ These buttons have the following constraints:
 * When data is cut and pasted from SSMS into Excel, for whatever reason, Excel chooses to format the dates with the (useless) format "mm:ss.0". This seems to be impossible to configure. 
 * This feature applies the format "dd-mmm-yyyy" to all date columns it detects in the active table.  If there are zero strings in the column instead of “NULL”s, then the column is treated as a string.
 
-<h1 align="center">
+<h1 align="left">
   <img src="Images/ReadMe/RibbonFormatDateColumnsButton.png" />
 </h1>
 
@@ -140,12 +148,12 @@ These buttons have the following constraints:
 #### Separate Values (Button)
 * Separate values into new rows from the selected column by a delimited string value setting
 
-<h1 align="center">
+<h1 align="left">
   <img src="Images/ReadMe/RibbonSeparateValuesButtonBefore.png" />
 </h1>
 
 
-<h1 align="center">
+<h1 align="left">
   <img src="Images/ReadMe/RibbonSeparateValuesButtonAfter.png" />
 </h1>
 
@@ -153,7 +161,7 @@ These buttons have the following constraints:
 <a id="user-content-add-script-column" class="anchor" href="#add-script-column" aria-hidden="true"> </a>
 #### Add Script Column (Menu Buttons)
 
-<h1 align="center">
+<h1 align="left">
   <img src="Images/ReadMe/RibbonAddScriptColumnMenu.png" />
 </h1>
 
@@ -187,6 +195,10 @@ These buttons have the following constraints:
 <a id="user-content-format-script-options" class="anchor" href="#format-script-options" aria-hidden="true"> </a>
 ###	Format Script Options (Group)
 
+<h1 align="left">
+  <img src="Images/ReadMe/RibbonFormatScriptOptionsGroup.png" />
+</h1>
+
 <a id="user-content-table-alias" class="anchor" href="#table-alias" aria-hidden="true"> </a>
 #### Table Alias (Dropdown)
 * Changes the prefix to the header and footer line script column
@@ -212,6 +224,10 @@ These buttons have the following constraints:
 <a id="user-content-settings" class="anchor" href="#settings" aria-hidden="true"> </a>
 #### Settings (Button)
 
+<h1 align="left">
+  <img src="Images/ReadMe/RibbonSettingsButton.png" />
+</h1>
+
 ##### Types of Settings
 ###### Application
 * These settings can only be changed in the project and need to be redeployed
@@ -226,6 +242,10 @@ These buttons have the following constraints:
 
 <a id="user-content-about" class="anchor" href="#about" aria-hidden="true"> </a>
 ###	About (Group)
+
+<h1 align="left">
+  <img src="Images/ReadMe/RibbonAboutGroup.png" />
+</h1>
 
 <a id="user-content-how-to" class="anchor" href="#how-to" aria-hidden="true"> </a>
 #### How To… (Button)
