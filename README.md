@@ -187,6 +187,10 @@ These buttons have the following constraints:
 <a id="user-content-format-script-options" class="anchor" href="#format-script-options" aria-hidden="true"> </a>
 ###	Format Script Options (Group)
 
+<h1 align="left">
+  <img src="Images/ReadMe/RibbonFormatScriptOptionGroup.png" />
+</h1>
+
 <a id="user-content-table-alias" class="anchor" href="#table-alias" aria-hidden="true"> </a>
 #### Table Alias (Dropdown)
 * Changes the prefix to the header and footer line script column
