@@ -7,7 +7,6 @@ This is an Excel 2010 VSTO Addin written in Visual Studio Community 2017 C#. It 
   <img src="Images/ReadMe/Ribbon.png" />
 </h1>
 
-
 ## Table of Contents
 - <a href="#overview">Overview</a>
 - <a href="#dependencies">Dependencies</a>
@@ -77,6 +76,10 @@ This Excel ribbon named “Script Help” is inserted after the “Home” tab w
 
 <a id="user-content-clipboard" class="anchor" href="#clipboard" aria-hidden="true"> </a>
 ###	Clipboard (Group)
+
+<h1 align="left">
+  <img src="Images/ReadMe/RibbonClipboardGroup.png" />
+</h1>
 
 <a id="user-content-paste" class="anchor" href="#paste" aria-hidden="true"> </a>
 ####	Paste (Button)
