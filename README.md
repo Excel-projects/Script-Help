@@ -231,6 +231,10 @@ These buttons have the following constraints:
 <a id="user-content-about" class="anchor" href="#about" aria-hidden="true"> </a>
 ###	About (Group)
 
+<h1 align="center">
+  <img src="Images/ReadMe/RibbonAboutGroup.png" />
+</h1>
+
 <a id="user-content-how-to" class="anchor" href="#how-to" aria-hidden="true"> </a>
 #### How To… (Button)
 * How to use this Excel Addin
