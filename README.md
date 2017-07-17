@@ -188,7 +188,7 @@ These buttons have the following constraints:
 ###	Format Script Options (Group)
 
 <h1 align="left">
-  <img src="Images/ReadMe/RibbonFormatScriptOptionGroup.png" />
+  <img src="Images/ReadMe/RibbonFormatScriptOptionsGroup.png" />
 </h1>
 
 <a id="user-content-table-alias" class="anchor" href="#table-alias" aria-hidden="true"> </a>
