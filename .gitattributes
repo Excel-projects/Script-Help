@@ -13,8 +13,8 @@
 * text=auto
 
 # Declare files that will always have CRLF line endings on checkout.
-*.sln text eol=crlf
-*.config text eol=lf
+*.sln text
+*.config text
 
 ###############################################################################
 # Set default behavior for command prompt diff.
