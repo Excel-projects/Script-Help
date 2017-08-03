@@ -1,22 +1,22 @@
-
-###############################################################################
-# Adjust your .gitattributes file to treat ClickOnce files as non-text
-###############################################################################
-*.vsto binary
-*.manifest binary
-*.application binary
-*.deploy binary
-
 ###############################################################################
 # Set default behavior to automatically normalize line endings.
 ###############################################################################
 * text=auto
 
 ###############################################################################
+# Adjust your .gitattributes file to treat ClickOnce files as non-text
+###############################################################################
+*.vsto binary
+#*.manifest binary
+*.application binary
+*.deploy binary
+
+###############################################################################
 # Explicitly declare text files you want to always be normalized and converted
 # to native line endings on checkout.
 ###############################################################################
 *.config text
+*.manifest text
 
 ###############################################################################
 # Declare files that will always have CRLF line endings on checkout.
