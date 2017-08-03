@@ -1,16 +1,16 @@
 ###############################################################################
 # Set default behavior to automatically normalize line endings.
 ###############################################################################
-* text=auto
+#* text=auto
 
 ###############################################################################
 # Adjust your .gitattributes file to treat ClickOnce files as non-text
 ###############################################################################
-*.vsto binary
+#*.vsto binary
 *.manifest binary
 *.application binary
 *.deploy binary
-*.config binary
+#*.config binary
 
 ###############################################################################
 # Explicitly declare text files you want to always be normalized and converted
