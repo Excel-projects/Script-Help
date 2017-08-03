@@ -322,7 +322,7 @@ namespace ScriptHelp.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Temp\\ScriptHelp")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://raw.githubusercontent.com/aduguid/ScriptHelp/master/publish/")]
         public string App_PathDeploy {
             get {
                 return ((string)(this["App_PathDeploy"]));
