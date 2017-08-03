@@ -33,9 +33,9 @@
 			System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
 			this.dgvGraphData = new System.Windows.Forms.DataGridView();
 			this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+			this.btnStart = new System.Windows.Forms.ToolStripButton();
 			this.Rpie = new System.Windows.Forms.DataVisualization.Charting.Chart();
 			this.dgvGraphDataResults = new System.Windows.Forms.DataGridView();
-			this.btnStart = new System.Windows.Forms.ToolStripButton();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			((System.ComponentModel.ISupportInitialize)(this.dgvGraphData)).BeginInit();
 			this.toolStrip1.SuspendLayout();
@@ -66,6 +66,16 @@
 			this.toolStrip1.Size = new System.Drawing.Size(300, 25);
 			this.toolStrip1.TabIndex = 2;
 			this.toolStrip1.Text = "toolStrip1";
+			// 
+			// btnStart
+			// 
+			this.btnStart.Image = global::ScriptHelp.Properties.Resources.control_play_blue;
+			this.btnStart.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.btnStart.Name = "btnStart";
+			this.btnStart.Size = new System.Drawing.Size(51, 22);
+			this.btnStart.Text = "Start";
+			this.btnStart.ToolTipText = "Would you like to play a game?";
+			this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
 			// 
 			// Rpie
 			// 
@@ -99,6 +109,9 @@
 			this.dgvGraphDataResults.AllowUserToDeleteRows = false;
 			this.dgvGraphDataResults.AllowUserToResizeColumns = false;
 			this.dgvGraphDataResults.AllowUserToResizeRows = false;
+			this.dgvGraphDataResults.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.dgvGraphDataResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgvGraphDataResults.ColumnHeadersVisible = false;
 			this.dgvGraphDataResults.Enabled = false;
@@ -112,18 +125,11 @@
 			this.dgvGraphDataResults.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvGraphDataResults_CellEndEdit);
 			this.dgvGraphDataResults.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvGraphDataResults_CellFormatting);
 			// 
-			// btnStart
-			// 
-			this.btnStart.Image = global::ScriptHelp.Properties.Resources.control_play_blue;
-			this.btnStart.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.btnStart.Name = "btnStart";
-			this.btnStart.Size = new System.Drawing.Size(51, 22);
-			this.btnStart.Text = "Start";
-			this.btnStart.ToolTipText = "Would you like to play a game?";
-			this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
-			// 
 			// pictureBox1
 			// 
+			this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.pictureBox1.BackgroundImage = global::ScriptHelp.Properties.Resources.table;
 			this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
 			this.pictureBox1.Location = new System.Drawing.Point(0, 327);
