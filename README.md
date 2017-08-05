@@ -191,6 +191,7 @@ These buttons have the following constraints:
   * The table must contain a column header with 'WHERE'. 
   * Add “WHERE” before the column name in the header you want to use as criteria.
 * GitHub table - creates a table format for GitHub Read Me documentation
+* HTML Table - creates a HTML table structure
 * XML Values - creates XML structure
 
 <a id="user-content-format-script-options" class="anchor" href="#format-script-options" aria-hidden="true"> </a>
