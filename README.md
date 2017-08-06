@@ -3,6 +3,8 @@
 
 This is an Excel 2010 VSTO Addin written in Visual Studio Community 2017 C#. It allows the user to use an Excel table to create different SQL scripts.
 
+[install](https://github.com/aduguid/ScriptHelp/blob/master/publish/setup.exe?raw=true)  ```TODO: fix sql server ce file install```
+
 <h1 align="center">
   <img src="Images/ReadMe/Ribbon.png" />
 </h1>
@@ -35,7 +37,7 @@ This is an Excel 2010 VSTO Addin written in Visual Studio Community 2017 C#. It 
     - <a href="#about">About</a>
         - <a href="#how-to">How To...</a>  
         - <a href="#api-doc">API Doc...</a>  
-        - <a href="#description">Description</a>
+        - <a href="#description">Add-in Name</a>
         - <a href="#install-date">Install Date</a>  
         - <a href="#copyright">Copyright</a>  
         
@@ -54,6 +56,7 @@ This is used for bulk data loads into SQL Server, Oracle and Documentum.  The fu
 |[Microsoft Visual Studio Community 2017](https://www.visualstudio.com/vs/whatsnew/)|Solution|
 |[Microsoft Excel 2010](https://www.microsoft.com/en-au/software-download/office)|Project|
 |[Microsoft SQL Server CE 3.5](https://www.microsoft.com/en-au/download/details.aspx?id=5783)|Database|
+|[SQL Server Compact Toolbox](https://marketplace.visualstudio.com/items?itemName=ErikEJ.SQLServerCompactSQLiteToolbox)|Database|
 |[Sandcastle](https://github.com/EWSoftware/SHFB)|API documentation|
 |Log4Net |Error Logging |
 
@@ -124,12 +127,16 @@ These buttons have the following constraints:
 * Currently, there must be at least 2 rows in the table
 
 <h1 align="left">
-  <img src="Images/ReadMe/RibbonCleanDataButton.png" />
+  <img src="Images/ReadMe/RibbonCleanDataButton.gif" />
 </h1>
 
 <a id="user-content-convert-to-null" class="anchor" href="#convert-to-null" aria-hidden="true"> </a>
 ####	Convert to Null (Button)
 * Replaces the zero string values in a named range with “NULL” text value.
+
+<h1 align="left">
+  <img src="Images/ReadMe/RibbonConvertToNullButton.gif" />
+</h1>
 
 <a id="user-content-format-date-columns" class="anchor" href="#format-date-columns" aria-hidden="true"> </a>
 #### Format Date Columns (Button)
@@ -137,7 +144,7 @@ These buttons have the following constraints:
 * This feature applies the format "dd-mmm-yyyy" to all date columns it detects in the active table.  If there are zero strings in the column instead of “NULL”s, then the column is treated as a string.
 
 <h1 align="left">
-  <img src="Images/ReadMe/RibbonFormatDateColumnsButton.png" />
+  <img src="Images/ReadMe/RibbonFormatDateColumnsButton.gif" />
 </h1>
 
 <a id="user-content-clear-interior-color" class="anchor" href="#clear-interior-color" aria-hidden="true"> </a>
@@ -149,14 +156,8 @@ These buttons have the following constraints:
 * Separate values into new rows from the selected column by a delimited string value setting
 
 <h1 align="left">
-  <img src="Images/ReadMe/RibbonSeparateValuesButtonBefore.png" />
+  <img src="Images/ReadMe/RibbonSeparateValuesButton.gif" />
 </h1>
-
-
-<h1 align="left">
-  <img src="Images/ReadMe/RibbonSeparateValuesButtonAfter.png" />
-</h1>
-
 
 <a id="user-content-add-script-column" class="anchor" href="#add-script-column" aria-hidden="true"> </a>
 #### Add Script Column (Menu Buttons)
@@ -190,6 +191,7 @@ These buttons have the following constraints:
   * The table must contain a column header with 'WHERE'. 
   * Add “WHERE” before the column name in the header you want to use as criteria.
 * GitHub table - creates a table format for GitHub Read Me documentation
+* HTML Table - creates a HTML table structure
 * XML Values - creates XML structure
 
 <a id="user-content-format-script-options" class="anchor" href="#format-script-options" aria-hidden="true"> </a>
@@ -256,7 +258,7 @@ These buttons have the following constraints:
 * View API documentation for this product
 
 <a id="user-content-description" class="anchor" href="#description" aria-hidden="true"> </a>
-#### Description (Label)
+#### Add-in Name (Label)
 * The application name with the version
 
 <a id="user-content-install-date" class="anchor" href="#install-date" aria-hidden="true"> </a>
