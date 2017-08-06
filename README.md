@@ -96,7 +96,7 @@ This Excel ribbon named “Script Help” is inserted after the “Home” tab w
 ### Format Data Table (Group)
 
 <h1 align="left">
-  <img src="Images/ReadMe/RibbonFormatDataTableGroup.png" />
+  <img src="Images/ReadMe/RibbonFormatDataTableGroup.gif" />
 </h1>
 
 These buttons have the following constraints: 
