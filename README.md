@@ -127,7 +127,7 @@ These buttons have the following constraints:
 * Currently, there must be at least 2 rows in the table
 
 <h1 align="left">
-  <img src="Images/ReadMe/RibbonCleanDataButton.gif" />
+  <img src="https://github.com/aduguid/ScriptHelp/blob/master/Images/ReadMe/RibbonCleanDataButton.png.gif" />
 </h1>
 
 <a id="user-content-convert-to-null" class="anchor" href="#convert-to-null" aria-hidden="true"> </a>
