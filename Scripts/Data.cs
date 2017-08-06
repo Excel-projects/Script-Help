@@ -9,59 +9,18 @@ namespace ScriptHelp.Scripts
 	class Data
 	{
 
+		const string dataFolder = "App_Data";
+		public static string serverPath;
+		public static string localPath;
+
 		/// <summary>
 		/// Relative database connection string
 		/// </summary>
 		/// <returns>the data source of the database</returns>
 		public static string Connection()
 		{
-			string dataFolder = "App_Data";
-			string versionNumber = string.Empty;
-			string userFilePath = string.Empty;
-			if (System.Deployment.Application.ApplicationDeployment.IsNetworkDeployed)
-			{
-				Version ver = System.Deployment.Application.ApplicationDeployment.CurrentDeployment.CurrentVersion;
-				versionNumber = string.Format("{0}.{1}.{2}.{3}", ver.Major, ver.Minor, ver.Build, ver.Revision);
-				versionNumber = "_" + versionNumber.Replace(".", "_");
-
-				string localAppData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-				userFilePath = Path.Combine(localAppData, AssemblyInfo.Copyright.Replace(" ", "_"), AssemblyInfo.Product, dataFolder);
-
-				if (!Directory.Exists(userFilePath)) Directory.CreateDirectory(userFilePath);
-
-				Uri baseUrl = new Uri(Properties.Settings.Default.App_PathDeploy);
-				string relativeUrl = "Application Files/" + AssemblyInfo.Product + versionNumber + "/" + dataFolder + "/" + AssemblyInfo.Product + ".sdf.deploy";
-				Uri combined = new Uri(baseUrl, relativeUrl);
-				string sourceFilePath = combined.ToString();
-
-				//string sourceFilePath = Path.Combine(Properties.Settings.Default.App_PathDeploy, "Application Files", AssemblyInfo.Product + versionNumber, dataFolder, AssemblyInfo.Product + ".sdf.deploy");
-				string destFilePath = Path.Combine(userFilePath, AssemblyInfo.Product + ".sdf");
-				if (File.Exists(destFilePath)) File.Delete(destFilePath);
-				Data.DownloadFile(sourceFilePath, destFilePath);
-
-				//if (!File.Exists(destFilePath)) File.Copy(sourceFilePath, destFilePath);  //use when deployed to a internal server
-
-				//if (File.GetLastWriteTime(destFilePath).CompareTo(File.GetLastWriteTime(sourceFilePath)) != 0)
-				//{
-				//	if (File.Exists(destFilePath)) File.Delete(destFilePath);
-				//}
-				//if (!File.Exists(destFilePath)) File.Copy(sourceFilePath, destFilePath);
-
-				//DateTime ftime = File.GetCreationTime(destFilePath);
-				//DateTime ftime2 = File.GetCreationTime(sourceFilePath);
-				//if (ftime2 > ftime)
-				//{
-				//	if (File.Exists(destFilePath)) File.Delete(destFilePath);
-				//}
-				//if (!File.Exists(destFilePath)) File.Copy(sourceFilePath, destFilePath);
-
-			}
-			else
-			{
-				userFilePath = System.IO.Path.Combine(AssemblyInfo.GetClickOnceLocation(), dataFolder);
-			}
-			Properties.Settings.Default.App_PathUserData = userFilePath;
-			string databaseFile = "Data Source=" + Path.Combine(userFilePath, AssemblyInfo.Product + ".sdf");
+			Data.SetUserPath();
+			string databaseFile = "Data Source=" + Path.Combine(Properties.Settings.Default.App_PathUserData, AssemblyInfo.Product + ".sdf");
 			return databaseFile;
 		}
 
@@ -147,7 +106,7 @@ namespace ScriptHelp.Scripts
 			}
 
 		}
-		
+
 		/// <summary>
 		/// Creates the datatable for the graph data
 		/// </summary>
@@ -240,5 +199,75 @@ namespace ScriptHelp.Scripts
 			}
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		public static void SetServerPath()
+		{
+			try
+			{
+				string versionNumber = AssemblyInfo.versionFolderNumber;
+				//return Path.Combine(Properties.Settings.Default.App_PathDeploy, "Application Files", AssemblyInfo.Product + versionNumber, dataFolder, AssemblyInfo.Product + ".sdf.deploy"); //for internal server
+				Uri baseUrl = new Uri(Properties.Settings.Default.App_PathDeploy);
+				string relativeUrl = "Application Files/" + AssemblyInfo.Product + versionNumber + "/" + dataFolder + "/";
+				Uri combined = new Uri(baseUrl, relativeUrl);
+				serverPath = combined.ToString();
+
+			}
+			catch (Exception ex)
+			{
+				ErrorHandler.DisplayMessage(ex);
+
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public static void SetLocalPath()
+		{
+			try
+			{
+				string localAppData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+				localPath = Path.Combine(localAppData, AssemblyInfo.Copyright.Replace(" ", "_"), AssemblyInfo.Product, dataFolder);
+
+			}
+			catch (Exception ex)
+			{
+				ErrorHandler.DisplayMessage(ex);
+
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public static void SetUserPath()
+		{
+			string userFilePath = string.Empty;
+			try
+			{
+				if (System.Deployment.Application.ApplicationDeployment.IsNetworkDeployed)
+				{
+					string versionNumber = AssemblyInfo.versionFolderNumber;
+					string localAppData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+					userFilePath = Path.Combine(localAppData, AssemblyInfo.Copyright.Replace(" ", "_"), AssemblyInfo.Product, dataFolder);
+					if (!Directory.Exists(userFilePath)) Directory.CreateDirectory(userFilePath);
+				}
+				else
+				{
+					userFilePath = System.IO.Path.Combine(AssemblyInfo.GetClickOnceLocation(), dataFolder);
+				}
+				Properties.Settings.Default.App_PathUserData = userFilePath;
+
+			}
+			catch (Exception ex)
+			{
+				ErrorHandler.DisplayMessage(ex);
+
+			}
+
+		}
+		
 	}
 }

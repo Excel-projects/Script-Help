@@ -155,6 +155,13 @@ namespace ScriptHelp.Scripts
 				ErrorHandler.SetLogPath();
 				ErrorHandler.CreateLogRecord();
 				AssemblyInfo.SetAddRemoveProgramsIcon("ExcelAddin.ico");
+
+				AssemblyInfo.SetAssemblyFolderVersion();
+				Data.SetLocalPath();
+				Data.SetServerPath();
+				Data.DownloadFile(Data.serverPath + AssemblyInfo.Product + ".sdf.deploy", Path.Combine(Data.localPath, "temp"));
+				//check the database version here
+				
 				Data.CreateTableAliasTable();
 				Data.CreateDateFormatTable();
 				Data.CreateGraphDataTable();
