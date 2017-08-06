@@ -156,14 +156,8 @@ These buttons have the following constraints:
 * Separate values into new rows from the selected column by a delimited string value setting
 
 <h1 align="left">
-  <img src="Images/ReadMe/RibbonSeparateValuesButtonBefore.png" />
+  <img src="Images/ReadMe/RibbonSeparateValuesButton.gif" />
 </h1>
-
-
-<h1 align="left">
-  <img src="Images/ReadMe/RibbonSeparateValuesButtonAfter.png" />
-</h1>
-
 
 <a id="user-content-add-script-column" class="anchor" href="#add-script-column" aria-hidden="true"> </a>
 #### Add Script Column (Menu Buttons)
