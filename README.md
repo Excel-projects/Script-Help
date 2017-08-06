@@ -96,7 +96,7 @@ This Excel ribbon named “Script Help” is inserted after the “Home” tab w
 ### Format Data Table (Group)
 
 <h1 align="left">
-  <img src="Images/ReadMe/RibbonFormatDataTableGroup.gif" />
+  <img src="Images/ReadMe/RibbonFormatDataTableGroup.png" />
 </h1>
 
 These buttons have the following constraints: 
@@ -144,7 +144,7 @@ These buttons have the following constraints:
 * This feature applies the format "dd-mmm-yyyy" to all date columns it detects in the active table.  If there are zero strings in the column instead of “NULL”s, then the column is treated as a string.
 
 <h1 align="left">
-  <img src="Images/ReadMe/RibbonFormatDateColumnsButton.png" />
+  <img src="Images/ReadMe/RibbonFormatDateColumnsButton.gif" />
 </h1>
 
 <a id="user-content-clear-interior-color" class="anchor" href="#clear-interior-color" aria-hidden="true"> </a>
