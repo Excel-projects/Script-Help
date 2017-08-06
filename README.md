@@ -127,12 +127,16 @@ These buttons have the following constraints:
 * Currently, there must be at least 2 rows in the table
 
 <h1 align="left">
-  <img src="https://github.com/aduguid/ScriptHelp/blob/master/Images/ReadMe/RibbonCleanDataButton.png.gif" />
+  <img src="Images/ReadMe/RibbonCleanDataButton.gif" />
 </h1>
 
 <a id="user-content-convert-to-null" class="anchor" href="#convert-to-null" aria-hidden="true"> </a>
 ####	Convert to Null (Button)
 * Replaces the zero string values in a named range with “NULL” text value.
+
+<h1 align="left">
+  <img src="Images/ReadMe/RibbonConvertToNullButton.gif" />
+</h1>
 
 <a id="user-content-format-date-columns" class="anchor" href="#format-date-columns" aria-hidden="true"> </a>
 #### Format Date Columns (Button)
