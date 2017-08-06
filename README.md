@@ -37,7 +37,7 @@ This is an Excel 2010 VSTO Addin written in Visual Studio Community 2017 C#. It 
     - <a href="#about">About</a>
         - <a href="#how-to">How To...</a>  
         - <a href="#api-doc">API Doc...</a>  
-        - <a href="#description">Description</a>
+        - <a href="#description">Add-in Name</a>
         - <a href="#install-date">Install Date</a>  
         - <a href="#copyright">Copyright</a>  
         
@@ -258,7 +258,7 @@ These buttons have the following constraints:
 * View API documentation for this product
 
 <a id="user-content-description" class="anchor" href="#description" aria-hidden="true"> </a>
-#### Description (Label)
+#### Add-in Name (Label)
 * The application name with the version
 
 <a id="user-content-install-date" class="anchor" href="#install-date" aria-hidden="true"> </a>
