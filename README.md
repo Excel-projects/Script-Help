@@ -1,6 +1,6 @@
 [<img align="left" src="https://raw.githubusercontent.com/aduguid/ScriptHelp/master/Resources/ExcelAddin.ico" width="64px" >](https://github.com/aduguid/ScriptHelp/blob/master/publish/setup.exe?raw=true)
 # Script Help
-This is an Excel 2010 VSTO Addin written in Visual Studio Community 2017 C#. It allows the user to use an Excel table to create different SQL scripts.
+This is an Excel 2010 VSTO Addin written in Visual Studio Community 2017 C#. It allows the user to use an Excel table to create different SQL scripts. This has now been tested on Windows 10/MS Office 2016.
 
 ```
 TODO:
