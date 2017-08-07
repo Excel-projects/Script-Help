@@ -6,10 +6,16 @@ This is an Excel 2010 VSTO Addin written in Visual Studio Community 2017 C#. It 
 [install](https://github.com/aduguid/ScriptHelp/blob/master/publish/setup.exe?raw=true)  
 
 ```
-TODO: update the install for versioning of sql server ce file
-- add version table to database
-- copy database to temp folder location and compare version table record
-- delete existing database and copy new database if version is newer
+TODO:
+Update the install for versioning of sql server ce file
+ - add version table to database
+ - copy database to temp folder location and compare version table record
+ - delete existing database and copy new database if version is newer
+
+Update the following script columns
+ - PL/SQL Create Table
+ - PL/SQL Merge Values
+ - PL/SQL Select Values
 ```
 
 <h1 align="center">
