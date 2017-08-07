@@ -175,7 +175,7 @@ namespace ScriptHelp.Scripts
 		{
 			try
 			{
-				string localAppData = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); //Environment.SpecialFolder.LocalApplicationData
+				string localAppData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData); //Environment.SpecialFolder.MyDocuments
 				Data.localPath = Path.Combine(localAppData, AssemblyInfo.Copyright.Replace(" ", "_"), AssemblyInfo.Product, dataFolder);
 				System.IO.Directory.CreateDirectory(Data.localPath);
 				DirectoryInfo info = new DirectoryInfo(Data.localPath);
