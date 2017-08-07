@@ -157,6 +157,7 @@ namespace ScriptHelp.Scripts
 				AssemblyInfo.SetAddRemoveProgramsIcon("ExcelAddin.ico");
 				AssemblyInfo.SetAssemblyFolderVersion();
 				Data.SetServerPath();
+				Data.SetUserPath();
 
 				string destFilePath = Path.Combine(Properties.Settings.Default.App_PathUserData, AssemblyInfo.Product + ".sdf");
 				if (!(File.Exists(destFilePath)))
