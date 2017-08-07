@@ -155,17 +155,15 @@ namespace ScriptHelp.Scripts
 				ErrorHandler.SetLogPath();
 				ErrorHandler.CreateLogRecord();
 				AssemblyInfo.SetAddRemoveProgramsIcon("ExcelAddin.ico");
-
 				AssemblyInfo.SetAssemblyFolderVersion();
-				Data.SetLocalPath();
 				Data.SetServerPath();
 
-				string destFilePath = Path.Combine(Data.localPath, AssemblyInfo.Product + ".sdf");
+				string destFilePath = Path.Combine(Properties.Settings.Default.App_PathUserData, AssemblyInfo.Product + ".sdf");
 				if (!(File.Exists(destFilePath)))
 				{
 					using (var client = new System.Net.WebClient())
 					{
-						client.DownloadFile(Data.serverPath + AssemblyInfo.Product + ".sdf.deploy", Path.Combine(Data.localPath, AssemblyInfo.Product + ".sdf"));
+						client.DownloadFile(Properties.Settings.Default.App_PathServerData + AssemblyInfo.Product + ".sdf.deploy", Path.Combine(Properties.Settings.Default.App_PathUserData, AssemblyInfo.Product + ".sdf"));
 					}
 
 				}

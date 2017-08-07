@@ -415,5 +415,17 @@ namespace ScriptHelp.Properties {
                 this["App_PathHelp"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string App_PathServerData {
+            get {
+                return ((string)(this["App_PathServerData"]));
+            }
+            set {
+                this["App_PathServerData"] = value;
+            }
+        }
     }
 }

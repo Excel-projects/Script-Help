@@ -11,8 +11,6 @@ namespace ScriptHelp.Scripts
 	{
 
 		const string dataFolder = "App_Data";
-		public static string serverPath;
-		public static string localPath;
 
 		/// <summary>
 		/// Relative database connection string
@@ -158,31 +156,7 @@ namespace ScriptHelp.Scripts
 				Uri baseUrl = new Uri(Properties.Settings.Default.App_PathDeploy);
 				string relativeUrl = "Application Files/" + AssemblyInfo.Product + versionNumber + "/" + dataFolder + "/";
 				Uri combined = new Uri(baseUrl, relativeUrl);
-				serverPath = combined.ToString();
-
-			}
-			catch (Exception ex)
-			{
-				ErrorHandler.DisplayMessage(ex);
-
-			}
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		public static void SetLocalPath()
-		{
-			try
-			{
-				string localAppData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData); //Environment.SpecialFolder.MyDocuments
-				Data.localPath = Path.Combine(localAppData, AssemblyInfo.Copyright.Replace(" ", "_"), AssemblyInfo.Product, dataFolder);
-				System.IO.Directory.CreateDirectory(Data.localPath);
-				DirectoryInfo info = new DirectoryInfo(Data.localPath);
-				DirectorySecurity security = info.GetAccessControl();
-				security.AddAccessRule(new FileSystemAccessRule("Everyone", FileSystemRights.Modify, InheritanceFlags.ContainerInherit, PropagationFlags.None, AccessControlType.Allow));
-				security.AddAccessRule(new FileSystemAccessRule("Everyone", FileSystemRights.Modify, InheritanceFlags.ObjectInherit, PropagationFlags.None, AccessControlType.Allow));
-				info.SetAccessControl(security);
+				Properties.Settings.Default.App_PathServerData = combined.ToString();
 
 			}
 			catch (Exception ex)
@@ -205,7 +179,14 @@ namespace ScriptHelp.Scripts
 					string versionNumber = AssemblyInfo.versionFolderNumber;
 					string localAppData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
 					userFilePath = Path.Combine(localAppData, AssemblyInfo.Copyright.Replace(" ", "_"), AssemblyInfo.Product, dataFolder);
-					if (!Directory.Exists(userFilePath)) Directory.CreateDirectory(userFilePath);
+					//if (!Directory.Exists(userFilePath)) Directory.CreateDirectory(userFilePath);
+					System.IO.Directory.CreateDirectory(userFilePath);
+					DirectoryInfo info = new DirectoryInfo(userFilePath);
+					DirectorySecurity security = info.GetAccessControl();
+					security.AddAccessRule(new FileSystemAccessRule("Everyone", FileSystemRights.Modify, InheritanceFlags.ContainerInherit, PropagationFlags.None, AccessControlType.Allow));
+					security.AddAccessRule(new FileSystemAccessRule("Everyone", FileSystemRights.Modify, InheritanceFlags.ObjectInherit, PropagationFlags.None, AccessControlType.Allow));
+					info.SetAccessControl(security);
+
 				}
 				else
 				{

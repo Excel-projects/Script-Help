@@ -26,8 +26,7 @@ namespace ScriptHelp.Scripts
         {
             XmlConfigurator.Configure();
             log4net.Repository.Hierarchy.Hierarchy h = (log4net.Repository.Hierarchy.Hierarchy)LogManager.GetRepository();
-			//string logFileName = System.IO.Path.Combine(Properties.Settings.Default.App_PathDeploy, AssemblyInfo.Product + ".log");
-			string logFileName = System.IO.Path.Combine(Properties.Settings.Default.App_PathFileListing, AssemblyInfo.Product + ".log");
+			string logFileName = System.IO.Path.Combine(Properties.Settings.Default.App_PathUserData, AssemblyInfo.Product + ".log");
 			foreach (var a in h.Root.Appenders)
             {
                 if (a is log4net.Appender.FileAppender)

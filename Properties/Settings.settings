@@ -101,5 +101,8 @@
     <Setting Name="App_PathHelp" Type="System.String" Scope="User">
       <Value Profile="(Default)">https://github.com/aduguid/ScriptHelp/blob/master/README.md</Value>
     </Setting>
+    <Setting Name="App_PathServerData" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

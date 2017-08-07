@@ -107,6 +107,9 @@
    <setting name="App_PathHelp" serializeAs="String">
     <value>https://github.com/aduguid/ScriptHelp/blob/master/README.md</value>
    </setting>
+   <setting name="App_PathServerData" serializeAs="String">
+    <value />
+   </setting>
   </ScriptHelp.Properties.Settings>
 	</userSettings>
 	<applicationSettings>
