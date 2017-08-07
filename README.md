@@ -3,7 +3,7 @@
 
 This is an Excel 2010 VSTO Addin written in Visual Studio Community 2017 C#. It allows the user to use an Excel table to create different SQL scripts.
 
-[install](https://github.com/aduguid/ScriptHelp/blob/master/publish/setup.exe?raw=true)  ```TODO: fix sql server ce file install```
+[install](https://github.com/aduguid/ScriptHelp/blob/master/publish/setup.exe?raw=true)  ```TODO: update the install for versioning of sql server ce file```
 
 <h1 align="center">
   <img src="Images/ReadMe/Ribbon.png" />
