@@ -152,12 +152,12 @@ namespace ScriptHelp.Scripts
 				this.ribbon = ribbonUI;
 				ribbonref = this;
 				ThisAddIn.e_ribbon = ribbonUI;
-				ErrorHandler.SetLogPath();
-				ErrorHandler.CreateLogRecord();
 				AssemblyInfo.SetAddRemoveProgramsIcon("ExcelAddin.ico");
 				AssemblyInfo.SetAssemblyFolderVersion();
 				Data.SetServerPath();
 				Data.SetUserPath();
+				ErrorHandler.SetLogPath();
+				ErrorHandler.CreateLogRecord();
 
 				string destFilePath = Path.Combine(Properties.Settings.Default.App_PathUserData, AssemblyInfo.Product + ".sdf");
 				if (!(File.Exists(destFilePath)))
