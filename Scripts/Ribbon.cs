@@ -163,8 +163,11 @@ namespace ScriptHelp.Scripts
 				string destFilePath = Path.Combine(Data.localPath, AssemblyInfo.Product + ".sdf");
 				if (!(File.Exists(destFilePath)))
 				{
-					//Data.DownloadFile(Data.serverPath + AssemblyInfo.Product + ".sdf.deploy", Path.Combine(Data.localPath, "\temp"));
-					Data.DownloadFile(Data.serverPath + AssemblyInfo.Product + ".sdf.deploy", Path.Combine(Data.localPath));
+					using (var client = new System.Net.WebClient())
+					{
+						client.DownloadFile(Data.serverPath + AssemblyInfo.Product + ".sdf.deploy", Path.Combine(Data.localPath, AssemblyInfo.Product + ".sdf"));
+					}
+
 				}
 
 				Data.CreateTableAliasTable();
