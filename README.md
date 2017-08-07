@@ -1,5 +1,5 @@
-[<img align="left" alt="download setup.exe file here" src="Images/ReadMe/Excel.png" width="64px" >](https://github.com/aduguid/ScriptHelp/blob/master/publish/setup.exe?raw=true "Download Setup.exe Install File")
-# Script Help
+[<img align="left" src="Images/ReadMe/Excel.png" width="64px" >](https://github.com/aduguid/ScriptHelp/blob/master/publish/setup.exe?raw=true "Download Setup.exe Install File")
+# Script Help [<img src="Resources/QueryTypeTSql.png" width="16px" >]("T-SQL")
 This is an Excel 2010 VSTO Addin written in Visual Studio Community 2017 C#. It allows the user to use an Excel table to create different SQL scripts. This has now been tested on Windows 10/Microsoft Excel 2016.
 
 ```
