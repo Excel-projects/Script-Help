@@ -159,7 +159,7 @@ namespace ScriptHelp.Scripts
 				AssemblyInfo.SetAssemblyFolderVersion();
 				Data.SetLocalPath();
 				Data.SetServerPath();
-				
+
 				string destFilePath = Path.Combine(Data.localPath, AssemblyInfo.Product + ".sdf");
 				if (!(File.Exists(destFilePath)))
 				{

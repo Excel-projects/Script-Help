@@ -234,6 +234,7 @@ namespace ScriptHelp.Scripts
 			{
 				string localAppData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
 				localPath = Path.Combine(localAppData, AssemblyInfo.Copyright.Replace(" ", "_"), AssemblyInfo.Product, dataFolder);
+				System.IO.Directory.CreateDirectory(Data.localPath);
 
 			}
 			catch (Exception ex)
