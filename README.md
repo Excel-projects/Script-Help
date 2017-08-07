@@ -163,7 +163,7 @@ These buttons have the following constraints:
 #### Add Script Column (Menu Buttons)
 
 <h1 align="left">
-  <img src="Images/ReadMe/RibbonAddScriptColumnMenu.gif" />
+  <img src="Images/ReadMe/RibbonAddScriptColumnButton.gif" />
 </h1>
 
 * T-SQL Create Table - This menu item will format the script column to drop/create the table then insert the values
