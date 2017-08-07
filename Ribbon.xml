@@ -160,7 +160,6 @@
 							label="PL/SQL Create Table"
 							onAction="OnAction"
 							getVisible="GetVisible"
-              enabled ="false"
 							screentip="This changes the query string to a PL/SQL CREATE TABLE script."
 						/>
             <button
@@ -177,7 +176,6 @@
 							label="PL/SQL Merge Values"
 							onAction="OnAction"
 							getVisible="GetVisible"
-              enabled ="false"
 							screentip="This changes the query string to a PL/SQL MERGE VALUES script."
 						/>
             <button
@@ -186,7 +184,6 @@
 							label="PL/SQL Select Values"
 							onAction="OnAction"
 							getVisible="GetVisible"
-              enabled ="false"
 							screentip="This changes the query string to a PL/SQL SELECT VALUES script."
 						/>
             <button

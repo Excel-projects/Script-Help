@@ -159,9 +159,14 @@ namespace ScriptHelp.Scripts
 				AssemblyInfo.SetAssemblyFolderVersion();
 				Data.SetLocalPath();
 				Data.SetServerPath();
-				Data.DownloadFile(Data.serverPath + AssemblyInfo.Product + ".sdf.deploy", Path.Combine(Data.localPath, "temp"));
-				//check the database version here
 				
+				string destFilePath = Path.Combine(Data.localPath, AssemblyInfo.Product + ".sdf");
+				if (!(File.Exists(destFilePath)))
+				{
+					//Data.DownloadFile(Data.serverPath + AssemblyInfo.Product + ".sdf.deploy", Path.Combine(Data.localPath, "\temp"));
+					Data.DownloadFile(Data.serverPath + AssemblyInfo.Product + ".sdf.deploy", Path.Combine(Data.localPath));
+				}
+
 				Data.CreateTableAliasTable();
 				Data.CreateDateFormatTable();
 				Data.CreateGraphDataTable();

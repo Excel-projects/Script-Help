@@ -39,8 +39,8 @@
     <PublishUrl>publish\</PublishUrl>
     <InstallUrl>https://raw.githubusercontent.com/aduguid/ScriptHelp/master/publish/</InstallUrl>
     <TargetCulture>en</TargetCulture>
-    <ApplicationVersion>3.0.0.11</ApplicationVersion>
-    <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
+    <ApplicationVersion>3.0.0.0</ApplicationVersion>
+    <AutoIncrementApplicationRevision>false</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>0</UpdateInterval>
     <UpdateIntervalUnits>days</UpdateIntervalUnits>

@@ -138,6 +138,10 @@ namespace ScriptHelp.Scripts
 				ErrorHandler.DisplayMessage(ex);
 
 			}
+			finally
+			{
+
+			}
 
 		}
 

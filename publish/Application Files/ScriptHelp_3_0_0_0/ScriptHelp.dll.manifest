@@ -1,0 +1,296 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="ScriptHelp.dll" version="3.0.0.0" publicKeyToken="b3e780e0dcdf4cd1" language="neutral" processorArchitecture="msil" type="win32" />
+  <description xmlns="urn:schemas-microsoft-com:asm.v1">ScriptHelp</description>
+  <application />
+  <entryPoint>
+    <co.v1:customHostSpecified />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC Manifest Options
+          If you want to change the Windows User Account Control level replace the 
+          requestedExecutionLevel node with one of the following.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         If you want to utilize File and Registry Virtualization for backward 
+         compatibility then delete the requestedExecutionLevel node.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.CSharp" version="4.0.0.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="stdole" version="7.0.3300.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="System.Windows.Forms.DataVisualization" version="4.0.0.0" publicKeyToken="31BF3856AD364E35" language="neutral" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="log4net.dll" size="276480">
+      <assemblyIdentity name="log4net" version="2.0.8.0" publicKeyToken="669E0DDF0BB1AA2A" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>r1YQxRXSJE25jGYmNiZMgXfomxr+QH+I/RikHWb25+I=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.Office.Tools.dll" size="16048">
+      <assemblyIdentity name="Microsoft.Office.Tools" version="10.0.0.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>Vgvc0uYwZVUc7LUY2JZ9KAzZj7xIADwUKXmP0lBdgwU=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.Office.Tools.Common.dll" size="92344">
+      <assemblyIdentity name="Microsoft.Office.Tools.Common" version="10.0.0.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>9ksp+/YUo4Q2xUje3aOMuS2A+gI7SsBRbCG78UDZKa4=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.Office.Tools.Common.v4.0.Utilities.dll" size="32664">
+      <assemblyIdentity name="Microsoft.Office.Tools.Common.v4.0.Utilities" version="10.0.0.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>jLCTF8Mm6bD4PDN+rnzN6q0+ReXaNgPh68kMWgatFwI=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.Office.Tools.Excel.dll" size="172216">
+      <assemblyIdentity name="Microsoft.Office.Tools.Excel" version="10.0.0.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>C1kJF384lnmyooijH4sKbV7OfgR/gae6sw3kAG/bOyg=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.Office.Tools.v4.0.Framework.dll" size="28360">
+      <assemblyIdentity name="Microsoft.Office.Tools.v4.0.Framework" version="10.0.0.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>ISZh8727tCrrTeM0j3FK7F6rylc8msZemTZgJIz8QMI=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.VisualStudio.Tools.Applications.Runtime.dll" size="83168">
+      <assemblyIdentity name="Microsoft.VisualStudio.Tools.Applications.Runtime" version="10.0.0.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>vDNwPlxZTsrepY5kiLFDjUnvE55xbfsf7N7uzyD0qzo=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ScriptHelp.dll" size="327680">
+      <assemblyIdentity name="ScriptHelp" version="3.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>VwqMxAMuE1qVq5xc/kKjZbn/7ii3PxKCm6vPKNWLYqI=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="System.Data.SqlServerCe.dll" size="296816">
+      <assemblyIdentity name="System.Data.SqlServerCe" version="3.5.1.0" publicKeyToken="89845DCD8080CC91" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>ygWc7FmnhTm4U0xrpvc+N/z5kx4ghQcKBoGBTj4zLbc=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="App_Data\ScriptHelp.sdf" size="204800" writeableType="applicationData">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>aUEggjSDogfvyTVg6tEPxLu4/2t1ttGMxxOikrs1pj0=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Documentation\Api Help.chm" size="450282">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>rH1wKenHcdhWWalIEjIjasZUA4YK/DBV+m457tAcfp0=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Documentation\As Built.docx" size="597169">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>f9pATv+GtI/bDp3PNMdsF0kiFYdt7dCq4TOF9+LXTPU=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\ExcelAddin.ico" size="99678">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>0ee5zmNKcsXyH48sg4rGx9NsF+VLQnzPo0+oerBSoEo=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="ScriptHelp.dll.config" size="5682">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>G9tyDr6cVMBGKrgwJWrU5BvvvTAnu7m6vWllgjJvLas=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="sqlceca35.dll" size="342384">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>hMIUYFOBxfqurH+J7bvIyb3KLa1ihDd88KzNY5UXAJk=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="sqlcecompact35.dll" size="83312">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>jmfkZ0ViB61f2PlYISbRl1QbWTHc3mEsKE6kRpyI5nU=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="sqlceer35EN.dll" size="147312">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>MUVElxf3WCOkxYVsxov5qe1UCviZyUiFMgfzXjlu0xk=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="sqlceme35.dll" size="63344">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>+pfirZ7urvvxFi19cI+zAiK+Jf28gEr25ECXSGyiNH4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="sqlceoledb35.dll" size="169328">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>In8a3nzCUPALkyd1Ph2K5iR/khsAGyfmEibOhrS18JY=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="sqlceqp35.dll" size="640880">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>hMWvsepQMhIQ4cDXS69Z/UeyVq3NPjYMoXDwLcXd73s=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="sqlcese35.dll" size="361840">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>lM+JIQ9zOrhiV1CSMzXWC1LQ0m8ISjlnDEHtJHz8L7Y=</dsig:DigestValue>
+    </hash>
+  </file>
+  <vstav3:addIn xmlns:vstav3="urn:schemas-microsoft-com:vsta.v3">
+    <vstav3:entryPointsCollection>
+      <vstav3:entryPoints>
+        <vstav3:entryPoint class="ScriptHelp.ThisAddIn">
+          <assemblyIdentity name="ScriptHelp" version="3.0.0.0" language="neutral" processorArchitecture="msil" />
+        </vstav3:entryPoint>
+      </vstav3:entryPoints>
+    </vstav3:entryPointsCollection>
+    <vstav3:update enabled="true" />
+    <vstav3:application>
+      <vstov4:customizations xmlns:vstov4="urn:schemas-microsoft-com:vsto.v4">
+        <vstov4:customization>
+          <vstov4:appAddIn application="Excel" loadBehavior="3" keyName="ScriptHelp">
+            <vstov4:friendlyName>Excel Addin Script Help</vstov4:friendlyName>
+            <vstov4:description>ScriptHelp</vstov4:description>
+            <vstov4.1:ribbonTypes xmlns:vstov4.1="urn:schemas-microsoft-com:vsto.v4.1" />
+          </vstov4:appAddIn>
+        </vstov4:customization>
+      </vstov4:customizations>
+    </vstav3:application>
+  </vstav3:addIn>
+<publisherIdentity name="CN=Anthony Duguid" issuerKeyHash="8e1f5b1cd6092c94f03bfe3cc8a6adc9d3fce05d" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>CbJEnuCsbZtLKEEgWj5TsL9tdm8=</DigestValue></Reference></SignedInfo><SignatureValue>gGW9511cL/ujDlKMx83ib5aptbKyGQnnqn3WV26C7ZpmTJFfj7j7i039Dg90QNnjwInAwE8Z4D7WW4Yy1EL4F4JWexD0jmYFvoxCFO5z75Vilg/ual70E9/PADrDg2UhOmwXcuycj5826deW+0ERQGjmQw3/u4hKC+moEQXU6cNhwvEkET4jnU0s/7oN7VaNyHOn5/SaKnK5p1OPm9xq9wungi2hQ9AnzhrDow7XrasJQiR4uQzzRz0Ka7KP3kh7T1QbhdyCOB13cPQWR1tPQpgfGHx3Fd6vvJ5eSMgnewDyDvkv2IrkqUz3+mX4066PkA58mJUVW/sxcEBe583SPw==</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>3NXP0qsalOagDYU6g7VAQqeqZYlICq+yClVDSBb+3DNSFIy8M2IogpocMT5wAwOvnBBOYz34mgjqc03B7/uvXFDva1PW/4gRwL5jC+PJxg/FG4ghD+fRlKCDYC/55nNos04DP2APbkO1VLo9LjCVQRUfXjtbifOWtMHOzcw/AzY5PuxzLc5YCPXdXBCMw94aL4jXABdkXp2o3kO9opsWkeZpG7VPsnGe0Ov4A0kHo5/33wVtNOWWQKDD8qJA/wZLDmKAaQX60/hJKzzV7P7hNKoWmUxBAILe/N/soprlj8m5Li+Avx82XumDyH8LPyUad2YLoNcsAZFcNokt3S+QlQ==</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="6f766dbfb0533e5a2041284b9b6dace09e44b209" Description="" Url=""><as:assemblyIdentity name="ScriptHelp.dll" version="3.0.0.0" publicKeyToken="b3e780e0dcdf4cd1" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=Anthony Duguid</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>lR0RMNJRhltRaL6Xxx3FqsX2UGU=</DigestValue></Reference></SignedInfo><SignatureValue>Gd2sOkngLFg+CJjNU1kmLhP24DHDGPcz5ulxK8qXQ1ozMdzzJjw9v605SWyql7tWYPs6kZxO0urcHRG1klv472PymBLRHFicRuzRIQAktDc5M7MrFx7EA4sb3Bhs+3CGCvmIuQyK9vMP0+iAQEquyOKqOEdovxiR7D05agO7UgSxeGAvB0Vx+R88Ys7rNwRJZzwC3h7PNMiASrfL0lVfDHGHn68jgtBLB8CXycuXhMFBrfLoY8Vd8vM20YIe9nmOCsE7AWtKpOFwIUpWqN3PeFK5mx2iH/P9cQZh+hW/T3aW7W6lBAMGvBUxNOMp+bOYPV56OhA8oumxvXU6IiAWAA==</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>3NXP0qsalOagDYU6g7VAQqeqZYlICq+yClVDSBb+3DNSFIy8M2IogpocMT5wAwOvnBBOYz34mgjqc03B7/uvXFDva1PW/4gRwL5jC+PJxg/FG4ghD+fRlKCDYC/55nNos04DP2APbkO1VLo9LjCVQRUfXjtbifOWtMHOzcw/AzY5PuxzLc5YCPXdXBCMw94aL4jXABdkXp2o3kO9opsWkeZpG7VPsnGe0Ov4A0kHo5/33wVtNOWWQKDD8qJA/wZLDmKAaQX60/hJKzzV7P7hNKoWmUxBAILe/N/soprlj8m5Li+Avx82XumDyH8LPyUad2YLoNcsAZFcNokt3S+QlQ==</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIDNzCCAiOgAwIBAgIQYnexPCssuqJKygwWUAWe/zAJBgUrDgMCHQUAMBkxFzAVBgNVBAMTDkFudGhvbnkgRHVndWlkMCAXDTE3MDUyNDAyMTYyNloYDzIxNzQwMTE1MTQwMDAwWjAZMRcwFQYDVQQDEw5BbnRob255IER1Z3VpZDCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBANzVz9KrGpTmoA2FOoO1QEKnqmWJSAqvsgpVQ0gW/twzUhSMvDNiKIKaHDE+cAMDr5wQTmM9+JoI6nNNwe/7r1xQ72tT1v+IEcC+YwvjycYPxRuIIQ/n0ZSgg2Av+eZzaLNOAz9gD25DtVS6PS4wlUEVH147W4nzlrTBzs3MPwM2OT7scy3OWAj13VwQjMPeGi+I1wAXZF6dqN5DvaKbFpHmaRu1T7JxntDr+ANJB6Of998FbTTllkCgw/KiQP8GSw5igGkF+tP4SSs81ez+4TSqFplMQQCC3vzf7KKa5Y/JuS4vgL8fNl7pg8h/Cz8lGndmC6DXLAGRXDaJLd0vkJUCAwEAAaOBgDB+MA8GA1UdEwEB/wQFMAMCAQAwHwYDVR0lBBgwFgYIKwYBBQUHAwMGCisGAQQBgjcKAw0wSgYDVR0BBEMwQYAQNGzMp7oROO3P8lbeEXBwu6EbMBkxFzAVBgNVBAMTDkFudGhvbnkgRHVndWlkghBid7E8Kyy6okrKDBZQBZ7/MAkGBSsOAwIdBQADggEBAC5GwoBNGd1zaobQ/gjoWjMjfgoon4q3UVVMC428DY5audMdzD8fE8uv8bPFvJ5TORpfOEtiygx2H/8nEf60eC+QQEex19XS81a21A76BQNa9rwsFHZNHzgwQEiG9a3qK7exMgV/KHxOJ3luierjK78vCBplh+HGgCfY1KOaUrQoJ/Gg710vRcd51vsMFN71M3EGF16JZ4dPxMwdOPf9yj4T0JFm2aMU0RkkW1Z4axiHL6iyTfH5uX5Rt+Nzpt9kA585hLECFpI6vIYkF7eKCMi7qEKBHCudszyekQOOCHKa+pKmMf84wa1XVi9OHHTSBR5XrOAoorjn5HyLsbV6fvA=</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>

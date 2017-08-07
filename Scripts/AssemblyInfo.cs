@@ -19,7 +19,9 @@ namespace ScriptHelp.Scripts
 	/// </remarks>
 	public static class AssemblyInfo
 	{
-
+		/// <summary>
+		/// 
+		/// </summary>
 		public static string versionFolderNumber;
 
 		/// <summary> 
@@ -304,10 +306,17 @@ namespace ScriptHelp.Scripts
 		{
 			try
 			{
-				Version ver = System.Deployment.Application.ApplicationDeployment.CurrentDeployment.CurrentVersion;
-				string versionNumber = string.Format("{0}.{1}.{2}.{3}", ver.Major, ver.Minor, ver.Build, ver.Revision);
-				versionFolderNumber = "_" + versionNumber.Replace(".", "_");
-				
+				if (System.Deployment.Application.ApplicationDeployment.IsNetworkDeployed)
+				{
+					Version ver = System.Deployment.Application.ApplicationDeployment.CurrentDeployment.CurrentVersion;
+					string versionNumber = string.Format("{0}.{1}.{2}.{3}", ver.Major, ver.Minor, ver.Build, ver.Revision);
+					versionFolderNumber = "_" + versionNumber.Replace(".", "_");
+				}
+				else
+				{
+					versionFolderNumber = "_" + FileVersion.Replace(".", "_");
+				}
+
 			}
 			catch (Exception ex)
 			{
