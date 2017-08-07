@@ -1,16 +1,13 @@
-
+[<img src="https://raw.githubusercontent.com/aduguid/ScriptHelp/master/Resources/ExcelAddin.ico" width="64px" >](https://github.com/aduguid/ScriptHelp/blob/master/publish/setup.exe?raw=true)
 # Script Help
-
 This is an Excel 2010 VSTO Addin written in Visual Studio Community 2017 C#. It allows the user to use an Excel table to create different SQL scripts.
-
-[install](https://github.com/aduguid/ScriptHelp/blob/master/publish/setup.exe?raw=true)  
 
 ```
 TODO:
-Update the install for versioning of sql server ce file
- - add version table to database
- - copy database to temp folder location and compare version table record
- - delete existing database and copy new database if version is newer
+Update the install for versioning of SQL Server CE (.sdf) file
+ - Add version table to database
+ - Copy database to temp folder location and compare version table record
+ - Delete existing database and copy new database if version is newer
 
 Update the following script columns
  - PL/SQL Create Table
