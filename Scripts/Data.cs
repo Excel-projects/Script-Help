@@ -19,7 +19,7 @@ namespace ScriptHelp.Scripts
 		public static string Connection()
 		{
 			Data.SetUserPath();
-			string databaseFile = "Data Source=" + Path.Combine(Properties.Settings.Default.App_PathUserData, AssemblyInfo.Product + ".sdf");
+			string databaseFile = "Data Source=" + Path.Combine(Properties.Settings.Default.App_PathLocalData, AssemblyInfo.Product + ".sdf");
 			return databaseFile;
 		}
 
@@ -156,7 +156,7 @@ namespace ScriptHelp.Scripts
 				Uri baseUrl = new Uri(Properties.Settings.Default.App_PathDeploy);
 				string relativeUrl = "Application Files/" + AssemblyInfo.Product + versionNumber + "/" + dataFolder + "/";
 				Uri combined = new Uri(baseUrl, relativeUrl);
-				Properties.Settings.Default.App_PathServerData = combined.ToString();
+				Properties.Settings.Default.App_PathDeployData = combined.ToString();
 
 			}
 			catch (Exception ex)
@@ -192,7 +192,7 @@ namespace ScriptHelp.Scripts
 				{
 					userFilePath = System.IO.Path.Combine(AssemblyInfo.GetClickOnceLocation(), dataFolder);
 				}
-				Properties.Settings.Default.App_PathUserData = userFilePath;
+				Properties.Settings.Default.App_PathLocalData = userFilePath;
 
 			}
 			catch (Exception ex)

@@ -35,108 +35,108 @@ namespace ScriptHelp.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("SkyBlue")]
-        public global::System.Drawing.Color Sheet_Column_Cleaned_Colour {
+        public global::System.Drawing.Color Sheet_ColumnCleanedColour {
             get {
-                return ((global::System.Drawing.Color)(this["Sheet_Column_Cleaned_Colour"]));
+                return ((global::System.Drawing.Color)(this["Sheet_ColumnCleanedColour"]));
             }
             set {
-                this["Sheet_Column_Cleaned_Colour"] = value;
+                this["Sheet_ColumnCleanedColour"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("tbl")]
-        public string Sheet_Column_Table_Alias {
+        public string Sheet_ColumnTableAlias {
             get {
-                return ((string)(this["Sheet_Column_Table_Alias"]));
+                return ((string)(this["Sheet_ColumnTableAlias"]));
             }
             set {
-                this["Sheet_Column_Table_Alias"] = value;
+                this["Sheet_ColumnTableAlias"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("2")]
-        public int Script_Type_Date {
+        public int Script_TypeDate {
             get {
-                return ((int)(this["Script_Type_Date"]));
+                return ((int)(this["Script_TypeDate"]));
             }
             set {
-                this["Script_Type_Date"] = value;
+                this["Script_TypeDate"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("dd-mmm-yyyy")]
-        public string Sheet_Column_Date_Format_Replace {
+        public string Sheet_ColumnDateFormatReplace {
             get {
-                return ((string)(this["Sheet_Column_Date_Format_Replace"]));
+                return ((string)(this["Sheet_ColumnDateFormatReplace"]));
             }
             set {
-                this["Sheet_Column_Date_Format_Replace"] = value;
+                this["Sheet_ColumnDateFormatReplace"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("mm:ss.0")]
-        public string Sheet_Column_Date_Format_Find {
+        public string Sheet_ColumnDateFormatFind {
             get {
-                return ((string)(this["Sheet_Column_Date_Format_Find"]));
+                return ((string)(this["Sheet_ColumnDateFormatFind"]));
             }
             set {
-                this["Sheet_Column_Date_Format_Find"] = value;
+                this["Sheet_ColumnDateFormatFind"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("NULL")]
-        public string Sheet_Column_Script_Null {
+        public string Sheet_ColumnScriptNull {
             get {
-                return ((string)(this["Sheet_Column_Script_Null"]));
+                return ((string)(this["Sheet_ColumnScriptNull"]));
             }
             set {
-                this["Sheet_Column_Script_Null"] = value;
+                this["Sheet_ColumnScriptNull"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("1")]
-        public int Script_Type_Numeric {
+        public int Script_TypeNumeric {
             get {
-                return ((int)(this["Script_Type_Numeric"]));
+                return ((int)(this["Script_TypeNumeric"]));
             }
             set {
-                this["Script_Type_Numeric"] = value;
+                this["Script_TypeNumeric"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("\'")]
-        public string Sheet_Column_Script_Quote {
+        public string Sheet_ColumnScriptQuote {
             get {
-                return ((string)(this["Sheet_Column_Script_Quote"]));
+                return ((string)(this["Sheet_ColumnScriptQuote"]));
             }
             set {
-                this["Sheet_Column_Script_Quote"] = value;
+                this["Sheet_ColumnScriptQuote"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int Script_Type_Text {
+        public int Script_TypeText {
             get {
-                return ((int)(this["Script_Type_Text"]));
+                return ((int)(this["Script_TypeText"]));
             }
             set {
-                this["Script_Type_Text"] = value;
+                this["Script_TypeText"] = value;
             }
         }
         
@@ -239,12 +239,12 @@ namespace ScriptHelp.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("C:\\Temp")]
-        public string App_PathFileListing {
+        public string App_PathExport {
             get {
-                return ((string)(this["App_PathFileListing"]));
+                return ((string)(this["App_PathExport"]));
             }
             set {
-                this["App_PathFileListing"] = value;
+                this["App_PathExport"] = value;
             }
         }
         
@@ -287,12 +287,12 @@ namespace ScriptHelp.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("SCRIPT")]
-        public string Sheet_Column_Name {
+        public string Sheet_ColumnName {
             get {
-                return ((string)(this["Sheet_Column_Name"]));
+                return ((string)(this["Sheet_ColumnName"]));
             }
             set {
-                this["Sheet_Column_Name"] = value;
+                this["Sheet_ColumnName"] = value;
             }
         }
         
@@ -311,12 +311,12 @@ namespace ScriptHelp.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute(",")]
-        public char Sheet_Column_Separate_Values_Delimiter {
+        public char Sheet_ColumnSeparateValuesDelimiter {
             get {
-                return ((char)(this["Sheet_Column_Separate_Values_Delimiter"]));
+                return ((char)(this["Sheet_ColumnSeparateValuesDelimiter"]));
             }
             set {
-                this["Sheet_Column_Separate_Values_Delimiter"] = value;
+                this["Sheet_ColumnSeparateValuesDelimiter"] = value;
             }
         }
         
@@ -335,12 +335,12 @@ namespace ScriptHelp.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string App_PathUserData {
+        public string App_PathLocalData {
             get {
-                return ((string)(this["App_PathUserData"]));
+                return ((string)(this["App_PathLocalData"]));
             }
             set {
-                this["App_PathUserData"] = value;
+                this["App_PathLocalData"] = value;
             }
         }
         
@@ -407,24 +407,24 @@ namespace ScriptHelp.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("https://github.com/aduguid/ScriptHelp/blob/master/README.md")]
-        public string App_PathHelp {
+        public string App_PathReadMe {
             get {
-                return ((string)(this["App_PathHelp"]));
+                return ((string)(this["App_PathReadMe"]));
             }
             set {
-                this["App_PathHelp"] = value;
+                this["App_PathReadMe"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string App_PathServerData {
+        public string App_PathDeployData {
             get {
-                return ((string)(this["App_PathServerData"]));
+                return ((string)(this["App_PathDeployData"]));
             }
             set {
-                this["App_PathServerData"] = value;
+                this["App_PathDeployData"] = value;
             }
         }
     }

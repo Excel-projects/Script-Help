@@ -159,12 +159,12 @@ namespace ScriptHelp.Scripts
 				ErrorHandler.SetLogPath();
 				ErrorHandler.CreateLogRecord();
 
-				string destFilePath = Path.Combine(Properties.Settings.Default.App_PathUserData, AssemblyInfo.Product + ".sdf");
+				string destFilePath = Path.Combine(Properties.Settings.Default.App_PathLocalData, AssemblyInfo.Product + ".sdf");
 				if (!(File.Exists(destFilePath)))
 				{
 					using (var client = new System.Net.WebClient())
 					{
-						client.DownloadFile(Properties.Settings.Default.App_PathServerData + AssemblyInfo.Product + ".sdf.deploy", Path.Combine(Properties.Settings.Default.App_PathUserData, AssemblyInfo.Product + ".sdf"));
+						client.DownloadFile(Properties.Settings.Default.App_PathDeployData + AssemblyInfo.Product + ".sdf.deploy", Path.Combine(Properties.Settings.Default.App_PathLocalData, AssemblyInfo.Product + ".sdf"));
 					}
 
 				}
@@ -356,11 +356,11 @@ namespace ScriptHelp.Scripts
 				switch (control.Id)
 				{
 					case "cboDateFormat":
-						return Properties.Settings.Default.Sheet_Column_Date_Format_Replace;
+						return Properties.Settings.Default.Sheet_ColumnDateFormatReplace;
 					case "cboDatePasteFormat":
-						return Properties.Settings.Default.Sheet_Column_Date_Format_Find;
+						return Properties.Settings.Default.Sheet_ColumnDateFormatFind;
 					case "cboTableAlias":
-						return Properties.Settings.Default.Sheet_Column_Table_Alias;
+						return Properties.Settings.Default.Sheet_ColumnTableAlias;
 					default:
 						return string.Empty;
 				}
@@ -510,13 +510,13 @@ namespace ScriptHelp.Scripts
 				switch (control.Id)
 				{
 					case "cboDateFormat":
-						Properties.Settings.Default.Sheet_Column_Date_Format_Replace = text;
+						Properties.Settings.Default.Sheet_ColumnDateFormatReplace = text;
 						break;
 					case "cboDatePasteFormat":
-						Properties.Settings.Default.Sheet_Column_Date_Format_Find = text;
+						Properties.Settings.Default.Sheet_ColumnDateFormatFind = text;
 						break;
 					case "cboTableAlias":
-						Properties.Settings.Default.Sheet_Column_Table_Alias = text;
+						Properties.Settings.Default.Sheet_ColumnTableAlias = text;
 						break;
 				}
 			}
@@ -601,16 +601,16 @@ namespace ScriptHelp.Scripts
 									if (Convert.ToBoolean(cell.HasFormula) == false)
 									{
 										cell.Value = cc;
-										cell.Interior.Color = Properties.Settings.Default.Sheet_Column_Cleaned_Colour;
+										cell.Interior.Color = Properties.Settings.Default.Sheet_ColumnCleanedColour;
 										cnt = cnt + 1;
 									}
 								}
 								cell = tbl.Range.Cells[i + 1, j];
-								string qt = Properties.Settings.Default.Sheet_Column_Script_Quote;
+								string qt = Properties.Settings.Default.Sheet_ColumnScriptQuote;
 								if (cell.PrefixCharacter == qt)  // show the leading apostrophe in the cell by doubling the value.
 								{
 									cell.Value = qt + qt + cell.Value;
-									cell.Interior.Color = Properties.Settings.Default.Sheet_Column_Cleaned_Colour;
+									cell.Interior.Color = Properties.Settings.Default.Sheet_ColumnCleanedColour;
 								}
 							}
 						}
@@ -665,13 +665,13 @@ namespace ScriptHelp.Scripts
 						if (usedRange[i + 1, j].Value2 == null)
 						{
 							cell = tbl.Range.Cells[i + 1, j];
-							cell.Value = Properties.Settings.Default.Sheet_Column_Script_Null;
-							cell.Interior.Color = Properties.Settings.Default.Sheet_Column_Cleaned_Colour;
+							cell.Value = Properties.Settings.Default.Sheet_ColumnScriptNull;
+							cell.Interior.Color = Properties.Settings.Default.Sheet_ColumnCleanedColour;
 							cnt = cnt + 1;
 						}
 					}
 				}
-				MessageBox.Show("The number of cells converted to " + Properties.Settings.Default.Sheet_Column_Script_Null + ": " + cnt.ToString(), "Converting has finished", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				MessageBox.Show("The number of cells converted to " + Properties.Settings.Default.Sheet_ColumnScriptNull + ": " + cnt.ToString(), "Converting has finished", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			}
 			catch (Exception ex)
 			{
@@ -713,9 +713,9 @@ namespace ScriptHelp.Scripts
 					cell = FirstNotNullCellInColumn(col.DataBodyRange);
 					if (((cell != null)))
 					{
-						if (cell.NumberFormat.ToString() == Properties.Settings.Default.Sheet_Column_Date_Format_Find | ErrorHandler.IsDate(cell.Value))
+						if (cell.NumberFormat.ToString() == Properties.Settings.Default.Sheet_ColumnDateFormatFind | ErrorHandler.IsDate(cell.Value))
 						{
-							col.DataBodyRange.NumberFormat = Properties.Settings.Default.Sheet_Column_Date_Format_Replace;
+							col.DataBodyRange.NumberFormat = Properties.Settings.Default.Sheet_ColumnDateFormatReplace;
 							col.DataBodyRange.HorizontalAlignment = Excel.Constants.xlCenter;
 						}
 					}
@@ -816,7 +816,7 @@ namespace ScriptHelp.Scripts
 					string cellValue = tbl.Range.Cells[i, columnIndex].Value2;
 					if (string.IsNullOrEmpty(cellValue) == false)
 					{
-						string[] metadata = cellValue.Split(Properties.Settings.Default.Sheet_Column_Separate_Values_Delimiter);
+						string[] metadata = cellValue.Split(Properties.Settings.Default.Sheet_ColumnSeparateValuesDelimiter);
 						int countValues = metadata.Length - 1;
 						if (countValues > 0)
 						{
@@ -951,7 +951,7 @@ namespace ScriptHelp.Scripts
 		/// <remarks></remarks>
 		public void CreateBatchFileList(Office.IRibbonControl control)
 		{
-			string filePath = Properties.Settings.Default.App_PathFileListing;
+			string filePath = Properties.Settings.Default.App_PathExport;
 			try
 			{
 				ErrorHandler.CreateLogRecord();
@@ -1037,7 +1037,7 @@ namespace ScriptHelp.Scripts
 			ErrorHandler.CreateLogRecord();
 			//string clickOnceLocation = AssemblyInfo.GetClickOnceLocation();
 			//AssemblyInfo.OpenFile(Path.Combine(clickOnceLocation, @"Documentation\\As Built.docx"));
-			System.Diagnostics.Process.Start(Properties.Settings.Default.App_PathHelp);
+			System.Diagnostics.Process.Start(Properties.Settings.Default.App_PathReadMe);
 
 		}
 
@@ -1105,9 +1105,9 @@ namespace ScriptHelp.Scripts
 		{
 			try
 			{
-				if ((GetSqlDataType(col) != Properties.Settings.Default.Script_Type_Numeric))
+				if ((GetSqlDataType(col) != Properties.Settings.Default.Script_TypeNumeric))
 				{
-					return Properties.Settings.Default.Sheet_Column_Script_Quote;
+					return Properties.Settings.Default.Sheet_ColumnScriptQuote;
 				}
 				else
 				{
@@ -1210,7 +1210,7 @@ namespace ScriptHelp.Scripts
 					if ((cell.Value != null))
 					{
 						string cellValue = cell.Value2.ToString();
-						if (String.Compare(cellValue, Properties.Settings.Default.Sheet_Column_Script_Null, true) != 0)
+						if (String.Compare(cellValue, Properties.Settings.Default.Sheet_ColumnScriptNull, true) != 0)
 						{
 							return cell;
 						}
@@ -1267,7 +1267,7 @@ namespace ScriptHelp.Scripts
 				switch (GetSqlDataType(col))
 				{
 					case 2:
-						fmt = Properties.Settings.Default.Sheet_Column_Date_Format_Replace;
+						fmt = Properties.Settings.Default.Sheet_ColumnDateFormatReplace;
 						return FormatCellText(col, fmt);
 					case 1:
 						// we will use the column formatting if some is applied
@@ -1302,44 +1302,44 @@ namespace ScriptHelp.Scripts
 			{
 				// default to text
 				double numCnt = 0;
-				double notNullCnt = Globals.ThisAddIn.Application.WorksheetFunction.CountIf(col.DataBodyRange, "<>" + Properties.Settings.Default.Sheet_Column_Script_Null);
+				double notNullCnt = Globals.ThisAddIn.Application.WorksheetFunction.CountIf(col.DataBodyRange, "<>" + Properties.Settings.Default.Sheet_ColumnScriptNull);
 
 				// If all values are nulls then assume text
 				if ((notNullCnt == 0))
 				{
-					return Properties.Settings.Default.Script_Type_Text;
+					return Properties.Settings.Default.Script_TypeText;
 				}
 
 				numCnt = Globals.ThisAddIn.Application.WorksheetFunction.Count(col.DataBodyRange);
 				// if no numbers then assume text
 				if ((numCnt == 0))
 				{
-					return Properties.Settings.Default.Script_Type_Text;
+					return Properties.Settings.Default.Script_TypeText;
 				}
 
 				// if a mix of numbers and not numbers then assume text
 				if ((numCnt != notNullCnt))
 				{
-					return Properties.Settings.Default.Script_Type_Text;
+					return Properties.Settings.Default.Script_TypeText;
 				}
 
 				//Excel changes the case of date formats on custom cell format types
-				bool result = Properties.Settings.Default.Sheet_Column_Date_Format_Replace.Equals(col.DataBodyRange.NumberFormat.ToString(), StringComparison.OrdinalIgnoreCase);
+				bool result = Properties.Settings.Default.Sheet_ColumnDateFormatReplace.Equals(col.DataBodyRange.NumberFormat.ToString(), StringComparison.OrdinalIgnoreCase);
 				// NOTE: next test relies consistent formatting on numerics in a column
 				// so we only have to test the first cell
 				if (ErrorHandler.IsDate(FirstNotNullCellInColumn(col.DataBodyRange)) | result == true)
 				{
-					return Properties.Settings.Default.Script_Type_Date;
+					return Properties.Settings.Default.Script_TypeDate;
 				}
 				else
 				{
-					return Properties.Settings.Default.Script_Type_Numeric;
+					return Properties.Settings.Default.Script_TypeNumeric;
 				}
 			}
 			catch (Exception ex)
 			{
 				ErrorHandler.DisplayMessage(ex);
-				return Properties.Settings.Default.Script_Type_Text;
+				return Properties.Settings.Default.Script_TypeText;
 			}
 		}
 

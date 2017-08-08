@@ -18,12 +18,12 @@ namespace ScriptHelp.Scripts
 			try
 			{
 				ErrorHandler.CreateLogRecord();
-				string lastColumnName = Properties.Settings.Default.Sheet_Column_Table_Alias;
-				string tableAlias = Properties.Settings.Default.Sheet_Column_Table_Alias;
+				string lastColumnName = Properties.Settings.Default.Sheet_ColumnTableAlias;
+				string tableAlias = Properties.Settings.Default.Sheet_ColumnTableAlias;
 				string sqlColName = string.Empty;
 				int columnCount = 0;
 
-				sqlColName = Properties.Settings.Default.Sheet_Column_Name;
+				sqlColName = Properties.Settings.Default.Sheet_ColumnName;
 				tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject;
 				int lastColumnIndex = tbl.Range.Columns.Count;
 				sqlCol = tbl.ListColumns[lastColumnIndex];
@@ -94,9 +94,9 @@ namespace ScriptHelp.Scripts
 								valuePrefix = "\"APPEND " + col.Name + " = \" & ";
 							}
 						}
-						if (Ribbon.GetSqlDataType(col) == Properties.Settings.Default.Script_Type_Date)
+						if (Ribbon.GetSqlDataType(col) == Properties.Settings.Default.Script_TypeDate)
 						{
-							formula += valuePrefix + "\"DATE(" + qt + "\" & " + colRef + " & \"" + qt + ", " + qt + Properties.Settings.Default.Sheet_Column_Date_Format_Replace + qt + ")\"";
+							formula += valuePrefix + "\"DATE(" + qt + "\" & " + colRef + " & \"" + qt + ", " + qt + Properties.Settings.Default.Sheet_ColumnDateFormatReplace + qt + ")\"";
 						}
 						else
 						{
@@ -105,9 +105,9 @@ namespace ScriptHelp.Scripts
 					}
 				}
 				//replace NULL values with DQL format
-				formula = "SUBSTITUTE(" + formula + ", \"'" + Properties.Settings.Default.Sheet_Column_Script_Null + "', '" + Properties.Settings.Default.Sheet_Column_Date_Format_Replace + "'\", \"'nulldate'\")";
-				formula = "SUBSTITUTE(" + formula + ", \"'" + Properties.Settings.Default.Sheet_Column_Script_Null + "'\", \"nullstring\")";
-				formula = "SUBSTITUTE(" + formula + ", \"" + Properties.Settings.Default.Sheet_Column_Script_Null + "\", \"nullint\")";
+				formula = "SUBSTITUTE(" + formula + ", \"'" + Properties.Settings.Default.Sheet_ColumnScriptNull + "', '" + Properties.Settings.Default.Sheet_ColumnDateFormatReplace + "'\", \"'nulldate'\")";
+				formula = "SUBSTITUTE(" + formula + ", \"'" + Properties.Settings.Default.Sheet_ColumnScriptNull + "'\", \"nullstring\")";
+				formula = "SUBSTITUTE(" + formula + ", \"" + Properties.Settings.Default.Sheet_ColumnScriptNull + "\", \"nullint\")";
 
 				string whereCheck = string.Empty;
 				if (afterWhere == false)
@@ -164,12 +164,12 @@ namespace ScriptHelp.Scripts
 			try
 			{
 				ErrorHandler.CreateLogRecord();
-				string lastColumnName = Properties.Settings.Default.Sheet_Column_Table_Alias;
-				string tableAlias = Properties.Settings.Default.Sheet_Column_Table_Alias;
+				string lastColumnName = Properties.Settings.Default.Sheet_ColumnTableAlias;
+				string tableAlias = Properties.Settings.Default.Sheet_ColumnTableAlias;
 				string sqlColName = string.Empty;
 				int columnCount = 0;
 
-				sqlColName = Properties.Settings.Default.Sheet_Column_Name;
+				sqlColName = Properties.Settings.Default.Sheet_ColumnName;
 				tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject;
 				int lastColumnIndex = tbl.Range.Columns.Count;
 				sqlCol = tbl.ListColumns[lastColumnIndex];
@@ -241,14 +241,14 @@ namespace ScriptHelp.Scripts
 								valuePrefix = "\"APPEND " + col.Name + " = \" & ";
 							}
 						}
-						if (Ribbon.GetSqlDataType(col) == Properties.Settings.Default.Script_Type_Date)
+						if (Ribbon.GetSqlDataType(col) == Properties.Settings.Default.Script_TypeDate)
 						{
 							if (afterWhere == true)
 							{
-								whereClause += valuePrefix + "\"DATE(" + qt + "\" & " + colRef + " & \"" + qt + ", " + qt + Properties.Settings.Default.Sheet_Column_Date_Format_Replace + qt + ")\"";
+								whereClause += valuePrefix + "\"DATE(" + qt + "\" & " + colRef + " & \"" + qt + ", " + qt + Properties.Settings.Default.Sheet_ColumnDateFormatReplace + qt + ")\"";
 
 							}
-							formula += valuePrefix + "\"DATE(" + qt + "\" & " + colRef + " & \"" + qt + ", " + qt + Properties.Settings.Default.Sheet_Column_Date_Format_Replace + qt + ")\"";
+							formula += valuePrefix + "\"DATE(" + qt + "\" & " + colRef + " & \"" + qt + ", " + qt + Properties.Settings.Default.Sheet_ColumnDateFormatReplace + qt + ")\"";
 						}
 						else
 						{
@@ -261,9 +261,9 @@ namespace ScriptHelp.Scripts
 					}
 				}
 				//replace NULL values with DQL format
-				formula = "SUBSTITUTE(" + formula + ", \"'" + Properties.Settings.Default.Sheet_Column_Script_Null + "', '" + Properties.Settings.Default.Sheet_Column_Date_Format_Replace + "'\", \"'nulldate'\")";
-				formula = "SUBSTITUTE(" + formula + ", \"'" + Properties.Settings.Default.Sheet_Column_Script_Null + "'\", \"nullstring\")";
-				formula = "SUBSTITUTE(" + formula + ", \"" + Properties.Settings.Default.Sheet_Column_Script_Null + "\", \"nullint\")";
+				formula = "SUBSTITUTE(" + formula + ", \"'" + Properties.Settings.Default.Sheet_ColumnScriptNull + "', '" + Properties.Settings.Default.Sheet_ColumnDateFormatReplace + "'\", \"'nulldate'\")";
+				formula = "SUBSTITUTE(" + formula + ", \"'" + Properties.Settings.Default.Sheet_ColumnScriptNull + "'\", \"nullstring\")";
+				formula = "SUBSTITUTE(" + formula + ", \"" + Properties.Settings.Default.Sheet_ColumnScriptNull + "\", \"nullint\")";
 
 				string whereCheck = string.Empty;
 				if (afterWhere == false)
@@ -323,12 +323,12 @@ namespace ScriptHelp.Scripts
 			try
 			{
 				ErrorHandler.CreateLogRecord();
-				string lastColumnName = Properties.Settings.Default.Sheet_Column_Table_Alias;
-				string tableAlias = Properties.Settings.Default.Sheet_Column_Table_Alias;
+				string lastColumnName = Properties.Settings.Default.Sheet_ColumnTableAlias;
+				string tableAlias = Properties.Settings.Default.Sheet_ColumnTableAlias;
 				string sqlColName = string.Empty;
 				int columnCount = 0;
 
-				sqlColName = Properties.Settings.Default.Sheet_Column_Name;
+				sqlColName = Properties.Settings.Default.Sheet_ColumnName;
 				tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject;
 				int lastColumnIndex = tbl.Range.Columns.Count;
 				sqlCol = tbl.ListColumns[lastColumnIndex];
@@ -376,9 +376,9 @@ namespace ScriptHelp.Scripts
 						colRef = "SUBSTITUTE(" + colRef + ", " + "\"" + qt + "\", \"" + qt + qt + "\")";
 						string valuePrefix = string.Empty;
 						valuePrefix = "\" SET " + col.Name + " = \" & ";
-						if (Ribbon.GetSqlDataType(col) == Properties.Settings.Default.Script_Type_Date)
+						if (Ribbon.GetSqlDataType(col) == Properties.Settings.Default.Script_TypeDate)
 						{
-							formula += valuePrefix + "\"DATE(" + qt + "\" & " + colRef + " & \"" + qt + ", " + qt + Properties.Settings.Default.Sheet_Column_Date_Format_Replace + qt + ")\"";
+							formula += valuePrefix + "\"DATE(" + qt + "\" & " + colRef + " & \"" + qt + ", " + qt + Properties.Settings.Default.Sheet_ColumnDateFormatReplace + qt + ")\"";
 						}
 						else
 						{
@@ -387,9 +387,9 @@ namespace ScriptHelp.Scripts
 					}
 				}
 				//replace NULL values with DQL format
-				formula = "SUBSTITUTE(" + formula + ", \"'" + Properties.Settings.Default.Sheet_Column_Script_Null + "', '" + Properties.Settings.Default.Sheet_Column_Date_Format_Replace + "'\", \"'nulldate'\")";
-				formula = "SUBSTITUTE(" + formula + ", \"'" + Properties.Settings.Default.Sheet_Column_Script_Null + "'\", \"nullstring\")";
-				formula = "SUBSTITUTE(" + formula + ", \"" + Properties.Settings.Default.Sheet_Column_Script_Null + "\", \"nullint\")";
+				formula = "SUBSTITUTE(" + formula + ", \"'" + Properties.Settings.Default.Sheet_ColumnScriptNull + "', '" + Properties.Settings.Default.Sheet_ColumnDateFormatReplace + "'\", \"'nulldate'\")";
+				formula = "SUBSTITUTE(" + formula + ", \"'" + Properties.Settings.Default.Sheet_ColumnScriptNull + "'\", \"nullstring\")";
+				formula = "SUBSTITUTE(" + formula + ", \"" + Properties.Settings.Default.Sheet_ColumnScriptNull + "\", \"nullint\")";
 
 				formula = "=\"CREATE " + tableAlias + " objects \" & CHAR(10) & " + formula + " & \"; \" & CHAR(10) & \"GO \"";
 				tbl.ShowTotals = false;
@@ -441,12 +441,12 @@ namespace ScriptHelp.Scripts
 			try
 			{
 				ErrorHandler.CreateLogRecord();
-				string lastColumnName = Properties.Settings.Default.Sheet_Column_Table_Alias;
-				string tableAlias = Properties.Settings.Default.Sheet_Column_Table_Alias;
+				string lastColumnName = Properties.Settings.Default.Sheet_ColumnTableAlias;
+				string tableAlias = Properties.Settings.Default.Sheet_ColumnTableAlias;
 				string sqlColName = string.Empty;
 				int columnCount = 0;
 
-				sqlColName = Properties.Settings.Default.Sheet_Column_Name;
+				sqlColName = Properties.Settings.Default.Sheet_ColumnName;
 				tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject;
 				int lastColumnIndex = tbl.Range.Columns.Count;
 				sqlCol = tbl.ListColumns[lastColumnIndex];
@@ -517,9 +517,9 @@ namespace ScriptHelp.Scripts
 								valuePrefix = "\"TRUNCATE " + col.Name + ", APPEND " + col.Name + " = \" & ";
 							}
 						}
-						if (Ribbon.GetSqlDataType(col) == Properties.Settings.Default.Script_Type_Date)
+						if (Ribbon.GetSqlDataType(col) == Properties.Settings.Default.Script_TypeDate)
 						{
-							formula += valuePrefix + "\"DATE(" + qt + "\" & " + colRef + " & \"" + qt + ", " + qt + Properties.Settings.Default.Sheet_Column_Date_Format_Replace + qt + ")\"";
+							formula += valuePrefix + "\"DATE(" + qt + "\" & " + colRef + " & \"" + qt + ", " + qt + Properties.Settings.Default.Sheet_ColumnDateFormatReplace + qt + ")\"";
 						}
 						else
 						{
@@ -528,9 +528,9 @@ namespace ScriptHelp.Scripts
 					}
 				}
 				//replace NULL values with DQL format
-				formula = "SUBSTITUTE(" + formula + ", \"'" + Properties.Settings.Default.Sheet_Column_Script_Null + "', '" + Properties.Settings.Default.Sheet_Column_Date_Format_Replace + "'\", \"'nulldate'\")";
-				formula = "SUBSTITUTE(" + formula + ", \"'" + Properties.Settings.Default.Sheet_Column_Script_Null + "'\", \"nullstring\")";
-				formula = "SUBSTITUTE(" + formula + ", \"" + Properties.Settings.Default.Sheet_Column_Script_Null + "\", \"nullint\")";
+				formula = "SUBSTITUTE(" + formula + ", \"'" + Properties.Settings.Default.Sheet_ColumnScriptNull + "', '" + Properties.Settings.Default.Sheet_ColumnDateFormatReplace + "'\", \"'nulldate'\")";
+				formula = "SUBSTITUTE(" + formula + ", \"'" + Properties.Settings.Default.Sheet_ColumnScriptNull + "'\", \"nullstring\")";
+				formula = "SUBSTITUTE(" + formula + ", \"" + Properties.Settings.Default.Sheet_ColumnScriptNull + "\", \"nullint\")";
 
 				string whereCheck = string.Empty;
 				if (afterWhere == false)
@@ -588,12 +588,12 @@ namespace ScriptHelp.Scripts
 			try
 			{
 				ErrorHandler.CreateLogRecord();
-				string lastColumnName = Properties.Settings.Default.Sheet_Column_Table_Alias;
-				string tableAlias = Properties.Settings.Default.Sheet_Column_Table_Alias;
+				string lastColumnName = Properties.Settings.Default.Sheet_ColumnTableAlias;
+				string tableAlias = Properties.Settings.Default.Sheet_ColumnTableAlias;
 				string sqlColName = string.Empty;
 				int columnCount = 0;
 
-				sqlColName = Properties.Settings.Default.Sheet_Column_Name;
+				sqlColName = Properties.Settings.Default.Sheet_ColumnName;
 				tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject;
 				int lastColumnIndex = tbl.Range.Columns.Count;
 				sqlCol = tbl.ListColumns[lastColumnIndex];
@@ -660,9 +660,9 @@ namespace ScriptHelp.Scripts
 								valuePrefix = "\"SET " + col.Name + " = \" & ";
 							}
 						}
-						if (Ribbon.GetSqlDataType(col) == Properties.Settings.Default.Script_Type_Date)
+						if (Ribbon.GetSqlDataType(col) == Properties.Settings.Default.Script_TypeDate)
 						{
-							formula += valuePrefix + "\"DATE(" + qt + "\" & " + colRef + " & \"" + qt + ", " + qt + Properties.Settings.Default.Sheet_Column_Date_Format_Replace + qt + ")\"";
+							formula += valuePrefix + "\"DATE(" + qt + "\" & " + colRef + " & \"" + qt + ", " + qt + Properties.Settings.Default.Sheet_ColumnDateFormatReplace + qt + ")\"";
 						}
 						else
 						{
@@ -671,9 +671,9 @@ namespace ScriptHelp.Scripts
 					}
 				}
 				//replace NULL values with DQL format
-				formula = "SUBSTITUTE(" + formula + ", \"'" + Properties.Settings.Default.Sheet_Column_Script_Null + "', '" + Properties.Settings.Default.Sheet_Column_Date_Format_Replace + "'\", \"'nulldate'\")";
-				formula = "SUBSTITUTE(" + formula + ", \"'" + Properties.Settings.Default.Sheet_Column_Script_Null + "'\", \"nullstring\")";
-				formula = "SUBSTITUTE(" + formula + ", \"" + Properties.Settings.Default.Sheet_Column_Script_Null + "\", \"nullint\")";
+				formula = "SUBSTITUTE(" + formula + ", \"'" + Properties.Settings.Default.Sheet_ColumnScriptNull + "', '" + Properties.Settings.Default.Sheet_ColumnDateFormatReplace + "'\", \"'nulldate'\")";
+				formula = "SUBSTITUTE(" + formula + ", \"'" + Properties.Settings.Default.Sheet_ColumnScriptNull + "'\", \"nullstring\")";
+				formula = "SUBSTITUTE(" + formula + ", \"" + Properties.Settings.Default.Sheet_ColumnScriptNull + "\", \"nullint\")";
 
 				string whereCheck = string.Empty;
 				if (afterWhere == false)
@@ -730,12 +730,12 @@ namespace ScriptHelp.Scripts
 			try
 			{
 				ErrorHandler.CreateLogRecord();
-				string lastColumnName = Properties.Settings.Default.Sheet_Column_Table_Alias;
-				string tableAlias = Properties.Settings.Default.Sheet_Column_Table_Alias;
+				string lastColumnName = Properties.Settings.Default.Sheet_ColumnTableAlias;
+				string tableAlias = Properties.Settings.Default.Sheet_ColumnTableAlias;
 				string sqlColName = string.Empty;
 				int columnCount = 0;
 
-				sqlColName = Properties.Settings.Default.Sheet_Column_Name;
+				sqlColName = Properties.Settings.Default.Sheet_ColumnName;
 				tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject;
 				int lastColumnIndex = tbl.Range.Columns.Count;
 				sqlCol = tbl.ListColumns[lastColumnIndex];
@@ -807,14 +807,14 @@ namespace ScriptHelp.Scripts
 								valuePrefix = "\"SET " + col.Name + " = \" & ";
 							}
 						}
-						if (Ribbon.GetSqlDataType(col) == Properties.Settings.Default.Script_Type_Date)
+						if (Ribbon.GetSqlDataType(col) == Properties.Settings.Default.Script_TypeDate)
 						{
 							if (afterWhere == true)
 							{
-								whereClause += valuePrefix + "\"DATE(" + qt + "\" & " + colRef + " & \"" + qt + ", " + qt + Properties.Settings.Default.Sheet_Column_Date_Format_Replace + qt + ")\"";
+								whereClause += valuePrefix + "\"DATE(" + qt + "\" & " + colRef + " & \"" + qt + ", " + qt + Properties.Settings.Default.Sheet_ColumnDateFormatReplace + qt + ")\"";
 
 							}
-							formula += valuePrefix + "\"DATE(" + qt + "\" & " + colRef + " & \"" + qt + ", " + qt + Properties.Settings.Default.Sheet_Column_Date_Format_Replace + qt + ")\"";
+							formula += valuePrefix + "\"DATE(" + qt + "\" & " + colRef + " & \"" + qt + ", " + qt + Properties.Settings.Default.Sheet_ColumnDateFormatReplace + qt + ")\"";
 						}
 						else
 						{
@@ -827,9 +827,9 @@ namespace ScriptHelp.Scripts
 					}
 				}
 				//replace NULL values with DQL format
-				formula = "SUBSTITUTE(" + formula + ", \"'" + Properties.Settings.Default.Sheet_Column_Script_Null + "', '" + Properties.Settings.Default.Sheet_Column_Date_Format_Replace + "'\", \"'nulldate'\")";
-				formula = "SUBSTITUTE(" + formula + ", \"'" + Properties.Settings.Default.Sheet_Column_Script_Null + "'\", \"nullstring\")";
-				formula = "SUBSTITUTE(" + formula + ", \"" + Properties.Settings.Default.Sheet_Column_Script_Null + "\", \"nullint\")";
+				formula = "SUBSTITUTE(" + formula + ", \"'" + Properties.Settings.Default.Sheet_ColumnScriptNull + "', '" + Properties.Settings.Default.Sheet_ColumnDateFormatReplace + "'\", \"'nulldate'\")";
+				formula = "SUBSTITUTE(" + formula + ", \"'" + Properties.Settings.Default.Sheet_ColumnScriptNull + "'\", \"nullstring\")";
+				formula = "SUBSTITUTE(" + formula + ", \"" + Properties.Settings.Default.Sheet_ColumnScriptNull + "\", \"nullint\")";
 
 				string whereCheck = string.Empty;
 				if (afterWhere == false)
@@ -890,10 +890,10 @@ namespace ScriptHelp.Scripts
 			{
 				ErrorHandler.CreateLogRecord();
 				Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
-				string lastColumnName = Properties.Settings.Default.Sheet_Column_Table_Alias;
-				string tableAlias = Properties.Settings.Default.Sheet_Column_Table_Alias;
+				string lastColumnName = Properties.Settings.Default.Sheet_ColumnTableAlias;
+				string tableAlias = Properties.Settings.Default.Sheet_ColumnTableAlias;
 
-				string sqlColName = Properties.Settings.Default.Sheet_Column_Name;
+				string sqlColName = Properties.Settings.Default.Sheet_ColumnName;
 				tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject;
 				sqlCol = tbl.ListColumns.Add();
 				sqlCol.Name = lastColumnName;
@@ -974,12 +974,12 @@ namespace ScriptHelp.Scripts
 			try
 			{
 				ErrorHandler.CreateLogRecord();
-				string lastColumnName = Properties.Settings.Default.Sheet_Column_Table_Alias;
-				string tableAlias = Properties.Settings.Default.Sheet_Column_Table_Alias;
+				string lastColumnName = Properties.Settings.Default.Sheet_ColumnTableAlias;
+				string tableAlias = Properties.Settings.Default.Sheet_ColumnTableAlias;
 				string sqlColName = string.Empty;
 				int columnCount = 0;
 
-				sqlColName = Properties.Settings.Default.Sheet_Column_Name;
+				sqlColName = Properties.Settings.Default.Sheet_ColumnName;
 				tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject;
 				int lastColumnIndex = tbl.Range.Columns.Count;
 				sqlCol = tbl.ListColumns[lastColumnIndex];
@@ -1037,7 +1037,7 @@ namespace ScriptHelp.Scripts
 					}
 				}
 
-				string nullValue = Properties.Settings.Default.Sheet_Column_Script_Null;
+				string nullValue = Properties.Settings.Default.Sheet_ColumnScriptNull;
 				formula = "SUBSTITUTE(" + formula + ", \"'" + nullValue + "'\", \"" + nullValue + "\")";
 				formula = "=\"<tr> \" & " + formula + " & CHAR(10) & \"</tr> \"";
 				tbl.ShowTotals = false;
@@ -1090,10 +1090,10 @@ namespace ScriptHelp.Scripts
 			try
 			{
 				ErrorHandler.CreateLogRecord();
-				string lastColumnName = Properties.Settings.Default.Sheet_Column_Table_Alias;
+				string lastColumnName = Properties.Settings.Default.Sheet_ColumnTableAlias;
 				string sqlColName = string.Empty;
 
-				sqlColName = Properties.Settings.Default.Sheet_Column_Name;
+				sqlColName = Properties.Settings.Default.Sheet_ColumnName;
 				tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject;
 				int lastColumnIndex = tbl.Range.Columns.Count;
 				sqlCol = tbl.ListColumns[lastColumnIndex];
@@ -1137,9 +1137,9 @@ namespace ScriptHelp.Scripts
 						formula += "\"" + qt + "\" & " + colRef + " & \"" + qt + "\"";
 					}
 				}
-				string nullValue = Properties.Settings.Default.Sheet_Column_Script_Null;
+				string nullValue = Properties.Settings.Default.Sheet_ColumnScriptNull;
 				formula = "SUBSTITUTE(" + formula + ", \"'" + nullValue + "'\", \"" + nullValue + "\")";
-				string tableAlias = Properties.Settings.Default.Sheet_Column_Table_Alias;
+				string tableAlias = Properties.Settings.Default.Sheet_ColumnTableAlias;
 				string insertPrefix = "INSERT INTO " + tableAlias + " (" + Ribbon.ConcatenateColumnNames(tbl.Range) + ") VALUES(";
 				formula = "=\"" + insertPrefix + "\" & " + formula + " & \");\"";
 				tbl.ShowTotals = false;
@@ -1191,10 +1191,10 @@ namespace ScriptHelp.Scripts
 			try
 			{
 				ErrorHandler.CreateLogRecord();
-				string lastColumnName = Properties.Settings.Default.Sheet_Column_Table_Alias;
+				string lastColumnName = Properties.Settings.Default.Sheet_ColumnTableAlias;
 				string sqlColName = string.Empty;
 
-				sqlColName = Properties.Settings.Default.Sheet_Column_Name;
+				sqlColName = Properties.Settings.Default.Sheet_ColumnName;
 				tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject;
 				int lastColumnIndex = tbl.Range.Columns.Count;
 				sqlCol = tbl.ListColumns[lastColumnIndex];
@@ -1238,9 +1238,9 @@ namespace ScriptHelp.Scripts
 						formula += "\"" + qt + "\" & " + colRef + " & \"" + qt + "\"";
 					}
 				}
-				string nullValue = Properties.Settings.Default.Sheet_Column_Script_Null;
+				string nullValue = Properties.Settings.Default.Sheet_ColumnScriptNull;
 				formula = "SUBSTITUTE(" + formula + ", \"'" + nullValue + "'\", \"" + nullValue + "\")";
-				string tableAlias = Properties.Settings.Default.Sheet_Column_Table_Alias;
+				string tableAlias = Properties.Settings.Default.Sheet_ColumnTableAlias;
 				string insertPrefix = "INSERT INTO " + tableAlias + " (" + Ribbon.ConcatenateColumnNames(tbl.Range) + ") VALUES(";
 				formula = "=\"" + insertPrefix + "\" & " + formula + " & \");\"";
 				tbl.ShowTotals = false;
@@ -1292,8 +1292,8 @@ namespace ScriptHelp.Scripts
 			{
 				ErrorHandler.CreateLogRecord();
 				Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
-				string lastColumnName = Properties.Settings.Default.Sheet_Column_Table_Alias;
-				string tableAlias = Properties.Settings.Default.Sheet_Column_Table_Alias;
+				string lastColumnName = Properties.Settings.Default.Sheet_ColumnTableAlias;
+				string tableAlias = Properties.Settings.Default.Sheet_ColumnTableAlias;
 				string tableAliasTemp = tableAlias + "_temp";
 				string sqlColName = string.Empty;
 
@@ -1345,7 +1345,7 @@ namespace ScriptHelp.Scripts
 						formula += "\"" + qt + "\" & " + colRef + " & \"" + qt + "\"";
 					}
 				}
-				string nullValue = Properties.Settings.Default.Sheet_Column_Script_Null;
+				string nullValue = Properties.Settings.Default.Sheet_ColumnScriptNull;
 				formula = "SUBSTITUTE(" + formula + ", \"'" + nullValue + "'\", \"" + nullValue + "\")";
 				int firstRowNbr = tbl.Range[1, 1].Row + 1; // must use the offset for the first row number
 				formula = "=IF(" + (firstRowNbr).ToString() + "-ROW() = 0, \" \", \",\") & " + "\" ( \" & " + formula + " & \")\"";
@@ -1401,8 +1401,8 @@ namespace ScriptHelp.Scripts
 			{
 				ErrorHandler.CreateLogRecord();
 				Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
-				string lastColumnName = Properties.Settings.Default.Sheet_Column_Table_Alias;
-				string tableAlias = Properties.Settings.Default.Sheet_Column_Table_Alias;
+				string lastColumnName = Properties.Settings.Default.Sheet_ColumnTableAlias;
+				string tableAlias = Properties.Settings.Default.Sheet_ColumnTableAlias;
 				string sqlColName = string.Empty;
 
 				sqlColName = "SELECT " + tableAlias + ".*" + " FROM (VALUES";
@@ -1453,7 +1453,7 @@ namespace ScriptHelp.Scripts
 						formula += "\"" + qt + "\" & " + colRef + " & \"" + qt + "\"";
 					}
 				}
-				string nullValue = Properties.Settings.Default.Sheet_Column_Script_Null;
+				string nullValue = Properties.Settings.Default.Sheet_ColumnScriptNull;
 				formula = "SUBSTITUTE(" + formula + ", \"'" + nullValue + "'\", \"" + nullValue + "\")";
 				int firstRowNbr = tbl.Range[1, 1].Row + 1; // must use the offset for the first row number
 				formula = "=IF(" + (firstRowNbr).ToString() + "-ROW() = 0, \" \", \",\") & " + "\" ( \" & " + formula + " & \")\"";
@@ -1507,10 +1507,10 @@ namespace ScriptHelp.Scripts
 			try
 			{
 				ErrorHandler.CreateLogRecord();
-				string lastColumnName = Properties.Settings.Default.Sheet_Column_Table_Alias;
+				string lastColumnName = Properties.Settings.Default.Sheet_ColumnTableAlias;
 				string sqlColName = string.Empty;
 
-				sqlColName = Properties.Settings.Default.Sheet_Column_Name;
+				sqlColName = Properties.Settings.Default.Sheet_ColumnName;
 				tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject;
 				int lastColumnIndex = tbl.Range.Columns.Count;
 				sqlCol = tbl.ListColumns[lastColumnIndex];
@@ -1556,7 +1556,7 @@ namespace ScriptHelp.Scripts
 						formula += "\"" + qt + "\" & " + colRef + " & \"" + qt + "\"" + valuePlSuffix;
 					}
 				}
-				string nullValue = Properties.Settings.Default.Sheet_Column_Script_Null;
+				string nullValue = Properties.Settings.Default.Sheet_ColumnScriptNull;
 				formula = "SUBSTITUTE(" + formula + ", \"'" + nullValue + "'\", \"" + nullValue + "\")";
 				int firstRowNbr = tbl.Range[1, 1].Row + 1; // must use the offset for the first row number
 				formula = "=IF(" + (firstRowNbr).ToString() + "-ROW() = 0, \"\", \"UNION \") & " + "\"SELECT \" & " + formula + " & \" FROM DUAL\"";
@@ -1608,12 +1608,12 @@ namespace ScriptHelp.Scripts
 			try
 			{
 				ErrorHandler.CreateLogRecord();
-				string lastColumnName = Properties.Settings.Default.Sheet_Column_Table_Alias;
-				string tableAlias = Properties.Settings.Default.Sheet_Column_Table_Alias;
+				string lastColumnName = Properties.Settings.Default.Sheet_ColumnTableAlias;
+				string tableAlias = Properties.Settings.Default.Sheet_ColumnTableAlias;
 				string sqlColName = string.Empty;
 				int columnCount = 0;
 
-				sqlColName = Properties.Settings.Default.Sheet_Column_Name;
+				sqlColName = Properties.Settings.Default.Sheet_ColumnName;
 				tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject;
 				int lastColumnIndex = tbl.Range.Columns.Count;
 				sqlCol = tbl.ListColumns[lastColumnIndex];
@@ -1688,9 +1688,9 @@ namespace ScriptHelp.Scripts
 								valuePrefix = "\"" + useComma + " " + col.Name + " = \" & ";
 							}
 						}
-						if (Ribbon.GetSqlDataType(col) == Properties.Settings.Default.Script_Type_Date)
+						if (Ribbon.GetSqlDataType(col) == Properties.Settings.Default.Script_TypeDate)
 						{
-							formula += valuePrefix + "\"DATE(" + qt + "\" & " + colRef + " & \"" + qt + ", " + qt + Properties.Settings.Default.Sheet_Column_Date_Format_Replace + qt + ")\"";
+							formula += valuePrefix + "\"DATE(" + qt + "\" & " + colRef + " & \"" + qt + ", " + qt + Properties.Settings.Default.Sheet_ColumnDateFormatReplace + qt + ")\"";
 						}
 						else
 						{
@@ -1704,7 +1704,7 @@ namespace ScriptHelp.Scripts
 				{
 					whereCheck = " & \" WHERE \" ";
 				}
-				string nullValue = Properties.Settings.Default.Sheet_Column_Script_Null;
+				string nullValue = Properties.Settings.Default.Sheet_ColumnScriptNull;
 				formula = "SUBSTITUTE(" + formula + ", \"'" + nullValue + "'\", \"" + nullValue + "\")";
 				formula = "=\"UPDATE " + tableAlias + " SET \" & " + formula + whereCheck + " & CHAR(10) & \"GO \"";
 				tbl.ShowTotals = false;
@@ -1756,10 +1756,10 @@ namespace ScriptHelp.Scripts
 			try
 			{
 				ErrorHandler.CreateLogRecord();
-				string lastColumnName = Properties.Settings.Default.Sheet_Column_Table_Alias;
+				string lastColumnName = Properties.Settings.Default.Sheet_ColumnTableAlias;
 				string sqlColName = string.Empty;
 
-				sqlColName = Properties.Settings.Default.Sheet_Column_Name;
+				sqlColName = Properties.Settings.Default.Sheet_ColumnName;
 				tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject;
 				int lastColumnIndex = tbl.Range.Columns.Count;
 				sqlCol = tbl.ListColumns[lastColumnIndex];
@@ -1803,9 +1803,9 @@ namespace ScriptHelp.Scripts
 						formula += "\"" + qt + "\" & " + colRef + " & \"" + qt + "\"";
 					}
 				}
-				string nullValue = Properties.Settings.Default.Sheet_Column_Script_Null;
+				string nullValue = Properties.Settings.Default.Sheet_ColumnScriptNull;
 				formula = "SUBSTITUTE(" + formula + ", \"'" + nullValue + "'\", \"" + nullValue + "\")";
-				string tableAlias = Properties.Settings.Default.Sheet_Column_Table_Alias;
+				string tableAlias = Properties.Settings.Default.Sheet_ColumnTableAlias;
 				string insertPrefix = "INSERT INTO " + tableAlias + " (" + Ribbon.ConcatenateColumnNames(tbl.Range) + ") VALUES(";
 				formula = "=\"" + insertPrefix + "\" & " + formula + " & \");\"";
 				tbl.ShowTotals = false;
@@ -1857,10 +1857,10 @@ namespace ScriptHelp.Scripts
 			try
 			{
 				ErrorHandler.CreateLogRecord();
-				string lastColumnName = Properties.Settings.Default.Sheet_Column_Table_Alias;
+				string lastColumnName = Properties.Settings.Default.Sheet_ColumnTableAlias;
 				string sqlColName = string.Empty;
 
-				sqlColName = Properties.Settings.Default.Sheet_Column_Name;
+				sqlColName = Properties.Settings.Default.Sheet_ColumnName;
 				tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject;
 				int lastColumnIndex = tbl.Range.Columns.Count;
 				sqlCol = tbl.ListColumns[lastColumnIndex];
@@ -1904,9 +1904,9 @@ namespace ScriptHelp.Scripts
 						formula += "\"" + qt + "\" & " + colRef + " & \"" + qt + "\"";
 					}
 				}
-				string nullValue = Properties.Settings.Default.Sheet_Column_Script_Null;
+				string nullValue = Properties.Settings.Default.Sheet_ColumnScriptNull;
 				formula = "SUBSTITUTE(" + formula + ", \"'" + nullValue + "'\", \"" + nullValue + "\")";
-				string tableAlias = Properties.Settings.Default.Sheet_Column_Table_Alias;
+				string tableAlias = Properties.Settings.Default.Sheet_ColumnTableAlias;
 				string insertPrefix = "INSERT INTO " + tableAlias + " (" + Ribbon.ConcatenateColumnNames(tbl.Range) + ") VALUES(";
 				formula = "=\"" + insertPrefix + "\" & " + formula + " & \");\"";
 				tbl.ShowTotals = false;
@@ -1958,8 +1958,8 @@ namespace ScriptHelp.Scripts
 			{
 				ErrorHandler.CreateLogRecord();
 				Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
-				string lastColumnName = Properties.Settings.Default.Sheet_Column_Table_Alias;
-				string tableAlias = Properties.Settings.Default.Sheet_Column_Table_Alias;
+				string lastColumnName = Properties.Settings.Default.Sheet_ColumnTableAlias;
+				string tableAlias = Properties.Settings.Default.Sheet_ColumnTableAlias;
 				string tableAliasTemp = tableAlias + "_temp";
 				string sqlColName = string.Empty;
 
@@ -2011,7 +2011,7 @@ namespace ScriptHelp.Scripts
 						formula += "\"" + qt + "\" & " + colRef + " & \"" + qt + "\"";
 					}
 				}
-				string nullValue = Properties.Settings.Default.Sheet_Column_Script_Null;
+				string nullValue = Properties.Settings.Default.Sheet_ColumnScriptNull;
 				formula = "SUBSTITUTE(" + formula + ", \"'" + nullValue + "'\", \"" + nullValue + "\")";
 				int firstRowNbr = tbl.Range[1, 1].Row + 1; // must use the offset for the first row number
 				formula = "=IF(" + (firstRowNbr).ToString() + "-ROW() = 0, \" \", \",\") & " + "\" ( \" & " + formula + " & \")\"";
@@ -2066,9 +2066,9 @@ namespace ScriptHelp.Scripts
 			try
 			{
 				ErrorHandler.CreateLogRecord();
-				string lastColumnName = Properties.Settings.Default.Sheet_Column_Table_Alias;
+				string lastColumnName = Properties.Settings.Default.Sheet_ColumnTableAlias;
 				string sqlColName = string.Empty;
-				sqlColName = Properties.Settings.Default.Sheet_Column_Name;
+				sqlColName = Properties.Settings.Default.Sheet_ColumnName;
 
 				tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject;
 				int lastColumnIndex = tbl.Range.Columns.Count;
@@ -2116,7 +2116,7 @@ namespace ScriptHelp.Scripts
 						formula += "\"" + qt + "\" & " + colRef + " & \"" + qt + "\"" + valueTsuffix;
 					}
 				}
-				string nullValue = Properties.Settings.Default.Sheet_Column_Script_Null;
+				string nullValue = Properties.Settings.Default.Sheet_ColumnScriptNull;
 				formula = "SUBSTITUTE(" + formula + ", \"'" + nullValue + "'\", \"" + nullValue + "\")";
 				int firstRowNbr = tbl.Range[1, 1].Row + 1; // must use the offset for the first row number
 				formula = "=IF(" + (firstRowNbr).ToString() + "-ROW() = 0, \"\", \"UNION \") & " + "\"SELECT \" & " + formula + " & \" \"";
@@ -2169,8 +2169,8 @@ namespace ScriptHelp.Scripts
 			{
 				ErrorHandler.CreateLogRecord();
 				Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
-				string lastColumnName = Properties.Settings.Default.Sheet_Column_Table_Alias;
-				string tableAlias = Properties.Settings.Default.Sheet_Column_Table_Alias;
+				string lastColumnName = Properties.Settings.Default.Sheet_ColumnTableAlias;
+				string tableAlias = Properties.Settings.Default.Sheet_ColumnTableAlias;
 				string sqlColName = string.Empty;
 
 				sqlColName = "SELECT " + tableAlias + ".*" + " FROM (VALUES";
@@ -2221,7 +2221,7 @@ namespace ScriptHelp.Scripts
 						formula += "\"" + qt + "\" & " + colRef + " & \"" + qt + "\"";
 					}
 				}
-				string nullValue = Properties.Settings.Default.Sheet_Column_Script_Null;
+				string nullValue = Properties.Settings.Default.Sheet_ColumnScriptNull;
 				formula = "SUBSTITUTE(" + formula + ", \"'" + nullValue + "'\", \"" + nullValue + "\")";
 				int firstRowNbr = tbl.Range[1, 1].Row + 1; // must use the offset for the first row number
 				formula = "=IF(" + (firstRowNbr).ToString() + "-ROW() = 0, \" \", \",\") & " + "\" ( \" & " + formula + " & \")\"";
@@ -2275,12 +2275,12 @@ namespace ScriptHelp.Scripts
 			try
 			{
 				ErrorHandler.CreateLogRecord();
-				string lastColumnName = Properties.Settings.Default.Sheet_Column_Table_Alias;
-				string tableAlias = Properties.Settings.Default.Sheet_Column_Table_Alias;
+				string lastColumnName = Properties.Settings.Default.Sheet_ColumnTableAlias;
+				string tableAlias = Properties.Settings.Default.Sheet_ColumnTableAlias;
 				string sqlColName = string.Empty;
 				int columnCount = 0;
 
-				sqlColName = Properties.Settings.Default.Sheet_Column_Name;
+				sqlColName = Properties.Settings.Default.Sheet_ColumnName;
 				tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject;
 				int lastColumnIndex = tbl.Range.Columns.Count;
 				sqlCol = tbl.ListColumns[lastColumnIndex];
@@ -2355,9 +2355,9 @@ namespace ScriptHelp.Scripts
 								valuePrefix = "\"" + useComma + " [" + col.Name + "] = \" & ";
 							}
 						}
-						if (Ribbon.GetSqlDataType(col) == Properties.Settings.Default.Script_Type_Date)
+						if (Ribbon.GetSqlDataType(col) == Properties.Settings.Default.Script_TypeDate)
 						{
-							formula += valuePrefix + "\"DATE(" + qt + "\" & " + colRef + " & \"" + qt + ", " + qt + Properties.Settings.Default.Sheet_Column_Date_Format_Replace + qt + ")\"";
+							formula += valuePrefix + "\"DATE(" + qt + "\" & " + colRef + " & \"" + qt + ", " + qt + Properties.Settings.Default.Sheet_ColumnDateFormatReplace + qt + ")\"";
 						}
 						else
 						{
@@ -2371,7 +2371,7 @@ namespace ScriptHelp.Scripts
 				{
 					whereCheck = " & \" WHERE \" ";
 				}
-				string nullValue = Properties.Settings.Default.Sheet_Column_Script_Null;
+				string nullValue = Properties.Settings.Default.Sheet_ColumnScriptNull;
 				formula = "SUBSTITUTE(" + formula + ", \"'" + nullValue + "'\", \"" + nullValue + "\")";
 				formula = "=\"UPDATE " + tableAlias + " SET\" & " + formula + whereCheck + " & CHAR(10) & \"GO \"";
 				tbl.ShowTotals = false;
@@ -2423,12 +2423,12 @@ namespace ScriptHelp.Scripts
 			try
 			{
 				ErrorHandler.CreateLogRecord();
-				string lastColumnName = Properties.Settings.Default.Sheet_Column_Table_Alias;
-				string tableAlias = Properties.Settings.Default.Sheet_Column_Table_Alias;
+				string lastColumnName = Properties.Settings.Default.Sheet_ColumnTableAlias;
+				string tableAlias = Properties.Settings.Default.Sheet_ColumnTableAlias;
 				string sqlColName = string.Empty;
 				int columnCount = 0;
 
-				sqlColName = Properties.Settings.Default.Sheet_Column_Name;
+				sqlColName = Properties.Settings.Default.Sheet_ColumnName;
 				tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject;
 				int lastColumnIndex = tbl.Range.Columns.Count;
 				sqlCol = tbl.ListColumns[lastColumnIndex];
@@ -2486,7 +2486,7 @@ namespace ScriptHelp.Scripts
 					}
 				}
 
-				string nullValue = Properties.Settings.Default.Sheet_Column_Script_Null;
+				string nullValue = Properties.Settings.Default.Sheet_ColumnScriptNull;
 				formula = "SUBSTITUTE(" + formula + ", \"'" + nullValue + "'\", \"" + nullValue + "\")";
 				formula = "=\"<row> \" & " + formula + " & CHAR(10) & \"</row> \"";
 				tbl.ShowTotals = false;
