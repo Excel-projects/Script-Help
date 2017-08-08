@@ -69,7 +69,7 @@ This is used for bulk data loads into SQL Server, Oracle and Documentum.  The fu
 |[Microsoft SQL Server CE 3.5](https://www.microsoft.com/en-au/download/details.aspx?id=5783)|Database|
 |[SQL Server Compact Toolbox](https://marketplace.visualstudio.com/items?itemName=ErikEJ.SQLServerCompactSQLiteToolbox)|Database|
 |[Sandcastle](https://github.com/EWSoftware/SHFB)|API documentation|
-|Log4Net |Error Logging |
+|[Log4Net](https://www.nuget.org/packages/log4net/) |Error Logging |
 
 <a id="user-content-glossary-of-terms" class="anchor" href="#glossary-of-terms" aria-hidden="true"> </a>
 ## Glossary of Terms
