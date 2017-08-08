@@ -70,6 +70,7 @@ This is used for bulk data loads into SQL Server, Oracle and Documentum.  The fu
 |[SQL Server Compact Toolbox](https://marketplace.visualstudio.com/items?itemName=ErikEJ.SQLServerCompactSQLiteToolbox)|Database|
 |[Sandcastle](https://github.com/EWSoftware/SHFB)|API documentation|
 |[Log4Net](https://www.nuget.org/packages/log4net/) |Error Logging |
+|[ScreenToGif](http://www.screentogif.com/)|Read Me|
 
 <a id="user-content-glossary-of-terms" class="anchor" href="#glossary-of-terms" aria-hidden="true"> </a>
 ## Glossary of Terms
