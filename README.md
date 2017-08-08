@@ -2,7 +2,7 @@
 # Script Help 
 This is an Excel 2010 VSTO Addin written in Visual Studio Community 2017 C#. It allows the user to use an Excel table to create different SQL scripts. This has now been tested on Windows 10/Microsoft Excel 2016.
 
-<kbd><img src="Resources/QueryTypeTSql.png" /></kbd> <kbd><img src="Resources/QueryTypePlSql.png" /></kbd> <kbd><img src="Resources/QueryTypeDql.png" /></kbd> <kbd><img src="Resources/QueryTypeXML.png" /></kbd> <kbd><img src="Resources/QueryTypeGitHub.png" /></kbd>
+<kbd><img src="Resources/QueryTypeTSql.png" /></kbd> <kbd><img src="Resources/QueryTypePlSql.png" /></kbd> <kbd><img src="Resources/QueryTypeDql.png"/></kbd> <kbd><img src="Resources/QueryTypeXML.png" /></kbd> <kbd><img src="Resources/QueryTypeGitHub.png" /></kbd>
 ```
 TODO:
 Update the install for versioning of SQL Server CE (.sdf) file
