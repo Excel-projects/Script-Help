@@ -238,7 +238,7 @@ These buttons have the following constraints:
 #### Settings (Button)
 
 <h1 align="left">
-  <img src="Images/ReadMe/RibbonSettingsButtonView.png" />
+  <img src="Images/ReadMe/RibbonSettings.png" />
 </h1>
 
 ##### Types of Settings
