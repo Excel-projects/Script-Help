@@ -1,9 +1,20 @@
+[<img align="left" src="Images/ReadMe/Excel.png" width="64px" >](https://github.com/aduguid/ScriptHelp/blob/master/publish/setup.exe?raw=true "Download Setup.exe Install File")
+# Script Help 
+This is an Excel 2010 VSTO Addin written in Visual Studio Community 2017 C#. It allows the user to use an Excel table to create different SQL scripts. This has now been tested on Windows 10/Microsoft Excel 2016.
 
-# Script Help
+<kbd><img src="Resources/QueryTypeTSql.png" /></kbd> <kbd><img src="Resources/QueryTypePlSql.png" /></kbd> <kbd><img src="Resources/QueryTypeDql.png" /></kbd> <kbd><img src="Resources/QueryTypeXML.png" /></kbd> <kbd><img src="Resources/QueryTypeGitHub.png" /></kbd>
+```
+TODO:
+Update the install for versioning of SQL Server CE (.sdf) file
+ - Add version table to database
+ - Copy database to temp folder location and compare version table record
+ - Delete existing database and copy new database if version is newer
 
-This is an Excel 2010 VSTO Addin written in Visual Studio Community 2017 C#. It allows the user to use an Excel table to create different SQL scripts.
-
-[install](https://github.com/aduguid/ScriptHelp/blob/master/publish/setup.exe?raw=true)  ```TODO: update the install for versioning of sql server ce file```
+Update the following script columns
+ - PL/SQL Create Table
+ - PL/SQL Merge Values
+ - PL/SQL Select Values
+```
 
 <h1 align="center">
   <img src="Images/ReadMe/Ribbon.png" />
@@ -227,7 +238,7 @@ These buttons have the following constraints:
 #### Settings (Button)
 
 <h1 align="left">
-  <img src="Images/ReadMe/RibbonSettingsButton.png" />
+  <img src="Images/ReadMe/RibbonSettingsButtonView.png" />
 </h1>
 
 ##### Types of Settings
@@ -259,7 +270,7 @@ These buttons have the following constraints:
 
 <a id="user-content-description" class="anchor" href="#description" aria-hidden="true"> </a>
 #### Add-in Name (Label)
-* The application name with the version
+* The application name with the version [<img src="Images/ReadMe/egg.ico">](https://raw.githubusercontent.com/aduguid/ScriptHelp/master/Images/ReadMe/EasterEgg.gif "Easter Egg")
 
 <a id="user-content-install-date" class="anchor" href="#install-date" aria-hidden="true"> </a>
 #### Install Date (Label)
