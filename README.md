@@ -91,7 +91,6 @@ This Excel ribbon named “Script Help” is inserted after the “Home” tab w
 
 <a id="user-content-clipboard" class="anchor" href="#clipboard" aria-hidden="true"> </a>
 ###	Clipboard (Group)
-
 <h1 align="left">
   <img src="Images/ReadMe/RibbonClipboardGroup.png" />
 </h1>
@@ -119,7 +118,6 @@ These buttons have the following constraints:
 <a id="user-content-format-as-table" class="anchor" href="#format-as-table" aria-hidden="true"> </a>
 ####	Format as Table (Button)
 * Quickly format a range of cells and convert it to a Table by choosing a pre-defined Table Style. 
-
 <h1 align="left">
   <img src="Images/ReadMe/RibbonFormatAsTableMenu.png" />
 </h1>
@@ -154,7 +152,6 @@ These buttons have the following constraints:
 #### Format Date Columns (Button)
 * When data is cut and pasted from SSMS into Excel, for whatever reason, Excel chooses to format the dates with the (useless) format "mm:ss.0". This seems to be impossible to configure. 
 * This feature applies the format "dd-mmm-yyyy" to all date columns it detects in the active table.  If there are zero strings in the column instead of “NULL”s, then the column is treated as a string.
-
 <h1 align="left">
   <img src="Images/ReadMe/RibbonFormatDateColumnsButton.gif" />
 </h1>
@@ -166,14 +163,12 @@ These buttons have the following constraints:
 <a id="user-content-separate-values" class="anchor" href="#separate-values" aria-hidden="true"> </a>
 #### Separate Values (Button)
 * Separate values into new rows from the selected column by a delimited string value setting
-
 <h1 align="left">
   <img src="Images/ReadMe/RibbonSeparateValuesButton.gif" />
 </h1>
 
 <a id="user-content-add-script-column" class="anchor" href="#add-script-column" aria-hidden="true"> </a>
 #### Add Script Column (Menu Buttons)
-
 <h1 align="left">
   <img src="Images/ReadMe/RibbonAddScriptColumnButton.gif" />
 </h1>
@@ -208,7 +203,6 @@ These buttons have the following constraints:
 
 <a id="user-content-format-script-options" class="anchor" href="#format-script-options" aria-hidden="true"> </a>
 ###	Format Script Options (Group)
-
 <h1 align="left">
   <img src="Images/ReadMe/RibbonFormatScriptOptionsGroup.png" />
 </h1>
@@ -255,7 +249,6 @@ These buttons have the following constraints:
 
 <a id="user-content-about" class="anchor" href="#about" aria-hidden="true"> </a>
 ###	About (Group)
-
 <h1 align="left">
   <img src="Images/ReadMe/RibbonAboutGroup.png" />
 </h1>
