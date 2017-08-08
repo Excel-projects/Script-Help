@@ -44,7 +44,7 @@ Update the following script columns
         - <a href="#paste-format">Paste Format</a>  
         - <a href="#create-file-list">Create File List</a>  
         - <a href="#settings">Settings</a>  
-        - <a href="#com-addins">COM Addins</a>  
+        - <a href="#com-addins">COM Add-Ins</a>  
     - <a href="#about">About</a>
         - <a href="#how-to">How To...</a>  
         - <a href="#api-doc">API Doc...</a>  
@@ -237,20 +237,19 @@ These buttons have the following constraints:
 
 <a id="user-content-settings" class="anchor" href="#settings" aria-hidden="true"> </a>
 #### Settings (Button)
-
 <h1 align="left">
   <img src="Images/ReadMe/RibbonSettings.png" />
 </h1>
 
-##### Types of Settings
-###### Application
-* These settings can only be changed in the project and need to be redeployed
-* They will appear disabled in the form
+- Types of Settings
+  - Application Settings
+    - These settings can only be changed in the project and need to be redeployed
+    - They will appear disabled in the form
+  - User Settings
+    - These settings can be changed by the end-user
+    - They will appear enabled in the form
 
-###### User
-* These settings can be changed by the end-user
-* They will appear enabled in the form
-
+<a id="user-content-com-addins" class="anchor" href="#com-addins" aria-hidden="true"> </a>
 #### COM Addins (Button)
 * Manage the available COM Add-ins
 
