@@ -13,9 +13,11 @@ TODO:
      - [ ] Delete existing database and copy new database if version is newer
  - Update the following script columns with Oracle format instead of Microsoft
    - [ ] PL/SQL Create Table
+   - [x] PL/SQL Insert Values
    - [ ] PL/SQL Merge Values
    - [ ] PL/SQL Select Values
-
+   - [x] PL/SQL Select Union
+   - [x] PL/SQL Update Values
 
 <h1 align="center">
   <img src="Images/ReadMe/Ribbon.png" />
