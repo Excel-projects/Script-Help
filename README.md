@@ -83,6 +83,7 @@ This is used for bulk data loads into SQL Server, Oracle and Documentum.  The fu
 |:--------------------------|:-----------------------------------------------------------------------------------------|
 | COM |Component Object Model (COM) is a binary-interface standard for software components introduced by Microsoft in 1993. It is used to enable inter-process communication and dynamic object creation in a large range of programming languages. COM is the basis for several other Microsoft technologies and frameworks, including OLE, OLE Automation, ActiveX, COM+, DCOM, the Windows shell, DirectX, UMDF and Windows Runtime.  |
 |DQL |DQL is used to query Documentum which is a content management system used to create, manage, deliver, and archive all types of content from text documents and spreadsheets to digital images, HTML, and XML components. DQL uses syntax that is a superset of ANSI-standard SQL (Structured Query Language) DQL statements operate on objects and sometimes on tables/rows but SQL statements operate only on tables/rows |
+|HTML|Hypertext Markup Language is the standard markup language for creating web pages and web applications|
 |PL/SQL |PL/SQL (Procedural Language/Structured Query Language) is Oracle Corporation's procedural extension for SQL and the Oracle relational database |
 |T-SQL |Transact-SQL (T-SQL) is Microsoft's and Sybase's proprietary extension to SQL. SQL, the acronym for Structured Query Language | 
 |UNION |The SQL UNION operator combines the result of two or more SELECT statements.|
@@ -177,33 +178,42 @@ These buttons have the following constraints:
   <img src="Images/ReadMe/RibbonAddScriptColumnButton.gif" />
 </h1>
 
-* T-SQL Create Table - This menu item will format the script column to drop/create the table then insert the values
-* T-SQL Insert Values – This menu item will format the script column to use individual insert statements
-* T-SQL Merge Values – This menu item will format the script column to use a merge statement with a select values
-* T-SQL Select Values – This menu item will format the script column to be used in insert statements 
-* T-SQL Select Union – This menu item will format the script column to be used in an update statement 
-* T-SQL Update Values – This menu item will format the script column to use individual update statements
-* PL/SQL Create Table - ```TODO: update the syntax from Microsoft to Oracle```
-* PL/SQL Insert Values – This menu item will format the script column to use individual insert statements
-* PL/SQL Merge Values - ```TODO: create a CTE with SELECT from DUAL for values in a MERGE statement```
-* PL/SQL Select Values - ```TODO: create a CTE with SELECT from DUAL for values```
-* PL/SQL Select Union – This menu item will format the script column to be used in an update statement 
-* PL/SQL Update Values – This menu item will format the script column to use individual update statements
-* DQL Append – This menu item will format the script column to be used in an append statement for Documentum (this is used for repeating values)
-* DQL Append/Locked – This menu item will format the script column to be used in an append statement for Documentum (this is used for repeating values) and unlocks and then locks the record.
-  * The table must contain a column header with 'WHERE'. 
-  * Add “WHERE” before the column name in the header you want to use as criteria.
-* DQL Create – This menu item will format the script column to be used in an create statement for Documentum
-* DQL Truncate/Append – This menu item will format the script column to be used in an truncate and then append statement for Documentum (this is used for repeating values).
-  * The table must contain a column header with 'WHERE'. 
-  * Add “WHERE” before the column name in the header you want to use as criteria.
-* DQL Update – This menu item will format the script column to be used in an update statement for Documentum
-* DQL Update/Locked – This menu item will format the script column to be used in an update statement for Documentum and unlocks and then locks the record.
-  * The table must contain a column header with 'WHERE'. 
-  * Add “WHERE” before the column name in the header you want to use as criteria.
-* GitHub table - creates a table format for GitHub Read Me documentation
-* HTML Table - creates a HTML table structure
-* XML Values - creates XML structure
+T-SQL (Transact-Structured Query Language)
+  - T-SQL Create Table - This menu item will format the script column to drop/create the table then insert the values
+  - T-SQL Insert Values – This menu item will format the script column to use individual insert statements
+  - T-SQL Merge Values – This menu item will format the script column to use a merge statement with a select values
+  - T-SQL Select Values – This menu item will format the script column to be used in insert statements 
+  - T-SQL Select Union – This menu item will format the script column to be used in an update statement 
+  - T-SQL Update Values – This menu item will format the script column to use individual update statements
+  
+PL/SQL (Procedural Language/Structured Query Language)
+  - PL/SQL Create Table - ```TODO: update the syntax from Microsoft to Oracle```
+  - PL/SQL Insert Values – This menu item will format the script column to use individual insert statements
+  - PL/SQL Merge Values - ```TODO: create a CTE with SELECT from DUAL for values in a MERGE statement```
+  - PL/SQL Select Values - ```TODO: create a CTE with SELECT from DUAL for values```
+  - PL/SQL Select Union – This menu item will format the script column to be used in an update statement 
+  - PL/SQL Update Values – This menu item will format the script column to use individual update statements
+  
+DQL (Documentum Query Language)
+  - DQL Append – This menu item will format the script column to be used in an append statement for Documentum (this is used for repeating values)
+  - DQL Append/Locked – This menu item will format the script column to be used in an append statement for Documentum (this is used for repeating values) and unlocks and then locks the record.
+    - The table must contain a column header with 'WHERE'. 
+    - Add “WHERE” before the column name in the header you want to use as criteria.
+  - DQL Create – This menu item will format the script column to be used in an create statement for Documentum
+  - DQL Truncate/Append – This menu item will format the script column to be used in an truncate and then append statement for Documentum (this is used for repeating values).
+    * The table must contain a column header with 'WHERE'. 
+    * Add “WHERE” before the column name in the header you want to use as criteria.
+  - DQL Update – This menu item will format the script column to be used in an update statement for Documentum
+  - DQL Update/Locked – This menu item will format the script column to be used in an update statement for Documentum and unlocks and then locks the record.
+    - The table must contain a column header with 'WHERE'. 
+    - Add “WHERE” before the column name in the header you want to use as criteria.
+    
+GitHub Markdown
+  - GitHub table - creates a table format for GitHub Read Me documentation
+  
+HTML (Hypertext Markup Language)
+  - HTML Table - creates a HTML table structure
+  - XML Values - creates XML structure
 
 <a id="user-content-format-script-options" class="anchor" href="#format-script-options" aria-hidden="true"> </a>
 ###	Format Script Options (Group)
