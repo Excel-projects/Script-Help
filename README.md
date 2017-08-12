@@ -2,7 +2,7 @@
 # Script Help [<img src="Images/ReadMe/Copyright.png" width="12px" >](https://github.com/aduguid/ScriptHelp/blob/master/AnthonyDuguid.pfx?raw=true "Download AnthonyDuguid.pfx And Install At Root Level")
 This is an Excel 2010 VSTO Addin written in Visual Studio Community 2017 C#. It allows the user to use an Excel table to create different SQL scripts. This has now been tested on Windows 10/Microsoft Excel 2016.
 
-<kbd><img src="Resources/QueryTypeTSql.png" /></kbd> <kbd><img src="Resources/QueryTypePlSql.png" /></kbd> <kbd><img src="Resources/QueryTypeDql.png"/></kbd> <kbd><img src="Resources/QueryTypeXML.png" /></kbd> <kbd><img src="Resources/QueryTypeGitHub.png" /></kbd>
+<kbd>[<img src="Resources/QueryTypeTSql.png"/>](href="#menu-tsql")</kbd> <kbd><img src="Resources/QueryTypePlSql.png" /></kbd> <kbd><img src="Resources/QueryTypeDql.png"/></kbd> <kbd><img src="Resources/QueryTypeXML.png" /></kbd> <kbd><img src="Resources/QueryTypeGitHub.png" /></kbd>
 
 TODO:
  - Update the install
@@ -178,6 +178,7 @@ These buttons have the following constraints:
   <img src="Images/ReadMe/RibbonAddScriptColumnButton.gif" />
 </h1>
 
+<a id="user-content-menu-tsql" class="anchor" href="#menu-tsql" aria-hidden="true"> </a>
 T-SQL (Transact-Structured Query Language)
   - T-SQL Create Table - This menu item will format the script column to drop/create the table then insert the values
   - T-SQL Insert Values – This menu item will format the script column to use individual insert statements
@@ -210,9 +211,10 @@ DQL (Documentum Query Language)
     
 GitHub Markdown
   - GitHub table - creates a table format for GitHub Read Me documentation
-  
+
 Markup Language
-  - HTML Table - creates a HTML table structure
+
+  - HTML Table - creates a HTML table structure
   - XML Values - creates XML structure
 
 <a id="user-content-format-script-options" class="anchor" href="#format-script-options" aria-hidden="true"> </a>
