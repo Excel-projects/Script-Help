@@ -210,9 +210,9 @@ DQL (Documentum Query Language)
     
 GitHub Markdown
   - GitHub table - creates a table format for GitHub Read Me documentation
-  
-HTML (Hypertext Markup Language)
-  - HTML Table - creates a HTML table structure
+  
+Markup Language
+  - HTML Table - creates a HTML table structure
   - XML Values - creates XML structure
 
 <a id="user-content-format-script-options" class="anchor" href="#format-script-options" aria-hidden="true"> </a>
