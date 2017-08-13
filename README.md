@@ -67,7 +67,7 @@ This is an Excel 2010 VSTO Addin written in Visual Studio Community 2017 C#. Thi
 |[Microsoft Excel 2010 (or later)](https://www.microsoft.com/en-au/software-download/office)|Project|
 |[Microsoft SQL Server CE 3.5](https://www.microsoft.com/en-au/download/details.aspx?id=5783)|Database|
 |[SQL Server Compact Toolbox](https://marketplace.visualstudio.com/items?itemName=ErikEJ.SQLServerCompactSQLiteToolbox)|Database|
-|[Sandcastle](https://github.com/EWSoftware/SHFB)|API documentation|
+|[Sandcastle](https://github.com/EWSoftware/SHFB)|API Documentation|
 |[Log4Net](https://www.nuget.org/packages/log4net/) |Error Logging |
 |[ScreenToGif](http://www.screentogif.com/)|Read Me|
 |[Snagit](http://discover.techsmith.com/snagit-non-brand-desktop/?gclid=CNzQiOTO09UCFVoFKgod9EIB3g)|Read Me|
