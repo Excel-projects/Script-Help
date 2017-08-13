@@ -61,11 +61,11 @@ This is an Excel 2010 VSTO Addin written in Visual Studio Community 2017 C#. It 
         
 <a id="user-content-overview" class="anchor" href="#overview" aria-hidden="true"> </a>
 ## Overview
-This is used for bulk data loads into SQL Server, Oracle and Documentum.  The functionality within the ribbon allows a quick way of preparing a bulk data load.  Otherwise the requests can be both time-consuming and error prone. 
+This is used for bulk data loads into SQL Server, Oracle and Documentum.  The functionality within the ribbon allows a quick way of preparing a bulk data load.  Otherwise, the requests can be both time-consuming and error prone. 
 
-* Standard format (Excel spreadsheets) for data
-* Standard format for loader scripts
-* Excel addin to clean and format data to be suitable for data loader script
+
+
+
 
 <a id="user-content-dependencies" class="anchor" href="#dependencies" aria-hidden="true"> </a>
 ## Dependencies
