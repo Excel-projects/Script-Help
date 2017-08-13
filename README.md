@@ -8,14 +8,14 @@ This is an Excel 2010 VSTO Addin written in Visual Studio Community 2017 C#. It 
  target="_blank"><img src="Resources/QueryTypeTSql.png"
 /></a></kbd>
 
-TODO:
- - Update the install
+## TODO:
+ ### Update the install
    - [ ] Fix certificate issue 
      - [ ] Currently user must install [AnthonyDuguid.pfx](https://github.com/aduguid/ScriptHelp/blob/master/AnthonyDuguid.pfx?raw=true) to the root of the machine before the install will run
    - [ ] Add version table to SQL Server CE (.sdf) file
      - [ ] Copy database to temp folder location and compare version table record
      - [ ] Delete existing database and copy new database if version is newer
- - Update the following script columns with Oracle format instead of Microsoft
+ ### Update the following script columns with Oracle format instead of Microsoft
    - [ ] PL/SQL Create Table
    - [x] PL/SQL Insert Values
    - [ ] PL/SQL Merge Values
