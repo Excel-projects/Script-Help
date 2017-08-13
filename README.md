@@ -1,6 +1,10 @@
 [<img align="left" src="Images/ReadMe/App.png" width="64px" >](https://github.com/aduguid/ScriptHelp/blob/master/publish/setup.exe?raw=true "Download Setup.exe Install File")
 # Script Help [<img src="Images/ReadMe/Copyright.png" width="12px" >](https://github.com/aduguid/ScriptHelp/blob/master/AnthonyDuguid.pfx?raw=true "Download AnthonyDuguid.pfx And Install At Root Level")
-This is an Excel 2010 VSTO Addin written in Visual Studio Community 2017 C#. It allows the user to use an Excel table to create different SQL scripts. This has now been tested on Windows 10/Microsoft Excel 2016.
+This is an Excel 2010 VSTO Addin written in Visual Studio Community 2017 C#. This is used for bulk data loads into SQL Server, Oracle, Documentum, Markup and Markdown Languages. The functionality within the ribbon allows a quick way of preparing a bulk data load.  Otherwise, the requests can be both time-consuming and error prone. This has now been tested on Windows (7, 8.1, 10) & Excel (2010, 2013, 2016).
+
+<h1 align="center">
+  <img src="Images/ReadMe/Ribbon.png" />
+</h1>
 
 <kbd><a href="#menu-tsql" target="_blank"><img src="Resources/QueryTypeTSql.png" title="T-SQL (Transact-Structured Query Language)" /></a></kbd>
 <kbd><a href="#menu-plsql" target="_blank"><img src="Resources/QueryTypePlSql.png" title="PL/SQL (Procedural Language/Structured Query Language)"/></a></kbd>
@@ -23,12 +27,7 @@ This is an Excel 2010 VSTO Addin written in Visual Studio Community 2017 C#. It 
    - [x] PL/SQL Select Union
    - [x] PL/SQL Update Values
 
-<h1 align="center">
-  <img src="Images/ReadMe/Ribbon.png" />
-</h1>
-
 ## Table of Contents
-- <a href="#overview">Overview</a>
 - <a href="#dependencies">Dependencies</a>
 - <a href="#glossary-of-terms">Glossary of Terms</a>
 - <a href="#functionality">Functionality</a>
@@ -58,10 +57,6 @@ This is an Excel 2010 VSTO Addin written in Visual Studio Community 2017 C#. It 
         - <a href="#description">Add-in Name</a>
         - <a href="#install-date">Install Date</a>  
         - <a href="#copyright">Copyright</a>  
-        
-<a id="user-content-overview" class="anchor" href="#overview" aria-hidden="true"> </a>
-## Overview
-This is used for bulk data loads into SQL Server, Oracle and Documentum.  The functionality within the ribbon allows a quick way of preparing a bulk data load.  Otherwise, the requests can be both time-consuming and error prone. 
 
 <a id="user-content-dependencies" class="anchor" href="#dependencies" aria-hidden="true"> </a>
 ## Dependencies
