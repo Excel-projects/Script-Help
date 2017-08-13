@@ -186,7 +186,8 @@ T-SQL (Transact-Structured Query Language)
   - T-SQL Select Values – This menu item will format the script column to be used in insert statements 
   - T-SQL Select Union – This menu item will format the script column to be used in an update statement 
   - T-SQL Update Values – This menu item will format the script column to use individual update statements
-  
+
+<a id="user-content-menu-plsql" class="anchor" href="#menu-plsql" aria-hidden="true"> </a>
 PL/SQL (Procedural Language/Structured Query Language)
   - PL/SQL Create Table - ```TODO: update the syntax from Microsoft to Oracle```
   - PL/SQL Insert Values – This menu item will format the script column to use individual insert statements
@@ -194,7 +195,8 @@ PL/SQL (Procedural Language/Structured Query Language)
   - PL/SQL Select Values - ```TODO: create a CTE with SELECT from DUAL for values```
   - PL/SQL Select Union – This menu item will format the script column to be used in an update statement 
   - PL/SQL Update Values – This menu item will format the script column to use individual update statements
-  
+
+<a id="user-content-menu-dql" class="anchor" href="#menu-dql" aria-hidden="true"> </a>
 DQL (Documentum Query Language)
   - DQL Append – This menu item will format the script column to be used in an append statement for Documentum (this is used for repeating values)
   - DQL Append/Locked – This menu item will format the script column to be used in an append statement for Documentum (this is used for repeating values) and unlocks and then locks the record.
@@ -208,12 +210,13 @@ DQL (Documentum Query Language)
   - DQL Update/Locked – This menu item will format the script column to be used in an update statement for Documentum and unlocks and then locks the record.
     - The table must contain a column header with 'WHERE'. 
     - Add “WHERE” before the column name in the header you want to use as criteria.
-    
+
+<a id="user-content-menu-github" class="anchor" href="#menu-github" aria-hidden="true"> </a>
 GitHub Markdown
   - GitHub table - creates a table format for GitHub Read Me documentation
 
+<a id="user-content-menu-markup" class="anchor" href="#menu-markup" aria-hidden="true"> </a>
 Markup Language
-
   - HTML Table - creates a HTML table structure
   - XML Values - creates XML structure
 
