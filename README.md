@@ -5,8 +5,8 @@ This is an Excel 2010 VSTO Addin written in Visual Studio Community 2017 C#. It 
 <kbd><a href="#menu-tsql" target="_blank"><img src="Resources/QueryTypeTSql.png" /></a></kbd>
 <kbd><a href="#menu-plsql" target="_blank"><img src="Resources/QueryTypePlSql.png" /></a></kbd>
 <kbd><a href="#menu-dql" target="_blank"><img src="Resources/QueryTypeDql.png" /></a></kbd>
-<kbd><a href="#menu-markup" target="_blank"><img src="Resources/QueryTypeXML.png" /></a></kbd>
 <kbd><a href="#menu-github" target="_blank"><img src="Resources/QueryTypeGitHub.png" /></a></kbd>
+<kbd><a href="#menu-markup" target="_blank"><img src="Resources/QueryTypeXML.png" /></a></kbd>
 
 ## TODO:
  ### Update the install
