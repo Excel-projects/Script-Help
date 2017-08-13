@@ -2,11 +2,11 @@
 # Script Help [<img src="Images/ReadMe/Copyright.png" width="12px" >](https://github.com/aduguid/ScriptHelp/blob/master/AnthonyDuguid.pfx?raw=true "Download AnthonyDuguid.pfx And Install At Root Level")
 This is an Excel 2010 VSTO Addin written in Visual Studio Community 2017 C#. It allows the user to use an Excel table to create different SQL scripts. This has now been tested on Windows 10/Microsoft Excel 2016.
 
-<kbd><a href="#menu-tsql" target="_blank"><img src="Resources/QueryTypeTSql.png" /></a></kbd>
-<kbd><a href="#menu-plsql" target="_blank"><img src="Resources/QueryTypePlSql.png" /></a></kbd>
-<kbd><a href="#menu-dql" target="_blank"><img src="Resources/QueryTypeDql.png" /></a></kbd>
-<kbd><a href="#menu-github" target="_blank"><img src="Resources/QueryTypeGitHub.png" /></a></kbd>
-<kbd><a href="#menu-markup" target="_blank"><img src="Resources/QueryTypeXML.png" /></a></kbd>
+<kbd><a href="#menu-tsql" target="_blank"><img src="Resources/QueryTypeTSql.png" title="T-SQL (Transact-Structured Query Language)" /></a></kbd>
+<kbd><a href="#menu-plsql" target="_blank"><img src="Resources/QueryTypePlSql.png" title="PL/SQL (Procedural Language/Structured Query Language)"/></a></kbd>
+<kbd><a href="#menu-dql" target="_blank"><img src="Resources/QueryTypeDql.png" title="DQL (Documentum Query Language)"/></a></kbd>
+<kbd><a href="#menu-github" target="_blank"><img src="Resources/QueryTypeGitHub.png" title="GitHub Markdown"/></a></kbd>
+<kbd><a href="#menu-markup" target="_blank"><img src="Resources/QueryTypeXML.png" title="Markup Language"/></a></kbd>
 
 ## TODO:
  ### Update the install
