@@ -68,9 +68,9 @@
 						screentip="Replaces the zero string values with 'NULL'"
 					/>
           <button
-						id="btnFormatSqlDateColumns"
+						id="btnFormatDateColumns"
 						label="Format Date Columns"
-						onAction="FormatSqlDateColumns"
+						onAction="FormatDateColumns"
 						getEnabled="GetEnabled"
 						imageMso="DateAndTimeInsert"
 						size="large"
@@ -354,7 +354,7 @@
           <button
 						id="btnFileList"
 						label="Create File List"
-						onAction="CreateBatchFileList"
+						onAction="CreateFileList"
 						getVisible="GetVisible"
 						imageMso="GetExternalDataFromText"
 						size="large"
@@ -363,7 +363,7 @@
           <button
 						id="btnSettings"
 						label="Settings"
-						onAction="OpenSettingsForm"
+						onAction="OpenSettings"
 						imageMso="PropertySheet"
 						size="large"
 						screentip="The settings for this Add-In"
@@ -381,7 +381,7 @@
           <button
 						id="btnHelpAsBuilt"
 						label="How To...   "
-						onAction="OpenHelpAsBuiltFile"
+						onAction="OpenHelpAsBuilt"
 						imageMso="Help"
 						size="normal"
 						screentip="How to use this Excel Add-In"
@@ -389,7 +389,7 @@
           <button
 						id="btnHelpApi"
 						label="API Doc...   "
-						onAction="OpenHelpApiFile"
+						onAction="OpenHelpApi"
 						imageMso="CategoryCollapse"
 						size="normal"
 						screentip="View API documentation for this product"

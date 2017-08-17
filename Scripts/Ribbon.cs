@@ -115,12 +115,12 @@ namespace ScriptHelp.Scripts
 			return GetResourceText("ScriptHelp.Ribbon.xml");
 		}
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="resourceName"></param>
-		/// <returns></returns>
-		private static string GetResourceText(string resourceName)
+        /// <summary>
+        /// Called by the GetCustomUI method to obtain the contents of the Ribbon XML file.
+        /// </summary>
+        /// <param name="resourceName">name of  the XML file</param>
+        /// <returns>the contents of the XML file</returns>
+        private static string GetResourceText(string resourceName)
 		{
 			Assembly asm = Assembly.GetExecutingAssembly();
 			string[] resourceNames = asm.GetManifestResourceNames();
@@ -242,7 +242,7 @@ namespace ScriptHelp.Scripts
 					case "btnCopyVisibleCells":
 					case "btnCleanData":
 					case "btnZeroToNull":
-					case "btnFormatSqlDateColumns":
+					case "btnFormatDateColumns":
 					case "btnClearInteriorColor":
 					case "btnAddScriptColumn":
 						return ErrorHandler.IsEnabled(false);
@@ -690,11 +690,11 @@ namespace ScriptHelp.Scripts
 		}
 
 		/// <summary> 
-		/// Finds dates columns with SSMS crap format and alters to use standard SQL date format
+		/// Finds dates columns with the paste format settings or date specific columns and updates with date format setting
 		/// </summary>
 		/// <param name="control">Represents the object passed into the callback procedure of a control in a ribbon or another user interface that can be customized by using Office Fluent ribbon extensibility. </param>
 		/// <remarks></remarks>
-		public void FormatSqlDateColumns(Office.IRibbonControl control)
+		public void FormatDateColumns(Office.IRibbonControl control)
 		{
 			Excel.ListObject tbl = null;
 			Excel.Range cell = null;
@@ -949,7 +949,7 @@ namespace ScriptHelp.Scripts
 		/// </summary>
 		/// <param name="control">Represents the object passed into the callback procedure of a control in a ribbon or another user interface that can be customized by using Office Fluent ribbon extensibility. </param>
 		/// <remarks></remarks>
-		public void CreateBatchFileList(Office.IRibbonControl control)
+		public void CreateFileList(Office.IRibbonControl control)
 		{
 			string filePath = Properties.Settings.Default.App_PathExport;
 			try
@@ -991,11 +991,11 @@ namespace ScriptHelp.Scripts
 		}
 
 		/// <summary> 
-		/// Opens the settings form
+		/// Opens the settings taskpane
 		/// </summary>
 		/// <param name="control">Represents the object passed into the callback procedure of a control in a ribbon or another user interface that can be customized by using Office Fluent ribbon extensibility. </param>
 		/// <remarks></remarks>
-		public void OpenSettingsForm(Office.IRibbonControl control)
+		public void OpenSettings(Office.IRibbonControl control)
 		{
 			try
 			{
@@ -1032,7 +1032,7 @@ namespace ScriptHelp.Scripts
 		/// </summary>
 		/// <param name="control">Represents the object passed into the callback procedure of a control in a ribbon or another user interface that can be customized by using Office Fluent ribbon extensibility. </param>
 		/// <remarks></remarks>
-		public void OpenHelpAsBuiltFile(Office.IRibbonControl control)
+		public void OpenHelpAsBuilt(Office.IRibbonControl control)
 		{
 			ErrorHandler.CreateLogRecord();
 			//string clickOnceLocation = AssemblyInfo.GetClickOnceLocation();
@@ -1046,7 +1046,7 @@ namespace ScriptHelp.Scripts
 		/// </summary>
 		/// <param name="control">Represents the object passed into the callback procedure of a control in a ribbon or another user interface that can be customized by using Office Fluent ribbon extensibility. </param>
 		/// <remarks></remarks>
-		public void OpenHelpApiFile(Office.IRibbonControl control)
+		public void OpenHelpApi(Office.IRibbonControl control)
 		{
 			ErrorHandler.CreateLogRecord();
 			string clickOnceLocation = AssemblyInfo.GetClickOnceLocation();
@@ -1054,7 +1054,7 @@ namespace ScriptHelp.Scripts
 		}
 
 		/// <summary> 
-		/// Opens the graph data pane
+		/// Opens the graph taskpane
 		/// </summary>
 		/// <param name="control">Represents the object passed into the callback procedure of a control in a ribbon or another user interface that can be customized by using Office Fluent ribbon extensibility. </param>
 		/// <remarks></remarks>
@@ -1096,7 +1096,7 @@ namespace ScriptHelp.Scripts
 		#region | Subroutines |
 
 		/// <summary> 
-		/// Some columns in SQL will need quoting and others will not
+		/// Used to apply quoting based on the column type
 		/// </summary>
 		/// <param name="col">Represents the list column </param>
 		/// <returns>A method that returns a string of a quote based on application settings for this value. </returns> 
@@ -1122,7 +1122,7 @@ namespace ScriptHelp.Scripts
 		}
 
 		/// <summary>
-		/// Return the list of column names in formatted string for SQL
+		/// Return the list of column names in formatted string for SQL select statements
 		/// </summary>
 		/// <param name="rng">Represents the Excel Range value</param>
 		/// <param name="tableAliasName">Table alias used to prefix column names</param>
@@ -1159,7 +1159,7 @@ namespace ScriptHelp.Scripts
 		}
 
 		/// <summary>
-		/// Return the list of column names in formatted string for SQL
+		/// Return the list of column names in formatted string for SQL joins
 		/// </summary>
 		/// <param name="rng">Represents the Excel Range value</param>
 		/// <param name="tableAliasNameTarget">Table alias used to prefix column names</param>
@@ -1373,7 +1373,7 @@ namespace ScriptHelp.Scripts
 		}
 
 		/// <summary>
-		/// Opens the task pane for the script
+		/// Open the taskpane for a script view
 		/// </summary>
 		public void OpenScriptPane()
 		{
@@ -1399,7 +1399,7 @@ namespace ScriptHelp.Scripts
 		}
 
 		/// <summary>
-		/// Opens the task pane for the a list
+		/// Open the taskpane for the a table view list
 		/// </summary>
 		public void OpenTableDataPane()
 		{
@@ -1425,7 +1425,7 @@ namespace ScriptHelp.Scripts
 		}
 
 		/// <summary> 
-		/// Update the source of the combobox to a delimited string
+		/// Update the value of the combobox from a data table by index
 		/// </summary>
 		/// <param name="itemIndex">Represents the index of the list value </param>
 		/// <returns>the label value for the combobox index</returns>
@@ -1442,12 +1442,12 @@ namespace ScriptHelp.Scripts
 			}
 		}
 
-		/// <summary> 
-		/// Update the source of the combobox to a delimited string
-		/// </summary>
-		/// <param name="itemIndex">Represents the index of the list value </param>
-		/// <returns>the label value for the combobox index</returns>
-		public string UpdateTableAliasComboBoxSource(int itemIndex)
+        /// <summary> 
+        /// Update the value of the combobox from a data table by index
+        /// </summary>
+        /// <param name="itemIndex">Represents the index of the list value </param>
+        /// <returns>the label value for the combobox index</returns>
+        public string UpdateTableAliasComboBoxSource(int itemIndex)
 		{
 			try
 			{

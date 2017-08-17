@@ -144,10 +144,10 @@ namespace ScriptHelp.Scripts
 
 		}
 
-		/// <summary>
-		/// 
-		/// </summary>
-		public static void SetServerPath()
+        /// <summary>
+        /// Sets the server path of the installed sql server ce database and supporting files
+        /// </summary>
+        public static void SetServerPath()
 		{
 			try
 			{
@@ -167,7 +167,7 @@ namespace ScriptHelp.Scripts
 		}
 
 		/// <summary>
-		/// 
+		/// Sets the user path of the installed sql server ce database and supporting files
 		/// </summary>
 		public static void SetUserPath()
 		{
