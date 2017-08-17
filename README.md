@@ -1,27 +1,33 @@
 [<img align="left" src="Images/ReadMe/App.png" width="64px" >](https://github.com/aduguid/ScriptHelp/blob/master/publish/setup.exe?raw=true "Download Setup.exe Install File")
-# Script Help 
-This is an Excel 2010 VSTO Addin written in Visual Studio Community 2017 C#. It allows the user to use an Excel table to create different SQL scripts. This has now been tested on Windows 10/Microsoft Excel 2016.
-
-<kbd><img src="Resources/QueryTypeTSql.png" /></kbd> <kbd><img src="Resources/QueryTypePlSql.png" /></kbd> <kbd><img src="Resources/QueryTypeDql.png"/></kbd> <kbd><img src="Resources/QueryTypeXML.png" /></kbd> <kbd><img src="Resources/QueryTypeGitHub.png" /></kbd>
-```
-TODO:
-Update the install for versioning of SQL Server CE (.sdf) file
- - Add version table to database
- - Copy database to temp folder location and compare version table record
- - Delete existing database and copy new database if version is newer
-
-Update the following script columns
- - PL/SQL Create Table
- - PL/SQL Merge Values
- - PL/SQL Select Values
-```
+# Script Help [<img src="Images/ReadMe/Copyright.png" width="12px" >](https://github.com/aduguid/ScriptHelp/blob/master/AnthonyDuguid.pfx?raw=true "Download AnthonyDuguid.pfx And Install At Root Level")
+This is an Excel 2010 VSTO Addin written in Visual Studio Community 2017 C#. This is used for bulk data loads into SQL Server, Oracle, Documentum, Markup and Markdown Languages. The functionality within the ribbon allows a quick way of preparing a bulk data load.  Otherwise, the requests can be both time-consuming and error prone. This has now been tested on Windows (7, 8.1, 10) & Excel (2010, 2013, 2016).
 
 <h1 align="center">
   <img src="Images/ReadMe/Ribbon.png" />
 </h1>
 
+<kbd><a href="#menu-tsql" target="_blank"><img src="Resources/QueryTypeTSql.png" title="T-SQL (Transact-Structured Query Language)" /></a></kbd>
+<kbd><a href="#menu-plsql" target="_blank"><img src="Resources/QueryTypePlSql.png" title="PL/SQL (Procedural Language/Structured Query Language)"/></a></kbd>
+<kbd><a href="#menu-dql" target="_blank"><img src="Resources/QueryTypeDql.png" title="DQL (Documentum Query Language)"/></a></kbd>
+<kbd><a href="#menu-github" target="_blank"><img src="Resources/QueryTypeGitHub.png" title="GitHub Markdown"/></a></kbd>
+<kbd><a href="#menu-markup" target="_blank"><img src="Resources/QueryTypeXML.png" title="Markup Language"/></a></kbd>
+
+## TODO:
+ ### Update the install
+   - [ ] Fix certificate issue 
+     - [ ] Currently user must install [AnthonyDuguid.pfx](https://github.com/aduguid/ScriptHelp/blob/master/AnthonyDuguid.pfx?raw=true) to the root of the machine before the install will run
+   - [ ] Add version table to SQL Server CE (.sdf) file
+     - [ ] Copy database to temp folder location and compare version table record
+     - [ ] Delete existing database and copy new database if version is newer
+ ### Update the following script columns with Oracle format instead of Microsoft
+   - [ ] PL/SQL Create Table
+   - [x] PL/SQL Insert Values
+   - [ ] PL/SQL Merge Values
+   - [ ] PL/SQL Select Values
+   - [x] PL/SQL Select Union
+   - [x] PL/SQL Update Values
+
 ## Table of Contents
-- <a href="#overview">Overview</a>
 - <a href="#dependencies">Dependencies</a>
 - <a href="#glossary-of-terms">Glossary of Terms</a>
 - <a href="#functionality">Functionality</a>
@@ -51,26 +57,20 @@ Update the following script columns
         - <a href="#description">Add-in Name</a>
         - <a href="#install-date">Install Date</a>  
         - <a href="#copyright">Copyright</a>  
-        
-<a id="user-content-overview" class="anchor" href="#overview" aria-hidden="true"> </a>
-## Overview
-This is used for bulk data loads into SQL Server, Oracle and Documentum.  The functionality within the ribbon allows a quick way of preparing a bulk data load.  Otherwise the requests can be both time-consuming and error prone. 
-
-* Standard format (Excel spreadsheets) for data
-* Standard format for loader scripts
-* Excel addin to clean and format data to be suitable for data loader script
 
 <a id="user-content-dependencies" class="anchor" href="#dependencies" aria-hidden="true"> </a>
 ## Dependencies
 |Software                                   |Dependency                 |
 |:------------------------------------------|:--------------------------|
 |[Microsoft Visual Studio Community 2017](https://www.visualstudio.com/vs/whatsnew/)|Solution|
-|[Microsoft Excel 2010](https://www.microsoft.com/en-au/software-download/office)|Project|
+|[Microsoft Office Developer Tools](https://blogs.msdn.microsoft.com/visualstudio/2015/11/23/latest-microsoft-office-developer-tools-for-visual-studio-2015/)|Solution|
+|[Microsoft Excel 2010 (or later)](https://www.microsoft.com/en-au/software-download/office)|Project|
 |[Microsoft SQL Server CE 3.5](https://www.microsoft.com/en-au/download/details.aspx?id=5783)|Database|
 |[SQL Server Compact Toolbox](https://marketplace.visualstudio.com/items?itemName=ErikEJ.SQLServerCompactSQLiteToolbox)|Database|
-|[Sandcastle](https://github.com/EWSoftware/SHFB)|API documentation|
+|[Sandcastle](https://github.com/EWSoftware/SHFB)|API Documentation|
 |[Log4Net](https://www.nuget.org/packages/log4net/) |Error Logging |
 |[ScreenToGif](http://www.screentogif.com/)|Read Me|
+|[Snagit](http://discover.techsmith.com/snagit-non-brand-desktop/?gclid=CNzQiOTO09UCFVoFKgod9EIB3g)|Read Me|
 
 <a id="user-content-glossary-of-terms" class="anchor" href="#glossary-of-terms" aria-hidden="true"> </a>
 ## Glossary of Terms
@@ -79,6 +79,7 @@ This is used for bulk data loads into SQL Server, Oracle and Documentum.  The fu
 |:--------------------------|:-----------------------------------------------------------------------------------------|
 | COM |Component Object Model (COM) is a binary-interface standard for software components introduced by Microsoft in 1993. It is used to enable inter-process communication and dynamic object creation in a large range of programming languages. COM is the basis for several other Microsoft technologies and frameworks, including OLE, OLE Automation, ActiveX, COM+, DCOM, the Windows shell, DirectX, UMDF and Windows Runtime.  |
 |DQL |DQL is used to query Documentum which is a content management system used to create, manage, deliver, and archive all types of content from text documents and spreadsheets to digital images, HTML, and XML components. DQL uses syntax that is a superset of ANSI-standard SQL (Structured Query Language) DQL statements operate on objects and sometimes on tables/rows but SQL statements operate only on tables/rows |
+|HTML|Hypertext Markup Language is the standard markup language for creating web pages and web applications|
 |PL/SQL |PL/SQL (Procedural Language/Structured Query Language) is Oracle Corporation's procedural extension for SQL and the Oracle relational database |
 |T-SQL |Transact-SQL (T-SQL) is Microsoft's and Sybase's proprietary extension to SQL. SQL, the acronym for Structured Query Language | 
 |UNION |The SQL UNION operator combines the result of two or more SELECT statements.|
@@ -173,33 +174,47 @@ These buttons have the following constraints:
   <img src="Images/ReadMe/RibbonAddScriptColumnButton.gif" />
 </h1>
 
-* T-SQL Create Table - This menu item will format the script column to drop/create the table then insert the values
-* T-SQL Insert Values – This menu item will format the script column to use individual insert statements
-* T-SQL Merge Values – This menu item will format the script column to use a merge statement with a select values
-* T-SQL Select Values – This menu item will format the script column to be used in insert statements 
-* T-SQL Select Union – This menu item will format the script column to be used in an update statement 
-* T-SQL Update Values – This menu item will format the script column to use individual update statements
-* PL/SQL Create Table - ```TODO: update the syntax from Microsoft to Oracle```
-* PL/SQL Insert Values – This menu item will format the script column to use individual insert statements
-* PL/SQL Merge Values - ```TODO: create a CTE with SELECT from DUAL for values in a MERGE statement```
-* PL/SQL Select Values - ```TODO: create a CTE with SELECT from DUAL for values```
-* PL/SQL Select Union – This menu item will format the script column to be used in an update statement 
-* PL/SQL Update Values – This menu item will format the script column to use individual update statements
-* DQL Append – This menu item will format the script column to be used in an append statement for Documentum (this is used for repeating values)
-* DQL Append/Locked – This menu item will format the script column to be used in an append statement for Documentum (this is used for repeating values) and unlocks and then locks the record.
-  * The table must contain a column header with 'WHERE'. 
-  * Add “WHERE” before the column name in the header you want to use as criteria.
-* DQL Create – This menu item will format the script column to be used in an create statement for Documentum
-* DQL Truncate/Append – This menu item will format the script column to be used in an truncate and then append statement for Documentum (this is used for repeating values).
-  * The table must contain a column header with 'WHERE'. 
-  * Add “WHERE” before the column name in the header you want to use as criteria.
-* DQL Update – This menu item will format the script column to be used in an update statement for Documentum
-* DQL Update/Locked – This menu item will format the script column to be used in an update statement for Documentum and unlocks and then locks the record.
-  * The table must contain a column header with 'WHERE'. 
-  * Add “WHERE” before the column name in the header you want to use as criteria.
-* GitHub table - creates a table format for GitHub Read Me documentation
-* HTML Table - creates a HTML table structure
-* XML Values - creates XML structure
+<a id="user-content-menu-tsql" class="anchor" href="#menu-tsql" aria-hidden="true"> </a>
+T-SQL (Transact-Structured Query Language)
+  - T-SQL Create Table - This menu item will format the script column to drop/create the table then insert the values
+  - T-SQL Insert Values – This menu item will format the script column to use individual insert statements
+  - T-SQL Merge Values – This menu item will format the script column to use a merge statement with a select values
+  - T-SQL Select Values – This menu item will format the script column to be used in insert statements 
+  - T-SQL Select Union – This menu item will format the script column to be used in an update statement 
+  - T-SQL Update Values – This menu item will format the script column to use individual update statements
+
+<a id="user-content-menu-plsql" class="anchor" href="#menu-plsql" aria-hidden="true"> </a>
+PL/SQL (Procedural Language/Structured Query Language)
+  - PL/SQL Create Table - ```TODO: update the syntax from Microsoft to Oracle```
+  - PL/SQL Insert Values – This menu item will format the script column to use individual insert statements
+  - PL/SQL Merge Values - ```TODO: create a CTE with SELECT from DUAL for values in a MERGE statement```
+  - PL/SQL Select Values - ```TODO: create a CTE with SELECT from DUAL for values```
+  - PL/SQL Select Union – This menu item will format the script column to be used in an update statement 
+  - PL/SQL Update Values – This menu item will format the script column to use individual update statements
+
+<a id="user-content-menu-dql" class="anchor" href="#menu-dql" aria-hidden="true"> </a>
+DQL (Documentum Query Language)
+  - DQL Append – This menu item will format the script column to be used in an append statement for Documentum (this is used for repeating values)
+  - DQL Append/Locked – This menu item will format the script column to be used in an append statement for Documentum (this is used for repeating values) and unlocks and then locks the record.
+    - The table must contain a column header with 'WHERE'. 
+    - Add “WHERE” before the column name in the header you want to use as criteria.
+  - DQL Create – This menu item will format the script column to be used in an create statement for Documentum
+  - DQL Truncate/Append – This menu item will format the script column to be used in an truncate and then append statement for Documentum (this is used for repeating values).
+    * The table must contain a column header with 'WHERE'. 
+    * Add “WHERE” before the column name in the header you want to use as criteria.
+  - DQL Update – This menu item will format the script column to be used in an update statement for Documentum
+  - DQL Update/Locked – This menu item will format the script column to be used in an update statement for Documentum and unlocks and then locks the record.
+    - The table must contain a column header with 'WHERE'. 
+    - Add “WHERE” before the column name in the header you want to use as criteria.
+
+<a id="user-content-menu-github" class="anchor" href="#menu-github" aria-hidden="true"> </a>
+GitHub Markdown
+  - GitHub table - creates a table format for GitHub Read Me documentation
+
+<a id="user-content-menu-markup" class="anchor" href="#menu-markup" aria-hidden="true"> </a>
+Markup Language
+  - HTML Table - creates a HTML table structure
+  - XML Values - creates XML structure
 
 <a id="user-content-format-script-options" class="anchor" href="#format-script-options" aria-hidden="true"> </a>
 ###	Format Script Options (Group)
