@@ -19,6 +19,8 @@ This is an Excel 2010 VSTO Addin written in Visual Studio Community 2017 C#. Thi
    - [ ] Add version table to SQL Server CE (.sdf) file
      - [ ] Copy database to temp folder location and compare version table record
      - [ ] Delete existing database and copy new database if version is newer
+ ### Update the add script column procedure
+   - [ ] Fix error on protected rows
  ### Update the following script columns with Oracle format instead of Microsoft
    - [ ] PL/SQL Create Table
    - [x] PL/SQL Insert Values
