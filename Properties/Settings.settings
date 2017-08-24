@@ -104,5 +104,8 @@
     <Setting Name="App_PathDeployData" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="TableStyleName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">TableStyleMedium15</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -30,9 +30,18 @@
 					id="grpFormatDataTable"
 					label="Format Data Table"
 					imageMso="FormatAsTableGallery">
+          <button
+						id="btnFormatAsTable"
+						label="Format As Table"
+						onAction="FormatAsTable"
+						imageMso="FormatAsTableGallery"
+            getVisible="GetVisible"
+						size="large"
+						screentip="Convert a range of cells to a table"
+					/>
           <gallery
 						idMso="FormatAsTableGallery"
-						getVisible="GetVisible"
+						visible="false"
 						size="large"
 					/>
           <gallery

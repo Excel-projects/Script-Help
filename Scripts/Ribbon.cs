@@ -399,7 +399,7 @@ namespace ScriptHelp.Scripts
                         return Properties.Settings.Default.Visible_Options;
                     case "ComAddInsDialog":
                         return Properties.Settings.Default.Visible_ComAddInsDialog;
-                    case "FormatAsTableGallery":
+                    case "btnFormatAsTable":
                         return Properties.Settings.Default.Visible_FormatAsTableGallery;
                     case "ViewFreezePanesGallery":
                         return Properties.Settings.Default.Visible_ViewFreezePanesGallery;
@@ -742,6 +742,46 @@ namespace ScriptHelp.Scripts
                     Marshal.ReleaseComObject(tbl);
                 if (cell != null)
                     Marshal.ReleaseComObject(cell);
+            }
+        }
+
+        /// <summary>
+        /// Convert a range of cells to a table with a specific table format
+        /// </summary>
+        /// <param name="control">Represents the object passed into the callback procedure of a control in a ribbon or another user interface that can be customized by using Office Fluent ribbon extensibility. </param>
+        public void FormatAsTable(Office.IRibbonControl control)
+        {
+            Excel.Range range = null;
+            string tableName = AssemblyInfo.Title + " " + DateTime.Now.ToString("yyyy-MM-ddThh:mm:ss:fffzzz");
+            string tableStyle = Properties.Settings.Default.TableStyleName;
+            try
+            {
+                if (ErrorHandler.IsValidListObject(false) == true)
+                {
+                    return;
+                }
+                ErrorHandler.CreateLogRecord();
+                range = Globals.ThisAddIn.Application.Selection; 
+                Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
+
+                range.Worksheet.ListObjects.Add(Excel.XlListObjectSourceType.xlSrcRange, range, System.Type.Missing, Excel.XlYesNoGuess.xlYes, System.Type.Missing).Name = tableName;
+                range.Select();
+                range.Worksheet.ListObjects[tableName].TableStyle = tableStyle;
+
+            }
+            catch (System.Runtime.InteropServices.COMException ex)
+            {
+                ErrorHandler.DisplayMessage(ex);
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.DisplayMessage(ex);
+            }
+            finally
+            {
+                Cursor.Current = System.Windows.Forms.Cursors.Arrow;
+                if (range != null)
+                    Marshal.ReleaseComObject(range);
             }
         }
 
