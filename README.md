@@ -15,7 +15,7 @@ This is an Excel 2010 VSTO Addin written in Visual Studio Community 2017 C#. Thi
 ## TODO:
  ### Update the install
    - [ ] Fix certificate issue 
-     - [ ] Currently user must install [AnthonyDuguid.pfx](https://github.com/aduguid/ScriptHelp/blob/master/AnthonyDuguid.pfx?raw=true) to the root of the machine before the install will run
+     - [ ] Currently user must install [AnthonyDuguid.pfx](https://github.com/aduguid/ScriptHelp/blob/master/AnthonyDuguid.pfx?raw=true) to the root of the machine before the install will run from GitHub
    - [ ] Add version table to SQL Server CE (.sdf) file
      - [ ] Copy database to temp folder location and compare version table record
      - [ ] Delete existing database and copy new database if version is newer
