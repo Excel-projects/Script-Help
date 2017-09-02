@@ -427,5 +427,17 @@ namespace ScriptHelp.Properties {
                 this["App_PathDeployData"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("TableStyleMedium15")]
+        public string TableStyleName {
+            get {
+                return ((string)(this["TableStyleName"]));
+            }
+            set {
+                this["TableStyleName"] = value;
+            }
+        }
     }
 }
