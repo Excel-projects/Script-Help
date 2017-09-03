@@ -29,6 +29,9 @@ This is an Excel VSTO Addin written in Visual Studio Community 2017 C#/VB.NET/VB
    - [x] PL/SQL Select Union
    - [x] PL/SQL Update Values
 
+### Update folder structure and all versions
+   - [ ] Upload VB.NET version
+
 ## Table of Contents
 - <a href="#dependencies">Dependencies</a>
 - <a href="#glossary-of-terms">Glossary of Terms</a>
