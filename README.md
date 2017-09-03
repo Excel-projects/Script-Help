@@ -1,21 +1,21 @@
-[<img align="left" src="Images/ReadMe/App.png" width="64px" >](https://github.com/aduguid/ScriptHelp/blob/master/publish/setup.exe?raw=true "Download Setup.exe Install File")
-# Script Help [<img src="Images/ReadMe/Copyright.png" width="12px" >](https://github.com/aduguid/ScriptHelp/blob/master/AnthonyDuguid.pfx?raw=true "Download AnthonyDuguid.pfx And Install At Root Level")
+[<img align="left" src="Images/ReadMe/App.png" width="64px" >](https://github.com/aduguid/ScriptHelp/CS/blob/master/publish/setup.exe?raw=true "Download Setup.exe Install File")
+# Script Help [<img src="Images/ReadMe/Copyright.png" width="12px" >](https://github.com/aduguid/ScriptHelp/CS/blob/master/AnthonyDuguid.pfx?raw=true "Download AnthonyDuguid.pfx And Install At Root Level")
 This is an Excel VSTO Addin written in Visual Studio Community 2017 C#. This is used for bulk data loads into SQL Server, Oracle, Documentum, Markup and Markdown Languages. The functionality within the ribbon allows a quick way of preparing a bulk data load.  Otherwise, the requests can be both time-consuming and error prone. This has now been tested on Windows (7, 8.1, 10) & Excel (2010, 2013, 2016).
 
 <h1 align="center">
   <img src="Images/ReadMe/Ribbon.png" />
 </h1>
 
-<kbd><a href="#menu-tsql" target="_blank"><img src="Resources/QueryTypeTSql.png" title="T-SQL (Transact-Structured Query Language)" /></a></kbd>
-<kbd><a href="#menu-plsql" target="_blank"><img src="Resources/QueryTypePlSql.png" title="PL/SQL (Procedural Language/Structured Query Language)"/></a></kbd>
-<kbd><a href="#menu-dql" target="_blank"><img src="Resources/QueryTypeDql.png" title="DQL (Documentum Query Language)"/></a></kbd>
-<kbd><a href="#menu-github" target="_blank"><img src="Resources/QueryTypeGitHub.png" title="GitHub Markdown"/></a></kbd>
-<kbd><a href="#menu-markup" target="_blank"><img src="Resources/QueryTypeXML.png" title="Markup Language"/></a></kbd>
+<kbd><a href="#menu-tsql" target="_blank"><img src="CS/Resources/QueryTypeTSql.png" title="T-SQL (Transact-Structured Query Language)" /></a></kbd>
+<kbd><a href="#menu-plsql" target="_blank"><img src="CS/Resources/QueryTypePlSql.png" title="PL/SQL (Procedural Language/Structured Query Language)"/></a></kbd>
+<kbd><a href="#menu-dql" target="_blank"><img src="CS/Resources/QueryTypeDql.png" title="DQL (Documentum Query Language)"/></a></kbd>
+<kbd><a href="#menu-github" target="_blank"><img src="CS/Resources/QueryTypeGitHub.png" title="GitHub Markdown"/></a></kbd>
+<kbd><a href="#menu-markup" target="_blank"><img src="CS/Resources/QueryTypeXML.png" title="Markup Language"/></a></kbd>
 
 ## TODO:
  ### Update the install
    - [ ] Fix certificate issue 
-     - [ ] Currently user must install [AnthonyDuguid.pfx](https://github.com/aduguid/ScriptHelp/blob/master/AnthonyDuguid.pfx?raw=true) to the root of the machine before the [install](https://github.com/aduguid/ScriptHelp/blob/master/publish/setup.exe?raw=true) will run from GitHub
+     - [ ] Currently user must install [AnthonyDuguid.pfx](https://github.com/aduguid/ScriptHelp/CS/blob/master/AnthonyDuguid.pfx?raw=true) to the root of the machine before the [install](https://github.com/aduguid/ScriptHelp/CS/blob/master/publish/setup.exe?raw=true) will run from GitHub
    - [ ] Add version table to SQL Server CE (.sdf) file
      - [ ] Copy database to temp folder location and compare version table record
      - [ ] Delete existing database and copy new database if version is newer
