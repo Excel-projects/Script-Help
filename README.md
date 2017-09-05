@@ -172,10 +172,10 @@ T-SQL (Transact-Structured Query Language)
 <a id="user-content-menu-plsql" class="anchor" href="#menu-plsql" aria-hidden="true"> </a>
 <kbd><a href="#menu-plsql" target="_blank"><img src="CS/Resources/QueryTypePlSql.png" title="PL/SQL (Procedural Language/Structured Query Language)"/></a></kbd>
 PL/SQL (Procedural Language/Structured Query Language)
-  - PL/SQL Create Table - ```TODO: update the syntax from Microsoft to Oracle```
+  - PL/SQL Create Table - This menu item will format the script column to drop/create the table then insert the values
   - PL/SQL Insert Values – This menu item will format the script column to use individual insert statements
-  - PL/SQL Merge Values - ```TODO: create a CTE with SELECT from DUAL for values in a MERGE statement```
-  - PL/SQL Select Values - ```TODO: create a CTE with SELECT from DUAL for values```
+  - PL/SQL Merge Values - This menu item will format the script column to use a merge statement with a select values
+  - PL/SQL Select Values - This menu item will format the script column to be used in insert statements 
   - PL/SQL Select Union – This menu item will format the script column to be used in an update statement 
   - PL/SQL Update Values – This menu item will format the script column to use individual update statements
 
