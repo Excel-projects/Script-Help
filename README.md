@@ -12,24 +12,6 @@ This is an Excel VSTO Addin written in Visual Studio Community 2017 C#/VB.NET/VB
 <kbd><a href="#menu-github" target="_blank"><img src="CS/Resources/QueryTypeGitHub.png" title="GitHub Markdown"/></a></kbd>
 <kbd><a href="#menu-markup" target="_blank"><img src="CS/Resources/QueryTypeXML.png" title="Markup Language"/></a></kbd>
 
-## TODO:
- ### Update the install for C# version
-   - [ ] Fix certificate issue 
-     - [ ] Currently user must install [AnthonyDuguid.pfx](https://github.com/aduguid/ScriptHelp/CS/blob/master/AnthonyDuguid.pfx?raw=true) to the root of the machine before the [install](https://github.com/aduguid/ScriptHelp/CS/blob/master/publish/setup.exe?raw=true) will run from GitHub
-   - [ ] Add version table to SQL Server CE (.sdf) file
-     - [ ] Copy database to temp folder location and compare version table record
-     - [ ] Delete existing database and copy new database if version is newer
- ### Update the C# version "Add Script Column" procedure
-   - [ ] Fix error on protected rows
- ### Update the C# version with the following script columns with Oracle format instead of Microsoft
-   - [ ] PL/SQL Create Table
-   - [ ] PL/SQL Merge Values
-   - [ ] PL/SQL Select Values
- ### Update the VB.NET version
-   - [ ] Add all functionality from C# version
- ### Update the VBA version
-   - [ ] Add all functionality from C# version
-   
 ## Table of Contents
 - <a href="#dependencies">Dependencies</a>
 - <a href="#glossary-of-terms">Glossary of Terms</a>
