@@ -23,14 +23,8 @@ This is an Excel VSTO Addin written in Visual Studio Community 2017 C#/VB.NET/VB
    - [ ] Fix error on protected rows
  ### Update the following script columns with Oracle format instead of Microsoft
    - [ ] PL/SQL Create Table
-   - [x] PL/SQL Insert Values
    - [ ] PL/SQL Merge Values
    - [ ] PL/SQL Select Values
-   - [x] PL/SQL Select Union
-   - [x] PL/SQL Update Values
-
-### Update folder structure and all versions
-   - [ ] Upload VB.NET version
 
 ## Table of Contents
 - <a href="#dependencies">Dependencies</a>
