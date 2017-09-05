@@ -160,6 +160,7 @@ These buttons have the following constraints:
 </h1>
 
 <a id="user-content-menu-tsql" class="anchor" href="#menu-tsql" aria-hidden="true"> </a>
+<kbd><a href="#menu-tsql" target="_blank"><img src="CS/Resources/QueryTypeTSql.png" title="T-SQL (Transact-Structured Query Language)" /></a></kbd>
 T-SQL (Transact-Structured Query Language)
   - T-SQL Create Table - This menu item will format the script column to drop/create the table then insert the values
   - T-SQL Insert Values – This menu item will format the script column to use individual insert statements
