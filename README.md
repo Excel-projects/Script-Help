@@ -170,6 +170,7 @@ T-SQL (Transact-Structured Query Language)
   - T-SQL Update Values – This menu item will format the script column to use individual update statements
 
 <a id="user-content-menu-plsql" class="anchor" href="#menu-plsql" aria-hidden="true"> </a>
+<kbd><a href="#menu-plsql" target="_blank"><img src="CS/Resources/QueryTypePlSql.png" title="PL/SQL (Procedural Language/Structured Query Language)"/></a></kbd>
 PL/SQL (Procedural Language/Structured Query Language)
   - PL/SQL Create Table - ```TODO: update the syntax from Microsoft to Oracle```
   - PL/SQL Insert Values – This menu item will format the script column to use individual insert statements
@@ -179,6 +180,7 @@ PL/SQL (Procedural Language/Structured Query Language)
   - PL/SQL Update Values – This menu item will format the script column to use individual update statements
 
 <a id="user-content-menu-dql" class="anchor" href="#menu-dql" aria-hidden="true"> </a>
+<kbd><a href="#menu-dql" target="_blank"><img src="CS/Resources/QueryTypeDql.png" title="DQL (Documentum Query Language)"/></a></kbd>
 DQL (Documentum Query Language)
   - DQL Append – This menu item will format the script column to be used in an append statement for Documentum (this is used for repeating values)
   - DQL Append/Locked – This menu item will format the script column to be used in an append statement for Documentum (this is used for repeating values) and unlocks and then locks the record.
@@ -194,10 +196,12 @@ DQL (Documentum Query Language)
     - Add “WHERE” before the column name in the header you want to use as criteria.
 
 <a id="user-content-menu-github" class="anchor" href="#menu-github" aria-hidden="true"> </a>
+<kbd><a href="#menu-github" target="_blank"><img src="CS/Resources/QueryTypeGitHub.png" title="GitHub Markdown"/></a></kbd>
 GitHub Markdown
   - GitHub table - creates a table format for GitHub Read Me documentation
 
 <a id="user-content-menu-markup" class="anchor" href="#menu-markup" aria-hidden="true"> </a>
+<kbd><a href="#menu-markup" target="_blank"><img src="CS/Resources/QueryTypeXML.png" title="Markup Language"/></a></kbd>
 Markup Language
   - HTML Table - creates a HTML table structure
   - XML Values - creates XML structure
