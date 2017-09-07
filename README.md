@@ -105,7 +105,7 @@ These buttons have the following constraints:
 ####	Format as Table (Button)
 * Quickly format a range of cells and convert it to a Table by choosing a pre-defined Table Style. 
 <h1 align="left">
-  <img src="Images/ReadMe/RibbonFormatAsTableMenu.png" />
+  <img src="Images/ReadMe/FormatAsTable.gif" />
 </h1>
 
 <a id="user-content-freeze-panes" class="anchor" href="#freeze-panes" aria-hidden="true"> </a>
