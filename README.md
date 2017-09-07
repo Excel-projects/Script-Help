@@ -105,7 +105,7 @@ These buttons have the following constraints:
 ####	Format as Table (Button)
 * Quickly format a range of cells and convert it to a Table by choosing a pre-defined Table Style. 
 <h1 align="left">
-  <img src="Images/ReadMe/FormatAsTable.gif" />
+  <img src="Images/ReadMe/RibbonFormatAsTable.gif" />
 </h1>
 
 <a id="user-content-freeze-panes" class="anchor" href="#freeze-panes" aria-hidden="true"> </a>
@@ -237,7 +237,7 @@ Markup Language
 <a id="user-content-settings" class="anchor" href="#settings" aria-hidden="true"> </a>
 #### Settings (Button)
 <h1 align="left">
-  <img src="Images/ReadMe/RibbonSettings.png" />
+  <img src="Images/ReadMe/RibbonSettings.gif" />
 </h1>
 
 - Types of Settings
