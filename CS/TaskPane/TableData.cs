@@ -57,11 +57,22 @@ namespace ScriptHelp.TaskPane
 				}
 
 				string tableName = Ribbon.AppVariables.TableName;
-				string sql = "SELECT * FROM @tableName";
+				//string sql = "SELECT * FROM @tableName";
+                		string sql = "SELECT * FROM " + tableName;
 				SqlCeConnection cn = new SqlCeConnection(Data.Connection());
 				SqlCeCommandBuilder scb = default(SqlCeCommandBuilder);
 				SqlCeDataAdapter sda = new SqlCeDataAdapter(sql, cn);
-				sda.SelectCommand.Parameters.AddWithValue("@tableName", tableName);
+				//sda.SelectCommand.Parameters.AddWithValue("@tableName", tableName);
+				//sda.SelectCommand.Parameters.AddWithValue("@tableName", System.Data.SqlDbType.NVarChar).Value =  tableName;
+
+				//sda.SelectCommand.Parameters.Add(new SqlCeParameter
+				//{
+				//      ParameterName = "@tableName"
+				//    , Value = tableName
+				//    , SqlDbType = System.Data.SqlDbType.NVarChar
+				//    , Size = 50 
+				//});
+
 				sda.TableMappings.Add("Table", tableName);
 				scb = new SqlCeCommandBuilder(sda);
 				switch (tableName)
