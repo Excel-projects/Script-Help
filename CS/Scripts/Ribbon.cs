@@ -767,6 +767,7 @@ namespace ScriptHelp.Scripts
                 range.Worksheet.ListObjects.Add(Excel.XlListObjectSourceType.xlSrcRange, range, System.Type.Missing, Excel.XlYesNoGuess.xlYes, System.Type.Missing).Name = tableName;
                 range.Select();
                 range.Worksheet.ListObjects[tableName].TableStyle = tableStyle;
+                //ribbon.ActivateTab("tabScriptHelp"); //set focus back to the ribbon after the table is created
 
             }
             catch (System.Runtime.InteropServices.COMException ex)
