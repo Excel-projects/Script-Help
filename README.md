@@ -88,7 +88,7 @@ This Excel ribbon is inserted after the “Home” tab when Excel opens. Listed 
 <a id="user-content-clipboard" class="anchor" href="#clipboard" aria-hidden="true"> </a>
 ###	Clipboard (Group)
 <h1 align="left">
-  <img src="Images/ReadMe/RibbonClipboardGroup.png" />
+  <img src="Images/ReadMe/ribbon.group.clipboard.png" />
 </h1>
 
 <a id="user-content-paste" class="anchor" href="#paste" aria-hidden="true"> </a>
@@ -103,7 +103,7 @@ This Excel ribbon is inserted after the “Home” tab when Excel opens. Listed 
 ### Format Data Table (Group)
 
 <h1 align="left">
-  <img src="Images/ReadMe/RibbonFormatDataTableGroup.png" />
+  <img src="Images/ReadMe/ribbon.group.formatdatatable.png" />
 </h1>
 
 These buttons have the following constraints: 
@@ -219,7 +219,7 @@ Markup Language
 <a id="user-content-format-script-options" class="anchor" href="#format-script-options" aria-hidden="true"> </a>
 ###	Format Script Options (Group)
 <h1 align="left">
-  <img src="Images/ReadMe/RibbonFormatScriptOptionsGroup.png" />
+  <img src="Images/ReadMe/ribbon.group.formatscriptoptions.png" />
 </h1>
 
 <a id="user-content-table-alias" class="anchor" href="#table-alias" aria-hidden="true"> </a>
@@ -265,7 +265,7 @@ Markup Language
 <a id="user-content-about" class="anchor" href="#about" aria-hidden="true"> </a>
 ###	About (Group)
 <h1 align="left">
-  <img src="Images/ReadMe/RibbonAboutGroup.png" />
+  <img src="Images/ReadMe/ribbon.group.about.png" />
 </h1>
 
 <a id="user-content-how-to" class="anchor" href="#how-to" aria-hidden="true"> </a>
