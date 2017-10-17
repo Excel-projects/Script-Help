@@ -130,7 +130,7 @@ These buttons have the following constraints:
 * Currently, there must be at least 2 rows in the table
 
 <h1 align="left">
-  <img src="Images/ReadMe/RibbonCleanDataButton.gif" />
+  <img src="Images/ReadMe/ribbon.button.cleandata.gif?" />
 </h1>
 
 <a id="user-content-convert-to-null" class="anchor" href="#convert-to-null" aria-hidden="true"> </a>
