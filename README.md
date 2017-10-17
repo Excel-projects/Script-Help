@@ -113,10 +113,7 @@ These buttons have the following constraints:
 
 <a id="user-content-format-as-table" class="anchor" href="#format-as-table" aria-hidden="true"> </a>
 ####	Format as Table (Button)
-* Quickly format a range of cells and convert it to a Table by choosing a pre-defined Table Style. 
-<h1 align="left">
-  <img src="Images/ReadMe/RibbonFormatAsTable.gif" />
-</h1>
+* Quickly format a range of cells and convert it to a Table by choosing a Table Style. 
 
 <a id="user-content-freeze-panes" class="anchor" href="#freeze-panes" aria-hidden="true"> </a>
 ####	Freeze Panes (Button)
