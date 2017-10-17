@@ -146,7 +146,7 @@ These buttons have the following constraints:
 * When data is cut and pasted from SSMS into Excel, for whatever reason, Excel chooses to format the dates with the (useless) format "mm:ss.0". This seems to be impossible to configure. 
 * This feature applies the format "dd-mmm-yyyy" to all date columns it detects in the active table.  If there are zero strings in the column instead of “NULL”s, then the column is treated as a string.
 <h1 align="left">
-  <img src="Images/ReadMe/RibbonFormatDateColumnsButton.gif" />
+  <img src="Images/ReadMe/ribbon.button.formatdatecolumns.gif" />
 </h1>
 
 <a id="user-content-clear-interior-color" class="anchor" href="#clear-interior-color" aria-hidden="true"> </a>
