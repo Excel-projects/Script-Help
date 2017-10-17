@@ -275,7 +275,7 @@ Markup Language
 
 <a id="user-content-description" class="anchor" href="#description" aria-hidden="true"> </a>
 #### Add-in Name (Label)
-* The application name with the version [<img src="Images/ReadMe/egg.ico">](https://raw.githubusercontent.com/aduguid/ScriptHelp/master/Images/ReadMe/ribbon.easteregg.gif "Easter Egg")
+* The application name with the version [<img src="Images/ReadMe/ribbon.easteregg.ico">](https://raw.githubusercontent.com/aduguid/ScriptHelp/master/Images/ReadMe/ribbon.easteregg.gif "Easter Egg")
 
 <a id="user-content-install-date" class="anchor" href="#install-date" aria-hidden="true"> </a>
 #### Install Date (Label)
