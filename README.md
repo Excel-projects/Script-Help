@@ -249,9 +249,12 @@ Markup Language
 
 <a id="user-content-settings" class="anchor" href="#settings" aria-hidden="true"> </a>
 #### Settings (Button)
-<h1 align="left">
-  <img src="Images/ReadMe/RibbonSettings.gif" />
-</h1>
+
+<kbd>
+VSTO
+<br>
+  <img align="left" src="Images/ReadMe/vsto.ribbon.settings.png" />
+</kbd>
 
 - Types of Settings
   - Application Settings
@@ -260,6 +263,12 @@ Markup Language
   - User Settings
     - These settings can be changed by the end-user
     - They will appear enabled in the form
+    
+<kbd>
+VBA
+<br>
+  <img align="left" src="Images/ReadMe/vba.ribbon.settings.png" />
+</kbd>
 
 <a id="user-content-com-addins" class="anchor" href="#com-addins" aria-hidden="true"> </a>
 #### COM Addins (Button)
