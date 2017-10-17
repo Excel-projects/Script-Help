@@ -138,7 +138,7 @@ These buttons have the following constraints:
 * Replaces the zero string values in a named range with “NULL” text value.
 
 <h1 align="left">
-  <img src="Images/ReadMe/RibbonConvertToNullButton.gif" />
+  <img src="Images/ReadMe/ribbon.button.converttonull.gif" />
 </h1>
 
 <a id="user-content-format-date-columns" class="anchor" href="#format-date-columns" aria-hidden="true"> </a>
