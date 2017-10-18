@@ -18,12 +18,6 @@ VBA
   <img src="Images/ReadMe/vba.ribbon.png" />
 </kbd>
 
-<kbd><a href="#menu-tsql" target="_blank"><img src="CS/Resources/QueryTypeTSql.png" title="T-SQL (Transact-Structured Query Language)" /></a></kbd>
-<kbd><a href="#menu-plsql" target="_blank"><img src="CS/Resources/QueryTypePlSql.png" title="PL/SQL (Procedural Language/Structured Query Language)"/></a></kbd>
-<kbd><a href="#menu-dql" target="_blank"><img src="CS/Resources/QueryTypeDql.png" title="DQL (Documentum Query Language)"/></a></kbd>
-<kbd><a href="#menu-github" target="_blank"><img src="CS/Resources/QueryTypeGitHub.png" title="GitHub Markdown"/></a></kbd>
-<kbd><a href="#menu-markup" target="_blank"><img src="CS/Resources/QueryTypeXML.png" title="Markup Language"/></a></kbd>
-
 ## Table of Contents
 - <a href="#dependencies">Dependencies</a>
 - <a href="#glossary-of-terms">Glossary of Terms</a>
@@ -40,7 +34,11 @@ VBA
         - <a href="#format-date-columns">Format Date Columns</a>        
         - <a href="#clear-interior-color">Clear Interior Color</a>
         - <a href="#separate-values">Separate Values</a>
-        - <a href="#add-script-column">Add Script Column</a>
+        - <a href="#add-script-column">Add Script Column  </a><kbd><a href="#menu-tsql" target="_blank"><img src="CS/Resources/QueryTypeTSql.png" title="T-SQL (Transact-Structured Query Language)" /></a></kbd>
+<kbd><a href="#menu-plsql" target="_blank"><img src="CS/Resources/QueryTypePlSql.png" title="PL/SQL (Procedural Language/Structured Query Language)"/></a></kbd>
+<kbd><a href="#menu-dql" target="_blank"><img src="CS/Resources/QueryTypeDql.png" title="DQL (Documentum Query Language)"/></a></kbd>
+<kbd><a href="#menu-github" target="_blank"><img src="CS/Resources/QueryTypeGitHub.png" title="GitHub Markdown"/></a></kbd>
+<kbd><a href="#menu-markup" target="_blank"><img src="CS/Resources/QueryTypeXML.png" title="Markup Language"/></a></kbd>
     - <a href="#format-script-options">Format Script Options</a>
         - <a href="#table-alias">Table Alias</a>  
         - <a href="#date-format">Date Format</a>  
