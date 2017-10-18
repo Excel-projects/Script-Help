@@ -45,7 +45,7 @@ VBA
         - <a href="#date-format">Date Format</a>  
         - <a href="#paste-format">Paste Format</a>  
         - <a href="#create-file-list">Create File List</a>  
-        - <a href="#settings">Settings</a>  
+        - <a href="#settings">Add-In Settings</a>  
         - <a href="#com-addins">COM Add-Ins</a>  
     - <a href="#about">About</a>
         - <a href="#how-to">How To...</a>  
@@ -247,7 +247,7 @@ Markup Language
 * It will save the .csv and .bat file in the root folder selected.
 
 <a id="user-content-settings" class="anchor" href="#settings" aria-hidden="true"> </a>
-#### Settings (Button)
+#### Add-In Settings (Button)
 
 <kbd>
 VSTO
