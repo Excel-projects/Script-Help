@@ -35,9 +35,9 @@ VBA
         - <a href="#clear-interior-color">Clear Interior Color</a>
         - <a href="#separate-values">Separate Values</a>
         - <a href="#add-script-column">Add Script Column</a>
-          - <kbd><a href="#menu-tsql" target="_blank"><img src="CS/Resources/QueryTypeTSql.png" title="T-SQL (Transact-Structured Query Language)" /></a></kbd> T-SQL (Transact-Structured Query Language)
-          - <kbd><a href="#menu-plsql" target="_blank"><img src="CS/Resources/QueryTypePlSql.png" title="PL/SQL (Procedural Language/Structured Query Language)"/></a></kbd>  PL/SQL (Procedural Language/Structured Query Language)
-          - <kbd><a href="#menu-dql" target="_blank"><img src="CS/Resources/QueryTypeDql.png" title="DQL (Documentum Query Language)"/></a></kbd>  DQL (Documentum Query Language)
+          - <kbd><a href="#menu-tsql" target="_blank"><img src="CS/Resources/QueryTypeTSql.png" title="T-SQL (Transact-Structured Query Language)" /></a></kbd><a href="#menu-tsql"> T-SQL (Transact-Structured Query Language)</a>
+          - <kbd><a href="#menu-plsql" target="_blank"><img src="CS/Resources/QueryTypePlSql.png" title="PL/SQL (Procedural Language/Structured Query Language)"/></a></kbd><a href="#menu-plsql">  PL/SQL (Procedural Language/Structured Query Language)</a>
+          - <kbd><a href="#menu-dql" target="_blank"><img src="CS/Resources/QueryTypeDql.png" title="DQL (Documentum Query Language)"/></a></kbd><a href="#menu-dql">  DQL (Documentum Query Language)</a>
           - <kbd><a href="#menu-github" target="_blank"><img src="CS/Resources/QueryTypeGitHub.png" title="GitHub Markdown"/></a></kbd>  GitHub Markdown
           - <kbd><a href="#menu-markup" target="_blank"><img src="CS/Resources/QueryTypeXML.png" title="Markup Language"/></a></kbd>  Markup Language
     - <a href="#format-script-options">Format Script Options</a>
