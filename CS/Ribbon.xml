@@ -511,7 +511,7 @@ Or use the following tag to remove all other ribbons when this loads
 					/>
           <button
 						id="btnStart"
-						onAction="OpenGraphData"
+						onAction="OnAction"
 					/>
         </group>
       </tab>
