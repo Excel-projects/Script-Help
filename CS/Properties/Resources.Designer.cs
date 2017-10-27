@@ -63,9 +63,9 @@ namespace ScriptHelp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap control_play_blue {
+        internal static System.Drawing.Bitmap Copy {
             get {
-                object obj = ResourceManager.GetObject("control_play_blue", resourceCulture);
+                object obj = ResourceManager.GetObject("Copy", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace ScriptHelp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Copy {
+        internal static System.Drawing.Bitmap download {
             get {
-                object obj = ResourceManager.GetObject("Copy", resourceCulture);
+                object obj = ResourceManager.GetObject("download", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,49 +93,9 @@ namespace ScriptHelp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap QueryTypeDql {
+        internal static System.Drawing.Bitmap Play {
             get {
-                object obj = ResourceManager.GetObject("QueryTypeDql", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap QueryTypeGitHub {
-            get {
-                object obj = ResourceManager.GetObject("QueryTypeGitHub", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap QueryTypePlSql {
-            get {
-                object obj = ResourceManager.GetObject("QueryTypePlSql", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap QueryTypeTSql {
-            get {
-                object obj = ResourceManager.GetObject("QueryTypeTSql", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap QueryTypeXML {
-            get {
-                object obj = ResourceManager.GetObject("QueryTypeXML", resourceCulture);
+                object obj = ResourceManager.GetObject("Play", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -146,6 +106,56 @@ namespace ScriptHelp.Properties {
         internal static System.Drawing.Bitmap Save {
             get {
                 object obj = ResourceManager.GetObject("Save", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ScriptTypeDql {
+            get {
+                object obj = ResourceManager.GetObject("ScriptTypeDql", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ScriptTypeGitHub {
+            get {
+                object obj = ResourceManager.GetObject("ScriptTypeGitHub", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ScriptTypePlSql {
+            get {
+                object obj = ResourceManager.GetObject("ScriptTypePlSql", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ScriptTypeTSql {
+            get {
+                object obj = ResourceManager.GetObject("ScriptTypeTSql", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ScriptTypeXML {
+            get {
+                object obj = ResourceManager.GetObject("ScriptTypeXML", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

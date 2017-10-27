@@ -149,7 +149,7 @@ namespace ScriptHelp.TaskPane
                 switch (Ribbon.AppVariables.FileType)
                 {
                     case "SQL":
-                        s.FileName = "Update_" + Properties.Settings.Default.Sheet_ColumnTableAlias + ".sql";
+                        s.FileName = "Update_" + Properties.Settings.Default.Table_ColumnTableAlias + ".sql";
                         s.Filter = "Structured Query Language | *.sql";
                         break;
                     case "DQL":
@@ -157,11 +157,11 @@ namespace ScriptHelp.TaskPane
                         s.Filter = "Documentum Query Language | *.dql";
                         break;
 					case "TXT":
-						s.FileName = Properties.Settings.Default.Sheet_ColumnTableAlias + ".txt";
+						s.FileName = Properties.Settings.Default.Table_ColumnTableAlias + ".txt";
 						s.Filter = "Text File | *.txt";
 						break;
 					case "XML":
-						s.FileName = Properties.Settings.Default.Sheet_ColumnTableAlias + ".xml";
+						s.FileName = Properties.Settings.Default.Table_ColumnTableAlias + ".xml";
 						s.Filter = "Extensible Markup Language | *.xml";
 						break;
 				}

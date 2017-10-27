@@ -1,5 +1,23 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui" onLoad="Ribbon_Load">
+
+  <!-- 
+Use the following tags to remove indivdual ribbons when this loads
+	<tab idMso="TabHome" getVisible="GetVisible"/> 
+	<tab idMso="TabInsert" getVisible="GetVisible"/> 
+	<tab idMso="TabReview" getVisible="GetVisible"/> 
+	<tab idMso="TabData" getVisible="GetVisible"/> 
+	<tab idMso="TabView" getVisible="GetVisible"/> 
+	<tab idMso="TabFormulas" getVisible="GetVisible"/> 
+	<tab idMso="TabPageLayoutExcel" getVisible="GetVisible"/> 
+	<tab idMso="TabDeveloper" getVisible="GetVisible"/> 
+	<tab idMso="TabPrintPreview" getVisible="GetVisible"/> 
+	<tab idMso="TabAddIns" getVisible="GetVisible"/> 
+	<tab idMso="TabSetTableToolsExcel" getVisible="GetVisible"/> 
+Or use the following tag to remove all other ribbons when this loads
+	<ribbon startFromScratch="true">
+-->
+
   <ribbon>
     <tabs>
       <tab
@@ -10,7 +28,9 @@
         <group
 					id="grpClipboard"
 					label="Clipboard"
-					imageMso="Copy">
+					imageMso="Copy"
+          getVisible="GetVisible"
+          >
           <control
 						idMso="PasteMenu"
 						size="large"
@@ -18,402 +38,455 @@
           <button
 						id="btnCopyVisibleCells"
 						label="Copy Visible Cells"
-						onAction="CopyVisibleCells"
+						onAction="OnAction"
 						getEnabled="GetEnabled"
-						getVisible="GetVisible"
 						imageMso="Copy"
 						size="large"
-						screentip="Copies only visible cells from a selection"
+							screentip="Copy Visible Cells"
+							supertip="Copies only visible cells from a selection"
 					/>
         </group>
         <group
 					id="grpFormatDataTable"
 					label="Format Data Table"
-					imageMso="FormatAsTableGallery">
+					imageMso="FormatAsTableGallery"
+          getVisible="GetVisible"
+          >
           <button
 						id="btnFormatAsTable"
 						label="Format As Table"
-						onAction="FormatAsTable"
+						onAction="OnAction"
 						imageMso="FormatAsTableGallery"
-            getVisible="GetVisible"
 						size="large"
 						screentip="Convert a range of cells to a table"
+            visible="false"
 					/>
           <gallery
 						idMso="FormatAsTableGallery"
-						visible="false"
-						size="large"
+            size="large"
 					/>
           <gallery
 						idMso="ViewFreezePanesGallery"
-						getVisible="GetVisible"
 						size="large"
 					/>
           <button
 						idMso="RemoveDuplicates"
-						getVisible="GetVisible"
 						size="large"
 					/>
-          <separator
-						id="separator0"
-					/>
+        </group>
+        <group
+						id="grpScriptActions"
+						label="Script Actions"
+						imageMso="QuickCode">
           <button
 						id="btnCleanData"
 						label="Clean Data"
-						onAction="CleanData"
+						onAction="OnAction"
 						getEnabled="GetEnabled"
 						imageMso="FormatPainter"
 						size="large"
-						screentip="Removes all nonprintable characters from text"
+							screentip="Clean Data"
+							supertip="This feature removes all nonprintable characters from text and trims leading and trailing spaces."
 					/>
           <button
 						id="btnZeroToNull"
 						label="Convert to NULL"
-						onAction="ZeroStringToNull"
+						onAction="OnAction"
 						getEnabled="GetEnabled"
 						getVisible="GetVisible"
 						imageMso="RecordsRefreshRecords"
 						size="large"
-						screentip="Replaces the zero string values with 'NULL'"
+							screentip="Convert to NULL"
+							supertip="Replaces the zero string values with 'NULL'"
 					/>
           <button
 						id="btnFormatDateColumns"
 						label="Format Date Columns"
-						onAction="FormatDateColumns"
+						onAction="OnAction"
 						getEnabled="GetEnabled"
 						imageMso="DateAndTimeInsert"
 						size="large"
-						screentip="Update the default date format of the cell"
+							screentip="Format Date Columns"
+							supertip="Update the default date format of the cell"
 					/>
           <button
 						id="btnClearInteriorColor"
 						label="Clear Interior Color"
-						onAction="ClearInteriorColor"
+						onAction="OnAction"
 						getEnabled="GetEnabled"
 						getVisible="GetVisible"
 						imageMso="TableEraser"
 						size="large"
-						screentip="Clear the interior color of cells"
+							screentip="Clear Interior Color"
+							supertip="Clear the interior color of cells in the current table"
 					/>
           <button
 						id="btnSeparateValues"
 						label="Separate Values"
-						onAction="SeparateValues"
+						onAction="OnAction"
 						getVisible="GetVisible"
 						imageMso="ChartSwitchRowColumn"
 						size="large"
-						screentip="Separate values into new rows from the selected column by a delimited string value setting"
+							screentip="Separate Values"
+							supertip="Separate values into new rows from the selected column by a delimited string value setting"
 					/>
           <menu
 						id="mnuScriptType"
-						getVisible="GetVisible"
-						imageMso="EquationInsertGallery"
+						imageMso="FunctionWizard"
 						label="Add Script Column"
 						size="large"
-						screentip="The selected button will change the script string format."
+							screentip="Add Script Column"
+							supertip="The selected button will change the script string format."
 						>
             <button
-							id="btnQueryTypeTSqlCreateTable"
+							id="btnScriptTypeTSqlCreateTable"
 							getImage="GetButtonImage"
 							label="T-SQL Create Table"
 							onAction="OnAction"
 							getVisible="GetVisible"
-							screentip="This changes the query string to a T-SQL CREATE TABLE script."
+								screentip="T-SQL Create Table"
+								supertip="This changes the query string to a T-SQL CREATE TABLE script."
 						/>
             <button
-							id="btnQueryTypeTSqlInsertValues"
+							id="btnScriptTypeTSqlInsertValues"
 							getImage="GetButtonImage"
 							label="T-SQL Insert Values"
 							onAction="OnAction"
 							getVisible="GetVisible"
-							screentip="This changes the query string to a T-SQL INSERT VALUES script."
+								screentip="T-SQL Insert Values"
+								supertip="This changes the query string to a T-SQL INSERT VALUES script."
 						/>
             <button
-							id="btnQueryTypeTSqlMergeValues"
+							id="btnScriptTypeTSqlMergeValues"
 							getImage="GetButtonImage"
 							label="T-SQL Merge Values"
 							onAction="OnAction"
 							getVisible="GetVisible"
-							screentip="This changes the query string to a T-SQL MERGE VALUES script."
+								screentip="T-SQL Merge Values"
+								supertip="This changes the query string to a T-SQL MERGE VALUES script."
 						/>
             <button
-							id="btnQueryTypeTSqlSelectValues"
+							id="btnScriptTypeTSqlSelectValues"
 							getImage="GetButtonImage"
 							label="T-SQL Select Values"
 							onAction="OnAction"
 							getVisible="GetVisible"
-							screentip="This changes the query string to a T-SQL SELECT VALUES script."
+								screentip="T-SQL Select Values"
+								supertip="This changes the query string to a T-SQL SELECT VALUES script."
 						/>
             <button
-							id="btnQueryTypeTSqlSelectUnion"
+							id="btnScriptTypeTSqlSelectUnion"
 							getImage="GetButtonImage"
 							label="T-SQL Select Union"
 							onAction="OnAction"
 							getVisible="GetVisible"
-							screentip="This changes the query string to a T-SQL SELECT UNION script."
+								screentip="T-SQL Select Union"
+								supertip="This changes the query string to a T-SQL SELECT UNION script."
 						/>
             <button
-							id="btnQueryTypeTSqlUpdateValues"
+							id="btnScriptTypeTSqlUpdateValues"
 							getImage="GetButtonImage"
 							label="T-SQL Update Values"
 							onAction="OnAction"
 							getVisible="GetVisible"
-							screentip="This changes the query string to a T-SQL UPDATE VALUES script."
+								screentip="T-SQL Update Values"
+								supertip="This changes the query string to a T-SQL UPDATE VALUES script."
 						/>
             <menuSeparator
 						id="separator10"
 						/>
             <button
-							id="btnQueryTypePlSqlCreateTable"
+							id="btnScriptTypePlSqlCreateTable"
 							getImage="GetButtonImage"
 							label="PL/SQL Create Table"
 							onAction="OnAction"
 							getVisible="GetVisible"
-							screentip="This changes the query string to a PL/SQL CREATE TABLE script."
+								screentip="PL/SQL Create Table"
+								supertip="This changes the query string to a PL/SQL CREATE TABLE script."
 						/>
             <button
-							id="btnQueryTypePlSqlInsertValues"
+							id="btnScriptTypePlSqlInsertValues"
 							getImage="GetButtonImage"
 							label="PL/SQL Insert Values"
 							onAction="OnAction"
 							getVisible="GetVisible"
-							screentip="This changes the query string to a PL/SQL INSERT VALUES script."
+								screentip="PL/SQL Insert Values"
+								supertip="This changes the query string to a PL/SQL INSERT VALUES script."
 						/>
             <button
-							id="btnQueryTypePlSqlMergeValues"
+							id="btnScriptTypePlSqlMergeValues"
 							getImage="GetButtonImage"
 							label="PL/SQL Merge Values"
 							onAction="OnAction"
 							getVisible="GetVisible"
-							screentip="This changes the query string to a PL/SQL MERGE VALUES script."
+								screentip="PL/SQL Merge Values"
+								supertip="This changes the query string to a PL/SQL MERGE VALUES script."
 						/>
             <button
-							id="btnQueryTypePlSqlSelectValues"
+							id="btnScriptTypePlSqlSelectValues"
 							getImage="GetButtonImage"
 							label="PL/SQL Select Values"
 							onAction="OnAction"
 							getVisible="GetVisible"
-							screentip="This changes the query string to a PL/SQL SELECT VALUES script."
+								screentip="PL/SQL Select Values"
+								supertip="This changes the query string to a PL/SQL SELECT VALUES script."
 						/>
             <button
-							id="btnQueryTypePlSqlSelectUnion"
+							id="btnScriptTypePlSqlSelectUnion"
 							getImage="GetButtonImage"
 							label="PL/SQL Select Union"
 							onAction="OnAction"
 							getVisible="GetVisible"
-							screentip="This changes the query string to a PL/SQL SELECT UNION script."
+								screentip="PL/SQL Select Union"
+								supertip="This changes the query string to a PL/SQL SELECT UNION script."
 						/>
             <button
-							id="btnQueryTypePlSqlUpdateValues"
+							id="btnScriptTypePlSqlUpdateValues"
 							getImage="GetButtonImage"
 							label="PL/SQL Update Values"
 							onAction="OnAction"
 							getVisible="GetVisible"
-							screentip="This changes the query string to a PL/SQL UPDATE VALUES script."
+								screentip="PL/SQL Update Values"
+								supertip="This changes the query string to a PL/SQL UPDATE VALUES script."
 						/>
             <menuSeparator
 						id="separator11"
 						/>
             <button
-							id="btnQueryTypeDqlAppend"
+							id="btnScriptTypeDqlAppend"
 							getImage="GetButtonImage"
 							label="DQL Append"
 							onAction="OnAction"
 							getVisible="GetVisible"
-							screentip="This changes the query string to a DQL APPEND script (This is used for repeating values)."
+								screentip="DQL Append"
+								supertip="This changes the query string to a DQL APPEND script (This is used for repeating values)."
 						/>
             <button
-							id="btnQueryTypeDqlAppendLocked"
+							id="btnScriptTypeDqlAppendLocked"
 							getImage="GetButtonImage"
 							label="DQL Append/Locked"
 							onAction="OnAction"
 							getVisible="GetVisible"
-							screentip="This changes the query string to a DQL APPEND script (This is used for repeating values) and also unlocks and locks the metadata."
+								screentip="DQL Append/Locked"
+								supertip="This changes the query string to a DQL APPEND script (This is used for repeating values) and also unlocks and locks the metadata."
 						/>
             <button
-							id="btnQueryTypeDqlCreate"
+							id="btnScriptTypeDqlCreate"
 							getImage="GetButtonImage"
 							label="DQL Create"
 							onAction="OnAction"
 							getVisible="GetVisible"
-							screentip="This changes the query string to a DQL CREATE script."
+								screentip="DQL Create"
+								supertip="This changes the query string to a DQL CREATE script."
 						/>
             <button
-							id="btnQueryTypeDqlTruncateAppend"
+							id="btnScriptTypeDqlTruncateAppend"
 							getImage="GetButtonImage"
 							label="DQL Truncate/Append"
 							onAction="OnAction"
 							getVisible="GetVisible"
-							screentip="This changes the query string to a DQL TRUNCATE/APPEND script (This is used for removing all repeating values and then updating to one value)."
-						/>
+								screentip="DQL Truncate/Append"
+								supertip="This changes the query string to a DQL TRUNCATE/APPEND script (This is used for removing all repeating values and then updating to one value)."						/>
             <button
-							id="btnQueryTypeDqlUpdate"
+							id="btnScriptTypeDqlUpdate"
 							getImage="GetButtonImage"
 							label="DQL Update"
 							onAction="OnAction"
 							getVisible="GetVisible"
-							screentip="This changes the query string to a DQL UPDATE script."
+								screentip="DQL Update"
+								supertip="This changes the query string to a DQL UPDATE script."
 						/>
             <button
-							id="btnQueryTypeDqlUpdateLocked"
+							id="btnScriptTypeDqlUpdateLocked"
 							getImage="GetButtonImage"
 							label="DQL Update/Locked"
 							onAction="OnAction"
 							getVisible="GetVisible"
-							screentip="This changes the query string to a DQL UPDATE script and also unlocks and locks the metadata."
+								screentip="DQL Update/Locked"
+								supertip="This changes the query string to a DQL UPDATE script and also unlocks and locks the metadata."
 						/>
             <menuSeparator
 							id="separator12"
 						/>
             <button
-							id="btnQueryTypeGithubTable"
+							id="btnScriptTypeGithubTable"
 							getImage="GetButtonImage"
 							label="GitHub Table"
 							onAction="OnAction"
 							getVisible="GetVisible"
-							screentip="This changes the query string to a GitHub table script (This is used for READ ME files)."
+								screentip="GitHub Table"
+								supertip="This changes the query string to a GitHub table script (This is used for READ ME files)."
 						/>
             <menuSeparator
 							id="separator13"
 						/>
             <button
-              id="btnQueryTypeHtmlTable"
+              id="btnScriptTypeHtmlTable"
               getImage="GetButtonImage"
               label="HTML Table"
               onAction="OnAction"
               getVisible="GetVisible"
-              screentip="This changes the query string to a HMTL Table script."
+								screentip="HTML Table"
+								supertip="This changes the query string to a HMTL Table script."
 						/>
             <button
-							id="btnQueryTypeXmlValues"
+							id="btnScriptTypeXmlValues"
 							getImage="GetButtonImage"
 							label="XML Values"
 							onAction="OnAction"
 							getVisible="GetVisible"
-							screentip="This changes the query string to a XML script."
+								screentip="XML Values"
+								supertip="This changes the query string to a XML script."
 						/>
           </menu>
-
         </group>
         <group
-					id="grpOptions"
-					label="Format Script Options"
-					imageMso="PropertySheet">
+						id="grpScriptVariables"
+						label="Script Variables"
+						imageMso="ShowFormulas"
+          getVisible="GetVisible"
+          >
           <comboBox
 						id="cboTableAlias"
 						label="Table Alias: "
 						onChange="OnChange"
-						getVisible="GetVisible"
 						getItemCount="GetItemCount"
 						getItemLabel="GetItemLabel"
 						getText="GetText"
 						sizeString= "XXXXXXXXXXXXXXXXXXXX"
-						screentip="This is the table alias used in the query string."
+							screentip="Table Alias"
+							supertip="This is the table alias used as a prefix in the header and footer row in the script column."
 					/>
           <comboBox
 						id="cboDateFormat"
 						label="Date Format: "
 						onChange="OnChange"
 						getText="GetText"
-						getVisible="GetVisible"
 						getItemCount="GetItemCount"
 						getItemLabel="GetItemLabel"
 						sizeString= "XXXXXXXXXXXXXXXXXXXX"
-						screentip="This is the format used for updating the date columns."
+							screentip="Date Format"
+							supertip="This is the date format the script uses to replace the formatting for date columns."
 					/>
           <comboBox
 						id="cboDatePasteFormat"
 						label="Paste Format: "
 						onChange="OnChange"
 						getText="GetText"
-						getVisible="GetVisible"
 						getItemCount="GetItemCount"
 						getItemLabel="GetItemLabel"
 						sizeString= "XXXXXXXXXXXXXXXXXXXX"
-						screentip="This is the paste format from SQL Server Management Studio."
+							screentip="Paste Format"
+							supertip="This is the date format that will be replaced. It defaults to the format from SQL Server Management Studio after you paste records into Excel."
 					/>
           <button
 						id="btnTableAlias"
 						label="..."
 						onAction="OnAction"
-						screentip="This will open the table alias list."
-						getVisible="GetVisible"
+						screentip="Open Table Alias List"
+            supertip="This will open the table alias list form."
 						tag="TableAlias"
 						/>
           <button
 						id="btnDateFormat"
 						label="..."
 						onAction="OnAction"
-						screentip="This will open the date format list."
-						getVisible="GetVisible"
+						screentip="Open Date Format List"
+            supertip="This will open the date format list form."
 						tag="DateFormat"
 						/>
           <button
 						id="btnPasteFormat"
 						label="..."
 						onAction="OnAction"
-						screentip="This will open the date format list."
-						getVisible="GetVisible"
+						screentip="Open Date Format List"
+            supertip="This will open the date format list form."
 						tag="DateFormat"
 						/>
-          <separator
-						id="separator2"
-						getVisible="GetVisible"
+        </group>
+        <group
+						id="grpOptions"
+						label="Options"
+						imageMso="PropertySheet">
+          <button
+						id="btnSettings"
+						label="Add-In Settings"
+						onAction="OnAction"
+						imageMso="PropertySheet"
+						size="large"
+							screentip="Add-In Settings Form"
+							supertip="This opens a user form with a list of custom properties stored in the file."
 					/>
           <button
 						id="btnFileList"
 						label="Create File List"
-						onAction="CreateFileList"
+						onAction="OnAction"
 						getVisible="GetVisible"
 						imageMso="GetExternalDataFromText"
 						size="large"
-						screentip="Create a file listing"
-					/>
-          <button
-						id="btnSettings"
-						label="Settings"
-						onAction="OpenSettings"
-						imageMso="PropertySheet"
-						size="large"
-						screentip="The settings for this Add-In"
+							screentip="Create A File Listing"
+							supertip="This will create a file listing of the user selected path recursively. It will save the .csv and .bat file in the root folder selected."
 					/>
           <button
 						idMso="ComAddInsDialog"
-						getVisible="GetVisible"
+					  visible="false"
 						size="large"
 					/>
         </group>
         <group
-					id="grpAbout"
-					label="About"
-					imageMso="Help">
+						id="grpHelp"
+						label="Help"
+						imageMso="Help">
           <button
-						id="btnHelpAsBuilt"
+						id="btnOpenReadMe"
 						label="How To...   "
-						onAction="OpenHelpAsBuilt"
+						onAction="OnAction"
 						imageMso="Help"
-						size="normal"
-						screentip="How to use this Excel Add-In"
+						size="large"
+						screentip="How To..."
+							supertip="This opens the read me page in GitHub with detailed instructions of the Add-In functionality."
 					/>
+          <button
+		        id="btnOpenNewIssue"
+		        label="Report Issue"
+		        onAction="OnAction"
+		        imageMso="MacroSecurity"
+		        size="large"
+							screentip="Report An Issue"
+							supertip="This will open a new issue page in GitHub. The user will need to login to raise an issue."
+		      />
+          <button
+							id="btnDownloadNewVersion"
+							label="New Version Is Available"
+							onAction="OnAction"
+							image="download"
+							size="large"
+							screentip="Download A New Version"
+							supertip="This will download a copy of the file from GitHub."
+							visible="false"
+							/>
           <button
 						id="btnHelpApi"
 						label="API Doc...   "
-						onAction="OpenHelpApi"
+						onAction="OnAction"
 						imageMso="CategoryCollapse"
 						size="normal"
 						screentip="View API documentation for this product"
+            visible="false"
 					/>
-          <separator
-						id="separator4"
-					/>
+        </group>
+        <group
+						id="grpAbout"
+						label="About"
+						imageMso="Info">
           <labelControl
 						id="lblDescription"
 						label="Add-In Name: "
 						getEnabled="False"
 					/>
           <labelControl
-						id="lblInstallDate"
-						label="Install Date: "
+						id="lblReleaseDate"
+						label="Release Date: "
 						getEnabled="False"
 					/>
           <labelControl
@@ -427,7 +500,7 @@
 						getEnabled="False"
 					/>
           <labelControl
-						id="txtInstallDate"
+						id="txtReleaseDate"
 						getLabel="GetLabelText"
 						getEnabled="False"
 					/>

@@ -61,7 +61,7 @@ namespace ScriptHelp.Scripts
         /// <summary>
         /// Script TaskPane
         /// </summary>
-        public TaskPane.Script myScript;
+        public static TaskPane.Script myScript;
 
         /// <summary>
         /// TableData TaskPane
@@ -81,7 +81,7 @@ namespace ScriptHelp.Scripts
         /// <summary>
         /// Script Custom Task Pane
         /// </summary>
-        public Microsoft.Office.Tools.CustomTaskPane myTaskPaneScript;
+        public static Microsoft.Office.Tools.CustomTaskPane myTaskPaneScript;
 
         /// <summary>
         /// TableData Custom Task Pane
@@ -191,32 +191,32 @@ namespace ScriptHelp.Scripts
             {
                 switch (control.Id)
                 {
-                    case "btnQueryTypeDqlAppend":
-                    case "btnQueryTypeDqlAppendLocked":
-                    case "btnQueryTypeDqlCreate":
-                    case "btnQueryTypeDqlTruncateAppend":
-                    case "btnQueryTypeDqlUpdate":
-                    case "btnQueryTypeDqlUpdateLocked":
-                        return Properties.Resources.QueryTypeDql;
-                    case "btnQueryTypeTSqlCreateTable":
-                    case "btnQueryTypeTSqlInsertValues":
-                    case "btnQueryTypeTSqlMergeValues":
-                    case "btnQueryTypeTSqlSelectValues":
-                    case "btnQueryTypeTSqlSelectUnion":
-                    case "btnQueryTypeTSqlUpdateValues":
-                        return Properties.Resources.QueryTypeTSql;
-                    case "btnQueryTypePlSqlCreateTable":
-                    case "btnQueryTypePlSqlInsertValues":
-                    case "btnQueryTypePlSqlMergeValues":
-                    case "btnQueryTypePlSqlSelectValues":
-                    case "btnQueryTypePlSqlSelectUnion":
-                    case "btnQueryTypePlSqlUpdateValues":
-                        return Properties.Resources.QueryTypePlSql;
-                    case "btnQueryTypeGithubTable":
-                        return Properties.Resources.QueryTypeGitHub;
-                    case "btnQueryTypeHtmlTable":
-                    case "btnQueryTypeXmlValues":
-                        return Properties.Resources.QueryTypeXML;
+                    case "btnScriptTypeDqlAppend":
+                    case "btnScriptTypeDqlAppendLocked":
+                    case "btnScriptTypeDqlCreate":
+                    case "btnScriptTypeDqlTruncateAppend":
+                    case "btnScriptTypeDqlUpdate":
+                    case "btnScriptTypeDqlUpdateLocked":
+                        return Properties.Resources.ScriptTypeDql;
+                    case "btnScriptTypeTSqlCreateTable":
+                    case "btnScriptTypeTSqlInsertValues":
+                    case "btnScriptTypeTSqlMergeValues":
+                    case "btnScriptTypeTSqlSelectValues":
+                    case "btnScriptTypeTSqlSelectUnion":
+                    case "btnScriptTypeTSqlUpdateValues":
+                        return Properties.Resources.ScriptTypeTSql;
+                    case "btnScriptTypePlSqlCreateTable":
+                    case "btnScriptTypePlSqlInsertValues":
+                    case "btnScriptTypePlSqlMergeValues":
+                    case "btnScriptTypePlSqlSelectValues":
+                    case "btnScriptTypePlSqlSelectUnion":
+                    case "btnScriptTypePlSqlUpdateValues":
+                        return Properties.Resources.ScriptTypePlSql;
+                    case "btnScriptTypeGithubTable":
+                        return Properties.Resources.ScriptTypeGitHub;
+                    case "btnScriptTypeHtmlTable":
+                    case "btnScriptTypeXmlValues":
+                        return Properties.Resources.ScriptTypeXML;
                     default:
                         return null;
                 }
@@ -269,7 +269,7 @@ namespace ScriptHelp.Scripts
                 switch (control.Id)
                 {
                     case "tabScriptHelp":
-                        if(Application.ProductVersion.Substring(0, 2) == "15") //for Excel 2013
+                        if (Application.ProductVersion.Substring(0, 2) == "15") //for Excel 2013
                         {
                             return AssemblyInfo.Title.ToUpper();
                         }
@@ -278,11 +278,11 @@ namespace ScriptHelp.Scripts
                             return AssemblyInfo.Title;
                         }
                     case "txtCopyright":
-                        return " " + AssemblyInfo.Copyright;
+                        return "© " + AssemblyInfo.Copyright;
                     case "txtDescription":
                         return AssemblyInfo.Title.Replace("&", "&&") + " " + AssemblyInfo.AssemblyVersion;
-                    case "txtInstallDate":
-                        DateTime dteCreateDate = File.GetCreationTime(Assembly.GetExecutingAssembly().Location);
+                    case "txtReleaseDate":
+                        DateTime dteCreateDate = Properties.Settings.Default.App_ReleaseDate;
                         return dteCreateDate.ToString("dd-MMM-yyyy hh:mm tt");
                     default:
                         return string.Empty;
@@ -362,11 +362,11 @@ namespace ScriptHelp.Scripts
                 switch (control.Id)
                 {
                     case "cboDateFormat":
-                        return Properties.Settings.Default.Sheet_ColumnDateFormatReplace;
+                        return Properties.Settings.Default.Table_ColumnDateFormatReplace;
                     case "cboDatePasteFormat":
-                        return Properties.Settings.Default.Sheet_ColumnDateFormatFind;
+                        return Properties.Settings.Default.Table_ColumnDateFormatFind;
                     case "cboTableAlias":
-                        return Properties.Settings.Default.Sheet_ColumnTableAlias;
+                        return Properties.Settings.Default.Table_ColumnTableAlias;
                     default:
                         return string.Empty;
                 }
@@ -389,24 +389,12 @@ namespace ScriptHelp.Scripts
             {
                 switch (control.Id)
                 {
-                    case "cboTableAlias":
-                    case "cboDateFormat":
-                    case "cboDatePasteFormat":
-                    case "separator2":
-                    case "btnDateFormat":
-                    case "btnTableAlias":
-                    case "btnPasteFormat":
-                        return Properties.Settings.Default.Visible_Options;
-                    case "ComAddInsDialog":
-                        return Properties.Settings.Default.Visible_ComAddInsDialog;
-                    case "btnFormatAsTable":
-                        return Properties.Settings.Default.Visible_FormatAsTableGallery;
-                    case "ViewFreezePanesGallery":
-                        return Properties.Settings.Default.Visible_ViewFreezePanesGallery;
-                    case "RemoveDuplicates":
-                        return Properties.Settings.Default.Visible_RemoveDuplicates;
-                    case "btnCopyVisibleCells":
-                        return Properties.Settings.Default.Visible_btnCopyVisibleCells;
+                    case "grpClipboard":
+                        return Properties.Settings.Default.Visible_grpClipboard;
+                    case "grpFormatDataTable":
+                        return Properties.Settings.Default.Visible_grpFormatDataTable;
+                    case "grpScriptVariables":
+                        return Properties.Settings.Default.Visible_grpScriptVariables;
                     case "btnClearInteriorColor":
                         return Properties.Settings.Default.Visible_btnClearInteriorColor;
                     case "btnZeroToNull":
@@ -415,34 +403,31 @@ namespace ScriptHelp.Scripts
                         return Properties.Settings.Default.Visible_btnSeparateValues;
                     case "btnFileList":
                         return Properties.Settings.Default.Visible_btnFileList;
-                    case "mnuScriptType":
-                    case "separator1":
-                        return Properties.Settings.Default.Visible_mnuScriptType;
-                    case "btnQueryTypeTSqlCreateTable":
-                    case "btnQueryTypeTSqlInsertValues":
-                    case "btnQueryTypeTSqlMergeValues":
-                    case "btnQueryTypeTSqlSelectValues":
-                    case "btnQueryTypeTSqlSelectUnion":
-                    case "btnQueryTypeTSqlUpdateValues":
+                    case "btnScriptTypeTSqlCreateTable":
+                    case "btnScriptTypeTSqlInsertValues":
+                    case "btnScriptTypeTSqlMergeValues":
+                    case "btnScriptTypeTSqlSelectValues":
+                    case "btnScriptTypeTSqlSelectUnion":
+                    case "btnScriptTypeTSqlUpdateValues":
                         return Properties.Settings.Default.Visible_mnuScriptType_TSQL;
-                    case "btnQueryTypePlSqlCreateTable":
-                    case "btnQueryTypePlSqlInsertValues":
-                    case "btnQueryTypePlSqlMergeValues":
-                    case "btnQueryTypePlSqlSelectValues":
-                    case "btnQueryTypePlSqlSelectUnion":
-                    case "btnQueryTypePlSqlUpdateValues":
+                    case "btnScriptTypePlSqlCreateTable":
+                    case "btnScriptTypePlSqlInsertValues":
+                    case "btnScriptTypePlSqlMergeValues":
+                    case "btnScriptTypePlSqlSelectValues":
+                    case "btnScriptTypePlSqlSelectUnion":
+                    case "btnScriptTypePlSqlUpdateValues":
                         return Properties.Settings.Default.Visible_mnuScriptType_PLSQL;
-                    case "btnQueryTypeDqlAppend":
-                    case "btnQueryTypeDqlAppendLocked":
-                    case "btnQueryTypeDqlCreate":
-                    case "btnQueryTypeDqlTruncateAppend":
-                    case "btnQueryTypeDqlUpdate":
-                    case "btnQueryTypeDqlUpdateLocked":
+                    case "btnScriptTypeDqlAppend":
+                    case "btnScriptTypeDqlAppendLocked":
+                    case "btnScriptTypeDqlCreate":
+                    case "btnScriptTypeDqlTruncateAppend":
+                    case "btnScriptTypeDqlUpdate":
+                    case "btnScriptTypeDqlUpdateLocked":
                         return Properties.Settings.Default.Visible_mnuScriptType_DQL;
-                    case "btnQueryTypeGithubTable":
+                    case "btnScriptTypeGithubTable":
                         return Properties.Settings.Default.Visible_mnuScriptType_Github;
-                    case "btnQueryTypeHtmlTable":
-                    case "btnQueryTypeXmlValues":
+                    case "btnScriptTypeHtmlTable":
+                    case "btnScriptTypeXmlValues":
                         return Properties.Settings.Default.Visible_mnuScriptType_XML;
                     default:
                         return false;
@@ -466,28 +451,104 @@ namespace ScriptHelp.Scripts
             {
                 switch (control.Id)
                 {
-                    case "btnQueryTypeDqlAppend":
-                    case "btnQueryTypeDqlAppendLocked":
-                    case "btnQueryTypeDqlCreate":
-                    case "btnQueryTypeDqlTruncateAppend":
-                    case "btnQueryTypeDqlUpdate":
-                    case "btnQueryTypeDqlUpdateLocked":
-                    case "btnQueryTypeGithubTable":
-                    case "btnQueryTypeHtmlTable":
-                    case "btnQueryTypePlSqlCreateTable":
-                    case "btnQueryTypePlSqlInsertValues":
-                    case "btnQueryTypePlSqlMergeValues":
-                    case "btnQueryTypePlSqlSelectValues":
-                    case "btnQueryTypePlSqlSelectUnion":
-                    case "btnQueryTypePlSqlUpdateValues":
-                    case "btnQueryTypeTSqlCreateTable":
-                    case "btnQueryTypeTSqlInsertValues":
-                    case "btnQueryTypeTSqlMergeValues":
-                    case "btnQueryTypeTSqlSelectValues":
-                    case "btnQueryTypeTSqlSelectUnion":
-                    case "btnQueryTypeTSqlUpdateValues":
-                    case "btnQueryTypeXmlValues":
-                        AddScriptColumn(control);
+                    case "btnStart":
+                        OpenGraphData();
+                        break;
+                    case "btnCopyVisibleCells":
+                        CopyVisibleCells();
+                        break;
+                    case "btnCleanData":
+                        CleanData();
+                        break;
+                    case "btnZeroToNull":
+                        ZeroStringToNull();
+                        break;
+                    case "btnFormatDateColumns":
+                        FormatDateColumns();
+                        break;
+                    case "btnClearInteriorColor":
+                        ClearInteriorColor();
+                        break;
+                    case "btnSeparateValues":
+                        SeparateValues();
+                        break;
+                    case "btnSettings":
+                        OpenSettings();
+                        break;
+                    case "btnFileList":
+                        CreateFileList();
+                        break;
+                    case "btnOpenReadMe":
+                        OpenReadMe();
+                        break;
+                    case "btnOpenNewIssue":
+                        OpenNewIssue();
+                        break;
+                    case "btnDownloadNewVersion":
+                        //DownloadNewVersion();
+                        break;
+                    case "btnScriptTypeDqlAppend":
+                        Formula.DqlAppend();
+                        break;
+                    case "btnScriptTypeDqlAppendLocked":
+                        Formula.DqlAppendLocked();
+                        break;
+                    case "btnScriptTypeDqlCreate":
+                        Formula.DqlCreate();
+                        break;
+                    case "btnScriptTypeDqlTruncateAppend":
+                        Formula.DqlTruncateAppend();
+                        break;
+                    case "btnScriptTypeDqlUpdate":
+                        Formula.DqlUpdate();
+                        break;
+                    case "btnScriptTypeDqlUpdateLocked":
+                        Formula.DqlUpdateLocked();
+                        break;
+                    case "btnScriptTypeGithubTable":
+                        Formula.GithubTable();
+                        break;
+                    case "btnScriptTypeHtmlTable":
+                        Formula.HtmlTable();
+                        break;
+                    case "btnScriptTypePlSqlCreateTable":
+                        Formula.PlSqlCreateTable();
+                        break;
+                    case "btnScriptTypePlSqlInsertValues":
+                        Formula.PlSqlInsertValues();
+                        break;
+                    case "btnScriptTypePlSqlMergeValues":
+                        Formula.PlSqlMergeValues();
+                        break;
+                    case "btnScriptTypePlSqlSelectValues":
+                        Formula.PlSqlSelectValues();
+                        break;
+                    case "btnScriptTypePlSqlSelectUnion":
+                        Formula.PlSqlSelectUnion();
+                        break;
+                    case "btnScriptTypePlSqlUpdateValues":
+                        Formula.PlSqlUpdateValues();
+                        break;
+                    case "btnScriptTypeTSqlCreateTable":
+                        Formula.TSqlCreateTable();
+                        break;
+                    case "btnScriptTypeTSqlInsertValues":
+                        Formula.TSqlInsertValues();
+                        break;
+                    case "btnScriptTypeTSqlMergeValues":
+                        Formula.TSqlMergeValues();
+                        break;
+                    case "btnScriptTypeTSqlSelectValues":
+                        Formula.TSqlSelectValues();
+                        break;
+                    case "btnScriptTypeTSqlSelectUnion":
+                        Formula.TSqlSelectUnion();
+                        break;
+                    case "btnScriptTypeTSqlUpdateValues":
+                        Formula.TSqlUpdateValues();
+                        break;
+                    case "btnScriptTypeXmlValues":
+                        Formula.XmlValues();
                         break;
                     case "btnDateFormat":
                     case "btnTableAlias":
@@ -516,13 +577,13 @@ namespace ScriptHelp.Scripts
                 switch (control.Id)
                 {
                     case "cboDateFormat":
-                        Properties.Settings.Default.Sheet_ColumnDateFormatReplace = text;
+                        Properties.Settings.Default.Table_ColumnDateFormatReplace = text;
                         break;
                     case "cboDatePasteFormat":
-                        Properties.Settings.Default.Sheet_ColumnDateFormatFind = text;
+                        Properties.Settings.Default.Table_ColumnDateFormatFind = text;
                         break;
                     case "cboTableAlias":
-                        Properties.Settings.Default.Sheet_ColumnTableAlias = text;
+                        Properties.Settings.Default.Table_ColumnTableAlias = text;
                         break;
                 }
             }
@@ -539,9 +600,8 @@ namespace ScriptHelp.Scripts
         /// <summary> 
         /// Copy only the visible cells that are selected
         /// </summary>
-        /// <param name="control">Represents the object passed into the callback procedure of a control in a ribbon or another user interface that can be customized by using Office Fluent ribbon extensibility. </param>
         /// <remarks></remarks>
-        public void CopyVisibleCells(Office.IRibbonControl control)
+        public void CopyVisibleCells()
         {
             Excel.Range visibleRange = null;
             try
@@ -568,9 +628,8 @@ namespace ScriptHelp.Scripts
         /// <summary> 
         /// Removes all nonprintable characters from text and returns number of cells altered
         /// </summary>
-        /// <param name="control">Represents the object passed into the callback procedure of a control in a ribbon or another user interface that can be customized by using Office Fluent ribbon extensibility. </param>
         /// <remarks></remarks>
-        public void CleanData(Office.IRibbonControl control)
+        public void CleanData()
         {
             Excel.ListObject tbl = null;
             Excel.Range cell = null;
@@ -607,16 +666,16 @@ namespace ScriptHelp.Scripts
                                     if (Convert.ToBoolean(cell.HasFormula) == false)
                                     {
                                         cell.Value = cc;
-                                        cell.Interior.Color = Properties.Settings.Default.Sheet_ColumnCleanedColour;
+                                        cell.Interior.Color = Properties.Settings.Default.Table_ColumnCleanedColour;
                                         cnt = cnt + 1;
                                     }
                                 }
                                 cell = tbl.Range.Cells[i + 1, j];
-                                string qt = Properties.Settings.Default.Sheet_ColumnScriptQuote;
+                                string qt = Properties.Settings.Default.Table_ColumnScriptQuote;
                                 if (cell.PrefixCharacter == qt)  // show the leading apostrophe in the cell by doubling the value.
                                 {
                                     cell.Value = qt + qt + cell.Value;
-                                    cell.Interior.Color = Properties.Settings.Default.Sheet_ColumnCleanedColour;
+                                    cell.Interior.Color = Properties.Settings.Default.Table_ColumnCleanedColour;
                                 }
                             }
                         }
@@ -643,9 +702,8 @@ namespace ScriptHelp.Scripts
         /// <summary> 
         /// Change zero string cell values to string "NULL"
         /// </summary>
-        /// <param name="control">Represents the object passed into the callback procedure of a control in a ribbon or another user interface that can be customized by using Office Fluent ribbon extensibility. </param>
         /// <remarks></remarks>
-        public void ZeroStringToNull(Office.IRibbonControl control)
+        public void ZeroStringToNull()
         {
             Excel.ListObject tbl = null;
             Excel.Range cell = null;
@@ -671,13 +729,13 @@ namespace ScriptHelp.Scripts
                         if (usedRange[i + 1, j].Value2 == null)
                         {
                             cell = tbl.Range.Cells[i + 1, j];
-                            cell.Value = Properties.Settings.Default.Sheet_ColumnScriptNull;
-                            cell.Interior.Color = Properties.Settings.Default.Sheet_ColumnCleanedColour;
+                            cell.Value = Properties.Settings.Default.Table_ColumnScriptNull;
+                            cell.Interior.Color = Properties.Settings.Default.Table_ColumnCleanedColour;
                             cnt = cnt + 1;
                         }
                     }
                 }
-                MessageBox.Show("The number of cells converted to " + Properties.Settings.Default.Sheet_ColumnScriptNull + ": " + cnt.ToString(), "Converting has finished", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("The number of cells converted to " + Properties.Settings.Default.Table_ColumnScriptNull + ": " + cnt.ToString(), "Converting has finished", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
@@ -698,9 +756,8 @@ namespace ScriptHelp.Scripts
         /// <summary> 
         /// Finds dates columns with the paste format settings or date specific columns and updates with date format setting
         /// </summary>
-        /// <param name="control">Represents the object passed into the callback procedure of a control in a ribbon or another user interface that can be customized by using Office Fluent ribbon extensibility. </param>
         /// <remarks></remarks>
-        public void FormatDateColumns(Office.IRibbonControl control)
+        public void FormatDateColumns()
         {
             Excel.ListObject tbl = null;
             Excel.Range cell = null;
@@ -719,9 +776,9 @@ namespace ScriptHelp.Scripts
                     cell = FirstNotNullCellInColumn(col.DataBodyRange);
                     if (((cell != null)))
                     {
-                        if (cell.NumberFormat.ToString() == Properties.Settings.Default.Sheet_ColumnDateFormatFind | ErrorHandler.IsDate(cell.Value))
+                        if (cell.NumberFormat.ToString() == Properties.Settings.Default.Table_ColumnDateFormatFind | ErrorHandler.IsDate(cell.Value))
                         {
-                            col.DataBodyRange.NumberFormat = Properties.Settings.Default.Sheet_ColumnDateFormatReplace;
+                            col.DataBodyRange.NumberFormat = Properties.Settings.Default.Table_ColumnDateFormatReplace;
                             col.DataBodyRange.HorizontalAlignment = Excel.Constants.xlCenter;
                         }
                     }
@@ -748,12 +805,12 @@ namespace ScriptHelp.Scripts
         /// <summary>
         /// Convert a range of cells to a table with a specific table format
         /// </summary>
-        /// <param name="control">Represents the object passed into the callback procedure of a control in a ribbon or another user interface that can be customized by using Office Fluent ribbon extensibility. </param>
-        public void FormatAsTable(Office.IRibbonControl control)
+        /// <remarks></remarks>
+        public void FormatAsTable()
         {
             Excel.Range range = null;
             string tableName = AssemblyInfo.Title + " " + DateTime.Now.ToString("yyyy-MM-ddThh:mm:ss:fffzzz");
-            string tableStyle = Properties.Settings.Default.TableStyleName;
+            string tableStyle = Properties.Settings.Default.Table_StyleName;
             try
             {
                 if (ErrorHandler.IsValidListObject(false) == true)
@@ -761,13 +818,13 @@ namespace ScriptHelp.Scripts
                     return;
                 }
                 ErrorHandler.CreateLogRecord();
-                range = Globals.ThisAddIn.Application.Selection; 
+                range = Globals.ThisAddIn.Application.Selection;
                 Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
 
                 range.Worksheet.ListObjects.Add(Excel.XlListObjectSourceType.xlSrcRange, range, System.Type.Missing, Excel.XlYesNoGuess.xlYes, System.Type.Missing).Name = tableName;
                 range.Select();
                 range.Worksheet.ListObjects[tableName].TableStyle = tableStyle;
-                //ribbon.ActivateTab("tabScriptHelp"); //set focus back to the ribbon after the table is created
+                ribbon.ActivateTab("tabScriptHelp");
 
             }
             catch (System.Runtime.InteropServices.COMException ex)
@@ -789,9 +846,8 @@ namespace ScriptHelp.Scripts
         /// <summary> 
         /// Remove interior cell color format
         /// </summary>
-        /// <param name="control">Represents the object passed into the callback procedure of a control in a ribbon or another user interface that can be customized by using Office Fluent ribbon extensibility. </param>
         /// <remarks></remarks>
-        public void ClearInteriorColor(Office.IRibbonControl control)
+        public void ClearInteriorColor()
         {
             Excel.ListObject tbl = null;
             Excel.Range rng = null;
@@ -838,9 +894,8 @@ namespace ScriptHelp.Scripts
         /// <summary>
         /// Add a row per delimited string value from a column
         /// </summary>
-        /// <param name="control">Represents the object passed into the callback procedure of a control in a ribbon or another user interface that can be customized by using Office Fluent ribbon extensibility. </param>
         /// <remarks></remarks>
-        public void SeparateValues(Office.IRibbonControl control)
+        public void SeparateValues()
         {
             Excel.ListObject tbl = null;
             Excel.Range cell = null;
@@ -860,10 +915,10 @@ namespace ScriptHelp.Scripts
 
                 for (int i = 1; i <= m + 1; i++) // by row
                 {
-                    string cellValue = tbl.Range.Cells[i, columnIndex].Value2;
+                    string cellValue = tbl.Range.Cells[i, columnIndex].Value2.ToString();
                     if (string.IsNullOrEmpty(cellValue) == false)
                     {
-                        string[] metadata = cellValue.Split(Properties.Settings.Default.Sheet_ColumnSeparateValuesDelimiter);
+                        string[] metadata = cellValue.Split(Properties.Settings.Default.Table_ColumnSeparateValuesDelimiter);
                         int countValues = metadata.Length - 1;
                         if (countValues > 0)
                         {
@@ -898,120 +953,25 @@ namespace ScriptHelp.Scripts
         }
 
         /// <summary> 
-        /// Add a formula at the end of the table to use as a script
-        /// </summary>
-        /// <param name="control">Represents the object passed into the callback procedure of a control in a ribbon or another user interface that can be customized by using Office Fluent ribbon extensibility. </param>
-        /// <remarks></remarks>
-        public void AddScriptColumn(Office.IRibbonControl control)
-        {
-            try
-            {
-                if (ErrorHandler.IsAvailable(true) == false)
-                {
-                    return;
-                }
-                ErrorHandler.CreateLogRecord();
-                Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
-                switch (control.Id)
-                {
-                    case "btnQueryTypeDqlAppend":
-                        Formula.DqlAppend();
-                        break;
-                    case "btnQueryTypeDqlAppendLocked":
-                        Formula.DqlAppendLocked();
-                        break;
-                    case "btnQueryTypeDqlCreate":
-                        Formula.DqlCreate();
-                        break;
-                    case "btnQueryTypeDqlTruncateAppend":
-                        Formula.DqlTruncateAppend();
-                        break;
-                    case "btnQueryTypeDqlUpdate":
-                        Formula.DqlUpdate();
-                        break;
-                    case "btnQueryTypeDqlUpdateLocked":
-                        Formula.DqlUpdateLocked();
-                        break;
-                    case "btnQueryTypeGithubTable":
-                        Formula.GithubTable();
-                        break;
-                    case "btnQueryTypeHtmlTable":
-                        Formula.HtmlTable();
-                        break;
-                    case "btnQueryTypePlSqlCreateTable":
-                        Formula.PlSqlCreateTable();
-                        break;
-                    case "btnQueryTypePlSqlInsertValues":
-                        Formula.PlSqlInsertValues();
-                        break;
-                    case "btnQueryTypePlSqlMergeValues":
-                        Formula.PlSqlMergeValues();
-                        break;
-                    case "btnQueryTypePlSqlSelectValues":
-                        Formula.PlSqlSelectValues();
-                        break;
-                    case "btnQueryTypePlSqlSelectUnion":
-                        Formula.PlSqlSelectUnion();
-                        break;
-                    case "btnQueryTypePlSqlUpdateValues":
-                        Formula.PlSqlUpdateValues();
-                        break;
-                    case "btnQueryTypeTSqlCreateTable":
-                        Formula.TSqlCreateTable();
-                        break;
-                    case "btnQueryTypeTSqlInsertValues":
-                        Formula.TSqlInsertValues();
-                        break;
-                    case "btnQueryTypeTSqlMergeValues":
-                        Formula.TSqlMergeValues();
-                        break;
-                    case "btnQueryTypeTSqlSelectValues":
-                        Formula.TSqlSelectValues();
-                        break;
-                    case "btnQueryTypeTSqlSelectUnion":
-                        Formula.TSqlSelectUnion();
-                        break;
-                    case "btnQueryTypeTSqlUpdateValues":
-                        Formula.TSqlUpdateValues();
-                        break;
-                    case "btnQueryTypeXmlValues":
-                        Formula.XmlValues();
-                        break;
-                }
-            }
-
-            catch (Exception ex)
-            {
-                ErrorHandler.DisplayMessage(ex);
-            }
-            finally
-            {
-                OpenScriptPane();
-                Cursor.Current = System.Windows.Forms.Cursors.Arrow;
-            }
-        }
-
-        /// <summary> 
         /// Creates a recursive file listing based on the users selected directory
         /// </summary>
-        /// <param name="control">Represents the object passed into the callback procedure of a control in a ribbon or another user interface that can be customized by using Office Fluent ribbon extensibility. </param>
         /// <remarks></remarks>
-        public void CreateFileList(Office.IRibbonControl control)
+        public void CreateFileList()
         {
-            string filePath = Properties.Settings.Default.App_PathExport;
+            string filePath = Properties.Settings.Default.Option_PathFileListing;
             try
             {
                 ErrorHandler.CreateLogRecord();
                 DialogResult msgDialogResult = DialogResult.None;
                 FolderBrowserDialog dlg = new FolderBrowserDialog();
-                if (Properties.Settings.Default.Option_FileListingPathSelect == true)
+                if (Properties.Settings.Default.Option_PathFileListingSelect == true)
                 {
                     dlg.RootFolder = Environment.SpecialFolder.MyComputer;
                     dlg.SelectedPath = filePath;
                     msgDialogResult = dlg.ShowDialog();
                     filePath = dlg.SelectedPath;
                 }
-                if (msgDialogResult == DialogResult.OK | Properties.Settings.Default.Option_FileListingPathSelect == false)
+                if (msgDialogResult == DialogResult.OK | Properties.Settings.Default.Option_PathFileListingSelect == false)
                 {
                     filePath += @"\";
                     string scriptCommands = string.Empty;
@@ -1040,9 +1000,8 @@ namespace ScriptHelp.Scripts
         /// <summary> 
         /// Opens the settings taskpane
         /// </summary>
-        /// <param name="control">Represents the object passed into the callback procedure of a control in a ribbon or another user interface that can be customized by using Office Fluent ribbon extensibility. </param>
         /// <remarks></remarks>
-        public void OpenSettings(Office.IRibbonControl control)
+        public void OpenSettings()
         {
             try
             {
@@ -1077,23 +1036,30 @@ namespace ScriptHelp.Scripts
         /// <summary> 
         /// Opens an as built help file
         /// </summary>
-        /// <param name="control">Represents the object passed into the callback procedure of a control in a ribbon or another user interface that can be customized by using Office Fluent ribbon extensibility. </param>
         /// <remarks></remarks>
-        public void OpenHelpAsBuilt(Office.IRibbonControl control)
+        public void OpenReadMe()
         {
             ErrorHandler.CreateLogRecord();
-            //string clickOnceLocation = AssemblyInfo.GetClickOnceLocation();
-            //AssemblyInfo.OpenFile(Path.Combine(clickOnceLocation, @"Documentation\\As Built.docx"));
             System.Diagnostics.Process.Start(Properties.Settings.Default.App_PathReadMe);
+
+        }
+
+        /// <summary> 
+        /// Opens an as built help file
+        /// </summary>
+        /// <remarks></remarks>
+        public void OpenNewIssue()
+        {
+            ErrorHandler.CreateLogRecord();
+            System.Diagnostics.Process.Start(Properties.Settings.Default.App_PathReportIssue);
 
         }
 
         /// <summary> 
         /// Opens a api help file
         /// </summary>
-        /// <param name="control">Represents the object passed into the callback procedure of a control in a ribbon or another user interface that can be customized by using Office Fluent ribbon extensibility. </param>
         /// <remarks></remarks>
-        public void OpenHelpApi(Office.IRibbonControl control)
+        public void OpenHelpApi()
         {
             ErrorHandler.CreateLogRecord();
             string clickOnceLocation = AssemblyInfo.GetClickOnceLocation();
@@ -1103,9 +1069,8 @@ namespace ScriptHelp.Scripts
         /// <summary> 
         /// Opens the graph taskpane
         /// </summary>
-        /// <param name="control">Represents the object passed into the callback procedure of a control in a ribbon or another user interface that can be customized by using Office Fluent ribbon extensibility. </param>
         /// <remarks></remarks>
-        public void OpenGraphData(Office.IRibbonControl control)
+        public void OpenGraphData()
         {
             try
             {
@@ -1152,9 +1117,9 @@ namespace ScriptHelp.Scripts
         {
             try
             {
-                if ((GetSqlDataType(col) != Properties.Settings.Default.Script_TypeNumeric))
+                if ((GetSqlDataType(col) != Properties.Settings.Default.Column_TypeNumeric))
                 {
-                    return Properties.Settings.Default.Sheet_ColumnScriptQuote;
+                    return Properties.Settings.Default.Table_ColumnScriptQuote;
                 }
                 else
                 {
@@ -1257,7 +1222,7 @@ namespace ScriptHelp.Scripts
                     if ((cell.Value != null))
                     {
                         string cellValue = cell.Value2.ToString();
-                        if (String.Compare(cellValue, Properties.Settings.Default.Sheet_ColumnScriptNull, true) != 0)
+                        if (String.Compare(cellValue, Properties.Settings.Default.Table_ColumnScriptNull, true) != 0)
                         {
                             return cell;
                         }
@@ -1314,7 +1279,7 @@ namespace ScriptHelp.Scripts
                 switch (GetSqlDataType(col))
                 {
                     case 2:
-                        fmt = Properties.Settings.Default.Sheet_ColumnDateFormatReplace;
+                        fmt = Properties.Settings.Default.Table_ColumnDateFormatReplace;
                         return FormatCellText(col, fmt);
                     case 1:
                         // we will use the column formatting if some is applied
@@ -1349,44 +1314,44 @@ namespace ScriptHelp.Scripts
             {
                 // default to text
                 double numCnt = 0;
-                double notNullCnt = Globals.ThisAddIn.Application.WorksheetFunction.CountIf(col.DataBodyRange, "<>" + Properties.Settings.Default.Sheet_ColumnScriptNull);
+                double notNullCnt = Globals.ThisAddIn.Application.WorksheetFunction.CountIf(col.DataBodyRange, "<>" + Properties.Settings.Default.Table_ColumnScriptNull);
 
                 // If all values are nulls then assume text
                 if ((notNullCnt == 0))
                 {
-                    return Properties.Settings.Default.Script_TypeText;
+                    return Properties.Settings.Default.Column_TypeText;
                 }
 
                 numCnt = Globals.ThisAddIn.Application.WorksheetFunction.Count(col.DataBodyRange);
                 // if no numbers then assume text
                 if ((numCnt == 0))
                 {
-                    return Properties.Settings.Default.Script_TypeText;
+                    return Properties.Settings.Default.Column_TypeText;
                 }
 
                 // if a mix of numbers and not numbers then assume text
                 if ((numCnt != notNullCnt))
                 {
-                    return Properties.Settings.Default.Script_TypeText;
+                    return Properties.Settings.Default.Column_TypeText;
                 }
 
                 //Excel changes the case of date formats on custom cell format types
-                bool result = Properties.Settings.Default.Sheet_ColumnDateFormatReplace.Equals(col.DataBodyRange.NumberFormat.ToString(), StringComparison.OrdinalIgnoreCase);
+                bool result = Properties.Settings.Default.Table_ColumnDateFormatReplace.Equals(col.DataBodyRange.NumberFormat.ToString(), StringComparison.OrdinalIgnoreCase);
                 // NOTE: next test relies consistent formatting on numerics in a column
                 // so we only have to test the first cell
                 if (ErrorHandler.IsDate(FirstNotNullCellInColumn(col.DataBodyRange)) | result == true)
                 {
-                    return Properties.Settings.Default.Script_TypeDate;
+                    return Properties.Settings.Default.Column_TypeDate;
                 }
                 else
                 {
-                    return Properties.Settings.Default.Script_TypeNumeric;
+                    return Properties.Settings.Default.Column_TypeNumeric;
                 }
             }
             catch (Exception ex)
             {
                 ErrorHandler.DisplayMessage(ex);
-                return Properties.Settings.Default.Script_TypeText;
+                return Properties.Settings.Default.Column_TypeText;
             }
         }
 
@@ -1422,7 +1387,7 @@ namespace ScriptHelp.Scripts
         /// <summary>
         /// Open the taskpane for a script view
         /// </summary>
-        public void OpenScriptPane()
+        public static void OpenScriptPane()
         {
             try
             {

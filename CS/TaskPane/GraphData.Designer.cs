@@ -69,7 +69,7 @@
 			// 
 			// btnStart
 			// 
-			this.btnStart.Image = global::ScriptHelp.Properties.Resources.control_play_blue;
+			this.btnStart.Image = global::ScriptHelp.Properties.Resources.Play;
 			this.btnStart.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.btnStart.Name = "btnStart";
 			this.btnStart.Size = new System.Drawing.Size(51, 22);
