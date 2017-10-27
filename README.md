@@ -8,15 +8,8 @@
 
 This is an Excel Add-In written in Visual Studio Community 2017 C#/VB.NET and VBA. This is used for bulk data loads into SQL Server, Oracle, Documentum, Markup and Markdown Languages. The functionality within the ribbon allows a quick way of preparing a bulk data load.  Otherwise, the requests can be both time-consuming and error prone. This has now been tested on Windows (7, 8.1, 10) & Excel (2010, 2013, 2016).
 
-<kbd>
-VSTO
-  <img src="Images/ReadMe/vsto.ribbon.png" />
-</kbd>
+  <img src="Images/ReadMe/ribbon.png" />
 
-<kbd>
-VBA
-  <img src="Images/ReadMe/vba.ribbon.png" />
-</kbd>
 
 ## Table of Contents
 - <a href="#dependencies">Dependencies</a>
