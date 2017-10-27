@@ -28,11 +28,11 @@ This is an Excel Add-In written in Visual Studio Community 2017 C#/VB.NET and VB
         - <a href="#clear-interior-color">Clear Interior Color</a>
         - <a href="#separate-values">Separate Values</a>
         - <a href="#add-script-column">Add Script Column</a>
-          - <kbd><a href="#menu-tsql" target="_blank"><img src="CS/Resources/QueryTypeTSql.png" title="T-SQL (Transact-Structured Query Language)" /></a></kbd><a href="#menu-tsql"> T-SQL (Transact-Structured Query Language)</a>
-          - <kbd><a href="#menu-plsql" target="_blank"><img src="CS/Resources/QueryTypePlSql.png" title="PL/SQL (Procedural Language/Structured Query Language)"/></a></kbd><a href="#menu-plsql">  PL/SQL (Procedural Language/Structured Query Language)</a>
-          - <kbd><a href="#menu-dql" target="_blank"><img src="CS/Resources/QueryTypeDql.png" title="DQL (Documentum Query Language)"/></a></kbd><a href="#menu-dql">  DQL (Documentum Query Language)</a>
-          - <kbd><a href="#menu-github" target="_blank"><img src="CS/Resources/QueryTypeGitHub.png" title="GitHub Markdown"/></a></kbd><a href="#menu-github">  GitHub Markdown</a>
-          - <kbd><a href="#menu-markup" target="_blank"><img src="CS/Resources/QueryTypeXML.png" title="Markup Language"/></a></kbd><a href="#menu-markup">  Markup Language</a>
+          - <kbd><a href="#menu-tsql" target="_blank"><img src="CS/Resources/ScriptTypeTSql.png" title="T-SQL (Transact-Structured Query Language)" /></a></kbd><a href="#menu-tsql"> T-SQL (Transact-Structured Query Language)</a>
+          - <kbd><a href="#menu-plsql" target="_blank"><img src="CS/Resources/ScriptTypePlSql.png" title="PL/SQL (Procedural Language/Structured Query Language)"/></a></kbd><a href="#menu-plsql">  PL/SQL (Procedural Language/Structured Query Language)</a>
+          - <kbd><a href="#menu-dql" target="_blank"><img src="CS/Resources/ScriptTypeDql.png" title="DQL (Documentum Query Language)"/></a></kbd><a href="#menu-dql">  DQL (Documentum Query Language)</a>
+          - <kbd><a href="#menu-github" target="_blank"><img src="CS/Resources/ScriptTypeGitHub.png" title="GitHub Markdown"/></a></kbd><a href="#menu-github">  GitHub Markdown</a>
+          - <kbd><a href="#menu-markup" target="_blank"><img src="CS/Resources/ScriptTypeXML.png" title="Markup Language"/></a></kbd><a href="#menu-markup">  Markup Language</a>
     - <a href="#format-script-options">Format Script Options</a>
         - <a href="#table-alias">Table Alias</a>  
         - <a href="#date-format">Date Format</a>  
@@ -165,7 +165,7 @@ These buttons have the following constraints:
 </h1>
 
 <a id="user-content-menu-tsql" class="anchor" href="#menu-tsql" aria-hidden="true"> </a>
-<kbd><a href="#menu-tsql" target="_blank"><img src="CS/Resources/QueryTypeTSql.png" title="T-SQL (Transact-Structured Query Language)" /></a></kbd>
+<kbd><a href="#menu-tsql" target="_blank"><img src="CS/Resources/ScriptTypeTSql.png" title="T-SQL (Transact-Structured Query Language)" /></a></kbd>
 T-SQL (Transact-Structured Query Language)
   - T-SQL Create Table - This menu item will format the script column to drop/create the table then insert the values
   - T-SQL Insert Values – This menu item will format the script column to use individual insert statements
@@ -175,7 +175,7 @@ T-SQL (Transact-Structured Query Language)
   - T-SQL Update Values – This menu item will format the script column to use individual update statements
 
 <a id="user-content-menu-plsql" class="anchor" href="#menu-plsql" aria-hidden="true"> </a>
-<kbd><a href="#menu-plsql" target="_blank"><img src="CS/Resources/QueryTypePlSql.png" title="PL/SQL (Procedural Language/Structured Query Language)"/></a></kbd>
+<kbd><a href="#menu-plsql" target="_blank"><img src="CS/Resources/ScriptTypePlSql.png" title="PL/SQL (Procedural Language/Structured Query Language)"/></a></kbd>
 PL/SQL (Procedural Language/Structured Query Language)
   - PL/SQL Create Table - This menu item will format the script column to drop/create the table then insert the values
   - PL/SQL Insert Values – This menu item will format the script column to use individual insert statements
@@ -185,7 +185,7 @@ PL/SQL (Procedural Language/Structured Query Language)
   - PL/SQL Update Values – This menu item will format the script column to use individual update statements
 
 <a id="user-content-menu-dql" class="anchor" href="#menu-dql" aria-hidden="true"> </a>
-<kbd><a href="#menu-dql" target="_blank"><img src="CS/Resources/QueryTypeDql.png" title="DQL (Documentum Query Language)"/></a></kbd>
+<kbd><a href="#menu-dql" target="_blank"><img src="CS/Resources/ScriptTypeDql.png" title="DQL (Documentum Query Language)"/></a></kbd>
 DQL (Documentum Query Language)
   - DQL Append – This menu item will format the script column to be used in an append statement for Documentum (this is used for repeating values)
   - DQL Append/Locked – This menu item will format the script column to be used in an append statement for Documentum (this is used for repeating values) and unlocks and then locks the record.
@@ -201,12 +201,12 @@ DQL (Documentum Query Language)
     - Add “WHERE” before the column name in the header you want to use as criteria.
 
 <a id="user-content-menu-github" class="anchor" href="#menu-github" aria-hidden="true"> </a>
-<kbd><a href="#menu-github" target="_blank"><img src="CS/Resources/QueryTypeGitHub.png" title="GitHub Markdown"/></a></kbd>
+<kbd><a href="#menu-github" target="_blank"><img src="CS/Resources/ScriptTypeGitHub.png" title="GitHub Markdown"/></a></kbd>
 GitHub Markdown
   - GitHub table - creates a table format for GitHub Read Me documentation
 
 <a id="user-content-menu-markup" class="anchor" href="#menu-markup" aria-hidden="true"> </a>
-<kbd><a href="#menu-markup" target="_blank"><img src="CS/Resources/QueryTypeXML.png" title="Markup Language"/></a></kbd>
+<kbd><a href="#menu-markup" target="_blank"><img src="CS/Resources/ScriptTypeXML.png" title="Markup Language"/></a></kbd>
 Markup Language
   - HTML Table - creates a HTML table structure
   - XML Values - creates XML structure
