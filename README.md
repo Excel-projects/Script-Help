@@ -321,8 +321,8 @@ VBA
 * The application name with the version [<img src="Images/ReadMe/ribbon.easteregg.ico">](https://raw.githubusercontent.com/aduguid/ScriptHelp/master/Images/ReadMe/ribbon.easteregg.gif "Easter Egg")
 
 <a id="user-content-install-date" class="anchor" href="#install-date" aria-hidden="true"> </a>
-#### Install Date (Label)
-* The install date of the application
+#### Release Date (Label)
+* The release date of the application
 
 <a id="user-content-copyright" class="anchor" href="#copyright" aria-hidden="true"> </a>
 #### Copyright (Label)
