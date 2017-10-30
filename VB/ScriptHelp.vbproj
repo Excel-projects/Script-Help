@@ -185,6 +185,10 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.SqlServerCe, Version=9.0.242.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Windows\assembly\GAC_MSIL\System.Data.SqlServerCe\3.5.1.0__89845dcd8080cc91\System.Data.SqlServerCe.dll</HintPath>
+    </Reference>
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
@@ -237,6 +241,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Scripts\Data.vb" />
     <Compile Include="Scripts\ErrorHandler.vb" />
     <Compile Include="Scripts\Form.vb" />
     <Compile Include="Scripts\Formula.vb" />
@@ -274,6 +279,9 @@
     <EmbeddedResource Include="TaskPane\Settings.resx">
       <DependentUpon>Settings.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="TaskPane\TableData.resx">
+      <DependentUpon>TableData.vb</DependentUpon>
+    </EmbeddedResource>
     <None Include="AnthonyDuguid.pfx" />
     <None Include="app.config">
       <SubType>Designer</SubType>
@@ -307,7 +315,17 @@
   <ItemGroup>
     <EmbeddedResource Include="Ribbon.xml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <COMReference Include="SSCE">
+      <Guid>{CE4AACFA-3CFD-4028-B2D9-F272314F07C8}</Guid>
+      <VersionMajor>3</VersionMajor>
+      <VersionMinor>5</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Play.png" />
   </ItemGroup>
