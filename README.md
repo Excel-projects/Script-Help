@@ -22,6 +22,7 @@ This is an Excel Add-In written in Visual Studio Community 2017 C#/VB.NET and VB
         - <a href="#format-as-table">Format as Table</a>  
         - <a href="#freeze-panes">Freeze Panes</a>
         - <a href="#remove-duplicates">Remove Duplicates</a>
+    - <a href="#script-actions">Script Actions</a>
         - <a href="#clean-data">Clean Data</a>
         - <a href="#convert-to-null">Convert to Null</a>
         - <a href="#format-date-columns">Format Date Columns</a>        
@@ -33,18 +34,20 @@ This is an Excel Add-In written in Visual Studio Community 2017 C#/VB.NET and VB
           - <kbd><a href="#menu-dql" target="_blank"><img src="CS/Resources/ScriptTypeDql.png" title="DQL (Documentum Query Language)"/></a></kbd><a href="#menu-dql">  DQL (Documentum Query Language)</a>
           - <kbd><a href="#menu-github" target="_blank"><img src="CS/Resources/ScriptTypeGitHub.png" title="GitHub Markdown"/></a></kbd><a href="#menu-github">  GitHub Markdown</a>
           - <kbd><a href="#menu-markup" target="_blank"><img src="CS/Resources/ScriptTypeXML.png" title="Markup Language"/></a></kbd><a href="#menu-markup">  Markup Language</a>
-    - <a href="#format-script-options">Format Script Options</a>
+    - <a href="#format-script-options">Script Variables</a>
         - <a href="#table-alias">Table Alias</a>  
         - <a href="#date-format">Date Format</a>  
         - <a href="#paste-format">Paste Format</a>  
-        - <a href="#create-file-list">Create File List</a>  
+    - <a href="#options">Help</a>
         - <a href="#settings">Add-In Settings</a>  
-        - <a href="#com-addins">COM Add-Ins</a>  
-    - <a href="#about">About</a>
+        - <a href="#create-file-list">Create File List</a>  
+    - <a href="#about">Help</a>
         - <a href="#how-to">How To...</a>  
-        - <a href="#api-doc">API Doc...</a>  
+        - <a href="#api-doc">Report Issue</a>  
+        - <a href="#api-doc">Download New Version</a>  
+    - <a href="#about">About</a>
         - <a href="#description">Add-in Name</a>
-        - <a href="#install-date">Install Date</a>  
+        - <a href="#install-date">Release Date</a>  
         - <a href="#copyright">Copyright</a>  
 
 <a id="user-content-dependencies" class="anchor" href="#dependencies" aria-hidden="true"> </a>
