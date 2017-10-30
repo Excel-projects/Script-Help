@@ -244,7 +244,7 @@ Markup Language
 * It defaults to ‘mm:ss.0’, and can be changed by the dropdown value or free text
 * These values can be updated using the build button “…” to the right of the “Date Format” dropdown
 
-<a id="user-content-format-script-options" class="anchor" href="#format-script-options" aria-hidden="true"> </a>
+<a id="user-content-options" class="anchor" href="#options" aria-hidden="true"> </a>
 ###	Options (Group)
 <h1 align="left">
   <img src="Images/ReadMe/ribbon.group.options1.png" />
