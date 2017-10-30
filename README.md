@@ -22,6 +22,7 @@ This is an Excel Add-In written in Visual Studio Community 2017 C#/VB.NET and VB
         - <a href="#format-as-table">Format as Table</a>  
         - <a href="#freeze-panes">Freeze Panes</a>
         - <a href="#remove-duplicates">Remove Duplicates</a>
+    - <a href="#script-actions">Script Actions</a>
         - <a href="#clean-data">Clean Data</a>
         - <a href="#convert-to-null">Convert to Null</a>
         - <a href="#format-date-columns">Format Date Columns</a>        
@@ -33,18 +34,20 @@ This is an Excel Add-In written in Visual Studio Community 2017 C#/VB.NET and VB
           - <kbd><a href="#menu-dql" target="_blank"><img src="CS/Resources/ScriptTypeDql.png" title="DQL (Documentum Query Language)"/></a></kbd><a href="#menu-dql">  DQL (Documentum Query Language)</a>
           - <kbd><a href="#menu-github" target="_blank"><img src="CS/Resources/ScriptTypeGitHub.png" title="GitHub Markdown"/></a></kbd><a href="#menu-github">  GitHub Markdown</a>
           - <kbd><a href="#menu-markup" target="_blank"><img src="CS/Resources/ScriptTypeXML.png" title="Markup Language"/></a></kbd><a href="#menu-markup">  Markup Language</a>
-    - <a href="#format-script-options">Format Script Options</a>
+    - <a href="#format-script-options">Script Variables</a>
         - <a href="#table-alias">Table Alias</a>  
         - <a href="#date-format">Date Format</a>  
         - <a href="#paste-format">Paste Format</a>  
-        - <a href="#create-file-list">Create File List</a>  
+    - <a href="#options">Options</a>
         - <a href="#settings">Add-In Settings</a>  
-        - <a href="#com-addins">COM Add-Ins</a>  
-    - <a href="#about">About</a>
+        - <a href="#create-file-list">Create File List</a>  
+    - <a href="#about">Help</a>
         - <a href="#how-to">How To...</a>  
-        - <a href="#api-doc">API Doc...</a>  
+        - <a href="#api-doc">Report Issue</a>  
+        - <a href="#api-doc">Download New Version</a>  
+    - <a href="#about">About</a>
         - <a href="#description">Add-in Name</a>
-        - <a href="#install-date">Install Date</a>  
+        - <a href="#install-date">Release Date</a>  
         - <a href="#copyright">Copyright</a>  
 
 <a id="user-content-dependencies" class="anchor" href="#dependencies" aria-hidden="true"> </a>
@@ -120,6 +123,13 @@ These buttons have the following constraints:
 <a id="user-content-remove-duplicates" class="anchor" href="#remove-duplicates" aria-hidden="true"> </a>
 #### Remove Duplicates (Button)
 * Delete duplicate rows from a sheet
+
+<a id="user-content-script-actions" class="anchor" href="#script-actions" aria-hidden="true"> </a>
+### Script Actions (Group)
+
+<h1 align="left">
+  <img src="Images/ReadMe/ribbon.group.scriptactions.png" />
+</h1>
 
 <a id="user-content-clean-data" class="anchor" href="#clean-data" aria-hidden="true"> </a>
 #### Clean Data (Button)
@@ -212,9 +222,9 @@ Markup Language
   - XML Values - creates XML structure
 
 <a id="user-content-format-script-options" class="anchor" href="#format-script-options" aria-hidden="true"> </a>
-###	Format Script Options (Group)
+###	Script Variables (Group)
 <h1 align="left">
-  <img src="Images/ReadMe/ribbon.group.formatscriptoptions.png" />
+  <img src="Images/ReadMe/ribbon.group.scriptvariables.png" />
 </h1>
 
 <a id="user-content-table-alias" class="anchor" href="#table-alias" aria-hidden="true"> </a>
@@ -234,10 +244,11 @@ Markup Language
 * It defaults to ‘mm:ss.0’, and can be changed by the dropdown value or free text
 * These values can be updated using the build button “…” to the right of the “Date Format” dropdown
 
-<a id="user-content-create-file-list" class="anchor" href="#create-file-list" aria-hidden="true"> </a>
-#### Create File List (Button)
-* This will create a file listing recursively from a user selected directory
-* It will save the .csv and .bat file in the root folder selected.
+<a id="user-content-options" class="anchor" href="#options" aria-hidden="true"> </a>
+###	Options (Group)
+<h1 align="left">
+  <img src="Images/ReadMe/ribbon.group.options1.png" />
+</h1>
 
 <a id="user-content-settings" class="anchor" href="#settings" aria-hidden="true"> </a>
 #### Add-In Settings (Button)
@@ -280,31 +291,38 @@ VBA
     ThisWorkbook.CustomDocumentProperties.Item("App_ReleaseDate").Delete
     ```
 
-<a id="user-content-com-addins" class="anchor" href="#com-addins" aria-hidden="true"> </a>
-#### COM Addins (Button)
-* Manage the available COM Add-ins
+<a id="user-content-create-file-list" class="anchor" href="#create-file-list" aria-hidden="true"> </a>
+#### Create File List (Button)
+* This will create a file listing recursively from a user selected directory
+* It will save the .csv and .bat file in the root folder selected.
 
-<a id="user-content-about" class="anchor" href="#about" aria-hidden="true"> </a>
-###	About (Group)
+<a id="user-content-help" class="anchor" href="#help" aria-hidden="true"> </a>
+###	Help (Group)
 <h1 align="left">
-  <img src="Images/ReadMe/ribbon.group.about.png" />
+  <img src="Images/ReadMe/ribbon.group.help.png" />
 </h1>
 
 <a id="user-content-how-to" class="anchor" href="#how-to" aria-hidden="true"> </a>
 #### How To… (Button)
-* How to use this Excel Addin
+* Opens a webpage of the read me documentation
 
 <a id="user-content-api-doc" class="anchor" href="#api-doc" aria-hidden="true"> </a>
-#### API Doc.. (Button)
-* View API documentation for this product
+#### Report Issue (Button)
+* Opens a page to create a new issue for the product
+
+<a id="user-content-about" class="anchor" href="#about" aria-hidden="true"> </a>
+###	About (Group)
+<h1 align="left">
+  <img src="Images/ReadMe/ribbon.group.about1.png" />
+</h1>
 
 <a id="user-content-description" class="anchor" href="#description" aria-hidden="true"> </a>
 #### Add-in Name (Label)
 * The application name with the version [<img src="Images/ReadMe/ribbon.easteregg.ico">](https://raw.githubusercontent.com/aduguid/ScriptHelp/master/Images/ReadMe/ribbon.easteregg.gif "Easter Egg")
 
 <a id="user-content-install-date" class="anchor" href="#install-date" aria-hidden="true"> </a>
-#### Install Date (Label)
-* The install date of the application
+#### Release Date (Label)
+* The release date of the application
 
 <a id="user-content-copyright" class="anchor" href="#copyright" aria-hidden="true"> </a>
 #### Copyright (Label)
