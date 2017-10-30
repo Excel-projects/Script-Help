@@ -15,8 +15,68 @@ Public Class Ribbon
     Implements Office.IRibbonExtensibility
     Private ribbon As Office.IRibbonUI
 
-    Public mySettings As Settings
-    Public myTaskPaneSettings As Microsoft.Office.Tools.CustomTaskPane
+    Public Shared mySettings As Settings
+    Public Shared myTaskPaneSettings As Microsoft.Office.Tools.CustomTaskPane
+
+    Public Shared myScript As Script
+    Public Shared myTaskPaneScript As Microsoft.Office.Tools.CustomTaskPane
+
+    Public NotInheritable Class AppVariables
+        Private Sub New()
+        End Sub
+        ''' <summary>
+        ''' variable used for sending the copied range to the form for export
+        ''' </summary>
+        Public Shared Property ScriptRange() As String
+            Get
+                Return m_ScriptRange
+            End Get
+            Set
+                m_ScriptRange = Value
+            End Set
+        End Property
+        Private Shared m_ScriptRange As String
+
+        ''' <summary>
+        ''' variable used for saving the script file
+        ''' </summary>
+        Public Shared Property FileType() As String
+            Get
+                Return m_FileType
+            End Get
+            Set
+                m_FileType = Value
+            End Set
+        End Property
+        Private Shared m_FileType As String
+
+        ''' <summary>
+        ''' variable used for the table name used to populate a datagrid
+        ''' </summary>
+        Public Shared Property TableName() As String
+            Get
+                Return m_TableName
+            End Get
+            Set
+                m_TableName = Value
+            End Set
+        End Property
+        Private Shared m_TableName As String
+
+        ''' <summary>
+        ''' The first visible column name in the table
+        ''' </summary>
+        Public Shared Property FirstColumnName() As String
+            Get
+                Return m_FirstColumnName
+            End Get
+            Set
+                m_FirstColumnName = Value
+            End Set
+        End Property
+        Private Shared m_FirstColumnName As String
+
+    End Class
 
 #Region "  Ribbon Events  "
     Public Sub New()
@@ -671,18 +731,18 @@ Public Class Ribbon
 
     End Sub
 
-    Public Sub OpenSettings2()
-        Try
-            Dim FormSettings As New frmSettings
-            FormSettings.ShowDialog()
-            ribbon.Invalidate()
+    'Public Sub OpenSettings2()
+    '    Try
+    '        Dim FormSettings As New frmSettings
+    '        FormSettings.ShowDialog()
+    '        ribbon.Invalidate()
 
-        Catch ex As Exception
-            Call ErrorHandler.DisplayMessage(ex)
+    '    Catch ex As Exception
+    '        Call ErrorHandler.DisplayMessage(ex)
 
-        End Try
+    '    End Try
 
-    End Sub
+    'End Sub
 
     Public Sub OpenSettings()
         Try
@@ -706,13 +766,33 @@ Public Class Ribbon
         End Try
     End Sub
 
+    Public Shared Sub OpenScriptPane()
+        Try
+            If myTaskPaneScript IsNot Nothing Then
+                myTaskPaneScript.Dispose()
+                myScript.Dispose()
+            End If
+            myScript = New Script()
+            myTaskPaneScript = Globals.ThisAddIn.CustomTaskPanes.Add(myScript, "Script for " + My.Application.Info.Title)
+            myTaskPaneScript.DockPosition = Office.MsoCTPDockPosition.msoCTPDockPositionRight
+            myTaskPaneScript.DockPositionRestrict = Office.MsoCTPDockPositionRestrict.msoCTPDockPositionRestrictNoChange
+            myTaskPaneScript.Width = 675
+
+            myTaskPaneScript.Visible = True
+
+        Catch ex As Exception
+            ErrorHandler.DisplayMessage(ex)
+        End Try
+
+    End Sub
+
 #End Region
 
 #Region "  Subroutines  "
 
     Friend Shared Function ApplyTextQuotes(ByVal col As Excel.ListColumn) As String
         Try
-            If (SqlType(col) <> My.Settings.Column_TypeNumeric) Then
+            If (GetSqlDataType(col) <> My.Settings.Column_TypeNumeric) Then
                 Return My.Settings.Table_ColumnScriptQuote
             Else
                 Return String.Empty
@@ -748,12 +828,29 @@ Public Class Ribbon
 
     End Function
 
+    Public Shared Function ConcatenateColumnNamesJoin(rng As Excel.Range, tableAliasNameTarget As String, tableAliasNameSource As String) As String
+        Try
+            Dim columnNames As String = String.Empty
+            For i As Integer = 1 To rng.Columns.Count - 1
+                If rng.Columns.EntireColumn(i).Hidden = False Then
+                    columnNames = (Convert.ToString((Convert.ToString(columnNames & Convert.ToString(", ")) & tableAliasNameTarget) + ".[" + DirectCast(rng.Cells(1, i), Excel.Range).Value2 + "] = ") & tableAliasNameSource) + ".[" + DirectCast(rng.Cells(1, i), Excel.Range).Value2 + "]" + Environment.NewLine
+                End If
+            Next
+            columnNames = columnNames.Substring(2, columnNames.Length - 2)
+            Return columnNames
+
+        Catch generatedExceptionName As Exception
+            Return String.Empty
+        End Try
+
+    End Function
+
     Public Shared Function GetColumnFormat(ByVal col As Excel.ListColumn) As String
         Try
             Dim fmt As String = String.Empty
             Dim nFmt As String = String.Empty
 
-            Select Case SqlType(col)
+            Select Case GetSqlDataType(col)
                 Case My.Settings.Column_TypeDate
                     fmt = My.Settings.Table_ColumnDateFormatReplace
 
@@ -797,11 +894,11 @@ Public Class Ribbon
 
     End Function
 
-    Friend Shared Function SqlType(ByVal col As Excel.ListColumn) As Integer
+    Friend Shared Function GetSqlDataType(ByVal col As Excel.ListColumn) As Integer
         Try
             ' Determine the likely SQL type of the column
             ' default to text
-            SqlType = My.Settings.Column_TypeText
+            Return My.Settings.Column_TypeText
             Dim rowCnt As Integer = col.DataBodyRange.Rows.Count
             Dim numCnt As Double = 0
             Dim notNullCnt As Double = Globals.ThisAddIn.Application.WorksheetFunction.CountIf(col.DataBodyRange, "<>" & My.Settings.Table_ColumnScriptNull)
