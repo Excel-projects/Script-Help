@@ -247,7 +247,7 @@ Markup Language
 <a id="user-content-format-script-options" class="anchor" href="#format-script-options" aria-hidden="true"> </a>
 ###	Options (Group)
 <h1 align="left">
-  <img src="Images/ReadMe/ribbon.group.options.png" />
+  <img src="Images/ReadMe/ribbon.group.options1.png" />
 </h1>
 
 <a id="user-content-settings" class="anchor" href="#settings" aria-hidden="true"> </a>
