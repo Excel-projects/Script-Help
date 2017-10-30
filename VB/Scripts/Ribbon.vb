@@ -15,6 +15,9 @@ Public Class Ribbon
     Implements Office.IRibbonExtensibility
     Private ribbon As Office.IRibbonUI
 
+    Public mySettings As Settings
+    Public myTaskPaneSettings As Microsoft.Office.Tools.CustomTaskPane
+
 #Region "  Ribbon Events  "
     Public Sub New()
     End Sub
@@ -668,7 +671,7 @@ Public Class Ribbon
 
     End Sub
 
-    Public Sub OpenSettings()
+    Public Sub OpenSettings2()
         Try
             Dim FormSettings As New frmSettings
             FormSettings.ShowDialog()
@@ -679,6 +682,28 @@ Public Class Ribbon
 
         End Try
 
+    End Sub
+
+    Public Sub OpenSettings()
+        Try
+            If myTaskPaneSettings IsNot Nothing Then
+                If myTaskPaneSettings.Visible = True Then
+                    myTaskPaneSettings.Visible = False
+                Else
+                    myTaskPaneSettings.Visible = True
+                End If
+            Else
+                mySettings = New Settings()
+                myTaskPaneSettings = Globals.ThisAddIn.CustomTaskPanes.Add(mySettings, "Settings for " + My.Application.Info.Title)
+                myTaskPaneSettings.DockPosition = Office.MsoCTPDockPosition.msoCTPDockPositionRight
+                myTaskPaneSettings.DockPositionRestrict = Office.MsoCTPDockPositionRestrict.msoCTPDockPositionRestrictNoChange
+                myTaskPaneSettings.Width = 675
+                myTaskPaneSettings.Visible = True
+
+            End If
+        Catch ex As Exception
+            ErrorHandler.DisplayMessage(ex)
+        End Try
     End Sub
 
 #End Region

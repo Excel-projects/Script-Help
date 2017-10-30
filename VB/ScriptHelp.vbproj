@@ -241,9 +241,36 @@
     <Compile Include="Scripts\Form.vb" />
     <Compile Include="Scripts\Formula.vb" />
     <Compile Include="Scripts\Ribbon.vb" />
+    <Compile Include="TaskPane\GraphData.Designer.vb">
+      <DependentUpon>GraphData.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TaskPane\GraphData.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TaskPane\Script.Designer.vb">
+      <DependentUpon>Script.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TaskPane\Script.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TaskPane\Settings.Designer.vb">
+      <DependentUpon>Settings.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TaskPane\Settings.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TaskPane\TableData.Designer.vb">
+      <DependentUpon>TableData.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TaskPane\TableData.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="ThisAddIn.vb">
       <SubType>Code</SubType>
     </Compile>
+    <EmbeddedResource Include="TaskPane\Settings.resx">
+      <DependentUpon>Settings.vb</DependentUpon>
+    </EmbeddedResource>
     <None Include="AnthonyDuguid.pfx" />
     <None Include="app.config">
       <SubType>Designer</SubType>
@@ -277,9 +304,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Ribbon.xml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="TaskPane\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\Play.png" />
   </ItemGroup>
@@ -317,6 +342,9 @@
     <Content Include="sqlceoledb35.dll" />
     <Content Include="sqlceqp35.dll" />
     <Content Include="sqlcese35.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{94E38DFF-614B-4CBD-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
