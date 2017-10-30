@@ -313,7 +313,7 @@ VBA
 <a id="user-content-about" class="anchor" href="#about" aria-hidden="true"> </a>
 ###	About (Group)
 <h1 align="left">
-  <img src="Images/ReadMe/ribbon.group.about.png" />
+  <img src="Images/ReadMe/ribbon.group.about.png?" />
 </h1>
 
 <a id="user-content-description" class="anchor" href="#description" aria-hidden="true"> </a>
