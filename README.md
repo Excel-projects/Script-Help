@@ -104,7 +104,7 @@ This Excel ribbon is inserted after the “Home” tab when Excel opens. Listed 
 ### Format Data Table (Group)
 
 <h1 align="left">
-  <img src="Images/ReadMe/ribbon.group.formatdatatable.png" />
+  <img src="Images/ReadMe/ribbon.group.formatdatatable.png?" />
 </h1>
 
 These buttons have the following constraints: 
