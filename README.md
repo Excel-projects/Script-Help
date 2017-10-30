@@ -128,7 +128,7 @@ These buttons have the following constraints:
 ### Script Actions (Group)
 
 <h1 align="left">
-  <img src="Images/ReadMe/ribbon.group.formatdatatable.png" />
+  <img src="Images/ReadMe/ribbon.group.scriptactions.png" />
 </h1>
 
 <a id="user-content-clean-data" class="anchor" href="#clean-data" aria-hidden="true"> </a>
