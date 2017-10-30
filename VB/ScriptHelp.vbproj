@@ -232,14 +232,22 @@
     <Compile Include="Forms\frmSettings.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Scripts\ErrorHandler.vb" />
     <Compile Include="Scripts\Form.vb" />
+    <Compile Include="Scripts\Formula.vb" />
     <Compile Include="Scripts\Ribbon.vb" />
     <Compile Include="ThisAddIn.vb">
       <SubType>Code</SubType>
     </Compile>
     <None Include="AnthonyDuguid.pfx" />
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="ThisAddIn.Designer.xml">
       <DependentUpon>ThisAddIn.vb</DependentUpon>
     </None>
@@ -252,15 +260,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="My Project\Resources.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
@@ -275,38 +278,37 @@
     <EmbeddedResource Include="Ribbon.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Documentation\" />
     <Folder Include="TaskPane\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\control_play_blue.png" />
+    <None Include="Resources\Play.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Copy.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\QueryTypeDql.png" />
+    <None Include="Resources\ScriptTypeDql.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\QueryTypeGitHub.png" />
+    <None Include="Resources\ScriptTypeGitHub.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\QueryTypePlSql.png" />
+    <None Include="Resources\ScriptTypePlSql.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\QueryTypeTSql.png" />
+    <None Include="Resources\ScriptTypeTSql.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\QueryTypeXML.png" />
+    <None Include="Resources\ScriptTypeXML.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Save.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ApiHelp.shfbproj" />
     <Content Include="App_Data\ScriptHelp.sdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\Download.png" />
     <Content Include="Resources\ExcelAddin.ico" />
     <Content Include="sqlceca35.dll" />
     <Content Include="sqlcecompact35.dll" />

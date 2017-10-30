@@ -56,225 +56,405 @@ Partial Friend NotInheritable Class MySettings
     <Global.System.Configuration.UserScopedSettingAttribute(),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
-    Public Property TSQL_TEXT() As Integer
+    Public Property Column_TypeText() As Integer
         Get
-            Return CType(Me("TSQL_TEXT"),Integer)
+            Return CType(Me("Column_TypeText"),Integer)
         End Get
         Set
-            Me("TSQL_TEXT") = value
+            Me("Column_TypeText") = value
         End Set
     End Property
     
     <Global.System.Configuration.UserScopedSettingAttribute(),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.Configuration.DefaultSettingValueAttribute("'")>  _
-    Public Property TSQL_QUOTE() As String
+    Public Property Table_ColumnScriptQuote() As String
         Get
-            Return CType(Me("TSQL_QUOTE"),String)
+            Return CType(Me("Table_ColumnScriptQuote"),String)
         End Get
         Set
-            Me("TSQL_QUOTE") = value
+            Me("Table_ColumnScriptQuote") = value
         End Set
     End Property
     
     <Global.System.Configuration.UserScopedSettingAttribute(),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.Configuration.DefaultSettingValueAttribute("1")>  _
-    Public Property TSQL_NUMERIC() As Integer
+    Public Property Column_TypeNumeric() As Integer
         Get
-            Return CType(Me("TSQL_NUMERIC"),Integer)
+            Return CType(Me("Column_TypeNumeric"),Integer)
         End Get
         Set
-            Me("TSQL_NUMERIC") = value
+            Me("Column_TypeNumeric") = value
         End Set
     End Property
     
     <Global.System.Configuration.UserScopedSettingAttribute(),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.Configuration.DefaultSettingValueAttribute("NULL")>  _
-    Public Property TSQL_NULL() As String
+    Public Property Table_ColumnScriptNull() As String
         Get
-            Return CType(Me("TSQL_NULL"),String)
+            Return CType(Me("Table_ColumnScriptNull"),String)
         End Get
         Set
-            Me("TSQL_NULL") = value
+            Me("Table_ColumnScriptNull") = value
         End Set
     End Property
     
     <Global.System.Configuration.UserScopedSettingAttribute(),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.Configuration.DefaultSettingValueAttribute("mm:ss.0")>  _
-    Public Property TSQL_DATE_PASTE_FORMAT() As String
+    Public Property Table_ColumnDateFormatFind() As String
         Get
-            Return CType(Me("TSQL_DATE_PASTE_FORMAT"),String)
+            Return CType(Me("Table_ColumnDateFormatFind"),String)
         End Get
         Set
-            Me("TSQL_DATE_PASTE_FORMAT") = value
+            Me("Table_ColumnDateFormatFind") = value
         End Set
     End Property
     
     <Global.System.Configuration.UserScopedSettingAttribute(),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.Configuration.DefaultSettingValueAttribute("dd-mmm-yyyy")>  _
-    Public Property TSQL_DATE_FORMAT() As String
+    Public Property Table_ColumnDateFormatReplace() As String
         Get
-            Return CType(Me("TSQL_DATE_FORMAT"),String)
+            Return CType(Me("Table_ColumnDateFormatReplace"),String)
         End Get
         Set
-            Me("TSQL_DATE_FORMAT") = value
+            Me("Table_ColumnDateFormatReplace") = value
         End Set
     End Property
     
     <Global.System.Configuration.UserScopedSettingAttribute(),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.Configuration.DefaultSettingValueAttribute("2")>  _
-    Public Property TSQL_DATE() As Integer
+    Public Property Column_TypeDate() As Integer
         Get
-            Return CType(Me("TSQL_DATE"),Integer)
+            Return CType(Me("Column_TypeDate"),Integer)
         End Get
         Set
-            Me("TSQL_DATE") = value
+            Me("Column_TypeDate") = value
         End Set
     End Property
     
     <Global.System.Configuration.UserScopedSettingAttribute(),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.Configuration.DefaultSettingValueAttribute("SQL")>  _
-    Public Property SQL_COL_NAME() As String
+    Public Property Table_ColumnName() As String
         Get
-            Return CType(Me("SQL_COL_NAME"),String)
+            Return CType(Me("Table_ColumnName"),String)
         End Get
         Set
-            Me("SQL_COL_NAME") = value
+            Me("Table_ColumnName") = value
         End Set
     End Property
     
     <Global.System.Configuration.UserScopedSettingAttribute(),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.Configuration.DefaultSettingValueAttribute("SkyBlue")>  _
-    Public Property CLEAN_CELL_COLOUR() As Global.System.Drawing.Color
+    Public Property Table_ColumnCleanedColour() As Global.System.Drawing.Color
         Get
-            Return CType(Me("CLEAN_CELL_COLOUR"),Global.System.Drawing.Color)
+            Return CType(Me("Table_ColumnCleanedColour"),Global.System.Drawing.Color)
         End Get
         Set
-            Me("CLEAN_CELL_COLOUR") = value
+            Me("Table_ColumnCleanedColour") = value
         End Set
     End Property
     
     <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.Configuration.DefaultSettingValueAttribute("Anthony Duguid")>  _
-    Public ReadOnly Property Author() As String
+    Public ReadOnly Property App_Author() As String
         Get
-            Return CType(Me("Author"),String)
+            Return CType(Me("App_Author"),String)
         End Get
     End Property
     
     <Global.System.Configuration.UserScopedSettingAttribute(),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.Configuration.DefaultSettingValueAttribute("INSERT")>  _
-    Public Property TSQL_QUERY_TYPE() As String
+     Global.System.Configuration.DefaultSettingValueAttribute("https://github.com/aduguid/ScriptHelp/blob/master/README.md")>  _
+    Public Property App_PathReadMe() As String
         Get
-            Return CType(Me("TSQL_QUERY_TYPE"),String)
+            Return CType(Me("App_PathReadMe"),String)
         End Get
         Set
-            Me("TSQL_QUERY_TYPE") = value
-        End Set
-    End Property
-    
-    <Global.System.Configuration.UserScopedSettingAttribute(),  _
-     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.Configuration.DefaultSettingValueAttribute("C:\Temp")>  _
-    Public Property HelpFile() As String
-        Get
-            Return CType(Me("HelpFile"),String)
-        End Get
-        Set
-            Me("HelpFile") = value
-        End Set
-    End Property
-    
-    <Global.System.Configuration.UserScopedSettingAttribute(),  _
-     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
-    Public Property Visible_btnForceColumnToDate() As Boolean
-        Get
-            Return CType(Me("Visible_btnForceColumnToDate"),Boolean)
-        End Get
-        Set
-            Me("Visible_btnForceColumnToDate") = value
-        End Set
-    End Property
-    
-    <Global.System.Configuration.UserScopedSettingAttribute(),  _
-     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
-    Public Property Visible_drpQueryType() As Boolean
-        Get
-            Return CType(Me("Visible_drpQueryType"),Boolean)
-        End Get
-        Set
-            Me("Visible_drpQueryType") = value
-        End Set
-    End Property
-    
-    <Global.System.Configuration.UserScopedSettingAttribute(),  _
-     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
-    Public Property Visible_ComAddInsDialog() As Boolean
-        Get
-            Return CType(Me("Visible_ComAddInsDialog"),Boolean)
-        End Get
-        Set
-            Me("Visible_ComAddInsDialog") = value
+            Me("App_PathReadMe") = value
         End Set
     End Property
     
     <Global.System.Configuration.UserScopedSettingAttribute(),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
-    Public Property Visible_FormatAsTableGallery() As Boolean
+    Public Property Visible_grpFormatDataTable() As Boolean
         Get
-            Return CType(Me("Visible_FormatAsTableGallery"),Boolean)
+            Return CType(Me("Visible_grpFormatDataTable"),Boolean)
         End Get
         Set
-            Me("Visible_FormatAsTableGallery") = value
+            Me("Visible_grpFormatDataTable") = value
+        End Set
+    End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("https://raw.githubusercontent.com/aduguid/ScriptHelp/master/publish/")>  _
+    Public Property App_PathDeploy() As String
+        Get
+            Return CType(Me("App_PathDeploy"),String)
+        End Get
+        Set
+            Me("App_PathDeploy") = value
+        End Set
+    End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+    Public Property App_PathDeployData() As String
+        Get
+            Return CType(Me("App_PathDeployData"),String)
+        End Get
+        Set
+            Me("App_PathDeployData") = value
+        End Set
+    End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+    Public Property App_PathLocalData() As String
+        Get
+            Return CType(Me("App_PathLocalData"),String)
+        End Get
+        Set
+            Me("App_PathLocalData") = value
+        End Set
+    End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("https://github.com/aduguid/ScriptHelp/issues/new")>  _
+    Public Property App_PathReportIssue() As String
+        Get
+            Return CType(Me("App_PathReportIssue"),String)
+        End Get
+        Set
+            Me("App_PathReportIssue") = value
+        End Set
+    End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("07/31/2017 13:05:00")>  _
+    Public Property App_ReleaseDate() As Date
+        Get
+            Return CType(Me("App_ReleaseDate"),Date)
+        End Get
+        Set
+            Me("App_ReleaseDate") = value
+        End Set
+    End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute(",")>  _
+    Public Property Table_ColumnSeparateValuesDelimiter() As String
+        Get
+            Return CType(Me("Table_ColumnSeparateValuesDelimiter"),String)
+        End Get
+        Set
+            Me("Table_ColumnSeparateValuesDelimiter") = value
+        End Set
+    End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("tbl")>  _
+    Public Property Table_ColumnTableAlias() As String
+        Get
+            Return CType(Me("Table_ColumnTableAlias"),String)
+        End Get
+        Set
+            Me("Table_ColumnTableAlias") = value
+        End Set
+    End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("TableStyleMedium15")>  _
+    Public Property Table_StyleName() As String
+        Get
+            Return CType(Me("Table_StyleName"),String)
+        End Get
+        Set
+            Me("Table_StyleName") = value
+        End Set
+    End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+    Public Property Visible_grpClipboard() As Boolean
+        Get
+            Return CType(Me("Visible_grpClipboard"),Boolean)
+        End Get
+        Set
+            Me("Visible_grpClipboard") = value
+        End Set
+    End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+    Public Property Visible_grpScriptVariables() As Boolean
+        Get
+            Return CType(Me("Visible_grpScriptVariables"),Boolean)
+        End Get
+        Set
+            Me("Visible_grpScriptVariables") = value
+        End Set
+    End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+    Public Property Visible_mnuScriptType() As Boolean
+        Get
+            Return CType(Me("Visible_mnuScriptType"),Boolean)
+        End Get
+        Set
+            Me("Visible_mnuScriptType") = value
+        End Set
+    End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+    Public Property Visible_mnuScriptType_DQL() As Boolean
+        Get
+            Return CType(Me("Visible_mnuScriptType_DQL"),Boolean)
+        End Get
+        Set
+            Me("Visible_mnuScriptType_DQL") = value
+        End Set
+    End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+    Public Property Visible_mnuScriptType_Github() As Boolean
+        Get
+            Return CType(Me("Visible_mnuScriptType_Github"),Boolean)
+        End Get
+        Set
+            Me("Visible_mnuScriptType_Github") = value
+        End Set
+    End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+    Public Property Visible_mnuScriptType_PLSQL() As Boolean
+        Get
+            Return CType(Me("Visible_mnuScriptType_PLSQL"),Boolean)
+        End Get
+        Set
+            Me("Visible_mnuScriptType_PLSQL") = value
+        End Set
+    End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+    Public Property Visible_mnuScriptType_TSQL() As Boolean
+        Get
+            Return CType(Me("Visible_mnuScriptType_TSQL"),Boolean)
+        End Get
+        Set
+            Me("Visible_mnuScriptType_TSQL") = value
+        End Set
+    End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+    Public Property Visible_mnuScriptType_XML() As Boolean
+        Get
+            Return CType(Me("Visible_mnuScriptType_XML"),Boolean)
+        End Get
+        Set
+            Me("Visible_mnuScriptType_XML") = value
+        End Set
+    End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+    Public Property Visible_btnSeparateValues() As Boolean
+        Get
+            Return CType(Me("Visible_btnSeparateValues"),Boolean)
+        End Get
+        Set
+            Me("Visible_btnSeparateValues") = value
+        End Set
+    End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+    Public Property Visible_btnZeroToNull() As Boolean
+        Get
+            Return CType(Me("Visible_btnZeroToNull"),Boolean)
+        End Get
+        Set
+            Me("Visible_btnZeroToNull") = value
+        End Set
+    End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("C:\Temp")>  _
+    Public Property Option_PathFileListing() As String
+        Get
+            Return CType(Me("Option_PathFileListing"),String)
+        End Get
+        Set
+            Me("Option_PathFileListing") = value
         End Set
     End Property
     
     <Global.System.Configuration.UserScopedSettingAttribute(),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
-    Public Property Visible_ViewFreezePanesGallery() As Boolean
+    Public Property Option_PathFileListingSelect() As Boolean
         Get
-            Return CType(Me("Visible_ViewFreezePanesGallery"),Boolean)
+            Return CType(Me("Option_PathFileListingSelect"),Boolean)
         End Get
         Set
-            Me("Visible_ViewFreezePanesGallery") = value
+            Me("Option_PathFileListingSelect") = value
         End Set
     End Property
     
     <Global.System.Configuration.UserScopedSettingAttribute(),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
-    Public Property Visible_RemoveDuplicates() As Boolean
+     Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+    Public Property Visible_btnClearInteriorColor() As Boolean
         Get
-            Return CType(Me("Visible_RemoveDuplicates"),Boolean)
+            Return CType(Me("Visible_btnClearInteriorColor"),Boolean)
         End Get
         Set
-            Me("Visible_RemoveDuplicates") = value
+            Me("Visible_btnClearInteriorColor") = value
         End Set
     End Property
     
     <Global.System.Configuration.UserScopedSettingAttribute(),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
-    Public Property Visible_btnCompareWorksheets() As Boolean
+     Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+    Public Property Visible_btnFileList() As Boolean
         Get
-            Return CType(Me("Visible_btnCompareWorksheets"),Boolean)
+            Return CType(Me("Visible_btnFileList"),Boolean)
         End Get
         Set
-            Me("Visible_btnCompareWorksheets") = value
+            Me("Visible_btnFileList") = value
         End Set
     End Property
 End Class
@@ -285,8 +465,8 @@ Namespace My
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute()>  _
     Friend Module MySettingsProperty
-
-        <Global.System.ComponentModel.Design.HelpKeywordAttribute("My.Settings")>
+        
+        <Global.System.ComponentModel.Design.HelpKeywordAttribute("My.Settings")>  _
         Friend ReadOnly Property Settings() As Global.ScriptHelp.MySettings
             Get
                 Return Global.ScriptHelp.MySettings.Default

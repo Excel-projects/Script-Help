@@ -2,62 +2,107 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="" GeneratedClassName="MySettings" UseMySettingsClassName="true">
   <Profiles />
   <Settings>
-    <Setting Name="TSQL_TEXT" Type="System.Int32" Scope="User">
+    <Setting Name="Column_TypeText" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="TSQL_QUOTE" Type="System.String" Scope="User">
+    <Setting Name="Table_ColumnScriptQuote" Type="System.String" Scope="User">
       <Value Profile="(Default)">'</Value>
     </Setting>
-    <Setting Name="TSQL_NUMERIC" Type="System.Int32" Scope="User">
+    <Setting Name="Column_TypeNumeric" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
-    <Setting Name="TSQL_NULL" Type="System.String" Scope="User">
+    <Setting Name="Table_ColumnScriptNull" Type="System.String" Scope="User">
       <Value Profile="(Default)">NULL</Value>
     </Setting>
-    <Setting Name="TSQL_DATE_PASTE_FORMAT" Type="System.String" Scope="User">
+    <Setting Name="Table_ColumnDateFormatFind" Type="System.String" Scope="User">
       <Value Profile="(Default)">mm:ss.0</Value>
     </Setting>
-    <Setting Name="TSQL_DATE_FORMAT" Type="System.String" Scope="User">
+    <Setting Name="Table_ColumnDateFormatReplace" Type="System.String" Scope="User">
       <Value Profile="(Default)">dd-mmm-yyyy</Value>
     </Setting>
-    <Setting Name="TSQL_DATE" Type="System.Int32" Scope="User">
+    <Setting Name="Column_TypeDate" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">2</Value>
     </Setting>
-    <Setting Name="SQL_COL_NAME" Type="System.String" Scope="User">
+    <Setting Name="Table_ColumnName" Type="System.String" Scope="User">
       <Value Profile="(Default)">SQL</Value>
     </Setting>
-    <Setting Name="CLEAN_CELL_COLOUR" Type="System.Drawing.Color" Scope="User">
+    <Setting Name="Table_ColumnCleanedColour" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">SkyBlue</Value>
     </Setting>
-    <Setting Name="Author" Type="System.String" Scope="Application">
+    <Setting Name="App_Author" Type="System.String" Scope="Application">
       <Value Profile="(Default)">Anthony Duguid</Value>
     </Setting>
-    <Setting Name="TSQL_QUERY_TYPE" Type="System.String" Scope="User">
-      <Value Profile="(Default)">INSERT</Value>
+    <Setting Name="App_PathReadMe" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://github.com/aduguid/ScriptHelp/blob/master/README.md</Value>
     </Setting>
-    <Setting Name="HelpFile" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\Temp</Value>
-    </Setting>
-    <Setting Name="Visible_btnForceColumnToDate" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="Visible_drpQueryType" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="Visible_ComAddInsDialog" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="Visible_FormatAsTableGallery" Type="System.Boolean" Scope="User">
+    <Setting Name="Visible_grpFormatDataTable" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="Visible_ViewFreezePanesGallery" Type="System.Boolean" Scope="User">
+    <Setting Name="App_PathDeploy" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://raw.githubusercontent.com/aduguid/ScriptHelp/master/publish/</Value>
+    </Setting>
+    <Setting Name="App_PathDeployData" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="App_PathLocalData" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="App_PathReportIssue" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://github.com/aduguid/ScriptHelp/issues/new</Value>
+    </Setting>
+    <Setting Name="App_ReleaseDate" Type="System.DateTime" Scope="User">
+      <Value Profile="(Default)">07/31/2017 13:05:00</Value>
+    </Setting>
+    <Setting Name="Table_ColumnSeparateValuesDelimiter" Type="System.String" Scope="User">
+      <Value Profile="(Default)">,</Value>
+    </Setting>
+    <Setting Name="Table_ColumnTableAlias" Type="System.String" Scope="User">
+      <Value Profile="(Default)">tbl</Value>
+    </Setting>
+    <Setting Name="Table_StyleName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">TableStyleMedium15</Value>
+    </Setting>
+    <Setting Name="Visible_grpClipboard" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Visible_grpScriptVariables" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Visible_mnuScriptType" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Visible_mnuScriptType_DQL" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Visible_mnuScriptType_Github" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Visible_mnuScriptType_PLSQL" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Visible_mnuScriptType_TSQL" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Visible_mnuScriptType_XML" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Visible_btnSeparateValues" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Visible_btnZeroToNull" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Option_PathFileListing" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Temp</Value>
+    </Setting>
+    <Setting Name="Option_PathFileListingSelect" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="Visible_RemoveDuplicates" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+    <Setting Name="Visible_btnClearInteriorColor" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="Visible_btnCompareWorksheets" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+    <Setting Name="Visible_btnFileList" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>
 </SettingsFile>

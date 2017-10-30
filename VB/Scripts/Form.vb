@@ -9,7 +9,7 @@ Imports System.Reflection
 
 Namespace Scripts
 
-	Module Form
+    Public Class Form
 
         ''' <summary> 
         ''' Set form icon
@@ -21,7 +21,7 @@ Namespace Scripts
                 currentForm.Icon = Icon.FromHandle(bmp.GetHicon)
 
             Catch ex As Exception
-                Call DisplayMessage(ex)
+                Call ErrorHandler.DisplayMessage(ex)
                 Exit Try
 
             End Try
@@ -66,12 +66,12 @@ Namespace Scripts
                         End If
                     Next
                 Catch ex As Exception
-                    Call DisplayMessage(ex)
+                    Call ErrorHandler.DisplayMessage(ex)
                 End Try
             End If
         End Sub
 
-    End Module
+    End Class
 
 
 End Namespace
