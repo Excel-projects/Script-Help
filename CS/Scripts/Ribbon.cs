@@ -306,8 +306,8 @@ namespace ScriptHelp.Scripts
             {
                 switch (control.Id)
                 {
-                    case "cboDateFormat":
-                    case "cboDatePasteFormat":
+                    case "cboDateFormatReplace":
+                    case "cboDateFormatFind":
                         return Data.DateFormatTable.Rows.Count;
                     case "cboTableAlias":
                         return Data.TableAliasTable.Rows.Count;
@@ -334,8 +334,8 @@ namespace ScriptHelp.Scripts
             {
                 switch (control.Id)
                 {
-                    case "cboDateFormat":
-                    case "cboDatePasteFormat":
+                    case "cboDateFormatReplace":
+                    case "cboDateFormatFind":
                         return UpdateDateFormatComboBoxSource(index);
                     case "cboTableAlias":
                         return UpdateTableAliasComboBoxSource(index);
@@ -361,9 +361,9 @@ namespace ScriptHelp.Scripts
             {
                 switch (control.Id)
                 {
-                    case "cboDateFormat":
+                    case "cboDateFormatReplace":
                         return Properties.Settings.Default.Table_ColumnDateFormatReplace;
-                    case "cboDatePasteFormat":
+                    case "cboDateFormatFind":
                         return Properties.Settings.Default.Table_ColumnDateFormatFind;
                     case "cboTableAlias":
                         return Properties.Settings.Default.Table_ColumnTableAlias;
@@ -550,9 +550,9 @@ namespace ScriptHelp.Scripts
                     case "btnScriptTypeXmlValues":
                         Formula.XmlValues();
                         break;
-                    case "btnDateFormat":
+                    case "btnDateFormatFind":
+                    case "btnDateFormatReplace":
                     case "btnTableAlias":
-                    case "btnPasteFormat":
                         AppVariables.TableName = control.Tag;
                         OpenTableDataPane();
                         break;
@@ -576,10 +576,10 @@ namespace ScriptHelp.Scripts
             {
                 switch (control.Id)
                 {
-                    case "cboDateFormat":
+                    case "cboDateFormatReplace":
                         Properties.Settings.Default.Table_ColumnDateFormatReplace = text;
                         break;
-                    case "cboDatePasteFormat":
+                    case "cboDateFormatFind":
                         Properties.Settings.Default.Table_ColumnDateFormatFind = text;
                         break;
                     case "cboTableAlias":

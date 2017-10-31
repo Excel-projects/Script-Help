@@ -358,7 +358,7 @@ Or use the following tag to remove all other ribbons when this loads
 							supertip="This is the table alias used as a prefix in the header and footer row in the script column."
 							/>
 					<comboBox
-							id="cboDatePasteFormat"
+							id="cboDateFormatFind"
 							label="Find Format: "
 							onChange="OnChange"
 							getText="GetText"
@@ -369,7 +369,7 @@ Or use the following tag to remove all other ribbons when this loads
 							supertip="This is the date format to find. It defaults to the format from SQL Server Management Studio after you paste records into Excel."
 							/>
 					<comboBox
-							id="cboDateFormat"
+							id="cboDateFormatReplace"
 							label="Replace Format: "
 							onChange="OnChange"
 							getText="GetText"
@@ -388,7 +388,7 @@ Or use the following tag to remove all other ribbons when this loads
 							tag="TableAlias"
 							/>
 					<button
-							id="btnDateFormat"
+							id="btnDateFormatFind"
 							label="..."
 							onAction="OnAction"
 							screentip="Open Date Format List"
@@ -396,7 +396,7 @@ Or use the following tag to remove all other ribbons when this loads
 							tag="DateFormat"
 							/>
 					<button
-							id="btnPasteFormat"
+							id="btnDateFormatReplace"
 							label="..."
 							onAction="OnAction"
 							screentip="Open Date Format List"
