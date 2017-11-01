@@ -36,8 +36,8 @@ This is an Excel Add-In written in Visual Studio Community 2017 C#/VB.NET and VB
           - <kbd><a href="#menu-markup" target="_blank"><img src="CS/Resources/ScriptTypeXML.png" title="Markup Language"/></a></kbd><a href="#menu-markup">  Markup Language</a>
     - <a href="#format-script-options">Script Variables</a>
         - <a href="#table-alias">Table Alias</a>  
-        - <a href="#date-format">Date Format</a>  
-        - <a href="#paste-format">Paste Format</a>  
+        - <a href="#date-format">Date Find Format</a>  
+        - <a href="#paste-format">Date Paste Format</a>  
     - <a href="#options">Options</a>
         - <a href="#settings">Add-In Settings</a>  
         - <a href="#create-file-list">Create File List</a>  
