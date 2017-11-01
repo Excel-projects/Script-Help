@@ -36,8 +36,8 @@ This is an Excel Add-In written in Visual Studio Community 2017 C#/VB.NET and VB
           - <kbd><a href="#menu-markup" target="_blank"><img src="CS/Resources/ScriptTypeXML.png" title="Markup Language"/></a></kbd><a href="#menu-markup">  Markup Language</a>
     - <a href="#format-script-options">Script Variables</a>
         - <a href="#table-alias">Table Alias</a>  
-        - <a href="#date-format">Date Find Format</a>  
-        - <a href="#paste-format">Date Paste Format</a>  
+        - <a href="#date-find-format">Date Find Format</a>  
+        - <a href="#date-paste-format">Date Paste Format</a>  
     - <a href="#options">Options</a>
         - <a href="#settings">Add-In Settings</a>  
         - <a href="#create-file-list">Create File List</a>  
@@ -232,17 +232,17 @@ Markup Language
 * Changes the prefix to the header and footer line script column
 * These values can be updated using the build button “…” to the right of the dropdown
 
-<a id="user-content-date-format" class="anchor" href="#date-format" aria-hidden="true"> </a>
-#### Date Format (Dropdown)
-* This is the date format the script uses to replace the formatting for date columns. 
-* It defaults to ‘dd-mmm-yyyy’, and can be changed by the dropdown value or free text
-* These values can be updated using the build button “…” to the right of the dropdown
-
-<a id="user-content-paste-format" class="anchor" href="#paste-format" aria-hidden="true"> </a>
-#### Paste Format (Dropdown)
+<a id="user-content-date-format" class="anchor" href="#date-find-format" aria-hidden="true"> </a>
+#### Date Find Format (Dropdown)
 * This is the format the script looks for to finds dates
 * It defaults to ‘mm:ss.0’, and can be changed by the dropdown value or free text
 * These values can be updated using the build button “…” to the right of the “Date Format” dropdown
+
+<a id="user-content-paste-format" class="anchor" href="#date-paste-format" aria-hidden="true"> </a>
+#### Date Paste Format (Dropdown)
+* This is the date format the script uses to replace the formatting for date columns. 
+* It defaults to ‘dd-mmm-yyyy’, and can be changed by the dropdown value or free text
+* These values can be updated using the build button “…” to the right of the dropdown
 
 <a id="user-content-options" class="anchor" href="#options" aria-hidden="true"> </a>
 ###	Options (Group)
