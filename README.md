@@ -246,7 +246,7 @@ Markup Language
 <a id="user-content-options" class="anchor" href="#options" aria-hidden="true"> </a>
 ###	Options (Group)
 <h1 align="left">
-  <img src="Images/ReadMe/ribbon.group.options1.png" />
+  <img src="Images/ReadMe/ribbon.group.options.png" />
 </h1>
 
 <a id="user-content-settings" class="anchor" href="#settings" aria-hidden="true"> </a>
@@ -312,7 +312,7 @@ VBA
 <a id="user-content-about" class="anchor" href="#about" aria-hidden="true"> </a>
 ###	About (Group)
 <h1 align="left">
-  <img src="Images/ReadMe/ribbon.group.about1.png" />
+  <img src="Images/ReadMe/ribbon.group.about.png" />
 </h1>
 
 <a id="user-content-description" class="anchor" href="#description" aria-hidden="true"> </a>
