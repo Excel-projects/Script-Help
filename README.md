@@ -137,7 +137,7 @@ These buttons have the following constraints:
 * Currently, there must be at least 2 rows in the table
 
 <h1 align="left">
-  <img src="Images/ReadMe/ribbon.button.cleandata.gif" />
+  <img src="Images/ReadMe/ribbon.button.cleandata.gif?" />
 </h1>
 
 <a id="user-content-convert-to-null" class="anchor" href="#convert-to-null" aria-hidden="true"> </a>
@@ -145,7 +145,7 @@ These buttons have the following constraints:
 * Replaces the zero string values in a named range with “NULL” text value.
 
 <h1 align="left">
-  <img src="Images/ReadMe/ribbon.button.converttonull.gif" />
+  <img src="Images/ReadMe/ribbon.button.converttonull.gif?" />
 </h1>
 
 <a id="user-content-format-date-columns" class="anchor" href="#format-date-columns" aria-hidden="true"> </a>
@@ -153,7 +153,7 @@ These buttons have the following constraints:
 * When data is cut and pasted from SSMS into Excel, for whatever reason, Excel chooses to format the dates with the (useless) format "mm:ss.0". This seems to be impossible to configure. 
 * This feature applies the format "dd-mmm-yyyy" to all date columns it detects in the active table.  If there are zero strings in the column instead of “NULL”s, then the column is treated as a string.
 <h1 align="left">
-  <img src="Images/ReadMe/ribbon.button.formatdatecolumns.gif" />
+  <img src="Images/ReadMe/ribbon.button.formatdatecolumns.gif?" />
 </h1>
 
 <a id="user-content-clear-interior-color" class="anchor" href="#clear-interior-color" aria-hidden="true"> </a>
@@ -164,7 +164,7 @@ These buttons have the following constraints:
 #### Separate Values (Button)
 * Separate values into new rows from the selected column by a delimited string value setting
 <h1 align="left">
-  <img src="Images/ReadMe/ribbon.button.separatevalues.gif" />
+  <img src="Images/ReadMe/ribbon.button.separatevalues.gif?" />
 </h1>
 
 <a id="user-content-add-script-column" class="anchor" href="#add-script-column" aria-hidden="true"> </a>
