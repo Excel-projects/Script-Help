@@ -92,7 +92,7 @@ This Excel ribbon is inserted after the “Home” tab when Excel opens. Listed 
 </h1>
 
 <a id="user-content-paste" class="anchor" href="#paste" aria-hidden="true"> </a>
-####	Paste (Button)
+####	Paste (Menu)
 * Paste the contents of the clipboard
 
 <a id="user-content-copy-visible-cells" class="anchor" href="#copy-visible-cells" aria-hidden="true"> </a>
