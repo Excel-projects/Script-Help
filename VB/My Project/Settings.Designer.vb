@@ -220,7 +220,7 @@ Partial Friend NotInheritable Class MySettings
     
     <Global.System.Configuration.UserScopedSettingAttribute(),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+     Global.System.Configuration.DefaultSettingValueAttribute("C:\Users\tduguid\Source\Repos\ScriptHelp2\VB\App_Data")>  _
     Public Property App_PathLocalData() As String
         Get
             Return CType(Me("App_PathLocalData"),String)

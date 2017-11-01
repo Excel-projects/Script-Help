@@ -21,12 +21,15 @@ Public Class Ribbon
     Public Shared myScript As Script
     Public Shared myTaskPaneScript As Microsoft.Office.Tools.CustomTaskPane
 
-    Public NotInheritable Class AppVariables
+    Public Shared myTableData As TableData
+    Public Shared myTaskPaneTableData As Microsoft.Office.Tools.CustomTaskPane
+
+
+    'Public NotInheritable Class AppVariables
+    Public Class AppVariables
         Private Sub New()
         End Sub
-        ''' <summary>
-        ''' variable used for sending the copied range to the form for export
-        ''' </summary>
+
         Public Shared Property ScriptRange() As String
             Get
                 Return m_ScriptRange
@@ -37,9 +40,6 @@ Public Class Ribbon
         End Property
         Private Shared m_ScriptRange As String
 
-        ''' <summary>
-        ''' variable used for saving the script file
-        ''' </summary>
         Public Shared Property FileType() As String
             Get
                 Return m_FileType
@@ -50,9 +50,6 @@ Public Class Ribbon
         End Property
         Private Shared m_FileType As String
 
-        ''' <summary>
-        ''' variable used for the table name used to populate a datagrid
-        ''' </summary>
         Public Shared Property TableName() As String
             Get
                 Return m_TableName
@@ -63,9 +60,6 @@ Public Class Ribbon
         End Property
         Private Shared m_TableName As String
 
-        ''' <summary>
-        ''' The first visible column name in the table
-        ''' </summary>
         Public Shared Property FirstColumnName() As String
             Get
                 Return m_FirstColumnName
@@ -82,12 +76,6 @@ Public Class Ribbon
     Public Sub New()
     End Sub
 
-    ''' <summary>
-    ''' Loads the XML markup, either from an XML customization file or from XML markup embedded in the procedure, that customizes the Ribbon user interface.
-    ''' </summary>
-    ''' <param name="ribbonID">Represents the XML customization file</param>
-    ''' <returns>A method that returns a bitmap image for the control id.</returns>
-    ''' <remarks></remarks>
     Public Function GetCustomUI(ByVal ribbonID As String) As String Implements Office.IRibbonExtensibility.GetCustomUI
         Return GetResourceText("ScriptHelp.Ribbon.xml")
     End Function
@@ -107,13 +95,35 @@ Public Class Ribbon
         Return Nothing
     End Function
 
-    ''' <summary>
-    ''' Load the ribbon
-    ''' </summary>
-    ''' <param name="ribbonUI">Represents the IRibbonUI instance that is provided by the Microsoft Office application to the Ribbon extensibility code.</param>
-    ''' <remarks></remarks>
     Public Sub Ribbon_Load(ByVal ribbonUI As Office.IRibbonUI)
-        Me.ribbon = ribbonUI
+        Try
+            Me.ribbon = ribbonUI
+            'ribbonref = Me
+            'ThisAddIn.e_ribbon = ribbonUI
+            'AssemblyInfo.SetAddRemoveProgramsIcon("ExcelAddin.ico")
+            'AssemblyInfo.SetAssemblyFolderVersion()
+            Data.SetServerPath()
+            Data.SetUserPath()
+            'ErrorHandler.SetLogPath()
+            ErrorHandler.CreateLogRecord()
+
+            'Dim destFilePath As String = Path.Combine(Properties.Settings.[Default].App_PathLocalData, AssemblyInfo.Product + ".sdf")
+            'If Not (File.Exists(destFilePath)) Then
+            ' Using client = New System.Net.WebClient()
+            'client.DownloadFile(Properties.Settings.[Default].App_PathDeployData + AssemblyInfo.Product + ".sdf.deploy", Path.Combine(Properties.Settings.[Default].App_PathLocalData, AssemblyInfo.Product + ".sdf"))
+
+            'End Using
+            'End If
+
+            Data.CreateTableAliasTable()
+            Data.CreateDateFormatTable()
+            Data.CreateGraphDataTable()
+
+        Catch ex As Exception
+            ErrorHandler.DisplayMessage(ex)
+
+        End Try
+
     End Sub
 
     Public Function GetButtonImage(ByVal control As Office.IRibbonControl) As System.Drawing.Bitmap
@@ -141,12 +151,6 @@ Public Class Ribbon
 
     End Function
 
-    ''' <summary>
-    ''' To assign text to controls on the ribbon from the xml file
-    ''' </summary>
-    ''' <param name="control">Represents the object passed into the callback procedure of a control in a ribbon or another user interface that can be customized by using Office Fluent ribbon extensibility.</param>
-    ''' <returns>A method that returns a string for a label. </returns>
-    ''' <remarks></remarks>
     Public Function GetLabelText(ByVal control As Office.IRibbonControl) As String
         Try
             Select Case control.Id.ToString
@@ -174,6 +178,38 @@ Public Class Ribbon
 
         End Try
 
+    End Function
+
+    Public Function GetItemCount(control As Office.IRibbonControl) As Integer
+        Try
+            Select Case control.Id
+                Case "cboDateFormatReplace", "cboDateFormatFind"
+                    Return Data.DateFormatTable.Rows.Count
+                Case "cboTableAlias"
+                    Return Data.TableAliasTable.Rows.Count
+                Case Else
+                    Return 0
+            End Select
+        Catch ex As Exception
+            ErrorHandler.DisplayMessage(ex)
+            Return 0
+        End Try
+    End Function
+
+    Public Function GetItemLabel(control As Office.IRibbonControl, index As Integer) As String
+        Try
+            Select Case control.Id
+                Case "cboDateFormatReplace", "cboDateFormatFind"
+                    Return UpdateDateFormatComboBoxSource(index)
+                Case "cboTableAlias"
+                    Return UpdateTableAliasComboBoxSource(index)
+                Case Else
+                    Return String.Empty
+            End Select
+        Catch ex As Exception
+            ErrorHandler.DisplayMessage(ex)
+            Return String.Empty
+        End Try
     End Function
 
     Public Sub GetSelectedItemID(ByVal Control As Office.IRibbonControl, ByRef itemID As Object)
@@ -313,9 +349,9 @@ Public Class Ribbon
                     Formula.TSqlUpdateValues()
                 Case "btnScriptTypeXmlValues"
                     Formula.XmlValues()
-                Case "btnDateFormat", "btnTableAlias", "btnPasteFormat"
-                    'AppVariables.TableName = Control.Tag
-                    'OpenTableDataPane()
+                Case "btnDateFormatFind", "btnTableAlias", "btnDateFormatReplace"
+                    AppVariables.TableName = Control.Tag
+                    OpenTableDataPane()
             End Select
 
         Catch ex As Exception
@@ -324,6 +360,42 @@ Public Class Ribbon
         End Try
 
     End Sub
+
+    Public Sub OnChange(control As Office.IRibbonControl, text As String)
+        Try
+            Select Case control.Id
+                Case "cboDateFormatReplace"
+                    My.Settings.Table_ColumnDateFormatReplace = text
+                    Exit Select
+                Case "cboDateFormatFind"
+                    My.Settings.Table_ColumnDateFormatFind = text
+                    Exit Select
+                Case "cboTableAlias"
+                    My.Settings.Table_ColumnTableAlias = text
+                    Exit Select
+            End Select
+        Catch ex As Exception
+            ErrorHandler.DisplayMessage(ex)
+        End Try
+    End Sub
+
+    Public Function GetText(control As Office.IRibbonControl) As String
+        Try
+            Select Case control.Id
+                Case "cboDateFormatReplace"
+                    Return My.Settings.Table_ColumnDateFormatReplace
+                Case "cboDateFormatFind"
+                    Return My.Settings.Table_ColumnDateFormatFind
+                Case "cboTableAlias"
+                    Return My.Settings.Table_ColumnTableAlias
+                Case Else
+                    Return String.Empty
+            End Select
+        Catch ex As Exception
+            ErrorHandler.DisplayMessage(ex)
+            Return String.Empty
+        End Try
+    End Function
 
     Public Function GetVisible(ByVal Control As Office.IRibbonControl) As Boolean
         Try
@@ -786,6 +858,26 @@ Public Class Ribbon
 
     End Sub
 
+    Public Sub OpenTableDataPane()
+        Try
+            If myTaskPaneTableData IsNot Nothing Then
+                myTaskPaneTableData.Dispose()
+                myTableData.Dispose()
+            End If
+            myTableData = New TableData()
+            myTaskPaneTableData = Globals.ThisAddIn.CustomTaskPanes.Add(myTableData, "List of " + ribbon.AppVariables.TableName + " for " + My.Application.Info.Title)
+            myTaskPaneTableData.DockPosition = Office.MsoCTPDockPosition.msoCTPDockPositionRight
+            myTaskPaneTableData.DockPositionRestrict = Office.MsoCTPDockPositionRestrict.msoCTPDockPositionRestrictNoChange
+            myTaskPaneTableData.Width = 300
+
+            myTaskPaneTableData.Visible = True
+
+        Catch ex As Exception
+            ErrorHandler.DisplayMessage(ex)
+        End Try
+
+    End Sub
+
 #End Region
 
 #Region "  Subroutines  "
@@ -1018,6 +1110,25 @@ Public Class Ribbon
         End Try
 
     End Sub
+
+    Public Function UpdateTableAliasComboBoxSource(itemIndex As Integer) As String
+        Try
+            Return Data.TableAliasTable.Rows(itemIndex)("TableName").ToString()
+        Catch ex As Exception
+            ErrorHandler.DisplayMessage(ex)
+            Return String.Empty
+        End Try
+
+    End Function
+
+    Public Function UpdateDateFormatComboBoxSource(itemIndex As Integer) As String
+        Try
+            Return Data.DateFormatTable.Rows(itemIndex)("FormatString").ToString()
+        Catch ex As Exception
+            ErrorHandler.DisplayMessage(ex)
+            Return String.Empty
+        End Try
+    End Function
 
 #End Region
 

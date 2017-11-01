@@ -11,10 +11,10 @@ Public Class TableData
             Me.Text = "List of " + tableName
             Select Case tableName
                 Case "TableAlias"
-                    'dgvList.DataSource = Data.TableAliasTable
+                    dgvList.DataSource = Data.TableAliasTable
                     Exit Select
                 Case "DateFormat"
-                    'dgvList.DataSource = Data.DateFormatTable
+                    dgvList.DataSource = Data.DateFormatTable
                     Exit Select
             End Select
 
@@ -36,7 +36,7 @@ Public Class TableData
             End If
 
             Dim tableName As String = Ribbon.AppVariables.TableName
-            'string sql = "SELECT * FROM @tableName";
+            'String sql = "SELECT * FROM @tableName";
             Dim sql As String = Convert.ToString("SELECT * FROM ") & tableName
             Dim cn As New SqlCeConnection(Data.Connection())
             Dim scb As SqlCeCommandBuilder = Nothing

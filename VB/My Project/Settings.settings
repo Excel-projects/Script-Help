@@ -45,7 +45,7 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="App_PathLocalData" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">C:\Users\tduguid\Source\Repos\ScriptHelp2\VB\App_Data</Value>
     </Setting>
     <Setting Name="App_PathReportIssue" Type="System.String" Scope="User">
       <Value Profile="(Default)">https://github.com/aduguid/ScriptHelp/issues/new</Value>
