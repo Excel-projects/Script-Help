@@ -170,7 +170,7 @@ These buttons have the following constraints:
 <a id="user-content-add-script-column" class="anchor" href="#add-script-column" aria-hidden="true"> </a>
 #### Add Script Column (Menu Buttons)
 <h1 align="left">
-  <img src="Images/ReadMe/ribbon.button.addscriptcolumn.gif" />
+  <img src="Images/ReadMe/ribbon.button.addscriptcolumn.gif?" />
 </h1>
 
 <a id="user-content-menu-tsql" class="anchor" href="#menu-tsql" aria-hidden="true"> </a>
