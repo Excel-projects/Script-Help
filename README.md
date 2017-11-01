@@ -223,7 +223,7 @@ Markup Language
 <a id="user-content-format-script-options" class="anchor" href="#format-script-options" aria-hidden="true"> </a>
 ###	Script Variables (Group)
 <h1 align="left">
-  <img src="Images/ReadMe/ribbon.group.scriptvariables.png" />
+  <img src="Images/ReadMe/ribbon.group.scriptvariables.png?" />
 </h1>
 
 <a id="user-content-table-alias" class="anchor" href="#table-alias" aria-hidden="true"> </a>
