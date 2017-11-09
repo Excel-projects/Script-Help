@@ -10,7 +10,6 @@ This is an Excel Add-In written in Visual Studio Community 2017 C#/VB.NET and VB
 
   <img src="Images/ReadMe/ribbon.png" />
 
-
 ## Table of Contents
 - <a href="#dependencies">Dependencies</a>
 - <a href="#glossary-of-terms">Glossary of Terms</a>
@@ -36,8 +35,8 @@ This is an Excel Add-In written in Visual Studio Community 2017 C#/VB.NET and VB
           - <kbd><a href="#menu-markup" target="_blank"><img src="CS/Resources/ScriptTypeXML.png" title="Markup Language"/></a></kbd><a href="#menu-markup">  Markup Language</a>
     - <a href="#format-script-options">Script Variables</a>
         - <a href="#table-alias">Table Alias</a>  
-        - <a href="#date-format">Date Format</a>  
-        - <a href="#paste-format">Paste Format</a>  
+        - <a href="#date-find-format">Find Format</a>  
+        - <a href="#date-replace-format">Replace Format</a>  
     - <a href="#options">Options</a>
         - <a href="#settings">Add-In Settings</a>  
         - <a href="#create-file-list">Create File List</a>  
@@ -93,7 +92,7 @@ This Excel ribbon is inserted after the “Home” tab when Excel opens. Listed 
 </h1>
 
 <a id="user-content-paste" class="anchor" href="#paste" aria-hidden="true"> </a>
-####	Paste (Button)
+####	Paste (Menu)
 * Paste the contents of the clipboard
 
 <a id="user-content-copy-visible-cells" class="anchor" href="#copy-visible-cells" aria-hidden="true"> </a>
@@ -232,22 +231,22 @@ Markup Language
 * Changes the prefix to the header and footer line script column
 * These values can be updated using the build button “…” to the right of the dropdown
 
-<a id="user-content-date-format" class="anchor" href="#date-format" aria-hidden="true"> </a>
-#### Date Format (Dropdown)
-* This is the date format the script uses to replace the formatting for date columns. 
-* It defaults to ‘dd-mmm-yyyy’, and can be changed by the dropdown value or free text
-* These values can be updated using the build button “…” to the right of the dropdown
-
-<a id="user-content-paste-format" class="anchor" href="#paste-format" aria-hidden="true"> </a>
-#### Paste Format (Dropdown)
+<a id="user-content-date-find-format" class="anchor" href="#date-find-format" aria-hidden="true"> </a>
+#### Date Find Format (Dropdown)
 * This is the format the script looks for to finds dates
 * It defaults to ‘mm:ss.0’, and can be changed by the dropdown value or free text
 * These values can be updated using the build button “…” to the right of the “Date Format” dropdown
 
+<a id="user-content-date-replace-format" class="anchor" href="#date-replace-format" aria-hidden="true"> </a>
+#### Date Replace Format (Dropdown)
+* This is the date format the script uses to replace the formatting for date columns. 
+* It defaults to ‘dd-mmm-yyyy’, and can be changed by the dropdown value or free text
+* These values can be updated using the build button “…” to the right of the dropdown
+
 <a id="user-content-options" class="anchor" href="#options" aria-hidden="true"> </a>
 ###	Options (Group)
 <h1 align="left">
-  <img src="Images/ReadMe/ribbon.group.options1.png" />
+  <img src="Images/ReadMe/ribbon.group.options.png" />
 </h1>
 
 <a id="user-content-settings" class="anchor" href="#settings" aria-hidden="true"> </a>
@@ -313,7 +312,7 @@ VBA
 <a id="user-content-about" class="anchor" href="#about" aria-hidden="true"> </a>
 ###	About (Group)
 <h1 align="left">
-  <img src="Images/ReadMe/ribbon.group.about1.png" />
+  <img src="Images/ReadMe/ribbon.group.about.png" />
 </h1>
 
 <a id="user-content-description" class="anchor" href="#description" aria-hidden="true"> </a>
