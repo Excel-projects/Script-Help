@@ -32,6 +32,9 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnSave = new System.Windows.Forms.ToolStripButton();
             this.btnCopy = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.lblFontSize = new System.Windows.Forms.ToolStripLabel();
+            this.cboFontSize = new System.Windows.Forms.ToolStripComboBox();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -41,7 +44,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtScript.BackColor = System.Drawing.Color.White;
-            this.txtScript.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtScript.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtScript.Location = new System.Drawing.Point(3, 28);
             this.txtScript.Name = "txtScript";
             this.txtScript.Size = new System.Drawing.Size(644, 719);
@@ -53,7 +56,10 @@
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnSave,
-            this.btnCopy});
+            this.btnCopy,
+            this.toolStripSeparator1,
+            this.lblFontSize,
+            this.cboFontSize});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(650, 25);
@@ -80,6 +86,28 @@
             this.btnCopy.ToolTipText = "Copy script text";
             this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator1.Visible = false;
+            // 
+            // lblFontSize
+            // 
+            this.lblFontSize.Name = "lblFontSize";
+            this.lblFontSize.Size = new System.Drawing.Size(54, 22);
+            this.lblFontSize.Text = "Font Size";
+            this.lblFontSize.Visible = false;
+            // 
+            // cboFontSize
+            // 
+            this.cboFontSize.Name = "cboFontSize";
+            this.cboFontSize.Size = new System.Drawing.Size(75, 25);
+            this.cboFontSize.Visible = false;
+            this.cboFontSize.TextUpdate += new System.EventHandler(this.cboFontSize_TextUpdate);
+            this.cboFontSize.Click += new System.EventHandler(this.cboFontSize_Click);
+            this.cboFontSize.TextChanged += new System.EventHandler(this.cboFontSize_TextChanged);
+            // 
             // Script
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -103,5 +131,8 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton btnSave;
         private System.Windows.Forms.ToolStripButton btnCopy;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripLabel lblFontSize;
+        private System.Windows.Forms.ToolStripComboBox cboFontSize;
     }
 }

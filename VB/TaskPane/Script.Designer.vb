@@ -63,7 +63,7 @@ Partial Class Script
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtScript.BackColor = System.Drawing.Color.White
-        Me.txtScript.Font = New System.Drawing.Font("Courier New", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtScript.Font = New System.Drawing.Font("Courier New", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtScript.Location = New System.Drawing.Point(3, 30)
         Me.txtScript.Name = "txtScript"
         Me.txtScript.Size = New System.Drawing.Size(644, 719)

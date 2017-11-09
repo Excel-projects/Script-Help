@@ -15,6 +15,8 @@ Public Class Ribbon
     Implements Office.IRibbonExtensibility
     Private ribbon As Office.IRibbonUI
 
+    Public Shared ribbonref As Office.IRibbonUI
+
     Public Shared mySettings As Settings
     Public Shared myTaskPaneSettings As Microsoft.Office.Tools.CustomTaskPane
 
@@ -98,7 +100,8 @@ Public Class Ribbon
     Public Sub Ribbon_Load(ByVal ribbonUI As Office.IRibbonUI)
         Try
             Me.ribbon = ribbonUI
-            'ribbonref = Me
+            'ribbonref = Me.ribbon
+            ribbonref = ribbon
             'ThisAddIn.e_ribbon = ribbonUI
             'AssemblyInfo.SetAddRemoveProgramsIcon("ExcelAddin.ico")
             'AssemblyInfo.SetAssemblyFolderVersion()
@@ -865,7 +868,7 @@ Public Class Ribbon
                 myTableData.Dispose()
             End If
             myTableData = New TableData()
-            myTaskPaneTableData = Globals.ThisAddIn.CustomTaskPanes.Add(myTableData, "List of " + ribbon.AppVariables.TableName + " for " + My.Application.Info.Title)
+            myTaskPaneTableData = Globals.ThisAddIn.CustomTaskPanes.Add(myTableData, "List of " + AppVariables.TableName + " for " + My.Application.Info.Title)
             myTaskPaneTableData.DockPosition = Office.MsoCTPDockPosition.msoCTPDockPositionRight
             myTaskPaneTableData.DockPositionRestrict = Office.MsoCTPDockPositionRestrict.msoCTPDockPositionRestrictNoChange
             myTaskPaneTableData.Width = 300
@@ -874,6 +877,7 @@ Public Class Ribbon
 
         Catch ex As Exception
             ErrorHandler.DisplayMessage(ex)
+
         End Try
 
     End Sub

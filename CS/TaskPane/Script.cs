@@ -12,12 +12,23 @@ namespace ScriptHelp.TaskPane
     /// </summary>
     public partial class Script : UserControl
     {
+        public float[] FontSize ={8,9,10,12,14,16,18,20,22,24,26,28,36,48,72};
+        public string[] FontSizeName ={"8","9","10","12","14","16","18","20","22","24","26","28","36","48","72"};
+        private string fontName;
+        private int fontSize;
+
         /// <summary>
         /// Initialize the controls in the object
         /// </summary>
         public Script()
         {
             InitializeComponent();
+            //foreach (string name in FontSizeName)
+            //{
+            //    this.cboFontSize.Items.Add(name);
+            //    this.cboFontSize.SelectedItem = "10";
+            //}
+
         }
 
         /// <summary>
@@ -36,10 +47,10 @@ namespace ScriptHelp.TaskPane
                 syntaxHighlighter.AddPattern(new PatternDefinition("''"), new SyntaxStyle(Color.Red));
                 // single quote strings
                 syntaxHighlighter.AddPattern(new PatternDefinition(@"\'([^']|\'\')+\'"), new SyntaxStyle(Color.Red));
-				// in brackets
-				//syntaxHighlighter.AddPattern(new PatternDefinition(@"\[([^']|\'\')+\]"), new SyntaxStyle(Color.Black));  //was messing up the color for CREATE table statement, not sure if I need this
-				// keywords1
-				syntaxHighlighter.AddPattern(new PatternDefinition("XACT_ABORT", "BEGIN", "DELETE", "ROLLBACK", "COMMIT", "CREATE", "TABLE", "TRAN", "TRANSACTION", "OUTPUT", "USING", "BY", "TARGET", "WITH", "AS", "VALUES", "MERGE", "ON", "WHEN", "THEN", "UNION", "UPDATE", "SET", "WHERE", "GO", "APPEND", "INSERT", "INTO", "TRUNCATE", "REMOVE", "SELECT", "FROM", "TYPE", "FOLDER", "CABINET", "ORDER BY", "DESC", "ASC", "GROUP BY", "ALTER", "ADD", "DROP", "GROUP", "PRIMARY", "KEY", "IDENTITY", "IF"), new SyntaxStyle(Color.Blue));
+                // in brackets
+                //syntaxHighlighter.AddPattern(new PatternDefinition(@"\[([^']|\'\')+\]"), new SyntaxStyle(Color.Black));  //was messing up the color for CREATE table statement, not sure if I need this
+                // keywords1
+                syntaxHighlighter.AddPattern(new PatternDefinition("XACT_ABORT", "BEGIN", "DELETE", "ROLLBACK", "COMMIT", "CREATE", "TABLE", "TRAN", "TRANSACTION", "OUTPUT", "USING", "BY", "TARGET", "WITH", "AS", "VALUES", "MERGE", "ON", "WHEN", "THEN", "UNION", "UPDATE", "SET", "WHERE", "GO", "APPEND", "INSERT", "INTO", "TRUNCATE", "REMOVE", "SELECT", "FROM", "TYPE", "FOLDER", "CABINET", "ORDER BY", "DESC", "ASC", "GROUP BY", "ALTER", "ADD", "DROP", "GROUP", "PRIMARY", "KEY", "IDENTITY", "IF"), new SyntaxStyle(Color.Blue));
                 // keywords2
                 syntaxHighlighter.AddPattern(new PatternDefinition("OBJECTS", "objects", "SYS", "sys"), new SyntaxStyle(Color.Green));
                 // functions
@@ -100,13 +111,13 @@ namespace ScriptHelp.TaskPane
                     case "DQL":
                         UpdateDqlSyntax();
                         break;
-					case "TXT":
-						UpdateSqlSyntax();
-						break;
-					case "XML":
-						UpdateSqlSyntax();
-						break;
-				}
+                    case "TXT":
+                        UpdateSqlSyntax();
+                        break;
+                    case "XML":
+                        UpdateSqlSyntax();
+                        break;
+                }
                 txtScript.Text = Ribbon.AppVariables.ScriptRange;
 
             }
@@ -156,15 +167,15 @@ namespace ScriptHelp.TaskPane
                         s.FileName = "Update_" + Ribbon.AppVariables.FirstColumnName + ".dql";
                         s.Filter = "Documentum Query Language | *.dql";
                         break;
-					case "TXT":
-						s.FileName = Properties.Settings.Default.Table_ColumnTableAlias + ".txt";
-						s.Filter = "Text File | *.txt";
-						break;
-					case "XML":
-						s.FileName = Properties.Settings.Default.Table_ColumnTableAlias + ".xml";
-						s.Filter = "Extensible Markup Language | *.xml";
-						break;
-				}
+                    case "TXT":
+                        s.FileName = Properties.Settings.Default.Table_ColumnTableAlias + ".txt";
+                        s.Filter = "Text File | *.txt";
+                        break;
+                    case "XML":
+                        s.FileName = Properties.Settings.Default.Table_ColumnTableAlias + ".xml";
+                        s.Filter = "Extensible Markup Language | *.xml";
+                        break;
+                }
                 if (s.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     using (System.IO.StreamWriter sw = new System.IO.StreamWriter(s.FileName))
@@ -183,5 +194,24 @@ namespace ScriptHelp.TaskPane
             }
         }
 
+        private void cboFontSize_TextChanged(object sender, EventArgs e)
+        {
+            //this.txtScript.FontSize = this.cboFontSize.Text;
+            //this.txtScript.SelectionFont = new Font("Courier New", (float)Convert.ToDouble(this.cboFontSize.Text), FontStyle.Regular);
+            //this.txtScript.SelectionFont = new Font("Courier New", 12, FontStyle.Regular);
+        }
+
+        private void cboFontSize_TextUpdate(object sender, EventArgs e)
+        {
+            //float fontSize = FontSize[this.cboFontSize.SelectedIndex];
+            //this.txtScript.Focus();
+            //this.txtScript.SelectAll();
+            //this.txtScript.SelectionFont = new Font(this.txtScript.SelectionFont.FontFamily, fontSize, this.txtScript.SelectionFont.Style);
+        }
+
+        private void cboFontSize_Click(object sender, EventArgs e)
+        {
+            //this.txtScript.SelectionFont = new Font(this.txtScript.SelectionFont.FontFamily, FontSize[this.cboFontSize.SelectedIndex], this.txtScript.SelectionFont.Style);
+        }
     }
 }
