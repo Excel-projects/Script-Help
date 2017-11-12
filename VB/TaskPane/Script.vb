@@ -1,4 +1,5 @@
 ﻿Imports System.Windows.Forms
+Imports ScriptHelp.Scripts
 
 'Namespace ScriptHelp.TaskPane
 
@@ -22,7 +23,7 @@ Public Class Script
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         Try
             Dim s As New SaveFileDialog()
-            Select Case Ribbon.AppVariables.FileType
+            Select Case Scripts.Ribbon.AppVariables.FileType
                 Case "SQL"
                     s.FileName = "Update_" + My.Settings.Table_ColumnTableAlias + ".sql"
                     s.Filter = "Structured Query Language | *.sql"

@@ -3,7 +3,6 @@ Imports System.Reflection
 
 'Namespace ScriptHelp.TaskPane
 Imports ScriptHelp.Scripts
-Imports ScriptHelp.Ribbon
 
 Public Class Settings
 
@@ -50,7 +49,7 @@ Public Class Settings
 
     Private Sub pgdSettings_PropertyValueChanged(s As Object, e As PropertyValueChangedEventArgs) Handles pgdSettings.PropertyValueChanged
         Try
-            ribbonref.InvalidateRibbon()
+            Scripts.Ribbon.ribbonref.InvalidateRibbon()
 
         Catch ex As Exception
             ErrorHandler.DisplayMessage(ex)

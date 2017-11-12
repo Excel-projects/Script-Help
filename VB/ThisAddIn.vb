@@ -1,6 +1,8 @@
 ﻿Option Strict On
 Option Explicit On
 
+Imports ScriptHelp.Scripts
+
 Public Class ThisAddIn
 
     Protected Overrides Function CreateRibbonExtensibilityObject() As Microsoft.Office.Core.IRibbonExtensibility

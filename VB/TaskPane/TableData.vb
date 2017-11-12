@@ -1,5 +1,6 @@
 ﻿Imports System.Windows.Forms
 Imports System.Data.SqlServerCe
+Imports ScriptHelp.Scripts
 
 Public Class TableData
 
