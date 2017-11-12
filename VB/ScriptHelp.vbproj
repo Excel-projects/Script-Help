@@ -246,6 +246,17 @@
     <Compile Include="Scripts\Form.vb" />
     <Compile Include="Scripts\Formula.vb" />
     <Compile Include="Scripts\Ribbon.vb" />
+    <Compile Include="Scripts\Syntax\CaseInsensitivePatternDefinition.vb" />
+    <Compile Include="Scripts\Syntax\ColorUtils.vb" />
+    <Compile Include="Scripts\Syntax\Expression.vb" />
+    <Compile Include="Scripts\Syntax\ExpressionType.vb" />
+    <Compile Include="Scripts\Syntax\PatternDefinition.vb" />
+    <Compile Include="Scripts\Syntax\PatternStyleMap.vb" />
+    <Compile Include="Scripts\Syntax\StringExtensions.vb" />
+    <Compile Include="Scripts\Syntax\StyleGroupPair.vb" />
+    <Compile Include="Scripts\Syntax\SyntaxHighlighter.vb" />
+    <Compile Include="Scripts\Syntax\SyntaxStyle.vb" />
+    <Compile Include="Scripts\Syntax\TextBoxBaseExtensions.vb" />
     <Compile Include="TaskPane\GraphData.Designer.vb">
       <DependentUpon>GraphData.vb</DependentUpon>
     </Compile>
@@ -367,6 +378,7 @@
   <ItemGroup>
     <Service Include="{94E38DFF-614B-4CBD-B67C-F211BB35CE8B}" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
