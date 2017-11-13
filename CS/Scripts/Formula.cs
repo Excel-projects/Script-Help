@@ -1304,7 +1304,7 @@ namespace ScriptHelp.Scripts
                 Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
                 string lastColumnName = Properties.Settings.Default.Table_ColumnTableAlias;
                 string tableAlias = Properties.Settings.Default.Table_ColumnTableAlias;
-                string tableAliasTemp = tableAlias + "_temp";
+                string tableAliasTemp = tableAlias + "_source";
                 string sqlColName = string.Empty;
 
                 sqlColName = "SELECT " + tableAliasTemp + ".*" + " FROM (VALUES";
@@ -1976,7 +1976,7 @@ namespace ScriptHelp.Scripts
                 Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
                 string lastColumnName = Properties.Settings.Default.Table_ColumnTableAlias;
                 string tableAlias = Properties.Settings.Default.Table_ColumnTableAlias;
-                string tableAliasTemp = tableAlias + "_temp";
+                string tableAliasTemp = tableAlias + "_source";
                 string sqlColName = string.Empty;
 
                 sqlColName = "SELECT " + tableAliasTemp + ".*" + " FROM (VALUES";

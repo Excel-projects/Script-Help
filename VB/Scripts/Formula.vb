@@ -1081,7 +1081,7 @@ Namespace Scripts
                 Cursor.Current = System.Windows.Forms.Cursors.WaitCursor
                 Dim lastColumnName As String = My.Settings.Table_ColumnTableAlias
                 Dim tableAlias As String = My.Settings.Table_ColumnTableAlias
-                Dim tableAliasTemp As String = tableAlias & Convert.ToString("_temp")
+                Dim tableAliasTemp As String = tableAlias & Convert.ToString("_source")
                 Dim sqlColName As String = String.Empty
 
                 sqlColName = (Convert.ToString("SELECT ") & tableAliasTemp) + ".*" + " FROM (VALUES"
@@ -1620,7 +1620,7 @@ Namespace Scripts
                 Cursor.Current = System.Windows.Forms.Cursors.WaitCursor
                 Dim lastColumnName As String = My.Settings.Table_ColumnTableAlias
                 Dim tableAlias As String = My.Settings.Table_ColumnTableAlias
-                Dim tableAliasTemp As String = tableAlias & Convert.ToString("_temp")
+                Dim tableAliasTemp As String = tableAlias & Convert.ToString("_source")
                 Dim sqlColName As String = String.Empty
 
                 sqlColName = (Convert.ToString("SELECT ") & tableAliasTemp) + ".*" + " FROM (VALUES"
