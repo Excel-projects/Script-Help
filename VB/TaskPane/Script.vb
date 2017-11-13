@@ -1,9 +1,9 @@
 ﻿Imports System.Windows.Forms
 Imports ScriptHelp.Scripts
 
-'Namespace ScriptHelp.TaskPane
 
-Public Class Script
+Partial Public Class Script
+    Inherits UserControl
 
     Public Sub New()
         InitializeComponent()
@@ -15,7 +15,7 @@ Public Class Script
             Me.txtScript.Copy()
 
         Catch ex As Exception
-            'ErrorHandler.DisplayMessage(ex)
+            ErrorHandler.DisplayMessage(ex)
         End Try
 
     End Sub
@@ -50,7 +50,7 @@ Public Class Script
             End If
 
         Catch ex As Exception
-            'ErrorHandler.DisplayMessage(ex)
+            ErrorHandler.DisplayMessage(ex)
         End Try
 
     End Sub
@@ -60,5 +60,3 @@ Public Class Script
     End Sub
 
 End Class
-
-'End Namespace

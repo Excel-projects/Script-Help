@@ -1,3 +1,11 @@
-﻿Public Class GraphData
+﻿
+Namespace Scripts
+    Namespace TaskPane
 
-End Class
+        Partial Public Class GraphData
+            'Inherits UserControl
+
+        End Class
+
+    End Namespace
+End Namespace

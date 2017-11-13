@@ -1,10 +1,9 @@
 ﻿Imports System.Windows.Forms
 Imports System.Reflection
-
-'Namespace ScriptHelp.TaskPane
 Imports ScriptHelp.Scripts
 
-Public Class Settings
+Partial Public Class Settings
+    Inherits UserControl
 
     Public Sub New()
         Try
@@ -59,5 +58,3 @@ Public Class Settings
     End Sub
 
 End Class
-
-'End Namespace

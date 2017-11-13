@@ -2,7 +2,8 @@
 Imports System.Data.SqlServerCe
 Imports ScriptHelp.Scripts
 
-Public Class TableData
+Partial Public Class TableData
+    Inherits UserControl
 
     Public Sub New()
         InitializeComponent()
@@ -22,7 +23,7 @@ Public Class TableData
             Me.dgvList.Columns(0).Width = dgvList.Width - 75
 
         Catch ex As Exception
-            'ErrorHandler.DisplayMessage(ex)
+            ErrorHandler.DisplayMessage(ex)
 
         End Try
 
@@ -55,11 +56,10 @@ Public Class TableData
                     Data.CreateDateFormatTable()
                     Exit Select
             End Select
-
-            'Ribbon.ribbonref.InvalidateRibbon()
+            Ribbon.ribbonref.InvalidateRibbon()
 
         Catch ex As Exception
-            'ErrorHandler.DisplayMessage(ex)
+            ErrorHandler.DisplayMessage(ex)
 
         End Try
 
