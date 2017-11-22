@@ -10,7 +10,8 @@ This is an Excel Add-In written in Visual Studio Community 2017 C#/VB.NET and VB
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE "MIT License Copyright © 2017 Anthony Duguid")
 [![Contributors](https://img.shields.io/github/contributors/aduguid/ScriptHelp.svg)](https://github.com/aduguid/ScriptHelp/graphs/contributors)
-[![ScriptHelp_followed](https://img.shields.io/badge/ScriptHelp-followed-brightgreen.svg)](https://github.com/aduguid/ScriptHelp/)
+[![star this repo](http://githubbadges.com/star.svg?user=aduguid&repo=ScriptHelp&style=flat&color=fff&background=007ec6)](http://github.com/aduguid/ScriptHelp)
+[![fork this repo](http://githubbadges.com/fork.svg?user=aduguid&repo=ScriptHelp&style=flat&color=fff&background=007ec6)](http://github.com/aduguid/ScriptHelp/fork)
 
   <img src="Images/ReadMe/ribbon.png" />
 
