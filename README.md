@@ -9,6 +9,8 @@
 This is an Excel Add-In written in Visual Studio Community 2017 C#/VB.NET and VBA. This is used for bulk data loads into SQL Server, Oracle, Documentum, Markup and Markdown Languages. The functionality within the ribbon allows a quick way of preparing a bulk data load.  Otherwise, the requests can be both time-consuming and error prone. This has now been tested on Windows (7, 8.1, 10) & Excel (2010, 2013, 2016).
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE "MIT License Copyright © 2017 Anthony Duguid")
+[![Contributors](https://img.shields.io/github/contributors/aduguid/ScriptHelp.svg)](https://github.com/aduguid/ScriptHelp/graphs/contributors)
+[![ScriptHelp_followed](https://img.shields.io/badge/ScriptHelp-followed-brightgreen.svg)](https://github.com/aduguid/ScriptHelp/)
 
   <img src="Images/ReadMe/ribbon.png" />
 
