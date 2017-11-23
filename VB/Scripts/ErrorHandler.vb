@@ -28,11 +28,10 @@ Namespace Scripts
             Dim currentFileName As String = "" 'AssemblyInfo.GetCurrentFileName()
             Dim errorMessageDescription As String = ex.ToString()
             errorMessageDescription = System.Text.RegularExpressions.Regex.Replace(errorMessageDescription, "\r\n+", " ")
-            'the carriage returns were messing up my log file
             Dim msg As String = "Contact your system administrator. A record has been created in the log file." + Environment.NewLine
             msg += (Convert.ToString("Procedure: ") & currentProcedure) + Environment.NewLine
             msg += "Description: " + ex.ToString() + Environment.NewLine
-            'log.[Error](Convert.ToString((Convert.ToString((Convert.ToString("[PROCEDURE]=|") & currentProcedure) + "|[USER NAME]=|" + Environment.UserName + "|[MACHINE NAME]=|" + Environment.MachineName + "|[FILE NAME]=|") & currentFileName) + "|[DESCRIPTION]=|") & errorMessageDescription)
+            'log.Error("[PROCEDURE]=|" + currentProcedure + "|[USER NAME]=|" + Environment.UserName + "|[MACHINE NAME]=|" + Environment.MachineName + "|[DESCRIPTION]=|" + errorMessageDescription)
             If isSilent = False Then
                 MessageBox.Show(msg, "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.[Error])
             End If

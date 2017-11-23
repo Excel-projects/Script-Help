@@ -249,9 +249,7 @@
     <Compile Include="TaskPane\GraphData.Designer.vb">
       <DependentUpon>GraphData.vb</DependentUpon>
     </Compile>
-    <Compile Include="TaskPane\GraphData.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="TaskPane\GraphData.vb" />
     <Compile Include="TaskPane\Script.Designer.vb">
       <DependentUpon>Script.vb</DependentUpon>
     </Compile>
@@ -313,7 +311,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Ribbon.xml" />
+    <EmbeddedResource Include="Ribbon.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="SSCE">

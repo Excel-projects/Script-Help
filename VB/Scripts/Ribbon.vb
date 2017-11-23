@@ -1,12 +1,12 @@
 ﻿Option Strict Off 'late binding on Excel object
 Option Explicit On
 
-'Imports System.Diagnostics
-'Imports System.IO.Path
-'Imports System.Runtime.InteropServices
-'Imports Microsoft.Office.Tools.Ribbon
-'Imports Excel = Microsoft.Office.Interop.Excel
-'Imports System.Windows
+Imports System.Diagnostics
+Imports System.IO.Path
+Imports System.Runtime.InteropServices
+Imports Microsoft.Office.Tools.Ribbon
+Imports Excel = Microsoft.Office.Interop.Excel
+Imports System.Windows
 Imports System.Windows.Forms
 Imports ScriptHelp.Scripts
 
@@ -27,7 +27,6 @@ Namespace Scripts
 
         Public Shared myTableData As TableData
         Public Shared myTaskPaneTableData As Microsoft.Office.Tools.CustomTaskPane
-
 
         'Public NotInheritable Class AppVariables
         Public Class AppVariables
@@ -168,10 +167,9 @@ Namespace Scripts
                     Case Is = "txtCopyright"
                         Return "© " & My.Application.Info.Copyright.ToString
                     Case Is = "txtDescription", "btnDescription"
-                        Dim AppVersion As String = My.Application.Info.Version.Major & "." & My.Application.Info.Version.Minor & "." & My.Application.Info.Version.Build & "." & My.Application.Info.Version.Revision
-                        Return My.Application.Info.Title.ToString.Replace("&", "&&") & Space(1) & AppVersion
+                        Dim version As String = My.Application.Info.Version.Major & "." & My.Application.Info.Version.Minor & "." & My.Application.Info.Version.Build & "." & My.Application.Info.Version.Revision
+                        Return My.Application.Info.Title.ToString.Replace("&", "&&") & Space(1) & version
                     Case Is = "txtReleaseDate"
-                        'Dim dteCreateDate As DateTime = System.IO.File.GetLastWriteTime(My.Application.Info.DirectoryPath.ToString & "\" & My.Application.Info.AssemblyName.ToString & ".dll") 'get creation date 
                         Return My.Settings.App_ReleaseDate.ToString("dd-MMM-yyyy hh:mm tt")
                     Case Else
                         Return String.Empty
