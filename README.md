@@ -13,9 +13,9 @@ This is an Excel Add-In written in Visual Studio Community 2017 C#/VB.NET and VB
 [![fork this repo](http://githubbadges.com/fork.svg?user=aduguid&repo=ScriptHelp&style=flat&color=fff&background=007ec6)](http://github.com/aduguid/ScriptHelp/fork)
 ![current_build Office_2013](https://img.shields.io/badge/current_build-Office_2013-red.svg)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/aduguid/ScriptHelp/issues)
-[![download VBA](https://img.shields.io/badge/download-VBA-brightgreen.svg)](https://github.com/aduguid/ScriptHelp/raw/master/VBA/ScriptHelp.xlsm?raw=true "Download the VBA Add-In")
-[![download VSTO](https://img.shields.io/badge/download-VSTO-brightgreen.svg)](https://github.com/aduguid/ScriptHelp/CS/blob/master/publish/setup.exe?raw=true "Download Setup.exe Install File")
-[![download Key](https://img.shields.io/badge/download-Key-brightgreen.svg)](https://github.com/aduguid/ScriptHelp/CS/blob/master/AnthonyDuguid.pfx?raw=true "Download AnthonyDuguid.pfx And Install At Root Level For VSTO")
+[![download VBA](https://img.shields.io/badge/download-VBA-lightgrey.svg)](https://github.com/aduguid/ScriptHelp/raw/master/VBA/ScriptHelp.xlsm?raw=true "Download the VBA Add-In")
+[![download VSTO](https://img.shields.io/badge/download-VSTO-lightgrey.svg)](https://github.com/aduguid/ScriptHelp/CS/blob/master/publish/setup.exe?raw=true "Download Setup.exe Install File")
+[![download Key](https://img.shields.io/badge/download-Key-lightgrey.svg)](https://github.com/aduguid/ScriptHelp/CS/blob/master/AnthonyDuguid.pfx?raw=true "Download AnthonyDuguid.pfx And Install At Root Level For VSTO")
 
   <img src="Images/ReadMe/ribbon.png" />
 
