@@ -72,10 +72,7 @@ This is an Excel Add-In written in Visual Studio Community 2017 C#/VB.NET and VB
 |[Log4Net](https://www.nuget.org/packages/log4net/) |Error Logging |VSTO|
 |[ScreenToGif](http://www.screentogif.com/)|Read Me|VBA, VSTO|
 |[Snagit](http://discover.techsmith.com/snagit-non-brand-desktop/?gclid=CNzQiOTO09UCFVoFKgod9EIB3g)|Read Me|VBA, VSTO|
-|Badges
-https://shields.io/
-https://rozaxe.github.io/factory/
-http://githubbadges.com|Read Me|VBA, VSTO|
+|Badges ([Library](https://shields.io/), [Custom](https://rozaxe.github.io/factory/), [Star/Fork](http://githubbadges.com))|Read Me|VBA, VSTO|
 <a id="user-content-glossary-of-terms" class="anchor" href="#glossary-of-terms" aria-hidden="true"> </a>
 ## Glossary of Terms
 
