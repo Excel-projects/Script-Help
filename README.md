@@ -21,6 +21,7 @@ This is an Excel Add-In written in Microsoft Visual Studio Community 2017 C#/VB.
   <img src="Images/ReadMe/ribbon.png" />
 
 ## Table of Contents
+- <a href="#install">Install</a>
 - <a href="#dependencies">Dependencies</a>
 - <a href="#glossary-of-terms">Glossary of Terms</a>
 - <a href="#functionality">Functionality</a> 
@@ -68,6 +69,19 @@ This is an Excel Add-In written in Microsoft Visual Studio Community 2017 C#/VB.
         - <a href="#copyright">Copyright</a>
 --->
 
+<a id="user-content-install" class="anchor" href="#install" aria-hidden="true"> </a>
+## Install
+Instructions for installation for VBA and VSTO versions.
+
+### VBA
+How to install the VBA version
+1. Download the VBA Add-In file [here](https://github.com/aduguid/ScriptHelp/raw/master/VBA/ScriptHelp.xlam?raw=true "Download the VBA Add-In").
+2. Copy the file to the XLSTART ```%AppData%\Microsoft\Excel\XLSTART\``` folder on your computer.
+3. Close all open instances of Excel and then launch Excel. The new ribbon should appear.
+
+### VSTO
+How to install the VSTO version
+* TODO: ...
 
 
 <a id="user-content-dependencies" class="anchor" href="#dependencies" aria-hidden="true"> </a>
