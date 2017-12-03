@@ -23,18 +23,14 @@ This is an Excel Add-In written in Microsoft Visual Studio Community 2017 C#/VB.
 ## Table of Contents
 - <a href="#dependencies">Dependencies</a>
 - <a href="#glossary-of-terms">Glossary of Terms</a>
-- <a href="#functionality">Functionality</a>
-    - <a href="#clipboard">Clipboard</a>
-    - <a href="#format-data-table">Format Data Table</a>
-
-    - <a href="#script-actions">Script Actions</a>
-
-    - <a href="#format-script-options">Script Variables</a>
-
-    - <a href="#options">Options</a>
-
-    - <a href="#about">Help</a>
-    - <a href="#about">About</a>
+- <a href="#functionality">Functionality</a> 
+    - <a href="#clipboard">Clipboard</a>
+    - <a href="#format-data-table">Format Data Table</a>
+    - <a href="#script-actions">Script Actions</a>
+    - <a href="#format-script-options">Script Variables</a>
+    - <a href="#options">Options</a>
+    - <a href="#about">Help</a>
+    - <a href="#about">About</a>
      
 <!---
         - <a href="#paste">Paste</a>
