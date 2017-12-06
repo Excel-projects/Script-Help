@@ -75,7 +75,7 @@ This is an Excel Add-In written in Microsoft Visual Studio Community 2017 C#/VB.
 
 <a id="user-content-install" class="anchor" href="#install" aria-hidden="true"> </a>
 ## Install
-Instructions for installation for VBA and VSTO versions.
+Instructions for installation of VBA and VSTO versions.
 
 ### VBA
 How to install the VBA version
