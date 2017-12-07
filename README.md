@@ -2,29 +2,41 @@
 <head>
 </head>
 
+
 <img align="left" src="Images/ReadMe/App.png" width="64px" >
 
 # Script Help <span class="Application_Version">3.0.0.0</span> 
-
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE "MIT License Copyright © 2017 Anthony Duguid")
 ![current_build Office_2013](https://img.shields.io/badge/current_build-Office_2013-red.svg)
-[![download VBA](https://img.shields.io/badge/download-VBA-brightgreen.svg)](https://github.com/aduguid/ScriptHelp/raw/master/VBA/ScriptHelp.xlsm?raw=true "Download the VBA Add-In")
 <!---
+[![download VBA](https://img.shields.io/badge/download-VBA-brightgreen.svg)](https://github.com/aduguid/ScriptHelp/raw/master/VBA/ScriptHelp.xlsm?raw=true "Download the VBA Add-In")
 [![download VSTO](https://img.shields.io/badge/download-VSTO-brightgreen.svg)](https://github.com/aduguid/ScriptHelp/CS/blob/master/publish/setup.exe?raw=true "Download Setup.exe Install File")
 [![download Key](https://img.shields.io/badge/download-Key-brightgreen.svg)](https://github.com/aduguid/ScriptHelp/CS/blob/master/AnthonyDuguid.pfx?raw=true "Download AnthonyDuguid.pfx And Install At Root Level For VSTO")
 --->
-This is an Excel Add-In written in Visual Studio Community 2017 C#/VB.NET and VBA. This is used for bulk data loads into SQL Server, Oracle, Documentum, Markup and Markdown Languages. The functionality within the ribbon allows a quick way of preparing a bulk data load.  Otherwise, the requests can be both time-consuming and error prone. This has now been tested on Windows (7, 8.1, 10) & Excel (2010, 2013, 2016).
-
+This is an Excel Add-In written in Microsoft Visual Studio Community 2017 C#/VB.NET and VBA. This is used for bulk data loads into SQL Server, Oracle, Documentum, Markup and Markdown Languages. The functionality within the ribbon allows a quick way of preparing a bulk data load.  Otherwise, the requests can be both time-consuming and error prone. This has now been tested on Windows (7, 8.1, 10) & Excel (2010, 2013, 2016).
+<!---
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE "MIT License Copyright © 2017 Anthony Duguid")
 [![star this repo](http://githubbadges.com/star.svg?user=aduguid&repo=ScriptHelp&style=flat&color=fff&background=007ec6)](http://github.com/aduguid/ScriptHelp)
 [![fork this repo](http://githubbadges.com/fork.svg?user=aduguid&repo=ScriptHelp&style=flat&color=fff&background=007ec6)](http://github.com/aduguid/ScriptHelp/fork)
-
+--->
   <img src="Images/ReadMe/ribbon.png" />
 
+<br>
+
 ## Table of Contents
+- <a href="#install">Install</a>
 - <a href="#dependencies">Dependencies</a>
 - <a href="#glossary-of-terms">Glossary of Terms</a>
-- <a href="#functionality">Functionality</a>
+- <a href="#functionality">Functionality</a> 
     - <a href="#clipboard">Clipboard</a>
+    - <a href="#format-data-table">Format Data Table</a>
+    - <a href="#script-actions">Script Actions</a>
+    - <a href="#format-script-options">Script Variables</a>
+    - <a href="#options">Options</a>
+    - <a href="#about">Help</a>
+    - <a href="#about">About</a>
+     
+<!---
         - <a href="#paste">Paste</a>
         - <a href="#copy-visible-cells">Copy Visible Cells</a>
     - <a href="#format-data-table">Format Data Table</a>
@@ -57,7 +69,27 @@ This is an Excel Add-In written in Visual Studio Community 2017 C#/VB.NET and VB
     - <a href="#about">About</a>
         - <a href="#description">Add-in Name</a>
         - <a href="#install-date">Release Date</a>  
-        - <a href="#copyright">Copyright</a>  
+        - <a href="#copyright">Copyright</a>
+--->
+
+<br>
+
+<a id="user-content-install" class="anchor" href="#install" aria-hidden="true"> </a>
+## Install
+Instructions for installation of VBA and VSTO versions.
+
+### VBA
+How to install the VBA version
+1. Download the VBA Add-In file [![download VBA](https://img.shields.io/badge/download-VBA-brightgreen.svg)](https://github.com/aduguid/ScriptHelp/raw/master/VBA/ScriptHelp.xlam?raw=true "Download the VBA Add-In").
+2. Copy the file to the XLSTART ```%AppData%\Microsoft\Excel\XLSTART\``` folder on your computer.
+3. Close all open instances of Excel and then launch Excel. The new ribbon should appear.
+
+### VSTO
+How to install the VSTO version
+1. Download AnthonyDuguid.pfx And Install At Root Level [![download Key](https://img.shields.io/badge/download-Key-brightgreen.svg)](https://github.com/aduguid/ScriptHelp/CS/blob/master/AnthonyDuguid.pfx?raw=true "Download AnthonyDuguid.pfx And Install At Root Level For VSTO")
+2. Download and run the setup.exe file. [![download VSTO](https://img.shields.io/badge/download-VSTO-brightgreen.svg)](https://github.com/aduguid/ScriptHelp/CS/blob/master/publish/setup.exe?raw=true "Download Setup.exe Install File")
+
+<br>
 
 <a id="user-content-dependencies" class="anchor" href="#dependencies" aria-hidden="true"> </a>
 ## Dependencies
@@ -75,6 +107,9 @@ This is an Excel Add-In written in Visual Studio Community 2017 C#/VB.NET and VB
 |[ScreenToGif](http://www.screentogif.com/)|Read Me|VBA, VSTO|
 |[Snagit](http://discover.techsmith.com/snagit-non-brand-desktop/?gclid=CNzQiOTO09UCFVoFKgod9EIB3g)|Read Me|VBA, VSTO|
 |Badges ([Library](https://shields.io/), [Custom](https://rozaxe.github.io/factory/), [Star/Fork](http://githubbadges.com))|Read Me|VBA, VSTO|
+
+<br>
+
 <a id="user-content-glossary-of-terms" class="anchor" href="#glossary-of-terms" aria-hidden="true"> </a>
 ## Glossary of Terms
 
@@ -90,6 +125,8 @@ This is an Excel Add-In written in Visual Studio Community 2017 C#/VB.NET and VB
 | VSTO |Visual Studio Tools for Office (VSTO) is a set of development tools available in the form of a Visual Studio add-in (project templates) and a runtime that allows Microsoft Office 2003 and later versions of Office applications to host the .NET Framework Common Language Runtime (CLR) to expose their functionality via .NET.|
 | XML|Extensible Markup Language (XML) is a markup language that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable.The design goals of XML emphasize simplicity, generality, and usability across the Internet. It is a textual data format with strong support via Unicode for different human languages. Although the design of XML focuses on documents, the language is widely used for the representation of arbitrary data structures such as those used in web services.|
 <body>
+
+<br>
 
 <a id="user-content-functionality" class="anchor" href="#functionality" aria-hidden="true"> </a>
 ## Functionality
