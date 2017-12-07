@@ -41,8 +41,9 @@ namespace ScriptHelp.TaskPane
 					Application.DoEvents();
 				}
 				RefreshResultsToGrid();
-
-			}
+                this.picTable.BackgroundImage = ScriptHelp.Properties.Resources.table;
+                
+            }
 			catch (Exception ex)
 			{
 				ErrorHandler.DisplayMessage(ex);
@@ -204,5 +205,5 @@ namespace ScriptHelp.TaskPane
 
 		}
 
-	}
+    }
 }

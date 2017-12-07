@@ -34,8 +34,9 @@
             this.btnCopy = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.lblFontSize = new System.Windows.Forms.ToolStripLabel();
-            this.cboFontSize = new System.Windows.Forms.ToolStripComboBox();
+            this.nudFontSize = new System.Windows.Forms.NumericUpDown();
             this.toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudFontSize)).BeginInit();
             this.SuspendLayout();
             // 
             // txtScript
@@ -58,8 +59,7 @@
             this.btnSave,
             this.btnCopy,
             this.toolStripSeparator1,
-            this.lblFontSize,
-            this.cboFontSize});
+            this.lblFontSize});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(650, 25);
@@ -90,29 +90,43 @@
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            this.toolStripSeparator1.Visible = false;
             // 
             // lblFontSize
             // 
             this.lblFontSize.Name = "lblFontSize";
             this.lblFontSize.Size = new System.Drawing.Size(54, 22);
             this.lblFontSize.Text = "Font Size";
-            this.lblFontSize.Visible = false;
             // 
-            // cboFontSize
+            // nudFontSize
             // 
-            this.cboFontSize.Name = "cboFontSize";
-            this.cboFontSize.Size = new System.Drawing.Size(75, 25);
-            this.cboFontSize.Visible = false;
-            this.cboFontSize.TextUpdate += new System.EventHandler(this.cboFontSize_TextUpdate);
-            this.cboFontSize.Click += new System.EventHandler(this.cboFontSize_Click);
-            this.cboFontSize.TextChanged += new System.EventHandler(this.cboFontSize_TextChanged);
+            this.nudFontSize.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nudFontSize.Location = new System.Drawing.Point(165, 3);
+            this.nudFontSize.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.nudFontSize.Minimum = new decimal(new int[] {
+            8,
+            0,
+            0,
+            0});
+            this.nudFontSize.Name = "nudFontSize";
+            this.nudFontSize.Size = new System.Drawing.Size(43, 22);
+            this.nudFontSize.TabIndex = 3;
+            this.nudFontSize.Value = new decimal(new int[] {
+            8,
+            0,
+            0,
+            0});
+            this.nudFontSize.ValueChanged += new System.EventHandler(this.nudFontSize_ValueChanged);
             // 
             // Script
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Controls.Add(this.nudFontSize);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.txtScript);
             this.Name = "Script";
@@ -120,6 +134,7 @@
             this.Load += new System.EventHandler(this.Script_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudFontSize)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -133,6 +148,6 @@
         private System.Windows.Forms.ToolStripButton btnCopy;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripLabel lblFontSize;
-        private System.Windows.Forms.ToolStripComboBox cboFontSize;
+        private System.Windows.Forms.NumericUpDown nudFontSize;
     }
 }

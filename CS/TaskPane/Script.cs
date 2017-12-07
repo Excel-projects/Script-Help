@@ -12,10 +12,6 @@ namespace ScriptHelp.TaskPane
     /// </summary>
     public partial class Script : UserControl
     {
-        public float[] FontSize ={8,9,10,12,14,16,18,20,22,24,26,28,36,48,72};
-        public string[] FontSizeName ={"8","9","10","12","14","16","18","20","22","24","26","28","36","48","72"};
-        private string fontName;
-        private int fontSize;
 
         /// <summary>
         /// Initialize the controls in the object
@@ -23,12 +19,6 @@ namespace ScriptHelp.TaskPane
         public Script()
         {
             InitializeComponent();
-            //foreach (string name in FontSizeName)
-            //{
-            //    this.cboFontSize.Items.Add(name);
-            //    this.cboFontSize.SelectedItem = "10";
-            //}
-
         }
 
         /// <summary>
@@ -101,31 +91,7 @@ namespace ScriptHelp.TaskPane
         /// <param name="e">refers to the event arguments for the used event, they usually come in the form of properties/functions/methods that get to be available on it.</param>
         private void Script_Load(object sender, EventArgs e)
         {
-            try
-            {
-                switch (Ribbon.AppVariables.FileType)
-                {
-                    case "SQL":
-                        UpdateSqlSyntax();
-                        break;
-                    case "DQL":
-                        UpdateDqlSyntax();
-                        break;
-                    case "TXT":
-                        UpdateSqlSyntax();
-                        break;
-                    case "XML":
-                        UpdateSqlSyntax();
-                        break;
-                }
-                txtScript.Text = Ribbon.AppVariables.ScriptRange;
-
-            }
-            catch (Exception ex)
-            {
-                ErrorHandler.DisplayMessage(ex);
-
-            }
+            UpdateScriptText();
         }
 
         /// <summary>
@@ -194,24 +160,55 @@ namespace ScriptHelp.TaskPane
             }
         }
 
-        private void cboFontSize_TextChanged(object sender, EventArgs e)
+        /// <summary>
+        /// 
+        /// </summary>
+        public void UpdateScriptText()
         {
-            //this.txtScript.FontSize = this.cboFontSize.Text;
-            //this.txtScript.SelectionFont = new Font("Courier New", (float)Convert.ToDouble(this.cboFontSize.Text), FontStyle.Regular);
-            //this.txtScript.SelectionFont = new Font("Courier New", 12, FontStyle.Regular);
+            try
+            {
+                switch (Ribbon.AppVariables.FileType)
+                {
+                    case "SQL":
+                        UpdateSqlSyntax();
+                        break;
+                    case "DQL":
+                        UpdateDqlSyntax();
+                        break;
+                    case "TXT":
+                        UpdateSqlSyntax();
+                        break;
+                    case "XML":
+                        UpdateSqlSyntax();
+                        break;
+                }
+                this.txtScript.Text = Ribbon.AppVariables.ScriptRange;
+
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.DisplayMessage(ex);
+
+            }
         }
 
-        private void cboFontSize_TextUpdate(object sender, EventArgs e)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void nudFontSize_ValueChanged(object sender, EventArgs e)
         {
-            //float fontSize = FontSize[this.cboFontSize.SelectedIndex];
-            //this.txtScript.Focus();
-            //this.txtScript.SelectAll();
-            //this.txtScript.SelectionFont = new Font(this.txtScript.SelectionFont.FontFamily, fontSize, this.txtScript.SelectionFont.Style);
-        }
+            try
+            {
+                this.txtScript.Font = new Font(this.txtScript.Font.FontFamily, Convert.ToInt32(Math.Round((this.nudFontSize.Value))));
 
-        private void cboFontSize_Click(object sender, EventArgs e)
-        {
-            //this.txtScript.SelectionFont = new Font(this.txtScript.SelectionFont.FontFamily, FontSize[this.cboFontSize.SelectedIndex], this.txtScript.SelectionFont.Style);
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.DisplayMessage(ex);
+
+            }
         }
     }
 }
