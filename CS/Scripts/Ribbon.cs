@@ -1115,15 +1115,24 @@ namespace ScriptHelp.Scripts
         /// <remarks></remarks>
         public static string ApplyTextQuotes(Excel.ListColumn col)
         {
+            Excel.Range cell = FirstNotNullCellInColumn(col.DataBodyRange);
+            string timeFormat = "h:mm:ss AM/PM";  //TODO: reference a list of time formats
             try
             {
-                if ((GetSqlDataType(col) != Properties.Settings.Default.Column_TypeNumeric))
+                if ((GetSqlDataType(col) != Properties.Settings.Default.Column_TypeNumeric)) //or date/time
                 {
                     return Properties.Settings.Default.Table_ColumnScriptQuote;
                 }
                 else
                 {
-                    return string.Empty;
+                    if (cell.NumberFormat.ToString() == timeFormat)
+                    {
+                        return Properties.Settings.Default.Table_ColumnScriptQuote;
+                    }
+                    else
+                    {
+                        return string.Empty;
+                    }
                 }
             }
             catch (Exception ex)
