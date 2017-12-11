@@ -11,49 +11,40 @@
 	</configSections>
 	<userSettings>
 		<ScriptHelp.Properties.Settings>
-   <setting name="Sheet_ColumnCleanedColour" serializeAs="String">
+   <setting name="Table_ColumnCleanedColour" serializeAs="String">
     <value>SkyBlue</value>
    </setting>
-   <setting name="Sheet_ColumnTableAlias" serializeAs="String">
+   <setting name="Table_ColumnTableAlias" serializeAs="String">
     <value>tbl</value>
    </setting>
-   <setting name="Script_TypeDate" serializeAs="String">
+   <setting name="Column_TypeDate" serializeAs="String">
     <value>2</value>
    </setting>
-   <setting name="Sheet_ColumnDateFormatReplace" serializeAs="String">
+   <setting name="Table_ColumnDateFormatReplace" serializeAs="String">
     <value>dd-mmm-yyyy</value>
    </setting>
-   <setting name="Sheet_ColumnDateFormatFind" serializeAs="String">
+   <setting name="Table_ColumnDateFormatFind" serializeAs="String">
     <value>mm:ss.0</value>
    </setting>
-   <setting name="Sheet_ColumnScriptNull" serializeAs="String">
+   <setting name="Table_ColumnScriptNull" serializeAs="String">
     <value>NULL</value>
    </setting>
-   <setting name="Script_TypeNumeric" serializeAs="String">
+   <setting name="Column_TypeNumeric" serializeAs="String">
     <value>1</value>
    </setting>
-   <setting name="Sheet_ColumnScriptQuote" serializeAs="String">
+   <setting name="Table_ColumnScriptQuote" serializeAs="String">
     <value>'</value>
    </setting>
-   <setting name="Script_TypeText" serializeAs="String">
+   <setting name="Column_TypeText" serializeAs="String">
     <value>0</value>
    </setting>
-   <setting name="Visible_ComAddInsDialog" serializeAs="String">
+   <setting name="Visible_grpScriptVariables" serializeAs="String">
     <value>True</value>
    </setting>
-   <setting name="Visible_Options" serializeAs="String">
+   <setting name="Visible_grpFormatDataTable" serializeAs="String">
     <value>True</value>
    </setting>
-   <setting name="Visible_FormatAsTableGallery" serializeAs="String">
-    <value>True</value>
-   </setting>
-   <setting name="Visible_RemoveDuplicates" serializeAs="String">
-    <value>True</value>
-   </setting>
-   <setting name="Visible_ViewFreezePanesGallery" serializeAs="String">
-    <value>True</value>
-   </setting>
-   <setting name="Visible_btnCopyVisibleCells" serializeAs="String">
+   <setting name="Visible_grpClipboard" serializeAs="String">
     <value>True</value>
    </setting>
    <setting name="Visible_btnClearInteriorColor" serializeAs="String">
@@ -62,25 +53,25 @@
    <setting name="Visible_btnZeroToNull" serializeAs="String">
     <value>True</value>
    </setting>
-   <setting name="App_PathExport" serializeAs="String">
+   <setting name="Option_PathFileListing" serializeAs="String">
     <value>C:\Temp</value>
    </setting>
    <setting name="Visible_btnFileList" serializeAs="String">
-    <value>False</value>
+    <value>True</value>
    </setting>
-   <setting name="Option_FileListingPathSelect" serializeAs="String">
+   <setting name="Option_PathFileListingSelect" serializeAs="String">
     <value>True</value>
    </setting>
    <setting name="Visible_mnuScriptType" serializeAs="String">
     <value>True</value>
    </setting>
-   <setting name="Sheet_ColumnName" serializeAs="String">
+   <setting name="Table_ColumnName" serializeAs="String">
     <value>SCRIPT</value>
    </setting>
    <setting name="Visible_btnSeparateValues" serializeAs="String">
-    <value>False</value>
+    <value>True</value>
    </setting>
-   <setting name="Sheet_ColumnSeparateValuesDelimiter" serializeAs="String">
+   <setting name="Table_ColumnSeparateValuesDelimiter" serializeAs="String">
     <value>,</value>
    </setting>
    <setting name="App_PathDeploy" serializeAs="String">
@@ -110,6 +101,15 @@
    <setting name="App_PathDeployData" serializeAs="String">
     <value />
    </setting>
+   <setting name="Table_StyleName" serializeAs="String">
+    <value>TableStyleMedium15</value>
+   </setting>
+   <setting name="App_ReleaseDate" serializeAs="String">
+    <value>07/31/2017 13:05:00</value>
+   </setting>
+   <setting name="App_PathReportIssue" serializeAs="String">
+    <value>https://github.com/aduguid/ScriptHelp/issues/new</value>
+   </setting>
   </ScriptHelp.Properties.Settings>
 	</userSettings>
 	<applicationSettings>
@@ -138,4 +138,6 @@
 			<appender-ref ref="FileAppender"/>
 		</root>
 	</log4net>
-<startup><supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.6"/></startup></configuration>
+	<startup>
+	</startup>
+</configuration>
