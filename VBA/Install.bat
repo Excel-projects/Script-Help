@@ -20,4 +20,5 @@ REM 	/Y 	 = Suppresses prompting to confirm you want to overwrite an existing de
 REM
 
 REM	Copy the install directory and sub-directories
-	XCOPY ".\ScriptHelp.xlam" "%AppData%\Microsoft\AddIns\ScriptHelp.xlam" /E /K /Q /R /Y /D
+REM	XCOPY ".\ScriptHelp.xlam" "%AppData%\Microsoft\AddIns\ScriptHelp.xlam" /E /K /Q /R /Y /D
+	XCOPY ".\ScriptHelp.xlam" "%AppData%\Microsoft\Excel\XLSTART\ScriptHelp.xlam" /E /K /Q /R /Y /D
