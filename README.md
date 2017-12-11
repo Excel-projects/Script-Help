@@ -102,12 +102,12 @@ How to install the VSTO version
 |[Extensible Markup Language (XML)](https://www.rondebruin.nl/win/s2/win001.htm)|Ribbon|VBA, VSTO|
 |[Microsoft SQL Server CE 3.5](https://www.microsoft.com/en-au/download/details.aspx?id=5783)|Database|VSTO|
 |[SQL Server Compact Toolbox](https://marketplace.visualstudio.com/items?itemName=ErikEJ.SQLServerCompactSQLiteToolbox)|Database|VSTO|
-|[Sandcastle](https://github.com/EWSoftware/SHFB)|API Documentation|VSTO|
 |[Log4Net](https://www.nuget.org/packages/log4net/) |Error Logging |VSTO|
 |[ScreenToGif](http://www.screentogif.com/)|Read Me|VBA, VSTO|
 |[Snagit](http://discover.techsmith.com/snagit-non-brand-desktop/?gclid=CNzQiOTO09UCFVoFKgod9EIB3g)|Read Me|VBA, VSTO|
 |Badges ([Library](https://shields.io/), [Custom](https://rozaxe.github.io/factory/), [Star/Fork](http://githubbadges.com))|Read Me|VBA, VSTO|
 
+<!---|[Sandcastle](https://github.com/EWSoftware/SHFB)|API Documentation|VSTO|--->
 <br>
 
 <a id="user-content-glossary-of-terms" class="anchor" href="#glossary-of-terms" aria-hidden="true"> </a>
