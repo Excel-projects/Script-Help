@@ -7,6 +7,13 @@ namespace ScriptHelp.Scripts
 {
     class Formula
     {
+        //static readonly bool isListObject;
+
+        static Formula()
+        {
+            //isListObject = ErrorHandler.IsValidListObject(true);
+        }
+
         /// <summary> 
         /// Add a formula at the end of the table to use as a script
         /// </summary>
@@ -18,6 +25,7 @@ namespace ScriptHelp.Scripts
             try
             {
                 ErrorHandler.CreateLogRecord();
+                if (ErrorHandler.IsValidListObject(true) == false) { return; };
                 string lastColumnName = Properties.Settings.Default.Table_ColumnTableAlias;
                 string tableAlias = Properties.Settings.Default.Table_ColumnTableAlias;
                 string sqlColName = string.Empty;
@@ -165,6 +173,7 @@ namespace ScriptHelp.Scripts
             try
             {
                 ErrorHandler.CreateLogRecord();
+                if (ErrorHandler.IsValidListObject(true) == false) { return; };
                 string lastColumnName = Properties.Settings.Default.Table_ColumnTableAlias;
                 string tableAlias = Properties.Settings.Default.Table_ColumnTableAlias;
                 string sqlColName = string.Empty;
@@ -325,6 +334,7 @@ namespace ScriptHelp.Scripts
             try
             {
                 ErrorHandler.CreateLogRecord();
+                if (ErrorHandler.IsValidListObject(true) == false) { return; };
                 string lastColumnName = Properties.Settings.Default.Table_ColumnTableAlias;
                 string tableAlias = Properties.Settings.Default.Table_ColumnTableAlias;
                 string sqlColName = string.Empty;
@@ -444,6 +454,7 @@ namespace ScriptHelp.Scripts
             try
             {
                 ErrorHandler.CreateLogRecord();
+                if (ErrorHandler.IsValidListObject(true) == false) { return; };
                 string lastColumnName = Properties.Settings.Default.Table_ColumnTableAlias;
                 string tableAlias = Properties.Settings.Default.Table_ColumnTableAlias;
                 string sqlColName = string.Empty;
@@ -592,6 +603,7 @@ namespace ScriptHelp.Scripts
             try
             {
                 ErrorHandler.CreateLogRecord();
+                if (ErrorHandler.IsValidListObject(true) == false) { return; };
                 string lastColumnName = Properties.Settings.Default.Table_ColumnTableAlias;
                 string tableAlias = Properties.Settings.Default.Table_ColumnTableAlias;
                 string sqlColName = string.Empty;
@@ -735,6 +747,7 @@ namespace ScriptHelp.Scripts
             try
             {
                 ErrorHandler.CreateLogRecord();
+                if (ErrorHandler.IsValidListObject(true) == false) { return; };
                 string lastColumnName = Properties.Settings.Default.Table_ColumnTableAlias;
                 string tableAlias = Properties.Settings.Default.Table_ColumnTableAlias;
                 string sqlColName = string.Empty;
@@ -895,6 +908,7 @@ namespace ScriptHelp.Scripts
             try
             {
                 ErrorHandler.CreateLogRecord();
+                if (ErrorHandler.IsValidListObject(true) == false) { return; };
                 Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
                 string lastColumnName = Properties.Settings.Default.Table_ColumnTableAlias;
                 string tableAlias = Properties.Settings.Default.Table_ColumnTableAlias;
@@ -981,6 +995,7 @@ namespace ScriptHelp.Scripts
             try
             {
                 ErrorHandler.CreateLogRecord();
+                if (ErrorHandler.IsValidListObject(true) == false) { return; };
                 string lastColumnName = Properties.Settings.Default.Table_ColumnTableAlias;
                 string tableAlias = Properties.Settings.Default.Table_ColumnTableAlias;
                 string sqlColName = string.Empty;
@@ -1098,6 +1113,7 @@ namespace ScriptHelp.Scripts
             try
             {
                 ErrorHandler.CreateLogRecord();
+                if (ErrorHandler.IsValidListObject(true) == false) { return; };
                 string lastColumnName = Properties.Settings.Default.Table_ColumnTableAlias;
                 string sqlColName = string.Empty;
 
@@ -1200,6 +1216,7 @@ namespace ScriptHelp.Scripts
             try
             {
                 ErrorHandler.CreateLogRecord();
+                if (ErrorHandler.IsValidListObject(true) == false) { return; };
                 string lastColumnName = Properties.Settings.Default.Table_ColumnTableAlias;
                 string sqlColName = string.Empty;
 
@@ -1301,6 +1318,7 @@ namespace ScriptHelp.Scripts
             try
             {
                 ErrorHandler.CreateLogRecord();
+                if (ErrorHandler.IsValidListObject(true) == false) { return; };
                 Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
                 string lastColumnName = Properties.Settings.Default.Table_ColumnTableAlias;
                 string tableAlias = Properties.Settings.Default.Table_ColumnTableAlias;
@@ -1411,6 +1429,7 @@ namespace ScriptHelp.Scripts
             try
             {
                 ErrorHandler.CreateLogRecord();
+                if (ErrorHandler.IsValidListObject(true) == false) { return; };
                 Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
                 string lastColumnName = Properties.Settings.Default.Table_ColumnTableAlias;
                 string tableAlias = Properties.Settings.Default.Table_ColumnTableAlias;
@@ -1519,6 +1538,7 @@ namespace ScriptHelp.Scripts
             try
             {
                 ErrorHandler.CreateLogRecord();
+                if (ErrorHandler.IsValidListObject(true) == false) { return; };
                 string lastColumnName = Properties.Settings.Default.Table_ColumnTableAlias;
                 string sqlColName = string.Empty;
 
@@ -1621,6 +1641,7 @@ namespace ScriptHelp.Scripts
             try
             {
                 ErrorHandler.CreateLogRecord();
+                if (ErrorHandler.IsValidListObject(true) == false) { return; };
                 string lastColumnName = Properties.Settings.Default.Table_ColumnTableAlias;
                 string tableAlias = Properties.Settings.Default.Table_ColumnTableAlias;
                 string sqlColName = string.Empty;
@@ -1770,6 +1791,7 @@ namespace ScriptHelp.Scripts
             try
             {
                 ErrorHandler.CreateLogRecord();
+                if (ErrorHandler.IsValidListObject(true) == false) { return; };
                 string lastColumnName = Properties.Settings.Default.Table_ColumnTableAlias;
                 string sqlColName = string.Empty;
 
@@ -1872,6 +1894,7 @@ namespace ScriptHelp.Scripts
             try
             {
                 ErrorHandler.CreateLogRecord();
+                if (ErrorHandler.IsValidListObject(true) == false) { return; };
                 string lastColumnName = Properties.Settings.Default.Table_ColumnTableAlias;
                 string sqlColName = string.Empty;
 
@@ -1973,6 +1996,7 @@ namespace ScriptHelp.Scripts
             try
             {
                 ErrorHandler.CreateLogRecord();
+                if (ErrorHandler.IsValidListObject(true) == false) { return; };
                 Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
                 string lastColumnName = Properties.Settings.Default.Table_ColumnTableAlias;
                 string tableAlias = Properties.Settings.Default.Table_ColumnTableAlias;
@@ -2083,6 +2107,7 @@ namespace ScriptHelp.Scripts
             try
             {
                 ErrorHandler.CreateLogRecord();
+                if (ErrorHandler.IsValidListObject(true) == false) { return; };
                 string lastColumnName = Properties.Settings.Default.Table_ColumnTableAlias;
                 string sqlColName = string.Empty;
                 sqlColName = Properties.Settings.Default.Table_ColumnName;
@@ -2186,6 +2211,7 @@ namespace ScriptHelp.Scripts
             try
             {
                 ErrorHandler.CreateLogRecord();
+                if (ErrorHandler.IsValidListObject(true) == false) { return; };
                 Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
                 string lastColumnName = Properties.Settings.Default.Table_ColumnTableAlias;
                 string tableAlias = Properties.Settings.Default.Table_ColumnTableAlias;
@@ -2294,6 +2320,7 @@ namespace ScriptHelp.Scripts
             try
             {
                 ErrorHandler.CreateLogRecord();
+                if (ErrorHandler.IsValidListObject(true) == false) { return; };
                 string lastColumnName = Properties.Settings.Default.Table_ColumnTableAlias;
                 string tableAlias = Properties.Settings.Default.Table_ColumnTableAlias;
                 string sqlColName = string.Empty;
@@ -2443,6 +2470,7 @@ namespace ScriptHelp.Scripts
             try
             {
                 ErrorHandler.CreateLogRecord();
+                if (ErrorHandler.IsValidListObject(true) == false) { return; };
                 string lastColumnName = Properties.Settings.Default.Table_ColumnTableAlias;
                 string tableAlias = Properties.Settings.Default.Table_ColumnTableAlias;
                 string sqlColName = string.Empty;
