@@ -5,11 +5,12 @@
 
 <img align="left" src="Images/ReadMe/App.png" width="64px" >
 
-# Script Help <span class="Application_Version">3.0.0.0</span> 
+# Script Help
 
 [![Join the chat at https://gitter.im/ScriptHelp/Lobby](https://badges.gitter.im/ScriptHelp/Lobby.svg)](https://gitter.im/ScriptHelp/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE "MIT License Copyright © 2017 Anthony Duguid")
-![current_build Office_2013](https://img.shields.io/badge/current_build-Office_2013-red.svg)
+[![release](http://github-release-version.herokuapp.com/github/aduguid/ScriptHelp/release.svg?style=flat)](https://github.com/aduguid/ScriptHelp/releases/latest)
+
 <!---
 [![download VBA](https://img.shields.io/badge/download-VBA-brightgreen.svg)](https://github.com/aduguid/ScriptHelp/raw/master/VBA/ScriptHelp.xlsm?raw=true "Download the VBA Add-In")
 [![download VSTO](https://img.shields.io/badge/download-VSTO-brightgreen.svg)](https://github.com/aduguid/ScriptHelp/CS/blob/master/publish/setup.exe?raw=true "Download Setup.exe Install File")
