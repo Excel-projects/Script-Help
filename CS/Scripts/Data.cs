@@ -216,7 +216,7 @@ namespace ScriptHelp.Scripts
             string sql = "SELECT * FROM " + tableName + " ORDER BY " + columnName;
             if (tbl.Select(columnName + " = '" + text.Replace("'", "''") + "'").Length == 0)
             {
-                DialogResult dr = MessageBox.Show("Would you like to add '" + text + "' to the [" + tableName + "] table?", "Add New Value", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult dr = MessageBox.Show("Would you like to add '" + text + "' to the list?", "Add New Value", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 switch (dr)
                 {
                     case DialogResult.Yes:
