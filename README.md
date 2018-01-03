@@ -5,9 +5,12 @@
 
 <img align="left" src="Images/ReadMe/App.png" width="64px" >
 
-# Script Help <span class="Application_Version">3.0.0.0</span> 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE "MIT License Copyright © 2017 Anthony Duguid")
-![current_build Office_2013](https://img.shields.io/badge/current_build-Office_2013-red.svg)
+# Script Help
+
+[![Join the chat at https://gitter.im/ScriptHelp/Lobby](https://badges.gitter.im/ScriptHelp/Lobby.svg)](https://gitter.im/ScriptHelp/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE "MIT License Copyright © Anthony Duguid")
+<span class="Application_Version">[![release](http://github-release-version.herokuapp.com/github/aduguid/ScriptHelp/release.svg?style=flat)](https://github.com/aduguid/ScriptHelp/releases/latest)</span> 
+
 <!---
 [![download VBA](https://img.shields.io/badge/download-VBA-brightgreen.svg)](https://github.com/aduguid/ScriptHelp/raw/master/VBA/ScriptHelp.xlsm?raw=true "Download the VBA Add-In")
 [![download VSTO](https://img.shields.io/badge/download-VSTO-brightgreen.svg)](https://github.com/aduguid/ScriptHelp/CS/blob/master/publish/setup.exe?raw=true "Download Setup.exe Install File")
@@ -18,8 +21,13 @@ This is an Excel Add-In written in Microsoft Visual Studio Community 2017 C#/VB.
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE "MIT License Copyright © 2017 Anthony Duguid")
 [![star this repo](http://githubbadges.com/star.svg?user=aduguid&repo=ScriptHelp&style=flat&color=fff&background=007ec6)](http://github.com/aduguid/ScriptHelp)
 [![fork this repo](http://githubbadges.com/fork.svg?user=aduguid&repo=ScriptHelp&style=flat&color=fff&background=007ec6)](http://github.com/aduguid/ScriptHelp/fork)
---->
+
   <img src="Images/ReadMe/ribbon.png" />
+--->
+
+<h1 align="left">
+  <img src="Images/ReadMe/ribbon.button.addscriptcolumn.gif" />
+</h1>
 
 <br>
 
@@ -81,7 +89,7 @@ Instructions for installation of VBA and VSTO versions.
 ### VBA
 How to install the VBA version
 1. Download the VBA Add-In file [![download VBA](https://img.shields.io/badge/download-VBA-brightgreen.svg)](https://github.com/aduguid/ScriptHelp/raw/master/VBA/ScriptHelp.xlam?raw=true "Download the VBA Add-In").
-2. Copy the file to the XLSTART ```%AppData%\Microsoft\Excel\XLSTART\``` folder on your computer.
+2. Copy the file to the XLSTART folder on your computer. ```%AppData%\Microsoft\Excel\XLSTART\```
 3. Close all open instances of Excel and then launch Excel. The new ribbon should appear.
 
 ### VSTO
@@ -216,9 +224,6 @@ These buttons have the following constraints:
 
 <a id="user-content-add-script-column" class="anchor" href="#add-script-column" aria-hidden="true"> </a>
 #### Add Script Column (Menu Buttons)
-<h1 align="left">
-  <img src="Images/ReadMe/ribbon.button.addscriptcolumn.gif" />
-</h1>
 
 <a id="user-content-menu-tsql" class="anchor" href="#menu-tsql" aria-hidden="true"> </a>
 <kbd><a href="#menu-tsql" target="_blank"><img src="CS/Resources/ScriptTypeTSql.png" title="T-SQL (Transact-Structured Query Language)" /></a></kbd>
