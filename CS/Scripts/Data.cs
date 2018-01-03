@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlServerCe;
 using System.Linq;
 using System.Security.AccessControl;
+using System.Windows.Forms;
 
 namespace ScriptHelp.Scripts
 {
@@ -45,7 +46,9 @@ namespace ScriptHelp.Scripts
         {
             try
             {
+                string tableName = "TableAlias";
                 string columnName = "TableName";
+                string sql = "SELECT * FROM " + tableName + " ORDER BY " + columnName;
                 dynamic dcTableName = new DataColumn(columnName, typeof(string));
                 TableAliasTable.Rows.Clear();
                 DataColumnCollection columns = TableAliasTable.Columns;
@@ -54,14 +57,12 @@ namespace ScriptHelp.Scripts
                     TableAliasTable.Columns.Add(dcTableName);
                 }
 
-                string tableName = "TableAlias";
-                string sql = "SELECT * FROM " + tableName + " ORDER BY " + columnName;
-
                 using (var da = new SqlCeDataAdapter(sql, Connection()))
                 {
                     da.Fill(TableAliasTable);
                 }
                 TableAliasTable.DefaultView.Sort = columnName + " asc";
+                DateFormatTable.TableName = tableName;
 
             }
             catch (Exception ex)
@@ -79,7 +80,9 @@ namespace ScriptHelp.Scripts
         {
             try
             {
+                string tableName = "DateFormat";
                 string columnName = "FormatString";
+                string sql = "SELECT * FROM " + tableName + " ORDER BY " + columnName;
                 dynamic dcFormatString = new DataColumn(columnName, typeof(string));
                 DateFormatTable.Rows.Clear();
                 DataColumnCollection columns = DateFormatTable.Columns;
@@ -88,14 +91,12 @@ namespace ScriptHelp.Scripts
                     DateFormatTable.Columns.Add(dcFormatString);
                 }
 
-                string tableName = "DateFormat";
-                string sql = "SELECT * FROM " + tableName + " ORDER BY " + columnName;
-
                 using (var da = new SqlCeDataAdapter(sql, Connection()))
                 {
                     da.Fill(DateFormatTable);
                 }
                 DateFormatTable.DefaultView.Sort = columnName + " asc";
+                DateFormatTable.TableName = tableName;
 
             }
             catch (Exception ex)
@@ -201,6 +202,52 @@ namespace ScriptHelp.Scripts
 
             }
 
+        }
+
+        /// <summary>
+        /// Ask the user if they would like to add a missing value to the table
+        /// </summary>
+        /// <param name="tbl">The table to check if a value exists</param>
+        /// <param name="text">The value to insert to the table</param>
+        public static void InsertRecord(DataTable tbl, string text)
+        {
+            string tableName = tbl.TableName.ToString();
+            string columnName = tbl.Columns[0].ColumnName.ToString();
+            string sql = "SELECT * FROM " + tableName + " ORDER BY " + columnName;
+            if (tbl.Select(columnName + " = '" + text.Replace("'", "''") + "'").Length == 0)
+            {
+                DialogResult dr = MessageBox.Show("Would you like to add '" + text + "' to the [" + tableName + "] table?", "Add New Value", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                switch (dr)
+                {
+                    case DialogResult.Yes:
+                        tbl.Rows.Add(new Object[] { text });
+                        SqlCeConnection cn = new SqlCeConnection(Data.Connection());
+                        SqlCeCommandBuilder scb = default(SqlCeCommandBuilder);
+                        SqlCeDataAdapter sda = new SqlCeDataAdapter(sql, cn);
+                        sda.TableMappings.Add("Table", tableName);
+                        scb = new SqlCeCommandBuilder(sda);
+                        sda.Update(tbl);
+
+                        dynamic dcFormatString = new DataColumn(columnName, typeof(string));
+                        tbl.Rows.Clear();
+                        DataColumnCollection columns = tbl.Columns;
+                        if (columns.Contains(columnName) == false)
+                        {
+                            tbl.Columns.Add(dcFormatString);
+                        }
+
+                        using (var da = new SqlCeDataAdapter(sql, Connection()))
+                        {
+                            da.Fill(tbl);
+                        }
+                        tbl.DefaultView.Sort = columnName + " asc";
+
+                        break;
+
+                    case DialogResult.No:
+                        break;
+                }
+            }
         }
 
     }

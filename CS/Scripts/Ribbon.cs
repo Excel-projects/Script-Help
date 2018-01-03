@@ -578,18 +578,26 @@ namespace ScriptHelp.Scripts
                 {
                     case "cboDateFormatReplace":
                         Properties.Settings.Default.Table_ColumnDateFormatReplace = text;
+                        Data.InsertRecord(Data.DateFormatTable, text);
                         break;
                     case "cboDateFormatFind":
                         Properties.Settings.Default.Table_ColumnDateFormatFind = text;
+                        Data.InsertRecord(Data.DateFormatTable, text);
                         break;
                     case "cboTableAlias":
                         Properties.Settings.Default.Table_ColumnTableAlias = text;
+                        Data.InsertRecord(Data.TableAliasTable, text);
                         break;
                 }
             }
             catch (Exception ex)
             {
                 ErrorHandler.DisplayMessage(ex);
+            }
+            finally
+            {
+                Properties.Settings.Default.Save();
+                ribbon.InvalidateControl(control.Id);
             }
         }
 

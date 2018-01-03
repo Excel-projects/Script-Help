@@ -193,3 +193,4 @@ ModelManifest.xml
 /.vs
 /publish/Application Files/ScriptHelp_3_0_0_2/ApiHelp.shfbproj.deploy
 /CS/.vs/ScriptHelp/v15/Server/sqlite3
+/CS/packages/log4net.2.0.8
