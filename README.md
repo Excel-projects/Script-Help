@@ -19,8 +19,8 @@
 This is an Excel Add-In written in Microsoft Visual Studio Community 2017 C#/VB.NET and VBA. This is used for bulk data loads into SQL Server, Oracle, Documentum, Markup and Markdown Languages. The functionality within the ribbon allows a quick way of preparing a bulk data load.  Otherwise, the requests can be both time-consuming and error prone. This has now been tested on Windows (7, 8.1, 10) & Excel (2010, 2013, 2016).
 <!---
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE "MIT License Copyright © 2018 Anthony Duguid")
-[![star this repo](http://githubbadges.com/star.svg?user=aduguid&repo=ScriptHelp&style=flat&color=fff&background=007ec6)](http://github.com/aduguid/ScriptHelp)
-[![fork this repo](http://githubbadges.com/fork.svg?user=aduguid&repo=ScriptHelp&style=flat&color=fff&background=007ec6)](http://github.com/Office-projects/ScriptHelp/fork)
+[![star this repo](http://githubbadges.com/star.svg?user=Office-projects&repo=ScriptHelp&style=flat&color=fff&background=007ec6)](http://github.com/Office-projects/ScriptHelp)
+[![fork this repo](http://githubbadges.com/fork.svg?user=Office-projects&repo=ScriptHelp&style=flat&color=fff&background=007ec6)](http://github.com/Office-projects/ScriptHelp/fork)
 
   <img src="Images/ReadMe/ribbon.png" />
 --->
@@ -369,7 +369,7 @@ VBA
 
 <a id="user-content-description" class="anchor" href="#description" aria-hidden="true"> </a>
 #### Add-in Name (Label)
-* The application name with the version [<img src="Images/ReadMe/ribbon.easteregg.ico">](https://raw.githubusercontent.com/aduguid/ScriptHelp/master/Images/ReadMe/ribbon.easteregg.gif "Easter Egg")
+* The application name with the version [<img src="Images/ReadMe/ribbon.easteregg.ico">](https://raw.githubusercontent.com/Office-projects/ScriptHelp/master/Images/ReadMe/ribbon.easteregg.gif "Easter Egg")
 
 <a id="user-content-install-date" class="anchor" href="#install-date" aria-hidden="true"> </a>
 #### Release Date (Label)
