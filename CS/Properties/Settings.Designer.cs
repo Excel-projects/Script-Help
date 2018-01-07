@@ -286,7 +286,7 @@ namespace ScriptHelp.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://raw.githubusercontent.com/aduguid/ScriptHelp/master/publish/")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://raw.githubusercontent.com/Office-projects/ScriptHelp/master/publish/")]
         public string App_PathDeploy {
             get {
                 return ((string)(this["App_PathDeploy"]));
@@ -370,7 +370,7 @@ namespace ScriptHelp.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://github.com/aduguid/ScriptHelp/blob/master/README.md")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://github.com/Office-projects/ScriptHelp/blob/master/README.md")]
         public string App_PathReadMe {
             get {
                 return ((string)(this["App_PathReadMe"]));
@@ -418,7 +418,7 @@ namespace ScriptHelp.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://github.com/aduguid/ScriptHelp/issues/new")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://github.com/Office-projects/ScriptHelp/issues/new")]
         public string App_PathReportIssue {
             get {
                 return ((string)(this["App_PathReportIssue"]));

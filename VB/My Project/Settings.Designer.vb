@@ -172,7 +172,7 @@ Partial Friend NotInheritable Class MySettings
     
     <Global.System.Configuration.UserScopedSettingAttribute(),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.Configuration.DefaultSettingValueAttribute("https://github.com/aduguid/ScriptHelp/blob/master/README.md")>  _
+     Global.System.Configuration.DefaultSettingValueAttribute("https://github.com/Office-projects/ScriptHelp/blob/master/README.md")>  _
     Public Property App_PathReadMe() As String
         Get
             Return CType(Me("App_PathReadMe"),String)
@@ -196,7 +196,7 @@ Partial Friend NotInheritable Class MySettings
     
     <Global.System.Configuration.UserScopedSettingAttribute(),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.Configuration.DefaultSettingValueAttribute("https://raw.githubusercontent.com/aduguid/ScriptHelp/master/publish/")>  _
+     Global.System.Configuration.DefaultSettingValueAttribute("https://raw.githubusercontent.com/Office-projects/ScriptHelp/master/publish/")>  _
     Public Property App_PathDeploy() As String
         Get
             Return CType(Me("App_PathDeploy"),String)
@@ -220,7 +220,7 @@ Partial Friend NotInheritable Class MySettings
     
     <Global.System.Configuration.UserScopedSettingAttribute(),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.Configuration.DefaultSettingValueAttribute("C:\Users\tduguid\Source\Repos\ScriptHelp2\VB\App_Data")>  _
+     Global.System.Configuration.DefaultSettingValueAttribute("C:\Users\tduguid\Source\Repos\ScriptHelp\VB\App_Data")>  _
     Public Property App_PathLocalData() As String
         Get
             Return CType(Me("App_PathLocalData"),String)
@@ -232,7 +232,7 @@ Partial Friend NotInheritable Class MySettings
     
     <Global.System.Configuration.UserScopedSettingAttribute(),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.Configuration.DefaultSettingValueAttribute("https://github.com/aduguid/ScriptHelp/issues/new")>  _
+     Global.System.Configuration.DefaultSettingValueAttribute("https://github.com/Office-projects/ScriptHelp/issues/new")>  _
     Public Property App_PathReportIssue() As String
         Get
             Return CType(Me("App_PathReportIssue"),String)

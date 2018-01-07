@@ -69,7 +69,7 @@
       <Value Profile="(Default)">,</Value>
     </Setting>
     <Setting Name="App_PathDeploy" Type="System.String" Scope="User">
-      <Value Profile="(Default)">https://raw.githubusercontent.com/aduguid/ScriptHelp/master/publish/</Value>
+      <Value Profile="(Default)">https://raw.githubusercontent.com/Office-projects/ScriptHelp/master/publish/</Value>
     </Setting>
     <Setting Name="App_PathLocalData" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
@@ -90,7 +90,7 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="App_PathReadMe" Type="System.String" Scope="User">
-      <Value Profile="(Default)">https://github.com/aduguid/ScriptHelp/blob/master/README.md</Value>
+      <Value Profile="(Default)">https://github.com/Office-projects/ScriptHelp/blob/master/README.md</Value>
     </Setting>
     <Setting Name="App_PathDeployData" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
@@ -102,7 +102,7 @@
       <Value Profile="(Default)">07/31/2017 13:05:00</Value>
     </Setting>
     <Setting Name="App_PathReportIssue" Type="System.String" Scope="User">
-      <Value Profile="(Default)">https://github.com/aduguid/ScriptHelp/issues/new</Value>
+      <Value Profile="(Default)">https://github.com/Office-projects/ScriptHelp/issues/new</Value>
     </Setting>
   </Settings>
 </SettingsFile>
