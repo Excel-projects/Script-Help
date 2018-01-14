@@ -923,9 +923,9 @@ namespace ScriptHelp.Scripts
 
                 for (int i = 1; i <= m + 1; i++) // by row
                 {
-                    string cellValue = tbl.Range.Cells[i, columnIndex].Value2.ToString();
-                    if (string.IsNullOrEmpty(cellValue) == false)
+                    if (tbl.Range.Cells[i, columnIndex].Value2 != null)
                     {
+                        string cellValue = tbl.Range.Cells[i, columnIndex].Value2.ToString();
                         string[] metadata = cellValue.Split(Properties.Settings.Default.Table_ColumnSeparateValuesDelimiter);
                         int countValues = metadata.Length - 1;
                         if (countValues > 0)
