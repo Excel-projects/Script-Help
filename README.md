@@ -310,7 +310,7 @@ Markup Language
 <kbd>
 VSTO
 <br>
-  <img align="left" src="Images/ReadMe/vsto.ribbon.settings.png?" />
+  <img align="left" src="Images/ReadMe/vsto.ribbon.settings.png" />
 </kbd>
 
 - Types of VSTO Settings
