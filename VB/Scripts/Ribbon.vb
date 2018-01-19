@@ -28,7 +28,6 @@ Namespace Scripts
         Public Shared myTableData As TableData
         Public Shared myTaskPaneTableData As Microsoft.Office.Tools.CustomTaskPane
 
-        'Public NotInheritable Class AppVariables
         Public Class AppVariables
             Private Sub New()
             End Sub
@@ -148,7 +147,7 @@ Namespace Scripts
                 End Select
 
             Catch ex As Exception
-                Call ErrorHandler.DisplayMessage(ex)
+                ErrorHandler.DisplayMessage(ex)
                 Return Nothing
 
             End Try
@@ -176,7 +175,7 @@ Namespace Scripts
                 End Select
 
             Catch ex As Exception
-                Call ErrorHandler.DisplayMessage(ex)
+                ErrorHandler.DisplayMessage(ex)
                 Return String.Empty
 
             End Try
@@ -216,20 +215,16 @@ Namespace Scripts
         End Function
 
         Public Sub GetSelectedItemID(ByVal Control As Office.IRibbonControl, ByRef itemID As Object)
-            '--------------------------------------------------------------------------------------------------------------------
-            ' to assign text to controls on the ribbon from the xml file
-            '--------------------------------------------------------------------------------------------------------------------
             Try
                 Select Case Control.Id.ToString
                     Case Is = "drpQueryType"
-                        itemID = "UPDATE" 'My.Settings.TSQL_QUERY_TYPE
-                        'itemID = Range(My.Settings.TSQL_QUERY_TYPE).Value2
+                        itemID = "UPDATE"
                     Case Else
                         itemID = String.Empty
                 End Select
 
             Catch ex As Exception
-                Call ErrorHandler.DisplayMessage(ex)
+                ErrorHandler.DisplayMessage(ex)
                 itemID = String.Empty
 
             End Try
@@ -237,9 +232,6 @@ Namespace Scripts
         End Sub
 
         Public Function GetCount(ByVal Control As Office.IRibbonControl) As Integer
-            '--------------------------------------------------------------------------------------------------------------------
-            ' to assign how many items for the control
-            '--------------------------------------------------------------------------------------------------------------------
             Try
                 Select Case Control.Id.ToString
                     Case Is = "drpQueryType"
@@ -249,7 +241,7 @@ Namespace Scripts
                 End Select
 
             Catch ex As Exception
-                Call ErrorHandler.DisplayMessage(ex)
+                ErrorHandler.DisplayMessage(ex)
                 Return 0
 
             End Try
@@ -257,9 +249,6 @@ Namespace Scripts
         End Function
 
         Public Function GetLabel(ByVal Control As Office.IRibbonControl, Index As Integer) As String
-            '--------------------------------------------------------------------------------------------------------------------
-            ' to assign text to control items index
-            '--------------------------------------------------------------------------------------------------------------------
             Try
                 Select Case Control.Id.ToString
                     Case Is = "drpQueryType"
@@ -276,7 +265,7 @@ Namespace Scripts
                 End Select
 
             Catch ex As Exception
-                Call ErrorHandler.DisplayMessage(ex)
+                ErrorHandler.DisplayMessage(ex)
                 Return String.Empty
 
             End Try
@@ -358,7 +347,7 @@ Namespace Scripts
                 End Select
 
             Catch ex As Exception
-                Call ErrorHandler.DisplayMessage(ex)
+                ErrorHandler.DisplayMessage(ex)
 
             End Try
 
@@ -433,7 +422,7 @@ Namespace Scripts
                 End Select
 
             Catch ex As Exception
-                Call ErrorHandler.DisplayMessage(ex)
+                ErrorHandler.DisplayMessage(ex)
                 Return False
 
             End Try
@@ -445,7 +434,7 @@ Namespace Scripts
                 Return True
 
             Catch ex As Exception
-                Call ErrorHandler.DisplayMessage(ex)
+                ErrorHandler.DisplayMessage(ex)
                 Return False
 
             End Try
@@ -806,19 +795,6 @@ Namespace Scripts
 
         End Sub
 
-        'Public Sub OpenSettings2()
-        '    Try
-        '        Dim FormSettings As New frmSettings
-        '        FormSettings.ShowDialog()
-        '        ribbon.Invalidate()
-
-        '    Catch ex As Exception
-        '        Call ErrorHandler.DisplayMessage(ex)
-
-        '    End Try
-
-        'End Sub
-
         Public Sub OpenSettings()
             Try
                 If myTaskPaneSettings IsNot Nothing Then
@@ -895,7 +871,7 @@ Namespace Scripts
                 End If
 
             Catch ex As Exception
-                Call ErrorHandler.DisplayMessage(ex)
+                ErrorHandler.DisplayMessage(ex)
                 Return String.Empty
 
             End Try
@@ -964,7 +940,7 @@ Namespace Scripts
                 Return Formatted(col, fmt)
 
             Catch ex As Exception
-                Call ErrorHandler.DisplayMessage(ex)
+                ErrorHandler.DisplayMessage(ex)
                 Return String.Empty
 
             End Try
@@ -972,9 +948,6 @@ Namespace Scripts
         End Function
 
         Friend Shared Function Formatted(ByVal col As Excel.ListColumn, fmt As String) As String
-            '--------------------------------------------------------------------------------------------------------------------
-            ' Purpose: Generate a formula reference with optional text formatting
-            '--------------------------------------------------------------------------------------------------------------------
             Try
                 Formatted = "[" & col.Name & "]"
                 If (fmt = "") Then
@@ -983,7 +956,7 @@ Namespace Scripts
                 Return "TEXT(" & Formatted & ",""" & fmt & """)"
 
             Catch ex As Exception
-                Call ErrorHandler.DisplayMessage(ex)
+                ErrorHandler.DisplayMessage(ex)
                 Return String.Empty
 
             End Try
@@ -1024,7 +997,7 @@ Namespace Scripts
                 End If
 
             Catch ex As Exception
-                Call ErrorHandler.DisplayMessage(ex)
+                ErrorHandler.DisplayMessage(ex)
                 Return 0
 
             End Try
@@ -1036,7 +1009,7 @@ Namespace Scripts
                 Return col(key)
 
             Catch ex As Exception
-                'Call ErrorMsg(ex)            
+                ' ErrorMsg(ex)            
                 Return Nothing
 
             End Try
@@ -1061,7 +1034,7 @@ Namespace Scripts
                 Return tbl.ListColumns(colNum)
 
             Catch ex As Exception
-                Call ErrorHandler.DisplayMessage(ex)
+                ErrorHandler.DisplayMessage(ex)
                 Return Nothing
                 Exit Try
 
@@ -1088,7 +1061,7 @@ Namespace Scripts
                 Return Nothing
 
             Catch ex As Exception
-                Call ErrorHandler.DisplayMessage(ex)
+                ErrorHandler.DisplayMessage(ex)
                 Return Nothing
 
             End Try
@@ -1096,9 +1069,6 @@ Namespace Scripts
         End Function
 
         Public Sub OpenFile(ByVal FilePath As String)
-            '--------------------------------------------------------------------------------------------------------------------
-            ' Purpose: open a file from the source list
-            '--------------------------------------------------------------------------------------------------------------------
             Try
                 Dim pStart As New System.Diagnostics.Process
                 If FilePath = String.Empty Then Exit Try
@@ -1110,10 +1080,7 @@ Namespace Scripts
                 Exit Try
 
             Catch ex As Exception
-                Call ErrorHandler.DisplayMessage(ex)
-
-                'Finally
-                '    pStart = Nothing
+                ErrorHandler.DisplayMessage(ex)
 
             End Try
 
