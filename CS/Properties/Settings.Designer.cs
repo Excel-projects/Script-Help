@@ -419,12 +419,12 @@ namespace ScriptHelp.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("https://github.com/Office-projects/ScriptHelp/issues/new")]
-        public string App_PathReportIssue {
+        public string App_PathNewIssue {
             get {
-                return ((string)(this["App_PathReportIssue"]));
+                return ((string)(this["App_PathNewIssue"]));
             }
             set {
-                this["App_PathReportIssue"] = value;
+                this["App_PathNewIssue"] = value;
             }
         }
     }

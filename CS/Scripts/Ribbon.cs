@@ -1059,7 +1059,7 @@ namespace ScriptHelp.Scripts
         public void OpenNewIssue()
         {
             ErrorHandler.CreateLogRecord();
-            System.Diagnostics.Process.Start(Properties.Settings.Default.App_PathReportIssue);
+            System.Diagnostics.Process.Start(Properties.Settings.Default.App_PathNewIssue);
 
         }
 

@@ -101,7 +101,7 @@
     <Setting Name="App_ReleaseDate" Type="System.DateTime" Scope="User">
       <Value Profile="(Default)">07/31/2017 13:05:00</Value>
     </Setting>
-    <Setting Name="App_PathReportIssue" Type="System.String" Scope="User">
+    <Setting Name="App_PathNewIssue" Type="System.String" Scope="User">
       <Value Profile="(Default)">https://github.com/Office-projects/ScriptHelp/issues/new</Value>
     </Setting>
   </Settings>
