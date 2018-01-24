@@ -934,7 +934,7 @@ namespace ScriptHelp.Scripts
                             for (int j = 1; j <= countValues; j++) // by value 
                             {
                                 tbl.ListRows.Add(i);
-                                tbl.Range.Rows[i + 1].Value = tbl.Range.Rows[i].Value.Trim();
+                                tbl.Range.Rows[i + 1].Value = tbl.Range.Rows[i].Value;
                                 tbl.Range.Cells[i + 1, columnIndex].Value2 = metadata[j - 1].Trim();  // get the next value in the string
                             }
                             tbl.Range.Cells[i, columnIndex].Value2 = metadata[countValues].Trim(); // reset the first row value
