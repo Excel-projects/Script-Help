@@ -39,6 +39,7 @@ I'm still working on updating the VB.NET & VBA. The most complete version is C#.
 - <a href="#dependencies">Dependencies</a>
 - <a href="#glossary-of-terms">Glossary of Terms</a>
 - <a href="#functionality">Functionality</a> 
+    - <a href="#keytips">Key Tips</a>
     - <a href="#clipboard">Clipboard</a>
     - <a href="#format-data-table">Format Data Table</a>
     - <a href="#script-actions">Script Actions</a>
@@ -142,6 +143,13 @@ How to install the VSTO version
 <a id="user-content-functionality" class="anchor" href="#functionality" aria-hidden="true"> </a>
 ## Functionality
 This Excel ribbon is inserted after the “Home” tab when Excel opens. Listed below is the detailed functionality of this application and its components.  
+
+<a id="user-content-keytips" class="anchor" href="#keytips" aria-hidden="true"> </a>
+###	Key Tips
+A KeyTip must be from 1 to 3 uppercase characters, and must not contain spaces, tabs, or newline characters. KeyTips are sometimes known as access keys or accelerators and are used as shortcut key combinations that activate controls. KeyTips appear on the Ribbon when you press the ALT key. If your KeyTip conflicts with KeyTips for built-in controls or from other add-ins, Microsoft Office might assign non-conflicting KeyTip values automatically.
+<h1 align="left">
+  <img src="Images/ReadMe/ribbon.keytips.png" />
+</h1>
 
 <a id="user-content-clipboard" class="anchor" href="#clipboard" aria-hidden="true"> </a>
 ###	Clipboard (Group)
