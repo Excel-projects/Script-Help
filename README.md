@@ -3,9 +3,8 @@
 </head>
 
 
-<img align="left" src="Images/ReadMe/App.png" width="64px" >
 
-# Script Help
+<img align="left" src="Images/ReadMe/header.png">
 
 [![Join the chat at https://gitter.im/ScriptHelp](https://badges.gitter.im/ScriptHelp/Lobby.svg)](https://gitter.im/ScriptHelp?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE "MIT License Copyright © Anthony Duguid")
@@ -39,6 +38,7 @@ I'm still working on updating the VB.NET & VBA. The most complete version is C#.
 - <a href="#dependencies">Dependencies</a>
 - <a href="#glossary-of-terms">Glossary of Terms</a>
 - <a href="#functionality">Functionality</a> 
+    - <a href="#keytips">Key Tips</a>
     - <a href="#clipboard">Clipboard</a>
     - <a href="#format-data-table">Format Data Table</a>
     - <a href="#script-actions">Script Actions</a>
@@ -142,6 +142,13 @@ How to install the VSTO version
 <a id="user-content-functionality" class="anchor" href="#functionality" aria-hidden="true"> </a>
 ## Functionality
 This Excel ribbon is inserted after the “Home” tab when Excel opens. Listed below is the detailed functionality of this application and its components.  
+
+<a id="user-content-keytips" class="anchor" href="#keytips" aria-hidden="true"> </a>
+###	Key Tips
+A [KeyTip](https://msdn.microsoft.com/en-us/library/microsoft.office.tools.ribbon.ribbonbutton.keytip.aspx) must be from 1 to 3 uppercase characters, and must not contain spaces, tabs, or newline characters. KeyTips are sometimes known as access keys or accelerators and are used as shortcut key combinations that activate controls. KeyTips appear on the Ribbon when you press the ALT key. If your KeyTip conflicts with KeyTips for built-in controls or from other add-ins, Microsoft Office might assign non-conflicting KeyTip values automatically.
+<h1 align="left">
+  <img src="Images/ReadMe/ribbon.keytips.png" />
+</h1>
 
 <a id="user-content-clipboard" class="anchor" href="#clipboard" aria-hidden="true"> </a>
 ###	Clipboard (Group)
