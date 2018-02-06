@@ -285,6 +285,8 @@ Namespace Scripts
                         ZeroStringToNull()
                     Case "btnFormatDateColumns"
                         FormatDateColumns()
+                    Case "btnFormatTimeColumns"
+                        FormatTimeColumns()
                     Case "btnClearInteriorColor"
                         ClearInteriorColor()
                     Case "btnSeparateValues"
@@ -581,6 +583,45 @@ Namespace Scripts
         End Sub
 
         Public Sub FormatDateColumns()
+            Dim tbl As Excel.ListObject = Nothing
+            Dim cell As Excel.Range = Nothing
+            Try
+                If ErrorHandler.IsAvailable(True) = False Then
+                    Return
+                End If
+                ErrorHandler.CreateLogRecord()
+                tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject
+                cell = Nothing
+                Cursor.Current = System.Windows.Forms.Cursors.WaitCursor
+                For Each col As Excel.ListColumn In tbl.ListColumns
+                    cell = FirstNotNullCellInColumn(col.DataBodyRange)
+                    If ((cell IsNot Nothing)) Then
+                        If cell.NumberFormat.ToString() = My.Settings.Table_ColumnDateFormatFind Or ErrorHandler.IsDate(cell.Value) Then
+                            col.DataBodyRange.NumberFormat = My.Settings.Table_ColumnDateFormatReplace
+                            col.DataBodyRange.HorizontalAlignment = Excel.Constants.xlCenter
+                        End If
+                    End If
+                Next
+
+            Catch ex As System.Runtime.InteropServices.COMException
+                ErrorHandler.DisplayMessage(ex)
+
+            Catch ex As Exception
+                ErrorHandler.DisplayMessage(ex)
+
+            Finally
+                Cursor.Current = System.Windows.Forms.Cursors.Arrow
+                If tbl IsNot Nothing Then
+                    'Marshal.ReleaseComObject(tbl)
+                End If
+                If cell IsNot Nothing Then
+                    'Marshal.ReleaseComObject(cell)
+                End If
+            End Try
+
+        End Sub
+
+        Public Sub FormatTimeColumns()
             Dim tbl As Excel.ListObject = Nothing
             Dim cell As Excel.Range = Nothing
             Try

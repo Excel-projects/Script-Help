@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui" onLoad="Ribbon_Load">
 
-<!-- 
+	<!-- 
 Use the following tags to remove indivdual ribbons when this loads
 	<tab idMso="TabHome" getVisible="GetVisible"/> 
 	<tab idMso="TabInsert" getVisible="GetVisible"/> 
@@ -20,18 +20,22 @@ Or use the following tag to remove all other ribbons when this loads
 
 	<ribbon>
 		<tabs>
-			<tab 
-					id="tabScriptHelp" 
-					getLabel="GetLabelText" 
+			<tab
+					id="tabScriptHelp"
+					getLabel="GetLabelText"
 					insertAfterMso="TabHome"
+          keytip="SH"
 					>
 				<group
 						id="grpClipboard"
 						label="Clipboard"
-						imageMso="Copy">
-					<control 
-							idMso="PasteMenu" 
-							size="large" 
+						imageMso="Copy"
+						getVisible="GetVisible"
+						>
+					<control
+							idMso="PasteMenu"
+							size="large"
+              keytip="V"
 							/>
 					<button
 							id="btnCopyVisibleCells"
@@ -42,6 +46,7 @@ Or use the following tag to remove all other ribbons when this loads
 							size="large"
 							screentip="Copy Visible Cells"
 							supertip="Copies only visible cells from a selection"
+              keytip="CVC"
 							/>
 				</group>
 				<group
@@ -62,14 +67,17 @@ Or use the following tag to remove all other ribbons when this loads
 					<gallery
 							idMso="FormatAsTableGallery"
 							size="large"
+              keytip="FAT"
 							/>
 					<gallery
 							idMso="ViewFreezePanesGallery"
 							size="large"
+              keytip="VFP"
 							/>
 					<button
 							idMso="RemoveDuplicates"
 							size="large"
+              keytip="DUP"
 							/>
 				</group>
 				<group
@@ -85,6 +93,7 @@ Or use the following tag to remove all other ribbons when this loads
 							size="large"
 							screentip="Clean Data"
 							supertip="This feature removes all nonprintable characters from text and trims leading and trailing spaces."
+              keytip="CLE"
 							/>
 					<button
 							id="btnZeroToNull"
@@ -96,16 +105,29 @@ Or use the following tag to remove all other ribbons when this loads
 							size="large"
 							screentip="Convert to NULL"
 							supertip="Replaces the zero string values with 'NULL'"
+              keytip="NUL"
 							/>
 					<button
 							id="btnFormatDateColumns"
 							label="Format Date Columns"
 							onAction="OnAction"
 							getEnabled="GetEnabled"
-							imageMso="DateAndTimeInsert"
+							imageMso="NewAppointment"
 							size="large"
 							screentip="Format Date Columns"
-							supertip="Update the default date format of the cell"
+							supertip="Update the default date format of any column that has a date without a zero string value"
+              keytip="DTE"
+							/>
+					<button
+						id="btnFormatTimeColumns"
+						label="Format Time Columns"
+						onAction="OnAction"
+						getEnabled="GetEnabled"
+						imageMso="DateAndTimeInsert"
+						size="large"
+						screentip="Format Time Columns"
+						supertip="Update the default time format of the selected column"
+						keytip="TIM"
 							/>
 					<button
 							id="btnClearInteriorColor"
@@ -117,6 +139,7 @@ Or use the following tag to remove all other ribbons when this loads
 							size="large"
 							screentip="Clear Interior Color"
 							supertip="Clear the interior color of cells in the current table"
+              keytip="INT"
 							/>
 					<button
 							id="btnSeparateValues"
@@ -127,6 +150,7 @@ Or use the following tag to remove all other ribbons when this loads
 							size="large"
 							screentip="Separate Values"
 							supertip="Separate values into new rows from the selected column by a delimited string value setting"
+              keytip="SPR"
 							/>
 					<menu
 							id="mnuScriptType"
@@ -135,6 +159,7 @@ Or use the following tag to remove all other ribbons when this loads
 							size="large"
 							screentip="Add Script Column"
 							supertip="The selected button will change the script string format."
+              keytip="ADD"
 							>
 						<button
 								id="btnScriptTypeTSqlCreateTable"
@@ -342,6 +367,7 @@ Or use the following tag to remove all other ribbons when this loads
 						id="grpScriptVariables"
 						label="Script Variables"
 						imageMso="ShowFormulas"
+						getVisible="GetVisible"
 						>
 					<comboBox
 							id="cboTableAlias"
@@ -353,6 +379,7 @@ Or use the following tag to remove all other ribbons when this loads
 							sizeString= "XXXXXXXXXXXXXXXXXXXX"
 							screentip="Table Alias"
 							supertip="This is the table alias used as a prefix in the header and footer row in the script column."
+              keytip="DTA"
 							/>
 					<comboBox
 							id="cboDateFormatFind"
@@ -364,6 +391,7 @@ Or use the following tag to remove all other ribbons when this loads
 							sizeString= "XXXXXXXXXXXXXXXXXXXX"
 							screentip="Find Date Format"
 							supertip="This is the date format to find. It defaults to the format from SQL Server Management Studio after you paste records into Excel."
+              keytip="DFF"
 							/>
 					<comboBox
 							id="cboDateFormatReplace"
@@ -375,6 +403,7 @@ Or use the following tag to remove all other ribbons when this loads
 							sizeString= "XXXXXXXXXXXXXXXXXXXX"
 							screentip="Replace Date Format"
 							supertip="This is the date format the script uses to replace the formatting for date columns."
+              keytip="DFR"
 							/>
 					<button
 							id="btnTableAlias"
@@ -383,6 +412,7 @@ Or use the following tag to remove all other ribbons when this loads
 							screentip="Open Table Alias List"
 							supertip="This will open the table alias list form."
 							tag="TableAlias"
+              keytip="LTA"
 							/>
 					<button
 							id="btnDateFormatFind"
@@ -391,6 +421,7 @@ Or use the following tag to remove all other ribbons when this loads
 							screentip="Open Date Format List"
 							supertip="This will open the date format list form."
 							tag="DateFormat"
+              keytip="LFF"
 							/>
 					<button
 							id="btnDateFormatReplace"
@@ -399,6 +430,7 @@ Or use the following tag to remove all other ribbons when this loads
 							screentip="Open Date Format List"
 							supertip="This will open the date format list form."
 							tag="DateFormat"
+              keytip="LFR"
 							/>
 				</group>
 				<group
@@ -413,6 +445,7 @@ Or use the following tag to remove all other ribbons when this loads
 							size="large"
 							screentip="Add-In Settings Form"
 							supertip="This opens a user form with a list of custom properties stored in the file."
+              keytip="SET"
 							/>
 					<button
 							id="btnFileList"
@@ -423,6 +456,7 @@ Or use the following tag to remove all other ribbons when this loads
 							size="large"
 							screentip="Create A File Listing"
 							supertip="This will create a file listing of the user selected path recursively. It will save the .csv and .bat file in the root folder selected."
+              keytip="LST"
 							/>
 					<button
 							idMso="ComAddInsDialog"
@@ -442,6 +476,7 @@ Or use the following tag to remove all other ribbons when this loads
 							size="large"
 							screentip="How To..."
 							supertip="This opens the read me page in GitHub with detailed instructions of the Add-In functionality."
+              keytip="HLP"
 							/>
 					<button
 							id="btnOpenNewIssue"
@@ -451,11 +486,22 @@ Or use the following tag to remove all other ribbons when this loads
 							size="large"
 							screentip="Report An Issue"
 							supertip="This will open a new issue page in GitHub. The user will need to login to raise an issue."
+              keytip="RPT"
+							/>
+					<button
+							id="btnDownloadNewVersion"
+							label="New Version Is Available"
+							onAction="OnAction"
+							image="download"
+							size="large"
+							screentip="Download A New Version"
+							supertip="This will download a copy of the file from GitHub."
+							visible="false"
 							/>
 					<button
 							id="btnHelpApi"
 							label="API Doc...   "
-							onAction="OpenHelpApi"
+							onAction="OnAction"
 							imageMso="CategoryCollapse"
 							size="normal"
 							screentip="View API documentation for this product"
@@ -496,8 +542,12 @@ Or use the following tag to remove all other ribbons when this loads
 							getLabel="GetLabelText"
 							getEnabled="False"
 							/>
+					<button
+							id="btnStart"
+							onAction="OnAction"
+              keytip="RUN"
+							/>
 				</group>
-
 			</tab>
 		</tabs>
 	</ribbon>
