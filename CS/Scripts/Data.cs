@@ -213,7 +213,7 @@ namespace ScriptHelp.Scripts
         {
             string tableName = tbl.TableName.ToString();
             string columnName = tbl.Columns[0].ColumnName.ToString();
-            string sql = "SELECT * FROM " + tableName + " ORDER BY " + columnName;
+            string sql = "SELECT * FROM " + tableName; //+ " ORDER BY " + columnName;
             if (tbl.Select(columnName + " = '" + text.Replace("'", "''") + "'").Length == 0)
             {
                 DialogResult dr = MessageBox.Show("Would you like to add '" + text + "' to the list?", "Add New Value", MessageBoxButtons.YesNo, MessageBoxIcon.Question);

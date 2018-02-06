@@ -313,5 +313,30 @@ namespace ScriptHelp.Scripts
             return false;
         }
 
+        /// <summary> 
+        /// Check if the object is a time     
+        /// </summary>
+        /// <param name="expression">Represents the cell value </param>
+        /// <returns>A method that returns true or false if there is a valid time </returns> 
+        /// <remarks></remarks>
+        public static bool IsTime(object expression)
+        {
+            try
+            {
+                string timeValue = Convert.ToString(expression);
+                //timeValue = String.Format("{0:" + Properties.Settings.Default.Table_ColumnFormatTime + "}", expression);
+                //timeValue = timeValue.ToString(Properties.Settings.Default.Table_ColumnFormatTime, System.Globalization.CultureInfo.InvariantCulture);
+                //timeValue = timeValue.ToString(Properties.Settings.Default.Table_ColumnFormatTime);
+                //string timeValue = expression.ToString().Format(Properties.Settings.Default.Table_ColumnFormatTime);
+                TimeSpan time1;
+                //return TimeSpan.TryParse((string)expression, out time1);
+                return TimeSpan.TryParse(timeValue, out time1);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
     }
 }

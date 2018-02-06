@@ -104,7 +104,7 @@ namespace ScriptHelp.Scripts
                         }
                         if (Ribbon.GetSqlDataType(col) == Properties.Settings.Default.Column_TypeDate)
                         {
-                            formula += valuePrefix + "\"DATE(" + qt + "\" & " + colRef + " & \"" + qt + ", " + qt + Properties.Settings.Default.Table_ColumnDateFormatReplace + qt + ")\"";
+                            formula += valuePrefix + "\"DATE(" + qt + "\" & " + colRef + " & \"" + qt + ", " + qt + Properties.Settings.Default.Table_ColumnFormatDateReplace + qt + ")\"";
                         }
                         else
                         {
@@ -113,7 +113,7 @@ namespace ScriptHelp.Scripts
                     }
                 }
                 //replace NULL values with DQL format
-                formula = "SUBSTITUTE(" + formula + ", \"'" + Properties.Settings.Default.Table_ColumnScriptNull + "', '" + Properties.Settings.Default.Table_ColumnDateFormatReplace + "'\", \"'nulldate'\")";
+                formula = "SUBSTITUTE(" + formula + ", \"'" + Properties.Settings.Default.Table_ColumnScriptNull + "', '" + Properties.Settings.Default.Table_ColumnFormatDateReplace + "'\", \"'nulldate'\")";
                 formula = "SUBSTITUTE(" + formula + ", \"'" + Properties.Settings.Default.Table_ColumnScriptNull + "'\", \"nullstring\")";
                 formula = "SUBSTITUTE(" + formula + ", \"" + Properties.Settings.Default.Table_ColumnScriptNull + "\", \"nullint\")";
 
@@ -255,10 +255,10 @@ namespace ScriptHelp.Scripts
                         {
                             if (afterWhere == true)
                             {
-                                whereClause += valuePrefix + "\"DATE(" + qt + "\" & " + colRef + " & \"" + qt + ", " + qt + Properties.Settings.Default.Table_ColumnDateFormatReplace + qt + ")\"";
+                                whereClause += valuePrefix + "\"DATE(" + qt + "\" & " + colRef + " & \"" + qt + ", " + qt + Properties.Settings.Default.Table_ColumnFormatDateReplace + qt + ")\"";
 
                             }
-                            formula += valuePrefix + "\"DATE(" + qt + "\" & " + colRef + " & \"" + qt + ", " + qt + Properties.Settings.Default.Table_ColumnDateFormatReplace + qt + ")\"";
+                            formula += valuePrefix + "\"DATE(" + qt + "\" & " + colRef + " & \"" + qt + ", " + qt + Properties.Settings.Default.Table_ColumnFormatDateReplace + qt + ")\"";
                         }
                         else
                         {
@@ -271,7 +271,7 @@ namespace ScriptHelp.Scripts
                     }
                 }
                 //replace NULL values with DQL format
-                formula = "SUBSTITUTE(" + formula + ", \"'" + Properties.Settings.Default.Table_ColumnScriptNull + "', '" + Properties.Settings.Default.Table_ColumnDateFormatReplace + "'\", \"'nulldate'\")";
+                formula = "SUBSTITUTE(" + formula + ", \"'" + Properties.Settings.Default.Table_ColumnScriptNull + "', '" + Properties.Settings.Default.Table_ColumnFormatDateReplace + "'\", \"'nulldate'\")";
                 formula = "SUBSTITUTE(" + formula + ", \"'" + Properties.Settings.Default.Table_ColumnScriptNull + "'\", \"nullstring\")";
                 formula = "SUBSTITUTE(" + formula + ", \"" + Properties.Settings.Default.Table_ColumnScriptNull + "\", \"nullint\")";
 
@@ -390,7 +390,7 @@ namespace ScriptHelp.Scripts
                         valuePrefix = "\" SET " + col.Name + " = \" & ";
                         if (Ribbon.GetSqlDataType(col) == Properties.Settings.Default.Column_TypeDate)
                         {
-                            formula += valuePrefix + "\"DATE(" + qt + "\" & " + colRef + " & \"" + qt + ", " + qt + Properties.Settings.Default.Table_ColumnDateFormatReplace + qt + ")\"";
+                            formula += valuePrefix + "\"DATE(" + qt + "\" & " + colRef + " & \"" + qt + ", " + qt + Properties.Settings.Default.Table_ColumnFormatDateReplace + qt + ")\"";
                         }
                         else
                         {
@@ -399,7 +399,7 @@ namespace ScriptHelp.Scripts
                     }
                 }
                 //replace NULL values with DQL format
-                formula = "SUBSTITUTE(" + formula + ", \"'" + Properties.Settings.Default.Table_ColumnScriptNull + "', '" + Properties.Settings.Default.Table_ColumnDateFormatReplace + "'\", \"'nulldate'\")";
+                formula = "SUBSTITUTE(" + formula + ", \"'" + Properties.Settings.Default.Table_ColumnScriptNull + "', '" + Properties.Settings.Default.Table_ColumnFormatDateReplace + "'\", \"'nulldate'\")";
                 formula = "SUBSTITUTE(" + formula + ", \"'" + Properties.Settings.Default.Table_ColumnScriptNull + "'\", \"nullstring\")";
                 formula = "SUBSTITUTE(" + formula + ", \"" + Properties.Settings.Default.Table_ColumnScriptNull + "\", \"nullint\")";
 
@@ -533,7 +533,7 @@ namespace ScriptHelp.Scripts
                         }
                         if (Ribbon.GetSqlDataType(col) == Properties.Settings.Default.Column_TypeDate)
                         {
-                            formula += valuePrefix + "\"DATE(" + qt + "\" & " + colRef + " & \"" + qt + ", " + qt + Properties.Settings.Default.Table_ColumnDateFormatReplace + qt + ")\"";
+                            formula += valuePrefix + "\"DATE(" + qt + "\" & " + colRef + " & \"" + qt + ", " + qt + Properties.Settings.Default.Table_ColumnFormatDateReplace + qt + ")\"";
                         }
                         else
                         {
@@ -542,7 +542,7 @@ namespace ScriptHelp.Scripts
                     }
                 }
                 //replace NULL values with DQL format
-                formula = "SUBSTITUTE(" + formula + ", \"'" + Properties.Settings.Default.Table_ColumnScriptNull + "', '" + Properties.Settings.Default.Table_ColumnDateFormatReplace + "'\", \"'nulldate'\")";
+                formula = "SUBSTITUTE(" + formula + ", \"'" + Properties.Settings.Default.Table_ColumnScriptNull + "', '" + Properties.Settings.Default.Table_ColumnFormatDateReplace + "'\", \"'nulldate'\")";
                 formula = "SUBSTITUTE(" + formula + ", \"'" + Properties.Settings.Default.Table_ColumnScriptNull + "'\", \"nullstring\")";
                 formula = "SUBSTITUTE(" + formula + ", \"" + Properties.Settings.Default.Table_ColumnScriptNull + "\", \"nullint\")";
 
@@ -678,7 +678,7 @@ namespace ScriptHelp.Scripts
                         }
                         if (Ribbon.GetSqlDataType(col) == Properties.Settings.Default.Column_TypeDate)
                         {
-                            formula += valuePrefix + "\"DATE(" + qt + "\" & " + colRef + " & \"" + qt + ", " + qt + Properties.Settings.Default.Table_ColumnDateFormatReplace + qt + ")\"";
+                            formula += valuePrefix + "\"DATE(" + qt + "\" & " + colRef + " & \"" + qt + ", " + qt + Properties.Settings.Default.Table_ColumnFormatDateReplace + qt + ")\"";
                         }
                         else
                         {
@@ -687,7 +687,7 @@ namespace ScriptHelp.Scripts
                     }
                 }
                 //replace NULL values with DQL format
-                formula = "SUBSTITUTE(" + formula + ", \"'" + Properties.Settings.Default.Table_ColumnScriptNull + "', '" + Properties.Settings.Default.Table_ColumnDateFormatReplace + "'\", \"'nulldate'\")";
+                formula = "SUBSTITUTE(" + formula + ", \"'" + Properties.Settings.Default.Table_ColumnScriptNull + "', '" + Properties.Settings.Default.Table_ColumnFormatDateReplace + "'\", \"'nulldate'\")";
                 formula = "SUBSTITUTE(" + formula + ", \"'" + Properties.Settings.Default.Table_ColumnScriptNull + "'\", \"nullstring\")";
                 formula = "SUBSTITUTE(" + formula + ", \"" + Properties.Settings.Default.Table_ColumnScriptNull + "\", \"nullint\")";
 
@@ -829,10 +829,10 @@ namespace ScriptHelp.Scripts
                         {
                             if (afterWhere == true)
                             {
-                                whereClause += valuePrefix + "\"DATE(" + qt + "\" & " + colRef + " & \"" + qt + ", " + qt + Properties.Settings.Default.Table_ColumnDateFormatReplace + qt + ")\"";
+                                whereClause += valuePrefix + "\"DATE(" + qt + "\" & " + colRef + " & \"" + qt + ", " + qt + Properties.Settings.Default.Table_ColumnFormatDateReplace + qt + ")\"";
 
                             }
-                            formula += valuePrefix + "\"DATE(" + qt + "\" & " + colRef + " & \"" + qt + ", " + qt + Properties.Settings.Default.Table_ColumnDateFormatReplace + qt + ")\"";
+                            formula += valuePrefix + "\"DATE(" + qt + "\" & " + colRef + " & \"" + qt + ", " + qt + Properties.Settings.Default.Table_ColumnFormatDateReplace + qt + ")\"";
                         }
                         else
                         {
@@ -845,7 +845,7 @@ namespace ScriptHelp.Scripts
                     }
                 }
                 //replace NULL values with DQL format
-                formula = "SUBSTITUTE(" + formula + ", \"'" + Properties.Settings.Default.Table_ColumnScriptNull + "', '" + Properties.Settings.Default.Table_ColumnDateFormatReplace + "'\", \"'nulldate'\")";
+                formula = "SUBSTITUTE(" + formula + ", \"'" + Properties.Settings.Default.Table_ColumnScriptNull + "', '" + Properties.Settings.Default.Table_ColumnFormatDateReplace + "'\", \"'nulldate'\")";
                 formula = "SUBSTITUTE(" + formula + ", \"'" + Properties.Settings.Default.Table_ColumnScriptNull + "'\", \"nullstring\")";
                 formula = "SUBSTITUTE(" + formula + ", \"" + Properties.Settings.Default.Table_ColumnScriptNull + "\", \"nullint\")";
 
@@ -1724,7 +1724,7 @@ namespace ScriptHelp.Scripts
                         }
                         if (Ribbon.GetSqlDataType(col) == Properties.Settings.Default.Column_TypeDate)
                         {
-                            formula += valuePrefix + "\"DATE(" + qt + "\" & " + colRef + " & \"" + qt + ", " + qt + Properties.Settings.Default.Table_ColumnDateFormatReplace + qt + ")\"";
+                            formula += valuePrefix + "\"DATE(" + qt + "\" & " + colRef + " & \"" + qt + ", " + qt + Properties.Settings.Default.Table_ColumnFormatDateReplace + qt + ")\"";
                         }
                         else
                         {
@@ -2403,7 +2403,7 @@ namespace ScriptHelp.Scripts
                         }
                         if (Ribbon.GetSqlDataType(col) == Properties.Settings.Default.Column_TypeDate)
                         {
-                            formula += valuePrefix + "\"DATE(" + qt + "\" & " + colRef + " & \"" + qt + ", " + qt + Properties.Settings.Default.Table_ColumnDateFormatReplace + qt + ")\"";
+                            formula += valuePrefix + "\"DATE(" + qt + "\" & " + colRef + " & \"" + qt + ", " + qt + Properties.Settings.Default.Table_ColumnFormatDateReplace + qt + ")\"";
                         }
                         else
                         {

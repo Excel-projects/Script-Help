@@ -243,6 +243,7 @@ namespace ScriptHelp.Scripts
                     case "btnCleanData":
                     case "btnZeroToNull":
                     case "btnFormatDateColumns":
+                    case "btnFormatTimeColumns":
                     case "btnClearInteriorColor":
                     case "btnAddScriptColumn":
                         return ErrorHandler.IsEnabled(false);
@@ -362,9 +363,9 @@ namespace ScriptHelp.Scripts
                 switch (control.Id)
                 {
                     case "cboDateFormatReplace":
-                        return Properties.Settings.Default.Table_ColumnDateFormatReplace;
+                        return Properties.Settings.Default.Table_ColumnFormatDateReplace;
                     case "cboDateFormatFind":
-                        return Properties.Settings.Default.Table_ColumnDateFormatFind;
+                        return Properties.Settings.Default.Table_ColumnFormatDateFind;
                     case "cboTableAlias":
                         return Properties.Settings.Default.Table_ColumnTableAlias;
                     default:
@@ -465,6 +466,9 @@ namespace ScriptHelp.Scripts
                         break;
                     case "btnFormatDateColumns":
                         FormatDateColumns();
+                        break;
+                    case "btnFormatTimeColumns":
+                        FormatTimeColumns();
                         break;
                     case "btnClearInteriorColor":
                         ClearInteriorColor();
@@ -577,11 +581,11 @@ namespace ScriptHelp.Scripts
                 switch (control.Id)
                 {
                     case "cboDateFormatReplace":
-                        Properties.Settings.Default.Table_ColumnDateFormatReplace = text;
+                        Properties.Settings.Default.Table_ColumnFormatDateReplace = text;
                         Data.InsertRecord(Data.DateFormatTable, text);
                         break;
                     case "cboDateFormatFind":
-                        Properties.Settings.Default.Table_ColumnDateFormatFind = text;
+                        Properties.Settings.Default.Table_ColumnFormatDateFind = text;
                         Data.InsertRecord(Data.DateFormatTable, text);
                         break;
                     case "cboTableAlias":
@@ -784,11 +788,63 @@ namespace ScriptHelp.Scripts
                     cell = FirstNotNullCellInColumn(col.DataBodyRange);
                     if (((cell != null)))
                     {
-                        if (cell.NumberFormat.ToString() == Properties.Settings.Default.Table_ColumnDateFormatFind | ErrorHandler.IsDate(cell.Value))
+                        if (cell.NumberFormat.ToString() == Properties.Settings.Default.Table_ColumnFormatDateFind | ErrorHandler.IsDate(cell.Value))
                         {
-                            col.DataBodyRange.NumberFormat = Properties.Settings.Default.Table_ColumnDateFormatReplace;
+                            col.DataBodyRange.NumberFormat = Properties.Settings.Default.Table_ColumnFormatDateReplace;
                             col.DataBodyRange.HorizontalAlignment = Excel.Constants.xlCenter;
                         }
+                    }
+                }
+            }
+            catch (System.Runtime.InteropServices.COMException ex)
+            {
+                ErrorHandler.DisplayMessage(ex);
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.DisplayMessage(ex);
+            }
+            finally
+            {
+                Cursor.Current = System.Windows.Forms.Cursors.Arrow;
+                if (tbl != null)
+                    Marshal.ReleaseComObject(tbl);
+                if (cell != null)
+                    Marshal.ReleaseComObject(cell);
+            }
+        }
+
+        /// <summary> 
+        /// Finds dates columns with the paste format settings or date specific columns and updates with date format setting
+        /// </summary>
+        /// <remarks></remarks>
+        public void FormatTimeColumns()
+        {
+            Excel.ListObject tbl = null;
+            Excel.Range cell = null;
+            Excel.Range cellCurrent = null;
+            try
+            {
+                if (ErrorHandler.IsAvailable(true) == false)
+                {
+                    return;
+                }
+                ErrorHandler.CreateLogRecord();
+                tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject;
+                cell = default(Excel.Range);
+                cellCurrent = Globals.ThisAddIn.Application.ActiveCell;
+                int columnIndex = cellCurrent.Column;
+                Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
+                foreach (Excel.ListColumn col in tbl.ListColumns)
+                {
+                    cell = FirstNotNullCellInColumn(col.DataBodyRange);
+                    if (((col.Index == columnIndex)))
+                    {
+                        //if (cell.NumberFormat.ToString() == Properties.Settings.Default.Table_ColumnFormatTime | ErrorHandler.IsTime(cell.Value))
+                        //{
+                            col.DataBodyRange.NumberFormat = Properties.Settings.Default.Table_ColumnFormatTime;
+                            col.DataBodyRange.HorizontalAlignment = Excel.Constants.xlCenter;
+                        //}
                     }
                 }
             }
@@ -1124,7 +1180,7 @@ namespace ScriptHelp.Scripts
         public static string ApplyTextQuotes(Excel.ListColumn col)
         {
             Excel.Range cell = FirstNotNullCellInColumn(col.DataBodyRange);
-            string timeFormat = "h:mm:ss AM/PM";  //TODO: reference a list of time formats
+            string timeFormat = Properties.Settings.Default.Table_ColumnFormatTime;
             try
             {
                 if ((GetSqlDataType(col) != Properties.Settings.Default.Column_TypeNumeric)) //or date/time
@@ -1296,7 +1352,7 @@ namespace ScriptHelp.Scripts
                 switch (GetSqlDataType(col))
                 {
                     case 2:
-                        fmt = Properties.Settings.Default.Table_ColumnDateFormatReplace;
+                        fmt = Properties.Settings.Default.Table_ColumnFormatDateReplace;
                         return FormatCellText(col, fmt);
                     case 1:
                         // we will use the column formatting if some is applied
@@ -1353,7 +1409,7 @@ namespace ScriptHelp.Scripts
                 }
 
                 //Excel changes the case of date formats on custom cell format types
-                bool result = Properties.Settings.Default.Table_ColumnDateFormatReplace.Equals(col.DataBodyRange.NumberFormat.ToString(), StringComparison.OrdinalIgnoreCase);
+                bool result = Properties.Settings.Default.Table_ColumnFormatDateReplace.Equals(col.DataBodyRange.NumberFormat.ToString(), StringComparison.OrdinalIgnoreCase);
                 // NOTE: next test relies consistent formatting on numerics in a column
                 // so we only have to test the first cell
                 if (ErrorHandler.IsDate(FirstNotNullCellInColumn(col.DataBodyRange)) | result == true)

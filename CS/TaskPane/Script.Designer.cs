@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.txtScript = new System.Windows.Forms.RichTextBox();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.mnuToolbar = new System.Windows.Forms.ToolStrip();
             this.btnSave = new System.Windows.Forms.ToolStripButton();
             this.btnCopy = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.lblFontSize = new System.Windows.Forms.ToolStripLabel();
             this.nudFontSize = new System.Windows.Forms.NumericUpDown();
-            this.toolStrip1.SuspendLayout();
+            this.mnuToolbar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudFontSize)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,19 +52,19 @@
             this.txtScript.TabIndex = 1;
             this.txtScript.Text = "";
             // 
-            // toolStrip1
+            // mnuToolbar
             // 
-            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuToolbar.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.mnuToolbar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnSave,
             this.btnCopy,
             this.toolStripSeparator1,
             this.lblFontSize});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(650, 25);
-            this.toolStrip1.TabIndex = 2;
-            this.toolStrip1.Text = "toolStrip1";
+            this.mnuToolbar.Location = new System.Drawing.Point(0, 0);
+            this.mnuToolbar.Name = "mnuToolbar";
+            this.mnuToolbar.Size = new System.Drawing.Size(650, 25);
+            this.mnuToolbar.TabIndex = 2;
+            this.mnuToolbar.Text = "Toolbar";
             // 
             // btnSave
             // 
@@ -127,13 +127,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Controls.Add(this.nudFontSize);
-            this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.mnuToolbar);
             this.Controls.Add(this.txtScript);
             this.Name = "Script";
             this.Size = new System.Drawing.Size(650, 750);
             this.Load += new System.EventHandler(this.Script_Load);
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
+            this.mnuToolbar.ResumeLayout(false);
+            this.mnuToolbar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudFontSize)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -143,7 +143,7 @@
         #endregion
 
         private System.Windows.Forms.RichTextBox txtScript;
-        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStrip mnuToolbar;
         private System.Windows.Forms.ToolStripButton btnSave;
         private System.Windows.Forms.ToolStripButton btnCopy;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;

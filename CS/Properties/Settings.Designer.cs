@@ -71,24 +71,24 @@ namespace ScriptHelp.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("dd-mmm-yyyy")]
-        public string Table_ColumnDateFormatReplace {
+        public string Table_ColumnFormatDateReplace {
             get {
-                return ((string)(this["Table_ColumnDateFormatReplace"]));
+                return ((string)(this["Table_ColumnFormatDateReplace"]));
             }
             set {
-                this["Table_ColumnDateFormatReplace"] = value;
+                this["Table_ColumnFormatDateReplace"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("mm:ss.0")]
-        public string Table_ColumnDateFormatFind {
+        public string Table_ColumnFormatDateFind {
             get {
-                return ((string)(this["Table_ColumnDateFormatFind"]));
+                return ((string)(this["Table_ColumnFormatDateFind"]));
             }
             set {
-                this["Table_ColumnDateFormatFind"] = value;
+                this["Table_ColumnFormatDateFind"] = value;
             }
         }
         
@@ -274,7 +274,7 @@ namespace ScriptHelp.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(",")]
+        [global::System.Configuration.DefaultSettingValueAttribute(";")]
         public char Table_ColumnSeparateValuesDelimiter {
             get {
                 return ((char)(this["Table_ColumnSeparateValuesDelimiter"]));
@@ -425,6 +425,18 @@ namespace ScriptHelp.Properties {
             }
             set {
                 this["App_PathNewIssue"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("h:mm:ss AM/PM")]
+        public string Table_ColumnFormatTime {
+            get {
+                return ((string)(this["Table_ColumnFormatTime"]));
+            }
+            set {
+                this["Table_ColumnFormatTime"] = value;
             }
         }
     }

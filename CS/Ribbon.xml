@@ -112,11 +112,22 @@ Or use the following tag to remove all other ribbons when this loads
 							label="Format Date Columns"
 							onAction="OnAction"
 							getEnabled="GetEnabled"
-							imageMso="DateAndTimeInsert"
+							imageMso="NewAppointment"
 							size="large"
 							screentip="Format Date Columns"
-							supertip="Update the default date format of the cell"
+							supertip="Update the default date format of any column that has a date without a zero string value"
               keytip="DTE"
+							/>
+					<button
+						id="btnFormatTimeColumns"
+						label="Format Time Columns"
+						onAction="OnAction"
+						getEnabled="GetEnabled"
+						imageMso="DateAndTimeInsert"
+						size="large"
+						screentip="Format Time Columns"
+						supertip="Update the default time format of the selected column"
+						keytip="TIM"
 							/>
 					<button
 							id="btnClearInteriorColor"
