@@ -3,6 +3,7 @@ Imports System.IO
 Imports System.Data
 Imports System.Data.SqlServerCe
 Imports System.Security.AccessControl
+Imports System.Windows.Forms
 
 Namespace Scripts
 
@@ -38,6 +39,7 @@ Namespace Scripts
                 End Using
 
                 TableAliasTable.DefaultView.Sort = columnName & Convert.ToString(" asc")
+                TableAliasTable.TableName = tableName
 
             Catch ex As Exception
                 'ErrorHandler.DisplayMessage(ex)
@@ -64,6 +66,7 @@ Namespace Scripts
                 End Using
 
                 DateFormatTable.DefaultView.Sort = columnName & Convert.ToString(" asc")
+                DateFormatTable.TableName = tableName
 
             Catch ex As Exception
                 'ErrorHandler.DisplayMessage(ex)
@@ -143,6 +146,38 @@ Namespace Scripts
 
             End Try
 
+        End Sub
+
+        Public Shared Sub InsertRecord(ByVal tbl As DataTable, ByVal text As String)
+            Dim tableName As String = tbl.TableName.ToString()
+            Dim columnName As String = tbl.Columns(0).ColumnName.ToString()
+            Dim sql As String = "SELECT * FROM " & tableName
+            If tbl.[Select](columnName & " = '" + text.Replace("'", "''") & "'").Length = 0 Then
+                Dim dr As DialogResult = MessageBox.Show("Would you like to add '" & text & "' to the list?", "Add New Value", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                Select Case dr
+                    Case DialogResult.Yes
+                        tbl.Rows.Add(New Object() {text})
+                        Dim cn As SqlCeConnection = New SqlCeConnection(Data.Connection())
+                        Dim scb As SqlCeCommandBuilder = Nothing
+                        Dim sda As SqlCeDataAdapter = New SqlCeDataAdapter(sql, cn)
+                        sda.TableMappings.Add("Table", tableName)
+                        scb = New SqlCeCommandBuilder(sda)
+                        sda.Update(tbl)
+                        Dim dcFormatString As DataColumn = New DataColumn(columnName, GetType(String))
+                        tbl.Rows.Clear()
+                        Dim columns As DataColumnCollection = tbl.Columns
+                        If columns.Contains(columnName) = False Then
+                            tbl.Columns.Add(dcFormatString)
+                        End If
+
+                        Using da = New SqlCeDataAdapter(sql, Connection())
+                            da.Fill(tbl)
+                        End Using
+
+                        tbl.DefaultView.Sort = columnName & " asc"
+                    Case DialogResult.No
+                End Select
+            End If
         End Sub
 
     End Class

@@ -360,17 +360,22 @@ Namespace Scripts
                 Select Case control.Id
                     Case "cboDateFormatReplace"
                         My.Settings.Table_ColumnDateFormatReplace = text
+                        Data.InsertRecord(Data.DateFormatTable, text)
                         Exit Select
                     Case "cboDateFormatFind"
                         My.Settings.Table_ColumnDateFormatFind = text
+                        Data.InsertRecord(Data.DateFormatTable, text)
                         Exit Select
                     Case "cboTableAlias"
                         My.Settings.Table_ColumnTableAlias = text
+                        Data.InsertRecord(Data.TableAliasTable, text)
                         Exit Select
                 End Select
+
             Catch ex As Exception
                 ErrorHandler.DisplayMessage(ex)
             End Try
+
         End Sub
 
         Public Function GetText(control As Office.IRibbonControl) As String
