@@ -62,7 +62,6 @@ Or use the following tag to remove all other ribbons when this loads
 						id="grpFormatDataTable"
 						label="Format Data Table"
 						imageMso="FormatAsTableGallery"
-						getVisible="GetVisible"
 						>
 					<button
 							id="btnFormatAsTable"
@@ -92,7 +91,6 @@ Or use the following tag to remove all other ribbons when this loads
 							id="btnSeparateValues"
 							label="Separate Values"
 							onAction="OnAction"
-							getVisible="GetVisible"
 							imageMso="ChartSwitchRowColumn"
 							size="normal"
 							screentip="Separate Values"
@@ -118,7 +116,6 @@ Or use the following tag to remove all other ribbons when this loads
 							label="Update to NULL"
 							onAction="OnAction"
 							getEnabled="GetEnabled"
-							getVisible="GetVisible"
 							imageMso="RecordsRefreshRecords"
 							size="normal"
 							screentip="Convert to NULL"
@@ -130,7 +127,6 @@ Or use the following tag to remove all other ribbons when this loads
 							label="Clear Interior Color"
 							onAction="OnAction"
 							getEnabled="GetEnabled"
-							getVisible="GetVisible"
 							imageMso="TableEraser"
 							size="normal"
 							screentip="Clear Interior Color"
@@ -235,8 +231,8 @@ Or use the following tag to remove all other ribbons when this loads
 							imageMso="FunctionWizard"
 							label="Add Script Formula"
 							size="large"
-							screentip="Add Script Column"
-							supertip="The selected button will change the script string format."
+							screentip="Add Script Formula"
+							supertip="The each button will change the column formula to the selected script string format."
               keytip="ADD"
 							>
 						<button
@@ -442,41 +438,10 @@ Or use the following tag to remove all other ribbons when this loads
 					</menu>
 				</group>
 				<group
-						id="grpOptions"
-						label="Options"
-						imageMso="PropertySheet"
-						visible ="false">
-					<button
-							id="btnSettings2"
-							label="Add-In Settings"
-							onAction="OnAction"
-							imageMso="PropertySheet"
-							size="large"
-							screentip="Add-In Settings Form"
-							supertip="This opens a user form with a list of custom properties stored in the file."
-              keytip="SET"
-							/>
-					<button
-							id="btnFileList"
-							label="Create File List"
-							onAction="OnAction"
-							getVisible="GetVisible"
-							imageMso="GetExternalDataFromText"
-							size="large"
-							screentip="Create A File Listing"
-							supertip="This will create a file listing of the user selected path recursively. It will save the .csv and .bat file in the root folder selected."
-              keytip="LST"
-							/>
-					<button
-							idMso="ComAddInsDialog"
-							visible="false"
-							size="large"
-							/>
-				</group>
-				<group
 						id="grpAnnotation"
 						label="Annotate"
-						imageMso="Camera">
+						imageMso="Camera"
+						getVisible="GetVisible">
 					<button
 							idMso="Camera"
 							label="Excel Camera"

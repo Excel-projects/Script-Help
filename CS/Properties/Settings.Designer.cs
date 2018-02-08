@@ -142,109 +142,13 @@ namespace ScriptHelp.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool Visible_grpScriptVariables {
-            get {
-                return ((bool)(this["Visible_grpScriptVariables"]));
-            }
-            set {
-                this["Visible_grpScriptVariables"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool Visible_grpFormatDataTable {
-            get {
-                return ((bool)(this["Visible_grpFormatDataTable"]));
-            }
-            set {
-                this["Visible_grpFormatDataTable"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool Visible_grpClipboard {
             get {
                 return ((bool)(this["Visible_grpClipboard"]));
             }
             set {
                 this["Visible_grpClipboard"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool Visible_btnClearInteriorColor {
-            get {
-                return ((bool)(this["Visible_btnClearInteriorColor"]));
-            }
-            set {
-                this["Visible_btnClearInteriorColor"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool Visible_btnZeroToNull {
-            get {
-                return ((bool)(this["Visible_btnZeroToNull"]));
-            }
-            set {
-                this["Visible_btnZeroToNull"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Temp")]
-        public string Option_PathFileListing {
-            get {
-                return ((string)(this["Option_PathFileListing"]));
-            }
-            set {
-                this["Option_PathFileListing"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool Visible_btnFileList {
-            get {
-                return ((bool)(this["Visible_btnFileList"]));
-            }
-            set {
-                this["Visible_btnFileList"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool Option_PathFileListingSelect {
-            get {
-                return ((bool)(this["Option_PathFileListingSelect"]));
-            }
-            set {
-                this["Option_PathFileListingSelect"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool Visible_mnuScriptType {
-            get {
-                return ((bool)(this["Visible_mnuScriptType"]));
-            }
-            set {
-                this["Visible_mnuScriptType"] = value;
             }
         }
         
@@ -257,18 +161,6 @@ namespace ScriptHelp.Properties {
             }
             set {
                 this["Table_ColumnName"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool Visible_btnSeparateValues {
-            get {
-                return ((bool)(this["Visible_btnSeparateValues"]));
-            }
-            set {
-                this["Visible_btnSeparateValues"] = value;
             }
         }
         
@@ -425,6 +317,18 @@ namespace ScriptHelp.Properties {
             }
             set {
                 this["App_PathNewIssue"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Visible_grpAnnotation {
+            get {
+                return ((bool)(this["Visible_grpAnnotation"]));
+            }
+            set {
+                this["Visible_grpAnnotation"] = value;
             }
         }
     }

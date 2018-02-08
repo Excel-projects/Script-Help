@@ -32,38 +32,11 @@
     <Setting Name="Column_TypeText" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="Visible_grpScriptVariables" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
-    <Setting Name="Visible_grpFormatDataTable" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
     <Setting Name="Visible_grpClipboard" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
-    <Setting Name="Visible_btnClearInteriorColor" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
-    <Setting Name="Visible_btnZeroToNull" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
-    <Setting Name="Option_PathFileListing" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\Temp</Value>
-    </Setting>
-    <Setting Name="Visible_btnFileList" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
-    <Setting Name="Option_PathFileListingSelect" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
-    <Setting Name="Visible_mnuScriptType" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+      <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="Table_ColumnName" Type="System.String" Scope="User">
       <Value Profile="(Default)">SCRIPT</Value>
-    </Setting>
-    <Setting Name="Visible_btnSeparateValues" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="Table_ColumnSeparateValuesDelimiter" Type="System.Char" Scope="User">
       <Value Profile="(Default)">;</Value>
@@ -103,6 +76,9 @@
     </Setting>
     <Setting Name="App_PathNewIssue" Type="System.String" Scope="User">
       <Value Profile="(Default)">https://github.com/Office-projects/ScriptHelp/issues/new</Value>
+    </Setting>
+    <Setting Name="Visible_grpAnnotation" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>
