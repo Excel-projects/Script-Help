@@ -14,11 +14,11 @@
     <Setting Name="Column_TypeDate" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">2</Value>
     </Setting>
-    <Setting Name="Table_ColumnFormatDateReplace" Type="System.String" Scope="User">
+    <Setting Name="Table_ColumnFormatDate" Type="System.String" Scope="User">
       <Value Profile="(Default)">dd-mmm-yyyy</Value>
     </Setting>
-    <Setting Name="Table_ColumnFormatDateFind" Type="System.String" Scope="User">
-      <Value Profile="(Default)">mm:ss.0</Value>
+    <Setting Name="Table_ColumnFormatTime" Type="System.String" Scope="User">
+      <Value Profile="(Default)">h:mm:ss AM/PM</Value>
     </Setting>
     <Setting Name="Table_ColumnScriptNull" Type="System.String" Scope="User">
       <Value Profile="(Default)">NULL</Value>
@@ -83,10 +83,10 @@
     <Setting Name="Visible_mnuScriptType_PLSQL" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="Visible_mnuScriptType_Github" Type="System.Boolean" Scope="User">
+    <Setting Name="Visible_mnuScriptType_Markdown" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="Visible_mnuScriptType_XML" Type="System.Boolean" Scope="User">
+    <Setting Name="Visible_mnuScriptType_Markup" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="App_PathReadMe" Type="System.String" Scope="User">
@@ -103,9 +103,6 @@
     </Setting>
     <Setting Name="App_PathNewIssue" Type="System.String" Scope="User">
       <Value Profile="(Default)">https://github.com/Office-projects/ScriptHelp/issues/new</Value>
-    </Setting>
-    <Setting Name="Table_ColumnFormatTime" Type="System.String" Scope="User">
-      <Value Profile="(Default)">h:mm:ss AM/PM</Value>
     </Setting>
   </Settings>
 </SettingsFile>

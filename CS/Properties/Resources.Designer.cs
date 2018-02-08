@@ -103,6 +103,16 @@ namespace ScriptHelp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap problem_steps_recorder {
+            get {
+                object obj = ResourceManager.GetObject("problem_steps_recorder", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Save {
             get {
                 object obj = ResourceManager.GetObject("Save", resourceCulture);
@@ -123,9 +133,19 @@ namespace ScriptHelp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ScriptTypeGitHub {
+        internal static System.Drawing.Bitmap ScriptTypeMarkdown {
             get {
-                object obj = ResourceManager.GetObject("ScriptTypeGitHub", resourceCulture);
+                object obj = ResourceManager.GetObject("ScriptTypeMarkdown", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ScriptTypeMarkup {
+            get {
+                object obj = ResourceManager.GetObject("ScriptTypeMarkup", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -153,9 +173,9 @@ namespace ScriptHelp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ScriptTypeXML {
+        internal static System.Drawing.Bitmap snipping_tool {
             get {
-                object obj = ResourceManager.GetObject("ScriptTypeXML", resourceCulture);
+                object obj = ResourceManager.GetObject("snipping_tool", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui" onLoad="Ribbon_Load">
 
-<!-- 
+	<!-- 
 Use the following tags to remove indivdual ribbons when this loads
 	<tab idMso="TabHome" getVisible="GetVisible"/> 
 	<tab idMso="TabInsert" getVisible="GetVisible"/> 
@@ -37,13 +37,22 @@ Or use the following tag to remove all other ribbons when this loads
 							size="large"
               keytip="V"
 							/>
+					<control
+							idMso="Cut"
+							size="normal"
+							/>
+					<control
+							idMso="CopySplitButton"
+							size="normal"
+							/>
+
 					<button
 							id="btnCopyVisibleCells"
-							label="Copy Visible Cells"
+							label="Copy Visible"
 							onAction="OnAction"
 							getEnabled="GetEnabled"
 							imageMso="Copy"
-							size="large"
+							size="normal"
 							screentip="Copy Visible Cells"
 							supertip="Copies only visible cells from a selection"
               keytip="CVC"
@@ -71,63 +80,50 @@ Or use the following tag to remove all other ribbons when this loads
 							/>
 					<gallery
 							idMso="ViewFreezePanesGallery"
-							size="large"
+							size="normal"
               keytip="VFP"
 							/>
 					<button
 							idMso="RemoveDuplicates"
-							size="large"
+							size="normal"
               keytip="DUP"
 							/>
-				</group>
-				<group
-						id="grpScriptActions"
-						label="Script Actions"
-						imageMso="QuickCode">
+					<button
+							id="btnSeparateValues"
+							label="Separate Values"
+							onAction="OnAction"
+							getVisible="GetVisible"
+							imageMso="ChartSwitchRowColumn"
+							size="normal"
+							screentip="Separate Values"
+							supertip="Separate values into new rows from the selected column by a delimited string value setting"
+              keytip="SPR"
+							/>
+					<separator
+							id="separator1"
+							/>
 					<button
 							id="btnCleanData"
 							label="Clean Data"
 							onAction="OnAction"
 							getEnabled="GetEnabled"
 							imageMso="FormatPainter"
-							size="large"
+							size="normal"
 							screentip="Clean Data"
 							supertip="This feature removes all nonprintable characters from text and trims leading and trailing spaces."
               keytip="CLE"
 							/>
 					<button
 							id="btnZeroToNull"
-							label="Convert to NULL"
+							label="Update to NULL"
 							onAction="OnAction"
 							getEnabled="GetEnabled"
 							getVisible="GetVisible"
 							imageMso="RecordsRefreshRecords"
-							size="large"
+							size="normal"
 							screentip="Convert to NULL"
 							supertip="Replaces the zero string values with 'NULL'"
               keytip="NUL"
-							/>
-					<button
-							id="btnFormatDateColumns"
-							label="Format Date Columns"
-							onAction="OnAction"
-							getEnabled="GetEnabled"
-							imageMso="NewAppointment"
-							size="large"
-							screentip="Format Date Columns"
-							supertip="Update the default date format of any column that has a date without a zero string value"
-              keytip="DTE"
-							/>
-					<button
-						id="btnFormatTimeColumns"
-						label="Format Time Columns"
-						onAction="OnAction"
-						getEnabled="GetEnabled"
-						imageMso="DateAndTimeInsert"
-						size="large"
-						screentip="Format Time Columns"
-						supertip="Update the default time format of the selected column"
-						keytip="TIM"
 							/>
 					<button
 							id="btnClearInteriorColor"
@@ -136,26 +132,108 @@ Or use the following tag to remove all other ribbons when this loads
 							getEnabled="GetEnabled"
 							getVisible="GetVisible"
 							imageMso="TableEraser"
-							size="large"
+							size="normal"
 							screentip="Clear Interior Color"
 							supertip="Clear the interior color of cells in the current table"
               keytip="INT"
 							/>
+					<separator
+							id="separator2"
+							/>
+					<labelControl
+							id="lblTableAlias"
+							label="Table Alias:"
+							getEnabled="False"
+							/>
 					<button
-							id="btnSeparateValues"
-							label="Separate Values"
+							id="btnFormatDateColumns"
+							label="Format Date:"
 							onAction="OnAction"
-							getVisible="GetVisible"
-							imageMso="ChartSwitchRowColumn"
-							size="large"
-							screentip="Separate Values"
-							supertip="Separate values into new rows from the selected column by a delimited string value setting"
-              keytip="SPR"
+							getEnabled="GetEnabled"
+							imageMso="NewAppointment"
+							size="normal"
+							screentip="Format Date Columns"
+							supertip="Update the default date format of any column that has a date without a zero string value"
+              keytip="DTE"
+							/>
+					<button
+						id="btnFormatTimeColumns"
+						label="Format Time:"
+						onAction="OnAction"
+						getEnabled="GetEnabled"
+						imageMso="DateAndTimeInsert"
+						size="normal"
+						screentip="Format Time Columns"
+						supertip="Update the default time format of the selected column"
+						keytip="TIM"
+							/>
+					<comboBox
+						id="cboTableAlias"
+						onChange="OnChange"
+						getItemCount="GetItemCount"
+						getItemLabel="GetItemLabel"
+						getText="GetText"
+						sizeString= "XXXXXXXXXXXXXXXXXXXX"
+						screentip="Table Alias"
+						supertip="This is the table alias used as a prefix in the header and footer row in the script column."
+						keytip="DTA"
+							/>
+					<comboBox
+						id="cboDateFormatReplace"
+						onChange="OnChange"
+						getText="GetText"
+						getItemCount="GetItemCount"
+						getItemLabel="GetItemLabel"
+						sizeString= "XXXXXXXXXXXXXXXXXXXX"
+						screentip="Replace Date Format"
+						supertip="This is the date format the script uses to replace the formatting for date columns."
+						keytip="DFR"
+							/>
+					<comboBox
+							id="cboDateFormatFind"
+							onChange="OnChange"
+							getText="GetText"
+							getItemCount="GetItemCount"
+							getItemLabel="GetItemLabel"
+							sizeString= "XXXXXXXXXXXXXXXXXXXX"
+							screentip="Find Date Format"
+							supertip="This is the date format to find. It defaults to the format from SQL Server Management Studio after you paste records into Excel."
+              keytip="DFF"
+							/>
+					<button
+							id="btnTableAlias"
+							label="..."
+							onAction="OnAction"
+							screentip="Open Table Alias List"
+							supertip="This will open the table alias list form."
+							tag="TableAlias"
+              keytip="LTA"
+							/>
+					<button
+							id="btnDateFormatFind"
+							label="..."
+							onAction="OnAction"
+							screentip="Open Date Format List"
+							supertip="This will open the date format list form."
+							tag="DateFormat"
+              keytip="LFF"
+							/>
+					<button
+							id="btnDateFormatReplace"
+							label="..."
+							onAction="OnAction"
+							screentip="Open Date Format List"
+							supertip="This will open the date format list form."
+							tag="DateFormat"
+              keytip="LFR"
+							/>
+					<separator
+							id="separator3"
 							/>
 					<menu
 							id="mnuScriptType"
 							imageMso="FunctionWizard"
-							label="Add Script Column"
+							label="Add Script Formula"
 							size="large"
 							screentip="Add Script Column"
 							supertip="The selected button will change the script string format."
@@ -334,11 +412,11 @@ Or use the following tag to remove all other ribbons when this loads
 						<button
 								id="btnScriptTypeGithubTable"
 								getImage="GetButtonImage"
-								label="GitHub Table"
+								label="Markdown Table"
 								onAction="OnAction"
 								getVisible="GetVisible"
-								screentip="GitHub Table"
-								supertip="This changes the query string to a GitHub table script (This is used for READ ME files)."
+								screentip="Markdown Table"
+								supertip="This changes the query string to a Markdown table script (This is used for READ ME files in GitHub)."
 								/>
 						<menuSeparator
 								id="separator13"
@@ -364,81 +442,12 @@ Or use the following tag to remove all other ribbons when this loads
 					</menu>
 				</group>
 				<group
-						id="grpScriptVariables"
-						label="Script Variables"
-						imageMso="ShowFormulas"
-						getVisible="GetVisible"
-						>
-					<comboBox
-							id="cboTableAlias"
-							label="Table Alias: "
-							onChange="OnChange"
-							getItemCount="GetItemCount"
-							getItemLabel="GetItemLabel"
-							getText="GetText"
-							sizeString= "XXXXXXXXXXXXXXXXXXXX"
-							screentip="Table Alias"
-							supertip="This is the table alias used as a prefix in the header and footer row in the script column."
-              keytip="DTA"
-							/>
-					<comboBox
-							id="cboDateFormatFind"
-							label="Find Format: "
-							onChange="OnChange"
-							getText="GetText"
-							getItemCount="GetItemCount"
-							getItemLabel="GetItemLabel"
-							sizeString= "XXXXXXXXXXXXXXXXXXXX"
-							screentip="Find Date Format"
-							supertip="This is the date format to find. It defaults to the format from SQL Server Management Studio after you paste records into Excel."
-              keytip="DFF"
-							/>
-					<comboBox
-							id="cboDateFormatReplace"
-							label="Replace Format: "
-							onChange="OnChange"
-							getText="GetText"
-							getItemCount="GetItemCount"
-							getItemLabel="GetItemLabel"
-							sizeString= "XXXXXXXXXXXXXXXXXXXX"
-							screentip="Replace Date Format"
-							supertip="This is the date format the script uses to replace the formatting for date columns."
-              keytip="DFR"
-							/>
-					<button
-							id="btnTableAlias"
-							label="..."
-							onAction="OnAction"
-							screentip="Open Table Alias List"
-							supertip="This will open the table alias list form."
-							tag="TableAlias"
-              keytip="LTA"
-							/>
-					<button
-							id="btnDateFormatFind"
-							label="..."
-							onAction="OnAction"
-							screentip="Open Date Format List"
-							supertip="This will open the date format list form."
-							tag="DateFormat"
-              keytip="LFF"
-							/>
-					<button
-							id="btnDateFormatReplace"
-							label="..."
-							onAction="OnAction"
-							screentip="Open Date Format List"
-							supertip="This will open the date format list form."
-							tag="DateFormat"
-              keytip="LFR"
-							/>
-				</group>
-				<group
 						id="grpOptions"
 						label="Options"
-						imageMso="PropertySheet">
+						imageMso="PropertySheet"
+						visible ="false">
 					<button
-							id="btnSettings"
+							id="btnSettings2"
 							label="Add-In Settings"
 							onAction="OnAction"
 							imageMso="PropertySheet"
@@ -465,6 +474,36 @@ Or use the following tag to remove all other ribbons when this loads
 							/>
 				</group>
 				<group
+						id="grpAnnotation"
+						label="Annotate"
+						imageMso="Camera">
+					<button
+							idMso="Camera"
+							label="Excel Camera"
+							size="normal"
+							screentip="Microsoft Excel Camera"
+							supertip="This tool allows you to take a snapshot of a selected datasheet portion, it also syncs the data with the image; whenever you make changes to the original data set, live image gets updated, showing you the latest cells values. "
+							/>
+					<button
+							id="btnSnippingTool"
+							label="Snipping Tool"
+							onAction="OnAction"
+							getImage="GetButtonImage"
+							size="normal"
+							screentip="Microsoft Snipping Tool"
+							supertip="Snipping Tool is a screenshot utility included in Microsoft Windows. It can take screenshots of an open window, rectangular areas, a free-form area, or the entire screen."
+							/>
+					<button
+							id="btnProblemStepRecorder"
+							label="Record Steps"
+							onAction="OnAction"
+							getImage="GetButtonImage"
+							size="normal"
+							screentip="Microsoft Problem Steps Recorder"
+							supertip="Problem Steps Recorder or PSR records the actions you take on your computer which you can then send to the person or group helping you with your computer problem."
+							/>
+				</group>
+				<group
 						id="grpHelp"
 						label="Help"
 						imageMso="Help">
@@ -473,7 +512,7 @@ Or use the following tag to remove all other ribbons when this loads
 							label="How To...   "
 							onAction="OnAction"
 							imageMso="Help"
-							size="large"
+							size="normal"
 							screentip="How To..."
 							supertip="This opens the read me page in GitHub with detailed instructions of the Add-In functionality."
               keytip="HLP"
@@ -483,29 +522,20 @@ Or use the following tag to remove all other ribbons when this loads
 							label="Report Issue"
 							onAction="OnAction"
 							imageMso="MacroSecurity"
-							size="large"
+							size="normal"
 							screentip="Report An Issue"
 							supertip="This will open a new issue page in GitHub. The user will need to login to raise an issue."
               keytip="RPT"
 							/>
 					<button
-							id="btnDownloadNewVersion"
-							label="New Version Is Available"
+							id="btnSettings"
+							label="Settings"
 							onAction="OnAction"
-							image="download"
-							size="large"
-							screentip="Download A New Version"
-							supertip="This will download a copy of the file from GitHub."
-							visible="false"
-							/>
-					<button
-							id="btnHelpApi"
-							label="API Doc...   "
-							onAction="OnAction"
-							imageMso="CategoryCollapse"
+							imageMso="PropertySheet"
 							size="normal"
-							screentip="View API documentation for this product"
-							visible="false"
+							screentip="Add-In Settings Form"
+							supertip="This opens a user form with a list of custom properties stored in the file."
+              keytip="SET"
 							/>
 				</group>
 				<group

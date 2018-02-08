@@ -213,10 +213,14 @@ namespace ScriptHelp.Scripts
                     case "btnScriptTypePlSqlUpdateValues":
                         return Properties.Resources.ScriptTypePlSql;
                     case "btnScriptTypeGithubTable":
-                        return Properties.Resources.ScriptTypeGitHub;
+                        return Properties.Resources.ScriptTypeMarkdown;
                     case "btnScriptTypeHtmlTable":
                     case "btnScriptTypeXmlValues":
-                        return Properties.Resources.ScriptTypeXML;
+                        return Properties.Resources.ScriptTypeMarkup;
+                    case "btnProblemStepRecorder":
+                        return Properties.Resources.problem_steps_recorder;
+                    case "btnSnippingTool":
+                        return Properties.Resources.snipping_tool;
                     default:
                         return null;
                 }
@@ -363,9 +367,9 @@ namespace ScriptHelp.Scripts
                 switch (control.Id)
                 {
                     case "cboDateFormatReplace":
-                        return Properties.Settings.Default.Table_ColumnFormatDateReplace;
+                        return Properties.Settings.Default.Table_ColumnFormatDate;
                     case "cboDateFormatFind":
-                        return Properties.Settings.Default.Table_ColumnFormatDateFind;
+                        return Properties.Settings.Default.Table_ColumnFormatTime;
                     case "cboTableAlias":
                         return Properties.Settings.Default.Table_ColumnTableAlias;
                     default:
@@ -426,10 +430,10 @@ namespace ScriptHelp.Scripts
                     case "btnScriptTypeDqlUpdateLocked":
                         return Properties.Settings.Default.Visible_mnuScriptType_DQL;
                     case "btnScriptTypeGithubTable":
-                        return Properties.Settings.Default.Visible_mnuScriptType_Github;
+                        return Properties.Settings.Default.Visible_mnuScriptType_Markdown;
                     case "btnScriptTypeHtmlTable":
                     case "btnScriptTypeXmlValues":
-                        return Properties.Settings.Default.Visible_mnuScriptType_XML;
+                        return Properties.Settings.Default.Visible_mnuScriptType_Markup;
                     default:
                         return false;
                 }
@@ -560,6 +564,12 @@ namespace ScriptHelp.Scripts
                         AppVariables.TableName = control.Tag;
                         OpenTableDataPane();
                         break;
+                    case "btnSnippingTool":
+                        OpenSnippingTool();
+                        break;
+                    case "btnProblemStepRecorder":
+                        OpenProblemStepRecorder();
+                        break;
                 }
             }
             catch (Exception ex)
@@ -581,11 +591,11 @@ namespace ScriptHelp.Scripts
                 switch (control.Id)
                 {
                     case "cboDateFormatReplace":
-                        Properties.Settings.Default.Table_ColumnFormatDateReplace = text;
+                        Properties.Settings.Default.Table_ColumnFormatDate = text;
                         Data.InsertRecord(Data.DateFormatTable, text);
                         break;
                     case "cboDateFormatFind":
-                        Properties.Settings.Default.Table_ColumnFormatDateFind = text;
+                        Properties.Settings.Default.Table_ColumnFormatTime = text;
                         Data.InsertRecord(Data.DateFormatTable, text);
                         break;
                     case "cboTableAlias":
@@ -788,9 +798,9 @@ namespace ScriptHelp.Scripts
                     cell = FirstNotNullCellInColumn(col.DataBodyRange);
                     if (((cell != null)))
                     {
-                        if (cell.NumberFormat.ToString() == Properties.Settings.Default.Table_ColumnFormatDateFind | ErrorHandler.IsDate(cell.Value))
+                        if (cell.NumberFormat.ToString() == Properties.Settings.Default.Table_ColumnFormatTime | ErrorHandler.IsDate(cell.Value))
                         {
-                            col.DataBodyRange.NumberFormat = Properties.Settings.Default.Table_ColumnFormatDateReplace;
+                            col.DataBodyRange.NumberFormat = Properties.Settings.Default.Table_ColumnFormatDate;
                             col.DataBodyRange.HorizontalAlignment = Excel.Constants.xlCenter;
                         }
                     }
@@ -1167,6 +1177,48 @@ namespace ScriptHelp.Scripts
 
         }
 
+        /// <summary>
+        /// Microsoft Snipping Tool
+        /// </summary>
+        public void OpenSnippingTool()
+        {
+            string filePath;
+            try
+            {
+                if (System.Environment.Is64BitOperatingSystem)
+                {
+                    filePath = "C:\\Windows\\sysnative\\SnippingTool.exe";
+                }
+                else
+                {
+                    filePath = "C:\\Windows\\system32\\SnippingTool.exe";
+                }
+                System.Diagnostics.Process.Start(filePath);
+
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.DisplayMessage(ex);
+            }
+        }
+
+        /// <summary>
+        /// Microsoft Problem Step Recorder
+        /// </summary>
+        public void OpenProblemStepRecorder()
+        {
+            string filePath = @"C:\Windows\System32\psr.exe";
+            try
+            {
+                System.Diagnostics.Process.Start(filePath);
+
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.DisplayMessage(ex);
+            }
+        }
+
         #endregion
 
         #region | Subroutines |
@@ -1352,7 +1404,7 @@ namespace ScriptHelp.Scripts
                 switch (GetSqlDataType(col))
                 {
                     case 2:
-                        fmt = Properties.Settings.Default.Table_ColumnFormatDateReplace;
+                        fmt = Properties.Settings.Default.Table_ColumnFormatDate;
                         return FormatCellText(col, fmt);
                     case 1:
                         // we will use the column formatting if some is applied
@@ -1409,7 +1461,7 @@ namespace ScriptHelp.Scripts
                 }
 
                 //Excel changes the case of date formats on custom cell format types
-                bool result = Properties.Settings.Default.Table_ColumnFormatDateReplace.Equals(col.DataBodyRange.NumberFormat.ToString(), StringComparison.OrdinalIgnoreCase);
+                bool result = Properties.Settings.Default.Table_ColumnFormatDate.Equals(col.DataBodyRange.NumberFormat.ToString(), StringComparison.OrdinalIgnoreCase);
                 // NOTE: next test relies consistent formatting on numerics in a column
                 // so we only have to test the first cell
                 if (ErrorHandler.IsDate(FirstNotNullCellInColumn(col.DataBodyRange)) | result == true)

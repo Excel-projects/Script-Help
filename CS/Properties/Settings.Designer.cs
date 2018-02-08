@@ -71,24 +71,24 @@ namespace ScriptHelp.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("dd-mmm-yyyy")]
-        public string Table_ColumnFormatDateReplace {
+        public string Table_ColumnFormatDate {
             get {
-                return ((string)(this["Table_ColumnFormatDateReplace"]));
+                return ((string)(this["Table_ColumnFormatDate"]));
             }
             set {
-                this["Table_ColumnFormatDateReplace"] = value;
+                this["Table_ColumnFormatDate"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("mm:ss.0")]
-        public string Table_ColumnFormatDateFind {
+        [global::System.Configuration.DefaultSettingValueAttribute("h:mm:ss AM/PM")]
+        public string Table_ColumnFormatTime {
             get {
-                return ((string)(this["Table_ColumnFormatDateFind"]));
+                return ((string)(this["Table_ColumnFormatTime"]));
             }
             set {
-                this["Table_ColumnFormatDateFind"] = value;
+                this["Table_ColumnFormatTime"] = value;
             }
         }
         
@@ -347,24 +347,24 @@ namespace ScriptHelp.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool Visible_mnuScriptType_Github {
+        public bool Visible_mnuScriptType_Markdown {
             get {
-                return ((bool)(this["Visible_mnuScriptType_Github"]));
+                return ((bool)(this["Visible_mnuScriptType_Markdown"]));
             }
             set {
-                this["Visible_mnuScriptType_Github"] = value;
+                this["Visible_mnuScriptType_Markdown"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool Visible_mnuScriptType_XML {
+        public bool Visible_mnuScriptType_Markup {
             get {
-                return ((bool)(this["Visible_mnuScriptType_XML"]));
+                return ((bool)(this["Visible_mnuScriptType_Markup"]));
             }
             set {
-                this["Visible_mnuScriptType_XML"] = value;
+                this["Visible_mnuScriptType_Markup"] = value;
             }
         }
         
@@ -425,18 +425,6 @@ namespace ScriptHelp.Properties {
             }
             set {
                 this["App_PathNewIssue"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("h:mm:ss AM/PM")]
-        public string Table_ColumnFormatTime {
-            get {
-                return ((string)(this["Table_ColumnFormatTime"]));
-            }
-            set {
-                this["Table_ColumnFormatTime"] = value;
             }
         }
     }
