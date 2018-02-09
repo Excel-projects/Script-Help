@@ -90,12 +90,14 @@
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator1.Visible = false;
             // 
             // lblFontSize
             // 
             this.lblFontSize.Name = "lblFontSize";
             this.lblFontSize.Size = new System.Drawing.Size(54, 22);
             this.lblFontSize.Text = "Font Size";
+            this.lblFontSize.Visible = false;
             // 
             // nudFontSize
             // 
@@ -119,6 +121,7 @@
             0,
             0,
             0});
+            this.nudFontSize.Visible = false;
             this.nudFontSize.ValueChanged += new System.EventHandler(this.nudFontSize_ValueChanged);
             // 
             // Script

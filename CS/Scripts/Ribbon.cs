@@ -49,6 +49,11 @@ namespace ScriptHelp.Scripts
             /// </summary>
             public static string FirstColumnName { get; set; }
 
+            /// <summary>
+            /// The first visible column name in the table
+            /// </summary>
+            public static string ControlLabel { get; set; }
+
         }
 
         #region | Task Panes |
@@ -289,6 +294,48 @@ namespace ScriptHelp.Scripts
                     case "txtReleaseDate":
                         DateTime dteCreateDate = Properties.Settings.Default.App_ReleaseDate;
                         return dteCreateDate.ToString("dd-MMM-yyyy hh:mm tt");
+                    case "btnScriptTypeDqlAppend":
+                        return "DQL Append";
+                    case "btnScriptTypeDqlAppendLocked":
+                        return "DQL Append/Locked";
+                    case "btnScriptTypeDqlCreate":
+                        return "DQL Create";
+                    case "btnScriptTypeDqlTruncateAppend":
+                        return "DQL Truncate/Append";
+                    case "btnScriptTypeDqlUpdate":
+                        return "DQL Update";
+                    case "btnScriptTypeDqlUpdateLocked":
+                        return "DQL Update/Locked";
+                    case "btnScriptTypeGithubTable":
+                        return "Markdown Table";
+                    case "btnScriptTypeHtmlTable":
+                        return "HTML Table";
+                    case "btnScriptTypePlSqlCreateTable":
+                        return "PL/SQL Create Table";
+                    case "btnScriptTypePlSqlInsertValues":
+                        return "PL/SQL Insert Values";
+                    case "btnScriptTypePlSqlMergeValues":
+                        return "PL/SQL Merge Values";
+                    case "btnScriptTypePlSqlSelectValues":
+                        return "PL/SQL Select Values";
+                    case "btnScriptTypePlSqlSelectUnion":
+                        return "PL/SQL Select Union";
+                    case "btnScriptTypePlSqlUpdateValues":
+                        return "PL/SQL Update Values";
+                    case "btnScriptTypeTSqlCreateTable":
+                        return "T-SQL Create Table";
+                    case "btnScriptTypeTSqlInsertValues":
+                        return "T-SQL Insert Values";
+                    case "btnScriptTypeTSqlMergeValues":
+                        return "T-SQL Merge Values";
+                    case "btnScriptTypeTSqlSelectValues":
+                        return "T-SQL Select Values";
+                    case "btnScriptTypeTSqlSelectUnion":
+                        return "T-SQL Select Union";
+                    case "btnScriptTypeTSqlUpdateValues":
+                        return "T-SQL Update Values";
+                    case "btnScriptTypeXmlValues":
+                        return "XML Values";
                     default:
                         return string.Empty;
                 }
@@ -444,6 +491,7 @@ namespace ScriptHelp.Scripts
         {
             try
             {
+                Ribbon.AppVariables.ControlLabel = GetLabelText(control);
                 switch (control.Id)
                 {
                     case "btnStart":
@@ -1461,7 +1509,7 @@ namespace ScriptHelp.Scripts
                     myScript.Dispose();
                 }
                 myScript = new TaskPane.Script();
-                myTaskPaneScript = Globals.ThisAddIn.CustomTaskPanes.Add(myScript, "Script for " + Scripts.AssemblyInfo.Title);
+                myTaskPaneScript = Globals.ThisAddIn.CustomTaskPanes.Add(myScript, Ribbon.AppVariables.ControlLabel);
                 myTaskPaneScript.DockPosition = Office.MsoCTPDockPosition.msoCTPDockPositionRight;
                 myTaskPaneScript.DockPositionRestrict = Office.MsoCTPDockPositionRestrict.msoCTPDockPositionRestrictNoChange;
                 myTaskPaneScript.Width = 675;

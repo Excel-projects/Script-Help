@@ -238,55 +238,55 @@ Or use the following tag to remove all other ribbons when this loads
 						<button
 								id="btnScriptTypeTSqlCreateTable"
 								getImage="GetButtonImage"
-								label="T-SQL Create Table"
+								getLabel="GetLabelText"
 								onAction="OnAction"
 								getVisible="GetVisible"
-								screentip="T-SQL Create Table"
+								getScreentip="GetLabelText"
 								supertip="This changes the query string to a T-SQL CREATE TABLE script."
 								/>
 						<button
 								id="btnScriptTypeTSqlInsertValues"
 								getImage="GetButtonImage"
-								label="T-SQL Insert Values"
+								getLabel="GetLabelText"
 								onAction="OnAction"
 								getVisible="GetVisible"
-								screentip="T-SQL Insert Values"
+								getScreentip="GetLabelText"
 								supertip="This changes the query string to a T-SQL INSERT VALUES script."
 								/>
 						<button
 								id="btnScriptTypeTSqlMergeValues"
 								getImage="GetButtonImage"
-								label="T-SQL Merge Values"
+								getLabel="GetLabelText"
 								onAction="OnAction"
 								getVisible="GetVisible"
-								screentip="T-SQL Merge Values"
+								getScreentip="GetLabelText"
 								supertip="This changes the query string to a T-SQL MERGE VALUES script."
 								/>
 						<button
 								id="btnScriptTypeTSqlSelectValues"
 								getImage="GetButtonImage"
-								label="T-SQL Select Values"
+								getLabel="GetLabelText"
 								onAction="OnAction"
 								getVisible="GetVisible"
-								screentip="T-SQL Select Values"
+								getScreentip="GetLabelText"
 								supertip="This changes the query string to a T-SQL SELECT VALUES script."
 								/>
 						<button
 								id="btnScriptTypeTSqlSelectUnion"
 								getImage="GetButtonImage"
-								label="T-SQL Select Union"
+								getLabel="GetLabelText"
 								onAction="OnAction"
 								getVisible="GetVisible"
-								screentip="T-SQL Select Union"
+								getScreentip="GetLabelText"
 								supertip="This changes the query string to a T-SQL SELECT UNION script."
 								/>
 						<button
 								id="btnScriptTypeTSqlUpdateValues"
 								getImage="GetButtonImage"
-								label="T-SQL Update Values"
+								getLabel="GetLabelText"
 								onAction="OnAction"
 								getVisible="GetVisible"
-								screentip="T-SQL Update Values"
+								getScreentip="GetLabelText"
 								supertip="This changes the query string to a T-SQL UPDATE VALUES script."
 								/>
 						<menuSeparator
@@ -295,55 +295,55 @@ Or use the following tag to remove all other ribbons when this loads
 						<button
 								id="btnScriptTypePlSqlCreateTable"
 								getImage="GetButtonImage"
-								label="PL/SQL Create Table"
+								getLabel="GetLabelText"
 								onAction="OnAction"
 								getVisible="GetVisible"
-								screentip="PL/SQL Create Table"
+								getScreentip="GetLabelText"
 								supertip="This changes the query string to a PL/SQL CREATE TABLE script."
 								/>
 						<button
 								id="btnScriptTypePlSqlInsertValues"
 								getImage="GetButtonImage"
-								label="PL/SQL Insert Values"
+								getLabel="GetLabelText"
 								onAction="OnAction"
 								getVisible="GetVisible"
-								screentip="PL/SQL Insert Values"
+								getScreentip="GetLabelText"
 								supertip="This changes the query string to a PL/SQL INSERT VALUES script."
 								/>
 						<button
 								id="btnScriptTypePlSqlMergeValues"
 								getImage="GetButtonImage"
-								label="PL/SQL Merge Values"
+								getLabel="GetLabelText"
 								onAction="OnAction"
 								getVisible="GetVisible"
-								screentip="PL/SQL Merge Values"
+								getScreentip="GetLabelText"
 								supertip="This changes the query string to a PL/SQL MERGE VALUES script."
 								/>
 						<button
 								id="btnScriptTypePlSqlSelectValues"
 								getImage="GetButtonImage"
-								label="PL/SQL Select Values"
+								getLabel="GetLabelText"
 								onAction="OnAction"
 								getVisible="GetVisible"
-								screentip="PL/SQL Select Values"
+								getScreentip="GetLabelText"
 								supertip="This changes the query string to a PL/SQL SELECT VALUES script."
 								/>
 						<button
 								id="btnScriptTypePlSqlSelectUnion"
 								getImage="GetButtonImage"
-								label="PL/SQL Select Union"
+								getLabel="GetLabelText"
 								onAction="OnAction"
 								getVisible="GetVisible"
-								screentip="PL/SQL Select Union"
+								getScreentip="GetLabelText"
 								supertip="This changes the query string to a PL/SQL SELECT UNION script."
 								/>
 						<button
 								id="btnScriptTypePlSqlUpdateValues"
 								getImage="GetButtonImage"
-								label="PL/SQL Update Values"
+								getLabel="GetLabelText"
 								onAction="OnAction"
 								getVisible="GetVisible"
-								screentip="PL/SQL Update Values"
+								getScreentip="GetLabelText"
 								supertip="This changes the query string to a PL/SQL UPDATE VALUES script."
 								/>
 						<menuSeparator
@@ -352,54 +352,54 @@ Or use the following tag to remove all other ribbons when this loads
 						<button
 								id="btnScriptTypeDqlAppend"
 								getImage="GetButtonImage"
-								label="DQL Append"
+								getLabel="GetLabelText"
 								onAction="OnAction"
 								getVisible="GetVisible"
-								screentip="DQL Append"
+								getScreentip="GetLabelText"
 								supertip="This changes the query string to a DQL APPEND script (This is used for repeating values)."
 								/>
 						<button
 								id="btnScriptTypeDqlAppendLocked"
 								getImage="GetButtonImage"
-								label="DQL Append/Locked"
+								getLabel="GetLabelText"
 								onAction="OnAction"
 								getVisible="GetVisible"
-								screentip="DQL Append/Locked"
+								getScreentip="GetLabelText"
 								supertip="This changes the query string to a DQL APPEND script (This is used for repeating values) and also unlocks and locks the metadata."
 								/>
 						<button
 								id="btnScriptTypeDqlCreate"
 								getImage="GetButtonImage"
-								label="DQL Create"
+								getLabel="GetLabelText"
 								onAction="OnAction"
 								getVisible="GetVisible"
-								screentip="DQL Create"
+								getScreentip="GetLabelText"
 								supertip="This changes the query string to a DQL CREATE script."
 								/>
 						<button
 								id="btnScriptTypeDqlTruncateAppend"
 								getImage="GetButtonImage"
-								label="DQL Truncate/Append"
+								getLabel="GetLabelText"
 								onAction="OnAction"
 								getVisible="GetVisible"
-								screentip="DQL Truncate/Append"
+								getScreentip="GetLabelText"
 								supertip="This changes the query string to a DQL TRUNCATE/APPEND script (This is used for removing all repeating values and then updating to one value)."						/>
 						<button
 								id="btnScriptTypeDqlUpdate"
 								getImage="GetButtonImage"
-								label="DQL Update"
+								getLabel="GetLabelText"
 								onAction="OnAction"
 								getVisible="GetVisible"
-								screentip="DQL Update"
+								getScreentip="GetLabelText"
 								supertip="This changes the query string to a DQL UPDATE script."
 								/>
 						<button
 								id="btnScriptTypeDqlUpdateLocked"
 								getImage="GetButtonImage"
-								label="DQL Update/Locked"
+								getLabel="GetLabelText"
 								onAction="OnAction"
 								getVisible="GetVisible"
-								screentip="DQL Update/Locked"
+								getScreentip="GetLabelText"
 								supertip="This changes the query string to a DQL UPDATE script and also unlocks and locks the metadata."
 								/>
 						<menuSeparator
@@ -408,10 +408,10 @@ Or use the following tag to remove all other ribbons when this loads
 						<button
 								id="btnScriptTypeGithubTable"
 								getImage="GetButtonImage"
-								label="Markdown Table"
+								getLabel="GetLabelText"
 								onAction="OnAction"
 								getVisible="GetVisible"
-								screentip="Markdown Table"
+								getScreentip="GetLabelText"
 								supertip="This changes the query string to a Markdown table script (This is used for READ ME files in GitHub)."
 								/>
 						<menuSeparator
@@ -420,19 +420,19 @@ Or use the following tag to remove all other ribbons when this loads
 						<button
 								id="btnScriptTypeHtmlTable"
 								getImage="GetButtonImage"
-								label="HTML Table"
+								getLabel="GetLabelText"
 								onAction="OnAction"
 								getVisible="GetVisible"
-								screentip="HTML Table"
+								getScreentip="GetLabelText"
 								supertip="This changes the query string to a HMTL Table script."
 								/>
 						<button
 								id="btnScriptTypeXmlValues"
 								getImage="GetButtonImage"
-								label="XML Values"
+								getLabel="GetLabelText"
 								onAction="OnAction"
 								getVisible="GetVisible"
-								screentip="XML Values"
+								getScreentip="GetLabelText"
 								supertip="This changes the query string to a XML script."
 								/>
 					</menu>
