@@ -150,9 +150,6 @@ A [KeyTip](https://msdn.microsoft.com/en-us/library/microsoft.office.tools.ribbo
 
 <a id="user-content-clipboard" class="anchor" href="#clipboard" aria-hidden="true"> </a>
 ###	Clipboard (Group)
-<h1 align="left">
-  <img src="Images/ReadMe/ribbon.group.clipboard.png" />
-</h1>
 
 <a id="user-content-paste" class="anchor" href="#paste" aria-hidden="true"> </a>
 ####	Paste (Menu)
@@ -164,10 +161,6 @@ A [KeyTip](https://msdn.microsoft.com/en-us/library/microsoft.office.tools.ribbo
 
 <a id="user-content-format-data-table" class="anchor" href="#format-data-table" aria-hidden="true"> </a>
 ### Format Data Table (Group)
-
-<h1 align="left">
-  <img src="Images/ReadMe/ribbon.group.formatdatatable.png" />
-</h1>
 
 These buttons have the following constraints: 
 * Only runs on visible columns. Column hiding can be used to control which columns are included in the script formula. 
@@ -189,35 +182,20 @@ These buttons have the following constraints:
 <a id="user-content-script-actions" class="anchor" href="#script-actions" aria-hidden="true"> </a>
 ### Script Actions (Group)
 
-<h1 align="left">
-  <img src="Images/ReadMe/ribbon.group.scriptactions.png" />
-</h1>
-
 <a id="user-content-clean-data" class="anchor" href="#clean-data" aria-hidden="true"> </a>
 #### Clean Data (Button)
 * This feature runs through all the data in the table and removes unprintable characters and trims leading and trailing spaces. 
 * The number of cells cleaned is shown in a message box and cleaned cells are highlighted. 
 * Currently, there must be at least 2 rows in the table
 
-<h1 align="left">
-  <img src="Images/ReadMe/ribbon.button.cleandata.gif" />
-</h1>
-
 <a id="user-content-convert-to-null" class="anchor" href="#convert-to-null" aria-hidden="true"> </a>
 ####	Convert to Null (Button)
 * Replaces the zero string values in a named range with “NULL” text value.
-
-<h1 align="left">
-  <img src="Images/ReadMe/ribbon.button.converttonull.gif" />
-</h1>
 
 <a id="user-content-format-date-columns" class="anchor" href="#format-date-columns" aria-hidden="true"> </a>
 #### Format Date Columns (Button)
 * When data is cut and pasted from SSMS into Excel, for whatever reason, Excel chooses to format the dates with the (useless) format "mm:ss.0". This seems to be impossible to configure. 
 * This feature applies the format "dd-mmm-yyyy" to all date columns it detects in the active table.  If there are zero strings in the column instead of “NULL”s, then the column is treated as a string.
-<h1 align="left">
-  <img src="Images/ReadMe/ribbon.button.formatdatecolumns.gif" />
-</h1>
 
 <a id="user-content-clear-interior-color" class="anchor" href="#clear-interior-color" aria-hidden="true"> </a>
 #### Clear Interior Color (Button)
@@ -226,9 +204,6 @@ These buttons have the following constraints:
 <a id="user-content-separate-values" class="anchor" href="#separate-values" aria-hidden="true"> </a>
 #### Separate Values (Button)
 * Separate values into new rows from the selected column by a delimited string value setting
-<h1 align="left">
-  <img src="Images/ReadMe/ribbon.button.separatevalues.gif" />
-</h1>
 
 <a id="user-content-add-script-column" class="anchor" href="#add-script-column" aria-hidden="true"> </a>
 #### Add Script Column (Menu Buttons)
@@ -282,9 +257,6 @@ Markup Language
 
 <a id="user-content-format-script-options" class="anchor" href="#format-script-options" aria-hidden="true"> </a>
 ###	Script Variables (Group)
-<h1 align="left">
-  <img src="Images/ReadMe/ribbon.group.scriptvariables.png" />
-</h1>
 
 <a id="user-content-table-alias" class="anchor" href="#table-alias" aria-hidden="true"> </a>
 #### Table Alias (Dropdown)
@@ -292,13 +264,13 @@ Markup Language
 * These values can be updated using the build button “…” to the right of the dropdown
 
 <a id="user-content-date-find-format" class="anchor" href="#date-find-format" aria-hidden="true"> </a>
-#### Date Find Format (Dropdown)
+#### Format Date (Dropdown)
 * This is the format the script looks for to finds dates
 * It defaults to ‘mm:ss.0’, and can be changed by the dropdown value or free text
 * These values can be updated using the build button “…” to the right of the “Date Format” dropdown
 
 <a id="user-content-date-replace-format" class="anchor" href="#date-replace-format" aria-hidden="true"> </a>
-#### Date Replace Format (Dropdown)
+#### Format Time (Dropdown)
 * This is the date format the script uses to replace the formatting for date columns. 
 * It defaults to ‘dd-mmm-yyyy’, and can be changed by the dropdown value or free text
 * These values can be updated using the build button “…” to the right of the dropdown
