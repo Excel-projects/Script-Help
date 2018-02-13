@@ -26,7 +26,7 @@ The most complete version is C#.
 --->
 
 <h1 align="left">
-  <img src="Images/ReadMe/ribbon.button.addscriptcolumn.gif" />
+  <img src="Images/ReadMe/ribbon.formatdatatable.buttons.gif" />
 </h1>
 
 <br>
