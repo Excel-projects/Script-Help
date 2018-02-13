@@ -176,6 +176,7 @@ namespace ScriptHelp.Scripts
 
                 Data.CreateTableAliasTable();
                 Data.CreateDateFormatTable();
+                Data.CreateTimeFormatTable();
                 Data.CreateGraphDataTable();
 
             }
@@ -358,9 +359,10 @@ namespace ScriptHelp.Scripts
             {
                 switch (control.Id)
                 {
-                    case "cboDateFormatReplace":
-                    case "cboDateFormatFind":
+                    case "cboFormatDate":
                         return Data.DateFormatTable.Rows.Count;
+                    case "cboFormatTime":
+                        return Data.TimeFormatTable.Rows.Count;
                     case "cboTableAlias":
                         return Data.TableAliasTable.Rows.Count;
                     default:
@@ -386,9 +388,10 @@ namespace ScriptHelp.Scripts
             {
                 switch (control.Id)
                 {
-                    case "cboDateFormatReplace":
-                    case "cboDateFormatFind":
+                    case "cboFormatDate":
                         return UpdateDateFormatComboBoxSource(index);
+                    case "cboFormatTime":
+                        return UpdateTimeFormatComboBoxSource(index);
                     case "cboTableAlias":
                         return UpdateTableAliasComboBoxSource(index);
                     default:
@@ -413,9 +416,9 @@ namespace ScriptHelp.Scripts
             {
                 switch (control.Id)
                 {
-                    case "cboDateFormatReplace":
+                    case "cboFormatDate":
                         return Properties.Settings.Default.Table_ColumnFormatDate;
-                    case "cboDateFormatFind":
+                    case "cboFormatTime":
                         return Properties.Settings.Default.Table_ColumnFormatTime;
                     case "cboTableAlias":
                         return Properties.Settings.Default.Table_ColumnTableAlias;
@@ -622,11 +625,11 @@ namespace ScriptHelp.Scripts
             {
                 switch (control.Id)
                 {
-                    case "cboDateFormatReplace":
+                    case "cboFormatDate":
                         Properties.Settings.Default.Table_ColumnFormatDate = text;
                         Data.InsertRecord(Data.DateFormatTable, text);
                         break;
-                    case "cboDateFormatFind":
+                    case "cboFormatTime":
                         Properties.Settings.Default.Table_ColumnFormatTime = text;
                         Data.InsertRecord(Data.DateFormatTable, text);
                         break;
@@ -1535,7 +1538,7 @@ namespace ScriptHelp.Scripts
                     myTableData.Dispose();
                 }
                 myTableData = new TaskPane.TableData();
-                myTaskPaneTableData = Globals.ThisAddIn.CustomTaskPanes.Add(myTableData, "List of " + Ribbon.AppVariables.TableName + " for " + Scripts.AssemblyInfo.Title);
+                myTaskPaneTableData = Globals.ThisAddIn.CustomTaskPanes.Add(myTableData, Ribbon.AppVariables.TableName);
                 myTaskPaneTableData.DockPosition = Office.MsoCTPDockPosition.msoCTPDockPositionRight;
                 myTaskPaneTableData.DockPositionRestrict = Office.MsoCTPDockPositionRestrict.msoCTPDockPositionRestrictNoChange;
                 myTaskPaneTableData.Width = 300;
@@ -1558,6 +1561,24 @@ namespace ScriptHelp.Scripts
             try
             {
                 return Data.DateFormatTable.Rows[itemIndex]["FormatString"].ToString();
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.DisplayMessage(ex);
+                return string.Empty;
+            }
+        }
+
+        /// <summary> 
+        /// Update the value of the combobox from a data table by index
+        /// </summary>
+        /// <param name="itemIndex">Represents the index of the list value </param>
+        /// <returns>the label value for the combobox index</returns>
+        public string UpdateTimeFormatComboBoxSource(int itemIndex)
+        {
+            try
+            {
+                return Data.TimeFormatTable.Rows[itemIndex]["FormatString"].ToString();
             }
             catch (Exception ex)
             {

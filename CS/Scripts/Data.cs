@@ -35,6 +35,11 @@ namespace ScriptHelp.Scripts
         public static DataTable DateFormatTable = new DataTable();
 
         /// <summary>
+        /// List of time format strings
+        /// </summary>
+        public static DataTable TimeFormatTable = new DataTable();
+
+        /// <summary>
         /// List of graph data
         /// </summary>
         public static DataTable GraphDataTable = new DataTable();
@@ -97,6 +102,40 @@ namespace ScriptHelp.Scripts
                 }
                 DateFormatTable.DefaultView.Sort = columnName + " asc";
                 DateFormatTable.TableName = tableName;
+
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.DisplayMessage(ex);
+
+            }
+
+        }
+
+        /// <summary>
+        /// Creates the datatable for the date format strings
+        /// </summary>
+        public static void CreateTimeFormatTable()
+        {
+            try
+            {
+                string tableName = "TimeFormat";
+                string columnName = "FormatString";
+                string sql = "SELECT * FROM " + tableName + " ORDER BY " + columnName;
+                dynamic dcFormatString = new DataColumn(columnName, typeof(string));
+                TimeFormatTable.Rows.Clear();
+                DataColumnCollection columns = TimeFormatTable.Columns;
+                if (columns.Contains(columnName) == false)
+                {
+                    TimeFormatTable.Columns.Add(dcFormatString);
+                }
+
+                using (var da = new SqlCeDataAdapter(sql, Connection()))
+                {
+                    da.Fill(TimeFormatTable);
+                }
+                TimeFormatTable.DefaultView.Sort = columnName + " asc";
+                TimeFormatTable.TableName = tableName;
 
             }
             catch (Exception ex)

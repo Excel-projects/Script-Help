@@ -175,25 +175,25 @@ Or use the following tag to remove all other ribbons when this loads
 						keytip="DTA"
 							/>
 					<comboBox
-						id="cboDateFormatReplace"
+						id="cboFormatDate"
 						onChange="OnChange"
 						getText="GetText"
 						getItemCount="GetItemCount"
 						getItemLabel="GetItemLabel"
 						sizeString= "XXXXXXXXXXXXXXXXXXXX"
-						screentip="Replace Date Format"
+						screentip="Date Format"
 						supertip="This is the date format the script uses to replace the formatting for date columns."
 						keytip="DFR"
 							/>
 					<comboBox
-							id="cboDateFormatFind"
+							id="cboFormatTime"
 							onChange="OnChange"
 							getText="GetText"
 							getItemCount="GetItemCount"
 							getItemLabel="GetItemLabel"
 							sizeString= "XXXXXXXXXXXXXXXXXXXX"
-							screentip="Find Date Format"
-							supertip="This is the date format to find. It defaults to the format from SQL Server Management Studio after you paste records into Excel."
+							screentip="Time Format"
+							supertip="This is the time format the script uses to replace the formatting for time columns."
               keytip="DFF"
 							/>
 					<button
@@ -220,7 +220,7 @@ Or use the following tag to remove all other ribbons when this loads
 							onAction="OnAction"
 							screentip="Open Date Format List"
 							supertip="This will open the date format list form."
-							tag="DateFormat"
+							tag="TimeFormat"
               keytip="LFR"
 							/>
 					<separator

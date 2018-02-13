@@ -30,6 +30,9 @@ namespace ScriptHelp.TaskPane
                     case "DateFormat":
                         dgvList.DataSource = Data.DateFormatTable;
                         break;
+                    case "TimeFormat":
+                        dgvList.DataSource = Data.TimeFormatTable;
+                        break;
                 }
                 this.dgvList.Columns[0].Width = dgvList.Width - 75;
 
@@ -83,6 +86,10 @@ namespace ScriptHelp.TaskPane
                         break;
                     case "DateFormat":
                         sda.Update(Data.DateFormatTable);
+                        Data.CreateDateFormatTable();
+                        break;
+                    case "TimeFormat":
+                        sda.Update(Data.TimeFormatTable);
                         Data.CreateDateFormatTable();
                         break;
                 }
