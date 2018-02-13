@@ -15,7 +15,7 @@
 --->
 This Add-In is used for cleaning & batch loading records into SQL Server, Oracle, Documentum, Markup or Markdown Languages. The functionality within the ribbon allows a quick way of preparing a bulk data load. Otherwise, the requests can be both time-consuming and error prone. 
 
-I'm still working on updating the VB.NET & VBA. The most complete version is C#. UI changes tomorrow.
+The most complete version is C#.
 
 <!---
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE "MIT License Copyright © 2018 Anthony Duguid")
@@ -26,7 +26,7 @@ I'm still working on updating the VB.NET & VBA. The most complete version is C#.
 --->
 
 <h1 align="left">
-  <img src="Images/ReadMe/ribbon.button.addscriptcolumn.gif" />
+  <img src="Images/ReadMe/ribbon.formatdatatable.buttons.gif" />
 </h1>
 
 <br>
@@ -39,10 +39,8 @@ I'm still working on updating the VB.NET & VBA. The most complete version is C#.
     - <a href="#keytips">Key Tips</a>
     - <a href="#clipboard">Clipboard</a>
     - <a href="#format-data-table">Format Data Table</a>
-    - <a href="#script-actions">Script Actions</a>
-    - <a href="#format-script-options">Script Variables</a>
-    - <a href="#options">Options</a>
-    - <a href="#about">Help</a>
+    - <a href="#annotate">Annotate</a>
+    - <a href="#help">Help</a>
     - <a href="#about">About</a>
      
 <!---
@@ -144,30 +142,23 @@ This Excel ribbon is inserted after the “Home” tab when Excel opens. Listed 
 <a id="user-content-keytips" class="anchor" href="#keytips" aria-hidden="true"> </a>
 ###	Key Tips
 A [KeyTip](https://msdn.microsoft.com/en-us/library/microsoft.office.tools.ribbon.ribbonbutton.keytip.aspx) must be from 1 to 3 uppercase characters, and must not contain spaces, tabs, or newline characters. KeyTips are sometimes known as access keys or accelerators and are used as shortcut key combinations that activate controls. KeyTips appear on the Ribbon when you press the ALT key. If your KeyTip conflicts with KeyTips for built-in controls or from other add-ins, Microsoft Office might assign non-conflicting KeyTip values automatically.
-<h1 align="left">
-  <img src="Images/ReadMe/ribbon.keytips.png" />
-</h1>
 
 <a id="user-content-clipboard" class="anchor" href="#clipboard" aria-hidden="true"> </a>
 ###	Clipboard (Group)
-<h1 align="left">
-  <img src="Images/ReadMe/ribbon.group.clipboard.png" />
-</h1>
 
 <a id="user-content-paste" class="anchor" href="#paste" aria-hidden="true"> </a>
 ####	Paste (Menu)
 * Paste the contents of the clipboard
 
+####	Copy (Button)
+* Copies the selection on to the clipboard so you can paste it somewhere else
+
 <a id="user-content-copy-visible-cells" class="anchor" href="#copy-visible-cells" aria-hidden="true"> </a>
-####	Copy Visible Cells (Button)
+####	Copy Visible (Button)
 * Copies only the visible cells from a selection
 
 <a id="user-content-format-data-table" class="anchor" href="#format-data-table" aria-hidden="true"> </a>
 ### Format Data Table (Group)
-
-<h1 align="left">
-  <img src="Images/ReadMe/ribbon.group.formatdatatable.png" />
-</h1>
 
 These buttons have the following constraints: 
 * Only runs on visible columns. Column hiding can be used to control which columns are included in the script formula. 
@@ -186,52 +177,49 @@ These buttons have the following constraints:
 #### Remove Duplicates (Button)
 * Delete duplicate rows from a sheet
 
-<a id="user-content-script-actions" class="anchor" href="#script-actions" aria-hidden="true"> </a>
-### Script Actions (Group)
-
-<h1 align="left">
-  <img src="Images/ReadMe/ribbon.group.scriptactions.png" />
-</h1>
+<a id="user-content-separate-values" class="anchor" href="#separate-values" aria-hidden="true"> </a>
+#### Separate Values (Button)
+* Separate values into new rows from the selected column by a delimited string value setting
 
 <a id="user-content-clean-data" class="anchor" href="#clean-data" aria-hidden="true"> </a>
 #### Clean Data (Button)
 * This feature runs through all the data in the table and removes unprintable characters and trims leading and trailing spaces. 
 * The number of cells cleaned is shown in a message box and cleaned cells are highlighted. 
-* Currently, there must be at least 2 rows in the table
-
-<h1 align="left">
-  <img src="Images/ReadMe/ribbon.button.cleandata.gif" />
-</h1>
 
 <a id="user-content-convert-to-null" class="anchor" href="#convert-to-null" aria-hidden="true"> </a>
 ####	Convert to Null (Button)
 * Replaces the zero string values in a named range with “NULL” text value.
 
-<h1 align="left">
-  <img src="Images/ReadMe/ribbon.button.converttonull.gif" />
-</h1>
-
-<a id="user-content-format-date-columns" class="anchor" href="#format-date-columns" aria-hidden="true"> </a>
-#### Format Date Columns (Button)
-* When data is cut and pasted from SSMS into Excel, for whatever reason, Excel chooses to format the dates with the (useless) format "mm:ss.0". This seems to be impossible to configure. 
-* This feature applies the format "dd-mmm-yyyy" to all date columns it detects in the active table.  If there are zero strings in the column instead of “NULL”s, then the column is treated as a string.
-<h1 align="left">
-  <img src="Images/ReadMe/ribbon.button.formatdatecolumns.gif" />
-</h1>
-
 <a id="user-content-clear-interior-color" class="anchor" href="#clear-interior-color" aria-hidden="true"> </a>
 #### Clear Interior Color (Button)
 * Clears the interior color of cells in a named range or data table.
 
-<a id="user-content-separate-values" class="anchor" href="#separate-values" aria-hidden="true"> </a>
-#### Separate Values (Button)
-* Separate values into new rows from the selected column by a delimited string value setting
-<h1 align="left">
-  <img src="Images/ReadMe/ribbon.button.separatevalues.gif" />
-</h1>
+<a id="user-content-table-alias" class="anchor" href="#table-alias" aria-hidden="true"> </a>
+#### Table Alias (Dropdown)
+* Changes the prefix to the header and footer line script column
+* These values can be updated using the build button “…” to the right of the dropdown
+
+<a id="user-content-format-date-columns" class="anchor" href="#format-date-columns" aria-hidden="true"> </a>
+#### Format Date (Button)
+* This feature applies the selected format from the dropdown e.g. "dd-mmm-yyyy" to all date columns it detects in the active table.  If there are zero strings in the column instead of “NULL”s, then the column is treated as a string.
+* When data is cut and pasted from SSMS into Excel, for whatever reason, Excel chooses to format the dates with the (useless) format "mm:ss.0". This seems to be impossible to configure. 
+
+<a id="user-content-date-find-format" class="anchor" href="#date-find-format" aria-hidden="true"> </a>
+#### Format Date (Dropdown)
+* This is the format the script looks for to finds dates
+* These values can be updated using the build button “…” to the right of the “Date Format” dropdown
+
+#### Format Time (Button)
+* This feature applies the selected format from the dropdown e.g. "hh:mm" to selected column from the active cell.
+
+<a id="user-content-date-replace-format" class="anchor" href="#date-replace-format" aria-hidden="true"> </a>
+#### Format Time (Dropdown)
+* This is the date format the script uses to replace the formatting for date columns. 
+* It defaults to ‘dd-mmm-yyyy’, and can be changed by the dropdown value or free text
+* These values can be updated using the build button “…” to the right of the dropdown
 
 <a id="user-content-add-script-column" class="anchor" href="#add-script-column" aria-hidden="true"> </a>
-#### Add Script Column (Menu Buttons)
+#### Add Script Formula (Menu Buttons)
 
 <a id="user-content-menu-tsql" class="anchor" href="#menu-tsql" aria-hidden="true"> </a>
 <kbd><a href="#menu-tsql" target="_blank"><img src="CS/Resources/ScriptTypeTSql.png" title="T-SQL (Transact-Structured Query Language)" /></a></kbd>
@@ -270,44 +258,53 @@ DQL (Documentum Query Language)
     - Add “WHERE” before the column name in the header you want to use as criteria.
 
 <a id="user-content-menu-github" class="anchor" href="#menu-github" aria-hidden="true"> </a>
-<kbd><a href="#menu-github" target="_blank"><img src="CS/Resources/ScriptTypeGitHub.png" title="GitHub Markdown"/></a></kbd>
-GitHub Markdown
-  - GitHub table - creates a table format for GitHub Read Me documentation
+<kbd><a href="#menu-github" target="_blank"><img src="CS/Resources/ScriptTypeMarkdown.png" title="GitHub Markdown"/></a></kbd>
+Markdown Language
+  - Markdown table - creates a table format for Markdown Read Me documentation (e.g. GitHub)
 
 <a id="user-content-menu-markup" class="anchor" href="#menu-markup" aria-hidden="true"> </a>
-<kbd><a href="#menu-markup" target="_blank"><img src="CS/Resources/ScriptTypeXML.png" title="Markup Language"/></a></kbd>
+<kbd><a href="#menu-markup" target="_blank"><img src="CS/Resources/ScriptTypeMarkup.png" title="Markup Language"/></a></kbd>
 Markup Language
   - HTML Table - creates a HTML table structure
   - XML Values - creates XML structure
 
-<a id="user-content-format-script-options" class="anchor" href="#format-script-options" aria-hidden="true"> </a>
-###	Script Variables (Group)
-<h1 align="left">
-  <img src="Images/ReadMe/ribbon.group.scriptvariables.png" />
-</h1>
+<a id="user-content-annotate" class="anchor" href="#annotate" aria-hidden="true"> </a>
+###	Annotate (Group)
 
-<a id="user-content-table-alias" class="anchor" href="#table-alias" aria-hidden="true"> </a>
-#### Table Alias (Dropdown)
-* Changes the prefix to the header and footer line script column
-* These values can be updated using the build button “…” to the right of the dropdown
+<a id="user-content-camera" class="anchor" href="#camera" aria-hidden="true"> </a>
+#### Excel Camera(Button)
 
-<a id="user-content-date-find-format" class="anchor" href="#date-find-format" aria-hidden="true"> </a>
-#### Date Find Format (Dropdown)
-* This is the format the script looks for to finds dates
-* It defaults to ‘mm:ss.0’, and can be changed by the dropdown value or free text
-* These values can be updated using the build button “…” to the right of the “Date Format” dropdown
+  - The camera tool allows you to take a snapshot of any selected range of data, table, or graph, and paste it as a linked picture.
+The pasted snapshot can be formatted and resized using picture tools. They can be copied and pasted into Word and PowerPoint documents as well. The image is automatically refreshed if the data changes.
 
-<a id="user-content-date-replace-format" class="anchor" href="#date-replace-format" aria-hidden="true"> </a>
-#### Date Replace Format (Dropdown)
-* This is the date format the script uses to replace the formatting for date columns. 
-* It defaults to ‘dd-mmm-yyyy’, and can be changed by the dropdown value or free text
-* These values can be updated using the build button “…” to the right of the dropdown
+<a id="user-content-snip" class="anchor" href="#snip" aria-hidden="true"> </a>
+#### Snipping Tool (Button)
 
-<a id="user-content-options" class="anchor" href="#options" aria-hidden="true"> </a>
-###	Options (Group)
-<h1 align="left">
-  <img src="Images/ReadMe/ribbon.group.options.png" />
-</h1>
+<img src="Images/ReadMe/snipping_tool.png" alt="snipping_tool" />
+
+  - Capture all or part of your PC screen, add notes, save the snip, or email it from the Snipping Tool window. You can capture any of the following types of snips:
+    - Free-form snip. Draw a free-form shape around an object.
+    - Rectangular snip. Drag the cursor around an object to form a rectangle.
+    - Window snip. Select a window, such as a browser window or dialog box, that you want to capture.
+    - Full-screen snip. Capture the entire screen.
+
+<a id="user-content-psr" class="anchor" href="#psr" aria-hidden="true"> </a>
+#### Problem Step Recorder (Button)
+
+<img src="Images/ReadMe/problem_steps_recorder.png" alt="psr" />
+
+  - Steps Recorder (called Problems Steps Recorder in Windows 7), is a program that helps you troubleshoot a problem on your device by recording the exact steps you took when the problem occurred. You can then send this record to a support professional to help them diagnose the problem.
+
+<a id="user-content-help" class="anchor" href="#help" aria-hidden="true"> </a>
+###	Help (Group)
+
+<a id="user-content-how-to" class="anchor" href="#how-to" aria-hidden="true"> </a>
+#### How To… (Button)
+* Opens a webpage of the read me documentation
+
+<a id="user-content-api-doc" class="anchor" href="#api-doc" aria-hidden="true"> </a>
+#### Report Issue (Button)
+* Opens a page to create a new issue for the product
 
 <a id="user-content-settings" class="anchor" href="#settings" aria-hidden="true"> </a>
 #### Add-In Settings (Button)
@@ -349,25 +346,6 @@ VBA
     ```vbnet
     ThisWorkbook.CustomDocumentProperties.Item("App_ReleaseDate").Delete
     ```
-
-<a id="user-content-create-file-list" class="anchor" href="#create-file-list" aria-hidden="true"> </a>
-#### Create File List (Button)
-* This will create a file listing recursively from a user selected directory
-* It will save the .csv and .bat file in the root folder selected.
-
-<a id="user-content-help" class="anchor" href="#help" aria-hidden="true"> </a>
-###	Help (Group)
-<h1 align="left">
-  <img src="Images/ReadMe/ribbon.group.help.png" />
-</h1>
-
-<a id="user-content-how-to" class="anchor" href="#how-to" aria-hidden="true"> </a>
-#### How To… (Button)
-* Opens a webpage of the read me documentation
-
-<a id="user-content-api-doc" class="anchor" href="#api-doc" aria-hidden="true"> </a>
-#### Report Issue (Button)
-* Opens a page to create a new issue for the product
 
 <a id="user-content-about" class="anchor" href="#about" aria-hidden="true"> </a>
 ###	About (Group)
