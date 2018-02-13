@@ -39,10 +39,8 @@ The most complete version is C#.
     - <a href="#keytips">Key Tips</a>
     - <a href="#clipboard">Clipboard</a>
     - <a href="#format-data-table">Format Data Table</a>
-    - <a href="#script-actions">Script Actions</a>
-    - <a href="#format-script-options">Script Variables</a>
-    - <a href="#options">Options</a>
-    - <a href="#about">Help</a>
+    - <a href="#annotate">Annotate</a>
+    - <a href="#help">Help</a>
     - <a href="#about">About</a>
      
 <!---
