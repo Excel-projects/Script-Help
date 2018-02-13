@@ -274,9 +274,6 @@ Markup Language
 
 <a id="user-content-help" class="anchor" href="#help" aria-hidden="true"> </a>
 ###	Help (Group)
-<h1 align="left">
-  <img src="Images/ReadMe/ribbon.group.help.png" />
-</h1>
 
 <a id="user-content-how-to" class="anchor" href="#how-to" aria-hidden="true"> </a>
 #### How To… (Button)
