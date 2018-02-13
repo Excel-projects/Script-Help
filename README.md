@@ -151,7 +151,7 @@ A [KeyTip](https://msdn.microsoft.com/en-us/library/microsoft.office.tools.ribbo
 * Paste the contents of the clipboard
 
 ####	Copy (Button)
-* ...
+* Copies the selection on to the clipboard so you can paste it somewhere else
 
 <a id="user-content-copy-visible-cells" class="anchor" href="#copy-visible-cells" aria-hidden="true"> </a>
 ####	Copy Visible (Button)
@@ -185,7 +185,6 @@ These buttons have the following constraints:
 #### Clean Data (Button)
 * This feature runs through all the data in the table and removes unprintable characters and trims leading and trailing spaces. 
 * The number of cells cleaned is shown in a message box and cleaned cells are highlighted. 
-* Currently, there must be at least 2 rows in the table
 
 <a id="user-content-convert-to-null" class="anchor" href="#convert-to-null" aria-hidden="true"> </a>
 ####	Convert to Null (Button)
@@ -202,17 +201,16 @@ These buttons have the following constraints:
 
 <a id="user-content-format-date-columns" class="anchor" href="#format-date-columns" aria-hidden="true"> </a>
 #### Format Date (Button)
+* This feature applies the selected format from the dropdown e.g. "dd-mmm-yyyy" to all date columns it detects in the active table.  If there are zero strings in the column instead of “NULL”s, then the column is treated as a string.
 * When data is cut and pasted from SSMS into Excel, for whatever reason, Excel chooses to format the dates with the (useless) format "mm:ss.0". This seems to be impossible to configure. 
-* This feature applies the format "dd-mmm-yyyy" to all date columns it detects in the active table.  If there are zero strings in the column instead of “NULL”s, then the column is treated as a string.
 
 <a id="user-content-date-find-format" class="anchor" href="#date-find-format" aria-hidden="true"> </a>
 #### Format Date (Dropdown)
 * This is the format the script looks for to finds dates
-* It defaults to ‘mm:ss.0’, and can be changed by the dropdown value or free text
 * These values can be updated using the build button “…” to the right of the “Date Format” dropdown
 
 #### Format Time (Button)
-* ...
+* This feature applies the selected format from the dropdown e.g. "hh:mm" to selected column from the active cell.
 
 <a id="user-content-date-replace-format" class="anchor" href="#date-replace-format" aria-hidden="true"> </a>
 #### Format Time (Dropdown)
