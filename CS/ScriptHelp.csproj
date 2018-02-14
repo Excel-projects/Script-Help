@@ -43,7 +43,7 @@
     <VSTO_TrustAssembliesLocation>true</VSTO_TrustAssembliesLocation>
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <PublishUrl>publish\</PublishUrl>
-    <InstallUrl>https://raw.githubusercontent.com/aduguid/ScriptHelp/master/CS/publish/</InstallUrl>
+    <InstallUrl>https://raw.githubusercontent.com/Office-projects/Script-Help/master/CS/publish/</InstallUrl>
     <TargetCulture>en</TargetCulture>
     <ApplicationVersion>4.0.0.0</ApplicationVersion>
     <AutoIncrementApplicationRevision>false</AutoIncrementApplicationRevision>
