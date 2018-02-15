@@ -818,6 +818,7 @@ namespace ScriptHelp.Scripts
         {
             Excel.ListObject tbl = null;
             Excel.Range cell = null;
+            Excel.Range cellCurrent = null;
             try
             {
                 if (ErrorHandler.IsAvailable(true) == false)
@@ -827,17 +828,16 @@ namespace ScriptHelp.Scripts
                 ErrorHandler.CreateLogRecord();
                 tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject;
                 cell = default(Excel.Range);
+                cellCurrent = Globals.ThisAddIn.Application.ActiveCell;
+                int columnIndex = cellCurrent.Column;
                 Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
                 foreach (Excel.ListColumn col in tbl.ListColumns)
                 {
                     cell = FirstNotNullCellInColumn(col.DataBodyRange);
-                    if (((cell != null)))
+                    if (((col.Index == columnIndex)))
                     {
-                        if (cell.NumberFormat.ToString() == Properties.Settings.Default.Table_ColumnFormatTime | ErrorHandler.IsDate(cell.Value))
-                        {
-                            col.DataBodyRange.NumberFormat = Properties.Settings.Default.Table_ColumnFormatDate;
-                            col.DataBodyRange.HorizontalAlignment = Excel.Constants.xlCenter;
-                        }
+                        col.DataBodyRange.NumberFormat = Properties.Settings.Default.Table_ColumnFormatDate;
+                        col.DataBodyRange.HorizontalAlignment = Excel.Constants.xlCenter;
                     }
                 }
             }
@@ -885,11 +885,8 @@ namespace ScriptHelp.Scripts
                     cell = FirstNotNullCellInColumn(col.DataBodyRange);
                     if (((col.Index == columnIndex)))
                     {
-                        //if (cell.NumberFormat.ToString() == Properties.Settings.Default.Table_ColumnFormatTime | ErrorHandler.IsTime(cell.Value))
-                        //{
-                            col.DataBodyRange.NumberFormat = Properties.Settings.Default.Table_ColumnFormatTime;
-                            col.DataBodyRange.HorizontalAlignment = Excel.Constants.xlCenter;
-                        //}
+                        col.DataBodyRange.NumberFormat = Properties.Settings.Default.Table_ColumnFormatTime;
+                        col.DataBodyRange.HorizontalAlignment = Excel.Constants.xlCenter;
                     }
                 }
             }
