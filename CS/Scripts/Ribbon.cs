@@ -631,7 +631,7 @@ namespace ScriptHelp.Scripts
                         break;
                     case "cboFormatTime":
                         Properties.Settings.Default.Table_ColumnFormatTime = text;
-                        Data.InsertRecord(Data.DateFormatTable, text);
+                        Data.InsertRecord(Data.TimeFormatTable, text);
                         break;
                     case "cboTableAlias":
                         Properties.Settings.Default.Table_ColumnTableAlias = text;
