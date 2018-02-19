@@ -103,25 +103,25 @@ Partial Friend NotInheritable Class MySettings
     
     <Global.System.Configuration.UserScopedSettingAttribute(),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.Configuration.DefaultSettingValueAttribute("mm:ss.0")>  _
-    Public Property Table_ColumnDateFormatFind() As String
+     Global.System.Configuration.DefaultSettingValueAttribute("h:mm:ss AM/PM")>  _
+    Public Property Table_ColumnFormatTime() As String
         Get
-            Return CType(Me("Table_ColumnDateFormatFind"),String)
+            Return CType(Me("Table_ColumnFormatTime"),String)
         End Get
         Set
-            Me("Table_ColumnDateFormatFind") = value
+            Me("Table_ColumnFormatTime") = value
         End Set
     End Property
     
     <Global.System.Configuration.UserScopedSettingAttribute(),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.Configuration.DefaultSettingValueAttribute("dd-mmm-yyyy")>  _
-    Public Property Table_ColumnDateFormatReplace() As String
+    Public Property Table_ColumnFormatDate() As String
         Get
-            Return CType(Me("Table_ColumnDateFormatReplace"),String)
+            Return CType(Me("Table_ColumnFormatDate"),String)
         End Get
         Set
-            Me("Table_ColumnDateFormatReplace") = value
+            Me("Table_ColumnFormatDate") = value
         End Set
     End Property
     
@@ -139,7 +139,7 @@ Partial Friend NotInheritable Class MySettings
     
     <Global.System.Configuration.UserScopedSettingAttribute(),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.Configuration.DefaultSettingValueAttribute("SQL")>  _
+     Global.System.Configuration.DefaultSettingValueAttribute("SCRIPT")>  _
     Public Property Table_ColumnName() As String
         Get
             Return CType(Me("Table_ColumnName"),String)
@@ -184,18 +184,6 @@ Partial Friend NotInheritable Class MySettings
     
     <Global.System.Configuration.UserScopedSettingAttribute(),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
-    Public Property Visible_grpFormatDataTable() As Boolean
-        Get
-            Return CType(Me("Visible_grpFormatDataTable"),Boolean)
-        End Get
-        Set
-            Me("Visible_grpFormatDataTable") = value
-        End Set
-    End Property
-    
-    <Global.System.Configuration.UserScopedSettingAttribute(),  _
-     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.Configuration.DefaultSettingValueAttribute("https://raw.githubusercontent.com/Office-projects/ScriptHelp/master/publish/")>  _
     Public Property App_PathDeploy() As String
         Get
@@ -233,12 +221,12 @@ Partial Friend NotInheritable Class MySettings
     <Global.System.Configuration.UserScopedSettingAttribute(),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.Configuration.DefaultSettingValueAttribute("https://github.com/Office-projects/ScriptHelp/issues/new")>  _
-    Public Property App_PathReportIssue() As String
+    Public Property App_PathNewIssue() As String
         Get
-            Return CType(Me("App_PathReportIssue"),String)
+            Return CType(Me("App_PathNewIssue"),String)
         End Get
         Set
-            Me("App_PathReportIssue") = value
+            Me("App_PathNewIssue") = value
         End Set
     End Property
     
@@ -317,18 +305,6 @@ Partial Friend NotInheritable Class MySettings
     <Global.System.Configuration.UserScopedSettingAttribute(),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
-    Public Property Visible_mnuScriptType() As Boolean
-        Get
-            Return CType(Me("Visible_mnuScriptType"),Boolean)
-        End Get
-        Set
-            Me("Visible_mnuScriptType") = value
-        End Set
-    End Property
-    
-    <Global.System.Configuration.UserScopedSettingAttribute(),  _
-     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
     Public Property Visible_mnuScriptType_DQL() As Boolean
         Get
             Return CType(Me("Visible_mnuScriptType_DQL"),Boolean)
@@ -341,12 +317,12 @@ Partial Friend NotInheritable Class MySettings
     <Global.System.Configuration.UserScopedSettingAttribute(),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
-    Public Property Visible_mnuScriptType_Github() As Boolean
+    Public Property Visible_mnuScriptType_Markdown() As Boolean
         Get
-            Return CType(Me("Visible_mnuScriptType_Github"),Boolean)
+            Return CType(Me("Visible_mnuScriptType_Markdown"),Boolean)
         End Get
         Set
-            Me("Visible_mnuScriptType_Github") = value
+            Me("Visible_mnuScriptType_Markdown") = value
         End Set
     End Property
     
@@ -377,84 +353,24 @@ Partial Friend NotInheritable Class MySettings
     <Global.System.Configuration.UserScopedSettingAttribute(),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
-    Public Property Visible_mnuScriptType_XML() As Boolean
+    Public Property Visible_mnuScriptType_Markup() As Boolean
         Get
-            Return CType(Me("Visible_mnuScriptType_XML"),Boolean)
+            Return CType(Me("Visible_mnuScriptType_Markup"),Boolean)
         End Get
         Set
-            Me("Visible_mnuScriptType_XML") = value
+            Me("Visible_mnuScriptType_Markup") = value
         End Set
     End Property
     
     <Global.System.Configuration.UserScopedSettingAttribute(),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
-    Public Property Visible_btnSeparateValues() As Boolean
+    Public Property Visible_grpAnnotation() As Boolean
         Get
-            Return CType(Me("Visible_btnSeparateValues"),Boolean)
+            Return CType(Me("Visible_grpAnnotation"),Boolean)
         End Get
         Set
-            Me("Visible_btnSeparateValues") = value
-        End Set
-    End Property
-    
-    <Global.System.Configuration.UserScopedSettingAttribute(),  _
-     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
-    Public Property Visible_btnZeroToNull() As Boolean
-        Get
-            Return CType(Me("Visible_btnZeroToNull"),Boolean)
-        End Get
-        Set
-            Me("Visible_btnZeroToNull") = value
-        End Set
-    End Property
-    
-    <Global.System.Configuration.UserScopedSettingAttribute(),  _
-     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.Configuration.DefaultSettingValueAttribute("C:\Temp")>  _
-    Public Property Option_PathFileListing() As String
-        Get
-            Return CType(Me("Option_PathFileListing"),String)
-        End Get
-        Set
-            Me("Option_PathFileListing") = value
-        End Set
-    End Property
-    
-    <Global.System.Configuration.UserScopedSettingAttribute(),  _
-     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
-    Public Property Option_PathFileListingSelect() As Boolean
-        Get
-            Return CType(Me("Option_PathFileListingSelect"),Boolean)
-        End Get
-        Set
-            Me("Option_PathFileListingSelect") = value
-        End Set
-    End Property
-    
-    <Global.System.Configuration.UserScopedSettingAttribute(),  _
-     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
-    Public Property Visible_btnClearInteriorColor() As Boolean
-        Get
-            Return CType(Me("Visible_btnClearInteriorColor"),Boolean)
-        End Get
-        Set
-            Me("Visible_btnClearInteriorColor") = value
-        End Set
-    End Property
-    
-    <Global.System.Configuration.UserScopedSettingAttribute(),  _
-     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
-    Public Property Visible_btnFileList() As Boolean
-        Get
-            Return CType(Me("Visible_btnFileList"),Boolean)
-        End Get
-        Set
-            Me("Visible_btnFileList") = value
+            Me("Visible_grpAnnotation") = value
         End Set
     End Property
 End Class

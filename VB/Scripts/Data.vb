@@ -19,6 +19,7 @@ Namespace Scripts
 
         Public Shared TableAliasTable As New DataTable()
         Public Shared DateFormatTable As New DataTable()
+        Public Shared TimeFormatTable As New DataTable()
         Public Shared GraphDataTable As New DataTable()
 
         Public Shared Sub CreateTableAliasTable()
@@ -67,6 +68,33 @@ Namespace Scripts
 
                 DateFormatTable.DefaultView.Sort = columnName & Convert.ToString(" asc")
                 DateFormatTable.TableName = tableName
+
+            Catch ex As Exception
+                'ErrorHandler.DisplayMessage(ex)
+
+            End Try
+
+        End Sub
+
+        Public Shared Sub CreateTimeFormatTable()
+            Try
+                Dim columnName As String = "FormatString"
+                Dim dcFormatString As New DataColumn(columnName, GetType(String))
+                TimeFormatTable.Rows.Clear()
+                Dim columns As DataColumnCollection = TimeFormatTable.Columns
+                If columns.Contains(columnName) = False Then
+                    TimeFormatTable.Columns.Add(dcFormatString)
+                End If
+
+                Dim tableName As String = "TimeFormat"
+                Dim sql As String = Convert.ToString((Convert.ToString("SELECT * FROM ") & tableName) + " ORDER BY ") & columnName
+
+                Using da = New SqlCeDataAdapter(sql, Connection())
+                    da.Fill(DateFormatTable)
+                End Using
+
+                TimeFormatTable.DefaultView.Sort = columnName & Convert.ToString(" asc")
+                TimeFormatTable.TableName = tableName
 
             Catch ex As Exception
                 'ErrorHandler.DisplayMessage(ex)

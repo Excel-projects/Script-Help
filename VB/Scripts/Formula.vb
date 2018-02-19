@@ -72,14 +72,14 @@ Namespace Scripts
                             End If
                         End If
                         If Ribbon.GetSqlDataType(col) = My.Settings.Column_TypeDate Then
-                            formula += (Convert.ToString((Convert.ToString((Convert.ToString((Convert.ToString((Convert.ToString(valuePrefix & Convert.ToString("""DATE(")) & qt) + """ & ") & colRef) + " & """) & qt) + ", ") & qt) + My.Settings.Table_ColumnDateFormatReplace) & qt) + ")"""
+                            formula += (Convert.ToString((Convert.ToString((Convert.ToString((Convert.ToString((Convert.ToString(valuePrefix & Convert.ToString("""DATE(")) & qt) + """ & ") & colRef) + " & """) & qt) + ", ") & qt) + My.Settings.Table_ColumnFormatDate) & qt) + ")"""
                         Else
                             formula += (Convert.ToString((Convert.ToString((Convert.ToString(valuePrefix & Convert.ToString("""")) & qt) + """ & ") & colRef) + " & """) & qt) + """"
                         End If
                     End If
                 Next
                 'replace NULL values with DQL format
-                formula = (Convert.ToString("SUBSTITUTE(") & formula) + ", ""'" + My.Settings.Table_ColumnScriptNull + "', '" + My.Settings.Table_ColumnDateFormatReplace + "'"", ""'nulldate'"")"
+                formula = (Convert.ToString("SUBSTITUTE(") & formula) + ", ""'" + My.Settings.Table_ColumnScriptNull + "', '" + My.Settings.Table_ColumnFormatDate + "'"", ""'nulldate'"")"
                 formula = (Convert.ToString("SUBSTITUTE(") & formula) + ", ""'" + My.Settings.Table_ColumnScriptNull + "'"", ""nullstring"")"
                 formula = (Convert.ToString("SUBSTITUTE(") & formula) + ", """ + My.Settings.Table_ColumnScriptNull + """, ""nullint"")"
 
@@ -191,9 +191,9 @@ Namespace Scripts
                         If Ribbon.GetSqlDataType(col) = My.Settings.Column_TypeDate Then
                             If afterWhere = True Then
 
-                                whereClause += (Convert.ToString((Convert.ToString((Convert.ToString((Convert.ToString((Convert.ToString(valuePrefix & Convert.ToString("""DATE(")) & qt) + """ & ") & colRef) + " & """) & qt) + ", ") & qt) + My.Settings.Table_ColumnDateFormatReplace) & qt) + ")"""
+                                whereClause += (Convert.ToString((Convert.ToString((Convert.ToString((Convert.ToString((Convert.ToString(valuePrefix & Convert.ToString("""DATE(")) & qt) + """ & ") & colRef) + " & """) & qt) + ", ") & qt) + My.Settings.Table_ColumnFormatDate) & qt) + ")"""
                             End If
-                            formula += (Convert.ToString((Convert.ToString((Convert.ToString((Convert.ToString((Convert.ToString(valuePrefix & Convert.ToString("""DATE(")) & qt) + """ & ") & colRef) + " & """) & qt) + ", ") & qt) + My.Settings.Table_ColumnDateFormatReplace) & qt) + ")"""
+                            formula += (Convert.ToString((Convert.ToString((Convert.ToString((Convert.ToString((Convert.ToString(valuePrefix & Convert.ToString("""DATE(")) & qt) + """ & ") & colRef) + " & """) & qt) + ", ") & qt) + My.Settings.Table_ColumnFormatDate) & qt) + ")"""
                         Else
                             If afterWhere = True Then
                                 whereClause += (Convert.ToString((Convert.ToString((Convert.ToString(valuePrefix & Convert.ToString("""")) & qt) + """ & ") & colRef) + " & """) & qt) + """"
@@ -203,7 +203,7 @@ Namespace Scripts
                     End If
                 Next
                 'replace NULL values with DQL format
-                formula = (Convert.ToString("SUBSTITUTE(") & formula) + ", ""'" + My.Settings.Table_ColumnScriptNull + "', '" + My.Settings.Table_ColumnDateFormatReplace + "'"", ""'nulldate'"")"
+                formula = (Convert.ToString("SUBSTITUTE(") & formula) + ", ""'" + My.Settings.Table_ColumnScriptNull + "', '" + My.Settings.Table_ColumnFormatDate + "'"", ""'nulldate'"")"
                 formula = (Convert.ToString("SUBSTITUTE(") & formula) + ", ""'" + My.Settings.Table_ColumnScriptNull + "'"", ""nullstring"")"
                 formula = (Convert.ToString("SUBSTITUTE(") & formula) + ", """ + My.Settings.Table_ColumnScriptNull + """, ""nullint"")"
 
@@ -303,14 +303,14 @@ Namespace Scripts
                         Dim valuePrefix As String = String.Empty
                         valuePrefix = """ SET " + col.Name + " = "" & "
                         If Ribbon.GetSqlDataType(col) = My.Settings.Column_TypeDate Then
-                            formula += (Convert.ToString((Convert.ToString((Convert.ToString((Convert.ToString((Convert.ToString(valuePrefix & Convert.ToString("""DATE(")) & qt) + """ & ") & colRef) + " & """) & qt) + ", ") & qt) + My.Settings.Table_ColumnDateFormatReplace) & qt) + ")"""
+                            formula += (Convert.ToString((Convert.ToString((Convert.ToString((Convert.ToString((Convert.ToString(valuePrefix & Convert.ToString("""DATE(")) & qt) + """ & ") & colRef) + " & """) & qt) + ", ") & qt) + My.Settings.Table_ColumnFormatDate) & qt) + ")"""
                         Else
                             formula += (Convert.ToString((Convert.ToString((Convert.ToString(valuePrefix & Convert.ToString("""")) & qt) + """ & ") & colRef) + " & """) & qt) + """"
                         End If
                     End If
                 Next
                 'replace NULL values with DQL format
-                formula = (Convert.ToString("SUBSTITUTE(") & formula) + ", ""'" + My.Settings.Table_ColumnScriptNull + "', '" + My.Settings.Table_ColumnDateFormatReplace + "'"", ""'nulldate'"")"
+                formula = (Convert.ToString("SUBSTITUTE(") & formula) + ", ""'" + My.Settings.Table_ColumnScriptNull + "', '" + My.Settings.Table_ColumnFormatDate + "'"", ""'nulldate'"")"
                 formula = (Convert.ToString("SUBSTITUTE(") & formula) + ", ""'" + My.Settings.Table_ColumnScriptNull + "'"", ""nullstring"")"
                 formula = (Convert.ToString("SUBSTITUTE(") & formula) + ", """ + My.Settings.Table_ColumnScriptNull + """, ""nullint"")"
 
@@ -420,14 +420,14 @@ Namespace Scripts
                             End If
                         End If
                         If Ribbon.GetSqlDataType(col) = My.Settings.Column_TypeDate Then
-                            formula += (Convert.ToString((Convert.ToString((Convert.ToString((Convert.ToString((Convert.ToString(valuePrefix & Convert.ToString("""DATE(")) & qt) + """ & ") & colRef) + " & """) & qt) + ", ") & qt) + My.Settings.Table_ColumnDateFormatReplace) & qt) + ")"""
+                            formula += (Convert.ToString((Convert.ToString((Convert.ToString((Convert.ToString((Convert.ToString(valuePrefix & Convert.ToString("""DATE(")) & qt) + """ & ") & colRef) + " & """) & qt) + ", ") & qt) + My.Settings.Table_ColumnFormatDate) & qt) + ")"""
                         Else
                             formula += (Convert.ToString((Convert.ToString((Convert.ToString(valuePrefix & Convert.ToString("""")) & qt) + """ & ") & colRef) + " & """) & qt) + """"
                         End If
                     End If
                 Next
                 'replace NULL values with DQL format
-                formula = (Convert.ToString("SUBSTITUTE(") & formula) + ", ""'" + My.Settings.Table_ColumnScriptNull + "', '" + My.Settings.Table_ColumnDateFormatReplace + "'"", ""'nulldate'"")"
+                formula = (Convert.ToString("SUBSTITUTE(") & formula) + ", ""'" + My.Settings.Table_ColumnScriptNull + "', '" + My.Settings.Table_ColumnFormatDate + "'"", ""'nulldate'"")"
                 formula = (Convert.ToString("SUBSTITUTE(") & formula) + ", ""'" + My.Settings.Table_ColumnScriptNull + "'"", ""nullstring"")"
                 formula = (Convert.ToString("SUBSTITUTE(") & formula) + ", """ + My.Settings.Table_ColumnScriptNull + """, ""nullint"")"
 
@@ -538,14 +538,14 @@ Namespace Scripts
                             End If
                         End If
                         If Ribbon.GetSqlDataType(col) = My.Settings.Column_TypeDate Then
-                            formula += (Convert.ToString((Convert.ToString((Convert.ToString((Convert.ToString((Convert.ToString(valuePrefix & Convert.ToString("""DATE(")) & qt) + """ & ") & colRef) + " & """) & qt) + ", ") & qt) + My.Settings.Table_ColumnDateFormatReplace) & qt) + ")"""
+                            formula += (Convert.ToString((Convert.ToString((Convert.ToString((Convert.ToString((Convert.ToString(valuePrefix & Convert.ToString("""DATE(")) & qt) + """ & ") & colRef) + " & """) & qt) + ", ") & qt) + My.Settings.Table_ColumnFormatDate) & qt) + ")"""
                         Else
                             formula += (Convert.ToString((Convert.ToString((Convert.ToString(valuePrefix & Convert.ToString("""")) & qt) + """ & ") & colRef) + " & """) & qt) + """"
                         End If
                     End If
                 Next
                 'replace NULL values with DQL format
-                formula = (Convert.ToString("SUBSTITUTE(") & formula) + ", ""'" + My.Settings.Table_ColumnScriptNull + "', '" + My.Settings.Table_ColumnDateFormatReplace + "'"", ""'nulldate'"")"
+                formula = (Convert.ToString("SUBSTITUTE(") & formula) + ", ""'" + My.Settings.Table_ColumnScriptNull + "', '" + My.Settings.Table_ColumnFormatDate + "'"", ""'nulldate'"")"
                 formula = (Convert.ToString("SUBSTITUTE(") & formula) + ", ""'" + My.Settings.Table_ColumnScriptNull + "'"", ""nullstring"")"
                 formula = (Convert.ToString("SUBSTITUTE(") & formula) + ", """ + My.Settings.Table_ColumnScriptNull + """, ""nullint"")"
 
@@ -662,9 +662,9 @@ Namespace Scripts
                         If Ribbon.GetSqlDataType(col) = My.Settings.Column_TypeDate Then
                             If afterWhere = True Then
 
-                                whereClause += (Convert.ToString((Convert.ToString((Convert.ToString((Convert.ToString((Convert.ToString(valuePrefix & Convert.ToString("""DATE(")) & qt) + """ & ") & colRef) + " & """) & qt) + ", ") & qt) + My.Settings.Table_ColumnDateFormatReplace) & qt) + ")"""
+                                whereClause += (Convert.ToString((Convert.ToString((Convert.ToString((Convert.ToString((Convert.ToString(valuePrefix & Convert.ToString("""DATE(")) & qt) + """ & ") & colRef) + " & """) & qt) + ", ") & qt) + My.Settings.Table_ColumnFormatDate) & qt) + ")"""
                             End If
-                            formula += (Convert.ToString((Convert.ToString((Convert.ToString((Convert.ToString((Convert.ToString(valuePrefix & Convert.ToString("""DATE(")) & qt) + """ & ") & colRef) + " & """) & qt) + ", ") & qt) + My.Settings.Table_ColumnDateFormatReplace) & qt) + ")"""
+                            formula += (Convert.ToString((Convert.ToString((Convert.ToString((Convert.ToString((Convert.ToString(valuePrefix & Convert.ToString("""DATE(")) & qt) + """ & ") & colRef) + " & """) & qt) + ", ") & qt) + My.Settings.Table_ColumnFormatDate) & qt) + ")"""
                         Else
                             If afterWhere = True Then
                                 whereClause += (Convert.ToString((Convert.ToString((Convert.ToString(valuePrefix & Convert.ToString("""")) & qt) + """ & ") & colRef) + " & """) & qt) + """"
@@ -674,7 +674,7 @@ Namespace Scripts
                     End If
                 Next
                 'replace NULL values with DQL format
-                formula = (Convert.ToString("SUBSTITUTE(") & formula) + ", ""'" + My.Settings.Table_ColumnScriptNull + "', '" + My.Settings.Table_ColumnDateFormatReplace + "'"", ""'nulldate'"")"
+                formula = (Convert.ToString("SUBSTITUTE(") & formula) + ", ""'" + My.Settings.Table_ColumnScriptNull + "', '" + My.Settings.Table_ColumnFormatDate + "'"", ""'nulldate'"")"
                 formula = (Convert.ToString("SUBSTITUTE(") & formula) + ", ""'" + My.Settings.Table_ColumnScriptNull + "'"", ""nullstring"")"
                 formula = (Convert.ToString("SUBSTITUTE(") & formula) + ", """ + My.Settings.Table_ColumnScriptNull + """, ""nullint"")"
 
@@ -1404,7 +1404,7 @@ Namespace Scripts
                             End If
                         End If
                         If Ribbon.GetSqlDataType(col) = My.Settings.Column_TypeDate Then
-                            formula += (Convert.ToString((Convert.ToString((Convert.ToString((Convert.ToString((Convert.ToString(valuePrefix & Convert.ToString("""DATE(")) & qt) + """ & ") & colRef) + " & """) & qt) + ", ") & qt) + My.Settings.Table_ColumnDateFormatReplace) & qt) + ")"""
+                            formula += (Convert.ToString((Convert.ToString((Convert.ToString((Convert.ToString((Convert.ToString(valuePrefix & Convert.ToString("""DATE(")) & qt) + """ & ") & colRef) + " & """) & qt) + ", ") & qt) + My.Settings.Table_ColumnFormatDate) & qt) + ")"""
                         Else
                             formula += (Convert.ToString((Convert.ToString((Convert.ToString(valuePrefix & Convert.ToString("""")) & qt) + """ & ") & colRef) + " & """) & qt) + """"
                         End If
@@ -1944,7 +1944,7 @@ Namespace Scripts
                             End If
                         End If
                         If Ribbon.GetSqlDataType(col) = My.Settings.Column_TypeDate Then
-                            formula += (Convert.ToString((Convert.ToString((Convert.ToString((Convert.ToString((Convert.ToString(valuePrefix & Convert.ToString("""DATE(")) & qt) + """ & ") & colRef) + " & """) & qt) + ", ") & qt) + My.Settings.Table_ColumnDateFormatReplace) & qt) + ")"""
+                            formula += (Convert.ToString((Convert.ToString((Convert.ToString((Convert.ToString((Convert.ToString(valuePrefix & Convert.ToString("""DATE(")) & qt) + """ & ") & colRef) + " & """) & qt) + ", ") & qt) + My.Settings.Table_ColumnFormatDate) & qt) + ")"""
                         Else
                             formula += (Convert.ToString((Convert.ToString((Convert.ToString(valuePrefix & Convert.ToString("""")) & qt) + """ & ") & colRef) + " & """) & qt) + """"
                         End If

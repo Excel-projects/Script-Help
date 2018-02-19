@@ -18,6 +18,9 @@ Partial Public Class TableData
                 Case "DateFormat"
                     dgvList.DataSource = Data.DateFormatTable
                     Exit Select
+                Case "TimeFormat"
+                    dgvList.DataSource = Data.TimeFormatTable
+                    Exit Select
             End Select
 
             Me.dgvList.Columns(0).Width = dgvList.Width - 75
@@ -54,6 +57,10 @@ Partial Public Class TableData
                 Case "DateFormat"
                     sda.Update(Data.DateFormatTable)
                     Data.CreateDateFormatTable()
+                    Exit Select
+                Case "TimeFormat"
+                    sda.Update(Data.TimeFormatTable)
+                    Data.CreateTimeFormatTable()
                     Exit Select
             End Select
             Ribbon.ribbonref.InvalidateRibbon()

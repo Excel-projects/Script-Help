@@ -120,6 +120,7 @@ Namespace Scripts
 
                 Data.CreateTableAliasTable()
                 Data.CreateDateFormatTable()
+                Data.CreateTimeFormatTable()
                 Data.CreateGraphDataTable()
 
             Catch ex As Exception
@@ -170,6 +171,48 @@ Namespace Scripts
                         Return My.Application.Info.Title.ToString.Replace("&", "&&") & Space(1) & version
                     Case Is = "txtReleaseDate"
                         Return My.Settings.App_ReleaseDate.ToString("dd-MMM-yyyy hh:mm tt")
+                    Case Is = "btnScriptTypeDqlAppend"
+                        Return "DQL Append"
+                    Case Is = "btnScriptTypeDqlAppendLocked"
+                        Return "DQL Append/Locked"
+                    Case Is = "btnScriptTypeDqlCreate"
+                        Return "DQL Create"
+                    Case Is = "btnScriptTypeDqlTruncateAppend"
+                        Return "DQL Truncate/Append"
+                    Case Is = "btnScriptTypeDqlUpdate"
+                        Return "DQL Update"
+                    Case Is = "btnScriptTypeDqlUpdateLocked"
+                        Return "DQL Update/Locked"
+                    Case Is = "btnScriptTypeGithubTable"
+                        Return "Markdown Table"
+                    Case Is = "btnScriptTypeHtmlTable"
+                        Return "HTML Table"
+                    Case Is = "btnScriptTypePlSqlCreateTable"
+                        Return "PL/SQL Create Table"
+                    Case Is = "btnScriptTypePlSqlInsertValues"
+                        Return "PL/SQL Insert Values"
+                    Case Is = "btnScriptTypePlSqlMergeValues"
+                        Return "PL/SQL Merge Values"
+                    Case Is = "btnScriptTypePlSqlSelectValues"
+                        Return "PL/SQL Select Values"
+                    Case Is = "btnScriptTypePlSqlSelectUnion"
+                        Return "PL/SQL Select Union"
+                    Case Is = "btnScriptTypePlSqlUpdateValues"
+                        Return "PL/SQL Update Values"
+                    Case Is = "btnScriptTypeTSqlCreateTable"
+                        Return "T-SQL Create Table"
+                    Case Is = "btnScriptTypeTSqlInsertValues"
+                        Return "T-SQL Insert Values"
+                    Case Is = "btnScriptTypeTSqlMergeValues"
+                        Return "T-SQL Merge Values"
+                    Case Is = "btnScriptTypeTSqlSelectValues"
+                        Return "T-SQL Select Values"
+                    Case Is = "btnScriptTypeTSqlSelectUnion"
+                        Return "T-SQL Select Union"
+                    Case Is = "btnScriptTypeTSqlUpdateValues"
+                        Return "T-SQL Update Values"
+                    Case Is = "btnScriptTypeXmlValues"
+                        Return "XML Values"
                     Case Else
                         Return String.Empty
                 End Select
@@ -185,8 +228,10 @@ Namespace Scripts
         Public Function GetItemCount(control As Office.IRibbonControl) As Integer
             Try
                 Select Case control.Id
-                    Case "cboDateFormatReplace", "cboDateFormatFind"
+                    Case "cboFormatDate"
                         Return Data.DateFormatTable.Rows.Count
+                    Case "cboFormatTime"
+                        Return Data.TimeFormatTable.Rows.Count
                     Case "cboTableAlias"
                         Return Data.TableAliasTable.Rows.Count
                     Case Else
@@ -201,8 +246,10 @@ Namespace Scripts
         Public Function GetItemLabel(control As Office.IRibbonControl, index As Integer) As String
             Try
                 Select Case control.Id
-                    Case "cboDateFormatReplace", "cboDateFormatFind"
+                    Case "cboFormatDate"
                         Return UpdateDateFormatComboBoxSource(index)
+                    Case "cboFormatTime"
+                        Return UpdateTimeFormatComboBoxSource(index)
                     Case "cboTableAlias"
                         Return UpdateTableAliasComboBoxSource(index)
                     Case Else
@@ -343,7 +390,7 @@ Namespace Scripts
                         Formula.TSqlUpdateValues()
                     Case "btnScriptTypeXmlValues"
                         Formula.XmlValues()
-                    Case "btnDateFormatFind", "btnTableAlias", "btnDateFormatReplace"
+                    Case "btnFormatDate", "btnTableAlias", "btnFormatTime"
                         AppVariables.TableName = Control.Tag
                         OpenTableDataPane()
                 End Select
@@ -358,13 +405,13 @@ Namespace Scripts
         Public Sub OnChange(control As Office.IRibbonControl, text As String)
             Try
                 Select Case control.Id
-                    Case "cboDateFormatReplace"
-                        My.Settings.Table_ColumnDateFormatReplace = text
+                    Case "cboFormatDate"
+                        My.Settings.Table_ColumnFormatDate = text
                         Data.InsertRecord(Data.DateFormatTable, text)
                         Exit Select
-                    Case "cboDateFormatFind"
-                        My.Settings.Table_ColumnDateFormatFind = text
-                        Data.InsertRecord(Data.DateFormatTable, text)
+                    Case "cboFormatTime"
+                        My.Settings.Table_ColumnFormatTime = text
+                        Data.InsertRecord(Data.TimeFormatTable, text)
                         Exit Select
                     Case "cboTableAlias"
                         My.Settings.Table_ColumnTableAlias = text
@@ -381,10 +428,10 @@ Namespace Scripts
         Public Function GetText(control As Office.IRibbonControl) As String
             Try
                 Select Case control.Id
-                    Case "cboDateFormatReplace"
-                        Return My.Settings.Table_ColumnDateFormatReplace
-                    Case "cboDateFormatFind"
-                        Return My.Settings.Table_ColumnDateFormatFind
+                    Case "cboFormatDate"
+                        Return My.Settings.Table_ColumnFormatDate
+                    Case "cboFormatTime"
+                        Return My.Settings.Table_ColumnFormatTime
                     Case "cboTableAlias"
                         Return My.Settings.Table_ColumnTableAlias
                     Case Else
@@ -402,18 +449,8 @@ Namespace Scripts
                 Select Case Control.Id
                     Case "grpClipboard"
                         Return My.Settings.Visible_grpClipboard
-                    Case "grpFormatDataTable"
-                        Return My.Settings.Visible_grpFormatDataTable
-                    Case "grpScriptVariables"
-                        Return My.Settings.Visible_grpScriptVariables
-                    Case "btnClearInteriorColor"
-                        Return My.Settings.Visible_btnClearInteriorColor
-                    Case "btnZeroToNull"
-                        Return My.Settings.Visible_btnZeroToNull
-                    Case "btnSeparateValues"
-                        Return My.Settings.Visible_btnSeparateValues
-                    Case "btnFileList"
-                        Return My.Settings.Visible_btnFileList
+                    Case "grpAnnotation"
+                        Return My.Settings.Visible_grpAnnotation
                     Case "btnScriptTypeTSqlCreateTable", "btnScriptTypeTSqlInsertValues", "btnScriptTypeTSqlMergeValues", "btnScriptTypeTSqlSelectValues", "btnScriptTypeTSqlSelectUnion", "btnScriptTypeTSqlUpdateValues"
                         Return My.Settings.Visible_mnuScriptType_TSQL
                     Case "btnScriptTypePlSqlCreateTable", "btnScriptTypePlSqlInsertValues", "btnScriptTypePlSqlMergeValues", "btnScriptTypePlSqlSelectValues", "btnScriptTypePlSqlSelectUnion", "btnScriptTypePlSqlUpdateValues"
@@ -421,9 +458,9 @@ Namespace Scripts
                     Case "btnScriptTypeDqlAppend", "btnScriptTypeDqlAppendLocked", "btnScriptTypeDqlCreate", "btnScriptTypeDqlTruncateAppend", "btnScriptTypeDqlUpdate", "btnScriptTypeDqlUpdateLocked"
                         Return My.Settings.Visible_mnuScriptType_DQL
                     Case "btnScriptTypeGithubTable"
-                        Return My.Settings.Visible_mnuScriptType_Github
+                        Return My.Settings.Visible_mnuScriptType_Markdown
                     Case "btnScriptTypeHtmlTable", "btnScriptTypeXmlValues"
-                        Return My.Settings.Visible_mnuScriptType_XML
+                        Return My.Settings.Visible_mnuScriptType_Markup
                     Case Else
                         Return False
                 End Select
@@ -601,8 +638,8 @@ Namespace Scripts
                 For Each col As Excel.ListColumn In tbl.ListColumns
                     cell = FirstNotNullCellInColumn(col.DataBodyRange)
                     If ((cell IsNot Nothing)) Then
-                        If cell.NumberFormat.ToString() = My.Settings.Table_ColumnDateFormatFind Or ErrorHandler.IsDate(cell.Value) Then
-                            col.DataBodyRange.NumberFormat = My.Settings.Table_ColumnDateFormatReplace
+                        If cell.NumberFormat.ToString() = My.Settings.Table_ColumnFormatTime Or ErrorHandler.IsDate(cell.Value) Then
+                            col.DataBodyRange.NumberFormat = My.Settings.Table_ColumnFormatDate
                             col.DataBodyRange.HorizontalAlignment = Excel.Constants.xlCenter
                         End If
                     End If
@@ -640,8 +677,8 @@ Namespace Scripts
                 For Each col As Excel.ListColumn In tbl.ListColumns
                     cell = FirstNotNullCellInColumn(col.DataBodyRange)
                     If ((cell IsNot Nothing)) Then
-                        If cell.NumberFormat.ToString() = My.Settings.Table_ColumnDateFormatFind Or ErrorHandler.IsDate(cell.Value) Then
-                            col.DataBodyRange.NumberFormat = My.Settings.Table_ColumnDateFormatReplace
+                        If cell.NumberFormat.ToString() = My.Settings.Table_ColumnFormatTime Or ErrorHandler.IsDate(cell.Value) Then
+                            col.DataBodyRange.NumberFormat = My.Settings.Table_ColumnFormatDate
                             col.DataBodyRange.HorizontalAlignment = Excel.Constants.xlCenter
                         End If
                     End If
@@ -795,19 +832,19 @@ Namespace Scripts
         End Sub
 
         Public Sub CreateFileList()
-            Dim filePath As String = My.Settings.Option_PathFileListing
+            Dim filePath As String = "" 'My.Settings.Option_PathFileListing
             Try
                 ErrorHandler.CreateLogRecord()
                 Dim msgDialogResult As DialogResult = DialogResult.None
                 Dim dlg As New FolderBrowserDialog()
-                If My.Settings.Option_PathFileListingSelect = True Then
-                    dlg.RootFolder = Environment.SpecialFolder.MyComputer
+            'If My.Settings.Option_PathFileListingSelect = True Then
+            dlg.RootFolder = Environment.SpecialFolder.MyComputer
                     dlg.SelectedPath = filePath
                     msgDialogResult = dlg.ShowDialog()
                     filePath = dlg.SelectedPath
-                End If
-                If msgDialogResult = DialogResult.OK Or My.Settings.Option_PathFileListingSelect = False Then
-                    filePath += "\"
+            'End If
+            'If msgDialogResult = DialogResult.OK Or My.Settings.Option_PathFileListingSelect = False Then
+            filePath += "\"
                     Dim scriptCommands As String = String.Empty
                     Dim currentDate As String = DateTime.Now.ToString("dd.MMM.yyyy_hh.mm.tt")
                     Dim batchFileName As String = (Convert.ToString(filePath & Convert.ToString("FileListing_")) & currentDate) + "_" + Environment.UserName + ".bat"
@@ -818,8 +855,8 @@ Namespace Scripts
                     scriptCommands += "cd .. " + Environment.NewLine
                     scriptCommands += "echo on" + Environment.NewLine
                     System.IO.File.WriteAllText(batchFileName, scriptCommands)
-                    'AssemblyInfo.OpenFile(batchFileName)
-                End If
+            'AssemblyInfo.OpenFile(batchFileName)
+            'End If
 
             Catch generatedExceptionName As System.UnauthorizedAccessException
                 MessageBox.Show(Convert.ToString("You don't have access to this folder, bro!" + Environment.NewLine + Environment.NewLine) & filePath, "No action taken.", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -837,7 +874,7 @@ Namespace Scripts
 
         Public Sub OpenNewIssue()
             ErrorHandler.CreateLogRecord()
-            System.Diagnostics.Process.Start(My.Settings.App_PathReportIssue)
+            System.Diagnostics.Process.Start(My.Settings.App_PathNewIssue)
 
         End Sub
 
@@ -970,7 +1007,7 @@ Namespace Scripts
 
                 Select Case GetSqlDataType(col)
                     Case My.Settings.Column_TypeDate
-                        fmt = My.Settings.Table_ColumnDateFormatReplace
+                        fmt = My.Settings.Table_ColumnFormatDate
 
                     Case My.Settings.Column_TypeNumeric
                         ' we will use the column formatting if some is applied
@@ -1036,7 +1073,7 @@ Namespace Scripts
 
                 ' NOTE: next test relies consistent formatting on numerics in a column
                 ' so we only have to test the first cell
-                If IsDate(FirstNotNullCellInColumn(col.DataBodyRange)) Or col.DataBodyRange.NumberFormat.ToString = My.Settings.Table_ColumnDateFormatReplace Then
+                If IsDate(FirstNotNullCellInColumn(col.DataBodyRange)) Or col.DataBodyRange.NumberFormat.ToString = My.Settings.Table_ColumnFormatDate Then
                     Return My.Settings.Column_TypeDate
                 Else
                     Return My.Settings.Column_TypeNumeric
@@ -1145,6 +1182,15 @@ Namespace Scripts
         Public Function UpdateDateFormatComboBoxSource(itemIndex As Integer) As String
             Try
                 Return Data.DateFormatTable.Rows(itemIndex)("FormatString").ToString()
+            Catch ex As Exception
+                ErrorHandler.DisplayMessage(ex)
+                Return String.Empty
+            End Try
+        End Function
+
+        Public Function UpdateTimeFormatComboBoxSource(itemIndex As Integer) As String
+            Try
+                Return Data.TimeFormatTable.Rows(itemIndex)("FormatString").ToString()
             Catch ex As Exception
                 ErrorHandler.DisplayMessage(ex)
                 Return String.Empty
