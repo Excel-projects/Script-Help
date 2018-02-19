@@ -206,7 +206,7 @@ Or use the following tag to remove all other ribbons when this loads
               keytip="LTA"
 							/>
 					<button
-							id="btnDateFormatFind"
+							id="btnFormatDate"
 							label="..."
 							onAction="OnAction"
 							screentip="Open Date Format List"
@@ -215,11 +215,11 @@ Or use the following tag to remove all other ribbons when this loads
               keytip="LFF"
 							/>
 					<button
-							id="btnDateFormatReplace"
+							id="btnFormatTime"
 							label="..."
 							onAction="OnAction"
-							screentip="Open Date Format List"
-							supertip="This will open the date format list form."
+							screentip="Open Time Format List"
+							supertip="This will open the time format list form."
 							tag="TimeFormat"
               keytip="LFR"
 							/>

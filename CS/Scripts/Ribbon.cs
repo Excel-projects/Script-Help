@@ -593,8 +593,8 @@ namespace ScriptHelp.Scripts
                     case "btnScriptTypeXmlValues":
                         Formula.XmlValues();
                         break;
-                    case "btnDateFormatFind":
-                    case "btnDateFormatReplace":
+                    case "btnFormatDate":
+                    case "btnFormatTime":
                     case "btnTableAlias":
                         AppVariables.TableName = control.Tag;
                         OpenTableDataPane();
