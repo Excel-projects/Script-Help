@@ -140,9 +140,13 @@ Namespace Scripts
                     Case "btnScriptTypePlSqlCreateTable", "btnScriptTypePlSqlInsertValues", "btnScriptTypePlSqlMergeValues", "btnScriptTypePlSqlSelectValues", "btnScriptTypePlSqlSelectUnion", "btnScriptTypePlSqlUpdateValues"
                         Return My.Resources.Resources.ScriptTypePlSql
                     Case "btnScriptTypeGithubTable"
-                        Return My.Resources.Resources.ScriptTypeGitHub
+                        Return My.Resources.Resources.ScriptTypeMarkdown
                     Case "btnScriptTypeHtmlTable", "btnScriptTypeXmlValues"
-                        Return My.Resources.Resources.ScriptTypeXML
+                        Return My.Resources.Resources.ScriptTypeMarkup
+                    Case "btnProblemStepRecorder"
+                        Return My.Resources.Resources.problem_steps_recorder
+                    Case "btnSnippingTool"
+                        Return My.Resources.Resources.snipping_tool
                     Case Else
                         Return Nothing
                 End Select
@@ -437,10 +441,12 @@ Namespace Scripts
                     Case Else
                         Return String.Empty
                 End Select
+
             Catch ex As Exception
                 ErrorHandler.DisplayMessage(ex)
                 Return String.Empty
             End Try
+
         End Function
 
         Public Function GetVisible(ByVal Control As Office.IRibbonControl) As Boolean

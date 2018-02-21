@@ -347,6 +347,10 @@
     </Content>
     <None Include="Resources\Download.png" />
     <Content Include="Resources\ExcelAddin.ico" />
+    <None Include="Resources\problem_steps_recorder.png" />
+    <None Include="Resources\ScriptTypeMarkdown.png" />
+    <None Include="Resources\ScriptTypeMarkup.png" />
+    <None Include="Resources\snipping_tool.png" />
     <Content Include="sqlceca35.dll" />
     <Content Include="sqlcecompact35.dll" />
     <Content Include="sqlceer35EN.dll" />

@@ -164,7 +164,7 @@ Namespace Scripts
 
                     info.SetAccessControl(security)
                 Else
-                    userFilePath = "C:\Users\tduguid\Source\Repos\ScriptHelp2\VB\App_Data\" 'System.IO.Path.Combine(AssemblyInfo.GetClickOnceLocation(), dataFolder)
+                    userFilePath = "C:\Users\tduguid\Source\Repos\ScriptHelp\VB\App_Data" 'System.IO.Path.Combine(AssemblyInfo.GetClickOnceLocation(), dataFolder)
                 End If
 
                 My.Settings.App_PathLocalData = userFilePath

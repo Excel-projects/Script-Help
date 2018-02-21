@@ -177,9 +177,9 @@ Or use the following tag to remove all other ribbons when this loads
 					<comboBox
 						id="cboFormatDate"
 						onChange="OnChange"
-						getText="GetText"
 						getItemCount="GetItemCount"
 						getItemLabel="GetItemLabel"
+						getText="GetText"
 						sizeString= "XXXXXXXXXXXXXXXXXXXX"
 						screentip="Date Format"
 						supertip="This is the date format the script uses to replace the formatting for date columns."
@@ -188,9 +188,9 @@ Or use the following tag to remove all other ribbons when this loads
 					<comboBox
 							id="cboFormatTime"
 							onChange="OnChange"
-							getText="GetText"
 							getItemCount="GetItemCount"
 							getItemLabel="GetItemLabel"
+							getText="GetText"
 							sizeString= "XXXXXXXXXXXXXXXXXXXX"
 							screentip="Time Format"
 							supertip="This is the time format the script uses to replace the formatting for time columns."

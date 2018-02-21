@@ -93,6 +93,16 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
+        Friend ReadOnly Property problem_steps_recorder() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("problem_steps_recorder", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property Save() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("Save", resourceCulture)
@@ -113,9 +123,19 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property ScriptTypeGitHub() As System.Drawing.Bitmap
+        Friend ReadOnly Property ScriptTypeMarkdown() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("ScriptTypeGitHub", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("ScriptTypeMarkdown", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property ScriptTypeMarkup() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("ScriptTypeMarkup", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -143,9 +163,9 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property ScriptTypeXML() As System.Drawing.Bitmap
+        Friend ReadOnly Property snipping_tool() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("ScriptTypeXML", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("snipping_tool", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
