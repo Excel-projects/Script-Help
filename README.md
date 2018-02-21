@@ -2,6 +2,7 @@
 <head>
 </head>
 
+
 <img align="left" src="Images/ReadMe/header.png">
 
 [![Join the chat at https://gitter.im/ScriptHelp](https://badges.gitter.im/ScriptHelp/Lobby.svg)](https://gitter.im/ScriptHelp?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
@@ -84,6 +85,8 @@ The most complete version is C#.
 <a id="user-content-install" class="anchor" href="#install" aria-hidden="true"> </a>
 ## Install
 Instructions for installation of VBA and VSTO versions.
+
+>TODO: deploy to Microsoft Office store
 
 ### VBA
 How to install the VBA version
