@@ -90,7 +90,7 @@ Namespace Scripts
                 Dim sql As String = Convert.ToString((Convert.ToString("SELECT * FROM ") & tableName) + " ORDER BY ") & columnName
 
                 Using da = New SqlCeDataAdapter(sql, Connection())
-                    da.Fill(DateFormatTable)
+                    da.Fill(TimeFormatTable)
                 End Using
 
                 TimeFormatTable.DefaultView.Sort = columnName & Convert.ToString(" asc")

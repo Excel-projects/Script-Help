@@ -397,6 +397,10 @@ Namespace Scripts
                     Case "btnFormatDate", "btnTableAlias", "btnFormatTime"
                         AppVariables.TableName = Control.Tag
                         OpenTableDataPane()
+                    Case "btnSnippingTool"
+                        OpenSnippingTool()
+                    Case "btnProblemStepRecorder"
+                        OpenProblemStepRecorder()
                 End Select
 
             Catch ex As Exception
@@ -1202,6 +1206,30 @@ Namespace Scripts
                 Return String.Empty
             End Try
         End Function
+
+        Public Sub OpenSnippingTool()
+            Dim filePath As String
+            Try
+                If System.Environment.Is64BitOperatingSystem Then
+                    filePath = "C:\Windows\sysnative\SnippingTool.exe"
+                Else
+                    filePath = "C:\Windows\system32\SnippingTool.exe"
+                End If
+
+                System.Diagnostics.Process.Start(filePath)
+            Catch ex As Exception
+                ErrorHandler.DisplayMessage(ex)
+            End Try
+        End Sub
+
+        Public Sub OpenProblemStepRecorder()
+            Dim filePath As String = "C:\Windows\System32\psr.exe"
+            Try
+                System.Diagnostics.Process.Start(filePath)
+            Catch ex As Exception
+                ErrorHandler.DisplayMessage(ex)
+            End Try
+        End Sub
 
 #End Region
 
