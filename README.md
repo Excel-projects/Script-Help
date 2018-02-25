@@ -4,6 +4,8 @@
 
 <img align="left" src="Images/ReadMe/header.png">
 
+<img align="left" src="https://github.com/Office-projects/Script-Help/blob/master/Images/ReadMe/header.png?">
+
 [![Join the chat at https://gitter.im/ScriptHelp](https://badges.gitter.im/ScriptHelp/Lobby.svg)](https://gitter.im/ScriptHelp?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE "MIT License Copyright © Anthony Duguid")
 <span class="Application_Version">[![release](http://github-release-version.herokuapp.com/github/Office-projects/ScriptHelp/release.svg?style=flat)](https://github.com/Office-projects/ScriptHelp/releases/latest)</span> 
