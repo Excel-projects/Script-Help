@@ -9,6 +9,10 @@
 [![Latest Release](https://img.shields.io/github/release/Office-projects/Script-Help.svg?label=latest%20release)](https://github.com/Office-projects/Script-Help/releases)
 [![Github commits (since latest release)](https://img.shields.io/github/commits-since/Office-projects/Script-Help/latest.svg)](https://github.com/Office-projects/Script-Help)
 
+The most complete version is C#. 
+<a href="https://github.com/Office-projects/Script-Help/issues" target="_blank">
+ <img alt="Issues" src="https://img.shields.io/github/issues/Office-projects/Script-Help.svg" />
+</a>
 
 <!---
 [![download VBA](https://img.shields.io/badge/download-VBA-brightgreen.svg)](https://github.com/Office-projects/ScriptHelp/raw/master/VBA/ScriptHelp.xlsm?raw=true "Download the VBA Add-In")
@@ -16,11 +20,6 @@
 [![download Key](https://img.shields.io/badge/download-Key-brightgreen.svg)](https://github.com/Office-projects/ScriptHelp/CS/blob/master/AnthonyDuguid.pfx?raw=true "Download AnthonyDuguid.pfx And Install At Root Level For VSTO")
 --->
 This Add-In is used for cleaning & batch loading records into SQL Server, Oracle, Documentum, Markup or Markdown Languages. The functionality within the ribbon allows a quick way of preparing a bulk data load. Otherwise, the requests can be both time-consuming and error prone. 
-
-The most complete version is C#. 
-<a href="https://github.com/Office-projects/Script-Help/issues" target="_blank">
- <img alt="Issues" src="https://img.shields.io/github/issues/Office-projects/Script-Help.svg" />
-</a>
 
 <!---
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE "MIT License Copyright © 2018 Anthony Duguid")
