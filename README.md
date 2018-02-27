@@ -16,7 +16,7 @@
 This Add-In is used for cleaning & batch loading records into SQL Server, Oracle, Documentum, Markup or Markdown Languages. The functionality within the ribbon allows a quick way of preparing a bulk data load. Otherwise, the requests can be both time-consuming and error prone. 
 
 The most complete version is C#. 
-[![GitHub issues](https://img.shields.io/github/issues/badges/shields.svg)](https://github.com/Office-projects/Script-Help/issues)
+[![GitHub issues](https://img.shields.io/github/issues-raw/badges/Script-Help.svg)](https://github.com/Office-projects/Script-Help/issues)
 
 <!---
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE "MIT License Copyright © 2018 Anthony Duguid")
