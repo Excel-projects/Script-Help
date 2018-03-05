@@ -17,8 +17,20 @@ Use the following tags to remove indivdual ribbons when this loads
 Or use the following tag to remove all other ribbons when this loads
 	<ribbon startFromScratch="true">
 -->
-
-	<ribbon>
+	<ribbon startFromScratch="false">
+		<qat>
+			<sharedControls >
+				<button
+					idMso ="Camera"
+					label="Excel Camera"
+					screentip="Microsoft Excel Camera"
+					supertip="This tool allows you to take a snapshot of a selected datasheet portion, it also syncs the data with the image; whenever you make changes to the original data set, live image gets updated, showing you the latest cells values. "
+				/>
+			</sharedControls>
+			<documentControls >
+				<button idMso="Cut"/>
+			</documentControls>
+		</qat>
 		<tabs>
 			<tab
 					id="tabScriptHelp"
@@ -438,37 +450,6 @@ Or use the following tag to remove all other ribbons when this loads
 					</menu>
 				</group>
 				<group
-						id="grpAnnotation"
-						label="Annotate"
-						imageMso="Camera"
-						getVisible="GetVisible">
-					<button
-							idMso="Camera"
-							label="Excel Camera"
-							size="normal"
-							screentip="Microsoft Excel Camera"
-							supertip="This tool allows you to take a snapshot of a selected datasheet portion, it also syncs the data with the image; whenever you make changes to the original data set, live image gets updated, showing you the latest cells values. "
-							/>
-					<button
-							id="btnSnippingTool"
-							label="Snipping Tool"
-							onAction="OnAction"
-							getImage="GetButtonImage"
-							size="normal"
-							screentip="Microsoft Snipping Tool"
-							supertip="Snipping Tool is a screenshot utility included in Microsoft Windows. It can take screenshots of an open window, rectangular areas, a free-form area, or the entire screen."
-							/>
-					<button
-							id="btnProblemStepRecorder"
-							label="Record Steps"
-							onAction="OnAction"
-							getImage="GetButtonImage"
-							size="normal"
-							screentip="Microsoft Problem Steps Recorder"
-							supertip="Problem Steps Recorder or PSR records the actions you take on your computer which you can then send to the person or group helping you with your computer problem."
-							/>
-				</group>
-				<group
 						id="grpHelp"
 						label="Help"
 						imageMso="Help">
@@ -546,4 +527,73 @@ Or use the following tag to remove all other ribbons when this loads
 			</tab>
 		</tabs>
 	</ribbon>
+	<backstage>
+		<tab id="grpAnnotation" label="Annotate" insertAfterMso="TabInfo" visible="true" firstColumnMaxWidth="500">
+			<firstColumn>
+				<group id="grpOne" label="Microsoft Snipping Tool">
+					<primaryItem>
+						<button
+								id="btnSnippingTool"
+								label="Snipping Tool"
+								onAction="OnAction"
+								getImage="GetButtonImage"
+								screentip="Microsoft Snipping Tool"
+								supertip="Snipping Tool is a screenshot utility included in Microsoft Windows. It can take screenshots of an open window, rectangular areas, a free-form area, or the entire screen."
+							/>
+					</primaryItem>
+					<topItems>
+						<layoutContainer id="layoutOne" layoutChildren="horizontal">
+							<labelControl id="ebox2" label="Snipping Tool is a screenshot utility included in Microsoft Windows. It can take screenshots of an open window, rectangular areas, a free-form area, or the entire screen." />
+						</layoutContainer>
+					</topItems>
+				</group>
+				<group id="grpTwo" label="Microsoft Problem Steps Recorder" >
+					<primaryItem>
+						<button
+								id="btnProblemStepRecorder"
+								label="Record Steps"
+								onAction="OnAction"
+								getImage="GetButtonImage"
+								screentip="Microsoft Problem Steps Recorder"
+								supertip="Problem Steps Recorder or PSR records the actions you take on your computer which you can then send to the person or group helping you with your computer problem."
+							/>
+					</primaryItem>
+					<topItems>
+						<labelControl id="ebox3" label="Problem Steps Recorder or PSR records the actions you take on your computer which you can then send to the person or group helping you with your computer problem."/>
+					</topItems>
+				</group>
+			</firstColumn>
+			<secondColumn>
+				<group id="grpThree" label=" " >
+					<topItems>
+						<labelControl id="ebox4" label=" "/>
+					</topItems>
+				</group>
+			</secondColumn>
+		</tab>
+		<tab id="grpScriptHelp" label="Script Help" insertAfterMso="TabOptions" visible="true" firstColumnMaxWidth="500">
+			<firstColumn>
+				<group id="grp2One" label="Script Types">
+					<topItems>
+						<layoutContainer id="layout2One" layoutChildren="vertical">
+							<labelControl id="ebox5" label="Select the script you would like to create with this Add-In"/>
+							<checkBox id="T-SQL" label ="T-SQL"/>
+							<checkBox id="PL-SQL" label ="PL-SQL"/>
+							<checkBox id="DQL" label ="DQL"/>
+							<checkBox id="MARKDOWN" label ="MARKDOWN"/>
+							<checkBox id="MARKUP" label ="MARKUP"/>						
+						</layoutContainer>
+					</topItems>
+				</group>
+				<group id="grp2Two" label=" " >
+					<primaryItem>
+
+					</primaryItem>
+					<topItems>
+
+					</topItems>
+				</group>
+			</firstColumn>
+		</tab>
+	</backstage>
 </customUI>
