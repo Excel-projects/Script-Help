@@ -433,6 +433,41 @@ namespace ScriptHelp.Scripts
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="control"></param>
+        /// <returns></returns>
+        public bool GetPressed(Office.IRibbonControl control)
+        {
+            try
+            {
+                switch (control.Id)
+                {
+
+                    case "chkBackstageTsql":
+                        return Properties.Settings.Default.Visible_mnuScriptType_TSQL;
+                    case "chkBackstagePlsql":
+                        return Properties.Settings.Default.Visible_mnuScriptType_PLSQL;
+                    case "chkBackstageDql":
+                        return Properties.Settings.Default.Visible_mnuScriptType_DQL;
+                    case "chkBackstageMarkdown":
+                        return Properties.Settings.Default.Visible_mnuScriptType_Markdown;
+                    case "chkBackstageMarkup":
+                        return Properties.Settings.Default.Visible_mnuScriptType_Markup;
+                    default:
+                        return true;
+                }
+
+            }
+            catch (Exception)
+            {
+                return true;
+                //ErrorHandler.DisplayMessage(ex);
+            }
+
+        }
+
         /// <summary> 
         /// Assigns the visiblity to controls
         /// </summary>
@@ -610,6 +645,45 @@ namespace ScriptHelp.Scripts
             catch (Exception ex)
             {
                 ErrorHandler.DisplayMessage(ex);
+            }
+
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="control"></param>
+        /// <param name="pressed"></param>
+        public void OnAction_Checkbox(Office.IRibbonControl control, bool pressed)
+        {
+            try
+            {
+                switch (control.Id)
+                {
+
+                    case "chkBackstageTsql":
+                        Properties.Settings.Default.Visible_mnuScriptType_TSQL = pressed;
+                        break;
+                    case "chkBackstagePlsql":
+                        Properties.Settings.Default.Visible_mnuScriptType_PLSQL = pressed;
+                        break;
+                    case "chkBackstageDql":
+                        Properties.Settings.Default.Visible_mnuScriptType_DQL = pressed;
+                        break;
+                    case "chkBackstageMarkdown":
+                        Properties.Settings.Default.Visible_mnuScriptType_Markdown = pressed;
+                        break;
+                    case "chkBackstageMarkup":
+                        Properties.Settings.Default.Visible_mnuScriptType_Markup = pressed;
+                        break;
+                }
+
+                ribbon.Invalidate();
+
+            }
+            catch (Exception)
+            {
+                //ErrorHandler.DisplayMessage(ex);
             }
 
         }

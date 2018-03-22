@@ -577,11 +577,11 @@ Or use the following tag to remove all other ribbons when this loads
 					<topItems>
 						<layoutContainer id="layout2One" layoutChildren="vertical">
 							<labelControl id="ebox5" label="Select the script you would like to create with this Add-In"/>
-							<checkBox id="T-SQL" label ="T-SQL"/>
-							<checkBox id="PL-SQL" label ="PL-SQL"/>
-							<checkBox id="DQL" label ="DQL"/>
-							<checkBox id="MARKDOWN" label ="MARKDOWN"/>
-							<checkBox id="MARKUP" label ="MARKUP"/>						
+							<checkBox id="chkBackstageTsql" label ="T-SQL" onAction="OnAction_Checkbox" getPressed="GetPressed"/>
+							<checkBox id="chkBackstagePlsql" label ="PL-SQL" onAction="OnAction_Checkbox" getPressed="GetPressed"/>
+							<checkBox id="chkBackstageDql" label ="DQL" onAction="OnAction_Checkbox" getPressed="GetPressed"/>
+							<checkBox id="chkBackstageMarkdown" label ="MARKDOWN" onAction="OnAction_Checkbox" getPressed="GetPressed"/>
+							<checkBox id="chkBackstageMarkup" label ="MARKUP" onAction="OnAction_Checkbox" getPressed="GetPressed"/>						
 						</layoutContainer>
 					</topItems>
 				</group>
