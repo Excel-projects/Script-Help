@@ -218,7 +218,7 @@ namespace ScriptHelp.Scripts
                     case "btnScriptTypePlSqlSelectUnion":
                     case "btnScriptTypePlSqlUpdateValues":
                         return Properties.Resources.ScriptTypePlSql;
-                    case "btnScriptTypeGithubTable":
+                    case "btnScriptTypeMarkdownTable":
                         return Properties.Resources.ScriptTypeMarkdown;
                     case "btnScriptTypeHtmlTable":
                     case "btnScriptTypeXmlValues":
@@ -307,7 +307,7 @@ namespace ScriptHelp.Scripts
                         return "DQL Update";
                     case "btnScriptTypeDqlUpdateLocked":
                         return "DQL Update/Locked";
-                    case "btnScriptTypeGithubTable":
+                    case "btnScriptTypeMarkdownTable":
                         return "Markdown Table";
                     case "btnScriptTypeHtmlTable":
                         return "HTML Table";
@@ -504,7 +504,7 @@ namespace ScriptHelp.Scripts
                     case "btnScriptTypeDqlUpdate":
                     case "btnScriptTypeDqlUpdateLocked":
                         return Properties.Settings.Default.Visible_mnuScriptType_DQL;
-                    case "btnScriptTypeGithubTable":
+                    case "btnScriptTypeMarkdownTable":
                         return Properties.Settings.Default.Visible_mnuScriptType_Markdown;
                     case "btnScriptTypeHtmlTable":
                     case "btnScriptTypeXmlValues":
@@ -583,8 +583,8 @@ namespace ScriptHelp.Scripts
                     case "btnScriptTypeDqlUpdateLocked":
                         Formula.DqlUpdateLocked();
                         break;
-                    case "btnScriptTypeGithubTable":
-                        Formula.GithubTable();
+                    case "btnScriptTypeMarkdownTable":
+                        Formula.MarkdownTable();
                         break;
                     case "btnScriptTypeHtmlTable":
                         Formula.HtmlTable();
@@ -1677,6 +1677,23 @@ namespace ScriptHelp.Scripts
 
         }
 
+		/// <summary>
+		/// To create a header comment for the code block
+		/// </summary>
+		/// <returns></returns>
+		public static string GetCommentHeader(string purposeLine = "", string prefix = "/*", string suffix = "*/")
+		{
+			string noteLine = string.Concat("Generated from ", AssemblyInfo.Title);
+			string dividerLine = string.Concat(System.Linq.Enumerable.Repeat("=", 75));
+			string headerComment = prefix + Environment.NewLine;
+			headerComment += "|" + dividerLine + Environment.NewLine;
+			headerComment += "| Purpose:  " + purposeLine + Environment.NewLine;
+			headerComment += "| Note:     " + noteLine + Environment.NewLine;
+			headerComment += "|" + dividerLine + Environment.NewLine;
+			headerComment += suffix + Environment.NewLine + Environment.NewLine;
+			return headerComment;
+		}
+		
         #endregion
 
     }

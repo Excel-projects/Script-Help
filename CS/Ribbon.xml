@@ -418,7 +418,7 @@ Or use the following tag to remove all other ribbons when this loads
 								id="separator12"
 								/>
 						<button
-								id="btnScriptTypeGithubTable"
+								id="btnScriptTypeMarkdownTable"
 								getImage="GetButtonImage"
 								getLabel="GetLabelText"
 								onAction="OnAction"

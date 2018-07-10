@@ -901,7 +901,7 @@ namespace ScriptHelp.Scripts
         /// Add a formula at the end of the table to use as a script
         /// </summary>
         /// <remarks></remarks>
-        public static void GithubTable()
+        public static void MarkdownTable()
         {
             Excel.ListObject tbl = null;
             Excel.ListColumn sqlCol = null;
@@ -952,10 +952,10 @@ namespace ScriptHelp.Scripts
                     sqlCol.Range.HorizontalAlignment = Excel.Constants.xlLeft;
                     sqlCol.DataBodyRange.Copy();
                     Ribbon.AppVariables.FileType = "TXT";
-                    string headerColumn = Ribbon.ConcatenateColumnNames(tbl.Range, string.Empty, "|", "") + "|" + Environment.NewLine;
+					string headerColumn = Ribbon.ConcatenateColumnNames(tbl.Range, string.Empty, "|", string.Empty, string.Empty) + "|" + Environment.NewLine;
                     string headerSeparator = "|:" + new String('-', 10);
                     string headerLine = new System.Text.StringBuilder(headerSeparator.Length * lastColumnIndex).Insert(0, headerSeparator, lastColumnIndex).ToString().Substring(0, ((headerSeparator.Length * lastColumnIndex) - (headerSeparator.Length - 1))) + Environment.NewLine;
-                    Ribbon.AppVariables.ScriptRange = headerColumn + headerLine + (string)Clipboard.GetData(DataFormats.Text);
+                    Ribbon.AppVariables.ScriptRange = Ribbon.GetCommentHeader("Markdown table", "<!---" , "--->") + headerColumn + headerLine + (string)Clipboard.GetData(DataFormats.Text);
                     Ribbon.AppVariables.ScriptRange = Ribbon.AppVariables.ScriptRange.Replace(@"""", String.Empty);
                 }
                 catch (System.Runtime.InteropServices.COMException)
@@ -1075,7 +1075,7 @@ namespace ScriptHelp.Scripts
                     Ribbon.AppVariables.FileType = "XML";
                     Ribbon.AppVariables.ScriptRange = (string)Clipboard.GetData(DataFormats.Text);
                     Ribbon.AppVariables.ScriptRange = Ribbon.AppVariables.ScriptRange.Replace(@"""", String.Empty);
-                    Ribbon.AppVariables.ScriptRange = "<table>" + Environment.NewLine + "<tr>" + Environment.NewLine + Ribbon.ConcatenateColumnNames(tbl.Range, "", "<th>", "</th>", Environment.NewLine) + Environment.NewLine + "</tr>" + Environment.NewLine + Ribbon.AppVariables.ScriptRange + "</table>";
+                    Ribbon.AppVariables.ScriptRange = Ribbon.GetCommentHeader("HTML table", "<!---", "--->") + "<table>" + Environment.NewLine + "<tr>" + Environment.NewLine + Ribbon.ConcatenateColumnNames(tbl.Range, "", "<th>", "</th>", Environment.NewLine) + Environment.NewLine + "</tr>" + Environment.NewLine + Ribbon.AppVariables.ScriptRange + "</table>";
                 }
                 catch (System.Runtime.InteropServices.COMException)
                 {
@@ -1856,7 +1856,7 @@ namespace ScriptHelp.Scripts
                     sqlCol.DataBodyRange.Copy();
                     Ribbon.AppVariables.FileType = "SQL";
                     Ribbon.AppVariables.ScriptRange = createTable + (string)Clipboard.GetData(DataFormats.Text);
-                    Ribbon.AppVariables.ScriptRange = Ribbon.AppVariables.ScriptRange.Replace(@"""", String.Empty);
+                    Ribbon.AppVariables.ScriptRange = Ribbon.GetCommentHeader("To create and insert records") + Ribbon.AppVariables.ScriptRange.Replace(@"""", String.Empty);
                 }
                 catch (System.Runtime.InteropServices.COMException)
                 {
@@ -1958,7 +1958,7 @@ namespace ScriptHelp.Scripts
                     sqlCol.DataBodyRange.Copy();
                     Ribbon.AppVariables.FileType = "SQL";
                     Ribbon.AppVariables.ScriptRange = (string)Clipboard.GetData(DataFormats.Text);
-                    Ribbon.AppVariables.ScriptRange = Ribbon.AppVariables.ScriptRange.Replace(@"""", String.Empty);
+                    Ribbon.AppVariables.ScriptRange = Ribbon.GetCommentHeader("To insert records") + Ribbon.AppVariables.ScriptRange.Replace(@"""", String.Empty);
                 }
                 catch (System.Runtime.InteropServices.COMException)
                 {
@@ -2066,10 +2066,10 @@ namespace ScriptHelp.Scripts
                     sqlCol.Range.Columns.AutoFit();
                     sqlCol.Range.HorizontalAlignment = Excel.Constants.xlLeft;
                     sqlCol.Range.Copy();
-                    Ribbon.AppVariables.FileType = "SQL";
+					Ribbon.AppVariables.FileType = "SQL";
                     Ribbon.AppVariables.ScriptRange = (string)Clipboard.GetData(DataFormats.Text);
                     Ribbon.AppVariables.ScriptRange = Ribbon.AppVariables.ScriptRange.Replace(@"""", String.Empty);
-                    Ribbon.AppVariables.ScriptRange = "SET XACT_ABORT ON" + Environment.NewLine + "BEGIN TRANSACTION;" + Environment.NewLine + Environment.NewLine + ";WITH " + Environment.NewLine + tableAliasTemp + Environment.NewLine + "AS " + Environment.NewLine + "(" + Environment.NewLine + Ribbon.AppVariables.ScriptRange + ") " + Environment.NewLine + "MERGE " + tableAlias + " AS T" + Environment.NewLine + "USING " + tableAliasTemp + " AS S" + Environment.NewLine + "ON " + Ribbon.ConcatenateColumnNamesJoin(tbl.Range, "T", "S") + "WHEN NOT MATCHED BY TARGET" + Environment.NewLine + "THEN INSERT" + Environment.NewLine + "(" + Environment.NewLine + Ribbon.ConcatenateColumnNames(tbl.Range, "", "[", "]") + Environment.NewLine + ")" + Environment.NewLine + "VALUES" + Environment.NewLine + "(" + Environment.NewLine + Ribbon.ConcatenateColumnNames(tbl.Range, "S", "[", "]") + Environment.NewLine + ")" + Environment.NewLine + "WHEN MATCHED" + Environment.NewLine + "THEN UPDATE SET" + Environment.NewLine + Ribbon.ConcatenateColumnNamesJoin(tbl.Range, "T", "S") + "--WHEN NOT MATCHED BY SOURCE AND 'ADD WHERE CLAUSE HERE'" + Environment.NewLine + "--THEN DELETE" + Environment.NewLine + "OUTPUT $action, inserted.*, deleted.*;" + Environment.NewLine + Environment.NewLine + "ROLLBACK TRANSACTION;" + Environment.NewLine + "--COMMIT TRANSACTION;" + Environment.NewLine + "GO";
+                    Ribbon.AppVariables.ScriptRange = Ribbon.GetCommentHeader("To update, insert & delete rows") + "SET XACT_ABORT ON" + Environment.NewLine + "BEGIN TRANSACTION;" + Environment.NewLine + Environment.NewLine + ";WITH " + Environment.NewLine + tableAliasTemp + Environment.NewLine + "AS " + Environment.NewLine + "(" + Environment.NewLine + Ribbon.AppVariables.ScriptRange + ") " + Environment.NewLine + "MERGE " + tableAlias + " AS T" + Environment.NewLine + "USING " + tableAliasTemp + " AS S" + Environment.NewLine + "ON " + Ribbon.ConcatenateColumnNamesJoin(tbl.Range, "T", "S") + "WHEN NOT MATCHED BY TARGET" + Environment.NewLine + "THEN INSERT" + Environment.NewLine + "(" + Environment.NewLine + Ribbon.ConcatenateColumnNames(tbl.Range, "", "[", "]") + Environment.NewLine + ")" + Environment.NewLine + "VALUES" + Environment.NewLine + "(" + Environment.NewLine + Ribbon.ConcatenateColumnNames(tbl.Range, "S", "[", "]") + Environment.NewLine + ")" + Environment.NewLine + "WHEN MATCHED" + Environment.NewLine + "THEN UPDATE SET" + Environment.NewLine + Ribbon.ConcatenateColumnNamesJoin(tbl.Range, "T", "S") + "--WHEN NOT MATCHED BY SOURCE AND 'ADD WHERE CLAUSE HERE'" + Environment.NewLine + "--THEN DELETE" + Environment.NewLine + "OUTPUT $action, inserted.*, deleted.*;" + Environment.NewLine + Environment.NewLine + "ROLLBACK TRANSACTION;" + Environment.NewLine + "--COMMIT TRANSACTION;" + Environment.NewLine + "GO";
                 }
                 catch (System.Runtime.InteropServices.COMException)
                 {
@@ -2173,7 +2173,7 @@ namespace ScriptHelp.Scripts
                     sqlCol.DataBodyRange.Copy();
                     Ribbon.AppVariables.FileType = "SQL";
                     Ribbon.AppVariables.ScriptRange = (string)Clipboard.GetData(DataFormats.Text);
-                    Ribbon.AppVariables.ScriptRange = Ribbon.AppVariables.ScriptRange.Replace(@"""", String.Empty);
+                    Ribbon.AppVariables.ScriptRange = Ribbon.GetCommentHeader("To select values with a union operator") + Ribbon.AppVariables.ScriptRange.Replace(@"""", String.Empty);
                 }
                 catch (System.Runtime.InteropServices.COMException)
                 {
@@ -2282,7 +2282,7 @@ namespace ScriptHelp.Scripts
                     sqlCol.Range.Copy();
                     Ribbon.AppVariables.FileType = "SQL";
                     Ribbon.AppVariables.ScriptRange = (string)Clipboard.GetData(DataFormats.Text);
-                    Ribbon.AppVariables.ScriptRange = Ribbon.AppVariables.ScriptRange.Replace(@"""", String.Empty);
+                    Ribbon.AppVariables.ScriptRange = Ribbon.GetCommentHeader("To select values") + Ribbon.AppVariables.ScriptRange.Replace(@"""", String.Empty);
                 }
                 catch (System.Runtime.InteropServices.COMException)
                 {
@@ -2432,7 +2432,7 @@ namespace ScriptHelp.Scripts
                     sqlCol.DataBodyRange.Copy();
                     Ribbon.AppVariables.FileType = "SQL";
                     Ribbon.AppVariables.ScriptRange = (string)Clipboard.GetData(DataFormats.Text);
-                    Ribbon.AppVariables.ScriptRange = Ribbon.AppVariables.ScriptRange.Replace(@"""", String.Empty);
+                    Ribbon.AppVariables.ScriptRange = Ribbon.GetCommentHeader("To update records") + Ribbon.AppVariables.ScriptRange.Replace(@"""", String.Empty);
                 }
                 catch (System.Runtime.InteropServices.COMException)
                 {
@@ -2549,7 +2549,7 @@ namespace ScriptHelp.Scripts
                     sqlCol.DataBodyRange.Copy();
                     Ribbon.AppVariables.FileType = "XML";
                     Ribbon.AppVariables.ScriptRange = (string)Clipboard.GetData(DataFormats.Text);
-                    Ribbon.AppVariables.ScriptRange = Ribbon.AppVariables.ScriptRange.Replace(@"""", String.Empty);
+                    Ribbon.AppVariables.ScriptRange = Ribbon.GetCommentHeader("XML table", "<!---", "--->") + Ribbon.AppVariables.ScriptRange.Replace(@"""", String.Empty);
                 }
                 catch (System.Runtime.InteropServices.COMException)
                 {
