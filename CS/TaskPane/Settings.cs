@@ -51,6 +51,7 @@ namespace ScriptHelp.TaskPane
         /// <param name="e">refers to the event arguments for the used event, they usually come in the form of properties/functions/methods that get to be available on it.</param>
         private void pgdSettings_PropertyValueChanged(object s, PropertyValueChangedEventArgs e)
         {
+            Properties.Settings.Default.Save();
             Scripts.Ribbon.ribbonref.InvalidateRibbon();
         }
         

@@ -1319,18 +1319,15 @@ namespace ScriptHelp.Scripts
             {
                 ErrorHandler.CreateLogRecord();
                 if (ErrorHandler.IsValidListObject(true) == false) { return; };
-                Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
                 string lastColumnName = Properties.Settings.Default.Table_ColumnTableAlias;
+                string sqlColName = string.Empty;
                 string tableAlias = Properties.Settings.Default.Table_ColumnTableAlias;
                 string tableAliasTemp = tableAlias + "_source";
-                string sqlColName = string.Empty;
 
-                sqlColName = "SELECT " + tableAliasTemp + ".*" + " FROM (VALUES";
-
+                sqlColName = Properties.Settings.Default.Table_ColumnName;
                 tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject;
                 int lastColumnIndex = tbl.Range.Columns.Count;
                 sqlCol = tbl.ListColumns[lastColumnIndex];
-
                 if (sqlCol.Name == sqlColName)
                 {
                     lastColumnName = sqlCol.Name;
@@ -1342,7 +1339,6 @@ namespace ScriptHelp.Scripts
                     lastColumnIndex = tbl.Range.Columns.Count;
                 }
 
-                // Columns formatted as text will not work as formulas and the added column will copy the formatting from the previous column so ensure that the added column never has Text format...
                 sqlCol.DataBodyRange.NumberFormat = "General";
                 string formula = string.Empty;
                 string qt = string.Empty;
@@ -1355,7 +1351,6 @@ namespace ScriptHelp.Scripts
                         return;
                     }
                     if (col.Name == lastColumnName | col.Range.EntireColumn.Hidden)
-                    //if (col.Name != lastColumnName | col.Range.EntireColumn.Hidden == false)
                     {
                         //DO NOTHING - because the column is hidden or the last column with the sql script
                     }
@@ -1370,28 +1365,51 @@ namespace ScriptHelp.Scripts
                         colRef = colRef.Replace("'", "''");
                         colRef = colRef.Replace("#", "'#");
                         colRef = "SUBSTITUTE(" + colRef + ", " + "\"" + qt + "\", \"" + qt + qt + "\")";
-                        formula += "\"" + qt + "\" & " + colRef + " & \"" + qt + "\"";
+                        string dqt = "\"\"";
+                        string valuePlSuffix = "& \" AS " + dqt + col.Name + dqt + "\"";
+                        formula += "\"" + qt + "\" & " + colRef + " & \"" + qt + "\"" + valuePlSuffix;
                     }
                 }
                 string nullValue = Properties.Settings.Default.Table_ColumnScriptNull;
                 formula = "SUBSTITUTE(" + formula + ", \"'" + nullValue + "'\", \"" + nullValue + "\")";
                 int firstRowNbr = tbl.Range[1, 1].Row + 1; // must use the offset for the first row number
-                formula = "=IF(" + (firstRowNbr).ToString() + "-ROW() = 0, \" \", \",\") & " + "\" ( \" & " + formula + " & \")\"";
+                formula = "=IF(" + (firstRowNbr).ToString() + "-ROW() = 0, \"\", \"UNION \") & " + "\"SELECT \" & " + formula + " & \" FROM DUAL\"";
+                tbl.ShowTotals = false;
                 lastColumnName = sqlColName;  // maximum header characters are 255
                 tbl.HeaderRowRange[lastColumnIndex].Value2 = lastColumnName;
-                tbl.ShowTotals = true;
-                string totalsColumnValue = ") " + tableAliasTemp + " (" + Ribbon.ConcatenateColumnNames(tbl.Range, "", "[", "]") + ") ";
-                tbl.TotalsRowRange[lastColumnIndex].Value2 = totalsColumnValue; // totals row has a maximum limit of 32,767 characters
                 try
                 {
                     sqlCol.DataBodyRange.SpecialCells(Excel.XlCellType.xlCellTypeVisible).Rows.Formula = formula;
                     sqlCol.Range.Columns.AutoFit();
                     sqlCol.Range.HorizontalAlignment = Excel.Constants.xlLeft;
-                    sqlCol.Range.Copy();
+                    sqlCol.DataBodyRange.Copy();
                     Ribbon.AppVariables.FileType = "SQL";
-                    Ribbon.AppVariables.ScriptRange = (string)Clipboard.GetData(DataFormats.Text);
-                    Ribbon.AppVariables.ScriptRange = Ribbon.AppVariables.ScriptRange.Replace(@"""", String.Empty);
-                    Ribbon.AppVariables.ScriptRange = "SET XACT_ABORT ON" + Environment.NewLine + "BEGIN TRANSACTION;" + Environment.NewLine + Environment.NewLine + ";WITH " + Environment.NewLine + tableAliasTemp + Environment.NewLine + "AS " + Environment.NewLine + "(" + Environment.NewLine + Ribbon.AppVariables.ScriptRange + ") " + Environment.NewLine + "MERGE " + tableAlias + " AS T" + Environment.NewLine + "USING " + tableAliasTemp + " AS S" + Environment.NewLine + "ON " + Ribbon.ConcatenateColumnNamesJoin(tbl.Range, "T", "S") + "WHEN NOT MATCHED BY TARGET" + Environment.NewLine + "THEN INSERT" + Environment.NewLine + "(" + Environment.NewLine + Ribbon.ConcatenateColumnNames(tbl.Range, "", "[", "]") + Environment.NewLine + ")" + Environment.NewLine + "VALUES" + Environment.NewLine + "(" + Environment.NewLine + Ribbon.ConcatenateColumnNames(tbl.Range, "S", "[", "]") + Environment.NewLine + ")" + Environment.NewLine + "WHEN MATCHED" + Environment.NewLine + "THEN UPDATE SET" + Environment.NewLine + Ribbon.ConcatenateColumnNamesJoin(tbl.Range, "T", "S") + "--WHEN NOT MATCHED BY SOURCE AND 'ADD WHERE CLAUSE HERE'" + Environment.NewLine + "--THEN DELETE" + Environment.NewLine + "OUTPUT $action, inserted.*, deleted.*;" + Environment.NewLine + Environment.NewLine + "ROLLBACK TRANSACTION;" + Environment.NewLine + "--COMMIT TRANSACTION;" + Environment.NewLine + "GO";
+                    Ribbon.AppVariables.ScriptRange = Ribbon.GetCommentHeader("To update, insert & delete rows");
+                    Ribbon.AppVariables.ScriptRange += "BEGIN" + Environment.NewLine + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += "WITH " + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += tableAliasTemp + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += "AS " + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += "(" + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += (string)Clipboard.GetData(DataFormats.Text);
+                    Ribbon.AppVariables.ScriptRange += ") " + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += "MERGE INTO " + tableAlias + " AS T" + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += "USING " + tableAliasTemp + " AS S" + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += "ON --< Update the join to the correct unique key for the table" + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += Ribbon.ConcatenateColumnNamesJoin(tbl.Range, "T", "S") + "WHEN NOT MATCHED" + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += "THEN INSERT" + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += "(" + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += Ribbon.ConcatenateColumnNames(tbl.Range, "", "[", "]") + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += ")" + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += "VALUES" + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += "(" + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += Ribbon.ConcatenateColumnNames(tbl.Range, "S", "[", "]") + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += ")" + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += "WHEN MATCHED" + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += "THEN UPDATE SET" + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += Ribbon.ConcatenateColumnNamesJoin(tbl.Range, "T", "S") + "--WHEN NOT MATCHED THEN DELETE WHERE --< You may want to add a WHERE clause here" + Environment.NewLine + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += "ROLLBACK;" + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += "--COMMIT;" + Environment.NewLine + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += "END;";
                 }
                 catch (System.Runtime.InteropServices.COMException)
                 {
@@ -1584,7 +1602,7 @@ namespace ScriptHelp.Scripts
                         colRef = colRef.Replace("#", "'#");
                         colRef = "SUBSTITUTE(" + colRef + ", " + "\"" + qt + "\", \"" + qt + qt + "\")";
                         string dqt = "\"\"";
-                        string valuePlSuffix = "& \" AS " + dqt + col.Name + dqt + " \"";
+                        string valuePlSuffix = "& \" AS " + dqt + col.Name + dqt + "\"";
                         formula += "\"" + qt + "\" & " + colRef + " & \"" + qt + "\"" + valuePlSuffix;
                     }
                 }
@@ -1602,8 +1620,9 @@ namespace ScriptHelp.Scripts
                     sqlCol.Range.HorizontalAlignment = Excel.Constants.xlLeft;
                     sqlCol.DataBodyRange.Copy();
                     Ribbon.AppVariables.FileType = "SQL";
-                    Ribbon.AppVariables.ScriptRange = (string)Clipboard.GetData(DataFormats.Text);
-                    Ribbon.AppVariables.ScriptRange = Ribbon.AppVariables.ScriptRange.Replace(@"""", String.Empty);
+                    Ribbon.AppVariables.ScriptRange = Ribbon.GetCommentHeader("To select values with a union operator");
+                    Ribbon.AppVariables.ScriptRange += (string)Clipboard.GetData(DataFormats.Text);
+
                 }
                 catch (System.Runtime.InteropServices.COMException)
                 {
@@ -1842,12 +1861,11 @@ namespace ScriptHelp.Scripts
                 string nullValue = Properties.Settings.Default.Table_ColumnScriptNull;
                 formula = "SUBSTITUTE(" + formula + ", \"'" + nullValue + "'\", \"" + nullValue + "\")";
                 string tableAlias = Properties.Settings.Default.Table_ColumnTableAlias;
-                string insertPrefix = "INSERT INTO " + tableAlias + " (" + Ribbon.ConcatenateColumnNames(tbl.Range) + ") VALUES(";
+                string insertPrefix = "INSERT INTO " + tableAlias + " (" + Ribbon.ConcatenateColumnNames(tbl.Range, "", "[", "]") + ") VALUES(";
                 formula = "=\"" + insertPrefix + "\" & " + formula + " & \");\"";
                 tbl.ShowTotals = false;
                 lastColumnName = sqlColName;  // maximum header characters are 255
                 tbl.HeaderRowRange[lastColumnIndex].Value2 = lastColumnName;
-                string createTable = "IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'" + tableAlias + "') AND type in (N'U'))" + Environment.NewLine + "DROP TABLE " + tableAlias + Environment.NewLine + "; " + Environment.NewLine + "CREATE TABLE " + tableAlias + " (" + tableAlias + "_ID [int] PRIMARY KEY IDENTITY(1,1) NOT NULL, " + Ribbon.ConcatenateColumnNames(tbl.Range, "", Environment.NewLine + "[", "] [varchar](max) NULL") + Environment.NewLine + ");" + Environment.NewLine;
                 try
                 {
                     sqlCol.DataBodyRange.SpecialCells(Excel.XlCellType.xlCellTypeVisible).Rows.Formula = formula;
@@ -1855,8 +1873,16 @@ namespace ScriptHelp.Scripts
                     sqlCol.Range.HorizontalAlignment = Excel.Constants.xlLeft;
                     sqlCol.DataBodyRange.Copy();
                     Ribbon.AppVariables.FileType = "SQL";
-                    Ribbon.AppVariables.ScriptRange = createTable + (string)Clipboard.GetData(DataFormats.Text);
-                    Ribbon.AppVariables.ScriptRange = Ribbon.GetCommentHeader("To create and insert records") + Ribbon.AppVariables.ScriptRange.Replace(@"""", String.Empty);
+                    Ribbon.AppVariables.ScriptRange = Ribbon.GetCommentHeader("To create and insert records");
+                    Ribbon.AppVariables.ScriptRange += "IF EXISTS(SELECT * FROM [sys].[objects] WHERE [object_id]=OBJECT_ID(N'" + tableAlias + "') AND [TYPE]=N'U')" + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += "DROP TABLE " + tableAlias + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange +=  "; " + Environment.NewLine + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += "CREATE TABLE " + tableAlias + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += "(" + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += "  [" + tableAlias + "_ID] [int] PRIMARY KEY IDENTITY(1,1) NOT NULL" + Ribbon.ConcatenateColumnNames(tbl.Range, "", Environment.NewLine + ", [", "] [varchar](max) NULL", "") + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += ");" + Environment.NewLine + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += (string)Clipboard.GetData(DataFormats.Text);
+                    Ribbon.AppVariables.ScriptRange = Ribbon.AppVariables.ScriptRange.Replace(@"""", String.Empty);
                 }
                 catch (System.Runtime.InteropServices.COMException)
                 {
@@ -2067,9 +2093,37 @@ namespace ScriptHelp.Scripts
                     sqlCol.Range.HorizontalAlignment = Excel.Constants.xlLeft;
                     sqlCol.Range.Copy();
 					Ribbon.AppVariables.FileType = "SQL";
-                    Ribbon.AppVariables.ScriptRange = (string)Clipboard.GetData(DataFormats.Text);
+                    Ribbon.AppVariables.ScriptRange = Ribbon.GetCommentHeader("To update, insert & delete rows");
+                    Ribbon.AppVariables.ScriptRange += "SET XACT_ABORT ON" + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += "BEGIN TRANSACTION;" + Environment.NewLine + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += ";WITH " + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += tableAliasTemp + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += "AS " + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += "(" + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += (string)Clipboard.GetData(DataFormats.Text);
+                    Ribbon.AppVariables.ScriptRange += ") " + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += "MERGE " + tableAlias + " AS T" + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += "USING " + tableAliasTemp + " AS S" + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += "ON --< Update the join to the correct unique key for the table" + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += Ribbon.ConcatenateColumnNamesJoin(tbl.Range, "T", "S") + "WHEN NOT MATCHED BY TARGET" + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += "THEN INSERT" + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += "(" + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += "   " + Ribbon.ConcatenateColumnNames(tbl.Range, "", "[", "]") + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += ")" + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += "VALUES" + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += "(" + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += "   " + Ribbon.ConcatenateColumnNames(tbl.Range, "S", "[", "]") + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += ")" + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += "WHEN MATCHED" + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += "THEN UPDATE SET" + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += Ribbon.ConcatenateColumnNamesJoin(tbl.Range, "T", "S") + "--WHEN NOT MATCHED BY SOURCE --< You may want to add a WHERE clause here" + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += "--THEN DELETE" + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += "OUTPUT @@SERVERNAME AS [Server Name], DB_NAME() AS [Database Name], $action, inserted.*, deleted.*;" + Environment.NewLine + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += "ROLLBACK TRANSACTION;" + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += "--COMMIT TRANSACTION;" + Environment.NewLine + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += "GO";
                     Ribbon.AppVariables.ScriptRange = Ribbon.AppVariables.ScriptRange.Replace(@"""", String.Empty);
-                    Ribbon.AppVariables.ScriptRange = Ribbon.GetCommentHeader("To update, insert & delete rows") + "SET XACT_ABORT ON" + Environment.NewLine + "BEGIN TRANSACTION;" + Environment.NewLine + Environment.NewLine + ";WITH " + Environment.NewLine + tableAliasTemp + Environment.NewLine + "AS " + Environment.NewLine + "(" + Environment.NewLine + Ribbon.AppVariables.ScriptRange + ") " + Environment.NewLine + "MERGE " + tableAlias + " AS T" + Environment.NewLine + "USING " + tableAliasTemp + " AS S" + Environment.NewLine + "ON " + Ribbon.ConcatenateColumnNamesJoin(tbl.Range, "T", "S") + "WHEN NOT MATCHED BY TARGET" + Environment.NewLine + "THEN INSERT" + Environment.NewLine + "(" + Environment.NewLine + Ribbon.ConcatenateColumnNames(tbl.Range, "", "[", "]") + Environment.NewLine + ")" + Environment.NewLine + "VALUES" + Environment.NewLine + "(" + Environment.NewLine + Ribbon.ConcatenateColumnNames(tbl.Range, "S", "[", "]") + Environment.NewLine + ")" + Environment.NewLine + "WHEN MATCHED" + Environment.NewLine + "THEN UPDATE SET" + Environment.NewLine + Ribbon.ConcatenateColumnNamesJoin(tbl.Range, "T", "S") + "--WHEN NOT MATCHED BY SOURCE AND 'ADD WHERE CLAUSE HERE'" + Environment.NewLine + "--THEN DELETE" + Environment.NewLine + "OUTPUT $action, inserted.*, deleted.*;" + Environment.NewLine + Environment.NewLine + "ROLLBACK TRANSACTION;" + Environment.NewLine + "--COMMIT TRANSACTION;" + Environment.NewLine + "GO";
+
                 }
                 catch (System.Runtime.InteropServices.COMException)
                 {

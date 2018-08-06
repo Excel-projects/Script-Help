@@ -1375,7 +1375,7 @@ namespace ScriptHelp.Scripts
                         columnNames = columnNames + ", " + tableAliasNameTarget + ".[" + ((Excel.Range)rng.Cells[1, i]).Value2 + "] = " + tableAliasNameSource + ".[" + ((Excel.Range)rng.Cells[1, i]).Value2 + "]" + Environment.NewLine;
                     }
                 }
-                columnNames = columnNames.Substring(2, columnNames.Length - 2);
+                columnNames = "  " + columnNames.Substring(2, columnNames.Length - 2);
                 return columnNames;
             }
             catch (Exception)
@@ -1683,14 +1683,12 @@ namespace ScriptHelp.Scripts
 		/// <returns></returns>
 		public static string GetCommentHeader(string purposeLine = "", string prefix = "/*", string suffix = "*/")
 		{
-			string noteLine = string.Concat("Generated from ", AssemblyInfo.Title);
-			string dividerLine = string.Concat(System.Linq.Enumerable.Repeat("=", 75));
-			string headerComment = prefix + Environment.NewLine;
-			headerComment += "|" + dividerLine + Environment.NewLine;
-			headerComment += "| Purpose:  " + purposeLine + Environment.NewLine;
-			headerComment += "| Note:     " + noteLine + Environment.NewLine;
-			headerComment += "|" + dividerLine + Environment.NewLine;
-			headerComment += suffix + Environment.NewLine + Environment.NewLine;
+			string noteLine = string.Concat("Generated from ", AssemblyInfo.Title, " ", AssemblyInfo.FileVersion, "  ", DateTime.Now.ToString("yyyy.MM.dd HH.mm.ss"));
+			string dividerLine = string.Concat(System.Linq.Enumerable.Repeat("*", 75));
+            string headerComment = prefix + dividerLine + Environment.NewLine;
+			headerComment += "** Purpose:  " + purposeLine + Environment.NewLine;
+			headerComment += "** Note:     " + noteLine + Environment.NewLine;
+			headerComment += dividerLine + suffix + Environment.NewLine + Environment.NewLine;
 			return headerComment;
 		}
 		
