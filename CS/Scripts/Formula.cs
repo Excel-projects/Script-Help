@@ -1395,7 +1395,7 @@ namespace ScriptHelp.Scripts
                     Ribbon.AppVariables.ScriptRange += "MERGE INTO " + tableAlias + " AS T" + Environment.NewLine;
                     Ribbon.AppVariables.ScriptRange += "USING " + tableAliasTemp + " AS S" + Environment.NewLine;
                     Ribbon.AppVariables.ScriptRange += "ON --< Update the join to the correct unique key for the table" + Environment.NewLine;
-                    Ribbon.AppVariables.ScriptRange += Ribbon.ConcatenateColumnNamesJoin(tbl.Range, "T", "S") + "WHEN NOT MATCHED" + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += Ribbon.ConcatenateColumnNamesJoin(tbl.Range, "T", "S", "AND") + "WHEN NOT MATCHED" + Environment.NewLine;
                     Ribbon.AppVariables.ScriptRange += "THEN INSERT" + Environment.NewLine;
                     Ribbon.AppVariables.ScriptRange += "(" + Environment.NewLine;
                     Ribbon.AppVariables.ScriptRange += Ribbon.ConcatenateColumnNames(tbl.Range, "", "[", "]") + Environment.NewLine;
@@ -1406,7 +1406,7 @@ namespace ScriptHelp.Scripts
                     Ribbon.AppVariables.ScriptRange += ")" + Environment.NewLine;
                     Ribbon.AppVariables.ScriptRange += "WHEN MATCHED" + Environment.NewLine;
                     Ribbon.AppVariables.ScriptRange += "THEN UPDATE SET" + Environment.NewLine;
-                    Ribbon.AppVariables.ScriptRange += Ribbon.ConcatenateColumnNamesJoin(tbl.Range, "T", "S") + "--WHEN NOT MATCHED THEN DELETE WHERE --< You may want to add a WHERE clause here" + Environment.NewLine + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += Ribbon.ConcatenateColumnNamesJoin(tbl.Range, "T", "S", ",") + "--WHEN NOT MATCHED THEN DELETE WHERE --< You may want to add a WHERE clause here" + Environment.NewLine + Environment.NewLine;
                     Ribbon.AppVariables.ScriptRange += "ROLLBACK;" + Environment.NewLine;
                     Ribbon.AppVariables.ScriptRange += "--COMMIT;" + Environment.NewLine + Environment.NewLine;
                     Ribbon.AppVariables.ScriptRange += "END;";
@@ -2105,7 +2105,7 @@ namespace ScriptHelp.Scripts
                     Ribbon.AppVariables.ScriptRange += "MERGE " + tableAlias + " AS T" + Environment.NewLine;
                     Ribbon.AppVariables.ScriptRange += "USING " + tableAliasTemp + " AS S" + Environment.NewLine;
                     Ribbon.AppVariables.ScriptRange += "ON --< Update the join to the correct unique key for the table" + Environment.NewLine;
-                    Ribbon.AppVariables.ScriptRange += Ribbon.ConcatenateColumnNamesJoin(tbl.Range, "T", "S") + "WHEN NOT MATCHED BY TARGET" + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += Ribbon.ConcatenateColumnNamesJoin(tbl.Range, "T", "S", "AND ") + "WHEN NOT MATCHED BY TARGET" + Environment.NewLine;
                     Ribbon.AppVariables.ScriptRange += "THEN INSERT" + Environment.NewLine;
                     Ribbon.AppVariables.ScriptRange += "(" + Environment.NewLine;
                     Ribbon.AppVariables.ScriptRange += "   " + Ribbon.ConcatenateColumnNames(tbl.Range, "", "[", "]") + Environment.NewLine;
@@ -2116,7 +2116,7 @@ namespace ScriptHelp.Scripts
                     Ribbon.AppVariables.ScriptRange += ")" + Environment.NewLine;
                     Ribbon.AppVariables.ScriptRange += "WHEN MATCHED" + Environment.NewLine;
                     Ribbon.AppVariables.ScriptRange += "THEN UPDATE SET" + Environment.NewLine;
-                    Ribbon.AppVariables.ScriptRange += Ribbon.ConcatenateColumnNamesJoin(tbl.Range, "T", "S") + "--WHEN NOT MATCHED BY SOURCE --< You may want to add a WHERE clause here" + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += Ribbon.ConcatenateColumnNamesJoin(tbl.Range, "T", "S", ", ") + "--WHEN NOT MATCHED BY SOURCE --< You may want to add a WHERE clause here" + Environment.NewLine;
                     Ribbon.AppVariables.ScriptRange += "--THEN DELETE" + Environment.NewLine;
                     Ribbon.AppVariables.ScriptRange += "OUTPUT @@SERVERNAME AS [Server Name], DB_NAME() AS [Database Name], $action, inserted.*, deleted.*;" + Environment.NewLine + Environment.NewLine;
                     Ribbon.AppVariables.ScriptRange += "ROLLBACK TRANSACTION;" + Environment.NewLine;

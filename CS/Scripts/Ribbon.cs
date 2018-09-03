@@ -1362,8 +1362,9 @@ namespace ScriptHelp.Scripts
         /// <param name="rng">Represents the Excel Range value</param>
         /// <param name="tableAliasNameTarget">Table alias used to prefix column names</param>
         /// <param name="tableAliasNameSource">Table alias used to prefix column names</param>
+        /// <param name="joinPrefix">Used for update or table join</param>
         /// <returns>A method that returns a string of the column names</returns>
-        public static string ConcatenateColumnNamesJoin(Excel.Range rng, string tableAliasNameTarget, string tableAliasNameSource)
+        public static string ConcatenateColumnNamesJoin(Excel.Range rng, string tableAliasNameTarget, string tableAliasNameSource, string joinPrefix)
         {
             try
             {
@@ -1372,10 +1373,10 @@ namespace ScriptHelp.Scripts
                 {
                     if (rng.Columns.EntireColumn[i].Hidden == false)
                     {
-                        columnNames = columnNames + ", " + tableAliasNameTarget + ".[" + ((Excel.Range)rng.Cells[1, i]).Value2 + "] = " + tableAliasNameSource + ".[" + ((Excel.Range)rng.Cells[1, i]).Value2 + "]" + Environment.NewLine;
+                        columnNames = columnNames + joinPrefix + tableAliasNameTarget + ".[" + ((Excel.Range)rng.Cells[1, i]).Value2 + "] = " + tableAliasNameSource + ".[" + ((Excel.Range)rng.Cells[1, i]).Value2 + "]" + Environment.NewLine;
                     }
                 }
-                columnNames = "  " + columnNames.Substring(2, columnNames.Length - 2);
+                columnNames = new string(' ', joinPrefix.Length) + columnNames.Substring(joinPrefix.Length, columnNames.Length - joinPrefix.Length);
                 return columnNames;
             }
             catch (Exception)
