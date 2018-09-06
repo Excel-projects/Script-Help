@@ -4,6 +4,8 @@
 
 <img align="left" src="Images/ReadMe/header10.png">
 
+This Add-In is used for cleaning & creating a script for batch loading records into SQL Server, Oracle, Documentum, Markup or Markdown Languages. The functionality within the ribbon allows a quick way of preparing a bulk data load. Otherwise, the requests can be both time-consuming and error prone. 
+
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/AnthonyDuguid)
 [![Join the chat at https://gitter.im/ScriptHelp](https://badges.gitter.im/ScriptHelp/Lobby.svg)](https://gitter.im/ScriptHelp?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE "MIT License Copyright © Anthony Duguid")
@@ -21,7 +23,6 @@ The most complete version is C#.
 [![download VSTO](https://img.shields.io/badge/download-VSTO-brightgreen.svg)](https://github.com/Office-projects/ScriptHelp/CS/blob/master/publish/setup.exe?raw=true "Download Setup.exe Install File")
 [![download Key](https://img.shields.io/badge/download-Key-brightgreen.svg)](https://github.com/Office-projects/ScriptHelp/CS/blob/master/AnthonyDuguid.pfx?raw=true "Download AnthonyDuguid.pfx And Install At Root Level For VSTO")
 --->
-This Add-In is used for cleaning & creating a script for batch loading records into SQL Server, Oracle, Documentum, Markup or Markdown Languages. The functionality within the ribbon allows a quick way of preparing a bulk data load. Otherwise, the requests can be both time-consuming and error prone. 
 
 <!---
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE "MIT License Copyright © 2018 Anthony Duguid")
