@@ -1,6 +1,9 @@
 <img align="left" src="Images/ReadMe/header10.png">
 
-This Add-In is used for cleaning & creating a script for batch loading records into SQL Server, Oracle, Documentum, Markup or Markdown Languages. The functionality within the ribbon allows a quick way of preparing a bulk data load. Otherwise, the requests can be both time-consuming and error prone. It is written in 3 different versions as a VSTO Add-In in C# and VB.NET as well as a VBA Add-In.
+This Add-In is used for cleaning & creating a script for batch loading records into SQL Server, Oracle, Documentum, Markup or Markdown Languages. The functionality within the ribbon allows a quick way of preparing a bulk data load. Otherwise, the requests can be both time-consuming and error prone. It is written in 3 different versions as a VSTO Add-In in C# and VB.NET as well as a VBA Add-In. The most complete version is C#. 
+<a href="https://github.com/Office-projects/Script-Help/issues" target="_blank">
+ <img alt="Issues" src="https://img.shields.io/github/issues/Office-projects/Script-Help.svg" />
+</a>
 
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/AnthonyDuguid/1.00)
 [![Join the chat at https://gitter.im/ScriptHelp](https://badges.gitter.im/ScriptHelp/Lobby.svg)](https://gitter.im/ScriptHelp?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
@@ -8,10 +11,7 @@ This Add-In is used for cleaning & creating a script for batch loading records i
 [![Latest Release](https://img.shields.io/github/release/Office-projects/Script-Help.svg?label=latest%20release)](https://github.com/Office-projects/Script-Help/releases)
 [![Github commits (since latest release)](https://img.shields.io/github/commits-since/Office-projects/Script-Help/latest.svg)](https://github.com/Office-projects/Script-Help)
 
-The most complete version is C#. 
-<a href="https://github.com/Office-projects/Script-Help/issues" target="_blank">
- <img alt="Issues" src="https://img.shields.io/github/issues/Office-projects/Script-Help.svg" />
-</a>
+
 
 <h1 align="left">
   <img src="Images/ReadMe/ribbon.formatdatatable.buttons.gif" />
