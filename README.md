@@ -10,7 +10,9 @@ This Add-In is used for cleaning & creating a script for batch loading records i
 <a href="https://github.com/Office-projects/Script-Help/issues" target="_blank">
  <img alt="Issues" src="https://img.shields.io/github/issues/Office-projects/Script-Help.svg" />
 </a>
-
+<a href="https://github.com/Office-projects/Script-Help/releases" target="_blank">
+ <img alt="All releases" src="https://img.shields.io/github/downloads/Office-projects/Script-Help/total.svg" />
+</a>
 
 <h1 align="left">
   <img src="Images/ReadMe/ribbon.formatdatatable.buttons.gif" />
