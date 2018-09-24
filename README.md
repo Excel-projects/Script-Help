@@ -7,12 +7,8 @@ This Add-In is used for cleaning & creating a script for batch loading records i
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE "MIT License Copyright © Anthony Duguid")
 [![Latest Release](https://img.shields.io/github/release/Office-projects/Script-Help.svg?label=latest%20release)](https://github.com/Office-projects/Script-Help/releases)
 [![Github commits (since latest release)](https://img.shields.io/github/commits-since/Office-projects/Script-Help/latest.svg)](https://github.com/Office-projects/Script-Help)
-<a href="https://github.com/Office-projects/Script-Help/issues" target="_blank">
- <img alt="Issues" src="https://img.shields.io/github/issues/Office-projects/Script-Help.svg" />
-</a>
-<a href="https://github.com/Office-projects/Script-Help/releases" target="_blank">
- <img alt="All releases" src="https://img.shields.io/github/downloads/Office-projects/Script-Help/total.svg" />
-</a>
+[![Github All Releases](https://img.shields.io/github/downloads/atom/atom/total.svg)](https://github.com/Office-projects/Script-Help)
+
 
 <h1 align="left">
   <img src="Images/ReadMe/ribbon.formatdatatable.buttons.gif" />
