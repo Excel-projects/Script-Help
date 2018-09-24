@@ -8,7 +8,7 @@ This Add-In is used for cleaning & creating a script for batch loading records i
 [![Latest Release](https://img.shields.io/github/release/Office-projects/Script-Help.svg?label=latest%20release)](https://github.com/Office-projects/Script-Help/releases)
 [![Github commits (since latest release)](https://img.shields.io/github/commits-since/Office-projects/Script-Help/latest.svg)](https://github.com/Office-projects/Script-Help)
 [![GitHub issues](https://img.shields.io/github/issues/Office-projects/Script-Help.svg)](https://github.com/Office-projects/Script-Help)
-[![Github All Releases](https://img.shields.io/github/downloads/Office-projects/Script-Help/total.svg)](https://github.com/Office-projects/Script-Help)
+[![Github All Releases](https://img.shields.io/github/downloads/Office-projects/Script-Help/total.svg)](https://github.com/Office-projects/Script-Help/releases)
 
 
 <h1 align="left">
