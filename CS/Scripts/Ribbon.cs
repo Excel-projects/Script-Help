@@ -224,9 +224,17 @@ namespace ScriptHelp.Scripts
                     case "btnScriptTypeXmlValues":
                         return Properties.Resources.ScriptTypeMarkup;
                     case "btnProblemStepRecorder":
+                    case "btnProblemStepRecorder1":
                         return Properties.Resources.problem_steps_recorder;
                     case "btnSnippingTool":
+                    case "btnSnippingTool1":
                         return Properties.Resources.snipping_tool;
+                    case "btnSaveVersion":
+                        return Properties.Resources.SaveVersion;
+                    case "btnSaveCode":
+                        return Properties.Resources.SaveCode;
+                    case "btnCamera":
+                        return Properties.Resources.camera;
                     default:
                         return null;
                 }
@@ -635,10 +643,18 @@ namespace ScriptHelp.Scripts
                         OpenTableDataPane();
                         break;
                     case "btnSnippingTool":
+                    case "btnSnippingTool1":
                         OpenSnippingTool();
                         break;
                     case "btnProblemStepRecorder":
+                    case "btnProblemStepRecorder1":
                         OpenProblemStepRecorder();
+                        break;
+                    case "btnSaveVersion":
+                        Ribbon.SaveVersion();
+                        break;
+                    case "btnSaveCode":
+                        Ribbon.SaveCode();
                         break;
                 }
             }
@@ -1191,17 +1207,6 @@ namespace ScriptHelp.Scripts
         }
 
         /// <summary> 
-        /// Opens a api help file
-        /// </summary>
-        /// <remarks></remarks>
-        public void OpenHelpApi()
-        {
-            ErrorHandler.CreateLogRecord();
-            string clickOnceLocation = AssemblyInfo.GetClickOnceLocation();
-            AssemblyInfo.OpenFile(Path.Combine(clickOnceLocation, @"Documentation\\Api Help.chm"));
-        }
-
-        /// <summary> 
         /// Opens the graph taskpane
         /// </summary>
         /// <remarks></remarks>
@@ -1272,6 +1277,57 @@ namespace ScriptHelp.Scripts
             try
             {
                 System.Diagnostics.Process.Start(filePath);
+
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.DisplayMessage(ex);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static void SaveVersion()
+        {
+            try
+            {
+                var filePath = Globals.ThisAddIn.Application.ActiveWorkbook.FullName; //AssemblyInfo.GetCurrentFileName();
+                filePath = string.Concat(
+                    Path.GetFileNameWithoutExtension(filePath),
+                    "_",
+                    DateTime.Now.ToString("yyyy.MM.dd_HH.mm.ss.fff"), 
+                    "_",
+                    Environment.UserName,
+                    Path.GetExtension(filePath)
+                );
+                Globals.ThisAddIn.Application.ActiveWorkbook.SaveCopyAs(filePath);
+
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.DisplayMessage(ex);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static void SaveCode()
+        {
+            try
+            {
+                //update this for VBA and XML part of current file
+                var filePath = AssemblyInfo.GetCurrentFileName();
+                filePath = string.Concat(
+                    Path.GetFileNameWithoutExtension(filePath),
+                    "_",
+                    DateTime.Now.ToString("yyyy.MM.dd_HH.mm.ss.fff"),
+                    "_",
+                    Environment.UserName,
+                    Path.GetExtension(filePath)
+                );
+                Globals.ThisAddIn.Application.ActiveWorkbook.SaveCopyAs(filePath);
 
             }
             catch (Exception ex)
@@ -1552,8 +1608,8 @@ namespace ScriptHelp.Scripts
         {
             try
             {
-                string[] comboList = valueList.Split((delimiter).ToCharArray());
-                return comboList.GetUpperBound(0) + 1;
+                string[] comboList = valueList.Split(delimiter.ToCharArray());
+                return comboList.Length;
 
             }
             catch (Exception ex)
@@ -1678,21 +1734,21 @@ namespace ScriptHelp.Scripts
 
         }
 
-		/// <summary>
-		/// To create a header comment for the code block
-		/// </summary>
-		/// <returns></returns>
-		public static string GetCommentHeader(string purposeLine = "", string prefix = "/*", string suffix = "*/")
-		{
-			string noteLine = string.Concat("Generated from ", AssemblyInfo.Title, " ", AssemblyInfo.FileVersion, "  ", DateTime.Now.ToString("yyyy.MM.dd HH.mm.ss"));
-			string dividerLine = string.Concat(System.Linq.Enumerable.Repeat("*", 75));
+        /// <summary>
+        /// To create a header comment for the code block
+        /// </summary>
+        /// <returns></returns>
+        public static string GetCommentHeader(string purposeLine = "", string prefix = "/*", string suffix = "*/")
+        {
+            string noteLine = string.Concat("Generated from ", AssemblyInfo.Title, " ", AssemblyInfo.FileVersion, "  ", DateTime.Now.ToString("yyyy.MM.dd HH.mm.ss"));
+            string dividerLine = string.Concat(System.Linq.Enumerable.Repeat("*", 75));
             string headerComment = prefix + dividerLine + Environment.NewLine;
-			headerComment += "** Purpose:  " + purposeLine + Environment.NewLine;
-			headerComment += "** Note:     " + noteLine + Environment.NewLine;
-			headerComment += dividerLine + suffix + Environment.NewLine + Environment.NewLine;
-			return headerComment;
-		}
-		
+            headerComment += "** Purpose:  " + purposeLine + Environment.NewLine;
+            headerComment += "** Note:     " + noteLine + Environment.NewLine;
+            headerComment += dividerLine + suffix + Environment.NewLine + Environment.NewLine;
+            return headerComment;
+        }
+
         #endregion
 
     }

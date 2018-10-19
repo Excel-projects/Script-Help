@@ -1,37 +1,80 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui" onLoad="Ribbon_Load">
 
-	<!-- 
-Use the following tags to remove indivdual ribbons when this loads
-	<tab idMso="TabHome" getVisible="GetVisible"/> 
-	<tab idMso="TabInsert" getVisible="GetVisible"/> 
-	<tab idMso="TabReview" getVisible="GetVisible"/> 
-	<tab idMso="TabData" getVisible="GetVisible"/> 
-	<tab idMso="TabView" getVisible="GetVisible"/> 
-	<tab idMso="TabFormulas" getVisible="GetVisible"/> 
-	<tab idMso="TabPageLayoutExcel" getVisible="GetVisible"/> 
-	<tab idMso="TabDeveloper" getVisible="GetVisible"/> 
-	<tab idMso="TabPrintPreview" getVisible="GetVisible"/> 
-	<tab idMso="TabAddIns" getVisible="GetVisible"/> 
-	<tab idMso="TabSetTableToolsExcel" getVisible="GetVisible"/> 
-Or use the following tag to remove all other ribbons when this loads
 	<ribbon startFromScratch="true">
--->
-	<ribbon startFromScratch="false">
 		<qat>
 			<sharedControls >
+				<control
+					idMso ="Undo"
+				/>
+				<control
+					idMso ="Redo"
+				/>
+				<button
+					idMso ="FileSendAsAttachment"
+					label="Email"
+					screentip="Email File As Attachment"
+					supertip="This will email the current file as an attachment. "
+				/>
+				<separator id="sepSc1"/>
+				<button
+					id="btnSaveVersion"
+					label="Save Version"
+					onAction="OnAction"
+					getImage="GetButtonImage"
+					screentip="Save File As Version"
+					supertip="This will save the current file as a version in the same directory."
+				/>
+				<button
+					id="btnSaveCode"
+					label="Save Code"
+					onAction="OnAction"
+					getImage="GetButtonImage"
+					screentip="Save VBA/XML Code"
+					supertip="This will save the VBA and XML for the current file in the same directory. (Coming Soon!)"
+					enabled="false"
+				/>
+				<separator id="sepSc2"/>
 				<button
 					idMso ="Camera"
 					label="Excel Camera"
+					getImage="GetButtonImage"
 					screentip="Microsoft Excel Camera"
 					supertip="This tool allows you to take a snapshot of a selected datasheet portion, it also syncs the data with the image; whenever you make changes to the original data set, live image gets updated, showing you the latest cells values. "
 				/>
+				<button
+					id="btnSnippingTool1"
+					label="Snipping Tool"
+					onAction="OnAction"
+					getImage="GetButtonImage"
+					screentip="Microsoft Snipping Tool"
+					supertip="Snipping Tool is a screenshot utility included in Microsoft Windows. It can take screenshots of an open window, rectangular areas, a free-form area, or the entire screen."
+				/>
+				<button
+					id="btnProblemStepRecorder1"
+					label="Record Steps"
+					onAction="OnAction"
+					getImage="GetButtonImage"
+					screentip="Microsoft Problem Steps Recorder"
+					supertip="Problem Steps Recorder or PSR records the actions you take on your computer which you can then send to the person or group helping you with your computer problem."
+				/>			
 			</sharedControls>
 			<documentControls >
 				<button idMso="Cut"/>
 			</documentControls>
 		</qat>
 		<tabs>
+			<tab idMso="TabHome" visible="true" />
+			<tab idMso="TabInsert" visible="true" />
+			<tab idMso="TabReview" visible="true" />
+			<tab idMso="TabData" visible="true" />
+			<tab idMso="TabView" visible="true" />
+			<tab idMso="TabFormulas" visible="true" />
+			<tab idMso="TabPageLayoutExcel" visible="true" />
+			<tab idMso="TabDeveloper" visible="true" />
+			<tab idMso="TabPrintPreview" visible="true" />
+			<tab idMso="TabAddIns" visible="true" />
+			<tab idMso="TabSetTableToolsExcel" visible="true" />
 			<tab
 					id="tabScriptHelp"
 					getLabel="GetLabelText"

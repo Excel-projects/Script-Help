@@ -300,7 +300,7 @@ namespace ScriptHelp.Scripts
         }
 
         /// <summary>
-        /// 
+        /// Set Assembly Folder Version
         /// </summary>
         public static void SetAssemblyFolderVersion()
         {

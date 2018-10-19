@@ -269,6 +269,9 @@
     <None Include="Resources\Download.png" />
     <None Include="Resources\problem_steps_recorder.png" />
     <None Include="Resources\snipping_tool.png" />
+    <None Include="Resources\SaveCode.png" />
+    <None Include="Resources\SaveVersion.png" />
+    <None Include="Resources\camera.png" />
     <Content Include="Resources\ScreenToGif.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
