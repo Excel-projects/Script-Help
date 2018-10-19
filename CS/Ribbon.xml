@@ -4,35 +4,33 @@
 	<ribbon startFromScratch="true">
 		<qat>
 			<sharedControls >
-				<control
-					idMso ="Undo"
-				/>
-				<control
-					idMso ="Redo"
-				/>
-				<button
-					idMso ="FileSendAsAttachment"
-					label="Email"
-					screentip="Email File As Attachment"
-					supertip="This will email the current file as an attachment. "
-				/>
-				<separator id="sepSc1"/>
+				<control idMso ="FileSave" />
 				<button
 					id="btnSaveVersion"
 					label="Save Version"
 					onAction="OnAction"
-					getImage="GetButtonImage"
+					imageMso="FileSaveAs"
 					screentip="Save File As Version"
 					supertip="This will save the current file as a version in the same directory."
+					insertBeforeMso="Undo"
 				/>
 				<button
 					id="btnSaveCode"
 					label="Save Code"
 					onAction="OnAction"
-					getImage="GetButtonImage"
+					imageMso="ThemeSaveCurrent"
 					screentip="Save VBA/XML Code"
 					supertip="This will save the VBA and XML for the current file in the same directory. (Coming Soon!)"
+					insertBeforeMso="Undo"
 					enabled="false"
+				/>
+				<control idMso ="Undo"/>
+				<control idMso ="Redo" />
+				<button
+					idMso ="FileSendAsAttachment"
+					label="Email"
+					screentip="Email File As Attachment"
+					supertip="This will email the current file as an attachment. "
 				/>
 				<separator id="sepSc2"/>
 				<button
@@ -57,7 +55,7 @@
 					getImage="GetButtonImage"
 					screentip="Microsoft Problem Steps Recorder"
 					supertip="Problem Steps Recorder or PSR records the actions you take on your computer which you can then send to the person or group helping you with your computer problem."
-				/>			
+				/>
 			</sharedControls>
 			<documentControls >
 				<button idMso="Cut"/>
@@ -624,7 +622,7 @@
 							<checkBox id="chkBackstagePlsql" label ="PL-SQL" onAction="OnAction_Checkbox" getPressed="GetPressed"/>
 							<checkBox id="chkBackstageDql" label ="DQL" onAction="OnAction_Checkbox" getPressed="GetPressed"/>
 							<checkBox id="chkBackstageMarkdown" label ="MARKDOWN" onAction="OnAction_Checkbox" getPressed="GetPressed"/>
-							<checkBox id="chkBackstageMarkup" label ="MARKUP" onAction="OnAction_Checkbox" getPressed="GetPressed"/>						
+							<checkBox id="chkBackstageMarkup" label ="MARKUP" onAction="OnAction_Checkbox" getPressed="GetPressed"/>
 						</layoutContainer>
 					</topItems>
 				</group>
