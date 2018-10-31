@@ -1,34 +1,15 @@
-<html>
-<head>
-</head>
-
 <img align="left" src="Images/ReadMe/header10.png">
 
+This Add-In is used for cleaning & creating a script for batch loading records into SQL Server, Oracle, Documentum, Markup or Markdown Languages. The functionality within the ribbon allows a quick way of preparing a bulk data load. Otherwise, the requests can be both time-consuming and error prone. It is written in 3 different versions as a VSTO Add-In in C# and VB.NET as well as a VBA Add-In. The most complete version is C#. 
+
+<!--[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/AnthonyDuguid/1.00)-->
 [![Join the chat at https://gitter.im/ScriptHelp](https://badges.gitter.im/ScriptHelp/Lobby.svg)](https://gitter.im/ScriptHelp?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE "MIT License Copyright © Anthony Duguid")
-[![Latest Release](https://img.shields.io/github/release/Office-projects/Script-Help.svg?label=latest%20release)](https://github.com/Office-projects/Script-Help/releases)
-[![Github commits (since latest release)](https://img.shields.io/github/commits-since/Office-projects/Script-Help/latest.svg)](https://github.com/Office-projects/Script-Help)
+[![Latest Release](https://img.shields.io/github/release/Excel-projects/Script-Help.svg?label=latest%20release)](https://github.com/Excel-projects/Script-Help/releases)
+[![Github commits (since latest release)](https://img.shields.io/github/commits-since/Excel-projects/Script-Help/latest.svg)](https://github.com/Excel-projects/Script-Help/commits/master)
+[![GitHub issues](https://img.shields.io/github/issues/Excel-projects/Script-Help.svg)](https://github.com/Excel-projects/Script-Help/issues)
+<!--[![Github All Releases](https://img.shields.io/github/downloads/Excel-projects/Script-Help/total.svg)](https://github.com/Excel-projects/Script-Help/releases)-->
 
-
-The most complete version is C#. 
-<a href="https://github.com/Office-projects/Script-Help/issues" target="_blank">
- <img alt="Issues" src="https://img.shields.io/github/issues/Office-projects/Script-Help.svg" />
-</a>
-
-<!---
-[![download VBA](https://img.shields.io/badge/download-VBA-brightgreen.svg)](https://github.com/Office-projects/ScriptHelp/raw/master/VBA/ScriptHelp.xlsm?raw=true "Download the VBA Add-In")
-[![download VSTO](https://img.shields.io/badge/download-VSTO-brightgreen.svg)](https://github.com/Office-projects/ScriptHelp/CS/blob/master/publish/setup.exe?raw=true "Download Setup.exe Install File")
-[![download Key](https://img.shields.io/badge/download-Key-brightgreen.svg)](https://github.com/Office-projects/ScriptHelp/CS/blob/master/AnthonyDuguid.pfx?raw=true "Download AnthonyDuguid.pfx And Install At Root Level For VSTO")
---->
-This Add-In is used for cleaning & creating a script for batch loading records into SQL Server, Oracle, Documentum, Markup or Markdown Languages. The functionality within the ribbon allows a quick way of preparing a bulk data load. Otherwise, the requests can be both time-consuming and error prone. 
-
-<!---
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE "MIT License Copyright © 2018 Anthony Duguid")
-[![star this repo](http://githubbadges.com/star.svg?user=Office-projects&repo=ScriptHelp&style=flat&color=fff&background=007ec6)](http://github.com/Office-projects/ScriptHelp)
-[![fork this repo](http://githubbadges.com/fork.svg?user=Office-projects&repo=ScriptHelp&style=flat&color=fff&background=007ec6)](http://github.com/Office-projects/ScriptHelp/fork)
-
-  <img src="Images/ReadMe/ribbon.png" />
---->
 
 <h1 align="left">
   <img src="Images/ReadMe/ribbon.formatdatatable.buttons.gif" />
@@ -47,42 +28,6 @@ This Add-In is used for cleaning & creating a script for batch loading records i
     - <a href="#annotate">Annotate</a>
     - <a href="#help">Help</a>
     - <a href="#about">About</a>
-     
-<!---
-        - <a href="#paste">Paste</a>
-        - <a href="#copy-visible-cells">Copy Visible Cells</a>
-    - <a href="#format-data-table">Format Data Table</a>
-        - <a href="#format-as-table">Format as Table</a>  
-        - <a href="#freeze-panes">Freeze Panes</a>
-        - <a href="#remove-duplicates">Remove Duplicates</a>
-    - <a href="#script-actions">Script Actions</a>
-        - <a href="#clean-data">Clean Data</a>
-        - <a href="#convert-to-null">Convert to Null</a>
-        - <a href="#format-date-columns">Format Date Columns</a>        
-        - <a href="#clear-interior-color">Clear Interior Color</a>
-        - <a href="#separate-values">Separate Values</a>
-        - <a href="#add-script-column">Add Script Column</a>
-          - <kbd><a href="#menu-tsql" target="_blank"><img src="CS/Resources/ScriptTypeTSql.png" title="T-SQL (Transact-Structured Query Language)" /></a></kbd><a href="#menu-tsql"> T-SQL (Transact-Structured Query Language)</a>
-          - <kbd><a href="#menu-plsql" target="_blank"><img src="CS/Resources/ScriptTypePlSql.png" title="PL/SQL (Procedural Language/Structured Query Language)"/></a></kbd><a href="#menu-plsql">  PL/SQL (Procedural Language/Structured Query Language)</a>
-          - <kbd><a href="#menu-dql" target="_blank"><img src="CS/Resources/ScriptTypeDql.png" title="DQL (Documentum Query Language)"/></a></kbd><a href="#menu-dql">  DQL (Documentum Query Language)</a>
-          - <kbd><a href="#menu-github" target="_blank"><img src="CS/Resources/ScriptTypeGitHub.png" title="GitHub Markdown"/></a></kbd><a href="#menu-github">  GitHub Markdown</a>
-          - <kbd><a href="#menu-markup" target="_blank"><img src="CS/Resources/ScriptTypeXML.png" title="Markup Language"/></a></kbd><a href="#menu-markup">  Markup Language</a>
-    - <a href="#format-script-options">Script Variables</a>
-        - <a href="#table-alias">Table Alias</a>  
-        - <a href="#date-find-format">Find Format</a>  
-        - <a href="#date-replace-format">Replace Format</a>  
-    - <a href="#options">Options</a>
-        - <a href="#settings">Add-In Settings</a>  
-        - <a href="#create-file-list">Create File List</a>  
-    - <a href="#about">Help</a>
-        - <a href="#how-to">How To...</a>  
-        - <a href="#api-doc">Report Issue</a>  
-        - <a href="#api-doc">Download New Version</a>  
-    - <a href="#about">About</a>
-        - <a href="#description">Add-in Name</a>
-        - <a href="#install-date">Release Date</a>  
-        - <a href="#copyright">Copyright</a>
---->
 
 <br>
 
@@ -90,18 +35,16 @@ This Add-In is used for cleaning & creating a script for batch loading records i
 ## Install
 Instructions for installation of VBA and VSTO versions.
 
->TODO: deploy to Microsoft Office store
-
 ### VBA
 How to install the VBA version
-1. Download the VBA Add-In file [![download VBA](https://img.shields.io/badge/download-VBA-brightgreen.svg)](https://github.com/Office-projects/Script-Help/raw/master/VBA/ScriptHelp.xlam?raw=true "Download the VBA Add-In").
+1. Download the VBA Add-In file [![download VBA](https://img.shields.io/badge/download-VBA-brightgreen.svg)](https://github.com/Excel-projects/Script-Help/raw/master/VBA/ScriptHelp.xlam?raw=true "Download the VBA Add-In").
 2. Copy the file to the XLSTART folder on your computer. ```%AppData%\Microsoft\Excel\XLSTART\```
 3. Close all open instances of Excel and then launch Excel. The new ribbon should appear.
 
 ### VSTO
 How to install the VSTO version
 1. Download AnthonyDuguid.pfx And Install At Root Level [![download Key](https://img.shields.io/badge/download-Key-brightgreen.svg)](https://github.com/Office-projects/Script-Help/blob/master/CS/AnthonyDuguid.pfx?raw=true "Download AnthonyDuguid.pfx And Install At Root Level For VSTO")
-2. Download and run the setup.exe file. [![download VSTO](https://img.shields.io/badge/download-VSTO-brightgreen.svg)](https://github.com/Office-projects/Script-Help/blob/master/CS/publish/setup.exe?raw=true "Download Setup.exe Install File")
+2. Download and run the setup.exe file. [![download VSTO](https://img.shields.io/badge/download-VSTO-brightgreen.svg)](https://github.com/Excel-projects/Script-Help/blob/master/CS/publish/setup.exe?raw=true "Download Setup.exe Install File")
 
 <br>
 
@@ -121,7 +64,6 @@ How to install the VSTO version
 |[Snagit](http://discover.techsmith.com/snagit-non-brand-desktop/?gclid=CNzQiOTO09UCFVoFKgod9EIB3g)|Read Me|VBA, VSTO|
 |Badges ([Library](https://shields.io/), [Custom](https://rozaxe.github.io/factory/), [Star/Fork](http://githubbadges.com))|Read Me|VBA, VSTO|
 
-<!---|[Sandcastle](https://github.com/EWSoftware/SHFB)|API Documentation|VSTO|--->
 <br>
 
 <a id="user-content-glossary-of-terms" class="anchor" href="#glossary-of-terms" aria-hidden="true"> </a>
@@ -138,7 +80,6 @@ How to install the VSTO version
 | VBA |Visual Basic for Applications (VBA) is an implementation of Microsoft's event-driven programming language Visual Basic 6 and uses the Visual Basic Runtime Library. However, VBA code normally can only run within a host application, rather than as a standalone program. VBA can, however, control one application from another using OLE Automation. VBA can use, but not create, ActiveX/COM DLLs, and later versions add support for class modules.|
 | VSTO |Visual Studio Tools for Office (VSTO) is a set of development tools available in the form of a Visual Studio add-in (project templates) and a runtime that allows Microsoft Office 2003 and later versions of Office applications to host the .NET Framework Common Language Runtime (CLR) to expose their functionality via .NET.|
 | XML|Extensible Markup Language (XML) is a markup language that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable.The design goals of XML emphasize simplicity, generality, and usability across the Internet. It is a textual data format with strong support via Unicode for different human languages. Although the design of XML focuses on documents, the language is widely used for the representation of arbitrary data structures such as those used in web services.|
-<body>
 
 <br>
 
@@ -371,6 +312,3 @@ VBA
 <a id="user-content-copyright" class="anchor" href="#copyright" aria-hidden="true"> </a>
 #### Copyright (Label)
 * The author’s name
-
-</body>
-</html>
