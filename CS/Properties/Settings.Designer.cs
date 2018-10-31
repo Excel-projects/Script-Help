@@ -12,7 +12,7 @@ namespace ScriptHelp.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.7.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "14.0.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -178,7 +178,7 @@ namespace ScriptHelp.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://raw.githubusercontent.com/Office-projects/Script-Help/master/publish/")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://raw.githubusercontent.com/Excel-projects/Script-Help/master/publish/")]
         public string App_PathDeploy {
             get {
                 return ((string)(this["App_PathDeploy"]));
@@ -262,7 +262,7 @@ namespace ScriptHelp.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://github.com/Office-projects/Script-Help/blob/master/README.md")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://github.com/Excel-projects/Script-Help/blob/master/README.md")]
         public string App_PathReadMe {
             get {
                 return ((string)(this["App_PathReadMe"]));
@@ -310,7 +310,7 @@ namespace ScriptHelp.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://github.com/Office-projects/Script-Help/issues/new")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://github.com/Excel-projects/Script-Help/issues/new")]
         public string App_PathNewIssue {
             get {
                 return ((string)(this["App_PathNewIssue"]));

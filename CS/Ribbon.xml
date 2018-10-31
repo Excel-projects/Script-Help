@@ -4,7 +4,7 @@
 	<ribbon startFromScratch="true">
 		<qat>
 			<sharedControls >
-				<control idMso ="FileSave" />
+				<button idMso ="FileSave" />
 				<button
 					id="btnSaveVersion"
 					label="Save Version"
