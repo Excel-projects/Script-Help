@@ -52,9 +52,9 @@
     <UpdateIntervalUnits>days</UpdateIntervalUnits>
     <ProductName>Excel Addin Script Help</ProductName>
     <PublisherName>Anthony Duguid</PublisherName>
-    <SupportUrl />
+    <SupportUrl>https://github.com/Excel-projects/Script-Help</SupportUrl>
     <FriendlyName>Excel Addin Script Help</FriendlyName>
-    <OfficeApplicationDescription />
+    <OfficeApplicationDescription>This Add-In is used for cleaning &amp; creating a script for batch loading records into SQL Server, Oracle, Documentum, Markup or Markdown Languages. The functionality within the ribbon allows a quick way of preparing a bulk data load. Otherwise, the requests can be both time-consuming and error prone.</OfficeApplicationDescription>
     <LoadBehavior>3</LoadBehavior>
   </PropertyGroup>
   <ItemGroup>
