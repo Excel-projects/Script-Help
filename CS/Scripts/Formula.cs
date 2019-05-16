@@ -2094,9 +2094,9 @@ namespace ScriptHelp.Scripts
                     sqlCol.Range.Copy();
 					Ribbon.AppVariables.FileType = "SQL";
                     Ribbon.AppVariables.ScriptRange = Ribbon.GetCommentHeader("To update, insert & delete rows");
-                    Ribbon.AppVariables.ScriptRange += "SET XACT_ABORT ON" + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += "SET XACT_ABORT ON;" + Environment.NewLine;
                     Ribbon.AppVariables.ScriptRange += "BEGIN TRANSACTION;" + Environment.NewLine + Environment.NewLine;
-                    Ribbon.AppVariables.ScriptRange += ";WITH " + Environment.NewLine;
+                    Ribbon.AppVariables.ScriptRange += "WITH " + Environment.NewLine;
                     Ribbon.AppVariables.ScriptRange += tableAliasTemp + Environment.NewLine;
                     Ribbon.AppVariables.ScriptRange += "AS " + Environment.NewLine;
                     Ribbon.AppVariables.ScriptRange += "(" + Environment.NewLine;
