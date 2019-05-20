@@ -80,5 +80,8 @@
     <Setting Name="Visible_grpAnnotation" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="Table_ColumnFormatDatePaste" Type="System.String" Scope="User">
+      <Value Profile="(Default)">mm:ss.0</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

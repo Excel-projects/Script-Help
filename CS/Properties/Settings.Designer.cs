@@ -331,5 +331,17 @@ namespace ScriptHelp.Properties {
                 this["Visible_grpAnnotation"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("mm:ss.0")]
+        public string Table_ColumnFormatDatePaste {
+            get {
+                return ((string)(this["Table_ColumnFormatDatePaste"]));
+            }
+            set {
+                this["Table_ColumnFormatDatePaste"] = value;
+            }
+        }
     }
 }

@@ -189,22 +189,35 @@
 					<separator
 							id="separator2"
 							/>
+          <box id="boxFormatButtons" boxStyle="vertical">
 					<labelControl
 							id="lblTableAlias"
 							label="Table Alias:"
 							getEnabled="False"
 							/>
-					<button
-							id="btnFormatDateColumns"
-							label="Format Date:"
-							onAction="OnAction"
-							getEnabled="GetEnabled"
-							imageMso="NewAppointment"
-							size="normal"
-							screentip="Format Date Columns"
-							supertip="Update the default date format of any column that has a date without a zero string value"
-              keytip="DTE"
-							/>
+            <splitButton id="sbnFormatDateColumns" size="normal" >
+              <button
+                id="btnFormatDateColumns"
+                label="Format Date:"
+                onAction="OnAction"
+                getEnabled="GetEnabled"
+                imageMso="NewAppointment"
+                screentip="Format Date Columns"
+                supertip="Update the default date format of any column that has a date without a zero string value"
+                keytip="DTE"
+            />
+              <menu id="menu">
+                <button
+                  id="btnFormatDateColumnsAll"
+                  label="Format All Dates"
+                  onAction="OnAction"
+                  imageMso="NewAppointment"
+                  screentip="Format All Date Columns"
+                  supertip="Update the default date format of all columns that have dates without a zero string value"
+                  keytip="DTA"
+              />
+              </menu>
+            </splitButton>
 					<button
 						id="btnFormatTimeColumns"
 						label="Format Time:"
@@ -216,6 +229,7 @@
 						supertip="Update the default time format of the selected column"
 						keytip="TIM"
 							/>
+          </box>
 					<comboBox
 						id="cboTableAlias"
 						onChange="OnChange"

@@ -555,6 +555,9 @@ namespace ScriptHelp.Scripts
                     case "btnFormatDateColumns":
                         FormatDateColumns();
                         break;
+                    case "btnFormatDateColumnsAll":
+                        FormatDateColumnsAll();
+                        break;
                     case "btnFormatTimeColumns":
                         FormatTimeColumns();
                         break;
@@ -928,6 +931,57 @@ namespace ScriptHelp.Scripts
                     {
                         col.DataBodyRange.NumberFormat = Properties.Settings.Default.Table_ColumnFormatDate;
                         col.DataBodyRange.HorizontalAlignment = Excel.Constants.xlCenter;
+                    }
+                }
+            }
+            catch (System.Runtime.InteropServices.COMException ex)
+            {
+                ErrorHandler.DisplayMessage(ex);
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.DisplayMessage(ex);
+            }
+            finally
+            {
+                Cursor.Current = System.Windows.Forms.Cursors.Arrow;
+                if (tbl != null)
+                    Marshal.ReleaseComObject(tbl);
+                if (cell != null)
+                    Marshal.ReleaseComObject(cell);
+            }
+        }
+
+        /// <summary> 
+        /// Finds dates columns with the paste format settings or date specific columns and updates with date format setting
+        /// </summary>
+        /// <remarks></remarks>
+        public void FormatDateColumnsAll()
+        {
+            Excel.ListObject tbl = null;
+            Excel.Range cell = null;
+
+            try
+            {
+                if (ErrorHandler.IsAvailable(true) == false)
+                {
+                    return;
+                }
+                ErrorHandler.CreateLogRecord();
+                tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject;
+                cell = default(Excel.Range);
+
+                Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
+                foreach (Excel.ListColumn col in tbl.ListColumns)
+                {
+                    cell = FirstNotNullCellInColumn(col.DataBodyRange);
+                    if (((cell != null)))
+                    {
+                        if (cell.NumberFormat.ToString() == Properties.Settings.Default.Table_ColumnFormatDatePaste | ErrorHandler.IsDate(cell.Value))
+                        {
+                            col.DataBodyRange.NumberFormat = Properties.Settings.Default.Table_ColumnFormatDate;
+                            col.DataBodyRange.HorizontalAlignment = Excel.Constants.xlCenter;
+                        }
                     }
                 }
             }
