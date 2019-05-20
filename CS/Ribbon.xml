@@ -203,7 +203,7 @@
                 getEnabled="GetEnabled"
                 imageMso="NewAppointment"
                 screentip="Format Date Columns"
-                supertip="Update the default date format of any column that has a date without a zero string value"
+                supertip="Update the default date format of the current column that has a date without a zero string value"
                 keytip="DTE"
             />
               <menu id="menu">
