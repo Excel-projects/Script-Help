@@ -547,18 +547,21 @@ namespace ScriptHelp.Scripts
                         CopyVisibleCells();
                         break;
                     case "btnCleanData":
+                    case "btnTableCleanData":
                         CleanData();
                         break;
                     case "btnZeroToNull":
                         ZeroStringToNull();
                         break;
                     case "btnFormatDateColumns":
+                    case "btnTableFormatDateColumns":
                         FormatDateColumns();
                         break;
                     case "btnFormatDateColumnsAll":
                         FormatDateColumnsAll();
                         break;
                     case "btnFormatTimeColumns":
+                    case "btnTableFormatTimeColumns":
                         FormatTimeColumns();
                         break;
                     case "btnClearInteriorColor":

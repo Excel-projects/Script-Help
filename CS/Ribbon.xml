@@ -651,4 +651,12 @@
 			</firstColumn>
 		</tab>
 	</backstage>
+  <contextMenus>
+    <contextMenu idMso="ContextMenuListRange">
+      <button id="btnTableCleanData" label="Clean Data" insertBeforeMso="Cut" onAction="OnAction" imageMso="FormatPainter"/>
+      <button id="btnTableFormatDate" label="Format Date" insertBeforeMso="Cut" onAction="OnAction" imageMso="NewAppointment"/>
+      <button id="btnTableFormatTime" label="Format Time" insertBeforeMso="Cut" onAction="OnAction" imageMso="DateAndTimeInsert"/>
+      <menuSeparator id="MySeparator" insertBeforeMso="Cut" />
+    </contextMenu>
+  </contextMenus>
 </customUI>

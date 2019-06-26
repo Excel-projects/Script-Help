@@ -198,3 +198,4 @@ ModelManifest.xml
 /CS/.vs/ScriptHelp/DesignTimeBuild
 /CS/.vs/ScriptHelp/v16/Server/sqlite3
 /VB/.vs/ScriptHelp/v16/Server/sqlite3
+/VB/packages/log4net.2.0.8
