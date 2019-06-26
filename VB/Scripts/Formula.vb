@@ -9,8 +9,8 @@ Namespace Scripts
         Public Shared Sub DqlAppend()
             Dim tbl As Excel.ListObject = Nothing
             Dim sqlCol As Excel.ListColumn = Nothing
+            Dim formula As String = String.Empty
             Try
-                ErrorHandler.CreateLogRecord()
                 Dim lastColumnName As String = My.Settings.Table_ColumnTableAlias
                 Dim tableAlias As String = My.Settings.Table_ColumnTableAlias
                 Dim sqlColName As String = String.Empty
@@ -30,7 +30,6 @@ Namespace Scripts
                 End If
 
                 sqlCol.DataBodyRange.NumberFormat = "General"
-                Dim formula As String = String.Empty
                 Dim qt As String = String.Empty
                 Dim afterWhere As Boolean = False
 
@@ -107,8 +106,10 @@ Namespace Scripts
                 End Try
             Catch generatedExceptionName As System.OutOfMemoryException
                 MessageBox.Show("The amount of records is too big", "No action taken.", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
             Catch ex As Exception
                 ErrorHandler.DisplayMessage(ex)
+
             Finally
                 Cursor.Current = System.Windows.Forms.Cursors.Arrow
                 If tbl IsNot Nothing Then
@@ -118,6 +119,8 @@ Namespace Scripts
                     'Marshal.ReleaseComObject(sqlCol)
                 End If
                 Ribbon.OpenScriptPane()
+                Logging.InsertRecordInfo(False, formula)
+
             End Try
 
         End Sub
@@ -125,8 +128,8 @@ Namespace Scripts
         Public Shared Sub DqlAppendLocked()
             Dim tbl As Excel.ListObject = Nothing
             Dim sqlCol As Excel.ListColumn = Nothing
+            Dim formula As String = String.Empty
             Try
-                ErrorHandler.CreateLogRecord()
                 Dim lastColumnName As String = My.Settings.Table_ColumnTableAlias
                 Dim tableAlias As String = My.Settings.Table_ColumnTableAlias
                 Dim sqlColName As String = String.Empty
@@ -146,7 +149,6 @@ Namespace Scripts
                 End If
 
                 sqlCol.DataBodyRange.NumberFormat = "General"
-                Dim formula As String = String.Empty
                 Dim qt As String = String.Empty
                 Dim afterWhere As Boolean = False
                 Dim whereClause As String = String.Empty
@@ -250,6 +252,7 @@ Namespace Scripts
                     'Marshal.ReleaseComObject(sqlCol)
                 End If
                 Ribbon.OpenScriptPane()
+                Logging.InsertRecordInfo(False, formula)
             End Try
 
         End Sub
@@ -257,8 +260,8 @@ Namespace Scripts
         Public Shared Sub DqlCreate()
             Dim tbl As Excel.ListObject = Nothing
             Dim sqlCol As Excel.ListColumn = Nothing
+            Dim formula As String = String.Empty
             Try
-                ErrorHandler.CreateLogRecord()
                 Dim lastColumnName As String = My.Settings.Table_ColumnTableAlias
                 Dim tableAlias As String = My.Settings.Table_ColumnTableAlias
                 Dim sqlColName As String = String.Empty
@@ -277,7 +280,6 @@ Namespace Scripts
                 End If
 
                 sqlCol.DataBodyRange.NumberFormat = "General"
-                Dim formula As String = String.Empty
                 Dim qt As String = String.Empty
 
                 For Each col As Excel.ListColumn In tbl.ListColumns
@@ -350,6 +352,7 @@ Namespace Scripts
                     'Marshal.ReleaseComObject(sqlCol)
                 End If
                 Ribbon.OpenScriptPane()
+                Logging.InsertRecordInfo(False, formula)
             End Try
 
         End Sub
@@ -357,8 +360,8 @@ Namespace Scripts
         Public Shared Sub DqlTruncateAppend()
             Dim tbl As Excel.ListObject = Nothing
             Dim sqlCol As Excel.ListColumn = Nothing
+            Dim formula As String = String.Empty
             Try
-                ErrorHandler.CreateLogRecord()
                 Dim lastColumnName As String = My.Settings.Table_ColumnTableAlias
                 Dim tableAlias As String = My.Settings.Table_ColumnTableAlias
                 Dim sqlColName As String = String.Empty
@@ -378,7 +381,6 @@ Namespace Scripts
                 End If
 
                 sqlCol.DataBodyRange.NumberFormat = "General"
-                Dim formula As String = String.Empty
                 Dim qt As String = String.Empty
                 Dim afterWhere As Boolean = False
 
@@ -472,6 +474,7 @@ Namespace Scripts
                     'Marshal.ReleaseComObject(sqlCol)
                 End If
                 Ribbon.OpenScriptPane()
+                Logging.InsertRecordInfo(False, formula)
             End Try
 
         End Sub
@@ -479,8 +482,8 @@ Namespace Scripts
         Public Shared Sub DqlUpdate()
             Dim tbl As Excel.ListObject = Nothing
             Dim sqlCol As Excel.ListColumn = Nothing
+            Dim formula As String = String.Empty
             Try
-                ErrorHandler.CreateLogRecord()
                 Dim lastColumnName As String = My.Settings.Table_ColumnTableAlias
                 Dim tableAlias As String = My.Settings.Table_ColumnTableAlias
                 Dim sqlColName As String = String.Empty
@@ -499,7 +502,6 @@ Namespace Scripts
                 End If
 
                 sqlCol.DataBodyRange.NumberFormat = "General"
-                Dim formula As String = String.Empty
                 Dim qt As String = String.Empty
                 Dim afterWhere As Boolean = False
 
@@ -589,6 +591,7 @@ Namespace Scripts
                     'Marshal.ReleaseComObject(sqlCol)
                 End If
                 Ribbon.OpenScriptPane()
+                Logging.InsertRecordInfo(False, formula)
             End Try
 
         End Sub
@@ -596,8 +599,8 @@ Namespace Scripts
         Public Shared Sub DqlUpdateLocked()
             Dim tbl As Excel.ListObject = Nothing
             Dim sqlCol As Excel.ListColumn = Nothing
+            Dim formula As String = String.Empty
             Try
-                ErrorHandler.CreateLogRecord()
                 Dim lastColumnName As String = My.Settings.Table_ColumnTableAlias
                 Dim tableAlias As String = My.Settings.Table_ColumnTableAlias
                 Dim sqlColName As String = String.Empty
@@ -617,7 +620,6 @@ Namespace Scripts
                 End If
 
                 sqlCol.DataBodyRange.NumberFormat = "General"
-                Dim formula As String = String.Empty
                 Dim qt As String = String.Empty
                 Dim afterWhere As Boolean = False
                 Dim whereClause As String = String.Empty
@@ -721,6 +723,7 @@ Namespace Scripts
                     'Marshal.ReleaseComObject(sqlCol)
                 End If
                 Ribbon.OpenScriptPane()
+                Logging.InsertRecordInfo(False, formula)
             End Try
 
         End Sub
@@ -728,8 +731,8 @@ Namespace Scripts
         Public Shared Sub GithubTable()
             Dim tbl As Excel.ListObject = Nothing
             Dim sqlCol As Excel.ListColumn = Nothing
+            Dim formula As String = String.Empty
             Try
-                ErrorHandler.CreateLogRecord()
                 Cursor.Current = System.Windows.Forms.Cursors.WaitCursor
                 Dim lastColumnName As String = My.Settings.Table_ColumnTableAlias
                 Dim tableAlias As String = My.Settings.Table_ColumnTableAlias
@@ -741,7 +744,6 @@ Namespace Scripts
                 Dim lastColumnIndex As Integer = tbl.Range.Columns.Count
 
                 sqlCol.DataBodyRange.NumberFormat = "General"
-                Dim formula As String = String.Empty
 
                 For Each col As Excel.ListColumn In tbl.ListColumns
                     If col.Name.IndexOfAny(New Char() {"["c, "]"c, """"c}) <> -1 Then
@@ -794,6 +796,7 @@ Namespace Scripts
                     'Marshal.ReleaseComObject(sqlCol)
                 End If
                 Ribbon.OpenScriptPane()
+                Logging.InsertRecordInfo(False, formula)
             End Try
 
         End Sub
@@ -801,8 +804,8 @@ Namespace Scripts
         Public Shared Sub HtmlTable()
             Dim tbl As Excel.ListObject = Nothing
             Dim sqlCol As Excel.ListColumn = Nothing
+            Dim formula As String = String.Empty
             Try
-                ErrorHandler.CreateLogRecord()
                 Dim lastColumnName As String = My.Settings.Table_ColumnTableAlias
                 Dim tableAlias As String = My.Settings.Table_ColumnTableAlias
                 Dim sqlColName As String = String.Empty
@@ -821,7 +824,6 @@ Namespace Scripts
                 End If
 
                 sqlCol.DataBodyRange.NumberFormat = "General"
-                Dim formula As String = String.Empty
                 Dim qt As String = String.Empty
 
                 For Each col As Excel.ListColumn In tbl.ListColumns
@@ -896,6 +898,7 @@ Namespace Scripts
                     'Marshal.ReleaseComObject(sqlCol)
                 End If
                 Ribbon.OpenScriptPane()
+                Logging.InsertRecordInfo(False, formula)
             End Try
 
         End Sub
@@ -903,8 +906,8 @@ Namespace Scripts
         Public Shared Sub PlSqlCreateTable()
             Dim tbl As Excel.ListObject = Nothing
             Dim sqlCol As Excel.ListColumn = Nothing
+            Dim formula As String = String.Empty
             Try
-                ErrorHandler.CreateLogRecord()
                 Dim lastColumnName As String = My.Settings.Table_ColumnTableAlias
                 Dim sqlColName As String = String.Empty
 
@@ -921,7 +924,6 @@ Namespace Scripts
                 End If
 
                 sqlCol.DataBodyRange.NumberFormat = "General"
-                Dim formula As String = String.Empty
                 Dim qt As String = String.Empty
 
                 For Each col As Excel.ListColumn In tbl.ListColumns
@@ -983,6 +985,7 @@ Namespace Scripts
                     'Marshal.ReleaseComObject(sqlCol)
                 End If
                 Ribbon.OpenScriptPane()
+                Logging.InsertRecordInfo(False, formula)
             End Try
 
         End Sub
@@ -990,8 +993,8 @@ Namespace Scripts
         Public Shared Sub PlSqlInsertValues()
             Dim tbl As Excel.ListObject = Nothing
             Dim sqlCol As Excel.ListColumn = Nothing
+            Dim formula As String = String.Empty
             Try
-                ErrorHandler.CreateLogRecord()
                 Dim lastColumnName As String = My.Settings.Table_ColumnTableAlias
                 Dim sqlColName As String = String.Empty
 
@@ -1008,7 +1011,6 @@ Namespace Scripts
                 End If
 
                 sqlCol.DataBodyRange.NumberFormat = "General"
-                Dim formula As String = String.Empty
                 Dim qt As String = String.Empty
 
                 For Each col As Excel.ListColumn In tbl.ListColumns
@@ -1069,6 +1071,7 @@ Namespace Scripts
                     'Marshal.ReleaseComObject(sqlCol)
                 End If
                 Ribbon.OpenScriptPane()
+                Logging.InsertRecordInfo(False, formula)
             End Try
 
         End Sub
@@ -1076,8 +1079,8 @@ Namespace Scripts
         Public Shared Sub PlSqlMergeValues()
             Dim tbl As Excel.ListObject = Nothing
             Dim sqlCol As Excel.ListColumn = Nothing
+            Dim formula As String = String.Empty
             Try
-                ErrorHandler.CreateLogRecord()
                 Cursor.Current = System.Windows.Forms.Cursors.WaitCursor
                 Dim lastColumnName As String = My.Settings.Table_ColumnTableAlias
                 Dim tableAlias As String = My.Settings.Table_ColumnTableAlias
@@ -1100,7 +1103,6 @@ Namespace Scripts
 
                 ' Columns formatted as text will not work as formulas and the added column will copy the formatting from the previous column so ensure that the added column never has Text format...
                 sqlCol.DataBodyRange.NumberFormat = "General"
-                Dim formula As String = String.Empty
                 Dim qt As String = String.Empty
 
                 For Each col As Excel.ListColumn In tbl.ListColumns
@@ -1161,14 +1163,15 @@ Namespace Scripts
                     'Marshal.ReleaseComObject(sqlCol)
                 End If
                 Ribbon.OpenScriptPane()
+                Logging.InsertRecordInfo(False, formula)
             End Try
         End Sub
 
         Public Shared Sub PlSqlSelectValues()
             Dim tbl As Excel.ListObject = Nothing
             Dim sqlCol As Excel.ListColumn = Nothing
+            Dim formula As String = String.Empty
             Try
-                ErrorHandler.CreateLogRecord()
                 Cursor.Current = System.Windows.Forms.Cursors.WaitCursor
                 Dim lastColumnName As String = My.Settings.Table_ColumnTableAlias
                 Dim tableAlias As String = My.Settings.Table_ColumnTableAlias
@@ -1190,7 +1193,6 @@ Namespace Scripts
 
                 ' Columns formatted as text will not work as formulas and the added column will copy the formatting from the previous column so ensure that the added column never has Text format...
                 sqlCol.DataBodyRange.NumberFormat = "General"
-                Dim formula As String = String.Empty
                 Dim qt As String = String.Empty
 
                 For Each col As Excel.ListColumn In tbl.ListColumns
@@ -1250,14 +1252,15 @@ Namespace Scripts
                     'Marshal.ReleaseComObject(sqlCol)
                 End If
                 Ribbon.OpenScriptPane()
+                Logging.InsertRecordInfo(False, formula)
             End Try
         End Sub
 
         Public Shared Sub PlSqlSelectUnion()
             Dim tbl As Excel.ListObject = Nothing
             Dim sqlCol As Excel.ListColumn = Nothing
+            Dim formula As String = String.Empty
             Try
-                ErrorHandler.CreateLogRecord()
                 Dim lastColumnName As String = My.Settings.Table_ColumnTableAlias
                 Dim sqlColName As String = String.Empty
 
@@ -1274,7 +1277,6 @@ Namespace Scripts
                 End If
 
                 sqlCol.DataBodyRange.NumberFormat = "General"
-                Dim formula As String = String.Empty
                 Dim qt As String = String.Empty
 
                 For Each col As Excel.ListColumn In tbl.ListColumns
@@ -1332,14 +1334,15 @@ Namespace Scripts
                     'Marshal.ReleaseComObject(sqlCol)
                 End If
                 Ribbon.OpenScriptPane()
+                Logging.InsertRecordInfo(False, formula)
             End Try
         End Sub
 
         Public Shared Sub PlSqlUpdateValues()
             Dim tbl As Excel.ListObject = Nothing
             Dim sqlCol As Excel.ListColumn = Nothing
+            Dim formula As String = String.Empty
             Try
-                ErrorHandler.CreateLogRecord()
                 Dim lastColumnName As String = My.Settings.Table_ColumnTableAlias
                 Dim tableAlias As String = My.Settings.Table_ColumnTableAlias
                 Dim sqlColName As String = String.Empty
@@ -1358,7 +1361,6 @@ Namespace Scripts
                 End If
 
                 sqlCol.DataBodyRange.NumberFormat = "General"
-                Dim formula As String = String.Empty
                 Dim qt As String = String.Empty
                 Dim afterWhere As Boolean = False
 
@@ -1448,14 +1450,15 @@ Namespace Scripts
                     'Marshal.ReleaseComObject(sqlCol)
                 End If
                 Ribbon.OpenScriptPane()
+                Logging.InsertRecordInfo(False, formula)
             End Try
         End Sub
 
         Public Shared Sub TSqlCreateTable()
             Dim tbl As Excel.ListObject = Nothing
             Dim sqlCol As Excel.ListColumn = Nothing
+            Dim formula As String = String.Empty
             Try
-                ErrorHandler.CreateLogRecord()
                 Dim lastColumnName As String = My.Settings.Table_ColumnTableAlias
                 Dim sqlColName As String = String.Empty
 
@@ -1472,7 +1475,6 @@ Namespace Scripts
                 End If
 
                 sqlCol.DataBodyRange.NumberFormat = "General"
-                Dim formula As String = String.Empty
                 Dim qt As String = String.Empty
 
                 For Each col As Excel.ListColumn In tbl.ListColumns
@@ -1529,14 +1531,15 @@ Namespace Scripts
                     'Marshal.ReleaseComObject(sqlCol)
                 End If
                 Ribbon.OpenScriptPane()
+                Logging.InsertRecordInfo(False, formula)
             End Try
         End Sub
 
         Public Shared Sub TSqlInsertValues()
             Dim tbl As Excel.ListObject = Nothing
             Dim sqlCol As Excel.ListColumn = Nothing
+            Dim formula As String = String.Empty
             Try
-                ErrorHandler.CreateLogRecord()
                 Dim lastColumnName As String = My.Settings.Table_ColumnTableAlias
                 Dim sqlColName As String = String.Empty
 
@@ -1553,7 +1556,6 @@ Namespace Scripts
                 End If
 
                 sqlCol.DataBodyRange.NumberFormat = "General"
-                Dim formula As String = String.Empty
                 Dim qt As String = String.Empty
 
                 For Each col As Excel.ListColumn In tbl.ListColumns
@@ -1609,14 +1611,16 @@ Namespace Scripts
                     'Marshal.ReleaseComObject(sqlCol)
                 End If
                 Ribbon.OpenScriptPane()
+                Logging.InsertRecordInfo(False, formula)
             End Try
         End Sub
 
         Public Shared Sub TSqlMergeValues()
             Dim tbl As Excel.ListObject = Nothing
             Dim sqlCol As Excel.ListColumn = Nothing
+            Dim formula As String = String.Empty
             Try
-                ErrorHandler.CreateLogRecord()
+
                 Cursor.Current = System.Windows.Forms.Cursors.WaitCursor
                 Dim lastColumnName As String = My.Settings.Table_ColumnTableAlias
                 Dim tableAlias As String = My.Settings.Table_ColumnTableAlias
@@ -1639,7 +1643,6 @@ Namespace Scripts
 
                 ' Columns formatted as text will not work as formulas and the added column will copy the formatting from the previous column so ensure that the added column never has Text format...
                 sqlCol.DataBodyRange.NumberFormat = "General"
-                Dim formula As String = String.Empty
                 Dim qt As String = String.Empty
 
                 For Each col As Excel.ListColumn In tbl.ListColumns
@@ -1700,14 +1703,15 @@ Namespace Scripts
                     'Marshal.ReleaseComObject(sqlCol)
                 End If
                 Ribbon.OpenScriptPane()
+                Logging.InsertRecordInfo(False, formula)
             End Try
         End Sub
 
         Public Shared Sub TSqlSelectUnion()
             Dim tbl As Excel.ListObject = Nothing
             Dim sqlCol As Excel.ListColumn = Nothing
+            Dim formula As String = String.Empty
             Try
-                ErrorHandler.CreateLogRecord()
                 Dim lastColumnName As String = My.Settings.Table_ColumnTableAlias
                 Dim sqlColName As String = String.Empty
                 sqlColName = My.Settings.Table_ColumnName
@@ -1725,7 +1729,6 @@ Namespace Scripts
 
                 ' Columns formatted as text will not work as formulas and the added column will copy the formatting from the previous column so ensure that the added column never has Text format...
                 sqlCol.DataBodyRange.NumberFormat = "General"
-                Dim formula As String = String.Empty
                 Dim qt As String = String.Empty
 
                 For Each col As Excel.ListColumn In tbl.ListColumns
@@ -1783,14 +1786,15 @@ Namespace Scripts
                     'Marshal.ReleaseComObject(sqlCol)
                 End If
                 Ribbon.OpenScriptPane()
+                Logging.InsertRecordInfo(False, formula)
             End Try
         End Sub
 
         Public Shared Sub TSqlSelectValues()
             Dim tbl As Excel.ListObject = Nothing
             Dim sqlCol As Excel.ListColumn = Nothing
+            Dim formula As String = String.Empty
             Try
-                ErrorHandler.CreateLogRecord()
                 Cursor.Current = System.Windows.Forms.Cursors.WaitCursor
                 Dim lastColumnName As String = My.Settings.Table_ColumnTableAlias
                 Dim tableAlias As String = My.Settings.Table_ColumnTableAlias
@@ -1812,7 +1816,6 @@ Namespace Scripts
 
                 ' Columns formatted as text will not work as formulas and the added column will copy the formatting from the previous column so ensure that the added column never has Text format...
                 sqlCol.DataBodyRange.NumberFormat = "General"
-                Dim formula As String = String.Empty
                 Dim qt As String = String.Empty
 
                 For Each col As Excel.ListColumn In tbl.ListColumns
@@ -1872,14 +1875,15 @@ Namespace Scripts
                     'Marshal.ReleaseComObject(sqlCol)
                 End If
                 Ribbon.OpenScriptPane()
+                Logging.InsertRecordInfo(False, formula)
             End Try
         End Sub
 
         Public Shared Sub TSqlUpdateValues()
             Dim tbl As Excel.ListObject = Nothing
             Dim sqlCol As Excel.ListColumn = Nothing
+            Dim formula As String = String.Empty
             Try
-                ErrorHandler.CreateLogRecord()
                 Dim lastColumnName As String = My.Settings.Table_ColumnTableAlias
                 Dim tableAlias As String = My.Settings.Table_ColumnTableAlias
                 Dim sqlColName As String = String.Empty
@@ -1898,7 +1902,6 @@ Namespace Scripts
                 End If
 
                 sqlCol.DataBodyRange.NumberFormat = "General"
-                Dim formula As String = String.Empty
                 Dim qt As String = String.Empty
                 Dim afterWhere As Boolean = False
 
@@ -1977,8 +1980,10 @@ Namespace Scripts
                 End Try
             Catch generatedExceptionName As System.OutOfMemoryException
                 MessageBox.Show("The amount of records is too big", "No action taken.", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
             Catch ex As Exception
                 ErrorHandler.DisplayMessage(ex)
+
             Finally
                 Cursor.Current = System.Windows.Forms.Cursors.Arrow
                 If tbl IsNot Nothing Then
@@ -1988,14 +1993,16 @@ Namespace Scripts
                     'Marshal.ReleaseComObject(sqlCol)
                 End If
                 Ribbon.OpenScriptPane()
+                Logging.InsertRecordInfo(False, formula)
             End Try
+
         End Sub
 
         Public Shared Sub XmlValues()
             Dim tbl As Excel.ListObject = Nothing
             Dim sqlCol As Excel.ListColumn = Nothing
+            Dim formula As String = String.Empty
             Try
-                ErrorHandler.CreateLogRecord()
                 Dim lastColumnName As String = My.Settings.Table_ColumnTableAlias
                 Dim tableAlias As String = My.Settings.Table_ColumnTableAlias
                 Dim sqlColName As String = String.Empty
@@ -2014,7 +2021,6 @@ Namespace Scripts
                 End If
 
                 sqlCol.DataBodyRange.NumberFormat = "General"
-                Dim formula As String = String.Empty
                 Dim qt As String = String.Empty
 
                 For Each col As Excel.ListColumn In tbl.ListColumns
@@ -2084,6 +2090,7 @@ Namespace Scripts
                     'Marshal.ReleaseComObject(sqlCol)
                 End If
                 Ribbon.OpenScriptPane()
+                Logging.InsertRecordInfo(False, formula)
             End Try
 
         End Sub

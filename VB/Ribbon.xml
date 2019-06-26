@@ -141,6 +141,7 @@ Or use the following tag to remove all other ribbons when this loads
 							label="Table Alias:"
 							getEnabled="False"
 							/>
+          <box boxStyle="horizontal">
 					<button
 							id="btnFormatDateColumns"
 							label="Format Date:"
@@ -152,6 +153,17 @@ Or use the following tag to remove all other ribbons when this loads
 							supertip="Update the default date format of any column that has a date without a zero string value"
               keytip="DTE"
 							/>
+          <button
+              id="btnFormatDateColumnsAll"
+              onAction="OnAction"
+              getEnabled="GetEnabled"
+              imageMso="NewAppointment"
+              size="normal"
+              screentip="Format All Date Columns"
+              supertip="Update all the default date format of any column that has a date without a zero string value"
+              keytip="DTE"
+							/>
+          </box>
 					<button
 						id="btnFormatTimeColumns"
 						label="Format Time:"

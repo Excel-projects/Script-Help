@@ -373,6 +373,30 @@ Partial Friend NotInheritable Class MySettings
             Me("Visible_grpAnnotation") = value
         End Set
     End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("C:\Temp")>  _
+    Public Property App_PathLog() As String
+        Get
+            Return CType(Me("App_PathLog"),String)
+        End Get
+        Set
+            Me("App_PathLog") = value
+        End Set
+    End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+    Public Property Visible_log_file_trace_on() As Boolean
+        Get
+            Return CType(Me("Visible_log_file_trace_on"),Boolean)
+        End Get
+        Set
+            Me("Visible_log_file_trace_on") = value
+        End Set
+    End Property
 End Class
 
 Namespace My

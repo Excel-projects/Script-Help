@@ -22,7 +22,9 @@ Namespace Scripts
 
             Catch ex As Exception
                 ErrorHandler.DisplayMessage(ex)
-                Exit Try
+
+            Finally
+                Logging.InsertRecordInfo()
 
             End Try
 
@@ -36,8 +38,8 @@ Namespace Scripts
         ''' only run if deployed 
         ''' </remarks>
         Public Sub SetAddRemoveProgramsIcon(iconName As String)
-            If System.Deployment.Application.ApplicationDeployment.IsNetworkDeployed AndAlso ApplicationDeployment.CurrentDeployment.IsFirstRun Then
-                Try
+            Try
+                If System.Deployment.Application.ApplicationDeployment.IsNetworkDeployed AndAlso ApplicationDeployment.CurrentDeployment.IsFirstRun Then
                     Dim code As Assembly = Assembly.GetExecutingAssembly()
                     Dim asdescription As AssemblyDescriptionAttribute = DirectCast(Attribute.GetCustomAttribute(code, GetType(AssemblyDescriptionAttribute)), AssemblyDescriptionAttribute)
                     Dim assemblyDescription As String = asdescription.Description
@@ -65,10 +67,16 @@ Namespace Scripts
                             Exit For
                         End If
                     Next
-                Catch ex As Exception
-                    ErrorHandler.DisplayMessage(ex)
-                End Try
-            End If
+                End If
+
+            Catch ex As Exception
+                ErrorHandler.DisplayMessage(ex, True)
+
+            Finally
+                Logging.InsertRecordInfo()
+
+            End Try
+
         End Sub
 
     End Class

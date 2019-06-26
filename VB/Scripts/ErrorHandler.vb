@@ -8,32 +8,36 @@ Namespace Scripts
 
     Public Class ErrorHandler
 
-        Public Shared Sub CreateLogRecord()
-            Try
-                Dim sf As New System.Diagnostics.StackFrame(1)
-                Dim caller As System.Reflection.MethodBase = sf.GetMethod()
-                Dim currentProcedure As String = (caller.Name).Trim()
-                'log.Info((Convert.ToString("[PROCEDURE]=|") & currentProcedure) + "|[USER NAME]=|" + Environment.UserName + "|[MACHINE NAME]=|" + Environment.MachineName)
+        Public Shared Sub DisplayMessage(ByVal ex As Exception, ByVal Optional isSilent As Boolean = False)
 
-            Catch ex As Exception
-                ErrorHandler.DisplayMessage(ex)
-            End Try
-
-        End Sub
-
-        Public Shared Sub DisplayMessage(ex As Exception, Optional isSilent As [Boolean] = False)
+            'gather context
             Dim sf As New System.Diagnostics.StackFrame(1)
             Dim caller As System.Reflection.MethodBase = sf.GetMethod()
             Dim currentProcedure As String = (caller.Name).Trim()
-            Dim currentFileName As String = "" 'AssemblyInfo.GetCurrentFileName()
-            Dim errorMessageDescription As String = ex.ToString()
-            errorMessageDescription = System.Text.RegularExpressions.Regex.Replace(errorMessageDescription, "\r\n+", " ")
-            Dim msg As String = "Contact your system administrator. A record has been created in the log file." + Environment.NewLine
-            msg += (Convert.ToString("Procedure: ") & currentProcedure) + Environment.NewLine
-            msg += "Description: " + ex.ToString() + Environment.NewLine
-            'log.Error("[PROCEDURE]=|" + currentProcedure + "|[USER NAME]=|" + Environment.UserName + "|[MACHINE NAME]=|" + Environment.MachineName + "|[DESCRIPTION]=|" + errorMessageDescription)
+            Dim currentClass As String = caller.DeclaringType.FullName
+            Dim errorDescription As String = ex.ToString()
+            errorDescription = System.Text.RegularExpressions.Regex.Replace(errorDescription, "\r\n+", " ")
+
+            'format message
+            Dim userMessage = New StringBuilder() _
+            .AppendLine("Contact your system administrator. A log file record has been created.") _
+            .AppendLine("") _
+            .AppendLine("Class: ") _
+            .AppendLine(currentClass) _
+            .AppendLine("") _
+            .AppendLine("Procedure: ") _
+            .AppendLine(currentProcedure) _
+            .AppendLine("") _
+            .AppendLine("Description: ") _
+            .AppendLine(errorDescription).ToString()
+
+            'handle log record
+            Logging.InsertRecordError(currentClass, currentProcedure, errorDescription)
+
+            'handle message
             If isSilent = False Then
-                MessageBox.Show(msg, "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.[Error])
+                MessageBox.Show(userMessage, "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+
             End If
 
         End Sub

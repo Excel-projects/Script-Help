@@ -43,7 +43,10 @@ Namespace Scripts
                 TableAliasTable.TableName = tableName
 
             Catch ex As Exception
-                'ErrorHandler.DisplayMessage(ex)
+                ErrorHandler.DisplayMessage(ex, True)
+
+            Finally
+                Logging.InsertRecordInfo()
 
             End Try
 
@@ -70,7 +73,10 @@ Namespace Scripts
                 DateFormatTable.TableName = tableName
 
             Catch ex As Exception
-                'ErrorHandler.DisplayMessage(ex)
+                ErrorHandler.DisplayMessage(ex, True)
+
+            Finally
+                Logging.InsertRecordInfo()
 
             End Try
 
@@ -97,7 +103,10 @@ Namespace Scripts
                 TimeFormatTable.TableName = tableName
 
             Catch ex As Exception
-                'ErrorHandler.DisplayMessage(ex)
+                ErrorHandler.DisplayMessage(ex, True)
+
+            Finally
+                Logging.InsertRecordInfo()
 
             End Try
 
@@ -123,9 +132,10 @@ Namespace Scripts
                 GraphDataTable.DefaultView.Sort = columnName & Convert.ToString(" asc")
 
             Catch ex As Exception
-                'ErrorHandler.DisplayMessage(ex)
+                ErrorHandler.DisplayMessage(ex, True)
 
             Finally
+                Logging.InsertRecordInfo()
 
             End Try
 
@@ -142,7 +152,10 @@ Namespace Scripts
                 My.Settings.App_PathDeployData = combined.ToString()
 
             Catch ex As Exception
-                'ErrorHandler.DisplayMessage(ex)
+                ErrorHandler.DisplayMessage(ex, True)
+
+            Finally
+                Logging.InsertRecordInfo()
 
             End Try
 
@@ -170,42 +183,55 @@ Namespace Scripts
                 My.Settings.App_PathLocalData = userFilePath
 
             Catch ex As Exception
-                'ErrorHandler.DisplayMessage(ex)
+                ErrorHandler.DisplayMessage(ex, True)
+
+            Finally
+                Logging.InsertRecordInfo()
 
             End Try
 
         End Sub
 
         Public Shared Sub InsertRecord(ByVal tbl As DataTable, ByVal text As String)
-            Dim tableName As String = tbl.TableName.ToString()
-            Dim columnName As String = tbl.Columns(0).ColumnName.ToString()
-            Dim sql As String = "SELECT * FROM " & tableName
-            If tbl.[Select](columnName & " = '" + text.Replace("'", "''") & "'").Length = 0 Then
-                Dim dr As DialogResult = MessageBox.Show("Would you like to add '" & text & "' to the list?", "Add New Value", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-                Select Case dr
-                    Case DialogResult.Yes
-                        tbl.Rows.Add(New Object() {text})
-                        Dim cn As SqlCeConnection = New SqlCeConnection(Data.Connection())
-                        Dim scb As SqlCeCommandBuilder = Nothing
-                        Dim sda As SqlCeDataAdapter = New SqlCeDataAdapter(sql, cn)
-                        sda.TableMappings.Add("Table", tableName)
-                        scb = New SqlCeCommandBuilder(sda)
-                        sda.Update(tbl)
-                        Dim dcFormatString As DataColumn = New DataColumn(columnName, GetType(String))
-                        tbl.Rows.Clear()
-                        Dim columns As DataColumnCollection = tbl.Columns
-                        If columns.Contains(columnName) = False Then
-                            tbl.Columns.Add(dcFormatString)
-                        End If
+            Try
+                Dim tableName As String = tbl.TableName.ToString()
+                Dim columnName As String = tbl.Columns(0).ColumnName.ToString()
+                Dim sql As String = "SELECT * FROM " & tableName
+                If tbl.[Select](columnName & " = '" + text.Replace("'", "''") & "'").Length = 0 Then
+                    Dim dr As DialogResult = MessageBox.Show("Would you like to add '" & text & "' to the list?", "Add New Value", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                    Select Case dr
+                        Case DialogResult.Yes
+                            tbl.Rows.Add(New Object() {text})
+                            Dim cn As SqlCeConnection = New SqlCeConnection(Data.Connection())
+                            Dim scb As SqlCeCommandBuilder = Nothing
+                            Dim sda As SqlCeDataAdapter = New SqlCeDataAdapter(sql, cn)
+                            sda.TableMappings.Add("Table", tableName)
+                            scb = New SqlCeCommandBuilder(sda)
+                            sda.Update(tbl)
+                            Dim dcFormatString As DataColumn = New DataColumn(columnName, GetType(String))
+                            tbl.Rows.Clear()
+                            Dim columns As DataColumnCollection = tbl.Columns
+                            If columns.Contains(columnName) = False Then
+                                tbl.Columns.Add(dcFormatString)
+                            End If
 
-                        Using da = New SqlCeDataAdapter(sql, Connection())
-                            da.Fill(tbl)
-                        End Using
+                            Using da = New SqlCeDataAdapter(sql, Connection())
+                                da.Fill(tbl)
+                            End Using
 
-                        tbl.DefaultView.Sort = columnName & " asc"
-                    Case DialogResult.No
-                End Select
-            End If
+                            tbl.DefaultView.Sort = columnName & " asc"
+                        Case DialogResult.No
+                    End Select
+                End If
+
+            Catch ex As Exception
+                ErrorHandler.DisplayMessage(ex, True)
+
+            Finally
+                Logging.InsertRecordInfo()
+
+            End Try
+
         End Sub
 
     End Class

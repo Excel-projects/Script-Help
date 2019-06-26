@@ -108,7 +108,6 @@ Namespace Scripts
                 Data.SetServerPath()
                 Data.SetUserPath()
                 'ErrorHandler.SetLogPath()
-                ErrorHandler.CreateLogRecord()
 
                 'Dim destFilePath As String = Path.Combine(Properties.Settings.[Default].App_PathLocalData, AssemblyInfo.Product + ".sdf")
                 'If Not (File.Exists(destFilePath)) Then
@@ -125,6 +124,9 @@ Namespace Scripts
 
             Catch ex As Exception
                 ErrorHandler.DisplayMessage(ex)
+
+            Finally
+                Logging.InsertRecordInfo(True)
 
             End Try
 
@@ -154,6 +156,9 @@ Namespace Scripts
             Catch ex As Exception
                 ErrorHandler.DisplayMessage(ex)
                 Return Nothing
+
+            Finally
+                Logging.InsertRecordInfo()
 
             End Try
 
@@ -225,6 +230,9 @@ Namespace Scripts
                 ErrorHandler.DisplayMessage(ex)
                 Return String.Empty
 
+            Finally
+                Logging.InsertRecordInfo()
+
             End Try
 
         End Function
@@ -241,10 +249,16 @@ Namespace Scripts
                     Case Else
                         Return 0
                 End Select
+
             Catch ex As Exception
                 ErrorHandler.DisplayMessage(ex)
                 Return 0
+
+            Finally
+                Logging.InsertRecordInfo()
+
             End Try
+
         End Function
 
         Public Function GetItemLabel(control As Office.IRibbonControl, index As Integer) As String
@@ -259,10 +273,16 @@ Namespace Scripts
                     Case Else
                         Return String.Empty
                 End Select
+
             Catch ex As Exception
                 ErrorHandler.DisplayMessage(ex)
                 Return String.Empty
+
+            Finally
+                Logging.InsertRecordInfo()
+
             End Try
+
         End Function
 
         Public Sub GetSelectedItemID(ByVal Control As Office.IRibbonControl, ByRef itemID As Object)
@@ -277,6 +297,9 @@ Namespace Scripts
             Catch ex As Exception
                 ErrorHandler.DisplayMessage(ex)
                 itemID = String.Empty
+
+            Finally
+                Logging.InsertRecordInfo()
 
             End Try
 
@@ -294,6 +317,9 @@ Namespace Scripts
             Catch ex As Exception
                 ErrorHandler.DisplayMessage(ex)
                 Return 0
+
+            Finally
+                Logging.InsertRecordInfo()
 
             End Try
 
@@ -318,6 +344,9 @@ Namespace Scripts
             Catch ex As Exception
                 ErrorHandler.DisplayMessage(ex)
                 Return String.Empty
+
+            Finally
+                Logging.InsertRecordInfo()
 
             End Try
 
@@ -406,6 +435,9 @@ Namespace Scripts
             Catch ex As Exception
                 ErrorHandler.DisplayMessage(ex)
 
+            Finally
+                Logging.InsertRecordInfo()
+
             End Try
 
         End Sub
@@ -429,6 +461,10 @@ Namespace Scripts
 
             Catch ex As Exception
                 ErrorHandler.DisplayMessage(ex)
+
+            Finally
+                Logging.InsertRecordInfo()
+
             End Try
 
         End Sub
@@ -449,6 +485,10 @@ Namespace Scripts
             Catch ex As Exception
                 ErrorHandler.DisplayMessage(ex)
                 Return String.Empty
+
+            Finally
+                Logging.InsertRecordInfo()
+
             End Try
 
         End Function
@@ -479,6 +519,9 @@ Namespace Scripts
                 ErrorHandler.DisplayMessage(ex)
                 Return False
 
+            Finally
+                Logging.InsertRecordInfo()
+
             End Try
 
         End Function
@@ -490,6 +533,9 @@ Namespace Scripts
             Catch ex As Exception
                 ErrorHandler.DisplayMessage(ex)
                 Return False
+
+            Finally
+                Logging.InsertRecordInfo()
 
             End Try
 
@@ -505,7 +551,6 @@ Namespace Scripts
                 If ErrorHandler.IsEnabled(True) = False Then
                     Return
                 End If
-                ErrorHandler.CreateLogRecord()
                 visibleRange = Globals.ThisAddIn.Application.Selection.SpecialCells(Excel.XlCellType.xlCellTypeVisible)
                 visibleRange.Copy()
 
@@ -516,6 +561,8 @@ Namespace Scripts
                 If visibleRange IsNot Nothing Then
                     'Marshal.ReleaseComObject(visibleRange)
                 End If
+                Logging.InsertRecordInfo()
+
             End Try
 
         End Sub
@@ -528,7 +575,6 @@ Namespace Scripts
                 If ErrorHandler.IsAvailable(True) = False Then
                     Return
                 End If
-                ErrorHandler.CreateLogRecord()
                 tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject
                 cell = Nothing
                 Dim c As String = String.Empty
@@ -582,6 +628,9 @@ Namespace Scripts
                 If usedRange IsNot Nothing Then
                     'Marshal.ReleaseComObject(usedRange)
                 End If
+
+                Logging.InsertRecordInfo()
+
             End Try
 
         End Sub
@@ -594,7 +643,6 @@ Namespace Scripts
                 If ErrorHandler.IsAvailable(True) = False Then
                     Return
                 End If
-                ErrorHandler.CreateLogRecord()
                 tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject
                 cell = Nothing
                 Dim cnt As Integer = 0
@@ -630,6 +678,9 @@ Namespace Scripts
                 If usedRange IsNot Nothing Then
                     'Marshal.ReleaseComObject(usedRange)
                 End If
+
+                Logging.InsertRecordInfo()
+
             End Try
 
         End Sub
@@ -641,7 +692,6 @@ Namespace Scripts
                 If ErrorHandler.IsAvailable(True) = False Then
                     Return
                 End If
-                ErrorHandler.CreateLogRecord()
                 tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject
                 cell = Nothing
                 Cursor.Current = System.Windows.Forms.Cursors.WaitCursor
@@ -669,6 +719,9 @@ Namespace Scripts
                 If cell IsNot Nothing Then
                     'Marshal.ReleaseComObject(cell)
                 End If
+
+                Logging.InsertRecordInfo()
+
             End Try
 
         End Sub
@@ -680,7 +733,6 @@ Namespace Scripts
                 If ErrorHandler.IsAvailable(True) = False Then
                     Return
                 End If
-                ErrorHandler.CreateLogRecord()
                 tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject
                 cell = Nothing
                 Cursor.Current = System.Windows.Forms.Cursors.WaitCursor
@@ -708,6 +760,9 @@ Namespace Scripts
                 If cell IsNot Nothing Then
                     'Marshal.ReleaseComObject(cell)
                 End If
+
+                Logging.InsertRecordInfo()
+
             End Try
 
         End Sub
@@ -720,7 +775,6 @@ Namespace Scripts
                 If ErrorHandler.IsValidListObject(False) = True Then
                     Return
                 End If
-                ErrorHandler.CreateLogRecord()
                 range = Globals.ThisAddIn.Application.Selection
                 Cursor.Current = System.Windows.Forms.Cursors.WaitCursor
 
@@ -741,6 +795,9 @@ Namespace Scripts
                 If range IsNot Nothing Then
                     'Marshal.ReleaseComObject(range)
                 End If
+
+                Logging.InsertRecordInfo()
+
             End Try
 
         End Sub
@@ -752,7 +809,6 @@ Namespace Scripts
                 If ErrorHandler.IsAvailable(True) = False Then
                     Return
                 End If
-                ErrorHandler.CreateLogRecord()
                 tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject
                 Cursor.Current = System.Windows.Forms.Cursors.WaitCursor
                 tbl.DataBodyRange.Interior.ColorIndex = Excel.Constants.xlNone
@@ -780,6 +836,9 @@ Namespace Scripts
                 If rng IsNot Nothing Then
                     'Marshal.ReleaseComObject(rng)
                 End If
+
+                Logging.InsertRecordInfo()
+
             End Try
 
         End Sub
@@ -791,7 +850,6 @@ Namespace Scripts
                 If ErrorHandler.IsAvailable(True) = False Then
                     Return
                 End If
-                ErrorHandler.CreateLogRecord()
                 tbl = Globals.ThisAddIn.Application.ActiveCell.ListObject
                 cell = Globals.ThisAddIn.Application.ActiveCell
                 Cursor.Current = System.Windows.Forms.Cursors.WaitCursor
@@ -837,6 +895,9 @@ Namespace Scripts
                 If cell IsNot Nothing Then
                     'Marshal.ReleaseComObject(cell)
                 End If
+
+                Logging.InsertRecordInfo()
+
             End Try
 
         End Sub
@@ -844,47 +905,67 @@ Namespace Scripts
         Public Sub CreateFileList()
             Dim filePath As String = "" 'My.Settings.Option_PathFileListing
             Try
-                ErrorHandler.CreateLogRecord()
                 Dim msgDialogResult As DialogResult = DialogResult.None
                 Dim dlg As New FolderBrowserDialog()
-            'If My.Settings.Option_PathFileListingSelect = True Then
-            dlg.RootFolder = Environment.SpecialFolder.MyComputer
-                    dlg.SelectedPath = filePath
-                    msgDialogResult = dlg.ShowDialog()
-                    filePath = dlg.SelectedPath
-            'End If
-            'If msgDialogResult = DialogResult.OK Or My.Settings.Option_PathFileListingSelect = False Then
-            filePath += "\"
-                    Dim scriptCommands As String = String.Empty
-                    Dim currentDate As String = DateTime.Now.ToString("dd.MMM.yyyy_hh.mm.tt")
-                    Dim batchFileName As String = (Convert.ToString(filePath & Convert.ToString("FileListing_")) & currentDate) + "_" + Environment.UserName + ".bat"
-                    scriptCommands = "echo off" + Environment.NewLine
-                    scriptCommands += "cd %1" + Environment.NewLine
-                    scriptCommands += (Convert.ToString((Convert.ToString((Convert.ToString("dir """) & filePath) + """ /s /a-h /b /-p /o:gen >""") & filePath) + "FileListing_") & currentDate) + "_" + Environment.UserName + ".csv""" + Environment.NewLine
-                    scriptCommands += (Convert.ToString((Convert.ToString("""") & filePath) + "FileListing_") & currentDate) + "_" + Environment.UserName + ".csv""" + Environment.NewLine
-                    scriptCommands += "cd .. " + Environment.NewLine
-                    scriptCommands += "echo on" + Environment.NewLine
-                    System.IO.File.WriteAllText(batchFileName, scriptCommands)
-            'AssemblyInfo.OpenFile(batchFileName)
-            'End If
+                'If My.Settings.Option_PathFileListingSelect = True Then
+                dlg.RootFolder = Environment.SpecialFolder.MyComputer
+                dlg.SelectedPath = filePath
+                msgDialogResult = dlg.ShowDialog()
+                filePath = dlg.SelectedPath
+                'End If
+                'If msgDialogResult = DialogResult.OK Or My.Settings.Option_PathFileListingSelect = False Then
+                filePath += "\"
+                Dim scriptCommands As String = String.Empty
+                Dim currentDate As String = DateTime.Now.ToString("dd.MMM.yyyy_hh.mm.tt")
+                Dim batchFileName As String = (Convert.ToString(filePath & Convert.ToString("FileListing_")) & currentDate) + "_" + Environment.UserName + ".bat"
+                scriptCommands = "echo off" + Environment.NewLine
+                scriptCommands += "cd %1" + Environment.NewLine
+                scriptCommands += (Convert.ToString((Convert.ToString((Convert.ToString("dir """) & filePath) + """ /s /a-h /b /-p /o:gen >""") & filePath) + "FileListing_") & currentDate) + "_" + Environment.UserName + ".csv""" + Environment.NewLine
+                scriptCommands += (Convert.ToString((Convert.ToString("""") & filePath) + "FileListing_") & currentDate) + "_" + Environment.UserName + ".csv""" + Environment.NewLine
+                scriptCommands += "cd .. " + Environment.NewLine
+                scriptCommands += "echo on" + Environment.NewLine
+                System.IO.File.WriteAllText(batchFileName, scriptCommands)
+                'AssemblyInfo.OpenFile(batchFileName)
+                'End If
 
             Catch generatedExceptionName As System.UnauthorizedAccessException
                 MessageBox.Show(Convert.ToString("You don't have access to this folder, bro!" + Environment.NewLine + Environment.NewLine) & filePath, "No action taken.", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
             Catch ex As Exception
                 ErrorHandler.DisplayMessage(ex)
+
+            Finally
+                Logging.InsertRecordInfo()
+
             End Try
 
         End Sub
 
         Public Sub OpenReadMe()
-            ErrorHandler.CreateLogRecord()
-            System.Diagnostics.Process.Start(My.Settings.App_PathReadMe)
+            Try
+                System.Diagnostics.Process.Start(My.Settings.App_PathReadMe)
+
+            Catch ex As Exception
+                ErrorHandler.DisplayMessage(ex)
+
+            Finally
+                Logging.InsertRecordInfo()
+
+            End Try
+
         End Sub
 
         Public Sub OpenNewIssue()
-            ErrorHandler.CreateLogRecord()
-            System.Diagnostics.Process.Start(My.Settings.App_PathNewIssue)
+            Try
+                System.Diagnostics.Process.Start(My.Settings.App_PathNewIssue)
+
+            Catch ex As Exception
+                ErrorHandler.DisplayMessage(ex)
+
+            Finally
+                Logging.InsertRecordInfo()
+
+            End Try
 
         End Sub
 
@@ -905,9 +986,15 @@ Namespace Scripts
                     myTaskPaneSettings.Visible = True
 
                 End If
+
             Catch ex As Exception
                 ErrorHandler.DisplayMessage(ex)
+
+            Finally
+                Logging.InsertRecordInfo()
+
             End Try
+
         End Sub
 
         Public Shared Sub OpenScriptPane()
@@ -926,6 +1013,10 @@ Namespace Scripts
 
             Catch ex As Exception
                 ErrorHandler.DisplayMessage(ex)
+
+            Finally
+                Logging.InsertRecordInfo()
+
             End Try
 
         End Sub
@@ -947,6 +1038,9 @@ Namespace Scripts
             Catch ex As Exception
                 ErrorHandler.DisplayMessage(ex)
 
+            Finally
+                Logging.InsertRecordInfo()
+
             End Try
 
         End Sub
@@ -966,6 +1060,9 @@ Namespace Scripts
             Catch ex As Exception
                 ErrorHandler.DisplayMessage(ex)
                 Return String.Empty
+
+            Finally
+                Logging.InsertRecordInfo()
 
             End Try
 
@@ -989,6 +1086,10 @@ Namespace Scripts
 
             Catch generatedExceptionName As Exception
                 Return String.Empty
+
+            Finally
+                Logging.InsertRecordInfo()
+
             End Try
 
         End Function
@@ -1006,6 +1107,10 @@ Namespace Scripts
 
             Catch generatedExceptionName As Exception
                 Return String.Empty
+
+            Finally
+                Logging.InsertRecordInfo()
+
             End Try
 
         End Function
@@ -1036,6 +1141,9 @@ Namespace Scripts
                 ErrorHandler.DisplayMessage(ex)
                 Return String.Empty
 
+            Finally
+                Logging.InsertRecordInfo()
+
             End Try
 
         End Function
@@ -1051,6 +1159,9 @@ Namespace Scripts
             Catch ex As Exception
                 ErrorHandler.DisplayMessage(ex)
                 Return String.Empty
+
+            Finally
+                Logging.InsertRecordInfo()
 
             End Try
 
@@ -1093,6 +1204,9 @@ Namespace Scripts
                 ErrorHandler.DisplayMessage(ex)
                 Return 0
 
+            Finally
+                Logging.InsertRecordInfo()
+
             End Try
 
         End Function
@@ -1102,15 +1216,28 @@ Namespace Scripts
                 Return col(key)
 
             Catch ex As Exception
-                ' ErrorMsg(ex)            
+                ErrorHandler.DisplayMessage(ex, True)
                 Return Nothing
+
+            Finally
+                Logging.InsertRecordInfo()
 
             End Try
 
         End Function
 
         Public Sub InvalidateRibbon()
-            ribbon.Invalidate()
+            Try
+                ribbon.Invalidate()
+
+            Catch ex As Exception
+                ErrorHandler.DisplayMessage(ex)
+
+            Finally
+                Logging.InsertRecordInfo()
+
+            End Try
+
         End Sub
 
         Friend Shared Function ListColumn(ByVal cell As Excel.Range) As Excel.ListColumn
@@ -1130,6 +1257,9 @@ Namespace Scripts
                 ErrorHandler.DisplayMessage(ex)
                 Return Nothing
                 Exit Try
+
+            Finally
+                Logging.InsertRecordInfo()
 
             End Try
 
@@ -1157,6 +1287,9 @@ Namespace Scripts
                 ErrorHandler.DisplayMessage(ex)
                 Return Nothing
 
+            Finally
+                Logging.InsertRecordInfo()
+
             End Try
 
         End Function
@@ -1175,6 +1308,9 @@ Namespace Scripts
             Catch ex As Exception
                 ErrorHandler.DisplayMessage(ex)
 
+            Finally
+                Logging.InsertRecordInfo()
+
             End Try
 
         End Sub
@@ -1182,9 +1318,14 @@ Namespace Scripts
         Public Function UpdateTableAliasComboBoxSource(itemIndex As Integer) As String
             Try
                 Return Data.TableAliasTable.Rows(itemIndex)("TableName").ToString()
+
             Catch ex As Exception
                 ErrorHandler.DisplayMessage(ex)
                 Return String.Empty
+
+            Finally
+                Logging.InsertRecordInfo()
+
             End Try
 
         End Function
@@ -1192,19 +1333,31 @@ Namespace Scripts
         Public Function UpdateDateFormatComboBoxSource(itemIndex As Integer) As String
             Try
                 Return Data.DateFormatTable.Rows(itemIndex)("FormatString").ToString()
+
             Catch ex As Exception
                 ErrorHandler.DisplayMessage(ex)
                 Return String.Empty
+
+            Finally
+                Logging.InsertRecordInfo()
+
             End Try
+
         End Function
 
         Public Function UpdateTimeFormatComboBoxSource(itemIndex As Integer) As String
             Try
                 Return Data.TimeFormatTable.Rows(itemIndex)("FormatString").ToString()
+
             Catch ex As Exception
                 ErrorHandler.DisplayMessage(ex)
                 Return String.Empty
+
+            Finally
+                Logging.InsertRecordInfo()
+
             End Try
+
         End Function
 
         Public Sub OpenSnippingTool()
@@ -1217,18 +1370,30 @@ Namespace Scripts
                 End If
 
                 System.Diagnostics.Process.Start(filePath)
+
             Catch ex As Exception
                 ErrorHandler.DisplayMessage(ex)
+
+            Finally
+                Logging.InsertRecordInfo()
+
             End Try
+
         End Sub
 
         Public Sub OpenProblemStepRecorder()
             Dim filePath As String = "C:\Windows\System32\psr.exe"
             Try
                 System.Diagnostics.Process.Start(filePath)
+
             Catch ex As Exception
                 ErrorHandler.DisplayMessage(ex)
+
+            Finally
+                Logging.InsertRecordInfo()
+
             End Try
+
         End Sub
 
 #End Region
