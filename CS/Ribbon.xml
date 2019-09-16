@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui" onLoad="Ribbon_Load">
 
-	<ribbon startFromScratch="false">
-		<qat>
-			<sharedControls >
-				<button idMso ="FileSave" />
-				<button
+  <ribbon startFromScratch="false">
+    <qat>
+      <sharedControls >
+        <button idMso ="FileSave" />
+        <button
 					id="btnSaveVersion"
 					label="Save Version"
 					onAction="OnAction"
@@ -14,7 +14,7 @@
 					supertip="This will save the current file as a version in the same directory."
 					insertBeforeMso="Undo"
 				/>
-				<button
+        <button
 					id="btnSaveCode"
 					label="Save Code"
 					onAction="OnAction"
@@ -24,23 +24,23 @@
 					insertBeforeMso="Undo"
 					enabled="false"
 				/>
-				<control idMso ="Undo"/>
-				<control idMso ="Redo" />
-				<button
+        <control idMso ="Undo"/>
+        <control idMso ="Redo" />
+        <button
 					idMso ="FileSendAsAttachment"
 					label="Email"
 					screentip="Email File As Attachment"
 					supertip="This will email the current file as an attachment. "
 				/>
-				<separator id="sepSc2"/>
-				<button
+        <separator id="sepSc2"/>
+        <button
 					idMso ="Camera"
 					label="Excel Camera"
 					getImage="GetButtonImage"
 					screentip="Microsoft Excel Camera"
 					supertip="This tool allows you to take a snapshot of a selected datasheet portion, it also syncs the data with the image; whenever you make changes to the original data set, live image gets updated, showing you the latest cells values. "
 				/>
-				<button
+        <button
 					id="btnSnippingTool1"
 					label="Snipping Tool"
 					onAction="OnAction"
@@ -48,7 +48,7 @@
 					screentip="Microsoft Snipping Tool"
 					supertip="Snipping Tool is a screenshot utility included in Microsoft Windows. It can take screenshots of an open window, rectangular areas, a free-form area, or the entire screen."
 				/>
-				<button
+        <button
 					id="btnProblemStepRecorder1"
 					label="Record Steps"
 					onAction="OnAction"
@@ -56,50 +56,50 @@
 					screentip="Microsoft Problem Steps Recorder"
 					supertip="Problem Steps Recorder or PSR records the actions you take on your computer which you can then send to the person or group helping you with your computer problem."
 				/>
-			</sharedControls>
-			<documentControls >
-				<button idMso="Cut"/>
-			</documentControls>
-		</qat>
-		<tabs>
-			<tab idMso="TabHome" visible="true" />
+      </sharedControls>
+      <documentControls >
+        <button idMso="Cut"/>
+      </documentControls>
+    </qat>
+    <tabs>
+      <!--<tab idMso="TabHome" visible="true" />
 			<tab idMso="TabInsert" visible="true" />
 			<tab idMso="TabReview" visible="true" />
 			<tab idMso="TabData" visible="true" />
 			<tab idMso="TabView" visible="true" />
 			<tab idMso="TabFormulas" visible="true" />
-			<tab idMso="TabPageLayoutExcel" visible="true" />
-			<tab idMso="TabDeveloper" visible="true" />
-			<tab idMso="TabPrintPreview" visible="true" />
+			<tab idMso="TabPageLayoutExcel" visible="true" />-->
+      <tab idMso="TabDeveloper" visible="true" />
+      <!--<tab idMso="TabPrintPreview" visible="true" />
 			<tab idMso="TabAddIns" visible="true" />
-			<tab idMso="TabSetTableToolsExcel" visible="true" />
-			<tab
+			<tab idMso="TabSetTableToolsExcel" visible="true" />-->
+      <tab
 					id="tabScriptHelp"
 					getLabel="GetLabelText"
 					insertAfterMso="TabHome"
           keytip="SH"
 					>
-				<group
+        <group
 						id="grpClipboard"
 						label="Clipboard"
 						imageMso="Copy"
 						getVisible="GetVisible"
 						>
-					<control
+          <control
 							idMso="PasteMenu"
 							size="large"
               keytip="V"
 							/>
-					<control
+          <control
 							idMso="Cut"
 							size="normal"
 							/>
-					<control
+          <control
 							idMso="CopySplitButton"
 							size="normal"
 							/>
 
-					<button
+          <button
 							id="btnCopyVisibleCells"
 							label="Copy Visible"
 							onAction="OnAction"
@@ -110,13 +110,13 @@
 							supertip="Copies only visible cells from a selection"
               keytip="CVC"
 							/>
-				</group>
-				<group
+        </group>
+        <group
 						id="grpFormatDataTable"
 						label="Format Data Table"
 						imageMso="FormatAsTableGallery"
 						>
-					<button
+          <button
 							id="btnFormatAsTable"
 							label="Format As Table"
 							onAction="OnAction"
@@ -125,22 +125,23 @@
 							screentip="Convert a range of cells to a table"
 							visible="false"
 							/>
-					<gallery
+          <gallery
 							idMso="FormatAsTableGallery"
 							size="large"
               keytip="FAT"
 							/>
-					<gallery
+          <gallery
 							idMso="ViewFreezePanesGallery"
 							size="normal"
               keytip="VFP"
 							/>
-					<button
+          <button
 							idMso="RemoveDuplicates"
 							size="normal"
               keytip="DUP"
 							/>
-					<button
+          <box id="boxSeparateValues" boxStyle="horizontal">
+          <button
 							id="btnSeparateValues"
 							label="Separate Values"
 							onAction="OnAction"
@@ -150,10 +151,20 @@
 							supertip="Separate values into new rows from the selected column by a delimited string value setting"
               keytip="SPR"
 							/>
-					<separator
+            <editBox
+                id="txtColumnSeparateValuesDelimiter"
+                label=" "
+                getText="GetText"
+                onChange="OnChange"
+                sizeString="X"
+                screentip="Column Separate Values Delimiter"
+                supertip="The value character delimiter"
+							/>
+          </box>
+          <separator
 							id="separator1"
 							/>
-					<button
+          <button
 							id="btnCleanData"
 							label="Clean Data"
 							onAction="OnAction"
@@ -164,7 +175,7 @@
 							supertip="This feature removes all nonprintable characters from text and trims leading and trailing spaces."
               keytip="CLE"
 							/>
-					<button
+          <button
 							id="btnZeroToNull"
 							label="Update to NULL"
 							onAction="OnAction"
@@ -175,7 +186,7 @@
 							supertip="Replaces the zero string values with 'NULL'"
               keytip="NUL"
 							/>
-					<button
+          <button
 							id="btnClearInteriorColor"
 							label="Clear Interior Color"
 							onAction="OnAction"
@@ -186,14 +197,14 @@
 							supertip="Clear the interior color of cells in the current table"
               keytip="INT"
 							/>
-					<separator
+          <separator
 							id="separator2"
 							/>
           <box id="boxFormatButtons" boxStyle="vertical">
-					<labelControl
-							id="lblTableAlias"
-							label="Table Alias:"
-							getEnabled="False"
+            <labelControl
+                id="lblTableAlias"
+                label="Table Alias:"
+                getEnabled="False"
 							/>
             <splitButton id="sbnFormatDateColumns" size="normal" >
               <button
@@ -218,19 +229,19 @@
               />
               </menu>
             </splitButton>
-					<button
-						id="btnFormatTimeColumns"
-						label="Format Time:"
-						onAction="OnAction"
-						getEnabled="GetEnabled"
-						imageMso="DateAndTimeInsert"
-						size="normal"
-						screentip="Format Time Columns"
-						supertip="Update the default time format of the selected column"
-						keytip="TIM"
+            <button
+              id="btnFormatTimeColumns"
+              label="Format Time:"
+              onAction="OnAction"
+              getEnabled="GetEnabled"
+              imageMso="DateAndTimeInsert"
+              size="normal"
+              screentip="Format Time Columns"
+              supertip="Update the default time format of the selected column"
+              keytip="TIM"
 							/>
           </box>
-					<comboBox
+          <comboBox
 						id="cboTableAlias"
 						onChange="OnChange"
 						getItemCount="GetItemCount"
@@ -241,7 +252,7 @@
 						supertip="This is the table alias used as a prefix in the header and footer row in the script column."
 						keytip="DTA"
 							/>
-					<comboBox
+          <comboBox
 						id="cboFormatDate"
 						onChange="OnChange"
 						getText="GetText"
@@ -252,7 +263,7 @@
 						supertip="This is the date format the script uses to replace the formatting for date columns."
 						keytip="DFR"
 							/>
-					<comboBox
+          <comboBox
 							id="cboFormatTime"
 							onChange="OnChange"
 							getText="GetText"
@@ -263,7 +274,7 @@
 							supertip="This is the time format the script uses to replace the formatting for time columns."
               keytip="DFF"
 							/>
-					<button
+          <button
 							id="btnTableAlias"
 							label="..."
 							onAction="OnAction"
@@ -272,7 +283,7 @@
 							tag="TableAlias"
               keytip="LTA"
 							/>
-					<button
+          <button
 							id="btnFormatDate"
 							label="..."
 							onAction="OnAction"
@@ -281,7 +292,7 @@
 							tag="DateFormat"
               keytip="LFF"
 							/>
-					<button
+          <button
 							id="btnFormatTime"
 							label="..."
 							onAction="OnAction"
@@ -290,10 +301,10 @@
 							tag="TimeFormat"
               keytip="LFR"
 							/>
-					<separator
+          <separator
 							id="separator3"
 							/>
-					<menu
+          <menu
 							id="mnuScriptType"
 							imageMso="FunctionWizard"
 							label="Add Script Formula"
@@ -302,7 +313,7 @@
 							supertip="The each button will change the column formula to the selected script string format."
               keytip="ADD"
 							>
-						<button
+            <button
 								id="btnScriptTypeTSqlCreateTable"
 								getImage="GetButtonImage"
 								getLabel="GetLabelText"
@@ -311,7 +322,7 @@
 								getScreentip="GetLabelText"
 								supertip="This changes the query string to a T-SQL CREATE TABLE script."
 								/>
-						<button
+            <button
 								id="btnScriptTypeTSqlInsertValues"
 								getImage="GetButtonImage"
 								getLabel="GetLabelText"
@@ -320,7 +331,7 @@
 								getScreentip="GetLabelText"
 								supertip="This changes the query string to a T-SQL INSERT VALUES script."
 								/>
-						<button
+            <button
 								id="btnScriptTypeTSqlMergeValues"
 								getImage="GetButtonImage"
 								getLabel="GetLabelText"
@@ -329,7 +340,7 @@
 								getScreentip="GetLabelText"
 								supertip="This changes the query string to a T-SQL MERGE VALUES script."
 								/>
-						<button
+            <button
 								id="btnScriptTypeTSqlSelectValues"
 								getImage="GetButtonImage"
 								getLabel="GetLabelText"
@@ -338,7 +349,7 @@
 								getScreentip="GetLabelText"
 								supertip="This changes the query string to a T-SQL SELECT VALUES script."
 								/>
-						<button
+            <button
 								id="btnScriptTypeTSqlSelectUnion"
 								getImage="GetButtonImage"
 								getLabel="GetLabelText"
@@ -347,7 +358,7 @@
 								getScreentip="GetLabelText"
 								supertip="This changes the query string to a T-SQL SELECT UNION script."
 								/>
-						<button
+            <button
 								id="btnScriptTypeTSqlUpdateValues"
 								getImage="GetButtonImage"
 								getLabel="GetLabelText"
@@ -356,10 +367,10 @@
 								getScreentip="GetLabelText"
 								supertip="This changes the query string to a T-SQL UPDATE VALUES script."
 								/>
-						<menuSeparator
+            <menuSeparator
 								id="separator10"
 								/>
-						<button
+            <button
 								id="btnScriptTypePlSqlCreateTable"
 								getImage="GetButtonImage"
 								getLabel="GetLabelText"
@@ -368,7 +379,7 @@
 								getScreentip="GetLabelText"
 								supertip="This changes the query string to a PL/SQL CREATE TABLE script."
 								/>
-						<button
+            <button
 								id="btnScriptTypePlSqlInsertValues"
 								getImage="GetButtonImage"
 								getLabel="GetLabelText"
@@ -377,7 +388,7 @@
 								getScreentip="GetLabelText"
 								supertip="This changes the query string to a PL/SQL INSERT VALUES script."
 								/>
-						<button
+            <button
 								id="btnScriptTypePlSqlMergeValues"
 								getImage="GetButtonImage"
 								getLabel="GetLabelText"
@@ -386,7 +397,7 @@
 								getScreentip="GetLabelText"
 								supertip="This changes the query string to a PL/SQL MERGE VALUES script."
 								/>
-						<button
+            <button
 								id="btnScriptTypePlSqlSelectValues"
 								getImage="GetButtonImage"
 								getLabel="GetLabelText"
@@ -395,7 +406,7 @@
 								getScreentip="GetLabelText"
 								supertip="This changes the query string to a PL/SQL SELECT VALUES script."
 								/>
-						<button
+            <button
 								id="btnScriptTypePlSqlSelectUnion"
 								getImage="GetButtonImage"
 								getLabel="GetLabelText"
@@ -404,7 +415,7 @@
 								getScreentip="GetLabelText"
 								supertip="This changes the query string to a PL/SQL SELECT UNION script."
 								/>
-						<button
+            <button
 								id="btnScriptTypePlSqlUpdateValues"
 								getImage="GetButtonImage"
 								getLabel="GetLabelText"
@@ -413,10 +424,10 @@
 								getScreentip="GetLabelText"
 								supertip="This changes the query string to a PL/SQL UPDATE VALUES script."
 								/>
-						<menuSeparator
+            <menuSeparator
 								id="separator11"
 								/>
-						<button
+            <button
 								id="btnScriptTypeDqlAppend"
 								getImage="GetButtonImage"
 								getLabel="GetLabelText"
@@ -425,7 +436,7 @@
 								getScreentip="GetLabelText"
 								supertip="This changes the query string to a DQL APPEND script (This is used for repeating values)."
 								/>
-						<button
+            <button
 								id="btnScriptTypeDqlAppendLocked"
 								getImage="GetButtonImage"
 								getLabel="GetLabelText"
@@ -434,7 +445,7 @@
 								getScreentip="GetLabelText"
 								supertip="This changes the query string to a DQL APPEND script (This is used for repeating values) and also unlocks and locks the metadata."
 								/>
-						<button
+            <button
 								id="btnScriptTypeDqlCreate"
 								getImage="GetButtonImage"
 								getLabel="GetLabelText"
@@ -443,7 +454,7 @@
 								getScreentip="GetLabelText"
 								supertip="This changes the query string to a DQL CREATE script."
 								/>
-						<button
+            <button
 								id="btnScriptTypeDqlTruncateAppend"
 								getImage="GetButtonImage"
 								getLabel="GetLabelText"
@@ -451,7 +462,7 @@
 								getVisible="GetVisible"
 								getScreentip="GetLabelText"
 								supertip="This changes the query string to a DQL TRUNCATE/APPEND script (This is used for removing all repeating values and then updating to one value)."						/>
-						<button
+            <button
 								id="btnScriptTypeDqlUpdate"
 								getImage="GetButtonImage"
 								getLabel="GetLabelText"
@@ -460,7 +471,7 @@
 								getScreentip="GetLabelText"
 								supertip="This changes the query string to a DQL UPDATE script."
 								/>
-						<button
+            <button
 								id="btnScriptTypeDqlUpdateLocked"
 								getImage="GetButtonImage"
 								getLabel="GetLabelText"
@@ -469,10 +480,10 @@
 								getScreentip="GetLabelText"
 								supertip="This changes the query string to a DQL UPDATE script and also unlocks and locks the metadata."
 								/>
-						<menuSeparator
+            <menuSeparator
 								id="separator12"
 								/>
-						<button
+            <button
 								id="btnScriptTypeMarkdownTable"
 								getImage="GetButtonImage"
 								getLabel="GetLabelText"
@@ -481,10 +492,10 @@
 								getScreentip="GetLabelText"
 								supertip="This changes the query string to a Markdown table script (This is used for READ ME files in GitHub)."
 								/>
-						<menuSeparator
+            <menuSeparator
 								id="separator13"
 								/>
-						<button
+            <button
 								id="btnScriptTypeHtmlTable"
 								getImage="GetButtonImage"
 								getLabel="GetLabelText"
@@ -493,7 +504,7 @@
 								getScreentip="GetLabelText"
 								supertip="This changes the query string to a HMTL Table script."
 								/>
-						<button
+            <button
 								id="btnScriptTypeXmlValues"
 								getImage="GetButtonImage"
 								getLabel="GetLabelText"
@@ -502,13 +513,13 @@
 								getScreentip="GetLabelText"
 								supertip="This changes the query string to a XML script."
 								/>
-					</menu>
-				</group>
-				<group
+          </menu>
+        </group>
+        <group
 						id="grpHelp"
 						label="Help"
 						imageMso="Help">
-					<button
+          <button
 							id="btnOpenReadMe"
 							label="How To...   "
 							onAction="OnAction"
@@ -518,7 +529,7 @@
 							supertip="This opens the read me page in GitHub with detailed instructions of the Add-In functionality."
               keytip="HLP"
 							/>
-					<button
+          <button
 							id="btnOpenNewIssue"
 							label="Report Issue"
 							onAction="OnAction"
@@ -528,7 +539,7 @@
 							supertip="This will open a new issue page in GitHub. The user will need to login to raise an issue."
               keytip="RPT"
 							/>
-					<button
+          <button
 							id="btnSettings"
 							label="Settings"
 							onAction="OnAction"
@@ -538,56 +549,56 @@
 							supertip="This opens a user form with a list of custom properties stored in the file."
               keytip="SET"
 							/>
-				</group>
-				<group
+        </group>
+        <group
 						id="grpAbout"
 						label="About"
 						imageMso="Info">
-					<labelControl
+          <labelControl
 							id="lblDescription"
 							label="Add-In Name: "
 							getEnabled="False"
 							/>
-					<labelControl
+          <labelControl
 							id="lblReleaseDate"
 							label="Release Date: "
 							getEnabled="False"
 							/>
-					<labelControl
+          <labelControl
 							id="lblCopyright"
 							label="Copyright: "
 							getEnabled="False"
 							/>
-					<labelControl
+          <labelControl
 							id="txtDescription"
 							getLabel="GetLabelText"
 							getEnabled="False"
 							/>
-					<labelControl
+          <labelControl
 							id="txtReleaseDate"
 							getLabel="GetLabelText"
 							getEnabled="False"
 							/>
-					<labelControl
+          <labelControl
 							id="txtCopyright"
 							getLabel="GetLabelText"
 							getEnabled="False"
 							/>
-					<button
+          <button
 							id="btnStart"
 							onAction="OnAction"
               keytip="RUN"
 							/>
-				</group>
-			</tab>
-		</tabs>
-	</ribbon>
-	<backstage>
-		<tab id="grpAnnotation" label="Annotate" insertAfterMso="TabInfo" visible="true" firstColumnMaxWidth="500">
-			<firstColumn>
-				<group id="grpOne" label="Microsoft Snipping Tool">
-					<primaryItem>
-						<button
+        </group>
+      </tab>
+    </tabs>
+  </ribbon>
+  <backstage>
+    <tab id="grpAnnotation" label="Annotate" insertAfterMso="TabInfo" visible="true" firstColumnMaxWidth="500">
+      <firstColumn>
+        <group id="grpOne" label="Microsoft Snipping Tool">
+          <primaryItem>
+            <button
 								id="btnSnippingTool"
 								label="Snipping Tool"
 								onAction="OnAction"
@@ -595,16 +606,16 @@
 								screentip="Microsoft Snipping Tool"
 								supertip="Snipping Tool is a screenshot utility included in Microsoft Windows. It can take screenshots of an open window, rectangular areas, a free-form area, or the entire screen."
 							/>
-					</primaryItem>
-					<topItems>
-						<layoutContainer id="layoutOne" layoutChildren="horizontal">
-							<labelControl id="ebox2" label="Snipping Tool is a screenshot utility included in Microsoft Windows. It can take screenshots of an open window, rectangular areas, a free-form area, or the entire screen." />
-						</layoutContainer>
-					</topItems>
-				</group>
-				<group id="grpTwo" label="Microsoft Problem Steps Recorder" >
-					<primaryItem>
-						<button
+          </primaryItem>
+          <topItems>
+            <layoutContainer id="layoutOne" layoutChildren="horizontal">
+              <labelControl id="ebox2" label="Snipping Tool is a screenshot utility included in Microsoft Windows. It can take screenshots of an open window, rectangular areas, a free-form area, or the entire screen." />
+            </layoutContainer>
+          </topItems>
+        </group>
+        <group id="grpTwo" label="Microsoft Problem Steps Recorder" >
+          <primaryItem>
+            <button
 								id="btnProblemStepRecorder"
 								label="Record Steps"
 								onAction="OnAction"
@@ -612,50 +623,217 @@
 								screentip="Microsoft Problem Steps Recorder"
 								supertip="Problem Steps Recorder or PSR records the actions you take on your computer which you can then send to the person or group helping you with your computer problem."
 							/>
-					</primaryItem>
-					<topItems>
-						<labelControl id="ebox3" label="Problem Steps Recorder or PSR records the actions you take on your computer which you can then send to the person or group helping you with your computer problem."/>
-					</topItems>
-				</group>
-			</firstColumn>
-			<secondColumn>
-				<group id="grpThree" label=" " >
-					<topItems>
-						<labelControl id="ebox4" label=" "/>
-					</topItems>
-				</group>
-			</secondColumn>
-		</tab>
-		<tab id="grpScriptHelp" label="Script Help" insertAfterMso="TabOptions" visible="true" firstColumnMaxWidth="500">
-			<firstColumn>
-				<group id="grp2One" label="Script Types">
-					<topItems>
-						<layoutContainer id="layout2One" layoutChildren="vertical">
-							<labelControl id="ebox5" label="Select the script you would like to create with this Add-In"/>
-							<checkBox id="chkBackstageTsql" label ="T-SQL" onAction="OnAction_Checkbox" getPressed="GetPressed"/>
-							<checkBox id="chkBackstagePlsql" label ="PL-SQL" onAction="OnAction_Checkbox" getPressed="GetPressed"/>
-							<checkBox id="chkBackstageDql" label ="DQL" onAction="OnAction_Checkbox" getPressed="GetPressed"/>
-							<checkBox id="chkBackstageMarkdown" label ="MARKDOWN" onAction="OnAction_Checkbox" getPressed="GetPressed"/>
-							<checkBox id="chkBackstageMarkup" label ="MARKUP" onAction="OnAction_Checkbox" getPressed="GetPressed"/>
-						</layoutContainer>
-					</topItems>
-				</group>
-				<group id="grp2Two" label=" " >
-					<primaryItem>
+          </primaryItem>
+          <topItems>
+            <labelControl id="ebox3" label="Problem Steps Recorder or PSR records the actions you take on your computer which you can then send to the person or group helping you with your computer problem."/>
+          </topItems>
+        </group>
+      </firstColumn>
+      <secondColumn>
+        <group id="grpThree" label=" " >
+          <topItems>
+            <labelControl id="ebox4" label=" "/>
+          </topItems>
+        </group>
+      </secondColumn>
+    </tab>
+    <tab id="grpScriptHelp" label="Script Help" insertAfterMso="TabOptions" visible="true" firstColumnMaxWidth="500">
+      <firstColumn>
+        <group id="grp2One" label="Script Types">
+          <topItems>
+            <layoutContainer id="layout2One" layoutChildren="vertical">
+              <labelControl id="ebox5" label="Select the script you would like to create with this Add-In"/>
+              <checkBox id="chkBackstageTsql" label ="T-SQL" onAction="OnAction_Checkbox" getPressed="GetPressed"/>
+              <checkBox id="chkBackstagePlsql" label ="PL-SQL" onAction="OnAction_Checkbox" getPressed="GetPressed"/>
+              <checkBox id="chkBackstageDql" label ="DQL" onAction="OnAction_Checkbox" getPressed="GetPressed"/>
+              <checkBox id="chkBackstageMarkdown" label ="MARKDOWN" onAction="OnAction_Checkbox" getPressed="GetPressed"/>
+              <checkBox id="chkBackstageMarkup" label ="MARKUP" onAction="OnAction_Checkbox" getPressed="GetPressed"/>
+            </layoutContainer>
+          </topItems>
+        </group>
+        <group id="grp2Two" label=" " >
+          <primaryItem>
 
-					</primaryItem>
-					<topItems>
+          </primaryItem>
+          <topItems>
 
-					</topItems>
-				</group>
-			</firstColumn>
-		</tab>
-	</backstage>
+          </topItems>
+        </group>
+      </firstColumn>
+    </tab>
+  </backstage>
   <contextMenus>
     <contextMenu idMso="ContextMenuListRange">
-      <button id="btnTableCleanData" label="Clean Data" insertBeforeMso="Cut" onAction="OnAction" imageMso="FormatPainter"/>
-      <button id="btnTableFormatDate" label="Format Date" insertBeforeMso="Cut" onAction="OnAction" imageMso="NewAppointment"/>
-      <button id="btnTableFormatTime" label="Format Time" insertBeforeMso="Cut" onAction="OnAction" imageMso="DateAndTimeInsert"/>
+      <button id="btn1CleanData" label="Clean Data" insertBeforeMso="Cut" onAction="OnAction" imageMso="FormatPainter"/>
+      <button id="btn1SeparateValues" label="Separate Values" insertBeforeMso="Cut" onAction="OnAction" imageMso="ChartSwitchRowColumn"/>
+      <button id="btn1FormatDateColumns" label="Format Date" insertBeforeMso="Cut" onAction="OnAction" imageMso="NewAppointment"/>
+      <button id="btn1FormatTimeColumns" label="Format Time" insertBeforeMso="Cut" onAction="OnAction" imageMso="DateAndTimeInsert"/>
+      <menu
+        id="mnu1ScriptType"
+        imageMso="FunctionWizard"
+        label="Add Script Formula"
+        insertBeforeMso="Cut"
+					>
+        <button
+            id="btn1ScriptTypeTSqlCreateTable"
+            getImage="GetButtonImage"
+            getLabel="GetLabelText"
+            onAction="OnAction"
+            getVisible="GetVisible"
+								/>
+        <button
+            id="btn1ScriptTypeTSqlInsertValues"
+            getImage="GetButtonImage"
+            getLabel="GetLabelText"
+            onAction="OnAction"
+            getVisible="GetVisible"
+								/>
+        <button
+            id="btn1ScriptTypeTSqlMergeValues"
+            getImage="GetButtonImage"
+            getLabel="GetLabelText"
+            onAction="OnAction"
+            getVisible="GetVisible"
+								/>
+        <button
+            id="btn1ScriptTypeTSqlSelectValues"
+            getImage="GetButtonImage"
+            getLabel="GetLabelText"
+            onAction="OnAction"
+            getVisible="GetVisible"
+								/>
+        <button
+            id="btn1ScriptTypeTSqlSelectUnion"
+            getImage="GetButtonImage"
+            getLabel="GetLabelText"
+            onAction="OnAction"
+            getVisible="GetVisible"
+								/>
+        <button
+            id="btn1ScriptTypeTSqlUpdateValues"
+            getImage="GetButtonImage"
+            getLabel="GetLabelText"
+            onAction="OnAction"
+            getVisible="GetVisible"
+								/>
+        <menuSeparator
+            id="separator20"
+								/>
+        <button
+            id="btn1ScriptTypePlSqlCreateTable"
+            getImage="GetButtonImage"
+            getLabel="GetLabelText"
+            onAction="OnAction"
+            getVisible="GetVisible"
+								/>
+        <button
+            id="btn1ScriptTypePlSqlInsertValues"
+            getImage="GetButtonImage"
+            getLabel="GetLabelText"
+            onAction="OnAction"
+            getVisible="GetVisible"
+								/>
+        <button
+            id="btn1ScriptTypePlSqlMergeValues"
+            getImage="GetButtonImage"
+            getLabel="GetLabelText"
+            onAction="OnAction"
+            getVisible="GetVisible"
+								/>
+        <button
+            id="btn1ScriptTypePlSqlSelectValues"
+            getImage="GetButtonImage"
+            getLabel="GetLabelText"
+            onAction="OnAction"
+            getVisible="GetVisible"
+								/>
+        <button
+            id="btn1ScriptTypePlSqlSelectUnion"
+            getImage="GetButtonImage"
+            getLabel="GetLabelText"
+            onAction="OnAction"
+            getVisible="GetVisible"
+								/>
+        <button
+            id="btn1ScriptTypePlSqlUpdateValues"
+            getImage="GetButtonImage"
+            getLabel="GetLabelText"
+            onAction="OnAction"
+            getVisible="GetVisible"
+								/>
+        <menuSeparator
+            id="separator21"
+								/>
+        <button
+            id="btn1ScriptTypeDqlAppend"
+            getImage="GetButtonImage"
+            getLabel="GetLabelText"
+            onAction="OnAction"
+            getVisible="GetVisible"
+								/>
+        <button
+            id="btn1ScriptTypeDqlAppendLocked"
+            getImage="GetButtonImage"
+            getLabel="GetLabelText"
+            onAction="OnAction"
+            getVisible="GetVisible"
+								/>
+        <button
+            id="btn1ScriptTypeDqlCreate"
+            getImage="GetButtonImage"
+            getLabel="GetLabelText"
+            onAction="OnAction"
+            getVisible="GetVisible"
+								/>
+        <button
+            id="btn1ScriptTypeDqlTruncateAppend"
+            getImage="GetButtonImage"
+            getLabel="GetLabelText"
+            onAction="OnAction"
+            getVisible="GetVisible"
+            								/>
+        <button
+            id="btn1ScriptTypeDqlUpdate"
+            getImage="GetButtonImage"
+            getLabel="GetLabelText"
+            onAction="OnAction"
+            getVisible="GetVisible"
+								/>
+        <button
+            id="btn1ScriptTypeDqlUpdateLocked"
+            getImage="GetButtonImage"
+            getLabel="GetLabelText"
+            onAction="OnAction"
+            getVisible="GetVisible"
+								/>
+        <menuSeparator
+            id="separator22"
+								/>
+        <button
+            id="btn1ScriptTypeMarkdownTable"
+            getImage="GetButtonImage"
+            getLabel="GetLabelText"
+            onAction="OnAction"
+            getVisible="GetVisible"
+								/>
+        <menuSeparator
+            id="separator23"
+								/>
+        <button
+            id="btn1ScriptTypeHtmlTable"
+            getImage="GetButtonImage"
+            getLabel="GetLabelText"
+            onAction="OnAction"
+            getVisible="GetVisible"
+								/>
+        <button
+            id="btn1ScriptTypeXmlValues"
+            getImage="GetButtonImage"
+            getLabel="GetLabelText"
+            onAction="OnAction"
+            getVisible="GetVisible"
+								/>
+      </menu>
       <menuSeparator id="MySeparator" insertBeforeMso="Cut" />
     </contextMenu>
   </contextMenus>

@@ -203,6 +203,12 @@ namespace ScriptHelp.Scripts
                     case "btnScriptTypeDqlTruncateAppend":
                     case "btnScriptTypeDqlUpdate":
                     case "btnScriptTypeDqlUpdateLocked":
+                    case "btn1ScriptTypeDqlAppend":
+                    case "btn1ScriptTypeDqlAppendLocked":
+                    case "btn1ScriptTypeDqlCreate":
+                    case "btn1ScriptTypeDqlTruncateAppend":
+                    case "btn1ScriptTypeDqlUpdate":
+                    case "btn1ScriptTypeDqlUpdateLocked":
                         return Properties.Resources.ScriptTypeDql;
                     case "btnScriptTypeTSqlCreateTable":
                     case "btnScriptTypeTSqlInsertValues":
@@ -210,6 +216,12 @@ namespace ScriptHelp.Scripts
                     case "btnScriptTypeTSqlSelectValues":
                     case "btnScriptTypeTSqlSelectUnion":
                     case "btnScriptTypeTSqlUpdateValues":
+                    case "btn1ScriptTypeTSqlCreateTable":
+                    case "btn1ScriptTypeTSqlInsertValues":
+                    case "btn1ScriptTypeTSqlMergeValues":
+                    case "btn1ScriptTypeTSqlSelectValues":
+                    case "btn1ScriptTypeTSqlSelectUnion":
+                    case "btn1ScriptTypeTSqlUpdateValues":
                         return Properties.Resources.ScriptTypeTSql;
                     case "btnScriptTypePlSqlCreateTable":
                     case "btnScriptTypePlSqlInsertValues":
@@ -217,11 +229,20 @@ namespace ScriptHelp.Scripts
                     case "btnScriptTypePlSqlSelectValues":
                     case "btnScriptTypePlSqlSelectUnion":
                     case "btnScriptTypePlSqlUpdateValues":
+                    case "btn1ScriptTypePlSqlCreateTable":
+                    case "btn1ScriptTypePlSqlInsertValues":
+                    case "btn1ScriptTypePlSqlMergeValues":
+                    case "btn1ScriptTypePlSqlSelectValues":
+                    case "btn1ScriptTypePlSqlSelectUnion":
+                    case "btn1ScriptTypePlSqlUpdateValues":
                         return Properties.Resources.ScriptTypePlSql;
                     case "btnScriptTypeMarkdownTable":
+                    case "btn1ScriptTypeMarkdownTable":
                         return Properties.Resources.ScriptTypeMarkdown;
                     case "btnScriptTypeHtmlTable":
                     case "btnScriptTypeXmlValues":
+                    case "btn1ScriptTypeHtmlTable":
+                    case "btn1ScriptTypeXmlValues":
                         return Properties.Resources.ScriptTypeMarkup;
                     case "btnProblemStepRecorder":
                     case "btnProblemStepRecorder1":
@@ -304,46 +325,67 @@ namespace ScriptHelp.Scripts
                         DateTime dteCreateDate = Properties.Settings.Default.App_ReleaseDate;
                         return dteCreateDate.ToString("dd-MMM-yyyy hh:mm tt");
                     case "btnScriptTypeDqlAppend":
+                    case "btn1ScriptTypeDqlAppend":
                         return "DQL Append";
                     case "btnScriptTypeDqlAppendLocked":
+                    case "btn1ScriptTypeDqlAppendLocked":
                         return "DQL Append/Locked";
                     case "btnScriptTypeDqlCreate":
+                    case "btn1ScriptTypeDqlCreate":
                         return "DQL Create";
                     case "btnScriptTypeDqlTruncateAppend":
+                    case "btn1ScriptTypeDqlTruncateAppend":
                         return "DQL Truncate/Append";
                     case "btnScriptTypeDqlUpdate":
+                    case "btn1ScriptTypeDqlUpdate":
                         return "DQL Update";
                     case "btnScriptTypeDqlUpdateLocked":
+                    case "btn1ScriptTypeDqlUpdateLocked":
                         return "DQL Update/Locked";
                     case "btnScriptTypeMarkdownTable":
+                    case "btn1ScriptTypeMarkdownTable":
                         return "Markdown Table";
                     case "btnScriptTypeHtmlTable":
+                    case "btn1ScriptTypeHtmlTable":
                         return "HTML Table";
                     case "btnScriptTypePlSqlCreateTable":
+                    case "btn1ScriptTypePlSqlCreateTable":
                         return "PL/SQL Create Table";
                     case "btnScriptTypePlSqlInsertValues":
+                    case "btn1ScriptTypePlSqlInsertValues":
                         return "PL/SQL Insert Values";
                     case "btnScriptTypePlSqlMergeValues":
+                    case "btn1ScriptTypePlSqlMergeValues":
                         return "PL/SQL Merge Values";
                     case "btnScriptTypePlSqlSelectValues":
+                    case "btn1ScriptTypePlSqlSelectValues":
                         return "PL/SQL Select Values";
                     case "btnScriptTypePlSqlSelectUnion":
+                    case "btn1ScriptTypePlSqlSelectUnion":
                         return "PL/SQL Select Union";
                     case "btnScriptTypePlSqlUpdateValues":
+                    case "btn1ScriptTypePlSqlUpdateValues":
                         return "PL/SQL Update Values";
                     case "btnScriptTypeTSqlCreateTable":
+                    case "btn1ScriptTypeTSqlCreateTable":
                         return "T-SQL Create Table";
                     case "btnScriptTypeTSqlInsertValues":
+                    case "btn1ScriptTypeTSqlInsertValues":
                         return "T-SQL Insert Values";
                     case "btnScriptTypeTSqlMergeValues":
+                    case "btn1ScriptTypeTSqlMergeValues":
                         return "T-SQL Merge Values";
                     case "btnScriptTypeTSqlSelectValues":
+                    case "btn1ScriptTypeTSqlSelectValues":
                         return "T-SQL Select Values";
                     case "btnScriptTypeTSqlSelectUnion":
+                    case "btn1ScriptTypeTSqlSelectUnion":
                         return "T-SQL Select Union";
                     case "btnScriptTypeTSqlUpdateValues":
+                    case "btn1ScriptTypeTSqlUpdateValues":
                         return "T-SQL Update Values";
                     case "btnScriptTypeXmlValues":
+                    case "btn1ScriptTypeXmlValues":
                         return "XML Values";
                     default:
                         return string.Empty;
@@ -430,6 +472,8 @@ namespace ScriptHelp.Scripts
                         return Properties.Settings.Default.Table_ColumnFormatTime;
                     case "cboTableAlias":
                         return Properties.Settings.Default.Table_ColumnTableAlias;
+                    case "txtColumnSeparateValuesDelimiter":
+                        return Properties.Settings.Default.Table_ColumnSeparateValuesDelimiter.ToString();
                     default:
                         return string.Empty;
                 }
@@ -497,6 +541,12 @@ namespace ScriptHelp.Scripts
                     case "btnScriptTypeTSqlSelectValues":
                     case "btnScriptTypeTSqlSelectUnion":
                     case "btnScriptTypeTSqlUpdateValues":
+                    case "btn1ScriptTypeTSqlCreateTable":
+                    case "btn1ScriptTypeTSqlInsertValues":
+                    case "btn1ScriptTypeTSqlMergeValues":
+                    case "btn1ScriptTypeTSqlSelectValues":
+                    case "btn1ScriptTypeTSqlSelectUnion":
+                    case "btn1ScriptTypeTSqlUpdateValues":
                         return Properties.Settings.Default.Visible_mnuScriptType_TSQL;
                     case "btnScriptTypePlSqlCreateTable":
                     case "btnScriptTypePlSqlInsertValues":
@@ -504,6 +554,12 @@ namespace ScriptHelp.Scripts
                     case "btnScriptTypePlSqlSelectValues":
                     case "btnScriptTypePlSqlSelectUnion":
                     case "btnScriptTypePlSqlUpdateValues":
+                    case "btn1ScriptTypePlSqlCreateTable":
+                    case "btn1ScriptTypePlSqlInsertValues":
+                    case "btn1ScriptTypePlSqlMergeValues":
+                    case "btn1ScriptTypePlSqlSelectValues":
+                    case "btn1ScriptTypePlSqlSelectUnion":
+                    case "btn1ScriptTypePlSqlUpdateValues":
                         return Properties.Settings.Default.Visible_mnuScriptType_PLSQL;
                     case "btnScriptTypeDqlAppend":
                     case "btnScriptTypeDqlAppendLocked":
@@ -511,11 +567,20 @@ namespace ScriptHelp.Scripts
                     case "btnScriptTypeDqlTruncateAppend":
                     case "btnScriptTypeDqlUpdate":
                     case "btnScriptTypeDqlUpdateLocked":
+                    case "btn1ScriptTypeDqlAppend":
+                    case "btn1ScriptTypeDqlAppendLocked":
+                    case "btn1ScriptTypeDqlCreate":
+                    case "btn1ScriptTypeDqlTruncateAppend":
+                    case "btn1ScriptTypeDqlUpdate":
+                    case "btn1ScriptTypeDqlUpdateLocked":
                         return Properties.Settings.Default.Visible_mnuScriptType_DQL;
                     case "btnScriptTypeMarkdownTable":
+                    case "btn1ScriptTypeMarkdownTable":
                         return Properties.Settings.Default.Visible_mnuScriptType_Markdown;
                     case "btnScriptTypeHtmlTable":
                     case "btnScriptTypeXmlValues":
+                    case "btn1ScriptTypeHtmlTable":
+                    case "btn1ScriptTypeXmlValues":
                         return Properties.Settings.Default.Visible_mnuScriptType_Markup;
                     default:
                         return false;
@@ -547,27 +612,28 @@ namespace ScriptHelp.Scripts
                         CopyVisibleCells();
                         break;
                     case "btnCleanData":
-                    case "btnTableCleanData":
+                    case "btn1CleanData":
                         CleanData();
                         break;
                     case "btnZeroToNull":
                         ZeroStringToNull();
                         break;
                     case "btnFormatDateColumns":
-                    case "btnTableFormatDateColumns":
+                    case "btn1FormatDateColumns":
                         FormatDateColumns();
                         break;
                     case "btnFormatDateColumnsAll":
                         FormatDateColumnsAll();
                         break;
                     case "btnFormatTimeColumns":
-                    case "btnTableFormatTimeColumns":
+                    case "btn1FormatTimeColumns":
                         FormatTimeColumns();
                         break;
                     case "btnClearInteriorColor":
                         ClearInteriorColor();
                         break;
                     case "btnSeparateValues":
+                    case "btn1SeparateValues":
                         SeparateValues();
                         break;
                     case "btnSettings":
@@ -580,66 +646,87 @@ namespace ScriptHelp.Scripts
                         OpenNewIssue();
                         break;
                     case "btnScriptTypeDqlAppend":
+                    case "btn1ScriptTypeDqlAppend":
                         Formula.DqlAppend();
                         break;
                     case "btnScriptTypeDqlAppendLocked":
+                    case "btn1ScriptTypeDqlAppendLocked":
                         Formula.DqlAppendLocked();
                         break;
                     case "btnScriptTypeDqlCreate":
+                    case "btn1ScriptTypeDqlCreate":
                         Formula.DqlCreate();
                         break;
                     case "btnScriptTypeDqlTruncateAppend":
+                    case "btn1ScriptTypeDqlTruncateAppend":
                         Formula.DqlTruncateAppend();
                         break;
                     case "btnScriptTypeDqlUpdate":
+                    case "btn1ScriptTypeDqlUpdate":
                         Formula.DqlUpdate();
                         break;
                     case "btnScriptTypeDqlUpdateLocked":
+                    case "btn1ScriptTypeDqlUpdateLocked":
                         Formula.DqlUpdateLocked();
                         break;
                     case "btnScriptTypeMarkdownTable":
+                    case "btn1ScriptTypeMarkdownTable":
                         Formula.MarkdownTable();
                         break;
                     case "btnScriptTypeHtmlTable":
+                    case "btn1ScriptTypeHtmlTable":
                         Formula.HtmlTable();
                         break;
                     case "btnScriptTypePlSqlCreateTable":
+                    case "btn1ScriptTypePlSqlCreateTable":
                         Formula.PlSqlCreateTable();
                         break;
                     case "btnScriptTypePlSqlInsertValues":
+                    case "btn1ScriptTypePlSqlInsertValues":
                         Formula.PlSqlInsertValues();
                         break;
                     case "btnScriptTypePlSqlMergeValues":
+                    case "btn1ScriptTypePlSqlMergeValues":
                         Formula.PlSqlMergeValues();
                         break;
                     case "btnScriptTypePlSqlSelectValues":
+                    case "btn1ScriptTypePlSqlSelectValues":
                         Formula.PlSqlSelectValues();
                         break;
                     case "btnScriptTypePlSqlSelectUnion":
+                    case "btn1ScriptTypePlSqlSelectUnion":
                         Formula.PlSqlSelectUnion();
                         break;
                     case "btnScriptTypePlSqlUpdateValues":
+                    case "btn1ScriptTypePlSqlUpdateValues":
                         Formula.PlSqlUpdateValues();
                         break;
                     case "btnScriptTypeTSqlCreateTable":
+                    case "btn1ScriptTypeTSqlCreateTable":
                         Formula.TSqlCreateTable();
                         break;
                     case "btnScriptTypeTSqlInsertValues":
+                    case "btn1ScriptTypeTSqlInsertValues":
                         Formula.TSqlInsertValues();
                         break;
                     case "btnScriptTypeTSqlMergeValues":
+                    case "btn1ScriptTypeTSqlMergeValues":
                         Formula.TSqlMergeValues();
                         break;
                     case "btnScriptTypeTSqlSelectValues":
+                    case "btn1ScriptTypeTSqlSelectValues":
                         Formula.TSqlSelectValues();
                         break;
                     case "btnScriptTypeTSqlSelectUnion":
+                    case "btn1ScriptTypeTSqlSelectUnion":
                         Formula.TSqlSelectUnion();
                         break;
                     case "btnScriptTypeTSqlUpdateValues":
+                    case "btn1ScriptTypeTSqlUpdateValues":
                         Formula.TSqlUpdateValues();
                         break;
                     case "btnScriptTypeXmlValues":
+                    case "btn1ScriptTypeXmlValues":
                         Formula.XmlValues();
                         break;
                     case "btnFormatDate":
@@ -732,6 +819,9 @@ namespace ScriptHelp.Scripts
                     case "cboTableAlias":
                         Properties.Settings.Default.Table_ColumnTableAlias = text;
                         Data.InsertRecord(Data.TableAliasTable, text);
+                        break;
+                    case "txtColumnSeparateValuesDelimiter":
+                        Properties.Settings.Default.Table_ColumnSeparateValuesDelimiter = Convert.ToChar(text);
                         break;
                 }
             }
@@ -1353,7 +1443,7 @@ namespace ScriptHelp.Scripts
                 filePath = string.Concat(
                     Path.GetFileNameWithoutExtension(filePath),
                     "_",
-                    DateTime.Now.ToString("yyyy.MM.dd_HH.mm.ss.fff"), 
+                    DateTime.Now.ToString("yyyy.MM.dd_HH.mm.ss.fff"),
                     "_",
                     Environment.UserName,
                     Path.GetExtension(filePath)
