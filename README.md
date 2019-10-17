@@ -126,7 +126,7 @@ These buttons have the following constraints:
 * Delete duplicate rows from a sheet
 
 <a id="user-content-separate-values" class="anchor" href="#separate-values" aria-hidden="true"> </a>
-#### Separate Values (Button)
+#### Separate Values (Button) CS, XML
 * Separate values into new rows from the selected column by a delimited string value setting
 
 <a id="user-content-clean-data" class="anchor" href="#clean-data" aria-hidden="true"> </a>
@@ -167,7 +167,7 @@ These buttons have the following constraints:
 * These values can be updated using the build button “…” to the right of the dropdown
 
 <a id="user-content-add-script-column" class="anchor" href="#add-script-column" aria-hidden="true"> </a>
-#### Add Script Formula (Menu Buttons)
+#### Add Script Formula (Menu Buttons) [ribbon menu](https://github.com/Excel-projects/Script-Help/blob/master/CS/Ribbon.xml#L307-L516), [shortcut menu](https://github.com/Excel-projects/Script-Help/blob/master/CS/Ribbon.xml#L665-L839)
 
 <a id="user-content-menu-tsql" class="anchor" href="#menu-tsql" aria-hidden="true"> </a>
 <kbd><a href="#menu-tsql" target="_blank"><img src="CS/Resources/ScriptTypeTSql.png" title="T-SQL (Transact-Structured Query Language)" /></a></kbd>
