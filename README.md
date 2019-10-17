@@ -173,21 +173,21 @@ These buttons have the following constraints:
 <kbd><a href="#menu-tsql" target="_blank"><img src="CS/Resources/ScriptTypeTSql.png" title="T-SQL (Transact-Structured Query Language)" /></a></kbd>
 T-SQL (Transact-Structured Query Language)
   - T-SQL Create Table - This menu item will format the script column to drop/create the table then insert the values
-  - T-SQL Insert Values – This menu item will format the script column to use individual insert statements
-  - T-SQL Merge Values – This menu item will format the script column to use a merge statement with a select values
-  - T-SQL Select Values – This menu item will format the script column to be used in insert statements 
-  - T-SQL Select Union – This menu item will format the script column to be used in an update statement 
-  - T-SQL Update Values – This menu item will format the script column to use individual update statements
+  - [T-SQL Insert Values](https://github.com/Excel-projects/Script-Help/blob/fc2e32e00aae03e23d7471ca5075584b5fb04113/CS/Scripts/Formula.cs#L1912-L2012) – This menu item will format the script column to use individual insert statements
+  - [T-SQL Merge Values](https://github.com/Excel-projects/Script-Help/blob/fc2e32e00aae03e23d7471ca5075584b5fb04113/CS/Scripts/Formula.cs#L2014-L2151) – This menu item will format the script column to use a merge statement with a select values
+  - [T-SQL Select Values](https://github.com/Excel-projects/Script-Help/blob/fc2e32e00aae03e23d7471ca5075584b5fb04113/CS/Scripts/Formula.cs#L2257-L2364) – This menu item will format the script column to be used in insert statements 
+  - [T-SQL Select Union](https://github.com/Excel-projects/Script-Help/blob/fc2e32e00aae03e23d7471ca5075584b5fb04113/CS/Scripts/Formula.cs#L2153-L2255) – This menu item will format the script column to be used in an update statement 
+  - [T-SQL Update Values](https://github.com/Excel-projects/Script-Help/blob/fc2e32e00aae03e23d7471ca5075584b5fb04113/CS/Scripts/Formula.cs#L2366-L2514) – This menu item will format the script column to use individual update statements
 
 <a id="user-content-menu-plsql" class="anchor" href="#menu-plsql" aria-hidden="true"> </a>
 <kbd><a href="#menu-plsql" target="_blank"><img src="CS/Resources/ScriptTypePlSql.png" title="PL/SQL (Procedural Language/Structured Query Language)"/></a></kbd>
 PL/SQL (Procedural Language/Structured Query Language)
-  - PL/SQL Create Table - This menu item will format the script column to drop/create the table then insert the values
-  - PL/SQL Insert Values – This menu item will format the script column to use individual insert statements
-  - PL/SQL Merge Values - This menu item will format the script column to use a merge statement with a select values
-  - PL/SQL Select Values - This menu item will format the script column to be used in insert statements 
-  - PL/SQL Select Union – This menu item will format the script column to be used in an update statement 
-  - PL/SQL Update Values – This menu item will format the script column to use individual update statements
+  - [PL/SQL Create Table](https://github.com/Excel-projects/Script-Help/blob/fc2e32e00aae03e23d7471ca5075584b5fb04113/CS/Scripts/Formula.cs#L1802-L1910) - This menu item will format the script column to drop/create the table then insert the values
+  - [PL/SQL Insert Values](https://github.com/Excel-projects/Script-Help/blob/fc2e32e00aae03e23d7471ca5075584b5fb04113/CS/Scripts/Formula.cs#L1208-L1308) – This menu item will format the script column to use individual insert statements
+  - [PL/SQL Merge Values](https://github.com/Excel-projects/Script-Help/blob/fc2e32e00aae03e23d7471ca5075584b5fb04113/CS/Scripts/Formula.cs#L1310-L1437) - This menu item will format the script column to use a merge statement with a select values
+  - [PL/SQL Select Values](https://github.com/Excel-projects/Script-Help/blob/fc2e32e00aae03e23d7471ca5075584b5fb04113/CS/Scripts/Formula.cs#L1439-L1546) - This menu item will format the script column to be used in insert statements 
+  - [PL/SQL Select Union](https://github.com/Excel-projects/Script-Help/blob/fc2e32e00aae03e23d7471ca5075584b5fb04113/CS/Scripts/Formula.cs#L1548-L1650) – This menu item will format the script column to be used in an update statement 
+  - [PL/SQL Update Values](https://github.com/Excel-projects/Script-Help/blob/fc2e32e00aae03e23d7471ca5075584b5fb04113/CS/Scripts/Formula.cs#L1652-L1800) – This menu item will format the script column to use individual update statements
 
 <a id="user-content-menu-dql" class="anchor" href="#menu-dql" aria-hidden="true"> </a>
 <kbd><a href="#menu-dql" target="_blank"><img src="CS/Resources/ScriptTypeDql.png" title="DQL (Documentum Query Language)"/></a></kbd>
@@ -208,13 +208,13 @@ DQL (Documentum Query Language)
 <a id="user-content-menu-github" class="anchor" href="#menu-github" aria-hidden="true"> </a>
 <kbd><a href="#menu-github" target="_blank"><img src="CS/Resources/ScriptTypeMarkdown.png" title="GitHub Markdown"/></a></kbd>
 Markdown Language
-  - Markdown table - creates a table format for Markdown Read Me documentation (e.g. GitHub)
+  - [Markdown table](https://github.com/Excel-projects/Script-Help/blob/fc2e32e00aae03e23d7471ca5075584b5fb04113/CS/Scripts/Formula.cs#L900-L985) - creates a table format for Markdown Read Me documentation (e.g. GitHub)
 
 <a id="user-content-menu-markup" class="anchor" href="#menu-markup" aria-hidden="true"> </a>
 <kbd><a href="#menu-markup" target="_blank"><img src="CS/Resources/ScriptTypeMarkup.png" title="Markup Language"/></a></kbd>
 Markup Language
-  - HTML Table - creates a HTML table structure
-  - XML Values - creates XML structure
+  - [HTML Table](https://github.com/Excel-projects/Script-Help/blob/fc2e32e00aae03e23d7471ca5075584b5fb04113/CS/Scripts/Formula.cs#L987-L1103) - creates a HTML table structure
+  - [XML Values](https://github.com/Excel-projects/Script-Help/blob/fc2e32e00aae03e23d7471ca5075584b5fb04113/CS/Scripts/Formula.cs#L2516-L2631) - creates XML structure
 
 <a id="user-content-annotate" class="anchor" href="#annotate" aria-hidden="true"> </a>
 ###	Annotate (Group)
