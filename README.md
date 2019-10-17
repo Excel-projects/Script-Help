@@ -192,16 +192,16 @@ PL/SQL (Procedural Language/Structured Query Language)
 <a id="user-content-menu-dql" class="anchor" href="#menu-dql" aria-hidden="true"> </a>
 <kbd><a href="#menu-dql" target="_blank"><img src="CS/Resources/ScriptTypeDql.png" title="DQL (Documentum Query Language)"/></a></kbd>
 DQL (Documentum Query Language)
-  - [DQL Append](./Script-Help/blob/fc2e32e00aae03e23d7471ca5075584b5fb04113/CS/Scripts/Formula.cs#L17-L163) – This menu item will format the script column to be used in an append statement for Documentum (this is used for repeating values)
+  - [DQL Append](https://github.com/Excel-projects/Script-Help/blob/fc2e32e00aae03e23d7471ca5075584b5fb04113/CS/Scripts/Formula.cs#L17-L163) – This menu item will format the script column to be used in an append statement for Documentum (this is used for repeating values)
   - [DQL Append/Locked](https://github.com/Excel-projects/Script-Help/blob/fc2e32e00aae03e23d7471ca5075584b5fb04113/CS/Scripts/Formula.cs#L165-L324) – This menu item will format the script column to be used in an append statement for Documentum (this is used for repeating values) and unlocks and then locks the record.
     - The table must contain a column header with 'WHERE'. 
     - Add “WHERE” before the column name in the header you want to use as criteria.
   - [DQL Create](https://github.com/Excel-projects/Script-Help/blob/fc2e32e00aae03e23d7471ca5075584b5fb04113/CS/Scripts/Formula.cs#L325-L444) – This menu item will format the script column to be used in an create statement for Documentum
-  - DQL Truncate/Append – This menu item will format the script column to be used in an truncate and then append statement for Documentum (this is used for repeating values).
+  - [DQL Truncate/Append](https://github.com/Excel-projects/Script-Help/blob/fc2e32e00aae03e23d7471ca5075584b5fb04113/CS/Scripts/Formula.cs#L446-L593) – This menu item will format the script column to be used in an truncate and then append statement for Documentum (this is used for repeating values).
     * The table must contain a column header with 'WHERE'. 
     * Add “WHERE” before the column name in the header you want to use as criteria.
-  - DQL Update – This menu item will format the script column to be used in an update statement for Documentum
-  - DQL Update/Locked – This menu item will format the script column to be used in an update statement for Documentum and unlocks and then locks the record.
+  - [DQL Update](https://github.com/Excel-projects/Script-Help/blob/fc2e32e00aae03e23d7471ca5075584b5fb04113/CS/Scripts/Formula.cs#L595-L737) – This menu item will format the script column to be used in an update statement for Documentum
+  - [DQL Update/Locked](https://github.com/Excel-projects/Script-Help/blob/fc2e32e00aae03e23d7471ca5075584b5fb04113/CS/Scripts/Formula.cs#L739-L898) – This menu item will format the script column to be used in an update statement for Documentum and unlocks and then locks the record.
     - The table must contain a column header with 'WHERE'. 
     - Add “WHERE” before the column name in the header you want to use as criteria.
 
