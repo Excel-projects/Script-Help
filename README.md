@@ -196,7 +196,7 @@ DQL (Documentum Query Language)
   - DQL Append/Locked – This menu item will format the script column to be used in an append statement for Documentum (this is used for repeating values) and unlocks and then locks the record.
     - The table must contain a column header with 'WHERE'. 
     - Add “WHERE” before the column name in the header you want to use as criteria.
-  - DQL Create – This menu item will format the script column to be used in an create statement for Documentum
+  - [DQL Create](https://github.com/Excel-projects/Script-Help/blob/fc2e32e00aae03e23d7471ca5075584b5fb04113/CS/Scripts/Formula.cs#L325-L444) – This menu item will format the script column to be used in an create statement for Documentum
   - DQL Truncate/Append – This menu item will format the script column to be used in an truncate and then append statement for Documentum (this is used for repeating values).
     * The table must contain a column header with 'WHERE'. 
     * Add “WHERE” before the column name in the header you want to use as criteria.
