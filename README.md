@@ -182,7 +182,7 @@ T-SQL (Transact-Structured Query Language)
 <a id="user-content-menu-plsql" class="anchor" href="#menu-plsql" aria-hidden="true"> </a>
 <kbd><a href="#menu-plsql" target="_blank"><img src="CS/Resources/ScriptTypePlSql.png" title="PL/SQL (Procedural Language/Structured Query Language)"/></a></kbd>
 PL/SQL (Procedural Language/Structured Query Language)
-  - [PL/SQL Create Table](https://github.com/Excel-projects/Script-Help/blob/master/CS/Scripts/Formula.cs#L1802-L1910) - This menu item will format the script column to drop/create the table then insert the values
+  - [PL/SQL Create Table](https://github.com/Excel-projects/Script-Help/blob/master/CS/Scripts/Formula.cs#L1105-L1206) - This menu item will format the script column to drop/create the table then insert the values
   - [PL/SQL Insert Values](https://github.com/Excel-projects/Script-Help/blob/master/CS/Scripts/Formula.cs#L1208-L1308) – This menu item will format the script column to use individual insert statements
   - [PL/SQL Merge Values](https://github.com/Excel-projects/Script-Help/blob/master/CS/Scripts/Formula.cs#L1310-L1437) - This menu item will format the script column to use a merge statement with a select values
   - [PL/SQL Select Values](https://github.com/Excel-projects/Script-Help/blob/master/CS/Scripts/Formula.cs#L1439-L1546) - This menu item will format the script column to be used in insert statements 
