@@ -172,7 +172,7 @@ These buttons have the following constraints:
 <a id="user-content-menu-tsql" class="anchor" href="#menu-tsql" aria-hidden="true"> </a>
 <kbd><a href="#menu-tsql" target="_blank"><img src="CS/Resources/ScriptTypeTSql.png" title="T-SQL (Transact-Structured Query Language)" /></a></kbd>
 T-SQL (Transact-Structured Query Language)
-  - T-SQL Create Table - This menu item will format the script column to drop/create the table then insert the values
+  - [T-SQL Create Table](https://github.com/Excel-projects/Script-Help/blob/master/CS/Scripts/Formula.cs#L1802-L1910) - This menu item will format the script column to drop/create the table then insert the values
   - [T-SQL Insert Values](https://github.com/Excel-projects/Script-Help/blob/fc2e32e00aae03e23d7471ca5075584b5fb04113/CS/Scripts/Formula.cs#L1912-L2012) – This menu item will format the script column to use individual insert statements
   - [T-SQL Merge Values](https://github.com/Excel-projects/Script-Help/blob/fc2e32e00aae03e23d7471ca5075584b5fb04113/CS/Scripts/Formula.cs#L2014-L2151) – This menu item will format the script column to use a merge statement with a select values
   - [T-SQL Select Values](https://github.com/Excel-projects/Script-Help/blob/fc2e32e00aae03e23d7471ca5075584b5fb04113/CS/Scripts/Formula.cs#L2257-L2364) – This menu item will format the script column to be used in insert statements 
