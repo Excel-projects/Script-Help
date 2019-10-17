@@ -102,7 +102,7 @@ A [KeyTip](https://msdn.microsoft.com/en-us/library/microsoft.office.tools.ribbo
 * Copies the selection on to the clipboard so you can paste it somewhere else
 
 <a id="user-content-copy-visible-cells" class="anchor" href="#copy-visible-cells" aria-hidden="true"> </a>
-####	Copy Visible (Button)
+####	Copy Visible ([Button](https://github.com/Excel-projects/Script-Help/blob/master/CS/Scripts/Ribbon.cs#L843-L869))
 * Copies only the visible cells from a selection
 
 <a id="user-content-format-data-table" class="anchor" href="#format-data-table" aria-hidden="true"> </a>
@@ -126,42 +126,42 @@ These buttons have the following constraints:
 * Delete duplicate rows from a sheet
 
 <a id="user-content-separate-values" class="anchor" href="#separate-values" aria-hidden="true"> </a>
-#### Separate Values (Button) CS, XML
+#### Separate Values ([Button](https://github.com/Excel-projects/Script-Help/blob/master/CS/Scripts/Ribbon.cs#L1237-L1296)) 
 * Separate values into new rows from the selected column by a delimited string value setting
 
 <a id="user-content-clean-data" class="anchor" href="#clean-data" aria-hidden="true"> </a>
-#### Clean Data (Button)
+#### Clean Data ([Button](https://github.com/Excel-projects/Script-Help/blob/master/CS/Scripts/Ribbon.cs#L871-L943))
 * This feature runs through all the data in the table and removes unprintable characters and trims leading and trailing spaces. 
 * The number of cells cleaned is shown in a message box and cleaned cells are highlighted. 
 
 <a id="user-content-convert-to-null" class="anchor" href="#convert-to-null" aria-hidden="true"> </a>
-####	Convert to Null (Button)
+####	Convert to Null ([Button](https://github.com/Excel-projects/Script-Help/blob/master/CS/Scripts/Ribbon.cs#L945-L997))
 * Replaces the zero string values in a named range with “NULL” text value.
 
 <a id="user-content-clear-interior-color" class="anchor" href="#clear-interior-color" aria-hidden="true"> </a>
-#### Clear Interior Color (Button)
+#### Clear Interior Color ([Button](https://github.com/Excel-projects/Script-Help/blob/master/CS/Scripts/Ribbon.cs#L1189-L1235))
 * Clears the interior color of cells in a named range or data table.
 
 <a id="user-content-table-alias" class="anchor" href="#table-alias" aria-hidden="true"> </a>
-#### Table Alias (Dropdown)
+#### Table Alias ([Dropdown](https://github.com/Excel-projects/Script-Help/blob/master/CS/Scripts/Data.cs#L47-L79))
 * Changes the prefix to the header and footer line script column
 * These values can be updated using the build button “…” to the right of the dropdown
 
 <a id="user-content-format-date-columns" class="anchor" href="#format-date-columns" aria-hidden="true"> </a>
-#### Format Date (Button)
+#### Format Date ([Button](https://github.com/Excel-projects/Script-Help/blob/master/CS/Scripts/Ribbon.cs#L999-L1046))
 * This feature applies the selected format from the dropdown e.g. "dd-mmm-yyyy" to all date columns it detects in the active table.  If there are zero strings in the column instead of “NULL”s, then the column is treated as a string.
 * When data is cut and pasted from SSMS into Excel, for whatever reason, Excel chooses to format the dates with the (useless) format "mm:ss.0". This seems to be impossible to configure. 
 
 <a id="user-content-date-find-format" class="anchor" href="#date-find-format" aria-hidden="true"> </a>
-#### Format Date (Dropdown)
+#### Format Date ([Dropdown](https://github.com/Excel-projects/Script-Help/blob/master/CS/Scripts/Data.cs#L81-L113))
 * This is the format the script looks for to finds dates
 * These values can be updated using the build button “…” to the right of the “Date Format” dropdown
 
-#### Format Time (Button)
+#### Format Time ([Button](https://github.com/Excel-projects/Script-Help/blob/master/CS/Scripts/Ribbon.cs#L1099-L1146))
 * This feature applies the selected format from the dropdown e.g. "hh:mm" to selected column from the active cell.
 
 <a id="user-content-date-replace-format" class="anchor" href="#date-replace-format" aria-hidden="true"> </a>
-#### Format Time (Dropdown)
+#### Format Time ([Dropdown](https://github.com/Excel-projects/Script-Help/blob/master/CS/Scripts/Data.cs#L115-L147))
 * This is the date format the script uses to replace the formatting for date columns. 
 * It defaults to ‘dd-mmm-yyyy’, and can be changed by the dropdown value or free text
 * These values can be updated using the build button “…” to the right of the dropdown
