@@ -87,6 +87,14 @@ How to install the VSTO version
 ## Functionality
 This Excel ribbon is inserted after the “Home” tab when Excel opens. Listed below is the detailed functionality of this application and its components.  
 
+<a id="user-content-rightclick" class="anchor" href="#rightclick" aria-hidden="true"> </a>
+### Right Click Menu 
+This custom context menu is only available inside an Excel table. [shortcut menu](https://github.com/Excel-projects/Script-Help/blob/master/CS/Ribbon.xml#L665-L839)
+
+<h1 align="left">
+  <img src="Images/ReadMe/ribbon.rightclick.bmp" />
+</h1>
+
 <a id="user-content-keytips" class="anchor" href="#keytips" aria-hidden="true"> </a>
 ###	Key Tips
 A [KeyTip](https://msdn.microsoft.com/en-us/library/microsoft.office.tools.ribbon.ribbonbutton.keytip.aspx) must be from 1 to 3 uppercase characters, and must not contain spaces, tabs, or newline characters. KeyTips are sometimes known as access keys or accelerators and are used as shortcut key combinations that activate controls. KeyTips appear on the Ribbon when you press the ALT key. If your KeyTip conflicts with KeyTips for built-in controls or from other add-ins, Microsoft Office might assign non-conflicting KeyTip values automatically.
@@ -167,7 +175,7 @@ These buttons have the following constraints:
 * These values can be updated using the build button “…” to the right of the dropdown
 
 <a id="user-content-add-script-column" class="anchor" href="#add-script-column" aria-hidden="true"> </a>
-#### Add Script Formula (Menu Buttons) [ribbon menu](https://github.com/Excel-projects/Script-Help/blob/master/CS/Ribbon.xml#L307-L516), [shortcut menu](https://github.com/Excel-projects/Script-Help/blob/master/CS/Ribbon.xml#L665-L839)
+#### Add Script Formula (Menu Buttons) [ribbon menu](https://github.com/Excel-projects/Script-Help/blob/master/CS/Ribbon.xml#L307-L516)
 
 <a id="user-content-menu-tsql" class="anchor" href="#menu-tsql" aria-hidden="true"> </a>
 <kbd><a href="#menu-tsql" target="_blank"><img src="CS/Resources/ScriptTypeTSql.png" title="T-SQL (Transact-Structured Query Language)" /></a></kbd>
