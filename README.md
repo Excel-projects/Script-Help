@@ -96,8 +96,8 @@ This custom context menu is only available inside an Excel table. [shortcut menu
 </h1>
 
 <a id="user-content-keytips" class="anchor" href="#keytips" aria-hidden="true"> </a>
-###	Key Tips (VBA Only)
-A [KeyTip](https://msdn.microsoft.com/en-us/library/microsoft.office.tools.ribbon.ribbonbutton.keytip.aspx) must be from 1 to 3 uppercase characters, and must not contain spaces, tabs, or newline characters. KeyTips are sometimes known as access keys or accelerators and are used as shortcut key combinations that activate controls. KeyTips appear on the Ribbon when you press the ALT key. If your KeyTip conflicts with KeyTips for built-in controls or from other add-ins, Microsoft Office might assign non-conflicting KeyTip values automatically.
+###	Key Tips
+A [KeyTip](https://msdn.microsoft.com/en-us/library/microsoft.office.tools.ribbon.ribbonbutton.keytip.aspx) must be from 1 to 3 uppercase characters, and must not contain spaces, tabs, or newline characters. KeyTips are sometimes known as access keys or accelerators and are used as shortcut key combinations that activate controls. KeyTips appear on the Ribbon when you press the ALT key. If your KeyTip conflicts with KeyTips for built-in controls or from other add-ins, Microsoft Office might assign non-conflicting KeyTip values automatically. This is available in the VBA version only.
 
 <a id="user-content-clipboard" class="anchor" href="#clipboard" aria-hidden="true"> </a>
 ###	Clipboard (Group)
