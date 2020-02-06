@@ -156,8 +156,9 @@
                 label=" "
                 getText="GetText"
                 onChange="OnChange"
+                sizeString="X"
                 screentip="Column Separate Values Delimiter"
-                supertip="The value character(s) delimiter"
+                supertip="The value character delimiter"
 							/>
           </box>
           <separator
