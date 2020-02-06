@@ -141,24 +141,23 @@
               keytip="DUP"
 							/>
           <box id="boxSeparateValues" boxStyle="horizontal">
-          <button
-							id="btnSeparateValues"
-							label="Separate Values"
-							onAction="OnAction"
-							imageMso="ChartSwitchRowColumn"
-							size="normal"
-							screentip="Separate Values"
-							supertip="Separate values into new rows from the selected column by a delimited string value setting"
-              keytip="SPR"
+            <button
+                id="btnSeparateValues"
+                label="Separate Values"
+                onAction="OnAction"
+                imageMso="ChartSwitchRowColumn"
+                size="normal"
+                screentip="Separate Values"
+                supertip="Separate values into new rows from the selected column by a delimited string value setting"
+                keytip="SPR"
 							/>
             <editBox
                 id="txtColumnSeparateValuesDelimiter"
                 label=" "
                 getText="GetText"
                 onChange="OnChange"
-                sizeString="X"
                 screentip="Column Separate Values Delimiter"
-                supertip="The value character delimiter"
+                supertip="The value character(s) delimiter"
 							/>
           </box>
           <separator
@@ -832,6 +831,15 @@
             getLabel="GetLabelText"
             onAction="OnAction"
             getVisible="GetVisible"
+								/>
+        <menuSeparator
+            id="separator24"
+								/>
+        <button
+            id="btn1Start"
+            getImage="GetButtonImage"
+            onAction="OnAction"
+            label="Script Charting"
 								/>
       </menu>
       <menuSeparator id="MySeparator" insertBeforeMso="Cut" />

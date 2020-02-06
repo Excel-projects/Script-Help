@@ -167,9 +167,9 @@ namespace ScriptHelp.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute(";")]
-        public char Table_ColumnSeparateValuesDelimiter {
+        public string Table_ColumnSeparateValuesDelimiter {
             get {
-                return ((char)(this["Table_ColumnSeparateValuesDelimiter"]));
+                return ((string)(this["Table_ColumnSeparateValuesDelimiter"]));
             }
             set {
                 this["Table_ColumnSeparateValuesDelimiter"] = value;

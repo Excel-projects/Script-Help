@@ -38,7 +38,7 @@
     <Setting Name="Table_ColumnName" Type="System.String" Scope="User">
       <Value Profile="(Default)">SCRIPT</Value>
     </Setting>
-    <Setting Name="Table_ColumnSeparateValuesDelimiter" Type="System.Char" Scope="User">
+    <Setting Name="Table_ColumnSeparateValuesDelimiter" Type="System.String" Scope="User">
       <Value Profile="(Default)">;</Value>
     </Setting>
     <Setting Name="App_PathDeploy" Type="System.String" Scope="User">

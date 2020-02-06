@@ -256,6 +256,8 @@ namespace ScriptHelp.Scripts
                         return Properties.Resources.SaveCode;
                     case "btnCamera":
                         return Properties.Resources.camera;
+                    case "btn1Start":
+                        return Properties.Resources.Play;
                     default:
                         return null;
                 }
@@ -606,6 +608,7 @@ namespace ScriptHelp.Scripts
                 switch (control.Id)
                 {
                     case "btnStart":
+                    case "btn1Start":
                         OpenGraphData();
                         break;
                     case "btnCopyVisibleCells":
