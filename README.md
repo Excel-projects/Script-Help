@@ -86,10 +86,10 @@ How to install the VSTO version
 | VSTO |Visual Studio Tools for Office (VSTO) is a set of development tools available in the form of a Visual Studio add-in (project templates) and a runtime that allows Microsoft Office 2003 and later versions of Office applications to host the .NET Framework Common Language Runtime (CLR) to expose their functionality via .NET.|
 | XML|Extensible Markup Language (XML) is a markup language that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable.The design goals of XML emphasize simplicity, generality, and usability across the Internet. It is a textual data format with strong support via Unicode for different human languages. Although the design of XML focuses on documents, the language is widely used for the representation of arbitrary data structures such as those used in web services.|
 </details>
-<br>
 
 <a id="user-content-functionality" class="anchor" href="#functionality" aria-hidden="true"> </a>
-## Functionality
+<details>
+  <summary><b>Functionality</b></summary>
 This Excel ribbon is inserted after the “Home” tab when Excel opens. Listed below is the detailed functionality of this application and its components.  
 
 <a id="user-content-rightclick" class="anchor" href="#rightclick" aria-hidden="true"> </a>
@@ -325,3 +325,4 @@ VBA
 <a id="user-content-copyright" class="anchor" href="#copyright" aria-hidden="true"> </a>
 #### Copyright (Label)
 * The author’s name
+</details>
