@@ -49,8 +49,6 @@ How to install the VSTO version
 2. Download and run the setup.exe file. [![download VSTO](https://img.shields.io/badge/download-VSTO-brightgreen.svg)](https://github.com/Excel-projects/Script-Help/blob/master/CS/publish/setup.exe?raw=true "Download Setup.exe Install File")
 </details>
 
-<br>
-
 <a id="user-content-dependencies" class="anchor" href="#dependencies" aria-hidden="true"> </a>
 <details>
   <summary><b>Dependencies</b></summary>
@@ -70,8 +68,6 @@ How to install the VSTO version
 |[Snagit](http://discover.techsmith.com/snagit-non-brand-desktop/?gclid=CNzQiOTO09UCFVoFKgod9EIB3g)|Read Me|VBA, VSTO|
 |Badges ([Library](https://shields.io/), [Custom](https://rozaxe.github.io/factory/), [Star/Fork](http://githubbadges.com))|Read Me|VBA, VSTO|
 </details>
-
-<br>
 
 <a id="user-content-glossary-of-terms" class="anchor" href="#glossary-of-terms" aria-hidden="true"> </a>
 <details>
