@@ -32,8 +32,6 @@ This Add-In is used for cleaning & creating a script for batch loading records i
     - <a href="#about">About</a>
 </details>
 
-<br>
-
 <a id="user-content-install" class="anchor" href="#install" aria-hidden="true"> </a>
 <details>
   <summary><b>Install</b></summary>
