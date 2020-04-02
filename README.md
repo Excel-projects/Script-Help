@@ -37,8 +37,7 @@ This Add-In is used for cleaning & creating a script for batch loading records i
 <br>
 
 <a id="user-content-install" class="anchor" href="#install" aria-hidden="true"> </a>
-<details>
-  <summary><b>Install</b></summary>
+## Install 
 Instructions for installation of VBA and VSTO versions.
 
 ### VBA
@@ -51,11 +50,11 @@ How to install the VBA version
 How to install the VSTO version
 1. Download AnthonyDuguid.pfx And Install At Root Level [![download Key](https://img.shields.io/badge/download-Key-brightgreen.svg)](https://github.com/Office-projects/Script-Help/blob/master/CS/AnthonyDuguid.pfx?raw=true "Download AnthonyDuguid.pfx And Install At Root Level For VSTO")
 2. Download and run the setup.exe file. [![download VSTO](https://img.shields.io/badge/download-VSTO-brightgreen.svg)](https://github.com/Excel-projects/Script-Help/blob/master/CS/publish/setup.exe?raw=true "Download Setup.exe Install File")
-</details>
+
+<br>
 
 <a id="user-content-dependencies" class="anchor" href="#dependencies" aria-hidden="true"> </a>
-<details>
-  <summary><b>Dependencies</b></summary>
+## Dependencies
 <br>
   
 |Software                                   |Dependency                 |Project                    |
@@ -71,11 +70,10 @@ How to install the VSTO version
 |[ScreenToGif](http://www.screentogif.com/)|Read Me|VBA, VSTO|
 |[Snagit](http://discover.techsmith.com/snagit-non-brand-desktop/?gclid=CNzQiOTO09UCFVoFKgod9EIB3g)|Read Me|VBA, VSTO|
 |Badges ([Library](https://shields.io/), [Custom](https://rozaxe.github.io/factory/), [Star/Fork](http://githubbadges.com))|Read Me|VBA, VSTO|
-</details>
+<br>
 
 <a id="user-content-glossary-of-terms" class="anchor" href="#glossary-of-terms" aria-hidden="true"> </a>
-<details>
-  <summary><b>Glossary of Terms</b></summary>
+## Glossary of Terms
 <br>
   
 | Term                      | Meaning                                                                                  |
@@ -89,11 +87,10 @@ How to install the VSTO version
 | VBA |Visual Basic for Applications (VBA) is an implementation of Microsoft's event-driven programming language Visual Basic 6 and uses the Visual Basic Runtime Library. However, VBA code normally can only run within a host application, rather than as a standalone program. VBA can, however, control one application from another using OLE Automation. VBA can use, but not create, ActiveX/COM DLLs, and later versions add support for class modules.|
 | VSTO |Visual Studio Tools for Office (VSTO) is a set of development tools available in the form of a Visual Studio add-in (project templates) and a runtime that allows Microsoft Office 2003 and later versions of Office applications to host the .NET Framework Common Language Runtime (CLR) to expose their functionality via .NET.|
 | XML|Extensible Markup Language (XML) is a markup language that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable.The design goals of XML emphasize simplicity, generality, and usability across the Internet. It is a textual data format with strong support via Unicode for different human languages. Although the design of XML focuses on documents, the language is widely used for the representation of arbitrary data structures such as those used in web services.|
-</details>
+<br>
 
 <a id="user-content-functionality" class="anchor" href="#functionality" aria-hidden="true"> </a>
-<details>
-  <summary><b>Functionality</b></summary>
+## Functionality 
 This Excel ribbon is inserted after the “Home” tab when Excel opens. Listed below is the detailed functionality of this application and its components.  
 
 <a id="user-content-rightclick" class="anchor" href="#rightclick" aria-hidden="true"> </a>
@@ -329,4 +326,4 @@ VBA
 <a id="user-content-copyright" class="anchor" href="#copyright" aria-hidden="true"> </a>
 #### Copyright (Label)
 * The author’s name
-</details>
+
