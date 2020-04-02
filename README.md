@@ -1,7 +1,5 @@
 <img align="left" src="Images/ReadMe/header.png">
 
-This Add-In is used for cleaning & creating a script for batch loading records into SQL Server, Oracle, Documentum, Markup or Markdown Languages. The functionality within the ribbon allows a quick way of preparing a bulk data load. Otherwise, the requests can be both time-consuming and error prone. It is written in 3 different versions as a VSTO Add-In in C# and VB.NET as well as a VBA Add-In. The most complete version is C#. 
-
 <!--[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/AnthonyDuguid/1.00)-->
 [![Join the chat at https://gitter.im/ScriptHelp](https://badges.gitter.im/ScriptHelp/Lobby.svg)](https://gitter.im/ScriptHelp?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE "MIT License Copyright © Anthony Duguid")
@@ -10,16 +8,10 @@ This Add-In is used for cleaning & creating a script for batch loading records i
 [![GitHub issues](https://img.shields.io/github/issues/Excel-projects/Script-Help.svg)](https://github.com/Excel-projects/Script-Help/issues)
 <!--[![Github All Releases](https://img.shields.io/github/downloads/Excel-projects/Script-Help/total.svg)](https://github.com/Excel-projects/Script-Help/releases)-->
 
-
-<h1 align="left">
-  <img src="Images/ReadMe/excel.ribbon.gif" />
-</h1>
-
-<br>
-
 <details>
   <summary><b>Table of Contents</b></summary>
-  
+ 
+- <a href="#about">About</a>
 - <a href="#install">Install</a>
 - <a href="#dependencies">Dependencies</a>
 - <a href="#glossary-of-terms">Glossary of Terms</a>
@@ -31,6 +23,18 @@ This Add-In is used for cleaning & creating a script for batch loading records i
     - <a href="#help">Help</a>
     - <a href="#about">About</a>
 </details>
+
+<br>
+
+## About
+  
+This Add-In is used for cleaning & creating a script for batch loading records into SQL Server, Oracle, Documentum, Markup or Markdown Languages. The functionality within the ribbon allows a quick way of preparing a bulk data load. Otherwise, the requests can be both time-consuming and error prone. It is written in 3 different versions as a VSTO Add-In in C# and VB.NET as well as a VBA Add-In. The most complete version is C#. 
+
+<h1 align="left">
+  <img src="Images/ReadMe/excel.ribbon.gif" />
+</h1>
+
+<br>
 
 <a id="user-content-install" class="anchor" href="#install" aria-hidden="true"> </a>
 <details>
