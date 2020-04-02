@@ -21,7 +21,6 @@
     - <a href="#format-data-table">Format Data Table</a>
     - <a href="#annotate">Annotate</a>
     - <a href="#help">Help</a>
-    - <a href="#about">About</a>
 </details>
 
 <a id="user-content-title" class="anchor" href="#title" aria-hidden="true"> </a>
