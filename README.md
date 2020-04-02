@@ -11,7 +11,7 @@
 <details>
   <summary><b>Table of Contents</b></summary>
  
-- <a href="#about">About</a>
+- <a href="#title">About</a>
 - <a href="#install">Install</a>
 - <a href="#dependencies">Dependencies</a>
 - <a href="#glossary-of-terms">Glossary of Terms</a>
@@ -24,6 +24,7 @@
     - <a href="#about">About</a>
 </details>
 
+<a id="user-content-install" class="anchor" href="#title" aria-hidden="true"> </a>
 ## About
   
 This Add-In is used for cleaning & creating a script for batch loading records into SQL Server, Oracle, Documentum, Markup or Markdown Languages. The functionality within the ribbon allows a quick way of preparing a bulk data load. Otherwise, the requests can be both time-consuming and error prone. It is written in 3 different versions as a VSTO Add-In in C# and VB.NET as well as a VBA Add-In. The most complete version is C#. 
