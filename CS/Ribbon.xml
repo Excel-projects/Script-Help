@@ -175,17 +175,28 @@
 							supertip="This feature removes all nonprintable characters from text and trims leading and trailing spaces."
               keytip="CLE"
 							/>
-          <button
-							id="btnZeroToNull"
-							label="Update to NULL"
-							onAction="OnAction"
-							getEnabled="GetEnabled"
-							imageMso="RecordsRefreshRecords"
-							size="normal"
-							screentip="Convert to NULL"
-							supertip="Replaces the zero string values with 'NULL'"
-              keytip="NUL"
+
+          <box id="boxBlankValues" boxStyle="horizontal">
+            <button
+                id="btnZeroToNull"
+                label="Update Blanks"
+                onAction="OnAction"
+                getEnabled="GetEnabled"
+                imageMso="RecordsRefreshRecords"
+                screentip="Update blank values"
+                supertip="Replaces the zero string values"
+                keytip="NUL"
 							/>
+            <editBox
+                id="txtBlankValuesReplacement"
+                label=" "
+                getText="GetText"
+                onChange="OnChange"
+                sizeString= "XXXXXX"
+                screentip="Blank Values Replacement"
+                supertip="This value will replace the zero string values in the table"
+							/>
+          </box>
           <button
 							id="btnClearInteriorColor"
 							label="Clear Interior Color"

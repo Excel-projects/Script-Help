@@ -113,6 +113,7 @@
     <DocumentationFile>bin\Debug\ScriptHelp.xml</DocumentationFile>
     <RunCodeAnalysis>true</RunCodeAnalysis>
     <Prefer32Bit>false</Prefer32Bit>
+    <NoWarn>1591</NoWarn>
   </PropertyGroup>
   <!--
     This section defines properties that are set when the "Release" configuration is selected.
@@ -258,6 +259,7 @@
     <EmbeddedResource Include="TaskPane\TableData.resx">
       <DependentUpon>TableData.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include=".editorconfig" />
     <None Include="AnthonyDuguid.pfx" />
     <None Include="packages.config" />
     <None Include="Resources\ScriptTypeTSql.png" />
@@ -272,9 +274,6 @@
     <None Include="Resources\SaveCode.png" />
     <None Include="Resources\SaveVersion.png" />
     <None Include="Resources\camera.png" />
-    <Content Include="Resources\ScreenToGif.exe">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <None Include="Resources\ScriptTypeMarkdown.png" />
     <None Include="Resources\ScriptTypeMarkup.png" />
     <Content Include="sqlceca35.dll">

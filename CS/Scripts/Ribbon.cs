@@ -364,6 +364,8 @@ namespace ScriptHelp.Scripts
                         return Properties.Settings.Default.Table_ColumnTableAlias;
                     case "txtColumnSeparateValuesDelimiter":
                         return Properties.Settings.Default.Table_ColumnSeparateValuesDelimiter.ToString();
+                    case "txtBlankValuesReplacement":
+                        return Properties.Settings.Default.Table_ColumnScriptNull;
                     default:
                         return string.Empty;
                 }
@@ -688,6 +690,9 @@ namespace ScriptHelp.Scripts
                         break;
                     case "txtColumnSeparateValuesDelimiter":
                         Properties.Settings.Default.Table_ColumnSeparateValuesDelimiter = Convert.ToChar(text);
+                        break;
+                    case "txtBlankValuesReplacement":
+                        Properties.Settings.Default.Table_ColumnScriptNull = text;
                         break;
                 }
             }
