@@ -4,18 +4,9 @@ using System.Windows.Forms;
 
 namespace ScriptHelp.Scripts.Syntax
 {
-    /// <summary>
-    /// TextBoxBaseExtensions
-    /// </summary>
     public static class TextBoxBaseExtensions
     {
-        /// <summary>
-        /// In order to make flicker free changes to the TextBox's text, it will 
-        /// first disable the TextBox using some Win32 API stuff, applies the changes
-        /// passed through the <c>Action</c> argument, and then re-enables the TextBox.
-        /// </summary>
-        /// <param name="textBox">textBox</param>
-        /// <param name="action">action</param>
+
         public static void DisableThenDoThenEnable(this TextBoxBase textBox, Action action)
         {
             IntPtr stateLocked = IntPtr.Zero;
@@ -37,53 +28,28 @@ namespace ScriptHelp.Scripts.Syntax
             Unlock(textBox, ref stateLocked);
         }
 
-        /// <summary>
-        /// GetHScrollPos
-        /// </summary>
-        /// <param name="textBox">textBox</param>
-        /// <returns>GetScrollPos</returns>
         public static int GetHScrollPos(this TextBoxBase textBox)
         {
             return GetScrollPos((int)textBox.Handle, SB_HORZ);
         }
 
-        /// <summary>
-        /// SetHScrollPos
-        /// </summary>
-        /// <param name="textBox">textBox</param>
-        /// <param name="value">value</param>
         public static void SetHScrollPos(this TextBoxBase textBox, int value)
         {
             SetScrollPos(textBox.Handle, SB_HORZ, value, true);
             PostMessageA(textBox.Handle, WM_HSCROLL, SB_THUMBPOSITION + 0x10000 * value, 0);
         }
 
-        /// <summary>
-        /// GetVScrollPos
-        /// </summary>
-        /// <param name="textBox">textBox</param>
-        /// <returns>GetScrollPos</returns>
         public static int GetVScrollPos(this TextBoxBase textBox)
         {
             return GetScrollPos((int)textBox.Handle, SB_VERT);
         }
 
-        /// <summary>
-        /// SetVScrollPos
-        /// </summary>
-        /// <param name="textBox">textBox</param>
-        /// <param name="value">value</param>
         public static void SetVScrollPos(this TextBoxBase textBox, int value)
         {
             SetScrollPos(textBox.Handle, SB_VERT, value, true);
             PostMessageA(textBox.Handle, WM_VSCROLL, SB_THUMBPOSITION + 0x10000 * value, 0);
         }
 
-        /// <summary>
-        /// Lock
-        /// </summary>
-        /// <param name="textBox">textBox</param>
-        /// <param name="stateLocked">stateLocked</param>
         private static void Lock(this TextBoxBase textBox, ref IntPtr stateLocked)
         {
             // Stop redrawing:  
@@ -93,11 +59,6 @@ namespace ScriptHelp.Scripts.Syntax
             // change colors and stuff in the RichTextBox  
         }
 
-        /// <summary>
-        /// Unlock
-        /// </summary>
-        /// <param name="textBox">textBox</param>
-        /// <param name="stateLocked">stateLocked</param>
         private static void Unlock(this TextBoxBase textBox, ref IntPtr stateLocked)
         {
             // turn on events  

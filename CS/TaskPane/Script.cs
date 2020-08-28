@@ -7,23 +7,14 @@ using ScriptHelp.Scripts.Syntax;
 
 namespace ScriptHelp.TaskPane
 {
-    /// <summary>
-    /// Script TaskPane
-    /// </summary>
+
     public partial class Script : UserControl
     {
-
-        /// <summary>
-        /// Initialize the controls in the object
-        /// </summary>
         public Script()
         {
             InitializeComponent();
         }
 
-        /// <summary>
-        /// Highlight words from KeyWords.
-        /// </summary>
         private void UpdateSqlSyntax()
         {
             try
@@ -55,9 +46,6 @@ namespace ScriptHelp.TaskPane
             }
         }
 
-        /// <summary>
-        /// Highlight words from KeyWords.
-        /// </summary>
         private void UpdateDqlSyntax()
         {
             try
@@ -84,21 +72,11 @@ namespace ScriptHelp.TaskPane
             }
         }
 
-        /// <summary>
-        /// Update the script text with syntax formatting
-        /// </summary>
-        /// <param name="sender">contains the sender of the event, so if you had one method bound to multiple controls, you can distinguish them.</param>
-        /// <param name="e">refers to the event arguments for the used event, they usually come in the form of properties/functions/methods that get to be available on it.</param>
         private void Script_Load(object sender, EventArgs e)
         {
             UpdateScriptText();
         }
 
-        /// <summary>
-        /// Copy the script text
-        /// </summary>
-        /// <param name="sender">contains the sender of the event, so if you had one method bound to multiple controls, you can distinguish them.</param>
-        /// <param name="e">refers to the event arguments for the used event, they usually come in the form of properties/functions/methods that get to be available on it.</param>
         private void btnCopy_Click(object sender, EventArgs e)
         {
             try
@@ -113,11 +91,6 @@ namespace ScriptHelp.TaskPane
             }
         }
 
-        /// <summary>
-        /// Save the script text to a file
-        /// </summary>
-        /// <param name="sender">contains the sender of the event, so if you had one method bound to multiple controls, you can distinguish them.</param>
-        /// <param name="e">refers to the event arguments for the used event, they usually come in the form of properties/functions/methods that get to be available on it.</param>
         private void btnSave_Click(object sender, EventArgs e)
         {
             try
@@ -160,9 +133,6 @@ namespace ScriptHelp.TaskPane
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public void UpdateScriptText()
         {
             try
@@ -192,11 +162,6 @@ namespace ScriptHelp.TaskPane
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void nudFontSize_ValueChanged(object sender, EventArgs e)
         {
             try

@@ -6,29 +6,12 @@ using System.Windows.Forms;
 using System.Deployment.Application;
 using Microsoft.Win32;
 
-// <summary> 
-// This namespaces if for generic application classes
-// </summary>
 namespace ScriptHelp.Scripts
 {
-    /// <summary> 
-    /// Used to get the assembly information 
-    /// </summary>
-    /// <remarks>
-    /// http://danielsaidi.wordpress.com/2009/05/25/c-get-assembly-information/
-    /// </remarks>
     public static class AssemblyInfo
     {
-        /// <summary>
-        /// 
-        /// </summary>
         public static string versionFolderNumber;
 
-        /// <summary> 
-        /// Title
-        /// </summary>
-        /// <remarks>
-        /// </remarks>
         public static string Title
         {
             get
@@ -47,11 +30,6 @@ namespace ScriptHelp.Scripts
             }
         }
 
-        /// <summary> 
-        /// Description
-        /// </summary>
-        /// <remarks>
-        /// </remarks>
         public static string Description
         {
             get
@@ -69,11 +47,6 @@ namespace ScriptHelp.Scripts
             }
         }
 
-        /// <summary> 
-        /// Company
-        /// </summary>
-        /// <remarks>
-        /// </remarks>
         public static string Company
         {
             get
@@ -92,11 +65,6 @@ namespace ScriptHelp.Scripts
             }
         }
 
-        /// <summary> 
-        /// Product
-        /// </summary>
-        /// <remarks>
-        /// </remarks>
         public static string Product
         {
             get
@@ -114,11 +82,6 @@ namespace ScriptHelp.Scripts
             }
         }
 
-        /// <summary> 
-        /// Copyright
-        /// </summary>
-        /// <remarks>
-        /// </remarks>
         public static string Copyright
         {
             get
@@ -136,11 +99,6 @@ namespace ScriptHelp.Scripts
             }
         }
 
-        /// <summary> 
-        /// Trademark
-        /// </summary>
-        /// <remarks>
-        /// </remarks>
         public static string Trademark
         {
             get
@@ -158,11 +116,6 @@ namespace ScriptHelp.Scripts
             }
         }
 
-        /// <summary> 
-        /// AssemblyVersion
-        /// </summary>
-        /// <remarks>
-        /// </remarks>
         public static string AssemblyVersion
         {
             get
@@ -172,11 +125,6 @@ namespace ScriptHelp.Scripts
             }
         }
 
-        /// <summary> 
-        /// FileVersion
-        /// </summary>
-        /// <remarks>
-        /// </remarks>
         public static string FileVersion
         {
             get
@@ -187,11 +135,6 @@ namespace ScriptHelp.Scripts
             }
         }
 
-        /// <summary> 
-        /// Guid
-        /// </summary>
-        /// <remarks>
-        /// </remarks>
         public static string Guid
         {
             get
@@ -209,11 +152,6 @@ namespace ScriptHelp.Scripts
             }
         }
 
-        /// <summary> 
-        /// FileName
-        /// </summary>
-        /// <remarks>
-        /// </remarks>
         public static string FileName
         {
             get
@@ -224,11 +162,6 @@ namespace ScriptHelp.Scripts
             }
         }
 
-        /// <summary> 
-        /// FilePath
-        /// </summary>
-        /// <remarks>
-        /// </remarks>
         public static string FilePath
         {
             get
@@ -239,11 +172,6 @@ namespace ScriptHelp.Scripts
             }
         }
 
-        /// <summary> 
-        /// Return the current file name (used for error logging)
-        /// </summary>
-        /// <returns>A method that returns a string of the current file name </returns> 
-        /// <remarks></remarks>
         public static string GetCurrentFileName()
         {
             try
@@ -256,11 +184,6 @@ namespace ScriptHelp.Scripts
             }
         }
 
-        /// <summary> 
-        /// Returns the ClickOnce location
-        /// </summary>
-        /// <returns>A method that returns a string of the current location </returns> 
-        /// <remarks></remarks>
         public static string GetClickOnceLocation()
         {
             try
@@ -278,11 +201,6 @@ namespace ScriptHelp.Scripts
 
         }
 
-        /// <summary> 
-        /// Returns the assembly location 
-        /// </summary>
-        /// <returns>A method that returns a string of the current location </returns> 
-        /// <remarks></remarks>
         public static string GetAssemblyLocation()
         {
             try
@@ -299,9 +217,6 @@ namespace ScriptHelp.Scripts
 
         }
 
-        /// <summary>
-        /// Set Assembly Folder Version
-        /// </summary>
         public static void SetAssemblyFolderVersion()
         {
             try
@@ -325,13 +240,6 @@ namespace ScriptHelp.Scripts
             }
         }
 
-        /// <summary>
-        /// set the icon in add/remove programs
-        /// </summary>
-        /// <param name="iconName">The referenced icon name for the application.</param>
-        /// <remarks>
-        /// only run if deployed 
-        /// </remarks>
         public static void SetAddRemoveProgramsIcon(string iconName)
         {
             if (System.Deployment.Application.ApplicationDeployment.IsNetworkDeployed
@@ -376,11 +284,6 @@ namespace ScriptHelp.Scripts
             }
         }
 
-        /// <summary> 
-        /// Open a file as read only
-        /// </summary>
-        /// <param name="filePath">Represents the file path string </param>
-        /// <remarks></remarks>
         public static void OpenFile(string filePath)
         {
             try

@@ -4,19 +4,13 @@ using System.Text.RegularExpressions;
 
 namespace ScriptHelp.Scripts.Syntax
 {
-    /// <summary>
-    /// PatternDefinition
-    /// </summary>
+
     public class PatternDefinition
     {
         private readonly Regex _regex;
         private ExpressionType _expressionType = ExpressionType.Identifier;
         private readonly bool _isCaseSensitive = false;
 
-        /// <summary>
-        /// PatternDefinition
-        /// </summary>
-        /// <param name="regularExpression">regularExpression</param>
         public PatternDefinition(Regex regularExpression)
         {
             if (regularExpression == null)
@@ -24,10 +18,6 @@ namespace ScriptHelp.Scripts.Syntax
             _regex = regularExpression;
         }
 
-        /// <summary>
-        /// PatternDefinition
-        /// </summary>
-        /// <param name="regexPattern">regexPattern</param>
         public PatternDefinition(string regexPattern)
         {
             if (String.IsNullOrEmpty(regexPattern))
@@ -36,29 +26,16 @@ namespace ScriptHelp.Scripts.Syntax
             _regex = new Regex(regexPattern, RegexOptions.Compiled);
         }
 
-        /// <summary>
-        /// PatternDefinition
-        /// </summary>
-        /// <param name="tokens">tokens</param>
         public PatternDefinition(params string[] tokens)
             : this(true, tokens)
         {
         }
 
-        /// <summary>
-        /// PatternDefinition
-        /// </summary>
-        /// <param name="tokens">tokens</param>
         public PatternDefinition(IEnumerable<string> tokens)
             : this(true, tokens)
         {
         }
 
-        /// <summary>
-        /// PatternDefinition
-        /// </summary>
-        /// <param name="caseSensitive">caseSensitive</param>
-        /// <param name="tokens">tokens</param>
         internal PatternDefinition(bool caseSensitive, IEnumerable<string> tokens)
         {
             if (tokens == null)
@@ -88,26 +65,17 @@ namespace ScriptHelp.Scripts.Syntax
             _regex = new Regex(pattern, regexOptions);
         }
 
-        /// <summary>
-        /// ExpressionType
-        /// </summary>
         internal ExpressionType ExpressionType 
         {
             get { return _expressionType; }
             set { _expressionType = value; }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         internal bool IsCaseSensitive 
         {
             get { return _isCaseSensitive; }
         }
 
-        /// <summary>
-        /// Regex
-        /// </summary>
         internal Regex Regex
         {
             get { return _regex; }

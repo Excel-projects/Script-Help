@@ -7,26 +7,16 @@ using ScriptHelp.Scripts;
 
 namespace ScriptHelp.TaskPane
 {
-	/// <summary>
-	/// GraphData TaskPane
-	/// </summary>
 	public partial class GraphData : UserControl
 	{
-		/// <summary>
-		/// random number stored for multiple processes
-		/// </summary>
+
 		public int MyRandomNumber;
 
-		/// <summary>
-		/// Initialize the controls in the object
-		/// </summary>
 		public GraphData()
 		{
 			InitializeComponent();
 			try
 			{
-				//dgvGraphData.AutoGenerateColumns = true;
-				//dgvGraphData.DataSource = Data.GraphDataTable.DefaultView;
 				this.Rpie.Series[0].XValueMember = "NBR_VALUE";
 				this.Rpie.Series[0].YValueMembers = "VALUE";
 				this.Rpie.DataSource = Data.GraphDataTable;
@@ -50,11 +40,6 @@ namespace ScriptHelp.TaskPane
 			}
 		}
 
-		/// <summary>
-		/// To start the procedure
-		/// </summary>
-		/// <param name="sender">contains the sender of the event, so if you had one method bound to multiple controls, you can distinguish them.</param>
-		/// <param name="e">refers to the event arguments for the used event, they usually come in the form of properties/functions/methods that get to be available on it.</param>
 		private void btnStart_Click(object sender, EventArgs e)
 		{
 			try
@@ -88,11 +73,6 @@ namespace ScriptHelp.TaskPane
 
 		}
 
-		/// <summary>
-		/// Update the cell formatting
-		/// </summary>
-		/// <param name="sender">contains the sender of the event, so if you had one method bound to multiple controls, you can distinguish them.</param>
-		/// <param name="e">refers to the event arguments for the used event, they usually come in the form of properties/functions/methods that get to be available on it.</param>
 		private void dgvGraphDataResults_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
 		{
 			try
@@ -111,19 +91,11 @@ namespace ScriptHelp.TaskPane
 			}
 		}
 
-		/// <summary>
-		/// Invalidate the grid formatting
-		/// </summary>
-		/// <param name="sender">contains the sender of the event, so if you had one method bound to multiple controls, you can distinguish them.</param>
-		/// <param name="e">refers to the event arguments for the used event, they usually come in the form of properties/functions/methods that get to be available on it.</param>
 		private void dgvGraphDataResults_CellEndEdit(object sender, DataGridViewCellEventArgs e)
 		{
 			dgvGraphDataResults.Invalidate();
 		}
 
-		/// <summary>
-		/// Insert the results to the data table
-		/// </summary>
 		private void InsertResultsToDataTable()
 		{
 			try
@@ -131,7 +103,6 @@ namespace ScriptHelp.TaskPane
 				//TODO: should be querying from the GraphData table instead of from the control
 				string number = this.Rpie.Series[0].Points[MyRandomNumber].AxisLabel.ToString();
 				string color = System.Drawing.ColorTranslator.ToHtml(this.Rpie.Series[0].Points[MyRandomNumber].Color);
-				//MessageBox.Show(number, "Your number", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 				string connection = Scripts.Data.Connection();
 				string query = ("INSERT INTO GraphDataResults (NBR_VALUE, COLOR_ID) Values(@yourNumber, @yourColor)");
 				using (SqlCeConnection cn = new SqlCeConnection(connection))
@@ -143,7 +114,6 @@ namespace ScriptHelp.TaskPane
 						cmd.Parameters.AddWithValue("@yourColor", color);
 						cn.Open();
 						cmd.ExecuteNonQuery();
-						//cn.Close();
 					}
 				}
 			}
@@ -154,13 +124,10 @@ namespace ScriptHelp.TaskPane
 			}
 			finally
 			{
-				//cn.Close();
+
 			}
 		}
 
-		/// <summary>
-		/// Refresh the results to the grid
-		/// </summary>
 		private void RefreshResultsToGrid()
 		{
 			try

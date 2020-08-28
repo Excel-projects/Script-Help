@@ -7,17 +7,10 @@ namespace ScriptHelp.Scripts
 {
     class Formula
     {
-        //static readonly bool isListObject;
-
         static Formula()
         {
-            //isListObject = ErrorHandler.IsValidListObject(true);
         }
 
-        /// <summary> 
-        /// Add a formula at the end of the table to use as a script
-        /// </summary>
-        /// <remarks></remarks>
         public static void DqlAppend()
         {
             Excel.ListObject tbl = null;
@@ -162,10 +155,6 @@ namespace ScriptHelp.Scripts
             }
         }
 
-        /// <summary> 
-        /// Add a formula at the end of the table to use as a script
-        /// </summary>
-        /// <remarks></remarks>
         public static void DqlAppendLocked()
         {
             Excel.ListObject tbl = null;
@@ -323,10 +312,6 @@ namespace ScriptHelp.Scripts
             }
         }
 
-        /// <summary> 
-        /// Add a formula at the end of the table to use as a script
-        /// </summary>
-        /// <remarks></remarks>
         public static void DqlCreate()
         {
             Excel.ListObject tbl = null;
@@ -443,10 +428,6 @@ namespace ScriptHelp.Scripts
             }
         }
 
-        /// <summary> 
-        /// Add a formula at the end of the table to use as a script
-        /// </summary>
-        /// <remarks></remarks>
         public static void DqlTruncateAppend()
         {
             Excel.ListObject tbl = null;
@@ -592,10 +573,6 @@ namespace ScriptHelp.Scripts
             }
         }
 
-        /// <summary> 
-        /// Add a formula at the end of the table to use as a script
-        /// </summary>
-        /// <remarks></remarks>
         public static void DqlUpdate()
         {
             Excel.ListObject tbl = null;
@@ -736,10 +713,6 @@ namespace ScriptHelp.Scripts
             }
         }
 
-        /// <summary> 
-        /// Add a formula at the end of the table to use as a script
-        /// </summary>
-        /// <remarks></remarks>
         public static void DqlUpdateLocked()
         {
             Excel.ListObject tbl = null;
@@ -897,10 +870,6 @@ namespace ScriptHelp.Scripts
             }
         }
 
-        /// <summary> 
-        /// Add a formula at the end of the table to use as a script
-        /// </summary>
-        /// <remarks></remarks>
         public static void MarkdownTable()
         {
             Excel.ListObject tbl = null;
@@ -984,10 +953,6 @@ namespace ScriptHelp.Scripts
 
         }
 
-        /// <summary> 
-        /// Add a formula at the end of the table to use as a script
-        /// </summary>
-        /// <remarks></remarks>
         public static void HtmlTable()
         {
             Excel.ListObject tbl = null;
@@ -1102,10 +1067,6 @@ namespace ScriptHelp.Scripts
             }
         }
 
-        /// <summary> 
-        /// Add a formula at the end of the table to use as a script
-        /// </summary>
-        /// <remarks></remarks>
         public static void PlSqlCreateTable()
         {
             Excel.ListObject tbl = null;
@@ -1205,10 +1166,6 @@ namespace ScriptHelp.Scripts
             }
         }
 
-        /// <summary> 
-        /// Add a formula at the end of the table to use as a script
-        /// </summary>
-        /// <remarks></remarks>
         public static void PlSqlInsertValues()
         {
             Excel.ListObject tbl = null;
@@ -1307,10 +1264,6 @@ namespace ScriptHelp.Scripts
             }
         }
 
-        /// <summary> 
-        /// Add a formula at the end of the table to use as a script
-        /// </summary>
-        /// <remarks></remarks>
         public static void PlSqlMergeValues()
         {
             Excel.ListObject tbl = null;
@@ -1436,10 +1389,6 @@ namespace ScriptHelp.Scripts
             }
         }
 
-        /// <summary> 
-        /// Add a formula at the end of the table to use as a script
-        /// </summary>
-        /// <remarks></remarks>
         public static void PlSqlSelectValues()
         {
             Excel.ListObject tbl = null;
@@ -1545,10 +1494,6 @@ namespace ScriptHelp.Scripts
             }
         }
 
-        /// <summary> 
-        /// Add a formula at the end of the table to use as a script
-        /// </summary>
-        /// <remarks></remarks>
         public static void PlSqlSelectUnion()
         {
             Excel.ListObject tbl = null;
@@ -1649,10 +1594,6 @@ namespace ScriptHelp.Scripts
             }
         }
 
-        /// <summary> 
-        /// Add a formula at the end of the table to use as a script
-        /// </summary>
-        /// <remarks></remarks>
         public static void PlSqlUpdateValues()
         {
             Excel.ListObject tbl = null;
@@ -1799,10 +1740,6 @@ namespace ScriptHelp.Scripts
             }
         }
 
-        /// <summary> 
-        /// Add a formula at the end of the table to use as a script
-        /// </summary>
-        /// <remarks></remarks>
         public static void TSqlCreateTable()
         {
             Excel.ListObject tbl = null;
@@ -1909,10 +1846,6 @@ namespace ScriptHelp.Scripts
             }
         }
 
-        /// <summary> 
-        /// Add a formula at the end of the table to use as a script
-        /// </summary>
-        /// <remarks></remarks>
         public static void TSqlInsertValues()
         {
             Excel.ListObject tbl = null;
@@ -2011,10 +1944,6 @@ namespace ScriptHelp.Scripts
             }
         }
 
-        /// <summary> 
-        /// Add a formula at the end of the table to use as a script
-        /// </summary>
-        /// <remarks></remarks>
         public static void TSqlMergeValues()
         {
             Excel.ListObject tbl = null;
@@ -2150,10 +2079,6 @@ namespace ScriptHelp.Scripts
             }
         }
 
-        /// <summary> 
-        /// Add a formula at the end of the table to use as a script
-        /// </summary>
-        /// <remarks></remarks>
         public static void TSqlSelectUnion()
         {
             Excel.ListObject tbl = null;
@@ -2254,10 +2179,6 @@ namespace ScriptHelp.Scripts
             }
         }
 
-        /// <summary> 
-        /// Add a formula at the end of the table to use as a script
-        /// </summary>
-        /// <remarks></remarks>
         public static void TSqlSelectValues()
         {
             Excel.ListObject tbl = null;
@@ -2363,10 +2284,6 @@ namespace ScriptHelp.Scripts
             }
         }
 
-        /// <summary> 
-        /// Add a formula at the end of the table to use as a script
-        /// </summary>
-        /// <remarks></remarks>
         public static void TSqlUpdateValues()
         {
             Excel.ListObject tbl = null;
@@ -2513,10 +2430,6 @@ namespace ScriptHelp.Scripts
             }
         }
 
-        /// <summary> 
-        /// Add a formula at the end of the table to use as a script
-        /// </summary>
-        /// <remarks></remarks>
         public static void XmlValues()
         {
             Excel.ListObject tbl = null;

@@ -6,14 +6,9 @@ using ScriptHelp.Scripts;
 
 namespace ScriptHelp.TaskPane
 {
-    /// <summary>
-    /// TableData TaskPane
-    /// </summary>
+
     public partial class TableData : UserControl
     {
-        /// <summary>
-        /// Initialize the controls in the object
-        /// </summary>
         public TableData()
         {
             InitializeComponent();
@@ -43,11 +38,6 @@ namespace ScriptHelp.TaskPane
             }
         }
 
-        /// <summary>
-        /// Save the changed values in the table
-        /// </summary>
-        /// <param name="sender">contains the sender of the event, so if you had one method bound to multiple controls, you can distinguish them.</param>
-        /// <param name="e">refers to the event arguments for the used event, they usually come in the form of properties/functions/methods that get to be available on it.</param>
         private void btnSave_Click(object sender, EventArgs e)
         {
             try
@@ -61,7 +51,6 @@ namespace ScriptHelp.TaskPane
 
                 string tableName = Ribbon.AppVariables.TableName;
                 string sql = "SELECT * FROM " + tableName;
-                //string sql = "SELECT * FROM @tableName";
                 SqlCeConnection cn = new SqlCeConnection(Data.Connection());
                 SqlCeCommandBuilder scb = default(SqlCeCommandBuilder);
                 SqlCeDataAdapter sda = new SqlCeDataAdapter(sql, cn);

@@ -13,10 +13,6 @@ namespace ScriptHelp.Scripts
 
         const string dataFolder = "App_Data";
 
-        /// <summary>
-        /// Relative database connection string
-        /// </summary>
-        /// <returns>the data source of the database</returns>
         public static string Connection()
         {
             Data.SetUserPath();
@@ -24,29 +20,12 @@ namespace ScriptHelp.Scripts
             return databaseFile;
         }
 
-        /// <summary>
-        /// List of common table alias
-        /// </summary>
+
         public static DataTable TableAliasTable = new DataTable();
-
-        /// <summary>
-        /// List of date format strings
-        /// </summary>
         public static DataTable DateFormatTable = new DataTable();
-
-        /// <summary>
-        /// List of time format strings
-        /// </summary>
         public static DataTable TimeFormatTable = new DataTable();
-
-        /// <summary>
-        /// List of graph data
-        /// </summary>
         public static DataTable GraphDataTable = new DataTable();
 
-        /// <summary>
-        /// Creates the datatable for the list of common table alias
-        /// </summary>
         public static void CreateTableAliasTable()
         {
             try
@@ -78,9 +57,6 @@ namespace ScriptHelp.Scripts
 
         }
 
-        /// <summary>
-        /// Creates the datatable for the date format strings
-        /// </summary>
         public static void CreateDateFormatTable()
         {
             try
@@ -112,9 +88,6 @@ namespace ScriptHelp.Scripts
 
         }
 
-        /// <summary>
-        /// Creates the datatable for the date format strings
-        /// </summary>
         public static void CreateTimeFormatTable()
         {
             try
@@ -146,9 +119,6 @@ namespace ScriptHelp.Scripts
 
         }
 
-        /// <summary>
-        /// Creates the datatable for the graph data
-        /// </summary>
         public static void CreateGraphDataTable()
         {
             try
@@ -184,9 +154,6 @@ namespace ScriptHelp.Scripts
 
         }
 
-        /// <summary>
-        /// Sets the server path of the installed sql server ce database and supporting files
-        /// </summary>
         public static void SetServerPath()
         {
             try
@@ -206,9 +173,6 @@ namespace ScriptHelp.Scripts
             }
         }
 
-        /// <summary>
-        /// Sets the user path of the installed sql server ce database and supporting files
-        /// </summary>
         public static void SetUserPath()
         {
             string userFilePath = string.Empty;
@@ -219,7 +183,6 @@ namespace ScriptHelp.Scripts
                     string versionNumber = AssemblyInfo.versionFolderNumber;
                     string localAppData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
                     userFilePath = Path.Combine(localAppData, AssemblyInfo.Copyright.Replace(" ", "_"), AssemblyInfo.Product, dataFolder);
-                    //if (!Directory.Exists(userFilePath)) Directory.CreateDirectory(userFilePath);
                     System.IO.Directory.CreateDirectory(userFilePath);
                     DirectoryInfo info = new DirectoryInfo(userFilePath);
                     DirectorySecurity security = info.GetAccessControl();
@@ -243,11 +206,6 @@ namespace ScriptHelp.Scripts
 
         }
 
-        /// <summary>
-        /// Ask the user if they would like to add a missing value to the table
-        /// </summary>
-        /// <param name="tbl">The table to check if a value exists</param>
-        /// <param name="text">The value to insert to the table</param>
         public static void InsertRecord(DataTable tbl, string text)
         {
             string tableName = tbl.TableName.ToString();
