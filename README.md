@@ -93,7 +93,7 @@ This Excel ribbon is inserted after the “Home” tab when Excel opens. Listed 
 
 <a id="user-content-rightclick" class="anchor" href="#rightclick" aria-hidden="true"> </a>
 ### Right Click Menu 
-This custom context menu is only available inside an Excel table. [shortcut menu](https://github.com/Excel-projects/Script-Help/blob/master/CS/Ribbon.xml#L665-L839)
+This custom context menu is only available inside an Excel table. [shortcut menu](https://github.com/Excel-projects/Script-Help/blob/master/CS/Ribbon.xml#L676-L859)
 
 <h1 align="left">
   <img src="Images/ReadMe/ribbon.rightclick.bmp" />
