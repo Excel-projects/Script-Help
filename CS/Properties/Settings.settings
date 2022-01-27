@@ -72,7 +72,7 @@
       <Value Profile="(Default)">TableStyleMedium15</Value>
     </Setting>
     <Setting Name="App_ReleaseDate" Type="System.DateTime" Scope="User">
-      <Value Profile="(Default)">07/31/2017 13:05:00</Value>
+      <Value Profile="(Default)">01/31/2021 13:05:00</Value>
     </Setting>
     <Setting Name="App_PathNewIssue" Type="System.String" Scope="User">
       <Value Profile="(Default)">https://github.com/Excel-projects/Script-Help/issues/new</Value>

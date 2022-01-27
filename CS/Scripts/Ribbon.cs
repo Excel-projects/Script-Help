@@ -1,10 +1,10 @@
 ﻿using System;
 using System.IO;
-using System.Windows.Forms;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using Office = Microsoft.Office.Core;
+using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
+using Office = Microsoft.Office.Core;
 
 namespace ScriptHelp.Scripts
 {
@@ -1197,7 +1197,7 @@ namespace ScriptHelp.Scripts
                     myTaskPaneGraphData = Globals.ThisAddIn.CustomTaskPanes.Add(myGraphData, "Graph Data for " + Scripts.AssemblyInfo.Title);
                     myTaskPaneGraphData.DockPosition = Office.MsoCTPDockPosition.msoCTPDockPositionRight;
                     myTaskPaneGraphData.DockPositionRestrict = Office.MsoCTPDockPositionRestrict.msoCTPDockPositionRestrictNoChange;
-                    myTaskPaneGraphData.Width = 300;
+                    myTaskPaneGraphData.Width = 450;
                     myTaskPaneGraphData.Visible = true;
                 }
 
@@ -1300,7 +1300,7 @@ namespace ScriptHelp.Scripts
             string timeFormat = Properties.Settings.Default.Table_ColumnFormatTime;
             try
             {
-                if ((GetSqlDataType(col) != Properties.Settings.Default.Column_TypeNumeric)) 
+                if ((GetSqlDataType(col) != Properties.Settings.Default.Column_TypeNumeric))
                 {
                     return Properties.Settings.Default.Table_ColumnScriptQuote;
                 }
