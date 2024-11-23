@@ -1,6 +1,6 @@
 <img align="left" src="Images/ReadMe/header.png">
 
-[![Donate] (https://img.shields.io /badge/Donate-PayPal-green.svg)](https:// www.paypal.me/Anthony Duguid/5.00)
+[![Donate](https://img.shields.io /badge/Donate-PayPal-green.svg)](https:// www.paypal.me/Anthony Duguid/5.00)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE "MIT License Copyright © Anthony Duguid")
 [![Latest Release](https://img.shields.io/github/release/Excel-projects/Script-Help.svg?label=latest%20release)](https://github.com/Excel-projects/Script-Help/releases)
