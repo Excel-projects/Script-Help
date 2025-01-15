@@ -1,15 +1,13 @@
 <img align="left" src="Images/ReadMe/header.png">
 
-<br>
-<br>
-
-[Buy me a coffee ☕ 😁](https://www.paypal.me/AnthonyDuguid/5)
-
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE "MIT License Copyright © Anthony Duguid")
 [![Latest Release](https://img.shields.io/github/release/Excel-projects/Script-Help.svg?label=latest%20release)](https://github.com/Excel-projects/Script-Help/releases)
 [![Github commits (since latest release)](https://img.shields.io/github/commits-since/Excel-projects/Script-Help/latest.svg)](https://github.com/Excel-projects/Script-Help/commits/master)
 [![GitHub issues](https://img.shields.io/github/issues/Excel-projects/Script-Help.svg)](https://github.com/Excel-projects/Script-Help/issues)
-<!--[![Github All Releases](https://img.shields.io/github/downloads/Excel-projects/Script-Help/total.svg)](https://github.com/Excel-projects/Script-Help/releases)-->
+
+[Buy me a coffee ☕ 😁](https://www.paypal.me/AnthonyDuguid/5)
+
+<br>
 
 <details>
   <summary><b>Table of Contents</b></summary>
