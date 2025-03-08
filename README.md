@@ -63,6 +63,7 @@ How to install the VSTO version
 |[Microsoft Excel](https://www.microsoft.com/en-au/software-download/office)|Project|VBA, VSTO|
 |[Visual Basic for Applications](https://msdn.microsoft.com/en-us/vba/vba-language-reference)|Code|VBA|
 |[Extensible Markup Language (XML)](https://www.rondebruin.nl/win/s2/win001.htm)|Ribbon|VBA, VSTO|
+|[Microsoft SQL Server CE 4.0](https://www.microsoft.com/en-us/download/details.aspx?id=30709)|Database|VSTO|
 |[Microsoft SQL Server CE 3.5](https://www.microsoft.com/en-au/download/details.aspx?id=5783)|Database|VSTO|
 |[SQL Server Compact Toolbox](https://marketplace.visualstudio.com/items?itemName=ErikEJ.SQLServerCompactSQLiteToolbox)|Database|VSTO|
 |[Log4Net](https://www.nuget.org/packages/log4net/) |Error Logging |VSTO|
